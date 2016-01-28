@@ -1,1 +1,0 @@
-import PublicGoodGameSolidarityPart  # for sqlalchemy
