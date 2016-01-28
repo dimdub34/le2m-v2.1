@@ -1,0 +1,301 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Understanding questionnaire\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-09-11 14:05+0200\n"
+"PO-Revision-Date: 2015-09-11 14:07+0100\n"
+"Last-Translator: Dimitri DUBOIS <dimitri.dubois@umontpellier.fr>\n"
+"Language-Team: Dimitri DUBOIS <dimitri.dubois@umontpellier.fr>\n"
+"Language: fr_FR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+
+#: questcompgui.py:29
+msgid "File"
+msgstr "Fichier"
+
+#: questcompgui.py:31
+msgid "New"
+msgstr "Nouveau"
+
+#: questcompgui.py:34
+msgid "Questionnaire"
+msgstr "Questionnaire"
+
+#: questcompgui.py:38
+msgid "Question"
+msgstr "Question"
+
+#: questcompgui.py:43
+msgid "Open"
+msgstr "Ouvrir"
+
+#: questcompgui.py:47
+msgid "Save"
+msgstr "Enregistrer"
+
+#: questcompgui.py:51
+msgid "Save as"
+msgstr "Enregistrer sous"
+
+#: questcompgui.py:55 questcompgui.py:205
+msgid "Print"
+msgstr "Imprimer"
+
+#: questcompgui.py:59
+msgid "Quit"
+msgstr "Quitter"
+
+#: questcompgui.py:65
+msgid "Tools"
+msgstr "Outils"
+
+#: questcompgui.py:68
+msgid "Test the questionnaire"
+msgstr "Tester le questionnaire"
+
+#: questcompgui.py:74
+msgid "Understanding questions"
+msgstr "Questions de compréhension"
+
+#: questcompgui.py:99
+msgid "Modify"
+msgstr "Modifier"
+
+#: questcompgui.py:102
+msgid "Delete"
+msgstr "Supprimer"
+
+#: questcompgui.py:116 questcompgui.py:134 questcompgui.py:258
+#: questcompgui.py:268 questcompgui.py:396 questcompgui.py:407
+msgid "Confirmation"
+msgstr "Confirmation"
+
+#: questcompgui.py:117
+msgid ""
+"An understanding questionnaire is loaded. Do you really want to close it and "
+"create a new one?"
+msgstr ""
+"Un questionnaire est actuellement chargé. Le fermer et créer un nouveau?"
+
+#: questcompgui.py:135
+msgid ""
+"An understanding questionnaire is loaded. Do you really want to close it and "
+"open a new one?"
+msgstr ""
+"Un questionnaire est actuellement chargé. Le fermer et ouvrir un nouveau?"
+
+#: questcompgui.py:143
+msgid "Select the understanding questionnaire"
+msgstr "Sélectionner le questionnaire de compréhension"
+
+#: questcompgui.py:144
+msgid "xml file (*.xml)"
+msgstr "Fichier xlm (*.xml)"
+
+#: questcompgui.py:171
+#, python-brace-format
+msgid ""
+"Error while saving the understanding questionnaire in the xml file: {msg}"
+msgstr ""
+"Erreur lors de l'enregistrement du questionnaire dans le fichier xml: {msg}"
+
+#: questcompgui.py:176
+msgid "File saved"
+msgstr "Fichier enregistré"
+
+#: questcompgui.py:177
+msgid "Understanding questionnaire saved"
+msgstr "Questionnaire enregistré"
+
+#: questcompgui.py:183
+msgid "xml file"
+msgstr "Fichier xml"
+
+#: questcompgui.py:201 questcompmod.py:169 questcompmod.py:171
+msgid "Understanding questionnaire"
+msgstr "Questionnaire de compréhension"
+
+#: questcompgui.py:206
+msgid "Understanding questionnaire successfully printed"
+msgstr "Le questionnaire a été imprimé"
+
+#: questcompgui.py:231 questcompgui.py:429 questcompmod.py:74
+#, python-brace-format
+msgid "Question {num}"
+msgstr "Question {num}"
+
+#: questcompgui.py:235 questcompmod.py:76
+msgid "Text"
+msgstr "Texte"
+
+#: questcompgui.py:239 questcompmod.py:78
+msgid "Proposals"
+msgstr "Propositions"
+
+#: questcompgui.py:245 questcompmod.py:83
+msgid "Good answers"
+msgstr "Bonnes réponses"
+
+#: questcompgui.py:250 questcompmod.py:88
+msgid "Explanation"
+msgstr "Explication"
+
+#: questcompgui.py:259
+#, python-brace-format
+msgid "Delete {q}?"
+msgstr "Supprimer {q}?"
+
+#: questcompgui.py:269
+msgid "Are you sure you want to quit?"
+msgstr "Quitter l'application?"
+
+#: questcompgui.py:280 questcompgui.py:482
+msgid "Warning"
+msgstr "Attention"
+
+#: questcompgui.py:281
+msgid "There is no questionnaire loaded"
+msgstr "Aucun questionnaire chargé"
+
+#: questcompgui.py:292
+msgid "End"
+msgstr "Fin"
+
+#: questcompgui.py:293
+#, python-brace-format
+msgid "You've done {nbfaults} fault(s) {q}"
+msgstr "Vous avez fait {nbfaults} faute(s) {q}"
+
+#: questcompgui.py:313
+msgid "This number is used to sort the list of questions"
+msgstr "Ce numéro est utilisé pour ordonner la liste des questions"
+
+#: questcompgui.py:343
+msgid "This number already exists, please choose another one"
+msgstr "Ce numéro existe déjà, merci d'en choisir un autre"
+
+#: questcompgui.py:349
+msgid "You need to provide a text"
+msgstr "Il faut fournir un ennoncé"
+
+#: questcompgui.py:362
+msgid "You must give at least 2 proposals"
+msgstr "Vous devez donner au moins deux propositions de réponses"
+
+#: questcompgui.py:364
+msgid "You must give at least 1 good answer"
+msgstr "Vous devez donner au moins une bonne réponse"
+
+#: questcompgui.py:371
+msgid "You need to provide an explanation"
+msgstr "Il faut fournir un énoncé"
+
+#: questcompgui.py:382
+msgid "Error"
+msgstr "Erreur"
+
+#: questcompgui.py:389
+#, python-brace-format
+msgid "Edited question: {q}"
+msgstr "Question éditée: {q}"
+
+#: questcompgui.py:397
+msgid "Do you want to save changes for this question?"
+msgstr "Voulez-vous enregistrer les changements pour cette question?"
+
+#: questcompgui.py:408
+msgid "Do you want to add this question to the questionnaire?"
+msgstr "Voulez-vous ajouter cette question au questionnaire?"
+
+#: questcompgui.py:483
+msgid "You must answer to the question"
+msgstr "Vous devez répondre à la question"
+
+#: questcompgui.py:494
+msgid "The right answers were"
+msgstr "Les bonnes réponses étaient"
+
+#: questcompgui.py:498
+msgid "The right answer was "
+msgstr "La bonne réponse était"
+
+#: questcompgui.py:502
+msgid "Information"
+msgstr "Information"
+
+#: questcompmod.py:61
+#, python-brace-format
+msgid "Number {num}"
+msgstr "Numéro {num}"
+
+#: questcompmod.py:62
+#, python-brace-format
+msgid ""
+"\n"
+"Text: {txt}"
+msgstr ""
+"\n"
+"Ennoncé: {txt}"
+
+#: questcompmod.py:63
+#, python-brace-format
+msgid ""
+"\n"
+"Proposals: {p}"
+msgstr ""
+"\n"
+"Propositions: {p}"
+
+#: questcompmod.py:64
+#, python-brace-format
+msgid ""
+"\n"
+"Good answers: {ga}"
+msgstr ""
+"\n"
+"Bonnes réponses: {ga}"
+
+#: questcompmod.py:66
+#, python-brace-format
+msgid ""
+"\n"
+"Explanation: {exp}"
+msgstr ""
+"\n"
+"Explication: {exp}"
+
+#: questcompmod.py:202
+#, python-brace-format
+msgid "Generated xml: {xmlgen}"
+msgstr "xlm généré: {xmlgen}"
+
+#: questcompmod.py:217
+#, python-brace-format
+msgid "Questionnaire: {q}"
+msgstr "Questionnaire: {q}"
+
+#: questcompmod.py:218
+#, python-brace-format
+msgid "The questionnaire has {nb} questions"
+msgstr "Le questionnaire contient {nb} questions"
+
+#: questcompmod.py:230
+#, python-brace-format
+msgid "Add question: {quest}"
+msgstr "Ajout de la question: {quest}"
+
+#: questcomputil.py:35
+msgid "Logger questcomp created!"
+msgstr "Logger questcomp créé!"
+
+#~ msgid "The question number cannot be zero"
+#~ msgstr "Le numéro de question ne peut être zéro"

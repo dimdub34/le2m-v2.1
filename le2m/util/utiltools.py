@@ -1,0 +1,273 @@
+# -*- coding: utf-8 -*-
+"""
+Contains usefull functions
+"""
+
+import time
+import datetime
+# import random
+import string
+import os
+import logging
+import inspect
+from PyQt4.QtCore import QThread, pyqtSignal  # pour CompteARebours
+
+logger = logging.getLogger("le2m")
+# # compteur_groupe is used for creating a unique id for groups
+# compteur_groupe = 0
+
+
+def get_formatedtimefromseconds(nombre_secondes):
+    """
+    Return a formated string; HH:mm:ss
+    :param nombre_secondes:
+    :return: str
+    """
+    # we do the test because if type is float the str returned does not
+    # correspond to what is expected
+    if type(nombre_secondes) is not int:
+        try:
+            nombre_secondes = int(nombre_secondes)
+            return get_formatedtimefromseconds(nombre_secondes)
+        except ValueError:
+            return u"? (ValueError)"
+    minutes, secondes = divmod(nombre_secondes, 60)
+    heures, minutes = divmod(minutes, 60)
+    return "{}".format(datetime.time(heures, minutes, secondes).strftime(
+        "%H:%M:%S"))
+
+
+def get_letter(numero):
+    """
+    Renvoi la lettre majuscule correspondant au numéro.
+    Si le numéro est supérieur à 25 alors ajoute 1; 2 si supérieur à 50 etc.
+    :param numero:
+    :return:string
+    """
+    if numero < 0:
+        raise ValueError(u"Nombre négatif passé en paramètre")
+    multiplicateur = numero / 26
+    if multiplicateur > 0:
+        return "{}{}".format(
+            string.ascii_uppercase[numero - (multiplicateur * 26)],
+            multiplicateur)
+    else:
+        return string.ascii_uppercase[numero]
+
+
+def get_letternumber(lettre):
+    """
+    Renvoi le numéro de la lettre dans l'alphabet
+    :param lettre:
+    :return: int
+    """
+    num = -1
+    try:
+        num = string.ascii_uppercase.index(lettre)
+    except ValueError as e:
+        logger.warning(u"La lettre demandée n'a pas été trouvée: {}".format(e))
+    finally:
+        return num
+
+
+def get_parent_folder(fichier):
+    """
+    Renvoi le chemin du dossier parent au fichier
+    :param fichier:
+    :return: str
+    """
+    return os.path.abspath(os.path.join(os.path.normpath(fichier),
+                                        os.path.pardir))
+
+
+def get_contenu_fichier(fichier):
+    """
+    Ouvre le fichier et renvoi son contenu.
+    :param fichier: le fichier dont il faut récupérer le contenu
+    :return str
+    """
+    texte = u""
+    try:
+        with open(fichier, "rb") as fichier:
+            texte = fichier.read().decode("utf-8")
+    except IOError as e:
+        logger.critical(
+            u"Problem while opening the file {}: {}".format(
+                fichier, e.message))
+    finally:
+        return texte
+
+
+def get_monnaie(nombre, monnaie=u"ecu"):
+    """
+    DEPRECATED: Utiliser get_pluriel à la place
+    Renvoi la monnnaie avec ou sans s selon le nombre
+    :param nombre: le nombre utilisé avec la monnaie
+    :param monnaie: la monnaie (par défaut ecu)
+    :return: string
+    """
+    return u"{}s".format(monnaie) if nombre > 1 else monnaie
+
+
+def get_pluriel(quantite, mot):
+    """
+    Renvoi la quantité + le mot, avec un s si quantité sup à 1
+    :param quantite
+    :param mot
+    :return str
+    """
+    def get_format(val):
+        return u"{:.2f}".format(val) if type(val) is float else \
+            u"{}".format(val)
+    try:
+        if abs(quantite) > 1:
+            mots = mot.split()
+            motsplu = [u"{}s".format(m) for m in mots]
+            txt = u"{} {}".format(get_format(quantite), u" ".join(motsplu))
+        else:
+            txt = u"{} {}".format(get_format(quantite), mot)
+    except TypeError:
+        type_q = type(quantite)
+        if not (type_q is int or type_q is float or type_q is str):
+            return u"? (not int or float or str) " + mot
+        if type_q is str:
+            try:
+                quantite = int(quantite)
+            except ValueError:
+                try:
+                    quantite = float(quantite)
+                except ValueError:
+                    return u"? (str) " + mot
+                else:
+                    return get_pluriel(quantite, mot)
+            else:
+                return get_pluriel(quantite, mot)
+    else:
+        return txt
+
+
+def get_module_attributes(module):
+    if not inspect.ismodule(module):
+        return None
+    temp = module.__dict__.copy()
+    for todel in ["__builtins__", "__name__", "__file__", "__doc__",
+                  "__package__"]:
+        del temp[todel]
+    keystodel = [k for k, v in temp.viewitems() if inspect.isfunction(v)
+                 or inspect.ismodule(v) or inspect.isclass(v)]
+    for k in keystodel:
+        del temp[k]
+    return temp
+
+
+def get_module_info(module):
+    """
+    Return a list with the keys and values of the attributes of the module
+    :param module:
+    :return: str
+    """
+    temp = get_module_attributes(module)
+    templist = [u"- {}: {}".format(k, v) for k, v in temp.iteritems()]
+    return u"\n".join(templist)
+
+
+# def former_groupes(population, taille, prefixeid=None):
+#     """
+#     Forme des groupes
+#     :param population: une liste d'identifiants
+#     :param taille: la taille des groupes à former
+#     :param prefixeid: le préfixe d'identifiant de groupe. Par défaut la
+#     date du jour avec l'heure, selon format %Y%m%d%H%m
+#     :return: dict
+#     """
+#     if type(population) is not list:
+#         raise ValueError(u"population doit être une liste")
+#     elif len(population) % taille > 0:
+#         raise ValueError(u"il faut pouvoir former un nombre entier de groupes")
+#
+#     nb = len(population) / taille
+#     dispos = population[:]
+#     pre_id = prefixeid or datetime.datetime.now().strftime("%Y%m%d%H%M")
+#     groupes = dict()
+#     global compteur_groupe
+#
+#     for i in xrange(nb):
+#         g_id = pre_id + str(compteur_groupe)
+#         groupes[g_id] = []
+#         for j in xrange(taille):
+#             selec = random.choice(dispos)
+#             groupes[g_id].append(selec)
+#             dispos.remove(selec)
+#         compteur_groupe += 1
+#
+#     return groupes
+
+
+class CompteARebours(QThread):
+
+    changetime = pyqtSignal(str)
+    endoftime = pyqtSignal()
+
+    def __init__(self, tempsensecondes):
+        super(CompteARebours, self).__init__()
+        self._temps = tempsensecondes + 1
+
+    def run(self):
+        while self._temps > 0:
+            self._temps -= 1
+            self.changetime.emit(get_formatedtimefromseconds(self._temps))
+            time.sleep(1)
+        self.endoftime.emit()
+
+
+def get_dictkeyfromvalue(dictio, value):
+    """
+    Return a key corresponding to the value
+    :param dictio: the dict object
+    :param value: the value for which to find the key
+    :return: the corresponding key if value is in the dict
+    """
+    if type(dictio) is not dict:
+        raise ValueError(u"dictio must be a dictionary")
+    if type(value) is str:
+        return dict(
+                zip(map(string.upper, dictio.viewvalues()),
+                    dictio.viewkeys())).get(string.upper(value), None)
+    return dict(zip(
+        dictio.viewvalues(), dictio.viewkeys())).get(value, None)
+
+
+def get_dictinfos(dictio, which=None):
+    """
+    Suppose that all keys are strictly different from values
+    :param dictio: the dict object
+    :param which: None, a key or a value of the dict
+    :return: either the whole dict (if which is None) or the corresponding
+    value if which is a key a the dict or the corresponding key if which is
+    a value of the dict
+    """
+    if type(dictio) is not dict:
+        raise ValueError(u"dictio must be a dictionary")
+    if which is None:
+        return dictio.copy()
+    if which in dictio:
+        return dictio.get(which)
+    return get_dictkeyfromvalue(dictio, which)
+
+
+def cyclelist(mylist, numberoftime=1):
+    """
+    Send back the list but the first item becomes the last one.
+    If numberoftime is greater than one, for example two, then the two first
+    items become the last ones and so on.
+    :param mylist:
+    :param numberoftime:
+    :return: a generator
+    """
+    if type(mylist) is not list:
+        raise ValueError("A list is expected")
+    while True:
+        for _ in range(numberoftime):
+            first = mylist.pop(0)
+            mylist.append(first)
+        yield mylist

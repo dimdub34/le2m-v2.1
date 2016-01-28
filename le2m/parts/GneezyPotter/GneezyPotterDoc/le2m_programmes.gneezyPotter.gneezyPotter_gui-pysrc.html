@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>le2m_programmes.gneezyPotter.gneezyPotter_gui</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="le2m_programmes.gneezyPotter-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        Package&nbsp;le2m_programmes ::
+        <a href="le2m_programmes.gneezyPotter-module.html">Package&nbsp;gneezyPotter</a> ::
+        Module&nbsp;gneezyPotter_gui
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="le2m_programmes.gneezyPotter.gneezyPotter_gui-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="le2m_programmes.gneezyPotter.gneezyPotter_gui-module.html">Module le2m_programmes.gneezyPotter.gneezyPotter_gui</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno"> 1</tt>  <tt class="py-line"><tt class="py-comment"># -*- coding: utf-8 -*-</tt> </tt>
+<a name="L2"></a><tt class="py-lineno"> 2</tt>  <tt class="py-line"> </tt>
+<a name="L3"></a><tt class="py-lineno"> 3</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">PyQt4</tt> <tt class="py-keyword">import</tt> <tt class="py-name">QtGui</tt><tt class="py-op">,</tt>  <tt class="py-name">QtCore</tt> </tt>
+<a name="L4"></a><tt class="py-lineno"> 4</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">twisted</tt><tt class="py-op">.</tt><tt class="py-name">internet</tt> <tt class="py-keyword">import</tt> <tt class="py-name">defer</tt><tt class="py-op">,</tt> <tt class="py-name">reactor</tt> </tt>
+<a name="L5"></a><tt class="py-lineno"> 5</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">logging</tt> </tt>
+<a name="L6"></a><tt class="py-lineno"> 6</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">random</tt> </tt>
+<a name="L7"></a><tt class="py-lineno"> 7</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">le2mUtile</tt> <tt class="py-keyword">import</tt> <tt class="py-name">le2m_utile</tt> </tt>
+<a name="L8"></a><tt class="py-lineno"> 8</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">le2mConfiguration</tt><tt class="py-op">.</tt><tt class="py-name">le2m_parametres</tt> <tt class="py-keyword">import</tt> <tt class="py-name">TEMPS_AUTOMATIQUE</tt> </tt>
+<a name="L9"></a><tt class="py-lineno"> 9</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt id="link-0" class="py-name" targets="Module le2m_programmes.gneezyPotter.gneezyPotter_parametres=le2m_programmes.gneezyPotter.gneezyPotter_parametres-module.html"><a title="le2m_programmes.gneezyPotter.gneezyPotter_parametres" class="py-name" href="#" onclick="return doclink('link-0', 'gneezyPotter_parametres', 'link-0');">gneezyPotter_parametres</a></tt> <tt class="py-keyword">as</tt> <tt class="py-name">parametres</tt> </tt>
+<a name="L10"></a><tt class="py-lineno">10</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-1" class="py-name" targets="Package le2m_programmes.gneezyPotter.gneezyPotterGui=le2m_programmes.gneezyPotter.gneezyPotterGui-module.html"><a title="le2m_programmes.gneezyPotter.gneezyPotterGui" class="py-name" href="#" onclick="return doclink('link-1', 'gneezyPotterGui', 'link-1');">gneezyPotterGui</a></tt> <tt class="py-keyword">import</tt> <tt id="link-2" class="py-name" targets="Module le2m_programmes.gneezyPotter.gneezyPotterGui.gneezyPotter_gui_decisions=le2m_programmes.gneezyPotter.gneezyPotterGui.gneezyPotter_gui_decisions-module.html"><a title="le2m_programmes.gneezyPotter.gneezyPotterGui.gneezyPotter_gui_decisions" class="py-name" href="#" onclick="return doclink('link-2', 'gneezyPotter_gui_decisions', 'link-2');">gneezyPotter_gui_decisions</a></tt> </tt>
+<a name="L11"></a><tt class="py-lineno">11</tt>  <tt class="py-line"> </tt>
+<a name="L12"></a><tt class="py-lineno">12</tt>  <tt class="py-line"><tt id="link-3" class="py-name" targets="Variable le2m_programmes.gneezyPotter.gneezyPotter_gui.logger=le2m_programmes.gneezyPotter.gneezyPotter_gui-module.html#logger,Variable le2m_programmes.gneezyPotter.gneezyPotter_partie.logger=le2m_programmes.gneezyPotter.gneezyPotter_partie-module.html#logger,Variable le2m_programmes.gneezyPotter.gneezyPotter_remote.logger=le2m_programmes.gneezyPotter.gneezyPotter_remote-module.html#logger,Variable le2m_programmes.gneezyPotter.gneezyPotter_serveur.logger=le2m_programmes.gneezyPotter.gneezyPotter_serveur-module.html#logger"><a title="le2m_programmes.gneezyPotter.gneezyPotter_gui.logger
+le2m_programmes.gneezyPotter.gneezyPotter_partie.logger
+le2m_programmes.gneezyPotter.gneezyPotter_remote.logger
+le2m_programmes.gneezyPotter.gneezyPotter_serveur.logger" class="py-name" href="#" onclick="return doclink('link-3', 'logger', 'link-3');">logger</a></tt> <tt class="py-op">=</tt> <tt class="py-name">logging</tt><tt class="py-op">.</tt><tt class="py-name">getLogger</tt><tt class="py-op">(</tt><tt class="py-string">"le2m.{}"</tt><tt class="py-op">.</tt><tt class="py-name">format</tt><tt class="py-op">(</tt><tt class="py-name">__name__</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L13"></a><tt class="py-lineno">13</tt>  <tt class="py-line"> </tt>
+<a name="GuiDecision"></a><div id="GuiDecision-def"><a name="L14"></a><tt class="py-lineno">14</tt> <a class="py-toggle" href="#" id="GuiDecision-toggle" onclick="return toggle('GuiDecision');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="le2m_programmes.gneezyPotter.gneezyPotter_gui.GuiDecision-class.html">GuiDecision</a><tt class="py-op">(</tt><tt class="py-base-class">QtGui</tt><tt class="py-op">.</tt><tt class="py-base-class">QWidget</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="GuiDecision-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="GuiDecision-expanded"><a name="GuiDecision.__init__"></a><div id="GuiDecision.__init__-def"><a name="L15"></a><tt class="py-lineno">15</tt> <a class="py-toggle" href="#" id="GuiDecision.__init__-toggle" onclick="return toggle('GuiDecision.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="le2m_programmes.gneezyPotter.gneezyPotter_gui.GuiDecision-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="GuiDecision.__init__-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="GuiDecision.__init__-expanded"><a name="L16"></a><tt class="py-lineno">16</tt>  <tt class="py-line">        <tt class="py-name">QtGui</tt><tt class="py-op">.</tt><tt class="py-name">QWidget</tt><tt class="py-op">.</tt><tt id="link-4" class="py-name" targets="Method le2m_programmes.gneezyPotter.gneezyPotter_gui.GuiDecision.__init__()=le2m_programmes.gneezyPotter.gneezyPotter_gui.GuiDecision-class.html#__init__,Method le2m_programmes.gneezyPotter.gneezyPotter_partie.PartieGP.__init__()=le2m_programmes.gneezyPotter.gneezyPotter_partie.PartieGP-class.html#__init__,Method le2m_programmes.gneezyPotter.gneezyPotter_remote.Remote.__init__()=le2m_programmes.gneezyPotter.gneezyPotter_remote.Remote-class.html#__init__,Method le2m_programmes.gneezyPotter.gneezyPotter_run.Run.__init__()=le2m_programmes.gneezyPotter.gneezyPotter_run.Run-class.html#__init__,Method le2m_programmes.gneezyPotter.gneezyPotter_serveur.Serveur.__init__()=le2m_programmes.gneezyPotter.gneezyPotter_serveur.Serveur-class.html#__init__"><a title="le2m_programmes.gneezyPotter.gneezyPotter_gui.GuiDecision.__init__
+le2m_programmes.gneezyPotter.gneezyPotter_partie.PartieGP.__init__
+le2m_programmes.gneezyPotter.gneezyPotter_remote.Remote.__init__
+le2m_programmes.gneezyPotter.gneezyPotter_run.Run.__init__
+le2m_programmes.gneezyPotter.gneezyPotter_serveur.Serveur.__init__" class="py-name" href="#" onclick="return doclink('link-4', '__init__', 'link-4');">__init__</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">)</tt> </tt>
+<a name="L17"></a><tt class="py-lineno">17</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">ui</tt> <tt class="py-op">=</tt> <tt id="link-5" class="py-name"><a title="le2m_programmes.gneezyPotter.gneezyPotterGui.gneezyPotter_gui_decisions" class="py-name" href="#" onclick="return doclink('link-5', 'gneezyPotter_gui_decisions', 'link-2');">gneezyPotter_gui_decisions</a></tt><tt class="py-op">.</tt><tt id="link-6" class="py-name" targets="Class le2m_programmes.gneezyPotter.gneezyPotterGui.gneezyPotter_gui_decisions.Ui_Form=le2m_programmes.gneezyPotter.gneezyPotterGui.gneezyPotter_gui_decisions.Ui_Form-class.html"><a title="le2m_programmes.gneezyPotter.gneezyPotterGui.gneezyPotter_gui_decisions.Ui_Form" class="py-name" href="#" onclick="return doclink('link-6', 'Ui_Form', 'link-6');">Ui_Form</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L18"></a><tt class="py-lineno">18</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">ui</tt><tt class="py-op">.</tt><tt id="link-7" class="py-name" targets="Method le2m_programmes.gneezyPotter.gneezyPotterGui.gneezyPotter_gui_decisions.Ui_Form.setupUi()=le2m_programmes.gneezyPotter.gneezyPotterGui.gneezyPotter_gui_decisions.Ui_Form-class.html#setupUi"><a title="le2m_programmes.gneezyPotter.gneezyPotterGui.gneezyPotter_gui_decisions.Ui_Form.setupUi" class="py-name" href="#" onclick="return doclink('link-7', 'setupUi', 'link-7');">setupUi</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">)</tt> </tt>
+<a name="L19"></a><tt class="py-lineno">19</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">ui</tt><tt class="py-op">.</tt><tt class="py-name">pushButton_valider</tt><tt class="py-op">.</tt><tt class="py-name">clicked</tt><tt class="py-op">.</tt><tt class="py-name">connect</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-8" class="py-name" targets="Method le2m_programmes.gneezyPotter.gneezyPotter_gui.GuiDecision._stop()=le2m_programmes.gneezyPotter.gneezyPotter_gui.GuiDecision-class.html#_stop"><a title="le2m_programmes.gneezyPotter.gneezyPotter_gui.GuiDecision._stop" class="py-name" href="#" onclick="return doclink('link-8', '_stop', 'link-8');">_stop</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L20"></a><tt class="py-lineno">20</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">ui</tt><tt class="py-op">.</tt><tt class="py-name">textEdit_explication</tt><tt class="py-op">.</tt><tt class="py-name">setText</tt><tt class="py-op">(</tt><tt class="py-string">u"Vous disposez d'une dotation de {0} {1}s.\n\</tt> </tt>
+<a name="L21"></a><tt class="py-lineno">21</tt>  <tt class="py-line"><tt class="py-string">Vous devez d&#233;cider du montant (un entier compris entre 0 et {0}) que vous investissez \</tt> </tt>
+<a name="L22"></a><tt class="py-lineno">22</tt>  <tt class="py-line"><tt class="py-string">dans l'option risqu&#233;e."</tt><tt class="py-op">.</tt><tt class="py-name">format</tt><tt class="py-op">(</tt><tt class="py-name">parametres</tt><tt class="py-op">.</tt><tt id="link-9" class="py-name" targets="Variable le2m_programmes.gneezyPotter.gneezyPotter_parametres.DOTATION=le2m_programmes.gneezyPotter.gneezyPotter_parametres-module.html#DOTATION"><a title="le2m_programmes.gneezyPotter.gneezyPotter_parametres.DOTATION" class="py-name" href="#" onclick="return doclink('link-9', 'DOTATION', 'link-9');">DOTATION</a></tt><tt class="py-op">,</tt>  <tt class="py-name">parametres</tt><tt class="py-op">.</tt><tt id="link-10" class="py-name" targets="Variable le2m_programmes.gneezyPotter.gneezyPotter_parametres.MONNAIE=le2m_programmes.gneezyPotter.gneezyPotter_parametres-module.html#MONNAIE"><a title="le2m_programmes.gneezyPotter.gneezyPotter_parametres.MONNAIE" class="py-name" href="#" onclick="return doclink('link-10', 'MONNAIE', 'link-10');">MONNAIE</a></tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L23"></a><tt class="py-lineno">23</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">ui</tt><tt class="py-op">.</tt><tt class="py-name">label_demandeSomme</tt><tt class="py-op">.</tt><tt class="py-name">setText</tt><tt class="py-op">(</tt><tt class="py-string">u"Veuillez saisir le montant que vous investissez dans l'option risqu&#233;e"</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L24"></a><tt class="py-lineno">24</tt>  <tt class="py-line">         </tt>
+<a name="GuiDecision.afficher"></a><div id="GuiDecision.afficher-def"><a name="L25"></a><tt class="py-lineno">25</tt> <a class="py-toggle" href="#" id="GuiDecision.afficher-toggle" onclick="return toggle('GuiDecision.afficher');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="le2m_programmes.gneezyPotter.gneezyPotter_gui.GuiDecision-class.html#afficher">afficher</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">automatique</tt><tt class="py-op">,</tt> <tt class="py-param">infos</tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="GuiDecision.afficher-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="GuiDecision.afficher-expanded"><a name="L26"></a><tt class="py-lineno">26</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">ui</tt><tt class="py-op">.</tt><tt class="py-name">pushButton_valider</tt><tt class="py-op">.</tt><tt class="py-name">setEnabled</tt><tt class="py-op">(</tt><tt class="py-name">True</tt><tt class="py-op">)</tt> </tt>
+<a name="L27"></a><tt class="py-lineno">27</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_automatique</tt> <tt class="py-op">=</tt> <tt class="py-name">automatique</tt> </tt>
+<a name="L28"></a><tt class="py-lineno">28</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_automatique</tt><tt class="py-op">:</tt>  </tt>
+<a name="L29"></a><tt class="py-lineno">29</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">ui</tt><tt class="py-op">.</tt><tt class="py-name">lineEdit_sommeInvestie</tt><tt class="py-op">.</tt><tt class="py-name">setText</tt><tt class="py-op">(</tt><tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">random</tt><tt class="py-op">.</tt><tt class="py-name">randint</tt><tt class="py-op">(</tt><tt class="py-number">0</tt><tt class="py-op">,</tt>  <tt class="py-name">parametres</tt><tt class="py-op">.</tt><tt id="link-11" class="py-name"><a title="le2m_programmes.gneezyPotter.gneezyPotter_parametres.DOTATION" class="py-name" href="#" onclick="return doclink('link-11', 'DOTATION', 'link-9');">DOTATION</a></tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L30"></a><tt class="py-lineno">30</tt>  <tt class="py-line">            <tt class="py-name">reactor</tt><tt class="py-op">.</tt><tt class="py-name">callLater</tt><tt class="py-op">(</tt><tt class="py-name">TEMPS_AUTOMATIQUE</tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-12" class="py-name"><a title="le2m_programmes.gneezyPotter.gneezyPotter_gui.GuiDecision._stop" class="py-name" href="#" onclick="return doclink('link-12', '_stop', 'link-8');">_stop</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L31"></a><tt class="py-lineno">31</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_defered</tt> <tt class="py-op">=</tt> <tt class="py-name">defer</tt><tt class="py-op">.</tt><tt class="py-name">Deferred</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L32"></a><tt class="py-lineno">32</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">showFullScreen</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L33"></a><tt class="py-lineno">33</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_defered</tt> </tt>
+</div><a name="L34"></a><tt class="py-lineno">34</tt>  <tt class="py-line">         </tt>
+<a name="GuiDecision._stop"></a><div id="GuiDecision._stop-def"><a name="L35"></a><tt class="py-lineno">35</tt> <a class="py-toggle" href="#" id="GuiDecision._stop-toggle" onclick="return toggle('GuiDecision._stop');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="le2m_programmes.gneezyPotter.gneezyPotter_gui.GuiDecision-class.html#_stop">_stop</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="GuiDecision._stop-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="GuiDecision._stop-expanded"><a name="L36"></a><tt class="py-lineno">36</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">ui</tt><tt class="py-op">.</tt><tt class="py-name">pushButton_valider</tt><tt class="py-op">.</tt><tt class="py-name">setEnabled</tt><tt class="py-op">(</tt><tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L37"></a><tt class="py-lineno">37</tt>  <tt class="py-line">        <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L38"></a><tt class="py-lineno">38</tt>  <tt class="py-line">            <tt class="py-name">decision</tt> <tt class="py-op">=</tt> <tt class="py-name">int</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">ui</tt><tt class="py-op">.</tt><tt class="py-name">lineEdit_sommeInvestie</tt><tt class="py-op">.</tt><tt class="py-name">text</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L39"></a><tt class="py-lineno">39</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">decision</tt> <tt class="py-op">&lt;</tt> <tt class="py-number">0</tt> <tt class="py-keyword">or</tt> <tt class="py-name">decision</tt> <tt class="py-op">&gt;</tt> <tt class="py-name">parametres</tt><tt class="py-op">.</tt><tt id="link-13" class="py-name"><a title="le2m_programmes.gneezyPotter.gneezyPotter_parametres.DOTATION" class="py-name" href="#" onclick="return doclink('link-13', 'DOTATION', 'link-9');">DOTATION</a></tt><tt class="py-op">:</tt> <tt class="py-keyword">raise</tt> <tt class="py-name">ValueError</tt> </tt>
+<a name="L40"></a><tt class="py-lineno">40</tt>  <tt class="py-line">        <tt class="py-keyword">except</tt> <tt class="py-name">ValueError</tt><tt class="py-op">:</tt> </tt>
+<a name="L41"></a><tt class="py-lineno">41</tt>  <tt class="py-line">            <tt class="py-name">QtGui</tt><tt class="py-op">.</tt><tt class="py-name">QMessageBox</tt><tt class="py-op">.</tt><tt class="py-name">warning</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">,</tt>  <tt class="py-string">"Attention"</tt><tt class="py-op">,</tt>  \ </tt>
+<a name="L42"></a><tt class="py-lineno">42</tt>  <tt class="py-line">            <tt class="py-string">u"Vous devez saisir un entier compris entre 0 et {}."</tt><tt class="py-op">.</tt><tt class="py-name">format</tt><tt class="py-op">(</tt><tt class="py-name">parametres</tt><tt class="py-op">.</tt><tt id="link-14" class="py-name"><a title="le2m_programmes.gneezyPotter.gneezyPotter_parametres.DOTATION" class="py-name" href="#" onclick="return doclink('link-14', 'DOTATION', 'link-9');">DOTATION</a></tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">QtGui</tt><tt class="py-op">.</tt><tt class="py-name">QMessageBox</tt><tt class="py-op">.</tt><tt class="py-name">Ok</tt><tt class="py-op">)</tt> </tt>
+<a name="L43"></a><tt class="py-lineno">43</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">ui</tt><tt class="py-op">.</tt><tt class="py-name">pushButton_valider</tt><tt class="py-op">.</tt><tt class="py-name">setEnabled</tt><tt class="py-op">(</tt><tt class="py-name">True</tt><tt class="py-op">)</tt> </tt>
+<a name="L44"></a><tt class="py-lineno">44</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> </tt>
+<a name="L45"></a><tt class="py-lineno">45</tt>  <tt class="py-line">        <tt class="py-comment"># confirmation</tt> </tt>
+<a name="L46"></a><tt class="py-lineno">46</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_automatique</tt><tt class="py-op">:</tt> </tt>
+<a name="L47"></a><tt class="py-lineno">47</tt>  <tt class="py-line">            <tt class="py-name">confirm</tt> <tt class="py-op">=</tt> <tt class="py-name">QtGui</tt><tt class="py-op">.</tt><tt class="py-name">QMessageBox</tt><tt class="py-op">.</tt><tt class="py-name">question</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">,</tt>  <tt class="py-string">"Confirmation"</tt><tt class="py-op">,</tt>  <tt class="py-string">u"Vous confirmez votre d&#233;cision?"</tt><tt class="py-op">,</tt>  \ </tt>
+<a name="L48"></a><tt class="py-lineno">48</tt>  <tt class="py-line">                                                 <tt class="py-name">QtGui</tt><tt class="py-op">.</tt><tt class="py-name">QMessageBox</tt><tt class="py-op">.</tt><tt class="py-name">No</tt> <tt class="py-op">|</tt> <tt class="py-name">QtGui</tt><tt class="py-op">.</tt><tt class="py-name">QMessageBox</tt><tt class="py-op">.</tt><tt class="py-name">Yes</tt><tt class="py-op">,</tt> <tt class="py-name">QtGui</tt><tt class="py-op">.</tt><tt class="py-name">QMessageBox</tt><tt class="py-op">.</tt><tt class="py-name">No</tt><tt class="py-op">)</tt> </tt>
+<a name="L49"></a><tt class="py-lineno">49</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">confirm</tt> <tt class="py-op">!=</tt> <tt class="py-name">QtGui</tt><tt class="py-op">.</tt><tt class="py-name">QMessageBox</tt><tt class="py-op">.</tt><tt class="py-name">Yes</tt><tt class="py-op">:</tt> </tt>
+<a name="L50"></a><tt class="py-lineno">50</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">ui</tt><tt class="py-op">.</tt><tt class="py-name">pushButton_valider</tt><tt class="py-op">.</tt><tt class="py-name">setEnabled</tt><tt class="py-op">(</tt><tt class="py-name">True</tt><tt class="py-op">)</tt> </tt>
+<a name="L51"></a><tt class="py-lineno">51</tt>  <tt class="py-line">                <tt class="py-keyword">return</tt> </tt>
+<a name="L52"></a><tt class="py-lineno">52</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">hide</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L53"></a><tt class="py-lineno">53</tt>  <tt class="py-line">        <tt class="py-name">inputs</tt> <tt class="py-op">=</tt> <tt class="py-op">{</tt><tt class="py-string">'investissement'</tt><tt class="py-op">:</tt> <tt class="py-name">decision</tt><tt class="py-op">}</tt> </tt>
+<a name="L54"></a><tt class="py-lineno">54</tt>  <tt class="py-line">        <tt id="link-15" class="py-name"><a title="le2m_programmes.gneezyPotter.gneezyPotter_gui.logger
+le2m_programmes.gneezyPotter.gneezyPotter_partie.logger
+le2m_programmes.gneezyPotter.gneezyPotter_remote.logger
+le2m_programmes.gneezyPotter.gneezyPotter_serveur.logger" class="py-name" href="#" onclick="return doclink('link-15', 'logger', 'link-3');">logger</a></tt><tt class="py-op">.</tt><tt class="py-name">info</tt><tt class="py-op">(</tt><tt class="py-string">u"Renvoi: {}"</tt><tt class="py-op">.</tt><tt class="py-name">format</tt><tt class="py-op">(</tt><tt class="py-name">inputs</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L55"></a><tt class="py-lineno">55</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_defered</tt><tt class="py-op">.</tt><tt class="py-name">callback</tt><tt class="py-op">(</tt><tt class="py-name">inputs</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L56"></a><tt class="py-lineno">56</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="le2m_programmes.gneezyPotter-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Wed Oct 16 12:43:42 2013
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

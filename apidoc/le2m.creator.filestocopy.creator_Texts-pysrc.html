@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>le2m.creator.filestocopy.creator_Texts</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="le2m-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="le2m-module.html">Package&nbsp;le2m</a> ::
+        <a href="le2m.creator-module.html">Package&nbsp;creator</a> ::
+        <a href="le2m.creator.filestocopy-module.html">Package&nbsp;filestocopy</a> ::
+        Module&nbsp;creator_Texts
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="le2m.creator.filestocopy.creator_Texts-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="le2m.creator.filestocopy.creator_Texts-module.html">Module le2m.creator.filestocopy.creator_Texts</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno"> 1</tt>  <tt class="py-line"><tt class="py-comment"># -*- coding: utf-8 -*-</tt> </tt>
+<a name="L2"></a><tt class="py-lineno"> 2</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
+<a name="L3"></a><tt class="py-lineno"> 3</tt>  <tt class="py-line"><tt class="py-docstring">Ce module contient les textes des &#233;crans</tt> </tt>
+<a name="L4"></a><tt class="py-lineno"> 4</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
+<a name="L5"></a><tt class="py-lineno"> 5</tt>  <tt class="py-line"><tt class="py-name">__author__</tt> <tt class="py-op">=</tt> <tt class="py-string">"Dimitri DUBOIS"</tt> </tt>
+<a name="L6"></a><tt class="py-lineno"> 6</tt>  <tt class="py-line"> </tt>
+<a name="L7"></a><tt class="py-lineno"> 7</tt>  <tt class="py-line"> </tt>
+<a name="L8"></a><tt class="py-lineno"> 8</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">collections</tt> <tt class="py-keyword">import</tt> <tt class="py-name">namedtuple</tt> </tt>
+<a name="L9"></a><tt class="py-lineno"> 9</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-0" class="py-name" targets="Package le2m.util=le2m.util-module.html"><a title="le2m.util" class="py-name" href="#" onclick="return doclink('link-0', 'util', 'link-0');">util</a></tt><tt class="py-op">.</tt><tt id="link-1" class="py-name" targets="Module le2m.util.utiltools=le2m.util.utiltools-module.html"><a title="le2m.util.utiltools" class="py-name" href="#" onclick="return doclink('link-1', 'utiltools', 'link-1');">utiltools</a></tt> <tt class="py-keyword">import</tt> <tt id="link-2" class="py-name" targets="Function le2m.util.utiltools.get_pluriel()=le2m.util.utiltools-module.html#get_pluriel"><a title="le2m.util.utiltools.get_pluriel" class="py-name" href="#" onclick="return doclink('link-2', 'get_pluriel', 'link-2');">get_pluriel</a></tt> </tt>
+<a name="L10"></a><tt class="py-lineno">10</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">EXPERIENCE_NOMParams</tt> <tt class="py-keyword">as</tt> <tt class="py-name">pms</tt> </tt>
+<a name="L11"></a><tt class="py-lineno">11</tt>  <tt class="py-line"> </tt>
+<a name="L12"></a><tt class="py-lineno">12</tt>  <tt class="py-line"><tt class="py-comment"># pour i18n:</tt> </tt>
+<a name="L13"></a><tt class="py-lineno">13</tt>  <tt class="py-line"><tt class="py-comment"># 1)  d&#233;commenter les lignes ci-apr&#232;s,</tt> </tt>
+<a name="L14"></a><tt class="py-lineno">14</tt>  <tt class="py-line"><tt class="py-comment"># 2) entourer les expressions &#224; traduire par _EXPERIENCE_NOM_COURT()</tt> </tt>
+<a name="L15"></a><tt class="py-lineno">15</tt>  <tt class="py-line"><tt class="py-comment"># 3) dans le projet cr&#233;er les dossiers locale/fr_FR/LC_MESSAGES</tt> </tt>
+<a name="L16"></a><tt class="py-lineno">16</tt>  <tt class="py-line"><tt class="py-comment"># en rempla&#231;ant fr_FR par la langue souhait&#233;e</tt> </tt>
+<a name="L17"></a><tt class="py-lineno">17</tt>  <tt class="py-line"><tt class="py-comment"># 4) cr&#233;er le fichier EXPERIENCE_NOM.po: dans invite de commande, taper:</tt> </tt>
+<a name="L18"></a><tt class="py-lineno">18</tt>  <tt class="py-line"><tt class="py-comment"># xgettext fichierTextes.py -p locale/fr_FR/LC_MESSAGES -d EXPERIENCE_NOM</tt> </tt>
+<a name="L19"></a><tt class="py-lineno">19</tt>  <tt class="py-line"><tt class="py-comment"># 5) avec poedit, &#233;diter le fichier EXPERIENCE_NOM.po qui a &#233;t&#233; cr&#233;&#233;</tt> </tt>
+<a name="L20"></a><tt class="py-lineno">20</tt>  <tt class="py-line"> </tt>
+<a name="L21"></a><tt class="py-lineno">21</tt>  <tt class="py-line"><tt class="py-comment"># import os</tt> </tt>
+<a name="L22"></a><tt class="py-lineno">22</tt>  <tt class="py-line"><tt class="py-comment"># import configuration.configparam as params</tt> </tt>
+<a name="L23"></a><tt class="py-lineno">23</tt>  <tt class="py-line"><tt class="py-comment"># import gettext</tt> </tt>
+<a name="L24"></a><tt class="py-lineno">24</tt>  <tt class="py-line"><tt class="py-comment"># localedir = os.path.join(params.getp("PARTSDIR"), "EXPERIENCE_NOM", "locale")</tt> </tt>
+<a name="L25"></a><tt class="py-lineno">25</tt>  <tt class="py-line"><tt class="py-comment"># _EXPERIENCE_NOM_COURT = gettext.translation(</tt> </tt>
+<a name="L26"></a><tt class="py-lineno">26</tt>  <tt class="py-line"><tt class="py-comment">#   "EXPERIENCE_NOM", localedir, languages=[params.getp("LANG")]).ugettext</tt> </tt>
+<a name="L27"></a><tt class="py-lineno">27</tt>  <tt class="py-line"> </tt>
+<a name="L28"></a><tt class="py-lineno">28</tt>  <tt class="py-line"> </tt>
+<a name="L29"></a><tt class="py-lineno">29</tt>  <tt class="py-line"><tt id="link-3" class="py-name" targets="Variable le2m.creator.filestocopy.creator_Texts.TITLE_MSG=le2m.creator.filestocopy.creator_Texts-module.html#TITLE_MSG,Variable le2m.parts.CommonPoolResource.CommonPoolResourceTexts.TITLE_MSG=le2m.parts.CommonPoolResource.CommonPoolResourceTexts-module.html#TITLE_MSG,Variable le2m.parts.Dictator.DictatorTexts.TITLE_MSG=le2m.parts.Dictator.DictatorTexts-module.html#TITLE_MSG,Variable le2m.parts.GneezyPotter.GneezyPotterTexts.TITLE_MSG=le2m.parts.GneezyPotter.GneezyPotterTexts-module.html#TITLE_MSG,Variable le2m.parts.PublicGoodGame.PublicGoodGameTexts.TITLE_MSG=le2m.parts.PublicGoodGame.PublicGoodGameTexts-module.html#TITLE_MSG,Variable le2m.parts.PublicGoodGameGender.PublicGoodGameGenderTexts.TITLE_MSG=le2m.parts.PublicGoodGameGender.PublicGoodGameGenderTexts-module.html#TITLE_MSG,Variable le2m.parts.PublicGoodGameSolidarity.PublicGoodGameSolidarityTexts.TITLE_MSG=le2m.parts.PublicGoodGameSolidarity.PublicGoodGameSolidarityTexts-module.html#TITLE_MSG,Variable le2m.parts.PublicGoodGlobalLocal.PublicGoodGlobalLocalTextes.TITLE_MSG=le2m.parts.PublicGoodGlobalLocal.PublicGoodGlobalLocalTextes-module.html#TITLE_MSG,Variable le2m.parts.TeamCommunication.TeamCommunicationTexts.TITLE_MSG=le2m.parts.TeamCommunication.TeamCommunicationTexts-module.html#TITLE_MSG,Variable le2m.parts.oathAndLies.oathAndLiesTexts.TITLE_MSG=le2m.parts.oathAndLies.oathAndLiesTexts-module.html#TITLE_MSG,Variable le2m.parts.prisonnersDilemma.prisonnersDilemmaTexts.TITLE_MSG=le2m.parts.prisonnersDilemma.prisonnersDilemmaTexts-module.html#TITLE_MSG,Variable le2m.parts.voteMajorite.voteMajoriteTexts.TITLE_MSG=le2m.parts.voteMajorite.voteMajoriteTexts-module.html#TITLE_MSG"><a title="le2m.creator.filestocopy.creator_Texts.TITLE_MSG
+le2m.parts.CommonPoolResource.CommonPoolResourceTexts.TITLE_MSG
+le2m.parts.Dictator.DictatorTexts.TITLE_MSG
+le2m.parts.GneezyPotter.GneezyPotterTexts.TITLE_MSG
+le2m.parts.PublicGoodGame.PublicGoodGameTexts.TITLE_MSG
+le2m.parts.PublicGoodGameGender.PublicGoodGameGenderTexts.TITLE_MSG
+le2m.parts.PublicGoodGameSolidarity.PublicGoodGameSolidarityTexts.TITLE_MSG
+le2m.parts.PublicGoodGlobalLocal.PublicGoodGlobalLocalTextes.TITLE_MSG
+le2m.parts.TeamCommunication.TeamCommunicationTexts.TITLE_MSG
+le2m.parts.oathAndLies.oathAndLiesTexts.TITLE_MSG
+le2m.parts.prisonnersDilemma.prisonnersDilemmaTexts.TITLE_MSG
+le2m.parts.voteMajorite.voteMajoriteTexts.TITLE_MSG" class="py-name" href="#" onclick="return doclink('link-3', 'TITLE_MSG', 'link-3');">TITLE_MSG</a></tt> <tt class="py-op">=</tt> <tt class="py-name">namedtuple</tt><tt class="py-op">(</tt><tt class="py-string">"TITLE_MSG"</tt><tt class="py-op">,</tt> <tt class="py-string">"titre message"</tt><tt class="py-op">)</tt> </tt>
+<a name="L30"></a><tt class="py-lineno">30</tt>  <tt class="py-line"> </tt>
+<a name="L31"></a><tt class="py-lineno">31</tt>  <tt class="py-line"> </tt>
+<a name="L32"></a><tt class="py-lineno">32</tt>  <tt class="py-line"><tt class="py-comment"># ECRAN DECISION ===============================================================</tt> </tt>
+<a name="L33"></a><tt class="py-lineno">33</tt>  <tt class="py-line"><tt id="link-4" class="py-name" targets="Variable le2m.creator.filestocopy.creator_Texts.DECISION_titre=le2m.creator.filestocopy.creator_Texts-module.html#DECISION_titre,Variable le2m.parts.CommonPoolResource.CommonPoolResourceTexts.DECISION_titre=le2m.parts.CommonPoolResource.CommonPoolResourceTexts-module.html#DECISION_titre,Variable le2m.parts.Dictator.DictatorTexts.DECISION_titre=le2m.parts.Dictator.DictatorTexts-module.html#DECISION_titre,Variable le2m.parts.GneezyPotter.GneezyPotterTexts.DECISION_titre=le2m.parts.GneezyPotter.GneezyPotterTexts-module.html#DECISION_titre,Variable le2m.parts.PublicGoodGame.PublicGoodGameTexts.DECISION_titre=le2m.parts.PublicGoodGame.PublicGoodGameTexts-module.html#DECISION_titre,Variable le2m.parts.PublicGoodGameGender.PublicGoodGameGenderTexts.DECISION_titre=le2m.parts.PublicGoodGameGender.PublicGoodGameGenderTexts-module.html#DECISION_titre,Variable le2m.parts.PublicGoodGameSolidarity.PublicGoodGameSolidarityTexts.DECISION_titre=le2m.parts.PublicGoodGameSolidarity.PublicGoodGameSolidarityTexts-module.html#DECISION_titre,Variable le2m.parts.TeamCommunication.TeamCommunicationTexts.DECISION_titre=le2m.parts.TeamCommunication.TeamCommunicationTexts-module.html#DECISION_titre,Variable le2m.parts.oathAndLies.oathAndLiesTexts.DECISION_titre=le2m.parts.oathAndLies.oathAndLiesTexts-module.html#DECISION_titre,Variable le2m.parts.prisonnersDilemma.prisonnersDilemmaTexts.DECISION_titre=le2m.parts.prisonnersDilemma.prisonnersDilemmaTexts-module.html#DECISION_titre,Variable le2m.parts.voteMajorite.voteMajoriteTexts.DECISION_titre=le2m.parts.voteMajorite.voteMajoriteTexts-module.html#DECISION_titre"><a title="le2m.creator.filestocopy.creator_Texts.DECISION_titre
+le2m.parts.CommonPoolResource.CommonPoolResourceTexts.DECISION_titre
+le2m.parts.Dictator.DictatorTexts.DECISION_titre
+le2m.parts.GneezyPotter.GneezyPotterTexts.DECISION_titre
+le2m.parts.PublicGoodGame.PublicGoodGameTexts.DECISION_titre
+le2m.parts.PublicGoodGameGender.PublicGoodGameGenderTexts.DECISION_titre
+le2m.parts.PublicGoodGameSolidarity.PublicGoodGameSolidarityTexts.DECISION_titre
+le2m.parts.TeamCommunication.TeamCommunicationTexts.DECISION_titre
+le2m.parts.oathAndLies.oathAndLiesTexts.DECISION_titre
+le2m.parts.prisonnersDilemma.prisonnersDilemmaTexts.DECISION_titre
+le2m.parts.voteMajorite.voteMajoriteTexts.DECISION_titre" class="py-name" href="#" onclick="return doclink('link-4', 'DECISION_titre', 'link-4');">DECISION_titre</a></tt> <tt class="py-op">=</tt> <tt class="py-string">u"Decision"</tt> </tt>
+<a name="L34"></a><tt class="py-lineno">34</tt>  <tt class="py-line"><tt id="link-5" class="py-name" targets="Variable le2m.creator.filestocopy.creator_Texts.DECISION_explication=le2m.creator.filestocopy.creator_Texts-module.html#DECISION_explication,Variable le2m.parts.CommonPoolResource.CommonPoolResourceTexts.DECISION_explication=le2m.parts.CommonPoolResource.CommonPoolResourceTexts-module.html#DECISION_explication,Variable le2m.parts.Dictator.DictatorTexts.DECISION_explication=le2m.parts.Dictator.DictatorTexts-module.html#DECISION_explication,Variable le2m.parts.GneezyPotter.GneezyPotterTexts.DECISION_explication=le2m.parts.GneezyPotter.GneezyPotterTexts-module.html#DECISION_explication,Variable le2m.parts.PublicGoodGame.PublicGoodGameTexts.DECISION_explication=le2m.parts.PublicGoodGame.PublicGoodGameTexts-module.html#DECISION_explication,Variable le2m.parts.PublicGoodGameGender.PublicGoodGameGenderTexts.DECISION_explication=le2m.parts.PublicGoodGameGender.PublicGoodGameGenderTexts-module.html#DECISION_explication,Variable le2m.parts.PublicGoodGameSolidarity.PublicGoodGameSolidarityTexts.DECISION_explication=le2m.parts.PublicGoodGameSolidarity.PublicGoodGameSolidarityTexts-module.html#DECISION_explication,Variable le2m.parts.PublicGoodGlobalLocal.PublicGoodGlobalLocalTextes.DECISION_explication=le2m.parts.PublicGoodGlobalLocal.PublicGoodGlobalLocalTextes-module.html#DECISION_explication,Variable le2m.parts.TeamCommunication.TeamCommunicationTexts.DECISION_explication=le2m.parts.TeamCommunication.TeamCommunicationTexts-module.html#DECISION_explication,Variable le2m.parts.oathAndLies.oathAndLiesTexts.DECISION_explication=le2m.parts.oathAndLies.oathAndLiesTexts-module.html#DECISION_explication,Variable le2m.parts.prisonnersDilemma.prisonnersDilemmaTexts.DECISION_explication=le2m.parts.prisonnersDilemma.prisonnersDilemmaTexts-module.html#DECISION_explication,Variable le2m.parts.voteMajorite.voteMajoriteTexts.DECISION_explication=le2m.parts.voteMajorite.voteMajoriteTexts-module.html#DECISION_explication"><a title="le2m.creator.filestocopy.creator_Texts.DECISION_explication
+le2m.parts.CommonPoolResource.CommonPoolResourceTexts.DECISION_explication
+le2m.parts.Dictator.DictatorTexts.DECISION_explication
+le2m.parts.GneezyPotter.GneezyPotterTexts.DECISION_explication
+le2m.parts.PublicGoodGame.PublicGoodGameTexts.DECISION_explication
+le2m.parts.PublicGoodGameGender.PublicGoodGameGenderTexts.DECISION_explication
+le2m.parts.PublicGoodGameSolidarity.PublicGoodGameSolidarityTexts.DECISION_explication
+le2m.parts.PublicGoodGlobalLocal.PublicGoodGlobalLocalTextes.DECISION_explication
+le2m.parts.TeamCommunication.TeamCommunicationTexts.DECISION_explication
+le2m.parts.oathAndLies.oathAndLiesTexts.DECISION_explication
+le2m.parts.prisonnersDilemma.prisonnersDilemmaTexts.DECISION_explication
+le2m.parts.voteMajorite.voteMajoriteTexts.DECISION_explication" class="py-name" href="#" onclick="return doclink('link-5', 'DECISION_explication', 'link-5');">DECISION_explication</a></tt> <tt class="py-op">=</tt> <tt class="py-string">u"Explanation text"</tt> </tt>
+<a name="L35"></a><tt class="py-lineno">35</tt>  <tt class="py-line"><tt id="link-6" class="py-name" targets="Variable le2m.creator.filestocopy.creator_Texts.DECISION_label=le2m.creator.filestocopy.creator_Texts-module.html#DECISION_label,Variable le2m.parts.CommonPoolResource.CommonPoolResourceTexts.DECISION_label=le2m.parts.CommonPoolResource.CommonPoolResourceTexts-module.html#DECISION_label,Variable le2m.parts.Dictator.DictatorTexts.DECISION_label=le2m.parts.Dictator.DictatorTexts-module.html#DECISION_label,Variable le2m.parts.GneezyPotter.GneezyPotterTexts.DECISION_label=le2m.parts.GneezyPotter.GneezyPotterTexts-module.html#DECISION_label,Variable le2m.parts.PublicGoodGame.PublicGoodGameTexts.DECISION_label=le2m.parts.PublicGoodGame.PublicGoodGameTexts-module.html#DECISION_label,Variable le2m.parts.PublicGoodGameGender.PublicGoodGameGenderTexts.DECISION_label=le2m.parts.PublicGoodGameGender.PublicGoodGameGenderTexts-module.html#DECISION_label,Variable le2m.parts.PublicGoodGameSolidarity.PublicGoodGameSolidarityTexts.DECISION_label=le2m.parts.PublicGoodGameSolidarity.PublicGoodGameSolidarityTexts-module.html#DECISION_label,Variable le2m.parts.TeamCommunication.TeamCommunicationTexts.DECISION_label=le2m.parts.TeamCommunication.TeamCommunicationTexts-module.html#DECISION_label,Variable le2m.parts.oathAndLies.oathAndLiesTexts.DECISION_label=le2m.parts.oathAndLies.oathAndLiesTexts-module.html#DECISION_label,Variable le2m.parts.voteMajorite.voteMajoriteTexts.DECISION_label=le2m.parts.voteMajorite.voteMajoriteTexts-module.html#DECISION_label"><a title="le2m.creator.filestocopy.creator_Texts.DECISION_label
+le2m.parts.CommonPoolResource.CommonPoolResourceTexts.DECISION_label
+le2m.parts.Dictator.DictatorTexts.DECISION_label
+le2m.parts.GneezyPotter.GneezyPotterTexts.DECISION_label
+le2m.parts.PublicGoodGame.PublicGoodGameTexts.DECISION_label
+le2m.parts.PublicGoodGameGender.PublicGoodGameGenderTexts.DECISION_label
+le2m.parts.PublicGoodGameSolidarity.PublicGoodGameSolidarityTexts.DECISION_label
+le2m.parts.TeamCommunication.TeamCommunicationTexts.DECISION_label
+le2m.parts.oathAndLies.oathAndLiesTexts.DECISION_label
+le2m.parts.voteMajorite.voteMajoriteTexts.DECISION_label" class="py-name" href="#" onclick="return doclink('link-6', 'DECISION_label', 'link-6');">DECISION_label</a></tt> <tt class="py-op">=</tt> <tt class="py-string">u"Decision label text"</tt> </tt>
+<a name="L36"></a><tt class="py-lineno">36</tt>  <tt class="py-line"><tt id="link-7" class="py-name" targets="Variable le2m.creator.filestocopy.creator_Texts.DECISION_erreur=le2m.creator.filestocopy.creator_Texts-module.html#DECISION_erreur,Variable le2m.parts.Dictator.DictatorTexts.DECISION_erreur=le2m.parts.Dictator.DictatorTexts-module.html#DECISION_erreur,Variable le2m.parts.GneezyPotter.GneezyPotterTexts.DECISION_erreur=le2m.parts.GneezyPotter.GneezyPotterTexts-module.html#DECISION_erreur,Variable le2m.parts.PublicGoodGame.PublicGoodGameTexts.DECISION_erreur=le2m.parts.PublicGoodGame.PublicGoodGameTexts-module.html#DECISION_erreur,Variable le2m.parts.PublicGoodGameGender.PublicGoodGameGenderTexts.DECISION_erreur=le2m.parts.PublicGoodGameGender.PublicGoodGameGenderTexts-module.html#DECISION_erreur,Variable le2m.parts.PublicGoodGameSolidarity.PublicGoodGameSolidarityTexts.DECISION_erreur=le2m.parts.PublicGoodGameSolidarity.PublicGoodGameSolidarityTexts-module.html#DECISION_erreur,Variable le2m.parts.TeamCommunication.TeamCommunicationTexts.DECISION_erreur=le2m.parts.TeamCommunication.TeamCommunicationTexts-module.html#DECISION_erreur,Variable le2m.parts.oathAndLies.oathAndLiesTexts.DECISION_erreur=le2m.parts.oathAndLies.oathAndLiesTexts-module.html#DECISION_erreur,Variable le2m.parts.prisonnersDilemma.prisonnersDilemmaTexts.DECISION_erreur=le2m.parts.prisonnersDilemma.prisonnersDilemmaTexts-module.html#DECISION_erreur,Variable le2m.parts.voteMajorite.voteMajoriteTexts.DECISION_erreur=le2m.parts.voteMajorite.voteMajoriteTexts-module.html#DECISION_erreur"><a title="le2m.creator.filestocopy.creator_Texts.DECISION_erreur
+le2m.parts.Dictator.DictatorTexts.DECISION_erreur
+le2m.parts.GneezyPotter.GneezyPotterTexts.DECISION_erreur
+le2m.parts.PublicGoodGame.PublicGoodGameTexts.DECISION_erreur
+le2m.parts.PublicGoodGameGender.PublicGoodGameGenderTexts.DECISION_erreur
+le2m.parts.PublicGoodGameSolidarity.PublicGoodGameSolidarityTexts.DECISION_erreur
+le2m.parts.TeamCommunication.TeamCommunicationTexts.DECISION_erreur
+le2m.parts.oathAndLies.oathAndLiesTexts.DECISION_erreur
+le2m.parts.prisonnersDilemma.prisonnersDilemmaTexts.DECISION_erreur
+le2m.parts.voteMajorite.voteMajoriteTexts.DECISION_erreur" class="py-name" href="#" onclick="return doclink('link-7', 'DECISION_erreur', 'link-7');">DECISION_erreur</a></tt> <tt class="py-op">=</tt> <tt id="link-8" class="py-name"><a title="le2m.creator.filestocopy.creator_Texts.TITLE_MSG
+le2m.parts.CommonPoolResource.CommonPoolResourceTexts.TITLE_MSG
+le2m.parts.Dictator.DictatorTexts.TITLE_MSG
+le2m.parts.GneezyPotter.GneezyPotterTexts.TITLE_MSG
+le2m.parts.PublicGoodGame.PublicGoodGameTexts.TITLE_MSG
+le2m.parts.PublicGoodGameGender.PublicGoodGameGenderTexts.TITLE_MSG
+le2m.parts.PublicGoodGameSolidarity.PublicGoodGameSolidarityTexts.TITLE_MSG
+le2m.parts.PublicGoodGlobalLocal.PublicGoodGlobalLocalTextes.TITLE_MSG
+le2m.parts.TeamCommunication.TeamCommunicationTexts.TITLE_MSG
+le2m.parts.oathAndLies.oathAndLiesTexts.TITLE_MSG
+le2m.parts.prisonnersDilemma.prisonnersDilemmaTexts.TITLE_MSG
+le2m.parts.voteMajorite.voteMajoriteTexts.TITLE_MSG" class="py-name" href="#" onclick="return doclink('link-8', 'TITLE_MSG', 'link-3');">TITLE_MSG</a></tt><tt class="py-op">(</tt> </tt>
+<a name="L37"></a><tt class="py-lineno">37</tt>  <tt class="py-line">    <tt class="py-string">u"Warning"</tt><tt class="py-op">,</tt> </tt>
+<a name="L38"></a><tt class="py-lineno">38</tt>  <tt class="py-line">    <tt class="py-string">u"Warning message"</tt><tt class="py-op">)</tt> </tt>
+<a name="L39"></a><tt class="py-lineno">39</tt>  <tt class="py-line"><tt id="link-9" class="py-name" targets="Variable le2m.creator.filestocopy.creator_Texts.DECISION_confirmation=le2m.creator.filestocopy.creator_Texts-module.html#DECISION_confirmation,Variable le2m.parts.CommonPoolResource.CommonPoolResourceTexts.DECISION_confirmation=le2m.parts.CommonPoolResource.CommonPoolResourceTexts-module.html#DECISION_confirmation,Variable le2m.parts.Dictator.DictatorTexts.DECISION_confirmation=le2m.parts.Dictator.DictatorTexts-module.html#DECISION_confirmation,Variable le2m.parts.GneezyPotter.GneezyPotterTexts.DECISION_confirmation=le2m.parts.GneezyPotter.GneezyPotterTexts-module.html#DECISION_confirmation,Variable le2m.parts.PublicGoodGame.PublicGoodGameTexts.DECISION_confirmation=le2m.parts.PublicGoodGame.PublicGoodGameTexts-module.html#DECISION_confirmation,Variable le2m.parts.PublicGoodGameGender.PublicGoodGameGenderTexts.DECISION_confirmation=le2m.parts.PublicGoodGameGender.PublicGoodGameGenderTexts-module.html#DECISION_confirmation,Variable le2m.parts.PublicGoodGameSolidarity.PublicGoodGameSolidarityTexts.DECISION_confirmation=le2m.parts.PublicGoodGameSolidarity.PublicGoodGameSolidarityTexts-module.html#DECISION_confirmation,Variable le2m.parts.PublicGoodGlobalLocal.PublicGoodGlobalLocalTextes.DECISION_confirmation=le2m.parts.PublicGoodGlobalLocal.PublicGoodGlobalLocalTextes-module.html#DECISION_confirmation,Variable le2m.parts.TeamCommunication.TeamCommunicationTexts.DECISION_confirmation=le2m.parts.TeamCommunication.TeamCommunicationTexts-module.html#DECISION_confirmation,Variable le2m.parts.oathAndLies.oathAndLiesTexts.DECISION_confirmation=le2m.parts.oathAndLies.oathAndLiesTexts-module.html#DECISION_confirmation,Variable le2m.parts.prisonnersDilemma.prisonnersDilemmaTexts.DECISION_confirmation=le2m.parts.prisonnersDilemma.prisonnersDilemmaTexts-module.html#DECISION_confirmation,Variable le2m.parts.voteMajorite.voteMajoriteTexts.DECISION_confirmation=le2m.parts.voteMajorite.voteMajoriteTexts-module.html#DECISION_confirmation"><a title="le2m.creator.filestocopy.creator_Texts.DECISION_confirmation
+le2m.parts.CommonPoolResource.CommonPoolResourceTexts.DECISION_confirmation
+le2m.parts.Dictator.DictatorTexts.DECISION_confirmation
+le2m.parts.GneezyPotter.GneezyPotterTexts.DECISION_confirmation
+le2m.parts.PublicGoodGame.PublicGoodGameTexts.DECISION_confirmation
+le2m.parts.PublicGoodGameGender.PublicGoodGameGenderTexts.DECISION_confirmation
+le2m.parts.PublicGoodGameSolidarity.PublicGoodGameSolidarityTexts.DECISION_confirmation
+le2m.parts.PublicGoodGlobalLocal.PublicGoodGlobalLocalTextes.DECISION_confirmation
+le2m.parts.TeamCommunication.TeamCommunicationTexts.DECISION_confirmation
+le2m.parts.oathAndLies.oathAndLiesTexts.DECISION_confirmation
+le2m.parts.prisonnersDilemma.prisonnersDilemmaTexts.DECISION_confirmation
+le2m.parts.voteMajorite.voteMajoriteTexts.DECISION_confirmation" class="py-name" href="#" onclick="return doclink('link-9', 'DECISION_confirmation', 'link-9');">DECISION_confirmation</a></tt> <tt class="py-op">=</tt> <tt id="link-10" class="py-name"><a title="le2m.creator.filestocopy.creator_Texts.TITLE_MSG
+le2m.parts.CommonPoolResource.CommonPoolResourceTexts.TITLE_MSG
+le2m.parts.Dictator.DictatorTexts.TITLE_MSG
+le2m.parts.GneezyPotter.GneezyPotterTexts.TITLE_MSG
+le2m.parts.PublicGoodGame.PublicGoodGameTexts.TITLE_MSG
+le2m.parts.PublicGoodGameGender.PublicGoodGameGenderTexts.TITLE_MSG
+le2m.parts.PublicGoodGameSolidarity.PublicGoodGameSolidarityTexts.TITLE_MSG
+le2m.parts.PublicGoodGlobalLocal.PublicGoodGlobalLocalTextes.TITLE_MSG
+le2m.parts.TeamCommunication.TeamCommunicationTexts.TITLE_MSG
+le2m.parts.oathAndLies.oathAndLiesTexts.TITLE_MSG
+le2m.parts.prisonnersDilemma.prisonnersDilemmaTexts.TITLE_MSG
+le2m.parts.voteMajorite.voteMajoriteTexts.TITLE_MSG" class="py-name" href="#" onclick="return doclink('link-10', 'TITLE_MSG', 'link-3');">TITLE_MSG</a></tt><tt class="py-op">(</tt> </tt>
+<a name="L40"></a><tt class="py-lineno">40</tt>  <tt class="py-line">    <tt class="py-string">u"Confirmation"</tt><tt class="py-op">,</tt> </tt>
+<a name="L41"></a><tt class="py-lineno">41</tt>  <tt class="py-line">    <tt class="py-string">u"Confirmation message"</tt><tt class="py-op">)</tt> </tt>
+<a name="L42"></a><tt class="py-lineno">42</tt>  <tt class="py-line"> </tt>
+<a name="L43"></a><tt class="py-lineno">43</tt>  <tt class="py-line"> </tt>
+<a name="L44"></a><tt class="py-lineno">44</tt>  <tt class="py-line"><tt class="py-comment"># ECRAN RECAPITULATIF ==========================================================</tt> </tt>
+<a name="get_recapitulatif"></a><div id="get_recapitulatif-def"><a name="L45"></a><tt class="py-lineno">45</tt> <a class="py-toggle" href="#" id="get_recapitulatif-toggle" onclick="return toggle('get_recapitulatif');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="le2m.creator.filestocopy.creator_Texts-module.html#get_recapitulatif">get_recapitulatif</a><tt class="py-op">(</tt><tt class="py-param">currentperiod</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="get_recapitulatif-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="get_recapitulatif-expanded"><a name="L46"></a><tt class="py-lineno">46</tt>  <tt class="py-line">    <tt class="py-name">txt</tt> <tt class="py-op">=</tt> <tt class="py-string">u"Summary text"</tt> </tt>
+<a name="L47"></a><tt class="py-lineno">47</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-name">txt</tt> </tt>
+</div><a name="L48"></a><tt class="py-lineno">48</tt>  <tt class="py-line"> </tt>
+<a name="L49"></a><tt class="py-lineno">49</tt>  <tt class="py-line"> </tt>
+<a name="L50"></a><tt class="py-lineno">50</tt>  <tt class="py-line"><tt class="py-comment"># TEXTE FINAL PARTIE ===========================================================</tt> </tt>
+<a name="get_texte_final"></a><div id="get_texte_final-def"><a name="L51"></a><tt class="py-lineno">51</tt> <a class="py-toggle" href="#" id="get_texte_final-toggle" onclick="return toggle('get_texte_final');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="le2m.creator.filestocopy.creator_Texts-module.html#get_texte_final">get_texte_final</a><tt class="py-op">(</tt><tt class="py-param">gain_ecus</tt><tt class="py-op">,</tt> <tt class="py-param">gain_euros</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="get_texte_final-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="get_texte_final-expanded"><a name="L52"></a><tt class="py-lineno">52</tt>  <tt class="py-line">    <tt class="py-name">txt</tt> <tt class="py-op">=</tt> <tt class="py-string">u"Vous avez gagn&#233; {gain_en_ecu}, soit {gain_en_euro}."</tt><tt class="py-op">.</tt><tt class="py-name">format</tt><tt class="py-op">(</tt> </tt>
+<a name="L53"></a><tt class="py-lineno">53</tt>  <tt class="py-line">        <tt class="py-name">gain_en_ecu</tt><tt class="py-op">=</tt><tt id="link-11" class="py-name"><a title="le2m.util.utiltools.get_pluriel" class="py-name" href="#" onclick="return doclink('link-11', 'get_pluriel', 'link-2');">get_pluriel</a></tt><tt class="py-op">(</tt><tt class="py-name">gain_ecus</tt><tt class="py-op">,</tt> <tt class="py-string">u"ecu"</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L54"></a><tt class="py-lineno">54</tt>  <tt class="py-line">        <tt class="py-name">gain_en_euro</tt><tt class="py-op">=</tt><tt id="link-12" class="py-name"><a title="le2m.util.utiltools.get_pluriel" class="py-name" href="#" onclick="return doclink('link-12', 'get_pluriel', 'link-2');">get_pluriel</a></tt><tt class="py-op">(</tt><tt class="py-name">gain_euros</tt><tt class="py-op">,</tt> <tt class="py-string">u"euro"</tt><tt class="py-op">)</tt> </tt>
+<a name="L55"></a><tt class="py-lineno">55</tt>  <tt class="py-line">    <tt class="py-op">)</tt> </tt>
+<a name="L56"></a><tt class="py-lineno">56</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-name">txt</tt> </tt>
+</div><a name="L57"></a><tt class="py-lineno">57</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="le2m-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Thu Jan 28 08:21:53 2016
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

@@ -1,0 +1,124 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Creator\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-09-22 11:14+0200\n"
+"PO-Revision-Date: 2015-09-22 11:15+0100\n"
+"Last-Translator: Dimitri DUBOIS <dimitri.dubois@umontpellier.fr>\n"
+"Language-Team: Dimitri DUBOIS <dimitri.dubois@umontpellier.fr>\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+
+#: creatorgui.py:34
+msgid "Part name (without spaces or caps, ex: publicGood)"
+msgstr ""
+
+#: creatorgui.py:37
+msgid "Short part name (ex. PG for Public Good"
+msgstr ""
+
+#: creatorgui.py:40
+msgid "Name for the menu in the main application (ex: Public Good)"
+msgstr ""
+
+#: creatorgui.py:44
+msgid "Group size (0 = no group)"
+msgstr ""
+
+#: creatorgui.py:48
+msgid "Do groups have to be formed each period?"
+msgstr ""
+
+#: creatorgui.py:51
+msgid "No"
+msgstr ""
+
+#: creatorgui.py:51
+msgid "Yes"
+msgstr ""
+
+#: creatorgui.py:54
+msgid "Number of periods (0 = one-shot game)"
+msgstr ""
+
+#: creatorgui.py:58
+msgid "Experimental currency unit (empty if the same that the local currency)"
+msgstr ""
+
+#: creatorgui.py:62
+msgid "ecu"
+msgstr ""
+
+#: creatorgui.py:69
+msgid "Configuration of a new part"
+msgstr ""
+
+#: creatorgui.py:94
+msgid "All the text field are required"
+msgstr ""
+
+#: creatorgui.py:99
+msgid "Warning"
+msgstr ""
+
+#: creatorgui.py:110
+msgid "Confirmation"
+msgstr ""
+
+#: creatorgui.py:111
+msgid ""
+"Apply the following configuration?\n"
+"{}"
+msgstr ""
+
+#: creatorgui.py:120
+msgid "Select the target directory"
+msgstr ""
+
+#: creator.py:61
+#, python-brace-format
+msgid "Call of {func} with args {args} ..."
+msgstr ""
+
+#: creator.py:65
+msgid "Error"
+msgstr ""
+
+#: creator.py:66
+msgid "Something wrong happens! Contact the developer and/or look the logs"
+msgstr ""
+
+#: creator.py:69 creator.py:73
+#, python-brace-format
+msgid "Files for {expename} created successfully"
+msgstr ""
+
+#: creator.py:72
+msgid "Success"
+msgstr ""
+
+#: creator.py:89
+msgid "A directory with the same part name already exists"
+msgstr ""
+
+#: creator.py:96 creator.py:130 creator.py:159
+#, python-brace-format
+msgid "Error: {msg}"
+msgstr ""
+
+#: creator.py:146
+msgid "Substitutions for file {}"
+msgstr ""
+
+#: creatorutil.py:33
+msgid "Logger creator created!"
+msgstr ""

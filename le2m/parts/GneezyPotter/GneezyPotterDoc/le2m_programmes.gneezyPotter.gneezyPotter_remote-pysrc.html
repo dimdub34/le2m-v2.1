@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>le2m_programmes.gneezyPotter.gneezyPotter_remote</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="le2m_programmes.gneezyPotter-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        Package&nbsp;le2m_programmes ::
+        <a href="le2m_programmes.gneezyPotter-module.html">Package&nbsp;gneezyPotter</a> ::
+        Module&nbsp;gneezyPotter_remote
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="le2m_programmes.gneezyPotter.gneezyPotter_remote-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="le2m_programmes.gneezyPotter.gneezyPotter_remote-module.html">Module le2m_programmes.gneezyPotter.gneezyPotter_remote</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno"> 1</tt>  <tt class="py-line"><tt class="py-comment"># -*- coding: utf-8 -*-</tt> </tt>
+<a name="L2"></a><tt class="py-lineno"> 2</tt>  <tt class="py-line"> </tt>
+<a name="L3"></a><tt class="py-lineno"> 3</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">twisted</tt><tt class="py-op">.</tt><tt class="py-name">internet</tt> <tt class="py-keyword">import</tt> <tt class="py-name">defer</tt> </tt>
+<a name="L4"></a><tt class="py-lineno"> 4</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">twisted</tt><tt class="py-op">.</tt><tt class="py-name">spread</tt> <tt class="py-keyword">import</tt> <tt class="py-name">pb</tt> </tt>
+<a name="L5"></a><tt class="py-lineno"> 5</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">PyQt4</tt> <tt class="py-keyword">import</tt> <tt class="py-name">QtGui</tt> </tt>
+<a name="L6"></a><tt class="py-lineno"> 6</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">logging</tt> </tt>
+<a name="L7"></a><tt class="py-lineno"> 7</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">random</tt> </tt>
+<a name="L8"></a><tt class="py-lineno"> 8</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">le2mRemote</tt><tt class="py-op">.</tt><tt class="py-name">le2m_remote_gui</tt> <tt class="py-keyword">import</tt> <tt class="py-name">GuiHistorique</tt><tt class="py-op">,</tt> <tt class="py-name">GuiRecapitulatif</tt> </tt>
+<a name="L9"></a><tt class="py-lineno"> 9</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt id="link-0" class="py-name" targets="Module le2m_programmes.gneezyPotter.gneezyPotter_parametres=le2m_programmes.gneezyPotter.gneezyPotter_parametres-module.html"><a title="le2m_programmes.gneezyPotter.gneezyPotter_parametres" class="py-name" href="#" onclick="return doclink('link-0', 'gneezyPotter_parametres', 'link-0');">gneezyPotter_parametres</a></tt> <tt class="py-keyword">as</tt> <tt class="py-name">parametres</tt> </tt>
+<a name="L10"></a><tt class="py-lineno">10</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt id="link-1" class="py-name" targets="Module le2m_programmes.gneezyPotter.gneezyPotter_gui=le2m_programmes.gneezyPotter.gneezyPotter_gui-module.html"><a title="le2m_programmes.gneezyPotter.gneezyPotter_gui" class="py-name" href="#" onclick="return doclink('link-1', 'gneezyPotter_gui', 'link-1');">gneezyPotter_gui</a></tt> </tt>
+<a name="L11"></a><tt class="py-lineno">11</tt>  <tt class="py-line"> </tt>
+<a name="L12"></a><tt class="py-lineno">12</tt>  <tt class="py-line"><tt id="link-2" class="py-name" targets="Variable le2m_programmes.gneezyPotter.gneezyPotter_gui.logger=le2m_programmes.gneezyPotter.gneezyPotter_gui-module.html#logger,Variable le2m_programmes.gneezyPotter.gneezyPotter_partie.logger=le2m_programmes.gneezyPotter.gneezyPotter_partie-module.html#logger,Variable le2m_programmes.gneezyPotter.gneezyPotter_remote.logger=le2m_programmes.gneezyPotter.gneezyPotter_remote-module.html#logger,Variable le2m_programmes.gneezyPotter.gneezyPotter_serveur.logger=le2m_programmes.gneezyPotter.gneezyPotter_serveur-module.html#logger"><a title="le2m_programmes.gneezyPotter.gneezyPotter_gui.logger
+le2m_programmes.gneezyPotter.gneezyPotter_partie.logger
+le2m_programmes.gneezyPotter.gneezyPotter_remote.logger
+le2m_programmes.gneezyPotter.gneezyPotter_serveur.logger" class="py-name" href="#" onclick="return doclink('link-2', 'logger', 'link-2');">logger</a></tt> <tt class="py-op">=</tt> <tt class="py-name">logging</tt><tt class="py-op">.</tt><tt class="py-name">getLogger</tt><tt class="py-op">(</tt><tt class="py-string">"le2m.{}"</tt><tt class="py-op">.</tt><tt class="py-name">format</tt><tt class="py-op">(</tt><tt class="py-name">__name__</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L13"></a><tt class="py-lineno">13</tt>  <tt class="py-line"> </tt>
+<a name="Remote"></a><div id="Remote-def"><a name="L14"></a><tt class="py-lineno">14</tt> <a class="py-toggle" href="#" id="Remote-toggle" onclick="return toggle('Remote');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="le2m_programmes.gneezyPotter.gneezyPotter_remote.Remote-class.html">Remote</a><tt class="py-op">(</tt><tt class="py-base-class">pb</tt><tt class="py-op">.</tt><tt class="py-base-class">Referenceable</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Remote-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="Remote-expanded"><a name="Remote.__init__"></a><div id="Remote.__init__-def"><a name="L15"></a><tt class="py-lineno">15</tt> <a class="py-toggle" href="#" id="Remote.__init__-toggle" onclick="return toggle('Remote.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="le2m_programmes.gneezyPotter.gneezyPotter_remote.Remote-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">mainRemote</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Remote.__init__-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="Remote.__init__-expanded"><a name="L16"></a><tt class="py-lineno">16</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">mainRemote</tt> <tt class="py-op">=</tt> <tt class="py-name">mainRemote</tt> </tt>
+<a name="L17"></a><tt class="py-lineno">17</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">name</tt> <tt class="py-op">=</tt> <tt class="py-string">'gneezyPotter'</tt> </tt>
+<a name="L18"></a><tt class="py-lineno">18</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">mainRemote</tt><tt class="py-op">.</tt><tt class="py-name">add_remote</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">name</tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">)</tt> </tt>
+<a name="L19"></a><tt class="py-lineno">19</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-3" class="py-name" targets="Method le2m_programmes.gneezyPotter.gneezyPotter_remote.Remote._creer_ecrans()=le2m_programmes.gneezyPotter.gneezyPotter_remote.Remote-class.html#_creer_ecrans"><a title="le2m_programmes.gneezyPotter.gneezyPotter_remote.Remote._creer_ecrans" class="py-name" href="#" onclick="return doclink('link-3', '_creer_ecrans', 'link-3');">_creer_ecrans</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L20"></a><tt class="py-lineno">20</tt>  <tt class="py-line"> </tt>
+<a name="Remote._creer_ecrans"></a><div id="Remote._creer_ecrans-def"><a name="L21"></a><tt class="py-lineno">21</tt> <a class="py-toggle" href="#" id="Remote._creer_ecrans-toggle" onclick="return toggle('Remote._creer_ecrans');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="le2m_programmes.gneezyPotter.gneezyPotter_remote.Remote-class.html#_creer_ecrans">_creer_ecrans</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Remote._creer_ecrans-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="Remote._creer_ecrans-expanded"><a name="L22"></a><tt class="py-lineno">22</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_ecran_Decision</tt> <tt class="py-op">=</tt> <tt id="link-4" class="py-name"><a title="le2m_programmes.gneezyPotter.gneezyPotter_gui" class="py-name" href="#" onclick="return doclink('link-4', 'gneezyPotter_gui', 'link-1');">gneezyPotter_gui</a></tt><tt class="py-op">.</tt><tt id="link-5" class="py-name" targets="Class le2m_programmes.gneezyPotter.gneezyPotter_gui.GuiDecision=le2m_programmes.gneezyPotter.gneezyPotter_gui.GuiDecision-class.html"><a title="le2m_programmes.gneezyPotter.gneezyPotter_gui.GuiDecision" class="py-name" href="#" onclick="return doclink('link-5', 'GuiDecision', 'link-5');">GuiDecision</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L23"></a><tt class="py-lineno">23</tt>  <tt class="py-line">     </tt>
+<a name="Remote.remote_afficher_ecran_gain"></a><div id="Remote.remote_afficher_ecran_gain-def"><a name="L24"></a><tt class="py-lineno">24</tt> <a class="py-toggle" href="#" id="Remote.remote_afficher_ecran_gain-toggle" onclick="return toggle('Remote.remote_afficher_ecran_gain');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="le2m_programmes.gneezyPotter.gneezyPotter_remote.Remote-class.html#remote_afficher_ecran_gain">remote_afficher_ecran_gain</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt>  <tt class="py-param">texte</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Remote.remote_afficher_ecran_gain-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="Remote.remote_afficher_ecran_gain-expanded"><a name="L25"></a><tt class="py-lineno">25</tt>  <tt class="py-line">        <tt id="link-6" class="py-name"><a title="le2m_programmes.gneezyPotter.gneezyPotter_gui.logger
+le2m_programmes.gneezyPotter.gneezyPotter_partie.logger
+le2m_programmes.gneezyPotter.gneezyPotter_remote.logger
+le2m_programmes.gneezyPotter.gneezyPotter_serveur.logger" class="py-name" href="#" onclick="return doclink('link-6', 'logger', 'link-2');">logger</a></tt><tt class="py-op">.</tt><tt class="py-name">info</tt><tt class="py-op">(</tt><tt class="py-string">u"Affichage de l'&#233;cran de gain"</tt><tt class="py-op">)</tt> </tt>
+<a name="L26"></a><tt class="py-lineno">26</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">mainRemote</tt><tt class="py-op">.</tt><tt class="py-name">simulation</tt> <tt class="py-keyword">or</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">mainRemote</tt><tt class="py-op">.</tt><tt class="py-name">automatique</tt><tt class="py-op">:</tt> <tt class="py-keyword">return</tt> <tt class="py-number">1</tt> </tt>
+<a name="L27"></a><tt class="py-lineno">27</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L28"></a><tt class="py-lineno">28</tt>  <tt class="py-line">            <tt class="py-name">QtGui</tt><tt class="py-op">.</tt><tt class="py-name">QMessageBox</tt><tt class="py-op">.</tt><tt class="py-name">information</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">mainRemote</tt><tt class="py-op">.</tt><tt class="py-name">guiWaiting</tt><tt class="py-op">,</tt>  <tt class="py-string">u'Gain'</tt><tt class="py-op">,</tt>  <tt class="py-name">texte</tt><tt class="py-op">,</tt>  <tt class="py-name">QtGui</tt><tt class="py-op">.</tt><tt class="py-name">QMessageBox</tt><tt class="py-op">.</tt><tt class="py-name">Ok</tt><tt class="py-op">)</tt> </tt>
+<a name="L29"></a><tt class="py-lineno">29</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-number">1</tt> </tt>
+</div><a name="L30"></a><tt class="py-lineno">30</tt>  <tt class="py-line">         </tt>
+<a name="Remote.remote_afficher_ecran_Decision"></a><div id="Remote.remote_afficher_ecran_Decision-def"><a name="L31"></a><tt class="py-lineno">31</tt> <a class="py-toggle" href="#" id="Remote.remote_afficher_ecran_Decision-toggle" onclick="return toggle('Remote.remote_afficher_ecran_Decision');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="le2m_programmes.gneezyPotter.gneezyPotter_remote.Remote-class.html#remote_afficher_ecran_Decision">remote_afficher_ecran_Decision</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">infos</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Remote.remote_afficher_ecran_Decision-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="Remote.remote_afficher_ecran_Decision-expanded"><a name="L32"></a><tt class="py-lineno">32</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">mainRemote</tt><tt class="py-op">.</tt><tt class="py-name">simulation</tt><tt class="py-op">:</tt>  </tt>
+<a name="L33"></a><tt class="py-lineno">33</tt>  <tt class="py-line">            <tt class="py-name">inputs</tt> <tt class="py-op">=</tt> <tt class="py-op">{</tt><tt class="py-string">"investissement"</tt><tt class="py-op">:</tt> <tt class="py-name">random</tt><tt class="py-op">.</tt><tt class="py-name">randint</tt><tt class="py-op">(</tt><tt class="py-number">0</tt><tt class="py-op">,</tt>  <tt class="py-name">parametres</tt><tt class="py-op">.</tt><tt id="link-7" class="py-name" targets="Variable le2m_programmes.gneezyPotter.gneezyPotter_parametres.DOTATION=le2m_programmes.gneezyPotter.gneezyPotter_parametres-module.html#DOTATION"><a title="le2m_programmes.gneezyPotter.gneezyPotter_parametres.DOTATION" class="py-name" href="#" onclick="return doclink('link-7', 'DOTATION', 'link-7');">DOTATION</a></tt><tt class="py-op">)</tt><tt class="py-op">}</tt> </tt>
+<a name="L34"></a><tt class="py-lineno">34</tt>  <tt class="py-line">            <tt id="link-8" class="py-name"><a title="le2m_programmes.gneezyPotter.gneezyPotter_gui.logger
+le2m_programmes.gneezyPotter.gneezyPotter_partie.logger
+le2m_programmes.gneezyPotter.gneezyPotter_remote.logger
+le2m_programmes.gneezyPotter.gneezyPotter_serveur.logger" class="py-name" href="#" onclick="return doclink('link-8', 'logger', 'link-2');">logger</a></tt><tt class="py-op">.</tt><tt class="py-name">info</tt><tt class="py-op">(</tt><tt class="py-string">u"Renvoi: {}"</tt><tt class="py-op">.</tt><tt class="py-name">format</tt><tt class="py-op">(</tt><tt class="py-name">inputs</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L35"></a><tt class="py-lineno">35</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-name">inputs</tt> </tt>
+<a name="L36"></a><tt class="py-lineno">36</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_ecran_Decision</tt><tt class="py-op">.</tt><tt id="link-9" class="py-name" targets="Method le2m_programmes.gneezyPotter.gneezyPotter_gui.GuiDecision.afficher()=le2m_programmes.gneezyPotter.gneezyPotter_gui.GuiDecision-class.html#afficher"><a title="le2m_programmes.gneezyPotter.gneezyPotter_gui.GuiDecision.afficher" class="py-name" href="#" onclick="return doclink('link-9', 'afficher', 'link-9');">afficher</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">mainRemote</tt><tt class="py-op">.</tt><tt class="py-name">automatique</tt><tt class="py-op">,</tt> <tt class="py-name">infos</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L37"></a><tt class="py-lineno">37</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="le2m_programmes.gneezyPotter-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Wed Oct 16 12:43:42 2013
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

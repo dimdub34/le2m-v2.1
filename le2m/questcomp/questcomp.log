@@ -1,0 +1,206 @@
+2015-09-10 15:55:41,361 _ INFO | Logger questcomp créé
+2015-09-10 15:56:33,284 _ INFO | Logger questcomp créé
+2015-09-10 15:57:36,236 _ INFO | Logger questcomp créé
+2015-09-10 15:58:05,778 _ INFO | Logger questcomp créé
+2015-09-10 15:59:58,794 _ INFO | Logger questcomp créé
+2015-09-10 16:01:34,120 _ INFO | Logger questcomp créé
+2015-09-10 16:04:07,704 _ INFO | Logger questcomp créé
+2015-09-10 16:04:28,642 _ INFO | Logger questcomp créé
+2015-09-10 16:05:04,650 _ INFO | Logger questcomp créé
+2015-09-10 16:05:54,983 _ INFO | Logger questcomp créé
+2015-09-10 16:09:42,628 _ INFO | Logger questcomp créé
+2015-09-10 16:10:58,881 _ INFO | Logger questcomp créé
+2015-09-10 16:13:19,888 _ INFO | Logger questcomp créé
+2015-09-10 16:14:28,213 _ INFO | Logger questcomp créé
+2015-09-10 16:18:21,430 _ INFO | Logger questcomp créé
+2015-09-10 16:19:13,259 _ INFO | Logger questcomp créé
+2015-09-10 16:19:54,918 _ INFO | Logger questcomp créé
+2015-09-10 16:20:13,535 _ INFO | Logger questcomp créé
+2015-09-10 16:20:50,310 _ INFO | Logger questcomp créé
+2015-09-10 17:19:28,913 _ INFO | Logger questcomp créé
+2015-09-10 17:22:12,436 _ INFO | Logger questcomp créé
+2015-09-10 17:30:40,028 _ INFO | Logger questcomp créé
+2015-09-10 17:33:04,868 _ INFO | Logger questcomp créé
+2015-09-10 22:25:10,201 _ INFO | Logger questcomp créé
+2015-09-10 22:26:13,471 _ INFO | Logger questcomp créé
+2015-09-10 22:27:18,864 _ INFO | Logger questcomp créé
+2015-09-10 22:28:57,914 _ INFO | Logger questcomp créé
+2015-09-11 08:05:04,720 _ INFO | Logger questcomp créé
+2015-09-11 08:06:30,759 _ INFO | Logger questcomp créé
+2015-09-11 08:13:22,429 _ INFO | Logger questcomp créé
+2015-09-11 08:53:36,761 _ INFO | Logger questcomp créé
+2015-09-11 08:57:57,869 _ INFO | Logger questcomp créé
+2015-09-11 09:02:06,243 _ INFO | Logger questcomp créé
+2015-09-11 09:10:34,183 _ INFO | Logger questcomp créé
+2015-09-11 09:11:17,875 _ INFO | Logger questcomp créé
+2015-09-11 09:11:22,283 _ INFO | Add question: Number 1:
+ Text: Chaque membre du groupe peut extraire du compte collectif n'importe quel nombre de jetons compris entre 0 et les 40 jetons que contient ce compte.
+Proposals: vrai
+faux
+Good answers: faux
+Explanation: Chaque membre du groupe peut au maximum extraire 10 jetons.
+
+2015-09-11 09:11:22,285 _ INFO | Add question: Number 2:
+ Text: Si vous extrayez 4 jetons du compte collectif, et qu'au total votre groupe en extrait 8, votre gain est de 
+Proposals: 4 ecus
+8 ecus
+40 ecus
+40,80 ecus
+Good answers: 40,80 ecus
+Explanation: Si vous regardez dans le tableau de gains, votre extraction est de 4 jetons (colonne 4) et l'extraction totale du groupe de 8 (ligne 8). L'intersection de la colonne et de la ligne vous indique que votre gain est de 40,80 ecus. Vous pouvez aussi vérifier en calculant ce gain: 30 + 4*3 - 0.01875*8^2 = 40,80 ecus.
+
+2015-09-11 09:13:33,073 _ INFO | Logger questcomp créé
+2015-09-11 09:13:42,308 _ INFO | Add question: Number 1
+Text: Chaque membre du groupe peut extraire du compte collectif n'importe quel nombre de jetons compris entre 0 et les 40 jetons que contient ce compte.
+Proposals: vrai | faux
+Good answers: faux
+Explanation: Chaque membre du groupe peut au maximum extraire 10 jetons.
+2015-09-11 09:13:42,310 _ INFO | Add question: Number 2
+Text: Si vous extrayez 4 jetons du compte collectif, et qu'au total votre groupe en extrait 8, votre gain est de 
+Proposals: 4 ecus | 8 ecus | 40 ecus | 40,80 ecus
+Good answers: 40,80 ecus
+Explanation: Si vous regardez dans le tableau de gains, votre extraction est de 4 jetons (colonne 4) et l'extraction totale du groupe de 8 (ligne 8). L'intersection de la colonne et de la ligne vous indique que votre gain est de 40,80 ecus. Vous pouvez aussi vérifier en calculant ce gain: 30 + 4*3 - 0.01875*8^2 = 40,80 ecus.
+2015-09-11 09:18:11,453 _ INFO | Logger questcomp créé
+2015-09-11 09:18:29,836 _ INFO | Add question: Number 1
+Text: Chaque membre du groupe peut extraire du compte collectif n'importe quel nombre de jetons compris entre 0 et les 40 jetons que contient ce compte.
+Proposals: vrai | faux
+Good answers: faux
+Explanation: Chaque membre du groupe peut au maximum extraire 10 jetons.
+2015-09-11 09:18:29,837 _ INFO | Add question: Number 2
+Text: Si vous extrayez 4 jetons du compte collectif, et qu'au total votre groupe en extrait 8, votre gain est de 
+Proposals: 4 ecus | 8 ecus | 40 ecus | 40,80 ecus
+Good answers: 40,80 ecus
+Explanation: Si vous regardez dans le tableau de gains, votre extraction est de 4 jetons (colonne 4) et l'extraction totale du groupe de 8 (ligne 8). L'intersection de la colonne et de la ligne vous indique que votre gain est de 40,80 ecus. Vous pouvez aussi vérifier en calculant ce gain: 30 + 4*3 - 0.01875*8^2 = 40,80 ecus.
+2015-09-11 09:21:03,667 _ INFO | Logger questcomp créé
+2015-09-11 09:21:08,245 _ INFO | The questionnaire has 2 questions
+2015-09-11 09:21:08,248 _ INFO | Add question: Number 1
+Text: Chaque membre du groupe peut extraire du compte collectif n'importe quel nombre de jetons compris entre 0 et les 40 jetons que contient ce compte.
+Proposals: vrai | faux
+Good answers: faux
+Explanation: Chaque membre du groupe peut au maximum extraire 10 jetons.
+2015-09-11 09:21:08,250 _ INFO | Add question: Number 2
+Text: Si vous extrayez 4 jetons du compte collectif, et qu'au total votre groupe en extrait 8, votre gain est de 
+Proposals: 4 ecus | 8 ecus | 40 ecus | 40,80 ecus
+Good answers: 40,80 ecus
+Explanation: Si vous regardez dans le tableau de gains, votre extraction est de 4 jetons (colonne 4) et l'extraction totale du groupe de 8 (ligne 8). L'intersection de la colonne et de la ligne vous indique que votre gain est de 40,80 ecus. Vous pouvez aussi vérifier en calculant ce gain: 30 + 4*3 - 0.01875*8^2 = 40,80 ecus.
+2015-09-11 09:22:58,660 _ INFO | Logger questcomp créé
+2015-09-11 09:23:14,802 _ INFO | The questionnaire has 2 questions
+2015-09-11 09:23:14,803 _ INFO | Add question: Number 1
+Text: Chaque membre du groupe peut extraire du compte collectif n'importe quel nombre de jetons compris entre 0 et les 40 jetons que contient ce compte.
+Proposals: vrai | faux
+Good answers: faux
+Explanation: Chaque membre du groupe peut au maximum extraire 10 jetons.
+2015-09-11 09:23:14,803 _ INFO | Add question: Number 2
+Text: Si vous extrayez 4 jetons du compte collectif, et qu'au total votre groupe en extrait 8, votre gain est de 
+Proposals: 4 ecus | 8 ecus | 40 ecus | 40,80 ecus
+Good answers: 40,80 ecus
+Explanation: Si vous regardez dans le tableau de gains, votre extraction est de 4 jetons (colonne 4) et l'extraction totale du groupe de 8 (ligne 8). L'intersection de la colonne et de la ligne vous indique que votre gain est de 40,80 ecus. Vous pouvez aussi vérifier en calculant ce gain: 30 + 4*3 - 0.01875*8^2 = 40,80 ecus.
+2015-09-11 09:33:53,794 _ INFO | Logger questcomp créé
+2015-09-11 09:34:07,955 _ INFO | The questionnaire has 2 questions
+2015-09-11 09:34:07,956 _ INFO | Add question: Number 1
+Text: Chaque membre du groupe peut extraire du compte collectif n'importe quel nombre de jetons compris entre 0 et les 40 jetons que contient ce compte.
+Proposals: vrai | faux
+Good answers: faux
+Explanation: Chaque membre du groupe peut au maximum extraire 10 jetons.
+2015-09-11 09:34:07,956 _ INFO | Add question: Number 2
+Text: Si vous extrayez 4 jetons du compte collectif, et qu'au total votre groupe en extrait 8, votre gain est de 
+Proposals: 4 ecus | 8 ecus | 40 ecus | 40,80 ecus
+Good answers: 40,80 ecus
+Explanation: Si vous regardez dans le tableau de gains, votre extraction est de 4 jetons (colonne 4) et l'extraction totale du groupe de 8 (ligne 8). L'intersection de la colonne et de la ligne vous indique que votre gain est de 40,80 ecus. Vous pouvez aussi vérifier en calculant ce gain: 30 + 4*3 - 0.01875*8^2 = 40,80 ecus.
+2015-09-11 11:49:50,798 _ INFO | Logger questcomp créé!
+2015-09-11 12:36:56,379 _ INFO | Logger questcomp créé!
+2015-09-11 13:00:58,120 _ INFO | Logger questcomp créé!
+2015-09-11 13:18:49,450 _ INFO | Logger questcomp créé!
+2015-09-11 13:20:45,373 _ INFO | Logger questcomp créé!
+2015-09-11 13:22:20,504 _ INFO | Logger questcomp créé!
+2015-09-11 13:22:55,386 _ INFO | Logger questcomp créé!
+2015-09-11 13:31:21,721 _ INFO | Logger questcomp créé!
+2015-09-11 13:40:57,114 _ INFO | Logger questcomp créé!
+2015-09-11 13:43:49,636 _ INFO | Logger questcomp créé!
+2015-09-11 13:51:00,830 _ INFO | Logger questcomp créé!
+2015-09-11 14:27:02,723 _ INFO | Logger questcomp créé!
+2015-09-11 14:35:14,257 _ INFO | Logger questcomp créé!
+2015-09-11 14:35:21,652 _ INFO | Logger questcomp créé!
+2015-09-11 14:46:32,053 _ INFO | Logger questcomp créé!
+2015-09-11 14:46:48,267 _ INFO | Logger questcomp créé!
+2015-09-11 14:46:50,010 _ INFO | Logger questcomp créé!
+2015-09-11 14:50:07,355 _ INFO | Logger questcomp créé!
+2015-09-11 14:54:53,214 _ INFO | Logger questcomp créé!
+2015-09-11 14:55:29,068 _ INFO | Logger questcomp créé!
+2015-09-11 22:34:29,967 _ INFO | Logger questcomp créé!
+2015-09-14 08:19:50,806 _ INFO | Logger questcomp créé!
+questcomp | 16/12/2015 - 11:15:49 | INFO | Logger questcomp créé!
+questcomp | 16/12/2015 - 11:25:46 | INFO | Le questionnaire contient 7 questions
+questcomp | 16/12/2015 - 11:25:46 | INFO | Ajout de la question: Numéro 1
+Ennoncé: Votre groupe est composé de:
+Propositions: 4 personnes | 8 personnes | 16 personnes
+Bonnes réponses: 4 personnes
+Explication: Votre groupe est composé de 4 personnes (3 + vous). Votre groupe interagit avec un autre groupe de 4 personnes.
+questcomp | 16/12/2015 - 11:25:46 | INFO | Ajout de la question: Numéro 2
+Ennoncé: Vous pouvez décider de placer vos 20 jetons dans votre compte individuel:
+Propositions: oui | non
+Bonnes réponses: oui
+Explication: Vous être libre de répartir vos 20 jetons de dotation entre les 3 comptes comme vous le souhaitez.
+questcomp | 16/12/2015 - 11:25:46 | INFO | Ajout de la question: Numéro 3
+Ennoncé: Vous pouvez décider de conserver des jetons pour la période suivante:
+Propositions: oui | non
+Bonnes réponses: non
+Explication: Chaque période vous devez entièrement répartir vos 20 jetons entre les 3 comptes.
+questcomp | 16/12/2015 - 11:25:46 | INFO | Ajout de la question: Numéro 4
+Ennoncé: Si les 3 autres membres de votre groupe placent 6 jetons dans le compte local, et que vous placez 0 jeton dans ce compte, votre gain issu de ce compte est de:
+Propositions: 6 ecus | 2.4 ecus | 0 ecu
+Bonnes réponses: 2.4 ecus
+Explication: Le compte local rapporte le même montant à chaque membre du groupe: 0.4 x le nombre de jetons de ce compte. Ici le compte contient 6 jetons donc chaque membre du groupe a un gain issu de ce compte égal à 0.4 x 6 = 2.4 ecus.
+questcomp | 16/12/2015 - 11:25:46 | INFO | Ajout de la question: Numéro 5
+Ennoncé: Si votre groupe place 6 jetons dans le compte local, le gain de chaque membre de l'autre groupe issu de ce compte est de:
+Propositions: 6 ecus | 2.4 ecus | 0 ecu
+Bonnes réponses: 0 ecu
+Explication: Le compte local ne rapporte qu'aux membres du groupe, il ne rapporte rien aux membres de l'autre groupe.
+questcomp | 16/12/2015 - 11:25:46 | INFO | Ajout de la question: Numéro 6
+Ennoncé: Si votre groupe place 10 jetons dans le compte global et l'autre groupe place 6 jetons dans le compte global, le gain de chaque membre de votre groupe issu de ce compte est de:
+Propositions: 16 ecus | 6.4 ecus | 4 ecus | 2.4 ecus
+Bonnes réponses: 6.4 ecus
+Explication: Le compte global rapporte le même montant à chaque membre des deux groupes: 0.4 x le nombre total de jetons placés dans le compte. Ici le compte contient 16 jetons au total, donc chaque membre de votre groupe (ainsi que chaque membre de l'autre groupe) a un gain issu de ce compte égal à 0.4 x 16 = 6.4 ecus.
+questcomp | 16/12/2015 - 11:25:46 | INFO | Ajout de la question: Numéro 7
+Ennoncé: Supposons la situation suivante: vous placez 10 jetons sur votre compte individuel, 5 jetons dans le compte local et 5 jetons dans le compte global. Votre groupe place au total 20 jetons sur le compte local et 25 jetons sur le compte global. L'autre groupe place 22 jetons sur le compte global. Votre gain pour la période est de:
+Propositions: 36.8 ecus | 28 ecus | 14 ecus | 10 ecus | 4 ecus | Aucun des gains proposés
+Bonnes réponses: 36.8 ecus
+Explication: Votre gain issu de votre compte individuel est égal à 10 ecus. Votre gain issu du compte local est égal à 20 x 0.4 = 8 ecus, et votre gain issu du compte global est égal à (25 + 22) x 0.4 = 18.8 ecus. Votre gain pour la période est donc égal à 10 + 8 + 18.8 = 36.8 ecus.
+questcomp | 16/12/2015 - 11:27:40 | INFO | Logger questcomp créé!
+questcomp | 16/12/2015 - 11:53:22 | INFO | Le questionnaire contient 7 questions
+questcomp | 16/12/2015 - 11:53:22 | INFO | Ajout de la question: Numéro 1
+Ennoncé: Votre groupe est composé de:
+Propositions: 4 personnes | 8 personnes | 16 personnes
+Bonnes réponses: 4 personnes
+Explication: Votre groupe est composé de 4 personnes (3 + vous). Votre groupe interagit avec un autre groupe de 4 personnes.
+questcomp | 16/12/2015 - 11:53:22 | INFO | Ajout de la question: Numéro 2
+Ennoncé: Vous pouvez décider de placer vos 20 jetons dans votre compte individuel:
+Propositions: oui | non
+Bonnes réponses: oui
+Explication: Vous être libre de répartir vos 20 jetons de dotation entre les 3 comptes comme vous le souhaitez.
+questcomp | 16/12/2015 - 11:53:22 | INFO | Ajout de la question: Numéro 3
+Ennoncé: Vous pouvez décider de conserver des jetons pour la période suivante:
+Propositions: oui | non
+Bonnes réponses: non
+Explication: Chaque période vous devez entièrement répartir vos 20 jetons entre les 3 comptes.
+questcomp | 16/12/2015 - 11:53:22 | INFO | Ajout de la question: Numéro 4
+Ennoncé: Si les 3 autres membres de votre groupe placent 6 jetons dans le compte local, et que vous placez 0 jeton dans ce compte, votre gain issu de ce compte est de:
+Propositions: 6 ecus | 2.4 ecus | 0 ecu
+Bonnes réponses: 2.4 ecus
+Explication: Le compte local rapporte le même montant à chaque membre du groupe: 0.4 x le nombre de jetons de ce compte. Ici le compte contient 6 jetons donc chaque membre du groupe a un gain issu de ce compte égal à 0.4 x 6 = 2.4 ecus.
+questcomp | 16/12/2015 - 11:53:22 | INFO | Ajout de la question: Numéro 5
+Ennoncé: Si votre groupe place 6 jetons dans le compte local, le gain de chaque membre de l'autre groupe issu de ce compte est de:
+Propositions: 6 ecus | 2.4 ecus | 0 ecu
+Bonnes réponses: 0 ecu
+Explication: Le compte local ne rapporte qu'aux membres du groupe, il ne rapporte rien aux membres de l'autre groupe.
+questcomp | 16/12/2015 - 11:53:22 | INFO | Ajout de la question: Numéro 6
+Ennoncé: Si votre groupe place 10 jetons dans le compte global et l'autre groupe place 6 jetons dans le compte global, le gain de chaque membre de votre groupe issu de ce compte est de:
+Propositions: 16 ecus | 6.4 ecus | 4 ecus | 2.4 ecus
+Bonnes réponses: 6.4 ecus
+Explication: Le compte global rapporte le même montant à chaque membre des deux groupes: 0.4 x le nombre total de jetons placés dans le compte. Ici le compte contient 16 jetons au total, donc chaque membre de votre groupe (ainsi que chaque membre de l'autre groupe) a un gain issu de ce compte égal à 0.4 x 16 = 6.4 ecus.
+questcomp | 16/12/2015 - 11:53:22 | INFO | Ajout de la question: Numéro 7
+Ennoncé: Supposons la situation suivante: vous placez 10 jetons sur votre compte individuel, 5 jetons dans le compte local et 5 jetons dans le compte global. Votre groupe place au total 20 jetons sur le compte local et 25 jetons sur le compte global. L'autre groupe place 22 jetons sur le compte global. Votre gain pour la période est de:
+Propositions: 36.8 ecus | 28 ecus | 14 ecus | 10 ecus | 4 ecus | Aucun des gains proposés
+Bonnes réponses: 36.8 ecus
+Explication: Votre gain issu de votre compte individuel est égal à 10 ecus. Votre gain issu du compte local est égal à 20 x 0.4 = 8 ecus, et votre gain issu du compte global est égal à (25 + 22) x 0.4 = 18.8 ecus. Votre gain pour la période est donc égal à 10 + 8 + 18.8 = 36.8 ecus.
+questcomp | 16/12/2015 - 11:54:12 | INFO | Logger questcomp créé!

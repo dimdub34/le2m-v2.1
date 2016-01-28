@@ -1,0 +1,39 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Extractor\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-09-08 09:33+0200\n"
+"PO-Revision-Date: 2015-09-08 09:34+0100\n"
+"Last-Translator: Dimitri DUBOIS <dimitri.dubois@umontpellier.fr>\n"
+"Language-Team: Dimitri DUBOIS <dimitri.dubois@umontpellier.fr>\n"
+"Language: fr_FR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+
+#: extractor.py:19
+msgid "Please select the sqlite database you want to extract"
+msgstr "Choisir le fichier sqlite dont il faut extraire les données"
+
+#: extractorgui.py:49
+msgid "Data extraction"
+msgstr "Extraction de données"
+
+#: extractorgui.py:66
+msgid "Error"
+msgstr "Erreur"
+
+#: extractorgui.py:67
+msgid "At least one part should be selected for extraction"
+msgstr "Il faut sélectionner au moins une partie"
+
+#: extractorgui.py:72
+msgid "Please select the directory in which to extract the data"
+msgstr "Choisir le dossier dans lequel exporter les données csv"

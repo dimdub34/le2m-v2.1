@@ -1,0 +1,20 @@
+creator | 28/01/2016 - 10:20:53 | INFO | Logger creator created!
+creator | 28/01/2016 - 10:21:23 | INFO | Appel de la fonction create_directories avec les arguments (['/home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts', u'test'],) ...
+creator | 28/01/2016 - 10:21:23 | INFO | Appel de la fonction copy_files avec les arguments (['/home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts', u'test'],) ...
+creator | 28/01/2016 - 10:21:23 | INFO | Copy of /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/creator/filestocopy/creator_Decision.ui to /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/test/testGuiSrc/testDecision.ui
+creator | 28/01/2016 - 10:21:23 | INFO | Copy of /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/creator/filestocopy/creator_Params.py to /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/test/testParams.py
+creator | 28/01/2016 - 10:21:23 | INFO | Copy of /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/creator/filestocopy/creator_Gui.py to /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/test/testGui.py
+creator | 28/01/2016 - 10:21:23 | INFO | Copy of /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/creator/filestocopy/creator_Part.py to /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/test/testPart.py
+creator | 28/01/2016 - 10:21:23 | INFO | Copy of /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/creator/filestocopy/creator_Texts.py to /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/test/testTexts.py
+creator | 28/01/2016 - 10:21:23 | INFO | Copy of /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/creator/filestocopy/creator_Remote.py to /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/test/testRemote.py
+creator | 28/01/2016 - 10:21:23 | INFO | Copy of /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/creator/filestocopy/creator_Serv.py to /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/test/testServ.py
+creator | 28/01/2016 - 10:21:23 | INFO | Copy of /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/creator/filestocopy/creator_Decision.py to /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/test/testGuiSrc/testDecision.py
+creator | 28/01/2016 - 10:21:23 | INFO | Appel de la fonction substitute_words avec les arguments ([u'/home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/test', {'EXPERIENCE_GROUPES_FORMATION_CHAQUE_PERIODE': 'False', 'EXPERIENCE_GROUPES_TAILLE': '2', 'EXPERIENCE_MONNAIE': u'ecu', 'EXPERIENCE_REPETITIONS_NOMBRE': '10', 'EXPERIENCE_NOM_COURT': u'TT', 'EXPERIENCE_MENU': u'Test', 'EXPERIENCE_NOM': u'test'}],) ...
+creator | 28/01/2016 - 10:21:23 | INFO | Substituions pour le fichier /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/test/testRemote.py
+creator | 28/01/2016 - 10:21:23 | INFO | Substituions pour le fichier /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/test/testServ.py
+creator | 28/01/2016 - 10:21:23 | INFO | Substituions pour le fichier /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/test/testGui.py
+creator | 28/01/2016 - 10:21:23 | INFO | Substituions pour le fichier /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/test/testParams.py
+creator | 28/01/2016 - 10:21:23 | INFO | Substituions pour le fichier /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/test/testTexts.py
+creator | 28/01/2016 - 10:21:23 | INFO | Substituions pour le fichier /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/test/testPart.py
+creator | 28/01/2016 - 10:21:23 | INFO | Substituions pour le fichier /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/test/__init__.py
+creator | 28/01/2016 - 10:21:23 | INFO | Les fichiers pour test ont été créés avec succès

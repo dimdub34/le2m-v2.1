@@ -1,0 +1,117 @@
+# -*- coding: utf-8 -*-
+
+# Form implementation generated from reading ui file 'globalPublicGood_gui_information.ui'
+#
+# Created: Tue Apr  1 09:56:38 2014
+#      by: PyQt4 UI code generator 4.9.1
+#
+# WARNING! All changes made in this file will be lost!
+
+from PyQt4 import QtCore, QtGui
+
+try:
+    _fromUtf8 = QtCore.QString.fromUtf8
+except AttributeError:
+    _fromUtf8 = lambda s: s
+
+class Ui_Form(object):
+    def setupUi(self, Form):
+        Form.setObjectName(_fromUtf8("Form"))
+        Form.resize(1233, 768)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Maximum, QtGui.QSizePolicy.Maximum)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(Form.sizePolicy().hasHeightForWidth())
+        Form.setSizePolicy(sizePolicy)
+        Form.setMinimumSize(QtCore.QSize(1024, 768))
+        self.verticalLayout = QtGui.QVBoxLayout(Form)
+        self.verticalLayout.setObjectName(_fromUtf8("verticalLayout"))
+        self.horizontalLayout = QtGui.QHBoxLayout()
+        self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
+        self.label_periode = QtGui.QLabel(Form)
+        font = QtGui.QFont()
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_periode.setFont(font)
+        self.label_periode.setObjectName(_fromUtf8("label_periode"))
+        self.horizontalLayout.addWidget(self.label_periode)
+        spacerItem = QtGui.QSpacerItem(1057, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
+        self.horizontalLayout.addItem(spacerItem)
+        self.pushButton_historique = QtGui.QPushButton(Form)
+        self.pushButton_historique.setObjectName(_fromUtf8("pushButton_historique"))
+        self.horizontalLayout.addWidget(self.pushButton_historique)
+        self.verticalLayout.addLayout(self.horizontalLayout)
+        spacerItem1 = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
+        self.verticalLayout.addItem(spacerItem1)
+        self.horizontalLayout_2 = QtGui.QHBoxLayout()
+        self.horizontalLayout_2.setObjectName(_fromUtf8("horizontalLayout_2"))
+        self.textEdit_explication = QtGui.QTextEdit(Form)
+        self.textEdit_explication.setMinimumSize(QtCore.QSize(800, 100))
+        self.textEdit_explication.setMaximumSize(QtCore.QSize(800, 100))
+        self.textEdit_explication.setObjectName(_fromUtf8("textEdit_explication"))
+        self.horizontalLayout_2.addWidget(self.textEdit_explication)
+        self.verticalLayout.addLayout(self.horizontalLayout_2)
+        self.horizontalLayout_7 = QtGui.QHBoxLayout()
+        self.horizontalLayout_7.setObjectName(_fromUtf8("horizontalLayout_7"))
+        spacerItem2 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
+        self.horizontalLayout_7.addItem(spacerItem2)
+        self.tableView_information = QtGui.QTableView(Form)
+        self.tableView_information.setMinimumSize(QtCore.QSize(800, 100))
+        self.tableView_information.setMaximumSize(QtCore.QSize(800, 100))
+        self.tableView_information.setObjectName(_fromUtf8("tableView_information"))
+        self.horizontalLayout_7.addWidget(self.tableView_information)
+        spacerItem3 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
+        self.horizontalLayout_7.addItem(spacerItem3)
+        self.verticalLayout.addLayout(self.horizontalLayout_7)
+        self.horizontalLayout_4 = QtGui.QHBoxLayout()
+        self.horizontalLayout_4.setObjectName(_fromUtf8("horizontalLayout_4"))
+        spacerItem4 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
+        self.horizontalLayout_4.addItem(spacerItem4)
+        self.widget_cartons = QtGui.QWidget(Form)
+        self.widget_cartons.setObjectName(_fromUtf8("widget_cartons"))
+        self.horizontalLayout_3 = QtGui.QHBoxLayout(self.widget_cartons)
+        self.horizontalLayout_3.setMargin(0)
+        self.horizontalLayout_3.setObjectName(_fromUtf8("horizontalLayout_3"))
+        self.horizontalLayout_5 = QtGui.QHBoxLayout()
+        self.horizontalLayout_5.setObjectName(_fromUtf8("horizontalLayout_5"))
+        spacerItem5 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
+        self.horizontalLayout_5.addItem(spacerItem5)
+        self.label_cartons = QtGui.QLabel(self.widget_cartons)
+        self.label_cartons.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
+        self.label_cartons.setObjectName(_fromUtf8("label_cartons"))
+        self.horizontalLayout_5.addWidget(self.label_cartons)
+        self.spinBox_cartons = QtGui.QSpinBox(self.widget_cartons)
+        self.spinBox_cartons.setObjectName(_fromUtf8("spinBox_cartons"))
+        self.horizontalLayout_5.addWidget(self.spinBox_cartons)
+        spacerItem6 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
+        self.horizontalLayout_5.addItem(spacerItem6)
+        self.horizontalLayout_3.addLayout(self.horizontalLayout_5)
+        self.horizontalLayout_4.addWidget(self.widget_cartons)
+        spacerItem7 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
+        self.horizontalLayout_4.addItem(spacerItem7)
+        self.verticalLayout.addLayout(self.horizontalLayout_4)
+        spacerItem8 = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
+        self.verticalLayout.addItem(spacerItem8)
+        self.horizontalLayout_6 = QtGui.QHBoxLayout()
+        self.horizontalLayout_6.setObjectName(_fromUtf8("horizontalLayout_6"))
+        spacerItem9 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
+        self.horizontalLayout_6.addItem(spacerItem9)
+        self.pushButton_valider = QtGui.QPushButton(Form)
+        self.pushButton_valider.setObjectName(_fromUtf8("pushButton_valider"))
+        self.horizontalLayout_6.addWidget(self.pushButton_valider)
+        spacerItem10 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
+        self.horizontalLayout_6.addItem(spacerItem10)
+        self.verticalLayout.addLayout(self.horizontalLayout_6)
+        spacerItem11 = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Fixed)
+        self.verticalLayout.addItem(spacerItem11)
+
+        self.retranslateUi(Form)
+        QtCore.QMetaObject.connectSlotsByName(Form)
+
+    def retranslateUi(self, Form):
+        Form.setWindowTitle(QtGui.QApplication.translate("Form", "Cartons", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_periode.setText(QtGui.QApplication.translate("Form", "Période", None, QtGui.QApplication.UnicodeUTF8))
+        self.pushButton_historique.setText(QtGui.QApplication.translate("Form", "Historique", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_cartons.setText(QtGui.QApplication.translate("Form", "Nombre de points de désapprobation que vous envoyez à l\'autre groupe", None, QtGui.QApplication.UnicodeUTF8))
+        self.pushButton_valider.setText(QtGui.QApplication.translate("Form", "Valider", None, QtGui.QApplication.UnicodeUTF8))
+
