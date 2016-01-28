@@ -1,0 +1,529 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>le2m.parts.PublicGoodGlobalLocal.PublicGoodGlobalLocalTextes</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="le2m-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="le2m-module.html">Package&nbsp;le2m</a> ::
+        <a href="le2m.parts-module.html">Package&nbsp;parts</a> ::
+        <a href="le2m.parts.PublicGoodGlobalLocal-module.html">Package&nbsp;PublicGoodGlobalLocal</a> ::
+        Module&nbsp;PublicGoodGlobalLocalTextes
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="le2m.parts.PublicGoodGlobalLocal.PublicGoodGlobalLocalTextes-module.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== MODULE DESCRIPTION ==================== -->
+<h1 class="epydoc">Module PublicGoodGlobalLocalTextes</h1><p class="nomargin-top"><span class="codelink"><a href="le2m.parts.PublicGoodGlobalLocal.PublicGoodGlobalLocalTextes-pysrc.html">source&nbsp;code</a></span></p>
+<hr />
+<div class="fields">      <p><strong>Author:</strong>
+        irtimid
+      </p>
+</div><!-- ==================== FUNCTIONS ==================== -->
+<a name="section-Functions"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Functions</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-Functions"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="get_information"></a><span class="summary-sig-name">get_information</span>(<span class="summary-sig-arg">currentperiod</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="le2m.parts.PublicGoodGlobalLocal.PublicGoodGlobalLocalTextes-pysrc.html#get_information">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="get_recapitulatif"></a><span class="summary-sig-name">get_recapitulatif</span>(<span class="summary-sig-arg">currentperiod</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="le2m.parts.PublicGoodGlobalLocal.PublicGoodGlobalLocalTextes-pysrc.html#get_recapitulatif">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="get_texte_final"></a><span class="summary-sig-name">get_texte_final</span>(<span class="summary-sig-arg">gain_ecus</span>,
+        <span class="summary-sig-arg">gain_euros</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="le2m.parts.PublicGoodGlobalLocal.PublicGoodGlobalLocalTextes-pysrc.html#get_texte_final">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="get_traitement"></a><span class="summary-sig-name">get_traitement</span>(<span class="summary-sig-arg">traitement</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="le2m.parts.PublicGoodGlobalLocal.PublicGoodGlobalLocalTextes-pysrc.html#get_traitement">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="get_communication"></a><span class="summary-sig-name">get_communication</span>(<span class="summary-sig-arg">communication</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="le2m.parts.PublicGoodGlobalLocal.PublicGoodGlobalLocalTextes-pysrc.html#get_communication">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+</table>
+<!-- ==================== VARIABLES ==================== -->
+<a name="section-Variables"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Variables</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-Variables"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="le2m.parts.PublicGoodGlobalLocal.PublicGoodGlobalLocalTextes-module.html#localedir" class="summary-name">localedir</a> = <code title="os.path.join(params.getp(&quot;PARTSDIR&quot;), &quot;PublicGoodGlobalLocal&quot;, &quot;locale\
+&quot;)">os.path.join(params.getp(&quot;PARTSDIR&quot;), &quot;PublicGoodG<code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+<tr class="private">
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="le2m.parts.PublicGoodGlobalLocal.PublicGoodGlobalLocalTextes-module.html#_PGGL" class="summary-name" onclick="show_private();">_PGGL</a> = <code title="gettext.translation(&quot;PublicGoodGlobalLocal&quot;, localedir, languages= [pa\
+rams.getp(&quot;LANG&quot;)]).ugettext">gettext.translation(&quot;PublicGoodGlobalLocal&quot;, localedir<code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="TITLE_MSG"></a><span class="summary-name">TITLE_MSG</span> = <code title="namedtuple(&quot;TITLE_MSG&quot;, [&quot;titre&quot;, &quot;texte&quot;])">namedtuple(&quot;TITLE_MSG&quot;, [&quot;titre&quot;, &quot;texte&quot;])</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="PERIODE_label"></a><span class="summary-name">PERIODE_label</span> = <code title="lambda periode:">lambda periode:</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="HISTORIQUE_button"></a><span class="summary-name">HISTORIQUE_button</span> = <code title="_PGGL(u&quot;History&quot;)">_PGGL(u&quot;History&quot;)</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="COMMUNICATION_title"></a><span class="summary-name">COMMUNICATION_title</span> = <code title="_PGGL(u&quot;Communication&quot;)">_PGGL(u&quot;Communication&quot;)</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="le2m.parts.PublicGoodGlobalLocal.PublicGoodGlobalLocalTextes-module.html#DECISION_explication" class="summary-name">DECISION_explication</a> = <code title="_PGGL(u&quot;You have an endowment of {}. You have to choose &quot; u&quot;you share \
+these tokens between your private &quot; u&quot;account, the local account and t\
+he global &quot; u&quot;account.&quot;).format(get_pluriel(pms.DOTATION, _PGGL(u&quot;toke\
+n&quot;)))">_PGGL(u&quot;You have an endowment of {}. Yo<code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="le2m.parts.PublicGoodGlobalLocal.PublicGoodGlobalLocalTextes-module.html#DECISION_label_individuel" class="summary-name">DECISION_label_individuel</a> = <code title="_PGGL(u&quot;Tokens you put on your private account&quot;)">_PGGL(u&quot;Tokens you put on your pri<code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="le2m.parts.PublicGoodGlobalLocal.PublicGoodGlobalLocalTextes-module.html#DECISION_label_local" class="summary-name">DECISION_label_local</a> = <code title="_PGGL(u&quot;Tokens you put on the local account&quot;)">_PGGL(u&quot;Tokens you put on the local acc<code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="le2m.parts.PublicGoodGlobalLocal.PublicGoodGlobalLocalTextes-module.html#DECISION_label_global" class="summary-name">DECISION_label_global</a> = <code title="_PGGL(u&quot;Tokens you put on the global account&quot;)">_PGGL(u&quot;Tokens you put on the global a<code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="le2m.parts.PublicGoodGlobalLocal.PublicGoodGlobalLocalTextes-module.html#DECISION_error" class="summary-name">DECISION_error</a> = <code title="TITLE_MSG(_PGGL(u&quot;Warning&quot;), _PGGL(u&quot;You must use the {}.&quot;).format(get\
+_pluriel(pms.DOTATION, _PGGL(u&quot;token&quot;))))">TITLE_MSG(_PGGL(u&quot;Warning&quot;), _PGGL(u&quot;You must<code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="le2m.parts.PublicGoodGlobalLocal.PublicGoodGlobalLocalTextes-module.html#DECISION_confirmation" class="summary-name">DECISION_confirmation</a> = <code title="TITLE_MSG(_PGGL(u&quot;Confirmation&quot;), _PGGL(u&quot;Do you confirm your choice?&quot;\
+))">TITLE_MSG(_PGGL(u&quot;Confirmation&quot;), _PGG<code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="DECISION_title"></a><span class="summary-name">DECISION_title</span> = <code title="_PGGL(u&quot;Decision&quot;)">_PGGL(u&quot;Decision&quot;)</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="INFORMATION_title"></a><span class="summary-name">INFORMATION_title</span> = <code title="_PGGL(u&quot;Information&quot;)">_PGGL(u&quot;Information&quot;)</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="le2m.parts.PublicGoodGlobalLocal.PublicGoodGlobalLocalTextes-module.html#INFORMATION_confirmation" class="summary-name">INFORMATION_confirmation</a> = <code title="TITLE_MSG(_PGGL(u&quot;Confirmation&quot;), _PGGL(u&quot;Do you confirm your choice?&quot;\
+))">TITLE_MSG(_PGGL(u&quot;Confirmation&quot;), _<code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+</table>
+<!-- ==================== VARIABLES DETAILS ==================== -->
+<a name="section-VariablesDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Variables Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-VariablesDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="localedir"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">localedir</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+os.path.join(params.getp(&quot;PARTSDIR&quot;), &quot;PublicGoodGlobalLocal&quot;, &quot;locale<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+&quot;)
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="_PGGL"></a>
+<div class="private">
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">_PGGL</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+gettext.translation(&quot;PublicGoodGlobalLocal&quot;, localedir, languages= [pa<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+rams.getp(&quot;LANG&quot;)]).ugettext
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="DECISION_explication"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">DECISION_explication</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+_PGGL(u&quot;You have an endowment of {}. You have to choose &quot; u&quot;you share <span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+these tokens between your private &quot; u&quot;account, the local account and t<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+he global &quot; u&quot;account.&quot;).format(get_pluriel(pms.DOTATION, _PGGL(u&quot;toke<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+n&quot;)))
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="DECISION_label_individuel"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">DECISION_label_individuel</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+_PGGL(u&quot;Tokens you put on your private account&quot;)
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="DECISION_label_local"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">DECISION_label_local</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+_PGGL(u&quot;Tokens you put on the local account&quot;)
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="DECISION_label_global"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">DECISION_label_global</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+_PGGL(u&quot;Tokens you put on the global account&quot;)
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="DECISION_error"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">DECISION_error</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+TITLE_MSG(_PGGL(u&quot;Warning&quot;), _PGGL(u&quot;You must use the {}.&quot;).format(get<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+_pluriel(pms.DOTATION, _PGGL(u&quot;token&quot;))))
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="DECISION_confirmation"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">DECISION_confirmation</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+TITLE_MSG(_PGGL(u&quot;Confirmation&quot;), _PGGL(u&quot;Do you confirm your choice?&quot;<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+))
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="INFORMATION_confirmation"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">INFORMATION_confirmation</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+TITLE_MSG(_PGGL(u&quot;Confirmation&quot;), _PGGL(u&quot;Do you confirm your choice?&quot;<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+))
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="le2m-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Thu Nov 26 10:28:08 2015
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

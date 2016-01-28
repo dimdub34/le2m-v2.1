@@ -1,0 +1,115 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Common Pool Resource\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-12-01 13:54+0100\n"
+"PO-Revision-Date: 2015-12-01 13:58+0100\n"
+"Last-Translator: Dimitri DUBOIS <dimitri.dubois@umontpellier.fr>\n"
+"Language-Team: Dimitri DUBOIS <dimitri.dubois@umontpellier.fr>\n"
+"Language: fr_FR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/CommonPoolResource/CommonPoolResourceServ.py:25
+msgid "Configure"
+msgstr "Configurer"
+
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/CommonPoolResource/CommonPoolResourceServ.py:26
+msgid "Display parameters"
+msgstr "Afficher les paramètres"
+
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/CommonPoolResource/CommonPoolResourceServ.py:30
+msgid "Start"
+msgstr "Démarrer"
+
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/CommonPoolResource/CommonPoolResourceServ.py:31
+msgid "Display payoffs"
+msgstr "Afficher les gains"
+
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/CommonPoolResource/CommonPoolResourceServ.py:34
+msgid "Show graph"
+msgstr "Afficher le graphique"
+
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/CommonPoolResource/CommonPoolResourceServ.py:54
+msgid "Start CommonPoolResource?"
+msgstr "Démarrer CommonPoolResource?"
+
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/CommonPoolResource/CommonPoolResourceServ.py:88
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/CommonPoolResource/CommonPoolResourceServ.py:90
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/CommonPoolResource/CommonPoolResourceTexts.py:23
+msgid "Period {}"
+msgstr "Période {}"
+
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/CommonPoolResource/CommonPoolResourceServ.py:96
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/CommonPoolResource/CommonPoolResourceTexts.py:39
+msgid "Decision"
+msgstr "Décision"
+
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/CommonPoolResource/CommonPoolResourceServ.py:99
+msgid "Sum of decisions"
+msgstr "Somme des décisions"
+
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/CommonPoolResource/CommonPoolResourceServ.py:114
+msgid "Summary"
+msgstr "Récapitulatif"
+
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/CommonPoolResource/CommonPoolResourceServ.py:118
+msgid "Av. for the period"
+msgstr "Moyenne de la période"
+
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/CommonPoolResource/CommonPoolResourceServ.py:155
+msgid "Av. for the whole game"
+msgstr "Moyenne pour tout le jeu"
+
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/CommonPoolResource/CommonPoolResourceTexts.py:27
+msgid ""
+"You have two accounts: a private account and a public account. The public "
+"account has {}. Each group member can extract a maximum of {} from the "
+"public account to put on his/her private account. The payoff of each member "
+"depends on the number of tokens he/she has put on his/her private account as "
+"well as on the total number of tokens extracted by the group from the public "
+"account."
+msgstr ""
+"Vous disposez de deux comptes, votre compte individuel et un compte "
+"collectif commun à tous les membres du groupe. Le compte collectif dispose "
+"de {}. Chaque membre du groupe peut extraire au maximum {} du compte "
+"collectif pour placer sur son compte individuel. Le gain de chacun dépend du "
+"nombre de jeton qu'il a placés sur son compte individuel et du nombre total "
+"de jetons extrait du compte collectif par le groupe."
+
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/CommonPoolResource/CommonPoolResourceTexts.py:33
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/CommonPoolResource/CommonPoolResourceTexts.py:34
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/CommonPoolResource/CommonPoolResourceTexts.py:49
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/CommonPoolResource/CommonPoolResourceTexts.py:50
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/CommonPoolResource/CommonPoolResourceTexts.py:51
+msgid "token"
+msgstr "jeton"
+
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/CommonPoolResource/CommonPoolResourceTexts.py:36
+msgid "Please choose how much you want to extract from the public account"
+msgstr ""
+"Veuillez choisir le nombre de jetons que vous extrayez du compte collectif"
+
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/CommonPoolResource/CommonPoolResourceTexts.py:42
+msgid "Confirmation"
+msgstr "Confirmation"
+
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/CommonPoolResource/CommonPoolResourceTexts.py:42
+msgid "Do you confirm your choice?"
+msgstr "Vous confirmez votre choix?"
+
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/CommonPoolResource/CommonPoolResourceTexts.py:47
+msgid ""
+"You extracted {} and you group extracted a total of {}.\n"
+" Your payoff is equal to {}"
+msgstr ""
+"Vous avez extrait {} et au total votre groupe a extrait {}.\n"
+"Votre gain est de {}."

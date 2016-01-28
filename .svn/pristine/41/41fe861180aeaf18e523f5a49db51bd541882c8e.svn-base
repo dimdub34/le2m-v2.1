@@ -1,0 +1,571 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>le2m.clientrun</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="le2m-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="le2m-module.html">Package&nbsp;le2m</a> ::
+        Module&nbsp;clientrun
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="le2m.clientrun-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="le2m.clientrun-module.html">Module le2m.clientrun</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno"> 1</tt>  <tt class="py-line"><tt class="py-comment">#! /usr/bin/env python</tt> </tt>
+<a name="L2"></a><tt class="py-lineno"> 2</tt>  <tt class="py-line"><tt class="py-comment"># -*- coding: utf-8 -*-</tt> </tt>
+<a name="L3"></a><tt class="py-lineno"> 3</tt>  <tt class="py-line"> </tt>
+<a name="L4"></a><tt class="py-lineno"> 4</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">PyQt4</tt> <tt class="py-keyword">import</tt> <tt class="py-name">QtGui</tt><tt class="py-op">,</tt> <tt class="py-name">QtCore</tt> </tt>
+<a name="L5"></a><tt class="py-lineno"> 5</tt>  <tt class="py-line"><tt id="link-0" class="py-name" targets="Variable le2m.clientrun.application=le2m.clientrun-module.html#application,Variable le2m.serverrun.application=le2m.serverrun-module.html#application"><a title="le2m.clientrun.application
+le2m.serverrun.application" class="py-name" href="#" onclick="return doclink('link-0', 'application', 'link-0');">application</a></tt> <tt class="py-op">=</tt> <tt class="py-name">QtGui</tt><tt class="py-op">.</tt><tt class="py-name">QApplication</tt><tt class="py-op">(</tt><tt class="py-op">[</tt><tt class="py-string">''</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L6"></a><tt class="py-lineno"> 6</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-1" class="py-name" targets="Package le2m.util=le2m.util-module.html"><a title="le2m.util" class="py-name" href="#" onclick="return doclink('link-1', 'util', 'link-1');">util</a></tt> <tt class="py-keyword">import</tt> <tt id="link-2" class="py-name" targets="Module le2m.util.utilqtreactor=le2m.util.utilqtreactor-module.html"><a title="le2m.util.utilqtreactor" class="py-name" href="#" onclick="return doclink('link-2', 'utilqtreactor', 'link-2');">utilqtreactor</a></tt> </tt>
+<a name="L7"></a><tt class="py-lineno"> 7</tt>  <tt class="py-line"><tt id="link-3" class="py-name"><a title="le2m.util.utilqtreactor" class="py-name" href="#" onclick="return doclink('link-3', 'utilqtreactor', 'link-2');">utilqtreactor</a></tt><tt class="py-op">.</tt><tt id="link-4" class="py-name" targets="Function le2m.util.utili18n.install()=le2m.util.utili18n-module.html#install,Function le2m.util.utilqtreactor.install()=le2m.util.utilqtreactor-module.html#install"><a title="le2m.util.utili18n.install
+le2m.util.utilqtreactor.install" class="py-name" href="#" onclick="return doclink('link-4', 'install', 'link-4');">install</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L8"></a><tt class="py-lineno"> 8</tt>  <tt class="py-line"><tt id="link-5" class="py-name" targets="Variable le2m.clientrun.translator=le2m.clientrun-module.html#translator,Variable le2m.serverrun.translator=le2m.serverrun-module.html#translator"><a title="le2m.clientrun.translator
+le2m.serverrun.translator" class="py-name" href="#" onclick="return doclink('link-5', 'translator', 'link-5');">translator</a></tt> <tt class="py-op">=</tt> <tt class="py-name">QtCore</tt><tt class="py-op">.</tt><tt class="py-name">QTranslator</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L9"></a><tt class="py-lineno"> 9</tt>  <tt class="py-line"><tt id="link-6" class="py-name" targets="Variable le2m.clientrun.localelang=le2m.clientrun-module.html#localelang,Variable le2m.serverrun.localelang=le2m.serverrun-module.html#localelang"><a title="le2m.clientrun.localelang
+le2m.serverrun.localelang" class="py-name" href="#" onclick="return doclink('link-6', 'localelang', 'link-6');">localelang</a></tt> <tt class="py-op">=</tt> <tt class="py-name">QtCore</tt><tt class="py-op">.</tt><tt class="py-name">QLocale</tt><tt class="py-op">.</tt><tt class="py-name">system</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">name</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L10"></a><tt class="py-lineno">10</tt>  <tt class="py-line"><tt id="link-7" class="py-name"><a title="le2m.clientrun.translator
+le2m.serverrun.translator" class="py-name" href="#" onclick="return doclink('link-7', 'translator', 'link-5');">translator</a></tt><tt class="py-op">.</tt><tt class="py-name">load</tt><tt class="py-op">(</tt><tt class="py-name">QtCore</tt><tt class="py-op">.</tt><tt class="py-name">QString</tt><tt class="py-op">(</tt><tt class="py-string">"qt_"</tt><tt class="py-op">)</tt> <tt class="py-op">+</tt> <tt id="link-8" class="py-name"><a title="le2m.clientrun.localelang
+le2m.serverrun.localelang" class="py-name" href="#" onclick="return doclink('link-8', 'localelang', 'link-6');">localelang</a></tt><tt class="py-op">,</tt> </tt>
+<a name="L11"></a><tt class="py-lineno">11</tt>  <tt class="py-line">                <tt class="py-name">QtCore</tt><tt class="py-op">.</tt><tt class="py-name">QLibraryInfo</tt><tt class="py-op">.</tt><tt class="py-name">location</tt><tt class="py-op">(</tt> </tt>
+<a name="L12"></a><tt class="py-lineno">12</tt>  <tt class="py-line">                    <tt class="py-name">QtCore</tt><tt class="py-op">.</tt><tt class="py-name">QLibraryInfo</tt><tt class="py-op">.</tt><tt class="py-name">TranslationsPath</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L13"></a><tt class="py-lineno">13</tt>  <tt class="py-line"><tt id="link-9" class="py-name"><a title="le2m.clientrun.application
+le2m.serverrun.application" class="py-name" href="#" onclick="return doclink('link-9', 'application', 'link-0');">application</a></tt><tt class="py-op">.</tt><tt class="py-name">installTranslator</tt><tt class="py-op">(</tt><tt id="link-10" class="py-name"><a title="le2m.clientrun.translator
+le2m.serverrun.translator" class="py-name" href="#" onclick="return doclink('link-10', 'translator', 'link-5');">translator</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L14"></a><tt class="py-lineno">14</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">sys</tt> </tt>
+<a name="L15"></a><tt class="py-lineno">15</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">os</tt> </tt>
+<a name="L16"></a><tt class="py-lineno">16</tt>  <tt class="py-line"><tt class="py-keyword">if</tt> <tt class="py-name">sys</tt><tt class="py-op">.</tt><tt class="py-name">platform</tt><tt class="py-op">.</tt><tt class="py-name">startswith</tt><tt class="py-op">(</tt><tt class="py-string">"win"</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L17"></a><tt class="py-lineno">17</tt>  <tt class="py-line">    <tt class="py-keyword">import</tt> <tt class="py-name">locale</tt> </tt>
+<a name="L18"></a><tt class="py-lineno">18</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">getenv</tt><tt class="py-op">(</tt><tt class="py-string">'LANG'</tt><tt class="py-op">)</tt> <tt class="py-keyword">is</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L19"></a><tt class="py-lineno">19</tt>  <tt class="py-line">        <tt class="py-name">lang</tt><tt class="py-op">,</tt> <tt class="py-name">enc</tt> <tt class="py-op">=</tt> <tt class="py-name">locale</tt><tt class="py-op">.</tt><tt class="py-name">getdefaultlocale</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L20"></a><tt class="py-lineno">20</tt>  <tt class="py-line">        <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">environ</tt><tt class="py-op">[</tt><tt class="py-string">'LANG'</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-name">lang</tt> </tt>
+<a name="L21"></a><tt class="py-lineno">21</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">logging</tt> </tt>
+<a name="L22"></a><tt class="py-lineno">22</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">argparse</tt> </tt>
+<a name="L23"></a><tt class="py-lineno">23</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-11" class="py-name" targets="Package le2m.configuration=le2m.configuration-module.html"><a title="le2m.configuration" class="py-name" href="#" onclick="return doclink('link-11', 'configuration', 'link-11');">configuration</a></tt> <tt class="py-keyword">import</tt> <tt id="link-12" class="py-name" targets="Module le2m.configuration.configparam=le2m.configuration.configparam-module.html"><a title="le2m.configuration.configparam" class="py-name" href="#" onclick="return doclink('link-12', 'configparam', 'link-12');">configparam</a></tt> <tt class="py-keyword">as</tt> <tt class="py-name">params</tt> </tt>
+<a name="L24"></a><tt class="py-lineno">24</tt>  <tt class="py-line"><tt class="py-name">params</tt><tt class="py-op">.</tt><tt id="link-13" class="py-name" targets="Function le2m.configuration.configparam.setp_appdir()=le2m.configuration.configparam-module.html#setp_appdir"><a title="le2m.configuration.configparam.setp_appdir" class="py-name" href="#" onclick="return doclink('link-13', 'setp_appdir', 'link-13');">setp_appdir</a></tt><tt class="py-op">(</tt><tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">path</tt><tt class="py-op">.</tt><tt class="py-name">realpath</tt><tt class="py-op">(</tt><tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">path</tt><tt class="py-op">.</tt><tt class="py-name">dirname</tt><tt class="py-op">(</tt><tt class="py-name">__file__</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L25"></a><tt class="py-lineno">25</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt id="link-14" class="py-name"><a title="le2m.util" class="py-name" href="#" onclick="return doclink('link-14', 'util', 'link-1');">util</a></tt><tt class="py-op">.</tt><tt id="link-15" class="py-name" targets="Module le2m.util.utili18n=le2m.util.utili18n-module.html"><a title="le2m.util.utili18n" class="py-name" href="#" onclick="return doclink('link-15', 'utili18n', 'link-15');">utili18n</a></tt> <tt class="py-keyword">as</tt> <tt class="py-name">i18n</tt>  <tt class="py-comment"># after appdir</tt> </tt>
+<a name="L26"></a><tt class="py-lineno">26</tt>  <tt class="py-line"> </tt>
+<a name="L27"></a><tt class="py-lineno">27</tt>  <tt class="py-line"> </tt>
+<a name="main"></a><div id="main-def"><a name="L28"></a><tt class="py-lineno">28</tt> <a class="py-toggle" href="#" id="main-toggle" onclick="return toggle('main');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="le2m.clientrun-module.html#main">main</a><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="main-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="main-expanded"><a name="L29"></a><tt class="py-lineno">29</tt>  <tt class="py-line">    <tt class="py-name">parser</tt> <tt class="py-op">=</tt> <tt class="py-name">argparse</tt><tt class="py-op">.</tt><tt class="py-name">ArgumentParser</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L30"></a><tt class="py-lineno">30</tt>  <tt class="py-line"> </tt>
+<a name="L31"></a><tt class="py-lineno">31</tt>  <tt class="py-line">    <tt class="py-comment"># application language</tt> </tt>
+<a name="L32"></a><tt class="py-lineno">32</tt>  <tt class="py-line">    <tt class="py-name">parser</tt><tt class="py-op">.</tt><tt class="py-name">add_argument</tt><tt class="py-op">(</tt><tt class="py-string">"-l"</tt><tt class="py-op">,</tt> <tt class="py-string">"--lang"</tt><tt class="py-op">,</tt> <tt class="py-name">action</tt><tt class="py-op">=</tt><tt class="py-string">"store"</tt><tt class="py-op">,</tt> </tt>
+<a name="L33"></a><tt class="py-lineno">33</tt>  <tt class="py-line">                        <tt class="py-name">default</tt><tt class="py-op">=</tt><tt class="py-name">params</tt><tt class="py-op">.</tt><tt id="link-16" class="py-name" targets="Function le2m.configuration.configparam.getp()=le2m.configuration.configparam-module.html#getp"><a title="le2m.configuration.configparam.getp" class="py-name" href="#" onclick="return doclink('link-16', 'getp', 'link-16');">getp</a></tt><tt class="py-op">(</tt><tt class="py-string">"LANG"</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L34"></a><tt class="py-lineno">34</tt>  <tt class="py-line">                        <tt class="py-name">help</tt><tt class="py-op">=</tt><tt class="py-name">i18n</tt><tt class="py-op">.</tt><tt id="link-17" class="py-name" targets="Variable le2m.util.utili18n.le2mtrans=le2m.util.utili18n-module.html#le2mtrans"><a title="le2m.util.utili18n.le2mtrans" class="py-name" href="#" onclick="return doclink('link-17', 'le2mtrans', 'link-17');">le2mtrans</a></tt><tt class="py-op">(</tt><tt class="py-string">u"Language of the application"</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L35"></a><tt class="py-lineno">35</tt>  <tt class="py-line"> </tt>
+<a name="L36"></a><tt class="py-lineno">36</tt>  <tt class="py-line">    <tt class="py-comment"># automatic mode</tt> </tt>
+<a name="L37"></a><tt class="py-lineno">37</tt>  <tt class="py-line">    <tt class="py-name">parser</tt><tt class="py-op">.</tt><tt class="py-name">add_argument</tt><tt class="py-op">(</tt> </tt>
+<a name="L38"></a><tt class="py-lineno">38</tt>  <tt class="py-line">        <tt class="py-string">"-a"</tt><tt class="py-op">,</tt> <tt class="py-string">"--automatique"</tt><tt class="py-op">,</tt> <tt class="py-name">action</tt><tt class="py-op">=</tt><tt class="py-string">"store_true"</tt><tt class="py-op">,</tt> </tt>
+<a name="L39"></a><tt class="py-lineno">39</tt>  <tt class="py-line">        <tt class="py-name">default</tt><tt class="py-op">=</tt><tt class="py-name">False</tt><tt class="py-op">,</tt> </tt>
+<a name="L40"></a><tt class="py-lineno">40</tt>  <tt class="py-line">        <tt class="py-name">help</tt><tt class="py-op">=</tt><tt class="py-name">i18n</tt><tt class="py-op">.</tt><tt id="link-18" class="py-name"><a title="le2m.util.utili18n.le2mtrans" class="py-name" href="#" onclick="return doclink('link-18', 'le2mtrans', 'link-17');">le2mtrans</a></tt><tt class="py-op">(</tt><tt class="py-string">u"Run the application in the automatic mode."</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L41"></a><tt class="py-lineno">41</tt>  <tt class="py-line">    <tt class="py-comment"># simulation mode</tt> </tt>
+<a name="L42"></a><tt class="py-lineno">42</tt>  <tt class="py-line">    <tt class="py-name">parser</tt><tt class="py-op">.</tt><tt class="py-name">add_argument</tt><tt class="py-op">(</tt> </tt>
+<a name="L43"></a><tt class="py-lineno">43</tt>  <tt class="py-line">        <tt class="py-string">"-s"</tt><tt class="py-op">,</tt> <tt class="py-string">"--simulation"</tt><tt class="py-op">,</tt> <tt class="py-name">action</tt><tt class="py-op">=</tt><tt class="py-string">"store_true"</tt><tt class="py-op">,</tt> </tt>
+<a name="L44"></a><tt class="py-lineno">44</tt>  <tt class="py-line">        <tt class="py-name">default</tt><tt class="py-op">=</tt><tt class="py-name">False</tt><tt class="py-op">,</tt> </tt>
+<a name="L45"></a><tt class="py-lineno">45</tt>  <tt class="py-line">        <tt class="py-name">help</tt><tt class="py-op">=</tt><tt class="py-name">i18n</tt><tt class="py-op">.</tt><tt id="link-19" class="py-name"><a title="le2m.util.utili18n.le2mtrans" class="py-name" href="#" onclick="return doclink('link-19', 'le2mtrans', 'link-17');">le2mtrans</a></tt><tt class="py-op">(</tt><tt class="py-string">u"Run the application in the simulation mode"</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L46"></a><tt class="py-lineno">46</tt>  <tt class="py-line">    <tt class="py-comment"># server ip</tt> </tt>
+<a name="L47"></a><tt class="py-lineno">47</tt>  <tt class="py-line">    <tt class="py-name">parser</tt><tt class="py-op">.</tt><tt class="py-name">add_argument</tt><tt class="py-op">(</tt> </tt>
+<a name="L48"></a><tt class="py-lineno">48</tt>  <tt class="py-line">        <tt class="py-string">"-i"</tt><tt class="py-op">,</tt> <tt class="py-string">"--ip"</tt><tt class="py-op">,</tt> <tt class="py-name">action</tt><tt class="py-op">=</tt><tt class="py-string">"store"</tt><tt class="py-op">,</tt> </tt>
+<a name="L49"></a><tt class="py-lineno">49</tt>  <tt class="py-line">        <tt class="py-name">default</tt><tt class="py-op">=</tt><tt class="py-name">params</tt><tt class="py-op">.</tt><tt id="link-20" class="py-name"><a title="le2m.configuration.configparam.getp" class="py-name" href="#" onclick="return doclink('link-20', 'getp', 'link-16');">getp</a></tt><tt class="py-op">(</tt><tt class="py-string">"SERVIP"</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L50"></a><tt class="py-lineno">50</tt>  <tt class="py-line">        <tt class="py-name">help</tt><tt class="py-op">=</tt><tt class="py-name">i18n</tt><tt class="py-op">.</tt><tt id="link-21" class="py-name"><a title="le2m.util.utili18n.le2mtrans" class="py-name" href="#" onclick="return doclink('link-21', 'le2mtrans', 'link-17');">le2mtrans</a></tt><tt class="py-op">(</tt><tt class="py-string">u"IP adress of the server"</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L51"></a><tt class="py-lineno">51</tt>  <tt class="py-line">    <tt class="py-comment"># server port</tt> </tt>
+<a name="L52"></a><tt class="py-lineno">52</tt>  <tt class="py-line">    <tt class="py-name">parser</tt><tt class="py-op">.</tt><tt class="py-name">add_argument</tt><tt class="py-op">(</tt> </tt>
+<a name="L53"></a><tt class="py-lineno">53</tt>  <tt class="py-line">        <tt class="py-string">"-p"</tt><tt class="py-op">,</tt> <tt class="py-string">"--port"</tt><tt class="py-op">,</tt> <tt class="py-name">action</tt><tt class="py-op">=</tt><tt class="py-string">"store"</tt><tt class="py-op">,</tt> <tt class="py-name">type</tt><tt class="py-op">=</tt><tt class="py-name">int</tt><tt class="py-op">,</tt> </tt>
+<a name="L54"></a><tt class="py-lineno">54</tt>  <tt class="py-line">        <tt class="py-name">default</tt><tt class="py-op">=</tt><tt class="py-name">params</tt><tt class="py-op">.</tt><tt id="link-22" class="py-name"><a title="le2m.configuration.configparam.getp" class="py-name" href="#" onclick="return doclink('link-22', 'getp', 'link-16');">getp</a></tt><tt class="py-op">(</tt><tt class="py-string">"SERVPORT"</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">help</tt><tt class="py-op">=</tt><tt class="py-name">i18n</tt><tt class="py-op">.</tt><tt id="link-23" class="py-name"><a title="le2m.util.utili18n.le2mtrans" class="py-name" href="#" onclick="return doclink('link-23', 'le2mtrans', 'link-17');">le2mtrans</a></tt><tt class="py-op">(</tt><tt class="py-string">u"Server port"</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L55"></a><tt class="py-lineno">55</tt>  <tt class="py-line"> </tt>
+<a name="L56"></a><tt class="py-lineno">56</tt>  <tt class="py-line">    <tt class="py-comment"># check the options ========================================================</tt> </tt>
+<a name="L57"></a><tt class="py-lineno">57</tt>  <tt class="py-line">    <tt class="py-name">args</tt> <tt class="py-op">=</tt> <tt class="py-name">parser</tt><tt class="py-op">.</tt><tt class="py-name">parse_args</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L58"></a><tt class="py-lineno">58</tt>  <tt class="py-line">    <tt class="py-name">options</tt> <tt class="py-op">=</tt> <tt class="py-name">vars</tt><tt class="py-op">(</tt><tt class="py-name">args</tt><tt class="py-op">)</tt> </tt>
+<a name="L59"></a><tt class="py-lineno">59</tt>  <tt class="py-line">    <tt class="py-name">params</tt><tt class="py-op">.</tt><tt id="link-24" class="py-name" targets="Function le2m.configuration.configparam.setp()=le2m.configuration.configparam-module.html#setp"><a title="le2m.configuration.configparam.setp" class="py-name" href="#" onclick="return doclink('link-24', 'setp', 'link-24');">setp</a></tt><tt class="py-op">(</tt><tt class="py-string">"LANG"</tt><tt class="py-op">,</tt> <tt class="py-name">args</tt><tt class="py-op">.</tt><tt class="py-name">lang</tt><tt class="py-op">)</tt> </tt>
+<a name="L60"></a><tt class="py-lineno">60</tt>  <tt class="py-line">    <tt class="py-name">i18n</tt><tt class="py-op">.</tt><tt id="link-25" class="py-name"><a title="le2m.util.utili18n.install
+le2m.util.utilqtreactor.install" class="py-name" href="#" onclick="return doclink('link-25', 'install', 'link-4');">install</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L61"></a><tt class="py-lineno">61</tt>  <tt class="py-line">    <tt class="py-name">params</tt><tt class="py-op">.</tt><tt id="link-26" class="py-name"><a title="le2m.configuration.configparam.setp" class="py-name" href="#" onclick="return doclink('link-26', 'setp', 'link-24');">setp</a></tt><tt class="py-op">(</tt><tt class="py-string">"SERVIP"</tt><tt class="py-op">,</tt> <tt class="py-name">args</tt><tt class="py-op">.</tt><tt id="link-27" class="py-name" targets="Method le2m.client.clt.Client.ip()=le2m.client.clt.Client-class.html#ip,Method le2m.server.serv.Serveur.ip()=le2m.server.serv.Serveur-class.html#ip,Variable le2m.server.servplayers.Joueur.ip=le2m.server.servplayers.Joueur-class.html#ip"><a title="le2m.client.clt.Client.ip
+le2m.server.serv.Serveur.ip
+le2m.server.servplayers.Joueur.ip" class="py-name" href="#" onclick="return doclink('link-27', 'ip', 'link-27');">ip</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L62"></a><tt class="py-lineno">62</tt>  <tt class="py-line">    <tt class="py-name">params</tt><tt class="py-op">.</tt><tt id="link-28" class="py-name"><a title="le2m.configuration.configparam.setp" class="py-name" href="#" onclick="return doclink('link-28', 'setp', 'link-24');">setp</a></tt><tt class="py-op">(</tt><tt class="py-string">"SERVPORT"</tt><tt class="py-op">,</tt> <tt class="py-name">args</tt><tt class="py-op">.</tt><tt class="py-name">port</tt><tt class="py-op">)</tt> </tt>
+<a name="L63"></a><tt class="py-lineno">63</tt>  <tt class="py-line"> </tt>
+<a name="L64"></a><tt class="py-lineno">64</tt>  <tt class="py-line">    <tt class="py-comment"># LOGGER  ------------------------------------------------------------------</tt> </tt>
+<a name="L65"></a><tt class="py-lineno">65</tt>  <tt class="py-line">    <tt id="link-29" class="py-name" targets="Variable le2m.client.clt.logger=le2m.client.clt-module.html#logger,Variable le2m.client.cltgui.cltguidialogs.logger=le2m.client.cltgui.cltguidialogs-module.html#logger,Variable le2m.client.cltremote.logger=le2m.client.cltremote-module.html#logger,Variable le2m.creator.creator.logger=le2m.creator.creator-module.html#logger,Variable le2m.creator.filestocopy.creator_Gui.logger=le2m.creator.filestocopy.creator_Gui-module.html#logger,Variable le2m.creator.filestocopy.creator_Part.logger=le2m.creator.filestocopy.creator_Part-module.html#logger,Variable le2m.creator.filestocopy.creator_Remote.logger=le2m.creator.filestocopy.creator_Remote-module.html#logger,Variable le2m.creator.filestocopy.creator_Serv.logger=le2m.creator.filestocopy.creator_Serv-module.html#logger,Variable le2m.extractor.extractorgui.logger=le2m.extractor.extractorgui-module.html#logger,Variable le2m.parts.CommonPoolResource.CommonPoolResourceGui.logger=le2m.parts.CommonPoolResource.CommonPoolResourceGui-module.html#logger,Variable le2m.parts.CommonPoolResource.CommonPoolResourcePart.logger=le2m.parts.CommonPoolResource.CommonPoolResourcePart-module.html#logger,Variable le2m.parts.CommonPoolResource.CommonPoolResourceRemote.logger=le2m.parts.CommonPoolResource.CommonPoolResourceRemote-module.html#logger,Variable le2m.parts.CommonPoolResource.CommonPoolResourceServ.logger=le2m.parts.CommonPoolResource.CommonPoolResourceServ-module.html#logger,Variable le2m.parts.Dictator.DictatorGui.logger=le2m.parts.Dictator.DictatorGui-module.html#logger,Variable le2m.parts.Dictator.DictatorPart.logger=le2m.parts.Dictator.DictatorPart-module.html#logger,Variable le2m.parts.Dictator.DictatorRemote.logger=le2m.parts.Dictator.DictatorRemote-module.html#logger,Variable le2m.parts.Dictator.DictatorServ.logger=le2m.parts.Dictator.DictatorServ-module.html#logger,Variable le2m.parts.GneezyPotter.GneezyPotterGui.logger=le2m.parts.GneezyPotter.GneezyPotterGui-module.html#logger,Variable le2m.parts.GneezyPotter.GneezyPotterPart.logger=le2m.parts.GneezyPotter.GneezyPotterPart-module.html#logger,Variable le2m.parts.GneezyPotter.GneezyPotterRemote.logger=le2m.parts.GneezyPotter.GneezyPotterRemote-module.html#logger,Variable le2m.parts.GneezyPotter.GneezyPotterServ.logger=le2m.parts.GneezyPotter.GneezyPotterServ-module.html#logger,Variable le2m.parts.PublicGoodGame.PublicGoodGameGui.logger=le2m.parts.PublicGoodGame.PublicGoodGameGui-module.html#logger,Variable le2m.parts.PublicGoodGame.PublicGoodGamePart.logger=le2m.parts.PublicGoodGame.PublicGoodGamePart-module.html#logger,Variable le2m.parts.PublicGoodGame.PublicGoodGameRemote.logger=le2m.parts.PublicGoodGame.PublicGoodGameRemote-module.html#logger,Variable le2m.parts.PublicGoodGame.PublicGoodGameServ.logger=le2m.parts.PublicGoodGame.PublicGoodGameServ-module.html#logger,Variable le2m.parts.PublicGoodGlobalLocal.PublicGoodGlobalLocalGui.logger=le2m.parts.PublicGoodGlobalLocal.PublicGoodGlobalLocalGui-module.html#logger,Variable le2m.parts.PublicGoodGlobalLocal.PublicGoodGlobalLocalPart.logger=le2m.parts.PublicGoodGlobalLocal.PublicGoodGlobalLocalPart-module.html#logger,Variable le2m.parts.PublicGoodGlobalLocal.PublicGoodGlobalLocalRemote.logger=le2m.parts.PublicGoodGlobalLocal.PublicGoodGlobalLocalRemote-module.html#logger,Variable le2m.parts.PublicGoodGlobalLocal.PublicGoodGlobalLocalServ.logger=le2m.parts.PublicGoodGlobalLocal.PublicGoodGlobalLocalServ-module.html#logger,Variable le2m.parts.TeamCommunication.TeamCommunicationGui.logger=le2m.parts.TeamCommunication.TeamCommunicationGui-module.html#logger,Variable le2m.parts.TeamCommunication.TeamCommunicationPart.logger=le2m.parts.TeamCommunication.TeamCommunicationPart-module.html#logger,Variable le2m.parts.TeamCommunication.TeamCommunicationRemote.logger=le2m.parts.TeamCommunication.TeamCommunicationRemote-module.html#logger,Variable le2m.parts.TeamCommunication.TeamCommunicationServ.logger=le2m.parts.TeamCommunication.TeamCommunicationServ-module.html#logger,Variable le2m.parts.prisonnersDilemma.prisonnersDilemmaGui.logger=le2m.parts.prisonnersDilemma.prisonnersDilemmaGui-module.html#logger,Variable le2m.parts.prisonnersDilemma.prisonnersDilemmaPart.logger=le2m.parts.prisonnersDilemma.prisonnersDilemmaPart-module.html#logger,Variable le2m.parts.prisonnersDilemma.prisonnersDilemmaRemote.logger=le2m.parts.prisonnersDilemma.prisonnersDilemmaRemote-module.html#logger,Variable le2m.parts.prisonnersDilemma.prisonnersDilemmaServ.logger=le2m.parts.prisonnersDilemma.prisonnersDilemmaServ-module.html#logger,Variable le2m.questcomp.questcompgui.logger=le2m.questcomp.questcompgui-module.html#logger,Variable le2m.questcomp.questcompmod.logger=le2m.questcomp.questcompmod-module.html#logger,Variable le2m.questcomp.questcomputil.logger=le2m.questcomp.questcomputil-module.html#logger,Variable le2m.server.serv.logger=le2m.server.serv-module.html#logger,Variable le2m.server.servgest.servgestbase.logger=le2m.server.servgest.servgestbase-module.html#logger,Variable le2m.server.servgest.servgestexpe.logger=le2m.server.servgest.servgestexpe-module.html#logger,Variable le2m.server.servgest.servgestgroups.logger=le2m.server.servgest.servgestgroups-module.html#logger,Variable le2m.server.servgest.servgestgui.logger=le2m.server.servgest.servgestgui-module.html#logger,Variable le2m.server.servgest.servgestplayers.logger=le2m.server.servgest.servgestplayers-module.html#logger,Variable le2m.server.servgui.servguidialogs.logger=le2m.server.servgui.servguidialogs-module.html#logger,Variable le2m.server.servgui.servguiwindows.logger=le2m.server.servgui.servguiwindows-module.html#logger,Variable le2m.server.servparties.logger=le2m.server.servparties-module.html#logger,Variable le2m.server.servplayers.logger=le2m.server.servplayers-module.html#logger,Variable le2m.util.utiltools.logger=le2m.util.utiltools-module.html#logger"><a title="le2m.client.clt.logger
+le2m.client.cltgui.cltguidialogs.logger
+le2m.client.cltremote.logger
+le2m.creator.creator.logger
+le2m.creator.filestocopy.creator_Gui.logger
+le2m.creator.filestocopy.creator_Part.logger
+le2m.creator.filestocopy.creator_Remote.logger
+le2m.creator.filestocopy.creator_Serv.logger
+le2m.extractor.extractorgui.logger
+le2m.parts.CommonPoolResource.CommonPoolResourceGui.logger
+le2m.parts.CommonPoolResource.CommonPoolResourcePart.logger
+le2m.parts.CommonPoolResource.CommonPoolResourceRemote.logger
+le2m.parts.CommonPoolResource.CommonPoolResourceServ.logger
+le2m.parts.Dictator.DictatorGui.logger
+le2m.parts.Dictator.DictatorPart.logger
+le2m.parts.Dictator.DictatorRemote.logger
+le2m.parts.Dictator.DictatorServ.logger
+le2m.parts.GneezyPotter.GneezyPotterGui.logger
+le2m.parts.GneezyPotter.GneezyPotterPart.logger
+le2m.parts.GneezyPotter.GneezyPotterRemote.logger
+le2m.parts.GneezyPotter.GneezyPotterServ.logger
+le2m.parts.PublicGoodGame.PublicGoodGameGui.logger
+le2m.parts.PublicGoodGame.PublicGoodGamePart.logger
+le2m.parts.PublicGoodGame.PublicGoodGameRemote.logger
+le2m.parts.PublicGoodGame.PublicGoodGameServ.logger
+le2m.parts.PublicGoodGlobalLocal.PublicGoodGlobalLocalGui.logger
+le2m.parts.PublicGoodGlobalLocal.PublicGoodGlobalLocalPart.logger
+le2m.parts.PublicGoodGlobalLocal.PublicGoodGlobalLocalRemote.logger
+le2m.parts.PublicGoodGlobalLocal.PublicGoodGlobalLocalServ.logger
+le2m.parts.TeamCommunication.TeamCommunicationGui.logger
+le2m.parts.TeamCommunication.TeamCommunicationPart.logger
+le2m.parts.TeamCommunication.TeamCommunicationRemote.logger
+le2m.parts.TeamCommunication.TeamCommunicationServ.logger
+le2m.parts.prisonnersDilemma.prisonnersDilemmaGui.logger
+le2m.parts.prisonnersDilemma.prisonnersDilemmaPart.logger
+le2m.parts.prisonnersDilemma.prisonnersDilemmaRemote.logger
+le2m.parts.prisonnersDilemma.prisonnersDilemmaServ.logger
+le2m.questcomp.questcompgui.logger
+le2m.questcomp.questcompmod.logger
+le2m.questcomp.questcomputil.logger
+le2m.server.serv.logger
+le2m.server.servgest.servgestbase.logger
+le2m.server.servgest.servgestexpe.logger
+le2m.server.servgest.servgestgroups.logger
+le2m.server.servgest.servgestgui.logger
+le2m.server.servgest.servgestplayers.logger
+le2m.server.servgui.servguidialogs.logger
+le2m.server.servgui.servguiwindows.logger
+le2m.server.servparties.logger
+le2m.server.servplayers.logger
+le2m.util.utiltools.logger" class="py-name" href="#" onclick="return doclink('link-29', 'logger', 'link-29');">logger</a></tt> <tt class="py-op">=</tt> <tt class="py-name">logging</tt><tt class="py-op">.</tt><tt class="py-name">getLogger</tt><tt class="py-op">(</tt><tt class="py-string">"le2m"</tt><tt class="py-op">)</tt> </tt>
+<a name="L66"></a><tt class="py-lineno">66</tt>  <tt class="py-line">    <tt id="link-30" class="py-name"><a title="le2m.client.clt.logger
+le2m.client.cltgui.cltguidialogs.logger
+le2m.client.cltremote.logger
+le2m.creator.creator.logger
+le2m.creator.filestocopy.creator_Gui.logger
+le2m.creator.filestocopy.creator_Part.logger
+le2m.creator.filestocopy.creator_Remote.logger
+le2m.creator.filestocopy.creator_Serv.logger
+le2m.extractor.extractorgui.logger
+le2m.parts.CommonPoolResource.CommonPoolResourceGui.logger
+le2m.parts.CommonPoolResource.CommonPoolResourcePart.logger
+le2m.parts.CommonPoolResource.CommonPoolResourceRemote.logger
+le2m.parts.CommonPoolResource.CommonPoolResourceServ.logger
+le2m.parts.Dictator.DictatorGui.logger
+le2m.parts.Dictator.DictatorPart.logger
+le2m.parts.Dictator.DictatorRemote.logger
+le2m.parts.Dictator.DictatorServ.logger
+le2m.parts.GneezyPotter.GneezyPotterGui.logger
+le2m.parts.GneezyPotter.GneezyPotterPart.logger
+le2m.parts.GneezyPotter.GneezyPotterRemote.logger
+le2m.parts.GneezyPotter.GneezyPotterServ.logger
+le2m.parts.PublicGoodGame.PublicGoodGameGui.logger
+le2m.parts.PublicGoodGame.PublicGoodGamePart.logger
+le2m.parts.PublicGoodGame.PublicGoodGameRemote.logger
+le2m.parts.PublicGoodGame.PublicGoodGameServ.logger
+le2m.parts.PublicGoodGlobalLocal.PublicGoodGlobalLocalGui.logger
+le2m.parts.PublicGoodGlobalLocal.PublicGoodGlobalLocalPart.logger
+le2m.parts.PublicGoodGlobalLocal.PublicGoodGlobalLocalRemote.logger
+le2m.parts.PublicGoodGlobalLocal.PublicGoodGlobalLocalServ.logger
+le2m.parts.TeamCommunication.TeamCommunicationGui.logger
+le2m.parts.TeamCommunication.TeamCommunicationPart.logger
+le2m.parts.TeamCommunication.TeamCommunicationRemote.logger
+le2m.parts.TeamCommunication.TeamCommunicationServ.logger
+le2m.parts.prisonnersDilemma.prisonnersDilemmaGui.logger
+le2m.parts.prisonnersDilemma.prisonnersDilemmaPart.logger
+le2m.parts.prisonnersDilemma.prisonnersDilemmaRemote.logger
+le2m.parts.prisonnersDilemma.prisonnersDilemmaServ.logger
+le2m.questcomp.questcompgui.logger
+le2m.questcomp.questcompmod.logger
+le2m.questcomp.questcomputil.logger
+le2m.server.serv.logger
+le2m.server.servgest.servgestbase.logger
+le2m.server.servgest.servgestexpe.logger
+le2m.server.servgest.servgestgroups.logger
+le2m.server.servgest.servgestgui.logger
+le2m.server.servgest.servgestplayers.logger
+le2m.server.servgui.servguidialogs.logger
+le2m.server.servgui.servguiwindows.logger
+le2m.server.servparties.logger
+le2m.server.servplayers.logger
+le2m.util.utiltools.logger" class="py-name" href="#" onclick="return doclink('link-30', 'logger', 'link-29');">logger</a></tt><tt class="py-op">.</tt><tt class="py-name">setLevel</tt><tt class="py-op">(</tt><tt class="py-name">logging</tt><tt class="py-op">.</tt><tt class="py-name">DEBUG</tt><tt class="py-op">)</tt> </tt>
+<a name="L67"></a><tt class="py-lineno">67</tt>  <tt class="py-line">    <tt class="py-name">formatter</tt> <tt class="py-op">=</tt> <tt class="py-name">logging</tt><tt class="py-op">.</tt><tt class="py-name">Formatter</tt><tt class="py-op">(</tt><tt class="py-name">params</tt><tt class="py-op">.</tt><tt id="link-31" class="py-name"><a title="le2m.configuration.configparam.getp" class="py-name" href="#" onclick="return doclink('link-31', 'getp', 'link-16');">getp</a></tt><tt class="py-op">(</tt><tt class="py-string">"LOGGING_FORMATTER"</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L68"></a><tt class="py-lineno">68</tt>  <tt class="py-line">                                  <tt class="py-name">datefmt</tt><tt class="py-op">=</tt><tt class="py-name">params</tt><tt class="py-op">.</tt><tt id="link-32" class="py-name"><a title="le2m.configuration.configparam.getp" class="py-name" href="#" onclick="return doclink('link-32', 'getp', 'link-16');">getp</a></tt><tt class="py-op">(</tt><tt class="py-string">"LOGGING_FORMATTER_DATE"</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L69"></a><tt class="py-lineno">69</tt>  <tt class="py-line">    <tt class="py-comment"># file handler</tt> </tt>
+<a name="L70"></a><tt class="py-lineno">70</tt>  <tt class="py-line">    <tt class="py-name">fichier_log</tt> <tt class="py-op">=</tt> <tt class="py-name">logging</tt><tt class="py-op">.</tt><tt class="py-name">FileHandler</tt><tt class="py-op">(</tt> </tt>
+<a name="L71"></a><tt class="py-lineno">71</tt>  <tt class="py-line">        <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">path</tt><tt class="py-op">.</tt><tt class="py-name">join</tt><tt class="py-op">(</tt><tt class="py-name">params</tt><tt class="py-op">.</tt><tt id="link-33" class="py-name"><a title="le2m.configuration.configparam.getp" class="py-name" href="#" onclick="return doclink('link-33', 'getp', 'link-16');">getp</a></tt><tt class="py-op">(</tt><tt class="py-string">"REMOTELOGDIR"</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">'le2m.log'</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L72"></a><tt class="py-lineno">72</tt>  <tt class="py-line">    <tt class="py-name">fichier_log</tt><tt class="py-op">.</tt><tt class="py-name">setLevel</tt><tt class="py-op">(</tt><tt class="py-name">logging</tt><tt class="py-op">.</tt><tt class="py-name">INFO</tt><tt class="py-op">)</tt>   </tt>
+<a name="L73"></a><tt class="py-lineno">73</tt>  <tt class="py-line">    <tt class="py-name">fichier_log</tt><tt class="py-op">.</tt><tt class="py-name">setFormatter</tt><tt class="py-op">(</tt><tt class="py-name">formatter</tt><tt class="py-op">)</tt> </tt>
+<a name="L74"></a><tt class="py-lineno">74</tt>  <tt class="py-line">    <tt id="link-34" class="py-name"><a title="le2m.client.clt.logger
+le2m.client.cltgui.cltguidialogs.logger
+le2m.client.cltremote.logger
+le2m.creator.creator.logger
+le2m.creator.filestocopy.creator_Gui.logger
+le2m.creator.filestocopy.creator_Part.logger
+le2m.creator.filestocopy.creator_Remote.logger
+le2m.creator.filestocopy.creator_Serv.logger
+le2m.extractor.extractorgui.logger
+le2m.parts.CommonPoolResource.CommonPoolResourceGui.logger
+le2m.parts.CommonPoolResource.CommonPoolResourcePart.logger
+le2m.parts.CommonPoolResource.CommonPoolResourceRemote.logger
+le2m.parts.CommonPoolResource.CommonPoolResourceServ.logger
+le2m.parts.Dictator.DictatorGui.logger
+le2m.parts.Dictator.DictatorPart.logger
+le2m.parts.Dictator.DictatorRemote.logger
+le2m.parts.Dictator.DictatorServ.logger
+le2m.parts.GneezyPotter.GneezyPotterGui.logger
+le2m.parts.GneezyPotter.GneezyPotterPart.logger
+le2m.parts.GneezyPotter.GneezyPotterRemote.logger
+le2m.parts.GneezyPotter.GneezyPotterServ.logger
+le2m.parts.PublicGoodGame.PublicGoodGameGui.logger
+le2m.parts.PublicGoodGame.PublicGoodGamePart.logger
+le2m.parts.PublicGoodGame.PublicGoodGameRemote.logger
+le2m.parts.PublicGoodGame.PublicGoodGameServ.logger
+le2m.parts.PublicGoodGlobalLocal.PublicGoodGlobalLocalGui.logger
+le2m.parts.PublicGoodGlobalLocal.PublicGoodGlobalLocalPart.logger
+le2m.parts.PublicGoodGlobalLocal.PublicGoodGlobalLocalRemote.logger
+le2m.parts.PublicGoodGlobalLocal.PublicGoodGlobalLocalServ.logger
+le2m.parts.TeamCommunication.TeamCommunicationGui.logger
+le2m.parts.TeamCommunication.TeamCommunicationPart.logger
+le2m.parts.TeamCommunication.TeamCommunicationRemote.logger
+le2m.parts.TeamCommunication.TeamCommunicationServ.logger
+le2m.parts.prisonnersDilemma.prisonnersDilemmaGui.logger
+le2m.parts.prisonnersDilemma.prisonnersDilemmaPart.logger
+le2m.parts.prisonnersDilemma.prisonnersDilemmaRemote.logger
+le2m.parts.prisonnersDilemma.prisonnersDilemmaServ.logger
+le2m.questcomp.questcompgui.logger
+le2m.questcomp.questcompmod.logger
+le2m.questcomp.questcomputil.logger
+le2m.server.serv.logger
+le2m.server.servgest.servgestbase.logger
+le2m.server.servgest.servgestexpe.logger
+le2m.server.servgest.servgestgroups.logger
+le2m.server.servgest.servgestgui.logger
+le2m.server.servgest.servgestplayers.logger
+le2m.server.servgui.servguidialogs.logger
+le2m.server.servgui.servguiwindows.logger
+le2m.server.servparties.logger
+le2m.server.servplayers.logger
+le2m.util.utiltools.logger" class="py-name" href="#" onclick="return doclink('link-34', 'logger', 'link-29');">logger</a></tt><tt class="py-op">.</tt><tt class="py-name">addHandler</tt><tt class="py-op">(</tt><tt class="py-name">fichier_log</tt><tt class="py-op">)</tt> </tt>
+<a name="L75"></a><tt class="py-lineno">75</tt>  <tt class="py-line">    <tt class="py-comment"># console handler</tt> </tt>
+<a name="L76"></a><tt class="py-lineno">76</tt>  <tt class="py-line">    <tt class="py-name">console_log</tt> <tt class="py-op">=</tt> <tt class="py-name">logging</tt><tt class="py-op">.</tt><tt class="py-name">StreamHandler</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L77"></a><tt class="py-lineno">77</tt>  <tt class="py-line">    <tt class="py-name">console_log</tt><tt class="py-op">.</tt><tt class="py-name">setLevel</tt><tt class="py-op">(</tt><tt class="py-name">logging</tt><tt class="py-op">.</tt><tt class="py-name">DEBUG</tt><tt class="py-op">)</tt> </tt>
+<a name="L78"></a><tt class="py-lineno">78</tt>  <tt class="py-line">    <tt class="py-name">console_log</tt><tt class="py-op">.</tt><tt class="py-name">setFormatter</tt><tt class="py-op">(</tt><tt class="py-name">formatter</tt><tt class="py-op">)</tt> </tt>
+<a name="L79"></a><tt class="py-lineno">79</tt>  <tt class="py-line">    <tt id="link-35" class="py-name"><a title="le2m.client.clt.logger
+le2m.client.cltgui.cltguidialogs.logger
+le2m.client.cltremote.logger
+le2m.creator.creator.logger
+le2m.creator.filestocopy.creator_Gui.logger
+le2m.creator.filestocopy.creator_Part.logger
+le2m.creator.filestocopy.creator_Remote.logger
+le2m.creator.filestocopy.creator_Serv.logger
+le2m.extractor.extractorgui.logger
+le2m.parts.CommonPoolResource.CommonPoolResourceGui.logger
+le2m.parts.CommonPoolResource.CommonPoolResourcePart.logger
+le2m.parts.CommonPoolResource.CommonPoolResourceRemote.logger
+le2m.parts.CommonPoolResource.CommonPoolResourceServ.logger
+le2m.parts.Dictator.DictatorGui.logger
+le2m.parts.Dictator.DictatorPart.logger
+le2m.parts.Dictator.DictatorRemote.logger
+le2m.parts.Dictator.DictatorServ.logger
+le2m.parts.GneezyPotter.GneezyPotterGui.logger
+le2m.parts.GneezyPotter.GneezyPotterPart.logger
+le2m.parts.GneezyPotter.GneezyPotterRemote.logger
+le2m.parts.GneezyPotter.GneezyPotterServ.logger
+le2m.parts.PublicGoodGame.PublicGoodGameGui.logger
+le2m.parts.PublicGoodGame.PublicGoodGamePart.logger
+le2m.parts.PublicGoodGame.PublicGoodGameRemote.logger
+le2m.parts.PublicGoodGame.PublicGoodGameServ.logger
+le2m.parts.PublicGoodGlobalLocal.PublicGoodGlobalLocalGui.logger
+le2m.parts.PublicGoodGlobalLocal.PublicGoodGlobalLocalPart.logger
+le2m.parts.PublicGoodGlobalLocal.PublicGoodGlobalLocalRemote.logger
+le2m.parts.PublicGoodGlobalLocal.PublicGoodGlobalLocalServ.logger
+le2m.parts.TeamCommunication.TeamCommunicationGui.logger
+le2m.parts.TeamCommunication.TeamCommunicationPart.logger
+le2m.parts.TeamCommunication.TeamCommunicationRemote.logger
+le2m.parts.TeamCommunication.TeamCommunicationServ.logger
+le2m.parts.prisonnersDilemma.prisonnersDilemmaGui.logger
+le2m.parts.prisonnersDilemma.prisonnersDilemmaPart.logger
+le2m.parts.prisonnersDilemma.prisonnersDilemmaRemote.logger
+le2m.parts.prisonnersDilemma.prisonnersDilemmaServ.logger
+le2m.questcomp.questcompgui.logger
+le2m.questcomp.questcompmod.logger
+le2m.questcomp.questcomputil.logger
+le2m.server.serv.logger
+le2m.server.servgest.servgestbase.logger
+le2m.server.servgest.servgestexpe.logger
+le2m.server.servgest.servgestgroups.logger
+le2m.server.servgest.servgestgui.logger
+le2m.server.servgest.servgestplayers.logger
+le2m.server.servgui.servguidialogs.logger
+le2m.server.servgui.servguiwindows.logger
+le2m.server.servparties.logger
+le2m.server.servplayers.logger
+le2m.util.utiltools.logger" class="py-name" href="#" onclick="return doclink('link-35', 'logger', 'link-29');">logger</a></tt><tt class="py-op">.</tt><tt class="py-name">addHandler</tt><tt class="py-op">(</tt><tt class="py-name">console_log</tt><tt class="py-op">)</tt> </tt>
+<a name="L80"></a><tt class="py-lineno">80</tt>  <tt class="py-line"> </tt>
+<a name="L81"></a><tt class="py-lineno">81</tt>  <tt class="py-line">    <tt class="py-comment"># first log</tt> </tt>
+<a name="L82"></a><tt class="py-lineno">82</tt>  <tt class="py-line">    <tt id="link-36" class="py-name"><a title="le2m.client.clt.logger
+le2m.client.cltgui.cltguidialogs.logger
+le2m.client.cltremote.logger
+le2m.creator.creator.logger
+le2m.creator.filestocopy.creator_Gui.logger
+le2m.creator.filestocopy.creator_Part.logger
+le2m.creator.filestocopy.creator_Remote.logger
+le2m.creator.filestocopy.creator_Serv.logger
+le2m.extractor.extractorgui.logger
+le2m.parts.CommonPoolResource.CommonPoolResourceGui.logger
+le2m.parts.CommonPoolResource.CommonPoolResourcePart.logger
+le2m.parts.CommonPoolResource.CommonPoolResourceRemote.logger
+le2m.parts.CommonPoolResource.CommonPoolResourceServ.logger
+le2m.parts.Dictator.DictatorGui.logger
+le2m.parts.Dictator.DictatorPart.logger
+le2m.parts.Dictator.DictatorRemote.logger
+le2m.parts.Dictator.DictatorServ.logger
+le2m.parts.GneezyPotter.GneezyPotterGui.logger
+le2m.parts.GneezyPotter.GneezyPotterPart.logger
+le2m.parts.GneezyPotter.GneezyPotterRemote.logger
+le2m.parts.GneezyPotter.GneezyPotterServ.logger
+le2m.parts.PublicGoodGame.PublicGoodGameGui.logger
+le2m.parts.PublicGoodGame.PublicGoodGamePart.logger
+le2m.parts.PublicGoodGame.PublicGoodGameRemote.logger
+le2m.parts.PublicGoodGame.PublicGoodGameServ.logger
+le2m.parts.PublicGoodGlobalLocal.PublicGoodGlobalLocalGui.logger
+le2m.parts.PublicGoodGlobalLocal.PublicGoodGlobalLocalPart.logger
+le2m.parts.PublicGoodGlobalLocal.PublicGoodGlobalLocalRemote.logger
+le2m.parts.PublicGoodGlobalLocal.PublicGoodGlobalLocalServ.logger
+le2m.parts.TeamCommunication.TeamCommunicationGui.logger
+le2m.parts.TeamCommunication.TeamCommunicationPart.logger
+le2m.parts.TeamCommunication.TeamCommunicationRemote.logger
+le2m.parts.TeamCommunication.TeamCommunicationServ.logger
+le2m.parts.prisonnersDilemma.prisonnersDilemmaGui.logger
+le2m.parts.prisonnersDilemma.prisonnersDilemmaPart.logger
+le2m.parts.prisonnersDilemma.prisonnersDilemmaRemote.logger
+le2m.parts.prisonnersDilemma.prisonnersDilemmaServ.logger
+le2m.questcomp.questcompgui.logger
+le2m.questcomp.questcompmod.logger
+le2m.questcomp.questcomputil.logger
+le2m.server.serv.logger
+le2m.server.servgest.servgestbase.logger
+le2m.server.servgest.servgestexpe.logger
+le2m.server.servgest.servgestgroups.logger
+le2m.server.servgest.servgestgui.logger
+le2m.server.servgest.servgestplayers.logger
+le2m.server.servgui.servguidialogs.logger
+le2m.server.servgui.servguiwindows.logger
+le2m.server.servparties.logger
+le2m.server.servplayers.logger
+le2m.util.utiltools.logger" class="py-name" href="#" onclick="return doclink('link-36', 'logger', 'link-29');">logger</a></tt><tt class="py-op">.</tt><tt id="link-37" class="py-name" targets="Method le2m.server.servplayers.Joueur.info()=le2m.server.servplayers.Joueur-class.html#info"><a title="le2m.server.servplayers.Joueur.info" class="py-name" href="#" onclick="return doclink('link-37', 'info', 'link-37');">info</a></tt><tt class="py-op">(</tt><tt class="py-number">30</tt> <tt class="py-op">*</tt> <tt class="py-string">"~"</tt><tt class="py-op">)</tt> </tt>
+<a name="L83"></a><tt class="py-lineno">83</tt>  <tt class="py-line">    <tt id="link-38" class="py-name"><a title="le2m.client.clt.logger
+le2m.client.cltgui.cltguidialogs.logger
+le2m.client.cltremote.logger
+le2m.creator.creator.logger
+le2m.creator.filestocopy.creator_Gui.logger
+le2m.creator.filestocopy.creator_Part.logger
+le2m.creator.filestocopy.creator_Remote.logger
+le2m.creator.filestocopy.creator_Serv.logger
+le2m.extractor.extractorgui.logger
+le2m.parts.CommonPoolResource.CommonPoolResourceGui.logger
+le2m.parts.CommonPoolResource.CommonPoolResourcePart.logger
+le2m.parts.CommonPoolResource.CommonPoolResourceRemote.logger
+le2m.parts.CommonPoolResource.CommonPoolResourceServ.logger
+le2m.parts.Dictator.DictatorGui.logger
+le2m.parts.Dictator.DictatorPart.logger
+le2m.parts.Dictator.DictatorRemote.logger
+le2m.parts.Dictator.DictatorServ.logger
+le2m.parts.GneezyPotter.GneezyPotterGui.logger
+le2m.parts.GneezyPotter.GneezyPotterPart.logger
+le2m.parts.GneezyPotter.GneezyPotterRemote.logger
+le2m.parts.GneezyPotter.GneezyPotterServ.logger
+le2m.parts.PublicGoodGame.PublicGoodGameGui.logger
+le2m.parts.PublicGoodGame.PublicGoodGamePart.logger
+le2m.parts.PublicGoodGame.PublicGoodGameRemote.logger
+le2m.parts.PublicGoodGame.PublicGoodGameServ.logger
+le2m.parts.PublicGoodGlobalLocal.PublicGoodGlobalLocalGui.logger
+le2m.parts.PublicGoodGlobalLocal.PublicGoodGlobalLocalPart.logger
+le2m.parts.PublicGoodGlobalLocal.PublicGoodGlobalLocalRemote.logger
+le2m.parts.PublicGoodGlobalLocal.PublicGoodGlobalLocalServ.logger
+le2m.parts.TeamCommunication.TeamCommunicationGui.logger
+le2m.parts.TeamCommunication.TeamCommunicationPart.logger
+le2m.parts.TeamCommunication.TeamCommunicationRemote.logger
+le2m.parts.TeamCommunication.TeamCommunicationServ.logger
+le2m.parts.prisonnersDilemma.prisonnersDilemmaGui.logger
+le2m.parts.prisonnersDilemma.prisonnersDilemmaPart.logger
+le2m.parts.prisonnersDilemma.prisonnersDilemmaRemote.logger
+le2m.parts.prisonnersDilemma.prisonnersDilemmaServ.logger
+le2m.questcomp.questcompgui.logger
+le2m.questcomp.questcompmod.logger
+le2m.questcomp.questcomputil.logger
+le2m.server.serv.logger
+le2m.server.servgest.servgestbase.logger
+le2m.server.servgest.servgestexpe.logger
+le2m.server.servgest.servgestgroups.logger
+le2m.server.servgest.servgestgui.logger
+le2m.server.servgest.servgestplayers.logger
+le2m.server.servgui.servguidialogs.logger
+le2m.server.servgui.servguiwindows.logger
+le2m.server.servparties.logger
+le2m.server.servplayers.logger
+le2m.util.utiltools.logger" class="py-name" href="#" onclick="return doclink('link-38', 'logger', 'link-29');">logger</a></tt><tt class="py-op">.</tt><tt id="link-39" class="py-name"><a title="le2m.server.servplayers.Joueur.info" class="py-name" href="#" onclick="return doclink('link-39', 'info', 'link-37');">info</a></tt><tt class="py-op">(</tt><tt class="py-string">u"Logger LE2M created"</tt><tt class="py-op">)</tt> </tt>
+<a name="L84"></a><tt class="py-lineno">84</tt>  <tt class="py-line">    <tt id="link-40" class="py-name"><a title="le2m.client.clt.logger
+le2m.client.cltgui.cltguidialogs.logger
+le2m.client.cltremote.logger
+le2m.creator.creator.logger
+le2m.creator.filestocopy.creator_Gui.logger
+le2m.creator.filestocopy.creator_Part.logger
+le2m.creator.filestocopy.creator_Remote.logger
+le2m.creator.filestocopy.creator_Serv.logger
+le2m.extractor.extractorgui.logger
+le2m.parts.CommonPoolResource.CommonPoolResourceGui.logger
+le2m.parts.CommonPoolResource.CommonPoolResourcePart.logger
+le2m.parts.CommonPoolResource.CommonPoolResourceRemote.logger
+le2m.parts.CommonPoolResource.CommonPoolResourceServ.logger
+le2m.parts.Dictator.DictatorGui.logger
+le2m.parts.Dictator.DictatorPart.logger
+le2m.parts.Dictator.DictatorRemote.logger
+le2m.parts.Dictator.DictatorServ.logger
+le2m.parts.GneezyPotter.GneezyPotterGui.logger
+le2m.parts.GneezyPotter.GneezyPotterPart.logger
+le2m.parts.GneezyPotter.GneezyPotterRemote.logger
+le2m.parts.GneezyPotter.GneezyPotterServ.logger
+le2m.parts.PublicGoodGame.PublicGoodGameGui.logger
+le2m.parts.PublicGoodGame.PublicGoodGamePart.logger
+le2m.parts.PublicGoodGame.PublicGoodGameRemote.logger
+le2m.parts.PublicGoodGame.PublicGoodGameServ.logger
+le2m.parts.PublicGoodGlobalLocal.PublicGoodGlobalLocalGui.logger
+le2m.parts.PublicGoodGlobalLocal.PublicGoodGlobalLocalPart.logger
+le2m.parts.PublicGoodGlobalLocal.PublicGoodGlobalLocalRemote.logger
+le2m.parts.PublicGoodGlobalLocal.PublicGoodGlobalLocalServ.logger
+le2m.parts.TeamCommunication.TeamCommunicationGui.logger
+le2m.parts.TeamCommunication.TeamCommunicationPart.logger
+le2m.parts.TeamCommunication.TeamCommunicationRemote.logger
+le2m.parts.TeamCommunication.TeamCommunicationServ.logger
+le2m.parts.prisonnersDilemma.prisonnersDilemmaGui.logger
+le2m.parts.prisonnersDilemma.prisonnersDilemmaPart.logger
+le2m.parts.prisonnersDilemma.prisonnersDilemmaRemote.logger
+le2m.parts.prisonnersDilemma.prisonnersDilemmaServ.logger
+le2m.questcomp.questcompgui.logger
+le2m.questcomp.questcompmod.logger
+le2m.questcomp.questcomputil.logger
+le2m.server.serv.logger
+le2m.server.servgest.servgestbase.logger
+le2m.server.servgest.servgestexpe.logger
+le2m.server.servgest.servgestgroups.logger
+le2m.server.servgest.servgestgui.logger
+le2m.server.servgest.servgestplayers.logger
+le2m.server.servgui.servguidialogs.logger
+le2m.server.servgui.servguiwindows.logger
+le2m.server.servparties.logger
+le2m.server.servplayers.logger
+le2m.util.utiltools.logger" class="py-name" href="#" onclick="return doclink('link-40', 'logger', 'link-29');">logger</a></tt><tt class="py-op">.</tt><tt id="link-41" class="py-name"><a title="le2m.server.servplayers.Joueur.info" class="py-name" href="#" onclick="return doclink('link-41', 'info', 'link-37');">info</a></tt><tt class="py-op">(</tt><tt class="py-string">"Command ligne options: {}"</tt><tt class="py-op">.</tt><tt class="py-name">format</tt><tt class="py-op">(</tt><tt class="py-name">options</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L85"></a><tt class="py-lineno">85</tt>  <tt class="py-line"> </tt>
+<a name="L86"></a><tt class="py-lineno">86</tt>  <tt class="py-line">    <tt class="py-comment"># start remote -------------------------------------------------------------</tt> </tt>
+<a name="L87"></a><tt class="py-lineno">87</tt>  <tt class="py-line">    <tt class="py-keyword">from</tt> <tt id="link-42" class="py-name" targets="Package le2m.client=le2m.client-module.html"><a title="le2m.client" class="py-name" href="#" onclick="return doclink('link-42', 'client', 'link-42');">client</a></tt> <tt class="py-keyword">import</tt> <tt id="link-43" class="py-name" targets="Module le2m.client.clt=le2m.client.clt-module.html"><a title="le2m.client.clt" class="py-name" href="#" onclick="return doclink('link-43', 'clt', 'link-43');">clt</a></tt>  <tt class="py-comment"># after appdir and le2mtrans</tt> </tt>
+<a name="L88"></a><tt class="py-lineno">88</tt>  <tt class="py-line"> </tt>
+<a name="L89"></a><tt class="py-lineno">89</tt>  <tt class="py-line">    <tt id="link-44" class="py-name"><a title="le2m.client" class="py-name" href="#" onclick="return doclink('link-44', 'client', 'link-42');">client</a></tt> <tt class="py-op">=</tt> <tt id="link-45" class="py-name"><a title="le2m.client.clt" class="py-name" href="#" onclick="return doclink('link-45', 'clt', 'link-43');">clt</a></tt><tt class="py-op">.</tt><tt id="link-46" class="py-name" targets="Class le2m.client.clt.Client=le2m.client.clt.Client-class.html"><a title="le2m.client.clt.Client" class="py-name" href="#" onclick="return doclink('link-46', 'Client', 'link-46');">Client</a></tt><tt class="py-op">(</tt><tt class="py-name">args</tt><tt class="py-op">.</tt><tt id="link-47" class="py-name" targets="Method le2m.client.clt.Client.automatique()=le2m.client.clt.Client-class.html#automatique,Variable le2m.server.servparties.PartieBase.automatique=le2m.server.servparties.PartieBase-class.html#automatique"><a title="le2m.client.clt.Client.automatique
+le2m.server.servparties.PartieBase.automatique" class="py-name" href="#" onclick="return doclink('link-47', 'automatique', 'link-47');">automatique</a></tt><tt class="py-op">,</tt> <tt class="py-name">args</tt><tt class="py-op">.</tt><tt id="link-48" class="py-name" targets="Method le2m.client.clt.Client.simulation()=le2m.client.clt.Client-class.html#simulation,Variable le2m.server.servparties.PartieBase.simulation=le2m.server.servparties.PartieBase-class.html#simulation"><a title="le2m.client.clt.Client.simulation
+le2m.server.servparties.PartieBase.simulation" class="py-name" href="#" onclick="return doclink('link-48', 'simulation', 'link-48');">simulation</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L90"></a><tt class="py-lineno">90</tt>  <tt class="py-line">    <tt id="link-49" class="py-name"><a title="le2m.client" class="py-name" href="#" onclick="return doclink('link-49', 'client', 'link-42');">client</a></tt><tt class="py-op">.</tt><tt id="link-50" class="py-name" targets="Method le2m.client.clt.Client.start()=le2m.client.clt.Client-class.html#start,Method le2m.server.serv.Serveur.start()=le2m.server.serv.Serveur-class.html#start,Method le2m.server.servparties.PartieQuestionnaireFinal.start()=le2m.server.servparties.PartieQuestionnaireFinal-class.html#start"><a title="le2m.client.clt.Client.start
+le2m.server.serv.Serveur.start
+le2m.server.servparties.PartieQuestionnaireFinal.start" class="py-name" href="#" onclick="return doclink('link-50', 'start', 'link-50');">start</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L91"></a><tt class="py-lineno">91</tt>  <tt class="py-line"> </tt>
+<a name="L92"></a><tt class="py-lineno">92</tt>  <tt class="py-line"> </tt>
+<a name="L93"></a><tt class="py-lineno">93</tt>  <tt class="py-line"><tt class="py-keyword">if</tt> <tt class="py-name">__name__</tt> <tt class="py-op">==</tt> <tt class="py-string">'__main__'</tt><tt class="py-op">:</tt> </tt>
+<a name="L94"></a><tt class="py-lineno">94</tt>  <tt class="py-line">    <tt id="link-51" class="py-name" targets="Function le2m.clientrun.main()=le2m.clientrun-module.html#main,Function le2m.serverrun.main()=le2m.serverrun-module.html#main"><a title="le2m.clientrun.main
+le2m.serverrun.main" class="py-name" href="#" onclick="return doclink('link-51', 'main', 'link-51');">main</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L95"></a><tt class="py-lineno">95</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="le2m-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Thu Nov 26 10:28:11 2015
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

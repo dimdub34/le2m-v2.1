@@ -1,0 +1,1142 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>le2m.server.servgui.servguidialogs</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="le2m-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="le2m-module.html">Package&nbsp;le2m</a> ::
+        <a href="le2m.server-module.html">Package&nbsp;server</a> ::
+        <a href="le2m.server.servgui-module.html">Package&nbsp;servgui</a> ::
+        Module&nbsp;servguidialogs
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="le2m.server.servgui.servguidialogs-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="le2m.server.servgui.servguidialogs-module.html">Module le2m.server.servgui.servguidialogs</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"><tt class="py-comment"># -*- coding: utf-8 -*-</tt> </tt>
+<a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"> </tt>
+<a name="L3"></a><tt class="py-lineno">  3</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">os</tt> </tt>
+<a name="L4"></a><tt class="py-lineno">  4</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">logging</tt> </tt>
+<a name="L5"></a><tt class="py-lineno">  5</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">csv</tt> </tt>
+<a name="L6"></a><tt class="py-lineno">  6</tt>  <tt class="py-line"> </tt>
+<a name="L7"></a><tt class="py-lineno">  7</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">PyQt4</tt> <tt class="py-keyword">import</tt> <tt class="py-name">QtGui</tt><tt class="py-op">,</tt> <tt class="py-name">QtCore</tt> </tt>
+<a name="L8"></a><tt class="py-lineno">  8</tt>  <tt class="py-line"> </tt>
+<a name="L9"></a><tt class="py-lineno">  9</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-0" class="py-name" targets="Package le2m.configuration=le2m.configuration-module.html"><a title="le2m.configuration" class="py-name" href="#" onclick="return doclink('link-0', 'configuration', 'link-0');">configuration</a></tt> <tt class="py-keyword">import</tt> <tt id="link-1" class="py-name" targets="Module le2m.configuration.configparam=le2m.configuration.configparam-module.html"><a title="le2m.configuration.configparam" class="py-name" href="#" onclick="return doclink('link-1', 'configparam', 'link-1');">configparam</a></tt> <tt class="py-keyword">as</tt> <tt class="py-name">params</tt> </tt>
+<a name="L10"></a><tt class="py-lineno"> 10</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-2" class="py-name"><a title="le2m.configuration" class="py-name" href="#" onclick="return doclink('link-2', 'configuration', 'link-0');">configuration</a></tt><tt class="py-op">.</tt><tt id="link-3" class="py-name" targets="Module le2m.configuration.configconst=le2m.configuration.configconst-module.html"><a title="le2m.configuration.configconst" class="py-name" href="#" onclick="return doclink('link-3', 'configconst', 'link-3');">configconst</a></tt> <tt class="py-keyword">import</tt> <tt id="link-4" class="py-name" targets="Variable le2m.configuration.configconst.HOMME=le2m.configuration.configconst-module.html#HOMME"><a title="le2m.configuration.configconst.HOMME" class="py-name" href="#" onclick="return doclink('link-4', 'HOMME', 'link-4');">HOMME</a></tt><tt class="py-op">,</tt> <tt id="link-5" class="py-name" targets="Variable le2m.configuration.configconst.FEMME=le2m.configuration.configconst-module.html#FEMME"><a title="le2m.configuration.configconst.FEMME" class="py-name" href="#" onclick="return doclink('link-5', 'FEMME', 'link-5');">FEMME</a></tt> </tt>
+<a name="L11"></a><tt class="py-lineno"> 11</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-6" class="py-name"><a title="le2m.configuration" class="py-name" href="#" onclick="return doclink('link-6', 'configuration', 'link-0');">configuration</a></tt><tt class="py-op">.</tt><tt id="link-7" class="py-name" targets="Module le2m.configuration.configvar=le2m.configuration.configvar-module.html"><a title="le2m.configuration.configvar" class="py-name" href="#" onclick="return doclink('link-7', 'configvar', 'link-7');">configvar</a></tt> <tt class="py-keyword">import</tt> <tt id="link-8" class="py-name" targets="Class le2m.configuration.configvar.Experiment=le2m.configuration.configvar.Experiment-class.html"><a title="le2m.configuration.configvar.Experiment" class="py-name" href="#" onclick="return doclink('link-8', 'Experiment', 'link-8');">Experiment</a></tt> </tt>
+<a name="L12"></a><tt class="py-lineno"> 12</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-9" class="py-name" targets="Package le2m.util=le2m.util-module.html"><a title="le2m.util" class="py-name" href="#" onclick="return doclink('link-9', 'util', 'link-9');">util</a></tt><tt class="py-op">.</tt><tt id="link-10" class="py-name" targets="Module le2m.util.utili18n=le2m.util.utili18n-module.html"><a title="le2m.util.utili18n" class="py-name" href="#" onclick="return doclink('link-10', 'utili18n', 'link-10');">utili18n</a></tt> <tt class="py-keyword">import</tt> <tt id="link-11" class="py-name" targets="Variable le2m.util.utili18n.le2mtrans=le2m.util.utili18n-module.html#le2mtrans"><a title="le2m.util.utili18n.le2mtrans" class="py-name" href="#" onclick="return doclink('link-11', 'le2mtrans', 'link-11');">le2mtrans</a></tt> </tt>
+<a name="L13"></a><tt class="py-lineno"> 13</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-12" class="py-name" targets="Package le2m.server=le2m.server-module.html"><a title="le2m.server" class="py-name" href="#" onclick="return doclink('link-12', 'server', 'link-12');">server</a></tt><tt class="py-op">.</tt><tt id="link-13" class="py-name" targets="Package le2m.server.servgui=le2m.server.servgui-module.html"><a title="le2m.server.servgui" class="py-name" href="#" onclick="return doclink('link-13', 'servgui', 'link-13');">servgui</a></tt><tt class="py-op">.</tt><tt id="link-14" class="py-name" targets="Package le2m.server.servgui.servguisrc=le2m.server.servgui.servguisrc-module.html"><a title="le2m.server.servgui.servguisrc" class="py-name" href="#" onclick="return doclink('link-14', 'servguisrc', 'link-14');">servguisrc</a></tt> <tt class="py-keyword">import</tt> <tt id="link-15" class="py-name" targets="Module le2m.server.servgui.servguisrc.servguipartsload=le2m.server.servgui.servguisrc.servguipartsload-module.html"><a title="le2m.server.servgui.servguisrc.servguipartsload" class="py-name" href="#" onclick="return doclink('link-15', 'servguipartsload', 'link-15');">servguipartsload</a></tt><tt class="py-op">,</tt> <tt id="link-16" class="py-name" targets="Module le2m.server.servgui.servguisrc.servguiinfo=le2m.server.servgui.servguisrc.servguiinfo-module.html"><a title="le2m.server.servgui.servguisrc.servguiinfo" class="py-name" href="#" onclick="return doclink('link-16', 'servguiinfo', 'link-16');">servguiinfo</a></tt><tt class="py-op">,</tt> \ </tt>
+<a name="L14"></a><tt class="py-lineno"> 14</tt>  <tt class="py-line">    <tt id="link-17" class="py-name" targets="Module le2m.server.servgui.servguisrc.servguipayoffs=le2m.server.servgui.servguisrc.servguipayoffs-module.html"><a title="le2m.server.servgui.servguisrc.servguipayoffs" class="py-name" href="#" onclick="return doclink('link-17', 'servguipayoffs', 'link-17');">servguipayoffs</a></tt><tt class="py-op">,</tt> <tt id="link-18" class="py-name" targets="Module le2m.server.servgui.servguisrc.servguigenders=le2m.server.servgui.servguisrc.servguigenders-module.html"><a title="le2m.server.servgui.servguisrc.servguigenders" class="py-name" href="#" onclick="return doclink('link-18', 'servguigenders', 'link-18');">servguigenders</a></tt><tt class="py-op">,</tt> <tt id="link-19" class="py-name" targets="Module le2m.server.servgui.servguisrc.servguipartsplayed=le2m.server.servgui.servguisrc.servguipartsplayed-module.html"><a title="le2m.server.servgui.servguisrc.servguipartsplayed" class="py-name" href="#" onclick="return doclink('link-19', 'servguipartsplayed', 'link-19');">servguipartsplayed</a></tt> </tt>
+<a name="L15"></a><tt class="py-lineno"> 15</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-20" class="py-name" targets="Module le2m.server.servgui.servguitablemodels=le2m.server.servgui.servguitablemodels-module.html"><a title="le2m.server.servgui.servguitablemodels" class="py-name" href="#" onclick="return doclink('link-20', 'servguitablemodels', 'link-20');">servguitablemodels</a></tt> <tt class="py-keyword">import</tt> <tt id="link-21" class="py-name" targets="Class le2m.server.servgui.servguitablemodels.TableModelPaiements=le2m.server.servgui.servguitablemodels.TableModelPaiements-class.html"><a title="le2m.server.servgui.servguitablemodels.TableModelPaiements" class="py-name" href="#" onclick="return doclink('link-21', 'TableModelPaiements', 'link-21');">TableModelPaiements</a></tt> </tt>
+<a name="L16"></a><tt class="py-lineno"> 16</tt>  <tt class="py-line"> </tt>
+<a name="L17"></a><tt class="py-lineno"> 17</tt>  <tt class="py-line"> </tt>
+<a name="L18"></a><tt class="py-lineno"> 18</tt>  <tt class="py-line"><tt id="link-22" class="py-name" targets="Variable le2m.client.clt.logger=le2m.client.clt-module.html#logger,Variable le2m.client.cltgui.cltguidialogs.logger=le2m.client.cltgui.cltguidialogs-module.html#logger,Variable le2m.client.cltremote.logger=le2m.client.cltremote-module.html#logger,Variable le2m.creator.creator.logger=le2m.creator.creator-module.html#logger,Variable le2m.creator.filestocopy.creator_Gui.logger=le2m.creator.filestocopy.creator_Gui-module.html#logger,Variable le2m.creator.filestocopy.creator_Part.logger=le2m.creator.filestocopy.creator_Part-module.html#logger,Variable le2m.creator.filestocopy.creator_Remote.logger=le2m.creator.filestocopy.creator_Remote-module.html#logger,Variable le2m.creator.filestocopy.creator_Serv.logger=le2m.creator.filestocopy.creator_Serv-module.html#logger,Variable le2m.extractor.extractorgui.logger=le2m.extractor.extractorgui-module.html#logger,Variable le2m.parts.Dictator.DictatorGui.logger=le2m.parts.Dictator.DictatorGui-module.html#logger,Variable le2m.parts.Dictator.DictatorPart.logger=le2m.parts.Dictator.DictatorPart-module.html#logger,Variable le2m.parts.Dictator.DictatorRemote.logger=le2m.parts.Dictator.DictatorRemote-module.html#logger,Variable le2m.parts.Dictator.DictatorServ.logger=le2m.parts.Dictator.DictatorServ-module.html#logger,Variable le2m.parts.GneezyPotter.GneezyPotterGui.logger=le2m.parts.GneezyPotter.GneezyPotterGui-module.html#logger,Variable le2m.parts.GneezyPotter.GneezyPotterPart.logger=le2m.parts.GneezyPotter.GneezyPotterPart-module.html#logger,Variable le2m.parts.GneezyPotter.GneezyPotterRemote.logger=le2m.parts.GneezyPotter.GneezyPotterRemote-module.html#logger,Variable le2m.parts.GneezyPotter.GneezyPotterServ.logger=le2m.parts.GneezyPotter.GneezyPotterServ-module.html#logger,Variable le2m.parts.PublicGoodGame.PublicGoodGameGui.logger=le2m.parts.PublicGoodGame.PublicGoodGameGui-module.html#logger,Variable le2m.parts.PublicGoodGame.PublicGoodGamePart.logger=le2m.parts.PublicGoodGame.PublicGoodGamePart-module.html#logger,Variable le2m.parts.PublicGoodGame.PublicGoodGameRemote.logger=le2m.parts.PublicGoodGame.PublicGoodGameRemote-module.html#logger,Variable le2m.parts.PublicGoodGame.PublicGoodGameServ.logger=le2m.parts.PublicGoodGame.PublicGoodGameServ-module.html#logger,Variable le2m.questcomp.questcompgui.logger=le2m.questcomp.questcompgui-module.html#logger,Variable le2m.questcomp.questcompmod.logger=le2m.questcomp.questcompmod-module.html#logger,Variable le2m.questcomp.questcomputil.logger=le2m.questcomp.questcomputil-module.html#logger,Variable le2m.server.serv.logger=le2m.server.serv-module.html#logger,Variable le2m.server.servgest.servgestbase.logger=le2m.server.servgest.servgestbase-module.html#logger,Variable le2m.server.servgest.servgestexpe.logger=le2m.server.servgest.servgestexpe-module.html#logger,Variable le2m.server.servgest.servgestgroups.logger=le2m.server.servgest.servgestgroups-module.html#logger,Variable le2m.server.servgest.servgestgui.logger=le2m.server.servgest.servgestgui-module.html#logger,Variable le2m.server.servgest.servgestplayers.logger=le2m.server.servgest.servgestplayers-module.html#logger,Variable le2m.server.servgui.servguidialogs.logger=le2m.server.servgui.servguidialogs-module.html#logger,Variable le2m.server.servgui.servguiwindows.logger=le2m.server.servgui.servguiwindows-module.html#logger,Variable le2m.server.servparties.logger=le2m.server.servparties-module.html#logger,Variable le2m.server.servplayers.logger=le2m.server.servplayers-module.html#logger,Variable le2m.util.utiltools.logger=le2m.util.utiltools-module.html#logger"><a title="le2m.client.clt.logger
+le2m.client.cltgui.cltguidialogs.logger
+le2m.client.cltremote.logger
+le2m.creator.creator.logger
+le2m.creator.filestocopy.creator_Gui.logger
+le2m.creator.filestocopy.creator_Part.logger
+le2m.creator.filestocopy.creator_Remote.logger
+le2m.creator.filestocopy.creator_Serv.logger
+le2m.extractor.extractorgui.logger
+le2m.parts.Dictator.DictatorGui.logger
+le2m.parts.Dictator.DictatorPart.logger
+le2m.parts.Dictator.DictatorRemote.logger
+le2m.parts.Dictator.DictatorServ.logger
+le2m.parts.GneezyPotter.GneezyPotterGui.logger
+le2m.parts.GneezyPotter.GneezyPotterPart.logger
+le2m.parts.GneezyPotter.GneezyPotterRemote.logger
+le2m.parts.GneezyPotter.GneezyPotterServ.logger
+le2m.parts.PublicGoodGame.PublicGoodGameGui.logger
+le2m.parts.PublicGoodGame.PublicGoodGamePart.logger
+le2m.parts.PublicGoodGame.PublicGoodGameRemote.logger
+le2m.parts.PublicGoodGame.PublicGoodGameServ.logger
+le2m.questcomp.questcompgui.logger
+le2m.questcomp.questcompmod.logger
+le2m.questcomp.questcomputil.logger
+le2m.server.serv.logger
+le2m.server.servgest.servgestbase.logger
+le2m.server.servgest.servgestexpe.logger
+le2m.server.servgest.servgestgroups.logger
+le2m.server.servgest.servgestgui.logger
+le2m.server.servgest.servgestplayers.logger
+le2m.server.servgui.servguidialogs.logger
+le2m.server.servgui.servguiwindows.logger
+le2m.server.servparties.logger
+le2m.server.servplayers.logger
+le2m.util.utiltools.logger" class="py-name" href="#" onclick="return doclink('link-22', 'logger', 'link-22');">logger</a></tt> <tt class="py-op">=</tt> <tt class="py-name">logging</tt><tt class="py-op">.</tt><tt class="py-name">getLogger</tt><tt class="py-op">(</tt><tt class="py-string">"le2m.{}"</tt><tt class="py-op">.</tt><tt class="py-name">format</tt><tt class="py-op">(</tt><tt class="py-name">__name__</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L19"></a><tt class="py-lineno"> 19</tt>  <tt class="py-line"> </tt>
+<a name="L20"></a><tt class="py-lineno"> 20</tt>  <tt class="py-line"> </tt>
+<a name="GuiGenres"></a><div id="GuiGenres-def"><a name="L21"></a><tt class="py-lineno"> 21</tt> <a class="py-toggle" href="#" id="GuiGenres-toggle" onclick="return toggle('GuiGenres');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="le2m.server.servgui.servguidialogs.GuiGenres-class.html">GuiGenres</a><tt class="py-op">(</tt><tt class="py-base-class">QtGui</tt><tt class="py-op">.</tt><tt class="py-base-class">QDialog</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="GuiGenres-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="GuiGenres-expanded"><a name="L22"></a><tt class="py-lineno"> 22</tt>  <tt class="py-line">    <tt class="py-docstring">"""</tt> </tt>
+<a name="L23"></a><tt class="py-lineno"> 23</tt>  <tt class="py-line"><tt class="py-docstring">    Boite de dialogue qui permet de cocher les femmes dans la listes des postes</tt> </tt>
+<a name="L24"></a><tt class="py-lineno"> 24</tt>  <tt class="py-line"><tt class="py-docstring">    connect&#233;s au serveur</tt> </tt>
+<a name="L25"></a><tt class="py-lineno"> 25</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="GuiGenres.__init__"></a><div id="GuiGenres.__init__-def"><a name="L26"></a><tt class="py-lineno"> 26</tt> <a class="py-toggle" href="#" id="GuiGenres.__init__-toggle" onclick="return toggle('GuiGenres.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="le2m.server.servgui.servguidialogs.GuiGenres-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">liste_joueurs</tt><tt class="py-op">,</tt> <tt class="py-param">parent</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="GuiGenres.__init__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="GuiGenres.__init__-expanded"><a name="L27"></a><tt class="py-lineno"> 27</tt>  <tt class="py-line">        <tt class="py-name">super</tt><tt class="py-op">(</tt><tt id="link-23" class="py-name" targets="Class le2m.server.servgui.servguidialogs.GuiGenres=le2m.server.servgui.servguidialogs.GuiGenres-class.html"><a title="le2m.server.servgui.servguidialogs.GuiGenres" class="py-name" href="#" onclick="return doclink('link-23', 'GuiGenres', 'link-23');">GuiGenres</a></tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt id="link-24" class="py-name" targets="Method le2m.client.clt.Client.__init__()=le2m.client.clt.Client-class.html#__init__,Method le2m.client.cltgui.cltguidialogs.GuiAccueil.__init__()=le2m.client.cltgui.cltguidialogs.GuiAccueil-class.html#__init__,Method le2m.client.cltgui.cltguidialogs.GuiFinal.__init__()=le2m.client.cltgui.cltguidialogs.GuiFinal-class.html#__init__,Method le2m.client.cltgui.cltguidialogs.GuiHistorique.__init__()=le2m.client.cltgui.cltguidialogs.GuiHistorique-class.html#__init__,Method le2m.client.cltgui.cltguidialogs.GuiPopup.__init__()=le2m.client.cltgui.cltguidialogs.GuiPopup-class.html#__init__,Method le2m.client.cltgui.cltguidialogs.GuiQuestionnaireFinal.__init__()=le2m.client.cltgui.cltguidialogs.GuiQuestionnaireFinal-class.html#__init__,Method le2m.client.cltgui.cltguidialogs.GuiRecapitulatif.__init__()=le2m.client.cltgui.cltguidialogs.GuiRecapitulatif-class.html#__init__,Method le2m.client.cltgui.cltguiforms.GuiAttente.__init__()=le2m.client.cltgui.cltguiforms.GuiAttente-class.html#__init__,Method le2m.client.cltgui.cltguitablemodels.TableModelHistorique.__init__()=le2m.client.cltgui.cltguitablemodels.TableModelHistorique-class.html#__init__,Method le2m.client.cltremote.RemoteBase.__init__()=le2m.client.cltremote.RemoteBase-class.html#__init__,Method le2m.client.cltremote.RemoteQuestionnaireFinal.__init__()=le2m.client.cltremote.RemoteQuestionnaireFinal-class.html#__init__,Method le2m.creator.creatorgui.GuiCreator.__init__()=le2m.creator.creatorgui.GuiCreator-class.html#__init__,Method le2m.creator.filestocopy.creator_Gui.GuiDecision.__init__()=le2m.creator.filestocopy.creator_Gui.GuiDecision-class.html#__init__,Method le2m.creator.filestocopy.creator_Part.PartieEXPERIENCE_NOM_COURT.__init__()=le2m.creator.filestocopy.creator_Part.PartieEXPERIENCE_NOM_COURT-class.html#__init__,Method le2m.creator.filestocopy.creator_Part.RepetitionsEXPERIENCE_NOM_COURT.__init__()=le2m.creator.filestocopy.creator_Part.RepetitionsEXPERIENCE_NOM_COURT-class.html#__init__,Method le2m.creator.filestocopy.creator_Remote.RemoteEXPERIENCE_NOM_COURT.__init__()=le2m.creator.filestocopy.creator_Remote.RemoteEXPERIENCE_NOM_COURT-class.html#__init__,Method le2m.creator.filestocopy.creator_Serv.Serveur.__init__()=le2m.creator.filestocopy.creator_Serv.Serveur-class.html#__init__,Method le2m.extractor.extractorgui.GuiExtractor.__init__()=le2m.extractor.extractorgui.GuiExtractor-class.html#__init__,Method le2m.parts.Dictator.DictatorGui.GuiDecision.__init__()=le2m.parts.Dictator.DictatorGui.GuiDecision-class.html#__init__,Method le2m.parts.Dictator.DictatorPart.PartieDIC.__init__()=le2m.parts.Dictator.DictatorPart.PartieDIC-class.html#__init__,Method le2m.parts.Dictator.DictatorPart.RepetitionsDIC.__init__()=le2m.parts.Dictator.DictatorPart.RepetitionsDIC-class.html#__init__,Method le2m.parts.Dictator.DictatorRemote.RemoteDIC.__init__()=le2m.parts.Dictator.DictatorRemote.RemoteDIC-class.html#__init__,Method le2m.parts.Dictator.DictatorServ.Serveur.__init__()=le2m.parts.Dictator.DictatorServ.Serveur-class.html#__init__,Method le2m.parts.GneezyPotter.GneezyPotterGui.GuiConfigure.__init__()=le2m.parts.GneezyPotter.GneezyPotterGui.GuiConfigure-class.html#__init__,Method le2m.parts.GneezyPotter.GneezyPotterGui.GuiDecision.__init__()=le2m.parts.GneezyPotter.GneezyPotterGui.GuiDecision-class.html#__init__,Method le2m.parts.GneezyPotter.GneezyPotterPart.PartieGP.__init__()=le2m.parts.GneezyPotter.GneezyPotterPart.PartieGP-class.html#__init__,Method le2m.parts.GneezyPotter.GneezyPotterPart.RepetitionsGP.__init__()=le2m.parts.GneezyPotter.GneezyPotterPart.RepetitionsGP-class.html#__init__,Method le2m.parts.GneezyPotter.GneezyPotterRemote.RemoteGP.__init__()=le2m.parts.GneezyPotter.GneezyPotterRemote.RemoteGP-class.html#__init__,Method le2m.parts.GneezyPotter.GneezyPotterServ.Serveur.__init__()=le2m.parts.GneezyPotter.GneezyPotterServ.Serveur-class.html#__init__,Method le2m.parts.PublicGoodGame.PublicGoodGameGui.GuiDecision.__init__()=le2m.parts.PublicGoodGame.PublicGoodGameGui.GuiDecision-class.html#__init__,Method le2m.parts.PublicGoodGame.PublicGoodGamePart.PartiePGG.__init__()=le2m.parts.PublicGoodGame.PublicGoodGamePart.PartiePGG-class.html#__init__,Method le2m.parts.PublicGoodGame.PublicGoodGamePart.RepetitionsPGG.__init__()=le2m.parts.PublicGoodGame.PublicGoodGamePart.RepetitionsPGG-class.html#__init__,Method le2m.parts.PublicGoodGame.PublicGoodGameRemote.RemotePGG.__init__()=le2m.parts.PublicGoodGame.PublicGoodGameRemote.RemotePGG-class.html#__init__,Method le2m.parts.PublicGoodGame.PublicGoodGameServ.Serveur.__init__()=le2m.parts.PublicGoodGame.PublicGoodGameServ.Serveur-class.html#__init__,Method le2m.questcomp.questcompgui.GuiQuestComp.__init__()=le2m.questcomp.questcompgui.GuiQuestComp-class.html#__init__,Method le2m.questcomp.questcompgui.GuiQuestCompQuest.__init__()=le2m.questcomp.questcompgui.GuiQuestCompQuest-class.html#__init__,Method le2m.questcomp.questcompgui.GuiQuestEdit.__init__()=le2m.questcomp.questcompgui.GuiQuestEdit-class.html#__init__,Method le2m.questcomp.questcompmod.Question.__init__()=le2m.questcomp.questcompmod.Question-class.html#__init__,Method le2m.questcomp.questcompmod.Questionnaire.__init__()=le2m.questcomp.questcompmod.Questionnaire-class.html#__init__,Method le2m.server.serv.Serveur.__init__()=le2m.server.serv.Serveur-class.html#__init__,Method le2m.server.servgest.servgestbase.GestionnaireBase.__init__()=le2m.server.servgest.servgestbase.GestionnaireBase-class.html#__init__,Method le2m.server.servgest.servgestbase.Session.__init__()=le2m.server.servgest.servgestbase.Session-class.html#__init__,Method le2m.server.servgest.servgestexpe.GestionnaireExperience.__init__()=le2m.server.servgest.servgestexpe.GestionnaireExperience-class.html#__init__,Method le2m.server.servgest.servgestgroups.GestionnaireGroupes.__init__()=le2m.server.servgest.servgestgroups.GestionnaireGroupes-class.html#__init__,Method le2m.server.servgest.servgestgui.GestionnaireGraphique.__init__()=le2m.server.servgest.servgestgui.GestionnaireGraphique-class.html#__init__,Method le2m.server.servgest.servgestplayers.GestionnaireJoueurs.__init__()=le2m.server.servgest.servgestplayers.GestionnaireJoueurs-class.html#__init__,Method le2m.server.servgui.servguidialogs.GuiGenres.__init__()=le2m.server.servgui.servguidialogs.GuiGenres-class.html#__init__,Method le2m.server.servgui.servguidialogs.GuiInformation.__init__()=le2m.server.servgui.servguidialogs.GuiInformation-class.html#__init__,Method le2m.server.servgui.servguidialogs.GuiPartLoad.__init__()=le2m.server.servgui.servguidialogs.GuiPartLoad-class.html#__init__,Method le2m.server.servgui.servguidialogs.GuiPartsPlayed.__init__()=le2m.server.servgui.servguidialogs.GuiPartsPlayed-class.html#__init__,Method le2m.server.servgui.servguidialogs.GuiPayoffs.__init__()=le2m.server.servgui.servguidialogs.GuiPayoffs-class.html#__init__,Method le2m.server.servgui.servguitablemodels.TableModelGenres.__init__()=le2m.server.servgui.servguitablemodels.TableModelGenres-class.html#__init__,Method le2m.server.servgui.servguitablemodels.TableModelJoueurs.__init__()=le2m.server.servgui.servguitablemodels.TableModelJoueurs-class.html#__init__,Method le2m.server.servgui.servguitablemodels.TableModelPaiements.__init__()=le2m.server.servgui.servguitablemodels.TableModelPaiements-class.html#__init__,Method le2m.server.servgui.servguitablemodels.TableModelQuestionnaireFinal.__init__()=le2m.server.servgui.servguitablemodels.TableModelQuestionnaireFinal-class.html#__init__,Method le2m.server.servgui.servguiwindows.GuiServeur.__init__()=le2m.server.servgui.servguiwindows.GuiServeur-class.html#__init__,Method le2m.server.servparties.Partie.__init__()=le2m.server.servparties.Partie-class.html#__init__,Method le2m.server.servparties.PartieBase.__init__()=le2m.server.servparties.PartieBase-class.html#__init__,Method le2m.server.servparties.PartieQuestionnaireFinal.__init__()=le2m.server.servparties.PartieQuestionnaireFinal-class.html#__init__,Method le2m.server.servplayers.Joueur.__init__()=le2m.server.servplayers.Joueur-class.html#__init__,Method le2m.util.utilqtreactor.QTReactor.__init__()=le2m.util.utilqtreactor.QTReactor-class.html#__init__,Method le2m.util.utilqtreactor.TwistedSocketNotifier.__init__()=le2m.util.utilqtreactor.TwistedSocketNotifier-class.html#__init__,Method le2m.util.utilqtreactor.fakeApplication.__init__()=le2m.util.utilqtreactor.fakeApplication-class.html#__init__"><a title="le2m.client.clt.Client.__init__
+le2m.client.cltgui.cltguidialogs.GuiAccueil.__init__
+le2m.client.cltgui.cltguidialogs.GuiFinal.__init__
+le2m.client.cltgui.cltguidialogs.GuiHistorique.__init__
+le2m.client.cltgui.cltguidialogs.GuiPopup.__init__
+le2m.client.cltgui.cltguidialogs.GuiQuestionnaireFinal.__init__
+le2m.client.cltgui.cltguidialogs.GuiRecapitulatif.__init__
+le2m.client.cltgui.cltguiforms.GuiAttente.__init__
+le2m.client.cltgui.cltguitablemodels.TableModelHistorique.__init__
+le2m.client.cltremote.RemoteBase.__init__
+le2m.client.cltremote.RemoteQuestionnaireFinal.__init__
+le2m.creator.creatorgui.GuiCreator.__init__
+le2m.creator.filestocopy.creator_Gui.GuiDecision.__init__
+le2m.creator.filestocopy.creator_Part.PartieEXPERIENCE_NOM_COURT.__init__
+le2m.creator.filestocopy.creator_Part.RepetitionsEXPERIENCE_NOM_COURT.__init__
+le2m.creator.filestocopy.creator_Remote.RemoteEXPERIENCE_NOM_COURT.__init__
+le2m.creator.filestocopy.creator_Serv.Serveur.__init__
+le2m.extractor.extractorgui.GuiExtractor.__init__
+le2m.parts.Dictator.DictatorGui.GuiDecision.__init__
+le2m.parts.Dictator.DictatorPart.PartieDIC.__init__
+le2m.parts.Dictator.DictatorPart.RepetitionsDIC.__init__
+le2m.parts.Dictator.DictatorRemote.RemoteDIC.__init__
+le2m.parts.Dictator.DictatorServ.Serveur.__init__
+le2m.parts.GneezyPotter.GneezyPotterGui.GuiConfigure.__init__
+le2m.parts.GneezyPotter.GneezyPotterGui.GuiDecision.__init__
+le2m.parts.GneezyPotter.GneezyPotterPart.PartieGP.__init__
+le2m.parts.GneezyPotter.GneezyPotterPart.RepetitionsGP.__init__
+le2m.parts.GneezyPotter.GneezyPotterRemote.RemoteGP.__init__
+le2m.parts.GneezyPotter.GneezyPotterServ.Serveur.__init__
+le2m.parts.PublicGoodGame.PublicGoodGameGui.GuiDecision.__init__
+le2m.parts.PublicGoodGame.PublicGoodGamePart.PartiePGG.__init__
+le2m.parts.PublicGoodGame.PublicGoodGamePart.RepetitionsPGG.__init__
+le2m.parts.PublicGoodGame.PublicGoodGameRemote.RemotePGG.__init__
+le2m.parts.PublicGoodGame.PublicGoodGameServ.Serveur.__init__
+le2m.questcomp.questcompgui.GuiQuestComp.__init__
+le2m.questcomp.questcompgui.GuiQuestCompQuest.__init__
+le2m.questcomp.questcompgui.GuiQuestEdit.__init__
+le2m.questcomp.questcompmod.Question.__init__
+le2m.questcomp.questcompmod.Questionnaire.__init__
+le2m.server.serv.Serveur.__init__
+le2m.server.servgest.servgestbase.GestionnaireBase.__init__
+le2m.server.servgest.servgestbase.Session.__init__
+le2m.server.servgest.servgestexpe.GestionnaireExperience.__init__
+le2m.server.servgest.servgestgroups.GestionnaireGroupes.__init__
+le2m.server.servgest.servgestgui.GestionnaireGraphique.__init__
+le2m.server.servgest.servgestplayers.GestionnaireJoueurs.__init__
+le2m.server.servgui.servguidialogs.GuiGenres.__init__
+le2m.server.servgui.servguidialogs.GuiInformation.__init__
+le2m.server.servgui.servguidialogs.GuiPartLoad.__init__
+le2m.server.servgui.servguidialogs.GuiPartsPlayed.__init__
+le2m.server.servgui.servguidialogs.GuiPayoffs.__init__
+le2m.server.servgui.servguitablemodels.TableModelGenres.__init__
+le2m.server.servgui.servguitablemodels.TableModelJoueurs.__init__
+le2m.server.servgui.servguitablemodels.TableModelPaiements.__init__
+le2m.server.servgui.servguitablemodels.TableModelQuestionnaireFinal.__init__
+le2m.server.servgui.servguiwindows.GuiServeur.__init__
+le2m.server.servparties.Partie.__init__
+le2m.server.servparties.PartieBase.__init__
+le2m.server.servparties.PartieQuestionnaireFinal.__init__
+le2m.server.servplayers.Joueur.__init__
+le2m.util.utilqtreactor.QTReactor.__init__
+le2m.util.utilqtreactor.TwistedSocketNotifier.__init__
+le2m.util.utilqtreactor.fakeApplication.__init__" class="py-name" href="#" onclick="return doclink('link-24', '__init__', 'link-24');">__init__</a></tt><tt class="py-op">(</tt><tt class="py-name">parent</tt><tt class="py-op">)</tt> </tt>
+<a name="L28"></a><tt class="py-lineno"> 28</tt>  <tt class="py-line"> </tt>
+<a name="L29"></a><tt class="py-lineno"> 29</tt>  <tt class="py-line">        <tt class="py-comment"># variables</tt> </tt>
+<a name="L30"></a><tt class="py-lineno"> 30</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_liste_joueurs</tt> <tt class="py-op">=</tt> <tt class="py-name">liste_joueurs</tt> </tt>
+<a name="L31"></a><tt class="py-lineno"> 31</tt>  <tt class="py-line"> </tt>
+<a name="L32"></a><tt class="py-lineno"> 32</tt>  <tt class="py-line">        <tt class="py-comment"># cr&#233;ation gui</tt> </tt>
+<a name="L33"></a><tt class="py-lineno"> 33</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">ui</tt> <tt class="py-op">=</tt> <tt id="link-25" class="py-name"><a title="le2m.server.servgui.servguisrc.servguigenders" class="py-name" href="#" onclick="return doclink('link-25', 'servguigenders', 'link-18');">servguigenders</a></tt><tt class="py-op">.</tt><tt id="link-26" class="py-name" targets="Class le2m.client.cltgui.cltguisrc.cltguifinal.Ui_Dialog=le2m.client.cltgui.cltguisrc.cltguifinal.Ui_Dialog-class.html,Class le2m.client.cltgui.cltguisrc.cltguihist.Ui_Dialog=le2m.client.cltgui.cltguisrc.cltguihist.Ui_Dialog-class.html,Class le2m.client.cltgui.cltguisrc.cltguipopup.Ui_Dialog=le2m.client.cltgui.cltguisrc.cltguipopup.Ui_Dialog-class.html,Class le2m.client.cltgui.cltguisrc.cltguiquestfinal.Ui_Dialog=le2m.client.cltgui.cltguisrc.cltguiquestfinal.Ui_Dialog-class.html,Class le2m.client.cltgui.cltguisrc.cltguisummary.Ui_Dialog=le2m.client.cltgui.cltguisrc.cltguisummary.Ui_Dialog-class.html,Class le2m.client.cltgui.cltguisrc.cltguiwelc.Ui_Dialog=le2m.client.cltgui.cltguisrc.cltguiwelc.Ui_Dialog-class.html,Class le2m.creator.creatorui.creatorscreen.Ui_Dialog=le2m.creator.creatorui.creatorscreen.Ui_Dialog-class.html,Class le2m.creator.filestocopy.creator_Decision.Ui_Dialog=le2m.creator.filestocopy.creator_Decision.Ui_Dialog-class.html,Class le2m.extractor.extractorui.extractorscreen.Ui_Dialog=le2m.extractor.extractorui.extractorscreen.Ui_Dialog-class.html,Class le2m.parts.Dictator.DictatorGuiSrc.DictatorDecision.Ui_Dialog=le2m.parts.Dictator.DictatorGuiSrc.DictatorDecision.Ui_Dialog-class.html,Class le2m.parts.GneezyPotter.GneezyPotterGuiSrc.GneezyPotterConfigure.Ui_Dialog=le2m.parts.GneezyPotter.GneezyPotterGuiSrc.GneezyPotterConfigure.Ui_Dialog-class.html,Class le2m.parts.GneezyPotter.GneezyPotterGuiSrc.GneezyPotterDecision.Ui_Dialog=le2m.parts.GneezyPotter.GneezyPotterGuiSrc.GneezyPotterDecision.Ui_Dialog-class.html,Class le2m.parts.PublicGoodGame.PublicGoodGameGuiSrc.PublicGoodGameDecision.Ui_Dialog=le2m.parts.PublicGoodGame.PublicGoodGameGuiSrc.PublicGoodGameDecision.Ui_Dialog-class.html,Class le2m.questcomp.questcompui.questcompquest.Ui_Dialog=le2m.questcomp.questcompui.questcompquest.Ui_Dialog-class.html,Class le2m.questcomp.questcompui.questcompquestedit.Ui_Dialog=le2m.questcomp.questcompui.questcompquestedit.Ui_Dialog-class.html,Class le2m.server.servgui.servguisrc.servguigenders.Ui_Dialog=le2m.server.servgui.servguisrc.servguigenders.Ui_Dialog-class.html,Class le2m.server.servgui.servguisrc.servguiinfo.Ui_Dialog=le2m.server.servgui.servguisrc.servguiinfo.Ui_Dialog-class.html,Class le2m.server.servgui.servguisrc.servguipartsload.Ui_Dialog=le2m.server.servgui.servguisrc.servguipartsload.Ui_Dialog-class.html,Class le2m.server.servgui.servguisrc.servguipartsplayed.Ui_Dialog=le2m.server.servgui.servguisrc.servguipartsplayed.Ui_Dialog-class.html,Class le2m.server.servgui.servguisrc.servguipayoffs.Ui_Dialog=le2m.server.servgui.servguisrc.servguipayoffs.Ui_Dialog-class.html"><a title="le2m.client.cltgui.cltguisrc.cltguifinal.Ui_Dialog
+le2m.client.cltgui.cltguisrc.cltguihist.Ui_Dialog
+le2m.client.cltgui.cltguisrc.cltguipopup.Ui_Dialog
+le2m.client.cltgui.cltguisrc.cltguiquestfinal.Ui_Dialog
+le2m.client.cltgui.cltguisrc.cltguisummary.Ui_Dialog
+le2m.client.cltgui.cltguisrc.cltguiwelc.Ui_Dialog
+le2m.creator.creatorui.creatorscreen.Ui_Dialog
+le2m.creator.filestocopy.creator_Decision.Ui_Dialog
+le2m.extractor.extractorui.extractorscreen.Ui_Dialog
+le2m.parts.Dictator.DictatorGuiSrc.DictatorDecision.Ui_Dialog
+le2m.parts.GneezyPotter.GneezyPotterGuiSrc.GneezyPotterConfigure.Ui_Dialog
+le2m.parts.GneezyPotter.GneezyPotterGuiSrc.GneezyPotterDecision.Ui_Dialog
+le2m.parts.PublicGoodGame.PublicGoodGameGuiSrc.PublicGoodGameDecision.Ui_Dialog
+le2m.questcomp.questcompui.questcompquest.Ui_Dialog
+le2m.questcomp.questcompui.questcompquestedit.Ui_Dialog
+le2m.server.servgui.servguisrc.servguigenders.Ui_Dialog
+le2m.server.servgui.servguisrc.servguiinfo.Ui_Dialog
+le2m.server.servgui.servguisrc.servguipartsload.Ui_Dialog
+le2m.server.servgui.servguisrc.servguipartsplayed.Ui_Dialog
+le2m.server.servgui.servguisrc.servguipayoffs.Ui_Dialog" class="py-name" href="#" onclick="return doclink('link-26', 'Ui_Dialog', 'link-26');">Ui_Dialog</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L34"></a><tt class="py-lineno"> 34</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">ui</tt><tt class="py-op">.</tt><tt id="link-27" class="py-name" targets="Method le2m.client.cltgui.cltguisrc.cltguifinal.Ui_Dialog.setupUi()=le2m.client.cltgui.cltguisrc.cltguifinal.Ui_Dialog-class.html#setupUi,Method le2m.client.cltgui.cltguisrc.cltguihist.Ui_Dialog.setupUi()=le2m.client.cltgui.cltguisrc.cltguihist.Ui_Dialog-class.html#setupUi,Method le2m.client.cltgui.cltguisrc.cltguipopup.Ui_Dialog.setupUi()=le2m.client.cltgui.cltguisrc.cltguipopup.Ui_Dialog-class.html#setupUi,Method le2m.client.cltgui.cltguisrc.cltguiquestfinal.Ui_Dialog.setupUi()=le2m.client.cltgui.cltguisrc.cltguiquestfinal.Ui_Dialog-class.html#setupUi,Method le2m.client.cltgui.cltguisrc.cltguisummary.Ui_Dialog.setupUi()=le2m.client.cltgui.cltguisrc.cltguisummary.Ui_Dialog-class.html#setupUi,Method le2m.client.cltgui.cltguisrc.cltguiwait.Ui_WaitingScreen.setupUi()=le2m.client.cltgui.cltguisrc.cltguiwait.Ui_WaitingScreen-class.html#setupUi,Method le2m.client.cltgui.cltguisrc.cltguiwelc.Ui_Dialog.setupUi()=le2m.client.cltgui.cltguisrc.cltguiwelc.Ui_Dialog-class.html#setupUi,Method le2m.creator.creatorui.creatorscreen.Ui_Dialog.setupUi()=le2m.creator.creatorui.creatorscreen.Ui_Dialog-class.html#setupUi,Method le2m.creator.filestocopy.creator_Decision.Ui_Dialog.setupUi()=le2m.creator.filestocopy.creator_Decision.Ui_Dialog-class.html#setupUi,Method le2m.extractor.extractorui.extractorscreen.Ui_Dialog.setupUi()=le2m.extractor.extractorui.extractorscreen.Ui_Dialog-class.html#setupUi,Method le2m.parts.Dictator.DictatorGuiSrc.DictatorDecision.Ui_Dialog.setupUi()=le2m.parts.Dictator.DictatorGuiSrc.DictatorDecision.Ui_Dialog-class.html#setupUi,Method le2m.parts.GneezyPotter.GneezyPotterGuiSrc.GneezyPotterConfigure.Ui_Dialog.setupUi()=le2m.parts.GneezyPotter.GneezyPotterGuiSrc.GneezyPotterConfigure.Ui_Dialog-class.html#setupUi,Method le2m.parts.GneezyPotter.GneezyPotterGuiSrc.GneezyPotterDecision.Ui_Dialog.setupUi()=le2m.parts.GneezyPotter.GneezyPotterGuiSrc.GneezyPotterDecision.Ui_Dialog-class.html#setupUi,Method le2m.parts.PublicGoodGame.PublicGoodGameGuiSrc.PublicGoodGameDecision.Ui_Dialog.setupUi()=le2m.parts.PublicGoodGame.PublicGoodGameGuiSrc.PublicGoodGameDecision.Ui_Dialog-class.html#setupUi,Method le2m.questcomp.questcompui.questcompquest.Ui_Dialog.setupUi()=le2m.questcomp.questcompui.questcompquest.Ui_Dialog-class.html#setupUi,Method le2m.questcomp.questcompui.questcompquestedit.Ui_Dialog.setupUi()=le2m.questcomp.questcompui.questcompquestedit.Ui_Dialog-class.html#setupUi,Method le2m.questcomp.questcompui.questcompscreen.Ui_MainWindow.setupUi()=le2m.questcomp.questcompui.questcompscreen.Ui_MainWindow-class.html#setupUi,Method le2m.server.servgui.servguisrc.servguigenders.Ui_Dialog.setupUi()=le2m.server.servgui.servguisrc.servguigenders.Ui_Dialog-class.html#setupUi,Method le2m.server.servgui.servguisrc.servguiinfo.Ui_Dialog.setupUi()=le2m.server.servgui.servguisrc.servguiinfo.Ui_Dialog-class.html#setupUi,Method le2m.server.servgui.servguisrc.servguimain.Ui_EcranServeur.setupUi()=le2m.server.servgui.servguisrc.servguimain.Ui_EcranServeur-class.html#setupUi,Method le2m.server.servgui.servguisrc.servguipartsload.Ui_Dialog.setupUi()=le2m.server.servgui.servguisrc.servguipartsload.Ui_Dialog-class.html#setupUi,Method le2m.server.servgui.servguisrc.servguipartsplayed.Ui_Dialog.setupUi()=le2m.server.servgui.servguisrc.servguipartsplayed.Ui_Dialog-class.html#setupUi,Method le2m.server.servgui.servguisrc.servguipayoffs.Ui_Dialog.setupUi()=le2m.server.servgui.servguisrc.servguipayoffs.Ui_Dialog-class.html#setupUi"><a title="le2m.client.cltgui.cltguisrc.cltguifinal.Ui_Dialog.setupUi
+le2m.client.cltgui.cltguisrc.cltguihist.Ui_Dialog.setupUi
+le2m.client.cltgui.cltguisrc.cltguipopup.Ui_Dialog.setupUi
+le2m.client.cltgui.cltguisrc.cltguiquestfinal.Ui_Dialog.setupUi
+le2m.client.cltgui.cltguisrc.cltguisummary.Ui_Dialog.setupUi
+le2m.client.cltgui.cltguisrc.cltguiwait.Ui_WaitingScreen.setupUi
+le2m.client.cltgui.cltguisrc.cltguiwelc.Ui_Dialog.setupUi
+le2m.creator.creatorui.creatorscreen.Ui_Dialog.setupUi
+le2m.creator.filestocopy.creator_Decision.Ui_Dialog.setupUi
+le2m.extractor.extractorui.extractorscreen.Ui_Dialog.setupUi
+le2m.parts.Dictator.DictatorGuiSrc.DictatorDecision.Ui_Dialog.setupUi
+le2m.parts.GneezyPotter.GneezyPotterGuiSrc.GneezyPotterConfigure.Ui_Dialog.setupUi
+le2m.parts.GneezyPotter.GneezyPotterGuiSrc.GneezyPotterDecision.Ui_Dialog.setupUi
+le2m.parts.PublicGoodGame.PublicGoodGameGuiSrc.PublicGoodGameDecision.Ui_Dialog.setupUi
+le2m.questcomp.questcompui.questcompquest.Ui_Dialog.setupUi
+le2m.questcomp.questcompui.questcompquestedit.Ui_Dialog.setupUi
+le2m.questcomp.questcompui.questcompscreen.Ui_MainWindow.setupUi
+le2m.server.servgui.servguisrc.servguigenders.Ui_Dialog.setupUi
+le2m.server.servgui.servguisrc.servguiinfo.Ui_Dialog.setupUi
+le2m.server.servgui.servguisrc.servguimain.Ui_EcranServeur.setupUi
+le2m.server.servgui.servguisrc.servguipartsload.Ui_Dialog.setupUi
+le2m.server.servgui.servguisrc.servguipartsplayed.Ui_Dialog.setupUi
+le2m.server.servgui.servguisrc.servguipayoffs.Ui_Dialog.setupUi" class="py-name" href="#" onclick="return doclink('link-27', 'setupUi', 'link-27');">setupUi</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">)</tt> </tt>
+<a name="L35"></a><tt class="py-lineno"> 35</tt>  <tt class="py-line"> </tt>
+<a name="L36"></a><tt class="py-lineno"> 36</tt>  <tt class="py-line">        <tt class="py-comment"># explication</tt> </tt>
+<a name="L37"></a><tt class="py-lineno"> 37</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">ui</tt><tt class="py-op">.</tt><tt class="py-name">textEdit_explication</tt><tt class="py-op">.</tt><tt class="py-name">setFixedSize</tt><tt class="py-op">(</tt><tt class="py-number">350</tt><tt class="py-op">,</tt> <tt class="py-number">30</tt><tt class="py-op">)</tt> </tt>
+<a name="L38"></a><tt class="py-lineno"> 38</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">ui</tt><tt class="py-op">.</tt><tt class="py-name">textEdit_explication</tt><tt class="py-op">.</tt><tt class="py-name">setText</tt><tt class="py-op">(</tt> </tt>
+<a name="L39"></a><tt class="py-lineno"> 39</tt>  <tt class="py-line">            <tt id="link-28" class="py-name"><a title="le2m.util.utili18n.le2mtrans" class="py-name" href="#" onclick="return doclink('link-28', 'le2mtrans', 'link-11');">le2mtrans</a></tt><tt class="py-op">(</tt><tt class="py-string">u"Please check the men and let the women unchecked."</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L40"></a><tt class="py-lineno"> 40</tt>  <tt class="py-line"> </tt>
+<a name="L41"></a><tt class="py-lineno"> 41</tt>  <tt class="py-line">        <tt class="py-comment"># listView</tt> </tt>
+<a name="L42"></a><tt class="py-lineno"> 42</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">ui</tt><tt class="py-op">.</tt><tt class="py-name">listView</tt><tt class="py-op">.</tt><tt class="py-name">setFixedSize</tt><tt class="py-op">(</tt><tt class="py-number">350</tt><tt class="py-op">,</tt> <tt class="py-number">350</tt><tt class="py-op">)</tt> </tt>
+<a name="L43"></a><tt class="py-lineno"> 43</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_model</tt> <tt class="py-op">=</tt> <tt class="py-name">QtGui</tt><tt class="py-op">.</tt><tt class="py-name">QStandardItemModel</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L44"></a><tt class="py-lineno"> 44</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">j</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_liste_joueurs</tt><tt class="py-op">:</tt> </tt>
+<a name="L45"></a><tt class="py-lineno"> 45</tt>  <tt class="py-line">            <tt class="py-name">item</tt> <tt class="py-op">=</tt> <tt class="py-name">QtGui</tt><tt class="py-op">.</tt><tt class="py-name">QStandardItem</tt><tt class="py-op">(</tt><tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">j</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L46"></a><tt class="py-lineno"> 46</tt>  <tt class="py-line">            <tt class="py-name">item</tt><tt class="py-op">.</tt><tt class="py-name">setCheckState</tt><tt class="py-op">(</tt><tt class="py-name">QtCore</tt><tt class="py-op">.</tt><tt class="py-name">Qt</tt><tt class="py-op">.</tt><tt class="py-name">Unchecked</tt><tt class="py-op">)</tt> </tt>
+<a name="L47"></a><tt class="py-lineno"> 47</tt>  <tt class="py-line">            <tt class="py-name">item</tt><tt class="py-op">.</tt><tt class="py-name">setCheckable</tt><tt class="py-op">(</tt><tt class="py-name">True</tt><tt class="py-op">)</tt> </tt>
+<a name="L48"></a><tt class="py-lineno"> 48</tt>  <tt class="py-line">            <tt class="py-name">item</tt><tt class="py-op">.</tt><tt class="py-name">setEditable</tt><tt class="py-op">(</tt><tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L49"></a><tt class="py-lineno"> 49</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_model</tt><tt class="py-op">.</tt><tt class="py-name">appendRow</tt><tt class="py-op">(</tt><tt class="py-name">item</tt><tt class="py-op">)</tt> </tt>
+<a name="L50"></a><tt class="py-lineno"> 50</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">ui</tt><tt class="py-op">.</tt><tt class="py-name">listView</tt><tt class="py-op">.</tt><tt class="py-name">setModel</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_model</tt><tt class="py-op">)</tt> </tt>
+<a name="L51"></a><tt class="py-lineno"> 51</tt>  <tt class="py-line"> </tt>
+<a name="L52"></a><tt class="py-lineno"> 52</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">ui</tt><tt class="py-op">.</tt><tt class="py-name">buttonBox</tt><tt class="py-op">.</tt><tt class="py-name">accepted</tt><tt class="py-op">.</tt><tt class="py-name">connect</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-29" class="py-name" targets="Method le2m.client.cltgui.cltguidialogs.GuiAccueil._accept()=le2m.client.cltgui.cltguidialogs.GuiAccueil-class.html#_accept,Method le2m.client.cltgui.cltguidialogs.GuiRecapitulatif._accept()=le2m.client.cltgui.cltguidialogs.GuiRecapitulatif-class.html#_accept,Method le2m.creator.creatorgui.GuiCreator._accept()=le2m.creator.creatorgui.GuiCreator-class.html#_accept,Method le2m.creator.filestocopy.creator_Gui.GuiDecision._accept()=le2m.creator.filestocopy.creator_Gui.GuiDecision-class.html#_accept,Method le2m.extractor.extractorgui.GuiExtractor._accept()=le2m.extractor.extractorgui.GuiExtractor-class.html#_accept,Method le2m.parts.Dictator.DictatorGui.GuiDecision._accept()=le2m.parts.Dictator.DictatorGui.GuiDecision-class.html#_accept,Method le2m.parts.GneezyPotter.GneezyPotterGui.GuiConfigure._accept()=le2m.parts.GneezyPotter.GneezyPotterGui.GuiConfigure-class.html#_accept,Method le2m.parts.GneezyPotter.GneezyPotterGui.GuiDecision._accept()=le2m.parts.GneezyPotter.GneezyPotterGui.GuiDecision-class.html#_accept,Method le2m.parts.PublicGoodGame.PublicGoodGameGui.GuiDecision._accept()=le2m.parts.PublicGoodGame.PublicGoodGameGui.GuiDecision-class.html#_accept,Method le2m.questcomp.questcompgui.GuiQuestCompQuest._accept()=le2m.questcomp.questcompgui.GuiQuestCompQuest-class.html#_accept,Method le2m.questcomp.questcompgui.GuiQuestEdit._accept()=le2m.questcomp.questcompgui.GuiQuestEdit-class.html#_accept,Method le2m.server.servgui.servguidialogs.GuiGenres._accept()=le2m.server.servgui.servguidialogs.GuiGenres-class.html#_accept,Method le2m.server.servgui.servguidialogs.GuiPartLoad._accept()=le2m.server.servgui.servguidialogs.GuiPartLoad-class.html#_accept"><a title="le2m.client.cltgui.cltguidialogs.GuiAccueil._accept
+le2m.client.cltgui.cltguidialogs.GuiRecapitulatif._accept
+le2m.creator.creatorgui.GuiCreator._accept
+le2m.creator.filestocopy.creator_Gui.GuiDecision._accept
+le2m.extractor.extractorgui.GuiExtractor._accept
+le2m.parts.Dictator.DictatorGui.GuiDecision._accept
+le2m.parts.GneezyPotter.GneezyPotterGui.GuiConfigure._accept
+le2m.parts.GneezyPotter.GneezyPotterGui.GuiDecision._accept
+le2m.parts.PublicGoodGame.PublicGoodGameGui.GuiDecision._accept
+le2m.questcomp.questcompgui.GuiQuestCompQuest._accept
+le2m.questcomp.questcompgui.GuiQuestEdit._accept
+le2m.server.servgui.servguidialogs.GuiGenres._accept
+le2m.server.servgui.servguidialogs.GuiPartLoad._accept" class="py-name" href="#" onclick="return doclink('link-29', '_accept', 'link-29');">_accept</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L53"></a><tt class="py-lineno"> 53</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">ui</tt><tt class="py-op">.</tt><tt class="py-name">buttonBox</tt><tt class="py-op">.</tt><tt class="py-name">rejected</tt><tt class="py-op">.</tt><tt class="py-name">connect</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-30" class="py-name" targets="Method le2m.client.cltgui.cltguidialogs.GuiAccueil.reject()=le2m.client.cltgui.cltguidialogs.GuiAccueil-class.html#reject,Method le2m.client.cltgui.cltguidialogs.GuiFinal.reject()=le2m.client.cltgui.cltguidialogs.GuiFinal-class.html#reject,Method le2m.client.cltgui.cltguidialogs.GuiHistorique.reject()=le2m.client.cltgui.cltguidialogs.GuiHistorique-class.html#reject,Method le2m.client.cltgui.cltguidialogs.GuiPopup.reject()=le2m.client.cltgui.cltguidialogs.GuiPopup-class.html#reject,Method le2m.client.cltgui.cltguidialogs.GuiQuestionnaireFinal.reject()=le2m.client.cltgui.cltguidialogs.GuiQuestionnaireFinal-class.html#reject,Method le2m.client.cltgui.cltguidialogs.GuiRecapitulatif.reject()=le2m.client.cltgui.cltguidialogs.GuiRecapitulatif-class.html#reject,Method le2m.creator.filestocopy.creator_Gui.GuiDecision.reject()=le2m.creator.filestocopy.creator_Gui.GuiDecision-class.html#reject,Method le2m.parts.Dictator.DictatorGui.GuiDecision.reject()=le2m.parts.Dictator.DictatorGui.GuiDecision-class.html#reject,Method le2m.parts.GneezyPotter.GneezyPotterGui.GuiDecision.reject()=le2m.parts.GneezyPotter.GneezyPotterGui.GuiDecision-class.html#reject,Method le2m.parts.PublicGoodGame.PublicGoodGameGui.GuiDecision.reject()=le2m.parts.PublicGoodGame.PublicGoodGameGui.GuiDecision-class.html#reject,Method le2m.questcomp.questcompgui.GuiQuestCompQuest.reject()=le2m.questcomp.questcompgui.GuiQuestCompQuest-class.html#reject"><a title="le2m.client.cltgui.cltguidialogs.GuiAccueil.reject
+le2m.client.cltgui.cltguidialogs.GuiFinal.reject
+le2m.client.cltgui.cltguidialogs.GuiHistorique.reject
+le2m.client.cltgui.cltguidialogs.GuiPopup.reject
+le2m.client.cltgui.cltguidialogs.GuiQuestionnaireFinal.reject
+le2m.client.cltgui.cltguidialogs.GuiRecapitulatif.reject
+le2m.creator.filestocopy.creator_Gui.GuiDecision.reject
+le2m.parts.Dictator.DictatorGui.GuiDecision.reject
+le2m.parts.GneezyPotter.GneezyPotterGui.GuiDecision.reject
+le2m.parts.PublicGoodGame.PublicGoodGameGui.GuiDecision.reject
+le2m.questcomp.questcompgui.GuiQuestCompQuest.reject" class="py-name" href="#" onclick="return doclink('link-30', 'reject', 'link-30');">reject</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L54"></a><tt class="py-lineno"> 54</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">setWindowTitle</tt><tt class="py-op">(</tt><tt id="link-31" class="py-name"><a title="le2m.util.utili18n.le2mtrans" class="py-name" href="#" onclick="return doclink('link-31', 'le2mtrans', 'link-11');">le2mtrans</a></tt><tt class="py-op">(</tt><tt class="py-string">u"Set subjects' gender"</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L55"></a><tt class="py-lineno"> 55</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">setFixedSize</tt><tt class="py-op">(</tt><tt class="py-number">400</tt><tt class="py-op">,</tt> <tt class="py-number">550</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L56"></a><tt class="py-lineno"> 56</tt>  <tt class="py-line"> </tt>
+<a name="GuiGenres._accept"></a><div id="GuiGenres._accept-def"><a name="L57"></a><tt class="py-lineno"> 57</tt> <a class="py-toggle" href="#" id="GuiGenres._accept-toggle" onclick="return toggle('GuiGenres._accept');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="le2m.server.servgui.servguidialogs.GuiGenres-class.html#_accept">_accept</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="GuiGenres._accept-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="GuiGenres._accept-expanded"><a name="L58"></a><tt class="py-lineno"> 58</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_dict_genres</tt> <tt class="py-op">=</tt> <tt class="py-op">{</tt><tt class="py-op">}</tt> </tt>
+<a name="L59"></a><tt class="py-lineno"> 59</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">ligne</tt> <tt class="py-keyword">in</tt> <tt class="py-name">xrange</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_model</tt><tt class="py-op">.</tt><tt id="link-32" class="py-name" targets="Method le2m.client.cltgui.cltguitablemodels.TableModelHistorique.rowCount()=le2m.client.cltgui.cltguitablemodels.TableModelHistorique-class.html#rowCount,Method le2m.server.servgui.servguitablemodels.TableModelGenres.rowCount()=le2m.server.servgui.servguitablemodels.TableModelGenres-class.html#rowCount,Method le2m.server.servgui.servguitablemodels.TableModelJoueurs.rowCount()=le2m.server.servgui.servguitablemodels.TableModelJoueurs-class.html#rowCount,Method le2m.server.servgui.servguitablemodels.TableModelPaiements.rowCount()=le2m.server.servgui.servguitablemodels.TableModelPaiements-class.html#rowCount,Method le2m.server.servgui.servguitablemodels.TableModelQuestionnaireFinal.rowCount()=le2m.server.servgui.servguitablemodels.TableModelQuestionnaireFinal-class.html#rowCount"><a title="le2m.client.cltgui.cltguitablemodels.TableModelHistorique.rowCount
+le2m.server.servgui.servguitablemodels.TableModelGenres.rowCount
+le2m.server.servgui.servguitablemodels.TableModelJoueurs.rowCount
+le2m.server.servgui.servguitablemodels.TableModelPaiements.rowCount
+le2m.server.servgui.servguitablemodels.TableModelQuestionnaireFinal.rowCount" class="py-name" href="#" onclick="return doclink('link-32', 'rowCount', 'link-32');">rowCount</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L60"></a><tt class="py-lineno"> 60</tt>  <tt class="py-line">            <tt class="py-name">item</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_model</tt><tt class="py-op">.</tt><tt class="py-name">item</tt><tt class="py-op">(</tt><tt class="py-name">ligne</tt><tt class="py-op">)</tt> </tt>
+<a name="L61"></a><tt class="py-lineno"> 61</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">item</tt><tt class="py-op">.</tt><tt class="py-name">checkState</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> <tt class="py-op">==</tt> <tt class="py-name">QtCore</tt><tt class="py-op">.</tt><tt class="py-name">Qt</tt><tt class="py-op">.</tt><tt class="py-name">Checked</tt><tt class="py-op">:</tt> </tt>
+<a name="L62"></a><tt class="py-lineno"> 62</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_liste_joueurs</tt><tt class="py-op">[</tt><tt class="py-name">ligne</tt><tt class="py-op">]</tt><tt class="py-op">.</tt><tt id="link-33" class="py-name" targets="Variable le2m.server.servparties.PartieQuestionnaireFinal.genre=le2m.server.servparties.PartieQuestionnaireFinal-class.html#genre,Method le2m.server.servplayers.Joueur.genre()=le2m.server.servplayers.Joueur-class.html#genre"><a title="le2m.server.servparties.PartieQuestionnaireFinal.genre
+le2m.server.servplayers.Joueur.genre" class="py-name" href="#" onclick="return doclink('link-33', 'genre', 'link-33');">genre</a></tt> <tt class="py-op">=</tt> <tt id="link-34" class="py-name"><a title="le2m.configuration.configconst.HOMME" class="py-name" href="#" onclick="return doclink('link-34', 'HOMME', 'link-4');">HOMME</a></tt> </tt>
+<a name="L63"></a><tt class="py-lineno"> 63</tt>  <tt class="py-line">            <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L64"></a><tt class="py-lineno"> 64</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_liste_joueurs</tt><tt class="py-op">[</tt><tt class="py-name">ligne</tt><tt class="py-op">]</tt><tt class="py-op">.</tt><tt id="link-35" class="py-name"><a title="le2m.server.servparties.PartieQuestionnaireFinal.genre
+le2m.server.servplayers.Joueur.genre" class="py-name" href="#" onclick="return doclink('link-35', 'genre', 'link-33');">genre</a></tt> <tt class="py-op">=</tt> <tt id="link-36" class="py-name"><a title="le2m.configuration.configconst.FEMME" class="py-name" href="#" onclick="return doclink('link-36', 'FEMME', 'link-5');">FEMME</a></tt> </tt>
+<a name="L65"></a><tt class="py-lineno"> 65</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">accept</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L66"></a><tt class="py-lineno"> 66</tt>  <tt class="py-line"> </tt>
+<a name="L67"></a><tt class="py-lineno"> 67</tt>  <tt class="py-line"> </tt>
+<a name="GuiInformation"></a><div id="GuiInformation-def"><a name="L68"></a><tt class="py-lineno"> 68</tt> <a class="py-toggle" href="#" id="GuiInformation-toggle" onclick="return toggle('GuiInformation');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="le2m.server.servgui.servguidialogs.GuiInformation-class.html">GuiInformation</a><tt class="py-op">(</tt><tt class="py-base-class">QtGui</tt><tt class="py-op">.</tt><tt class="py-base-class">QDialog</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="GuiInformation-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="GuiInformation-expanded"><a name="L69"></a><tt class="py-lineno"> 69</tt>  <tt class="py-line">    <tt class="py-docstring">"""</tt> </tt>
+<a name="L70"></a><tt class="py-lineno"> 70</tt>  <tt class="py-line"><tt class="py-docstring">    Dialog qui affiche du texte (format plain ou html).</tt> </tt>
+<a name="L71"></a><tt class="py-lineno"> 71</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="GuiInformation.__init__"></a><div id="GuiInformation.__init__-def"><a name="L72"></a><tt class="py-lineno"> 72</tt> <a class="py-toggle" href="#" id="GuiInformation.__init__-toggle" onclick="return toggle('GuiInformation.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="le2m.server.servgui.servguidialogs.GuiInformation-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">titre</tt><tt class="py-op">,</tt> <tt class="py-param">parent</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="GuiInformation.__init__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="GuiInformation.__init__-expanded"><a name="L73"></a><tt class="py-lineno"> 73</tt>  <tt class="py-line">        <tt class="py-name">super</tt><tt class="py-op">(</tt><tt id="link-37" class="py-name" targets="Class le2m.server.servgui.servguidialogs.GuiInformation=le2m.server.servgui.servguidialogs.GuiInformation-class.html"><a title="le2m.server.servgui.servguidialogs.GuiInformation" class="py-name" href="#" onclick="return doclink('link-37', 'GuiInformation', 'link-37');">GuiInformation</a></tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt id="link-38" class="py-name"><a title="le2m.client.clt.Client.__init__
+le2m.client.cltgui.cltguidialogs.GuiAccueil.__init__
+le2m.client.cltgui.cltguidialogs.GuiFinal.__init__
+le2m.client.cltgui.cltguidialogs.GuiHistorique.__init__
+le2m.client.cltgui.cltguidialogs.GuiPopup.__init__
+le2m.client.cltgui.cltguidialogs.GuiQuestionnaireFinal.__init__
+le2m.client.cltgui.cltguidialogs.GuiRecapitulatif.__init__
+le2m.client.cltgui.cltguiforms.GuiAttente.__init__
+le2m.client.cltgui.cltguitablemodels.TableModelHistorique.__init__
+le2m.client.cltremote.RemoteBase.__init__
+le2m.client.cltremote.RemoteQuestionnaireFinal.__init__
+le2m.creator.creatorgui.GuiCreator.__init__
+le2m.creator.filestocopy.creator_Gui.GuiDecision.__init__
+le2m.creator.filestocopy.creator_Part.PartieEXPERIENCE_NOM_COURT.__init__
+le2m.creator.filestocopy.creator_Part.RepetitionsEXPERIENCE_NOM_COURT.__init__
+le2m.creator.filestocopy.creator_Remote.RemoteEXPERIENCE_NOM_COURT.__init__
+le2m.creator.filestocopy.creator_Serv.Serveur.__init__
+le2m.extractor.extractorgui.GuiExtractor.__init__
+le2m.parts.Dictator.DictatorGui.GuiDecision.__init__
+le2m.parts.Dictator.DictatorPart.PartieDIC.__init__
+le2m.parts.Dictator.DictatorPart.RepetitionsDIC.__init__
+le2m.parts.Dictator.DictatorRemote.RemoteDIC.__init__
+le2m.parts.Dictator.DictatorServ.Serveur.__init__
+le2m.parts.GneezyPotter.GneezyPotterGui.GuiConfigure.__init__
+le2m.parts.GneezyPotter.GneezyPotterGui.GuiDecision.__init__
+le2m.parts.GneezyPotter.GneezyPotterPart.PartieGP.__init__
+le2m.parts.GneezyPotter.GneezyPotterPart.RepetitionsGP.__init__
+le2m.parts.GneezyPotter.GneezyPotterRemote.RemoteGP.__init__
+le2m.parts.GneezyPotter.GneezyPotterServ.Serveur.__init__
+le2m.parts.PublicGoodGame.PublicGoodGameGui.GuiDecision.__init__
+le2m.parts.PublicGoodGame.PublicGoodGamePart.PartiePGG.__init__
+le2m.parts.PublicGoodGame.PublicGoodGamePart.RepetitionsPGG.__init__
+le2m.parts.PublicGoodGame.PublicGoodGameRemote.RemotePGG.__init__
+le2m.parts.PublicGoodGame.PublicGoodGameServ.Serveur.__init__
+le2m.questcomp.questcompgui.GuiQuestComp.__init__
+le2m.questcomp.questcompgui.GuiQuestCompQuest.__init__
+le2m.questcomp.questcompgui.GuiQuestEdit.__init__
+le2m.questcomp.questcompmod.Question.__init__
+le2m.questcomp.questcompmod.Questionnaire.__init__
+le2m.server.serv.Serveur.__init__
+le2m.server.servgest.servgestbase.GestionnaireBase.__init__
+le2m.server.servgest.servgestbase.Session.__init__
+le2m.server.servgest.servgestexpe.GestionnaireExperience.__init__
+le2m.server.servgest.servgestgroups.GestionnaireGroupes.__init__
+le2m.server.servgest.servgestgui.GestionnaireGraphique.__init__
+le2m.server.servgest.servgestplayers.GestionnaireJoueurs.__init__
+le2m.server.servgui.servguidialogs.GuiGenres.__init__
+le2m.server.servgui.servguidialogs.GuiInformation.__init__
+le2m.server.servgui.servguidialogs.GuiPartLoad.__init__
+le2m.server.servgui.servguidialogs.GuiPartsPlayed.__init__
+le2m.server.servgui.servguidialogs.GuiPayoffs.__init__
+le2m.server.servgui.servguitablemodels.TableModelGenres.__init__
+le2m.server.servgui.servguitablemodels.TableModelJoueurs.__init__
+le2m.server.servgui.servguitablemodels.TableModelPaiements.__init__
+le2m.server.servgui.servguitablemodels.TableModelQuestionnaireFinal.__init__
+le2m.server.servgui.servguiwindows.GuiServeur.__init__
+le2m.server.servparties.Partie.__init__
+le2m.server.servparties.PartieBase.__init__
+le2m.server.servparties.PartieQuestionnaireFinal.__init__
+le2m.server.servplayers.Joueur.__init__
+le2m.util.utilqtreactor.QTReactor.__init__
+le2m.util.utilqtreactor.TwistedSocketNotifier.__init__
+le2m.util.utilqtreactor.fakeApplication.__init__" class="py-name" href="#" onclick="return doclink('link-38', '__init__', 'link-24');">__init__</a></tt><tt class="py-op">(</tt><tt class="py-name">parent</tt><tt class="py-op">)</tt> </tt>
+<a name="L74"></a><tt class="py-lineno"> 74</tt>  <tt class="py-line"> </tt>
+<a name="L75"></a><tt class="py-lineno"> 75</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">ui</tt> <tt class="py-op">=</tt> <tt id="link-39" class="py-name"><a title="le2m.server.servgui.servguisrc.servguiinfo" class="py-name" href="#" onclick="return doclink('link-39', 'servguiinfo', 'link-16');">servguiinfo</a></tt><tt class="py-op">.</tt><tt id="link-40" class="py-name"><a title="le2m.client.cltgui.cltguisrc.cltguifinal.Ui_Dialog
+le2m.client.cltgui.cltguisrc.cltguihist.Ui_Dialog
+le2m.client.cltgui.cltguisrc.cltguipopup.Ui_Dialog
+le2m.client.cltgui.cltguisrc.cltguiquestfinal.Ui_Dialog
+le2m.client.cltgui.cltguisrc.cltguisummary.Ui_Dialog
+le2m.client.cltgui.cltguisrc.cltguiwelc.Ui_Dialog
+le2m.creator.creatorui.creatorscreen.Ui_Dialog
+le2m.creator.filestocopy.creator_Decision.Ui_Dialog
+le2m.extractor.extractorui.extractorscreen.Ui_Dialog
+le2m.parts.Dictator.DictatorGuiSrc.DictatorDecision.Ui_Dialog
+le2m.parts.GneezyPotter.GneezyPotterGuiSrc.GneezyPotterConfigure.Ui_Dialog
+le2m.parts.GneezyPotter.GneezyPotterGuiSrc.GneezyPotterDecision.Ui_Dialog
+le2m.parts.PublicGoodGame.PublicGoodGameGuiSrc.PublicGoodGameDecision.Ui_Dialog
+le2m.questcomp.questcompui.questcompquest.Ui_Dialog
+le2m.questcomp.questcompui.questcompquestedit.Ui_Dialog
+le2m.server.servgui.servguisrc.servguigenders.Ui_Dialog
+le2m.server.servgui.servguisrc.servguiinfo.Ui_Dialog
+le2m.server.servgui.servguisrc.servguipartsload.Ui_Dialog
+le2m.server.servgui.servguisrc.servguipartsplayed.Ui_Dialog
+le2m.server.servgui.servguisrc.servguipayoffs.Ui_Dialog" class="py-name" href="#" onclick="return doclink('link-40', 'Ui_Dialog', 'link-26');">Ui_Dialog</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L76"></a><tt class="py-lineno"> 76</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">ui</tt><tt class="py-op">.</tt><tt id="link-41" class="py-name"><a title="le2m.client.cltgui.cltguisrc.cltguifinal.Ui_Dialog.setupUi
+le2m.client.cltgui.cltguisrc.cltguihist.Ui_Dialog.setupUi
+le2m.client.cltgui.cltguisrc.cltguipopup.Ui_Dialog.setupUi
+le2m.client.cltgui.cltguisrc.cltguiquestfinal.Ui_Dialog.setupUi
+le2m.client.cltgui.cltguisrc.cltguisummary.Ui_Dialog.setupUi
+le2m.client.cltgui.cltguisrc.cltguiwait.Ui_WaitingScreen.setupUi
+le2m.client.cltgui.cltguisrc.cltguiwelc.Ui_Dialog.setupUi
+le2m.creator.creatorui.creatorscreen.Ui_Dialog.setupUi
+le2m.creator.filestocopy.creator_Decision.Ui_Dialog.setupUi
+le2m.extractor.extractorui.extractorscreen.Ui_Dialog.setupUi
+le2m.parts.Dictator.DictatorGuiSrc.DictatorDecision.Ui_Dialog.setupUi
+le2m.parts.GneezyPotter.GneezyPotterGuiSrc.GneezyPotterConfigure.Ui_Dialog.setupUi
+le2m.parts.GneezyPotter.GneezyPotterGuiSrc.GneezyPotterDecision.Ui_Dialog.setupUi
+le2m.parts.PublicGoodGame.PublicGoodGameGuiSrc.PublicGoodGameDecision.Ui_Dialog.setupUi
+le2m.questcomp.questcompui.questcompquest.Ui_Dialog.setupUi
+le2m.questcomp.questcompui.questcompquestedit.Ui_Dialog.setupUi
+le2m.questcomp.questcompui.questcompscreen.Ui_MainWindow.setupUi
+le2m.server.servgui.servguisrc.servguigenders.Ui_Dialog.setupUi
+le2m.server.servgui.servguisrc.servguiinfo.Ui_Dialog.setupUi
+le2m.server.servgui.servguisrc.servguimain.Ui_EcranServeur.setupUi
+le2m.server.servgui.servguisrc.servguipartsload.Ui_Dialog.setupUi
+le2m.server.servgui.servguisrc.servguipartsplayed.Ui_Dialog.setupUi
+le2m.server.servgui.servguisrc.servguipayoffs.Ui_Dialog.setupUi" class="py-name" href="#" onclick="return doclink('link-41', 'setupUi', 'link-27');">setupUi</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">)</tt> </tt>
+<a name="L77"></a><tt class="py-lineno"> 77</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">setWindowTitle</tt><tt class="py-op">(</tt><tt id="link-42" class="py-name" targets="Variable le2m.creator.filestocopy.creator_Texts.TITLE_MSG.titre=le2m.creator.filestocopy.creator_Texts.TITLE_MSG-class.html#titre"><a title="le2m.creator.filestocopy.creator_Texts.TITLE_MSG.titre" class="py-name" href="#" onclick="return doclink('link-42', 'titre', 'link-42');">titre</a></tt><tt class="py-op">)</tt> </tt>
+</div><a name="L78"></a><tt class="py-lineno"> 78</tt>  <tt class="py-line"> </tt>
+<a name="GuiInformation.afficher_info"></a><div id="GuiInformation.afficher_info-def"><a name="L79"></a><tt class="py-lineno"> 79</tt> <a class="py-toggle" href="#" id="GuiInformation.afficher_info-toggle" onclick="return toggle('GuiInformation.afficher_info');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="le2m.server.servgui.servguidialogs.GuiInformation-class.html#afficher_info">afficher_info</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">texte</tt><tt class="py-op">,</tt> <tt class="py-param">html</tt><tt class="py-op">=</tt><tt class="py-name">True</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="GuiInformation.afficher_info-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="GuiInformation.afficher_info-expanded"><a name="L80"></a><tt class="py-lineno"> 80</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">html</tt><tt class="py-op">:</tt> </tt>
+<a name="L81"></a><tt class="py-lineno"> 81</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">ui</tt><tt class="py-op">.</tt><tt class="py-name">textBrowser_information</tt><tt class="py-op">.</tt><tt class="py-name">setHtml</tt><tt class="py-op">(</tt><tt class="py-name">texte</tt><tt class="py-op">)</tt> </tt>
+<a name="L82"></a><tt class="py-lineno"> 82</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L83"></a><tt class="py-lineno"> 83</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">ui</tt><tt class="py-op">.</tt><tt class="py-name">textBrowser_information</tt><tt class="py-op">.</tt><tt class="py-name">setText</tt><tt class="py-op">(</tt><tt class="py-name">texte</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L84"></a><tt class="py-lineno"> 84</tt>  <tt class="py-line"> </tt>
+<a name="L85"></a><tt class="py-lineno"> 85</tt>  <tt class="py-line"> </tt>
+<a name="GuiPartLoad"></a><div id="GuiPartLoad-def"><a name="L86"></a><tt class="py-lineno"> 86</tt> <a class="py-toggle" href="#" id="GuiPartLoad-toggle" onclick="return toggle('GuiPartLoad');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="le2m.server.servgui.servguidialogs.GuiPartLoad-class.html">GuiPartLoad</a><tt class="py-op">(</tt><tt class="py-base-class">QtGui</tt><tt class="py-op">.</tt><tt class="py-base-class">QDialog</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="GuiPartLoad-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="GuiPartLoad-expanded"><a name="GuiPartLoad.__init__"></a><div id="GuiPartLoad.__init__-def"><a name="L87"></a><tt class="py-lineno"> 87</tt> <a class="py-toggle" href="#" id="GuiPartLoad.__init__-toggle" onclick="return toggle('GuiPartLoad.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="le2m.server.servgui.servguidialogs.GuiPartLoad-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">parent</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="GuiPartLoad.__init__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="GuiPartLoad.__init__-expanded"><a name="L88"></a><tt class="py-lineno"> 88</tt>  <tt class="py-line">        <tt class="py-name">super</tt><tt class="py-op">(</tt><tt id="link-43" class="py-name" targets="Class le2m.server.servgui.servguidialogs.GuiPartLoad=le2m.server.servgui.servguidialogs.GuiPartLoad-class.html"><a title="le2m.server.servgui.servguidialogs.GuiPartLoad" class="py-name" href="#" onclick="return doclink('link-43', 'GuiPartLoad', 'link-43');">GuiPartLoad</a></tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt id="link-44" class="py-name"><a title="le2m.client.clt.Client.__init__
+le2m.client.cltgui.cltguidialogs.GuiAccueil.__init__
+le2m.client.cltgui.cltguidialogs.GuiFinal.__init__
+le2m.client.cltgui.cltguidialogs.GuiHistorique.__init__
+le2m.client.cltgui.cltguidialogs.GuiPopup.__init__
+le2m.client.cltgui.cltguidialogs.GuiQuestionnaireFinal.__init__
+le2m.client.cltgui.cltguidialogs.GuiRecapitulatif.__init__
+le2m.client.cltgui.cltguiforms.GuiAttente.__init__
+le2m.client.cltgui.cltguitablemodels.TableModelHistorique.__init__
+le2m.client.cltremote.RemoteBase.__init__
+le2m.client.cltremote.RemoteQuestionnaireFinal.__init__
+le2m.creator.creatorgui.GuiCreator.__init__
+le2m.creator.filestocopy.creator_Gui.GuiDecision.__init__
+le2m.creator.filestocopy.creator_Part.PartieEXPERIENCE_NOM_COURT.__init__
+le2m.creator.filestocopy.creator_Part.RepetitionsEXPERIENCE_NOM_COURT.__init__
+le2m.creator.filestocopy.creator_Remote.RemoteEXPERIENCE_NOM_COURT.__init__
+le2m.creator.filestocopy.creator_Serv.Serveur.__init__
+le2m.extractor.extractorgui.GuiExtractor.__init__
+le2m.parts.Dictator.DictatorGui.GuiDecision.__init__
+le2m.parts.Dictator.DictatorPart.PartieDIC.__init__
+le2m.parts.Dictator.DictatorPart.RepetitionsDIC.__init__
+le2m.parts.Dictator.DictatorRemote.RemoteDIC.__init__
+le2m.parts.Dictator.DictatorServ.Serveur.__init__
+le2m.parts.GneezyPotter.GneezyPotterGui.GuiConfigure.__init__
+le2m.parts.GneezyPotter.GneezyPotterGui.GuiDecision.__init__
+le2m.parts.GneezyPotter.GneezyPotterPart.PartieGP.__init__
+le2m.parts.GneezyPotter.GneezyPotterPart.RepetitionsGP.__init__
+le2m.parts.GneezyPotter.GneezyPotterRemote.RemoteGP.__init__
+le2m.parts.GneezyPotter.GneezyPotterServ.Serveur.__init__
+le2m.parts.PublicGoodGame.PublicGoodGameGui.GuiDecision.__init__
+le2m.parts.PublicGoodGame.PublicGoodGamePart.PartiePGG.__init__
+le2m.parts.PublicGoodGame.PublicGoodGamePart.RepetitionsPGG.__init__
+le2m.parts.PublicGoodGame.PublicGoodGameRemote.RemotePGG.__init__
+le2m.parts.PublicGoodGame.PublicGoodGameServ.Serveur.__init__
+le2m.questcomp.questcompgui.GuiQuestComp.__init__
+le2m.questcomp.questcompgui.GuiQuestCompQuest.__init__
+le2m.questcomp.questcompgui.GuiQuestEdit.__init__
+le2m.questcomp.questcompmod.Question.__init__
+le2m.questcomp.questcompmod.Questionnaire.__init__
+le2m.server.serv.Serveur.__init__
+le2m.server.servgest.servgestbase.GestionnaireBase.__init__
+le2m.server.servgest.servgestbase.Session.__init__
+le2m.server.servgest.servgestexpe.GestionnaireExperience.__init__
+le2m.server.servgest.servgestgroups.GestionnaireGroupes.__init__
+le2m.server.servgest.servgestgui.GestionnaireGraphique.__init__
+le2m.server.servgest.servgestplayers.GestionnaireJoueurs.__init__
+le2m.server.servgui.servguidialogs.GuiGenres.__init__
+le2m.server.servgui.servguidialogs.GuiInformation.__init__
+le2m.server.servgui.servguidialogs.GuiPartLoad.__init__
+le2m.server.servgui.servguidialogs.GuiPartsPlayed.__init__
+le2m.server.servgui.servguidialogs.GuiPayoffs.__init__
+le2m.server.servgui.servguitablemodels.TableModelGenres.__init__
+le2m.server.servgui.servguitablemodels.TableModelJoueurs.__init__
+le2m.server.servgui.servguitablemodels.TableModelPaiements.__init__
+le2m.server.servgui.servguitablemodels.TableModelQuestionnaireFinal.__init__
+le2m.server.servgui.servguiwindows.GuiServeur.__init__
+le2m.server.servparties.Partie.__init__
+le2m.server.servparties.PartieBase.__init__
+le2m.server.servparties.PartieQuestionnaireFinal.__init__
+le2m.server.servplayers.Joueur.__init__
+le2m.util.utilqtreactor.QTReactor.__init__
+le2m.util.utilqtreactor.TwistedSocketNotifier.__init__
+le2m.util.utilqtreactor.fakeApplication.__init__" class="py-name" href="#" onclick="return doclink('link-44', '__init__', 'link-24');">__init__</a></tt><tt class="py-op">(</tt><tt class="py-name">parent</tt><tt class="py-op">)</tt> </tt>
+<a name="L89"></a><tt class="py-lineno"> 89</tt>  <tt class="py-line"> </tt>
+<a name="L90"></a><tt class="py-lineno"> 90</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">ui</tt> <tt class="py-op">=</tt> <tt id="link-45" class="py-name"><a title="le2m.server.servgui.servguisrc.servguipartsload" class="py-name" href="#" onclick="return doclink('link-45', 'servguipartsload', 'link-15');">servguipartsload</a></tt><tt class="py-op">.</tt><tt id="link-46" class="py-name"><a title="le2m.client.cltgui.cltguisrc.cltguifinal.Ui_Dialog
+le2m.client.cltgui.cltguisrc.cltguihist.Ui_Dialog
+le2m.client.cltgui.cltguisrc.cltguipopup.Ui_Dialog
+le2m.client.cltgui.cltguisrc.cltguiquestfinal.Ui_Dialog
+le2m.client.cltgui.cltguisrc.cltguisummary.Ui_Dialog
+le2m.client.cltgui.cltguisrc.cltguiwelc.Ui_Dialog
+le2m.creator.creatorui.creatorscreen.Ui_Dialog
+le2m.creator.filestocopy.creator_Decision.Ui_Dialog
+le2m.extractor.extractorui.extractorscreen.Ui_Dialog
+le2m.parts.Dictator.DictatorGuiSrc.DictatorDecision.Ui_Dialog
+le2m.parts.GneezyPotter.GneezyPotterGuiSrc.GneezyPotterConfigure.Ui_Dialog
+le2m.parts.GneezyPotter.GneezyPotterGuiSrc.GneezyPotterDecision.Ui_Dialog
+le2m.parts.PublicGoodGame.PublicGoodGameGuiSrc.PublicGoodGameDecision.Ui_Dialog
+le2m.questcomp.questcompui.questcompquest.Ui_Dialog
+le2m.questcomp.questcompui.questcompquestedit.Ui_Dialog
+le2m.server.servgui.servguisrc.servguigenders.Ui_Dialog
+le2m.server.servgui.servguisrc.servguiinfo.Ui_Dialog
+le2m.server.servgui.servguisrc.servguipartsload.Ui_Dialog
+le2m.server.servgui.servguisrc.servguipartsplayed.Ui_Dialog
+le2m.server.servgui.servguisrc.servguipayoffs.Ui_Dialog" class="py-name" href="#" onclick="return doclink('link-46', 'Ui_Dialog', 'link-26');">Ui_Dialog</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L91"></a><tt class="py-lineno"> 91</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">ui</tt><tt class="py-op">.</tt><tt id="link-47" class="py-name"><a title="le2m.client.cltgui.cltguisrc.cltguifinal.Ui_Dialog.setupUi
+le2m.client.cltgui.cltguisrc.cltguihist.Ui_Dialog.setupUi
+le2m.client.cltgui.cltguisrc.cltguipopup.Ui_Dialog.setupUi
+le2m.client.cltgui.cltguisrc.cltguiquestfinal.Ui_Dialog.setupUi
+le2m.client.cltgui.cltguisrc.cltguisummary.Ui_Dialog.setupUi
+le2m.client.cltgui.cltguisrc.cltguiwait.Ui_WaitingScreen.setupUi
+le2m.client.cltgui.cltguisrc.cltguiwelc.Ui_Dialog.setupUi
+le2m.creator.creatorui.creatorscreen.Ui_Dialog.setupUi
+le2m.creator.filestocopy.creator_Decision.Ui_Dialog.setupUi
+le2m.extractor.extractorui.extractorscreen.Ui_Dialog.setupUi
+le2m.parts.Dictator.DictatorGuiSrc.DictatorDecision.Ui_Dialog.setupUi
+le2m.parts.GneezyPotter.GneezyPotterGuiSrc.GneezyPotterConfigure.Ui_Dialog.setupUi
+le2m.parts.GneezyPotter.GneezyPotterGuiSrc.GneezyPotterDecision.Ui_Dialog.setupUi
+le2m.parts.PublicGoodGame.PublicGoodGameGuiSrc.PublicGoodGameDecision.Ui_Dialog.setupUi
+le2m.questcomp.questcompui.questcompquest.Ui_Dialog.setupUi
+le2m.questcomp.questcompui.questcompquestedit.Ui_Dialog.setupUi
+le2m.questcomp.questcompui.questcompscreen.Ui_MainWindow.setupUi
+le2m.server.servgui.servguisrc.servguigenders.Ui_Dialog.setupUi
+le2m.server.servgui.servguisrc.servguiinfo.Ui_Dialog.setupUi
+le2m.server.servgui.servguisrc.servguimain.Ui_EcranServeur.setupUi
+le2m.server.servgui.servguisrc.servguipartsload.Ui_Dialog.setupUi
+le2m.server.servgui.servguisrc.servguipartsplayed.Ui_Dialog.setupUi
+le2m.server.servgui.servguisrc.servguipayoffs.Ui_Dialog.setupUi" class="py-name" href="#" onclick="return doclink('link-47', 'setupUi', 'link-27');">setupUi</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">)</tt> </tt>
+<a name="L92"></a><tt class="py-lineno"> 92</tt>  <tt class="py-line"> </tt>
+<a name="L93"></a><tt class="py-lineno"> 93</tt>  <tt class="py-line">        <tt class="py-comment"># parts list</tt> </tt>
+<a name="L94"></a><tt class="py-lineno"> 94</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">ui</tt><tt class="py-op">.</tt><tt class="py-name">label_explication</tt><tt class="py-op">.</tt><tt class="py-name">setText</tt><tt class="py-op">(</tt> </tt>
+<a name="L95"></a><tt class="py-lineno"> 95</tt>  <tt class="py-line">            <tt id="link-48" class="py-name"><a title="le2m.util.utili18n.le2mtrans" class="py-name" href="#" onclick="return doclink('link-48', 'le2mtrans', 'link-11');">le2mtrans</a></tt><tt class="py-op">(</tt><tt class="py-string">u"Please select in the list below the parts you want "</tt> </tt>
+<a name="L96"></a><tt class="py-lineno"> 96</tt>  <tt class="py-line">                      <tt class="py-string">u"to load"</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L97"></a><tt class="py-lineno"> 97</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">ui</tt><tt class="py-op">.</tt><tt class="py-name">listView</tt><tt class="py-op">.</tt><tt class="py-name">setToolTip</tt><tt class="py-op">(</tt><tt class="py-name">QtCore</tt><tt class="py-op">.</tt><tt class="py-name">QString</tt><tt class="py-op">(</tt> </tt>
+<a name="L98"></a><tt class="py-lineno"> 98</tt>  <tt class="py-line">            <tt id="link-49" class="py-name"><a title="le2m.util.utili18n.le2mtrans" class="py-name" href="#" onclick="return doclink('link-49', 'le2mtrans', 'link-11');">le2mtrans</a></tt><tt class="py-op">(</tt><tt class="py-string">u"Select the part(s) you want to load"</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L99"></a><tt class="py-lineno"> 99</tt>  <tt class="py-line"> </tt>
+<a name="L100"></a><tt class="py-lineno">100</tt>  <tt class="py-line">        <tt class="py-comment"># database directory</tt> </tt>
+<a name="L101"></a><tt class="py-lineno">101</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">ui</tt><tt class="py-op">.</tt><tt class="py-name">label_basepath</tt><tt class="py-op">.</tt><tt class="py-name">setText</tt><tt class="py-op">(</tt> </tt>
+<a name="L102"></a><tt class="py-lineno">102</tt>  <tt class="py-line">            <tt id="link-50" class="py-name"><a title="le2m.util.utili18n.le2mtrans" class="py-name" href="#" onclick="return doclink('link-50', 'le2mtrans', 'link-11');">le2mtrans</a></tt><tt class="py-op">(</tt><tt class="py-string">u"Directory in which to store the database"</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L103"></a><tt class="py-lineno">103</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">ui</tt><tt class="py-op">.</tt><tt class="py-name">label_basepath1</tt><tt class="py-op">.</tt><tt class="py-name">setText</tt><tt class="py-op">(</tt><tt id="link-51" class="py-name"><a title="le2m.util.utili18n.le2mtrans" class="py-name" href="#" onclick="return doclink('link-51', 'le2mtrans', 'link-11');">le2mtrans</a></tt><tt class="py-op">(</tt><tt class="py-string">u"Directory path (check)"</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L104"></a><tt class="py-lineno">104</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">ui</tt><tt class="py-op">.</tt><tt class="py-name">label_basepath2</tt><tt class="py-op">.</tt><tt class="py-name">setText</tt><tt class="py-op">(</tt><tt class="py-string">"..."</tt><tt class="py-op">)</tt> </tt>
+<a name="L105"></a><tt class="py-lineno">105</tt>  <tt class="py-line"> </tt>
+<a name="L106"></a><tt class="py-lineno">106</tt>  <tt class="py-line">        <tt class="py-comment"># database name</tt> </tt>
+<a name="L107"></a><tt class="py-lineno">107</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">ui</tt><tt class="py-op">.</tt><tt class="py-name">label_basename</tt><tt class="py-op">.</tt><tt class="py-name">setText</tt><tt class="py-op">(</tt> </tt>
+<a name="L108"></a><tt class="py-lineno">108</tt>  <tt class="py-line">            <tt id="link-52" class="py-name"><a title="le2m.util.utili18n.le2mtrans" class="py-name" href="#" onclick="return doclink('link-52', 'le2mtrans', 'link-11');">le2mtrans</a></tt><tt class="py-op">(</tt><tt class="py-string">u"Database name (without the sqlite extension"</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L109"></a><tt class="py-lineno">109</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">ui</tt><tt class="py-op">.</tt><tt class="py-name">lineEdit_nom_base</tt><tt class="py-op">.</tt><tt class="py-name">setText</tt><tt class="py-op">(</tt><tt class="py-string">u"data"</tt><tt class="py-op">)</tt> </tt>
+<a name="L110"></a><tt class="py-lineno">110</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">ui</tt><tt class="py-op">.</tt><tt class="py-name">label_nom_base_extension</tt><tt class="py-op">.</tt><tt class="py-name">setText</tt><tt class="py-op">(</tt><tt class="py-string">u".sqlite"</tt><tt class="py-op">)</tt> </tt>
+<a name="L111"></a><tt class="py-lineno">111</tt>  <tt class="py-line"> </tt>
+<a name="L112"></a><tt class="py-lineno">112</tt>  <tt class="py-line">        <tt class="py-comment"># test session</tt> </tt>
+<a name="L113"></a><tt class="py-lineno">113</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">ui</tt><tt class="py-op">.</tt><tt class="py-name">label_test</tt><tt class="py-op">.</tt><tt class="py-name">setText</tt><tt class="py-op">(</tt><tt id="link-53" class="py-name"><a title="le2m.util.utili18n.le2mtrans" class="py-name" href="#" onclick="return doclink('link-53', 'le2mtrans', 'link-11');">le2mtrans</a></tt><tt class="py-op">(</tt><tt class="py-string">u"Test session"</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L114"></a><tt class="py-lineno">114</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">ui</tt><tt class="py-op">.</tt><tt class="py-name">checkBox_test</tt><tt class="py-op">.</tt><tt class="py-name">setToolTip</tt><tt class="py-op">(</tt> </tt>
+<a name="L115"></a><tt class="py-lineno">115</tt>  <tt class="py-line">            <tt id="link-54" class="py-name"><a title="le2m.util.utili18n.le2mtrans" class="py-name" href="#" onclick="return doclink('link-54', 'le2mtrans', 'link-11');">le2mtrans</a></tt><tt class="py-op">(</tt><tt class="py-string">u"Uncheck if this is not a test session"</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L116"></a><tt class="py-lineno">116</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">ui</tt><tt class="py-op">.</tt><tt class="py-name">checkBox_test</tt><tt class="py-op">.</tt><tt class="py-name">setChecked</tt><tt class="py-op">(</tt><tt class="py-name">True</tt><tt class="py-op">)</tt> </tt>
+<a name="L117"></a><tt class="py-lineno">117</tt>  <tt class="py-line"> </tt>
+<a name="L118"></a><tt class="py-lineno">118</tt>  <tt class="py-line">        <tt class="py-comment"># connections</tt> </tt>
+<a name="L119"></a><tt class="py-lineno">119</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">ui</tt><tt class="py-op">.</tt><tt class="py-name">pushButton_base</tt><tt class="py-op">.</tt><tt class="py-name">clicked</tt><tt class="py-op">.</tt><tt class="py-name">connect</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-55" class="py-name" targets="Method le2m.server.servgui.servguidialogs.GuiPartLoad._set_directorydatabase()=le2m.server.servgui.servguidialogs.GuiPartLoad-class.html#_set_directorydatabase"><a title="le2m.server.servgui.servguidialogs.GuiPartLoad._set_directorydatabase" class="py-name" href="#" onclick="return doclink('link-55', '_set_directorydatabase', 'link-55');">_set_directorydatabase</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L120"></a><tt class="py-lineno">120</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">ui</tt><tt class="py-op">.</tt><tt class="py-name">buttonBox</tt><tt class="py-op">.</tt><tt class="py-name">accepted</tt><tt class="py-op">.</tt><tt class="py-name">connect</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-56" class="py-name"><a title="le2m.client.cltgui.cltguidialogs.GuiAccueil._accept
+le2m.client.cltgui.cltguidialogs.GuiRecapitulatif._accept
+le2m.creator.creatorgui.GuiCreator._accept
+le2m.creator.filestocopy.creator_Gui.GuiDecision._accept
+le2m.extractor.extractorgui.GuiExtractor._accept
+le2m.parts.Dictator.DictatorGui.GuiDecision._accept
+le2m.parts.GneezyPotter.GneezyPotterGui.GuiConfigure._accept
+le2m.parts.GneezyPotter.GneezyPotterGui.GuiDecision._accept
+le2m.parts.PublicGoodGame.PublicGoodGameGui.GuiDecision._accept
+le2m.questcomp.questcompgui.GuiQuestCompQuest._accept
+le2m.questcomp.questcompgui.GuiQuestEdit._accept
+le2m.server.servgui.servguidialogs.GuiGenres._accept
+le2m.server.servgui.servguidialogs.GuiPartLoad._accept" class="py-name" href="#" onclick="return doclink('link-56', '_accept', 'link-29');">_accept</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L121"></a><tt class="py-lineno">121</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">ui</tt><tt class="py-op">.</tt><tt class="py-name">buttonBox</tt><tt class="py-op">.</tt><tt class="py-name">rejected</tt><tt class="py-op">.</tt><tt class="py-name">connect</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-57" class="py-name"><a title="le2m.client.cltgui.cltguidialogs.GuiAccueil.reject
+le2m.client.cltgui.cltguidialogs.GuiFinal.reject
+le2m.client.cltgui.cltguidialogs.GuiHistorique.reject
+le2m.client.cltgui.cltguidialogs.GuiPopup.reject
+le2m.client.cltgui.cltguidialogs.GuiQuestionnaireFinal.reject
+le2m.client.cltgui.cltguidialogs.GuiRecapitulatif.reject
+le2m.creator.filestocopy.creator_Gui.GuiDecision.reject
+le2m.parts.Dictator.DictatorGui.GuiDecision.reject
+le2m.parts.GneezyPotter.GneezyPotterGui.GuiDecision.reject
+le2m.parts.PublicGoodGame.PublicGoodGameGui.GuiDecision.reject
+le2m.questcomp.questcompgui.GuiQuestCompQuest.reject" class="py-name" href="#" onclick="return doclink('link-57', 'reject', 'link-30');">reject</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L122"></a><tt class="py-lineno">122</tt>  <tt class="py-line"> </tt>
+<a name="L123"></a><tt class="py-lineno">123</tt>  <tt class="py-line">        <tt class="py-comment"># list of parts in the PARTSDIR directory</tt> </tt>
+<a name="L124"></a><tt class="py-lineno">124</tt>  <tt class="py-line">        <tt class="py-name">partslist</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-name">f</tt> <tt class="py-keyword">for</tt> <tt class="py-name">f</tt> <tt class="py-keyword">in</tt> <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">listdir</tt><tt class="py-op">(</tt><tt class="py-name">params</tt><tt class="py-op">.</tt><tt id="link-58" class="py-name" targets="Function le2m.configuration.configparam.getp()=le2m.configuration.configparam-module.html#getp"><a title="le2m.configuration.configparam.getp" class="py-name" href="#" onclick="return doclink('link-58', 'getp', 'link-58');">getp</a></tt><tt class="py-op">(</tt><tt class="py-string">"PARTSDIR"</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> <tt class="py-keyword">if</tt> </tt>
+<a name="L125"></a><tt class="py-lineno">125</tt>  <tt class="py-line">                     <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">path</tt><tt class="py-op">.</tt><tt class="py-name">isdir</tt><tt class="py-op">(</tt><tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">path</tt><tt class="py-op">.</tt><tt class="py-name">join</tt><tt class="py-op">(</tt><tt class="py-name">params</tt><tt class="py-op">.</tt><tt id="link-59" class="py-name"><a title="le2m.configuration.configparam.getp" class="py-name" href="#" onclick="return doclink('link-59', 'getp', 'link-58');">getp</a></tt><tt class="py-op">(</tt><tt class="py-string">"PARTSDIR"</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">f</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> <tt class="py-keyword">and</tt> </tt>
+<a name="L126"></a><tt class="py-lineno">126</tt>  <tt class="py-line">                     <tt class="py-keyword">not</tt> <tt class="py-name">f</tt><tt class="py-op">.</tt><tt class="py-name">startswith</tt><tt class="py-op">(</tt><tt class="py-string">"."</tt><tt class="py-op">)</tt><tt class="py-op">]</tt> </tt>
+<a name="L127"></a><tt class="py-lineno">127</tt>  <tt class="py-line"> </tt>
+<a name="L128"></a><tt class="py-lineno">128</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_model</tt> <tt class="py-op">=</tt> <tt class="py-name">QtGui</tt><tt class="py-op">.</tt><tt class="py-name">QStandardItemModel</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L129"></a><tt class="py-lineno">129</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">p</tt> <tt class="py-keyword">in</tt> <tt class="py-name">partslist</tt><tt class="py-op">:</tt> </tt>
+<a name="L130"></a><tt class="py-lineno">130</tt>  <tt class="py-line">            <tt class="py-name">item</tt> <tt class="py-op">=</tt> <tt class="py-name">QtGui</tt><tt class="py-op">.</tt><tt class="py-name">QStandardItem</tt><tt class="py-op">(</tt><tt class="py-name">p</tt><tt class="py-op">)</tt> </tt>
+<a name="L131"></a><tt class="py-lineno">131</tt>  <tt class="py-line">            <tt class="py-name">item</tt><tt class="py-op">.</tt><tt class="py-name">setCheckState</tt><tt class="py-op">(</tt><tt class="py-name">QtCore</tt><tt class="py-op">.</tt><tt class="py-name">Qt</tt><tt class="py-op">.</tt><tt class="py-name">Unchecked</tt><tt class="py-op">)</tt> </tt>
+<a name="L132"></a><tt class="py-lineno">132</tt>  <tt class="py-line">            <tt class="py-name">item</tt><tt class="py-op">.</tt><tt class="py-name">setCheckable</tt><tt class="py-op">(</tt><tt class="py-name">True</tt><tt class="py-op">)</tt> </tt>
+<a name="L133"></a><tt class="py-lineno">133</tt>  <tt class="py-line">            <tt class="py-name">item</tt><tt class="py-op">.</tt><tt class="py-name">setEditable</tt><tt class="py-op">(</tt><tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L134"></a><tt class="py-lineno">134</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_model</tt><tt class="py-op">.</tt><tt class="py-name">appendRow</tt><tt class="py-op">(</tt><tt class="py-name">item</tt><tt class="py-op">)</tt> </tt>
+<a name="L135"></a><tt class="py-lineno">135</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_model</tt><tt class="py-op">.</tt><tt class="py-name">itemChanged</tt><tt class="py-op">.</tt><tt class="py-name">connect</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-60" class="py-name" targets="Method le2m.server.servgui.servguidialogs.GuiPartLoad._onitemchanged()=le2m.server.servgui.servguidialogs.GuiPartLoad-class.html#_onitemchanged"><a title="le2m.server.servgui.servguidialogs.GuiPartLoad._onitemchanged" class="py-name" href="#" onclick="return doclink('link-60', '_onitemchanged', 'link-60');">_onitemchanged</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L136"></a><tt class="py-lineno">136</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">ui</tt><tt class="py-op">.</tt><tt class="py-name">listView</tt><tt class="py-op">.</tt><tt class="py-name">setModel</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_model</tt><tt class="py-op">)</tt> </tt>
+<a name="L137"></a><tt class="py-lineno">137</tt>  <tt class="py-line"> </tt>
+<a name="L138"></a><tt class="py-lineno">138</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">setWindowTitle</tt><tt class="py-op">(</tt><tt id="link-61" class="py-name"><a title="le2m.util.utili18n.le2mtrans" class="py-name" href="#" onclick="return doclink('link-61', 'le2mtrans', 'link-11');">le2mtrans</a></tt><tt class="py-op">(</tt><tt class="py-string">u"List of parts that can be loaded"</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L139"></a><tt class="py-lineno">139</tt>  <tt class="py-line"> </tt>
+<a name="GuiPartLoad._onitemchanged"></a><div id="GuiPartLoad._onitemchanged-def"><a name="L140"></a><tt class="py-lineno">140</tt> <a class="py-toggle" href="#" id="GuiPartLoad._onitemchanged-toggle" onclick="return toggle('GuiPartLoad._onitemchanged');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="le2m.server.servgui.servguidialogs.GuiPartLoad-class.html#_onitemchanged">_onitemchanged</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">item</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="GuiPartLoad._onitemchanged-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="GuiPartLoad._onitemchanged-expanded"><a name="L141"></a><tt class="py-lineno">141</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L142"></a><tt class="py-lineno">142</tt>  <tt class="py-line"><tt class="py-docstring">        This is for setting a dir to the database</tt> </tt>
+<a name="L143"></a><tt class="py-lineno">143</tt>  <tt class="py-line"><tt class="py-docstring">        We use the item just checked</tt> </tt>
+<a name="L144"></a><tt class="py-lineno">144</tt>  <tt class="py-line"><tt class="py-docstring">        If the item is just unchecked then search for a checked one</tt> </tt>
+<a name="L145"></a><tt class="py-lineno">145</tt>  <tt class="py-line"><tt class="py-docstring">        If no item we set ...</tt> </tt>
+<a name="L146"></a><tt class="py-lineno">146</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L147"></a><tt class="py-lineno">147</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">item</tt><tt class="py-op">.</tt><tt class="py-name">checkState</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> <tt class="py-op">==</tt> <tt class="py-name">QtCore</tt><tt class="py-op">.</tt><tt class="py-name">Qt</tt><tt class="py-op">.</tt><tt class="py-name">Checked</tt><tt class="py-op">:</tt> </tt>
+<a name="L148"></a><tt class="py-lineno">148</tt>  <tt class="py-line">            <tt class="py-name">part</tt> <tt class="py-op">=</tt> <tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">item</tt><tt class="py-op">.</tt><tt id="link-62" class="py-name" targets="Variable le2m.questcomp.questcompmod.Question.text=le2m.questcomp.questcompmod.Question-class.html#text"><a title="le2m.questcomp.questcompmod.Question.text" class="py-name" href="#" onclick="return doclink('link-62', 'text', 'link-62');">text</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L149"></a><tt class="py-lineno">149</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">ui</tt><tt class="py-op">.</tt><tt class="py-name">label_basepath2</tt><tt class="py-op">.</tt><tt class="py-name">setText</tt><tt class="py-op">(</tt> </tt>
+<a name="L150"></a><tt class="py-lineno">150</tt>  <tt class="py-line">                <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">path</tt><tt class="py-op">.</tt><tt class="py-name">join</tt><tt class="py-op">(</tt><tt class="py-name">params</tt><tt class="py-op">.</tt><tt id="link-63" class="py-name"><a title="le2m.configuration.configparam.getp" class="py-name" href="#" onclick="return doclink('link-63', 'getp', 'link-58');">getp</a></tt><tt class="py-op">(</tt><tt class="py-string">"PARTSDIR"</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">part</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L151"></a><tt class="py-lineno">151</tt>  <tt class="py-line">        <tt class="py-keyword">elif</tt> <tt class="py-name">item</tt><tt class="py-op">.</tt><tt class="py-name">checkState</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> <tt class="py-op">==</tt> <tt class="py-name">QtCore</tt><tt class="py-op">.</tt><tt class="py-name">Qt</tt><tt class="py-op">.</tt><tt class="py-name">Unchecked</tt><tt class="py-op">:</tt> </tt>
+<a name="L152"></a><tt class="py-lineno">152</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">ui</tt><tt class="py-op">.</tt><tt class="py-name">label_basepath2</tt><tt class="py-op">.</tt><tt class="py-name">setText</tt><tt class="py-op">(</tt><tt class="py-string">"..."</tt><tt class="py-op">)</tt> </tt>
+<a name="L153"></a><tt class="py-lineno">153</tt>  <tt class="py-line">            <tt class="py-name">i</tt> <tt class="py-op">=</tt> <tt class="py-number">0</tt> </tt>
+<a name="L154"></a><tt class="py-lineno">154</tt>  <tt class="py-line">            <tt class="py-keyword">while</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_model</tt><tt class="py-op">.</tt><tt class="py-name">item</tt><tt class="py-op">(</tt><tt class="py-name">i</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L155"></a><tt class="py-lineno">155</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_model</tt><tt class="py-op">.</tt><tt class="py-name">item</tt><tt class="py-op">(</tt><tt class="py-name">i</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">checkState</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> <tt class="py-op">==</tt> <tt class="py-name">QtCore</tt><tt class="py-op">.</tt><tt class="py-name">Qt</tt><tt class="py-op">.</tt><tt class="py-name">Checked</tt><tt class="py-op">:</tt> </tt>
+<a name="L156"></a><tt class="py-lineno">156</tt>  <tt class="py-line">                    <tt class="py-name">part</tt> <tt class="py-op">=</tt> <tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_model</tt><tt class="py-op">.</tt><tt class="py-name">item</tt><tt class="py-op">(</tt><tt class="py-name">i</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt id="link-64" class="py-name"><a title="le2m.questcomp.questcompmod.Question.text" class="py-name" href="#" onclick="return doclink('link-64', 'text', 'link-62');">text</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L157"></a><tt class="py-lineno">157</tt>  <tt class="py-line">                    <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">ui</tt><tt class="py-op">.</tt><tt class="py-name">label_basepath2</tt><tt class="py-op">.</tt><tt class="py-name">setText</tt><tt class="py-op">(</tt> </tt>
+<a name="L158"></a><tt class="py-lineno">158</tt>  <tt class="py-line">                        <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">path</tt><tt class="py-op">.</tt><tt class="py-name">join</tt><tt class="py-op">(</tt><tt class="py-name">params</tt><tt class="py-op">.</tt><tt id="link-65" class="py-name"><a title="le2m.configuration.configparam.getp" class="py-name" href="#" onclick="return doclink('link-65', 'getp', 'link-58');">getp</a></tt><tt class="py-op">(</tt><tt class="py-string">"PARTSDIR"</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">part</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L159"></a><tt class="py-lineno">159</tt>  <tt class="py-line">                    <tt class="py-keyword">break</tt> </tt>
+<a name="L160"></a><tt class="py-lineno">160</tt>  <tt class="py-line">                <tt class="py-name">i</tt> <tt class="py-op">+=</tt> <tt class="py-number">1</tt> </tt>
+</div><a name="L161"></a><tt class="py-lineno">161</tt>  <tt class="py-line"> </tt>
+<a name="GuiPartLoad._set_directorydatabase"></a><div id="GuiPartLoad._set_directorydatabase-def"><a name="L162"></a><tt class="py-lineno">162</tt> <a class="py-toggle" href="#" id="GuiPartLoad._set_directorydatabase-toggle" onclick="return toggle('GuiPartLoad._set_directorydatabase');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="le2m.server.servgui.servguidialogs.GuiPartLoad-class.html#_set_directorydatabase">_set_directorydatabase</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="GuiPartLoad._set_directorydatabase-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="GuiPartLoad._set_directorydatabase-expanded"><a name="L163"></a><tt class="py-lineno">163</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L164"></a><tt class="py-lineno">164</tt>  <tt class="py-line"><tt class="py-docstring">        Permet de choisir le dossier dans lequel sera sauvegard&#233;e la base</tt> </tt>
+<a name="L165"></a><tt class="py-lineno">165</tt>  <tt class="py-line"><tt class="py-docstring">        de donn&#233;es sqlite</tt> </tt>
+<a name="L166"></a><tt class="py-lineno">166</tt>  <tt class="py-line"><tt class="py-docstring">        :return:</tt> </tt>
+<a name="L167"></a><tt class="py-lineno">167</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L168"></a><tt class="py-lineno">168</tt>  <tt class="py-line">        <tt id="link-66" class="py-name" targets="Variable le2m.configuration.configvar.Experiment.dirbase=le2m.configuration.configvar.Experiment-class.html#dirbase"><a title="le2m.configuration.configvar.Experiment.dirbase" class="py-name" href="#" onclick="return doclink('link-66', 'dirbase', 'link-66');">dirbase</a></tt> <tt class="py-op">=</tt> <tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">QtGui</tt><tt class="py-op">.</tt><tt class="py-name">QFileDialog</tt><tt class="py-op">.</tt><tt class="py-name">getExistingDirectory</tt><tt class="py-op">(</tt> </tt>
+<a name="L169"></a><tt class="py-lineno">169</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">,</tt> </tt>
+<a name="L170"></a><tt class="py-lineno">170</tt>  <tt class="py-line">            <tt id="link-67" class="py-name"><a title="le2m.util.utili18n.le2mtrans" class="py-name" href="#" onclick="return doclink('link-67', 'le2mtrans', 'link-11');">le2mtrans</a></tt><tt class="py-op">(</tt><tt class="py-string">u"Select the directory in which to store the database."</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L171"></a><tt class="py-lineno">171</tt>  <tt class="py-line">            <tt class="py-name">params</tt><tt class="py-op">.</tt><tt id="link-68" class="py-name"><a title="le2m.configuration.configparam.getp" class="py-name" href="#" onclick="return doclink('link-68', 'getp', 'link-58');">getp</a></tt><tt class="py-op">(</tt><tt class="py-string">"PARTSDIR"</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L172"></a><tt class="py-lineno">172</tt>  <tt class="py-line">        <tt class="py-op">)</tt> </tt>
+<a name="L173"></a><tt class="py-lineno">173</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt id="link-69" class="py-name"><a title="le2m.configuration.configvar.Experiment.dirbase" class="py-name" href="#" onclick="return doclink('link-69', 'dirbase', 'link-66');">dirbase</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L174"></a><tt class="py-lineno">174</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> </tt>
+<a name="L175"></a><tt class="py-lineno">175</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L176"></a><tt class="py-lineno">176</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_databasepath</tt> <tt class="py-op">=</tt> <tt id="link-70" class="py-name"><a title="le2m.configuration.configvar.Experiment.dirbase" class="py-name" href="#" onclick="return doclink('link-70', 'dirbase', 'link-66');">dirbase</a></tt> </tt>
+<a name="L177"></a><tt class="py-lineno">177</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">ui</tt><tt class="py-op">.</tt><tt class="py-name">label_basepath2</tt><tt class="py-op">.</tt><tt class="py-name">setText</tt><tt class="py-op">(</tt><tt id="link-71" class="py-name"><a title="le2m.configuration.configvar.Experiment.dirbase" class="py-name" href="#" onclick="return doclink('link-71', 'dirbase', 'link-66');">dirbase</a></tt><tt class="py-op">)</tt> </tt>
+</div><a name="L178"></a><tt class="py-lineno">178</tt>  <tt class="py-line"> </tt>
+<a name="GuiPartLoad._accept"></a><div id="GuiPartLoad._accept-def"><a name="L179"></a><tt class="py-lineno">179</tt> <a class="py-toggle" href="#" id="GuiPartLoad._accept-toggle" onclick="return toggle('GuiPartLoad._accept');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="le2m.server.servgui.servguidialogs.GuiPartLoad-class.html#_accept">_accept</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="GuiPartLoad._accept-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="GuiPartLoad._accept-expanded"><a name="L180"></a><tt class="py-lineno">180</tt>  <tt class="py-line">        <tt class="py-comment"># parts</tt> </tt>
+<a name="L181"></a><tt class="py-lineno">181</tt>  <tt class="py-line">        <tt id="link-72" class="py-name" targets="Variable le2m.configuration.configvar.Experiment.parts=le2m.configuration.configvar.Experiment-class.html#parts,Package le2m.parts=le2m.parts-module.html"><a title="le2m.configuration.configvar.Experiment.parts
+le2m.parts" class="py-name" href="#" onclick="return doclink('link-72', 'parts', 'link-72');">parts</a></tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+<a name="L182"></a><tt class="py-lineno">182</tt>  <tt class="py-line">        <tt class="py-name">i</tt> <tt class="py-op">=</tt> <tt class="py-number">0</tt> </tt>
+<a name="L183"></a><tt class="py-lineno">183</tt>  <tt class="py-line">        <tt class="py-keyword">while</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_model</tt><tt class="py-op">.</tt><tt class="py-name">item</tt><tt class="py-op">(</tt><tt class="py-name">i</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L184"></a><tt class="py-lineno">184</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_model</tt><tt class="py-op">.</tt><tt class="py-name">item</tt><tt class="py-op">(</tt><tt class="py-name">i</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">checkState</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> <tt class="py-op">==</tt> <tt class="py-name">QtCore</tt><tt class="py-op">.</tt><tt class="py-name">Qt</tt><tt class="py-op">.</tt><tt class="py-name">Checked</tt><tt class="py-op">:</tt> </tt>
+<a name="L185"></a><tt class="py-lineno">185</tt>  <tt class="py-line">                <tt id="link-73" class="py-name"><a title="le2m.configuration.configvar.Experiment.parts
+le2m.parts" class="py-name" href="#" onclick="return doclink('link-73', 'parts', 'link-72');">parts</a></tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_model</tt><tt class="py-op">.</tt><tt class="py-name">item</tt><tt class="py-op">(</tt><tt class="py-name">i</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt id="link-74" class="py-name"><a title="le2m.questcomp.questcompmod.Question.text" class="py-name" href="#" onclick="return doclink('link-74', 'text', 'link-62');">text</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L186"></a><tt class="py-lineno">186</tt>  <tt class="py-line">            <tt class="py-name">i</tt> <tt class="py-op">+=</tt> <tt class="py-number">1</tt> </tt>
+<a name="L187"></a><tt class="py-lineno">187</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt id="link-75" class="py-name"><a title="le2m.configuration.configvar.Experiment.parts
+le2m.parts" class="py-name" href="#" onclick="return doclink('link-75', 'parts', 'link-72');">parts</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L188"></a><tt class="py-lineno">188</tt>  <tt class="py-line">            <tt class="py-name">QtGui</tt><tt class="py-op">.</tt><tt class="py-name">QMessageBox</tt><tt class="py-op">.</tt><tt class="py-name">critical</tt><tt class="py-op">(</tt> </tt>
+<a name="L189"></a><tt class="py-lineno">189</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">,</tt> </tt>
+<a name="L190"></a><tt class="py-lineno">190</tt>  <tt class="py-line">                <tt id="link-76" class="py-name"><a title="le2m.util.utili18n.le2mtrans" class="py-name" href="#" onclick="return doclink('link-76', 'le2mtrans', 'link-11');">le2mtrans</a></tt><tt class="py-op">(</tt><tt class="py-string">u"Error"</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L191"></a><tt class="py-lineno">191</tt>  <tt class="py-line">                <tt id="link-77" class="py-name"><a title="le2m.util.utili18n.le2mtrans" class="py-name" href="#" onclick="return doclink('link-77', 'le2mtrans', 'link-11');">le2mtrans</a></tt><tt class="py-op">(</tt><tt class="py-string">u"You must choose at least one part"</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L192"></a><tt class="py-lineno">192</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> </tt>
+<a name="L193"></a><tt class="py-lineno">193</tt>  <tt class="py-line"> </tt>
+<a name="L194"></a><tt class="py-lineno">194</tt>  <tt class="py-line">        <tt class="py-comment"># dirbase</tt> </tt>
+<a name="L195"></a><tt class="py-lineno">195</tt>  <tt class="py-line">        <tt id="link-78" class="py-name"><a title="le2m.configuration.configvar.Experiment.dirbase" class="py-name" href="#" onclick="return doclink('link-78', 'dirbase', 'link-66');">dirbase</a></tt> <tt class="py-op">=</tt> <tt class="py-name">unicode</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">ui</tt><tt class="py-op">.</tt><tt class="py-name">label_basepath2</tt><tt class="py-op">.</tt><tt id="link-79" class="py-name"><a title="le2m.questcomp.questcompmod.Question.text" class="py-name" href="#" onclick="return doclink('link-79', 'text', 'link-62');">text</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">toUtf8</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">"utf-8"</tt><tt class="py-op">)</tt> </tt>
+<a name="L196"></a><tt class="py-lineno">196</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-op">(</tt><tt id="link-80" class="py-name"><a title="le2m.configuration.configvar.Experiment.dirbase" class="py-name" href="#" onclick="return doclink('link-80', 'dirbase', 'link-66');">dirbase</a></tt> <tt class="py-keyword">and</tt> <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">path</tt><tt class="py-op">.</tt><tt class="py-name">isdir</tt><tt class="py-op">(</tt><tt id="link-81" class="py-name"><a title="le2m.configuration.configvar.Experiment.dirbase" class="py-name" href="#" onclick="return doclink('link-81', 'dirbase', 'link-66');">dirbase</a></tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L197"></a><tt class="py-lineno">197</tt>  <tt class="py-line">            <tt class="py-name">QtGui</tt><tt class="py-op">.</tt><tt class="py-name">QMessageBox</tt><tt class="py-op">.</tt><tt class="py-name">critical</tt><tt class="py-op">(</tt> </tt>
+<a name="L198"></a><tt class="py-lineno">198</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">,</tt> </tt>
+<a name="L199"></a><tt class="py-lineno">199</tt>  <tt class="py-line">                <tt id="link-82" class="py-name"><a title="le2m.util.utili18n.le2mtrans" class="py-name" href="#" onclick="return doclink('link-82', 'le2mtrans', 'link-11');">le2mtrans</a></tt><tt class="py-op">(</tt><tt class="py-string">u"Error"</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L200"></a><tt class="py-lineno">200</tt>  <tt class="py-line">                <tt id="link-83" class="py-name"><a title="le2m.util.utili18n.le2mtrans" class="py-name" href="#" onclick="return doclink('link-83', 'le2mtrans', 'link-11');">le2mtrans</a></tt><tt class="py-op">(</tt><tt class="py-string">u"You must choose a directory in which to store the "</tt> </tt>
+<a name="L201"></a><tt class="py-lineno">201</tt>  <tt class="py-line">                          <tt class="py-string">u"database"</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L202"></a><tt class="py-lineno">202</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> </tt>
+<a name="L203"></a><tt class="py-lineno">203</tt>  <tt class="py-line"> </tt>
+<a name="L204"></a><tt class="py-lineno">204</tt>  <tt class="py-line">        <tt class="py-comment"># basename</tt> </tt>
+<a name="L205"></a><tt class="py-lineno">205</tt>  <tt class="py-line">        <tt id="link-84" class="py-name" targets="Variable le2m.configuration.configvar.Experiment.basename=le2m.configuration.configvar.Experiment-class.html#basename"><a title="le2m.configuration.configvar.Experiment.basename" class="py-name" href="#" onclick="return doclink('link-84', 'basename', 'link-84');">basename</a></tt> <tt class="py-op">=</tt> <tt class="py-name">unicode</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">ui</tt><tt class="py-op">.</tt><tt class="py-name">lineEdit_nom_base</tt><tt class="py-op">.</tt><tt id="link-85" class="py-name"><a title="le2m.questcomp.questcompmod.Question.text" class="py-name" href="#" onclick="return doclink('link-85', 'text', 'link-62');">text</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">toUtf8</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">"utf-8"</tt><tt class="py-op">)</tt> </tt>
+<a name="L206"></a><tt class="py-lineno">206</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt id="link-86" class="py-name"><a title="le2m.configuration.configvar.Experiment.basename" class="py-name" href="#" onclick="return doclink('link-86', 'basename', 'link-84');">basename</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L207"></a><tt class="py-lineno">207</tt>  <tt class="py-line">            <tt class="py-name">QtGui</tt><tt class="py-op">.</tt><tt class="py-name">QMessageBox</tt><tt class="py-op">.</tt><tt class="py-name">critical</tt><tt class="py-op">(</tt> </tt>
+<a name="L208"></a><tt class="py-lineno">208</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">,</tt> </tt>
+<a name="L209"></a><tt class="py-lineno">209</tt>  <tt class="py-line">                <tt id="link-87" class="py-name"><a title="le2m.util.utili18n.le2mtrans" class="py-name" href="#" onclick="return doclink('link-87', 'le2mtrans', 'link-11');">le2mtrans</a></tt><tt class="py-op">(</tt><tt class="py-string">u"Error"</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L210"></a><tt class="py-lineno">210</tt>  <tt class="py-line">                <tt id="link-88" class="py-name"><a title="le2m.util.utili18n.le2mtrans" class="py-name" href="#" onclick="return doclink('link-88', 'le2mtrans', 'link-11');">le2mtrans</a></tt><tt class="py-op">(</tt><tt class="py-string">u"You must provide a database name"</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L211"></a><tt class="py-lineno">211</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> </tt>
+<a name="L212"></a><tt class="py-lineno">212</tt>  <tt class="py-line">        <tt id="link-89" class="py-name"><a title="le2m.configuration.configvar.Experiment.basename" class="py-name" href="#" onclick="return doclink('link-89', 'basename', 'link-84');">basename</a></tt> <tt class="py-op">+=</tt> <tt class="py-string">u".sqlite"</tt> </tt>
+<a name="L213"></a><tt class="py-lineno">213</tt>  <tt class="py-line"> </tt>
+<a name="L214"></a><tt class="py-lineno">214</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">len</tt><tt class="py-op">(</tt><tt id="link-90" class="py-name"><a title="le2m.configuration.configvar.Experiment.parts
+le2m.parts" class="py-name" href="#" onclick="return doclink('link-90', 'parts', 'link-72');">parts</a></tt><tt class="py-op">)</tt> <tt class="py-op">&gt;</tt> <tt class="py-number">1</tt><tt class="py-op">:</tt> </tt>
+<a name="L215"></a><tt class="py-lineno">215</tt>  <tt class="py-line">            <tt class="py-name">confirmation</tt> <tt class="py-op">=</tt> <tt class="py-name">QtGui</tt><tt class="py-op">.</tt><tt class="py-name">QMessageBox</tt><tt class="py-op">.</tt><tt id="link-91" class="py-name" targets="Method le2m.server.servgest.servgestgui.GestionnaireGraphique.question()=le2m.server.servgest.servgestgui.GestionnaireGraphique-class.html#question"><a title="le2m.server.servgest.servgestgui.GestionnaireGraphique.question" class="py-name" href="#" onclick="return doclink('link-91', 'question', 'link-91');">question</a></tt><tt class="py-op">(</tt> </tt>
+<a name="L216"></a><tt class="py-lineno">216</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">,</tt> <tt id="link-92" class="py-name"><a title="le2m.util.utili18n.le2mtrans" class="py-name" href="#" onclick="return doclink('link-92', 'le2mtrans', 'link-11');">le2mtrans</a></tt><tt class="py-op">(</tt><tt class="py-string">u"Warning"</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L217"></a><tt class="py-lineno">217</tt>  <tt class="py-line">                <tt id="link-93" class="py-name"><a title="le2m.util.utili18n.le2mtrans" class="py-name" href="#" onclick="return doclink('link-93', 'le2mtrans', 'link-11');">le2mtrans</a></tt><tt class="py-op">(</tt><tt class="py-string">u"You have selected several parts.\nNote that the "</tt> </tt>
+<a name="L218"></a><tt class="py-lineno">218</tt>  <tt class="py-line">                          <tt class="py-string">u"database will be store in {d}.\n"</tt> </tt>
+<a name="L219"></a><tt class="py-lineno">219</tt>  <tt class="py-line">                          <tt class="py-string">u"Please confirm that it is in this directory that "</tt> </tt>
+<a name="L220"></a><tt class="py-lineno">220</tt>  <tt class="py-line">                          <tt class="py-string">u"you will store the database."</tt><tt class="py-op">.</tt><tt class="py-name">format</tt><tt class="py-op">(</tt><tt class="py-name">d</tt><tt class="py-op">=</tt><tt id="link-94" class="py-name"><a title="le2m.configuration.configvar.Experiment.dirbase" class="py-name" href="#" onclick="return doclink('link-94', 'dirbase', 'link-66');">dirbase</a></tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L221"></a><tt class="py-lineno">221</tt>  <tt class="py-line">                <tt class="py-name">QtGui</tt><tt class="py-op">.</tt><tt class="py-name">QMessageBox</tt><tt class="py-op">.</tt><tt class="py-name">No</tt> <tt class="py-op">|</tt> <tt class="py-name">QtGui</tt><tt class="py-op">.</tt><tt class="py-name">QMessageBox</tt><tt class="py-op">.</tt><tt class="py-name">Yes</tt><tt class="py-op">)</tt> </tt>
+<a name="L222"></a><tt class="py-lineno">222</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">confirmation</tt> <tt class="py-op">!=</tt> <tt class="py-name">QtGui</tt><tt class="py-op">.</tt><tt class="py-name">QMessageBox</tt><tt class="py-op">.</tt><tt class="py-name">Yes</tt><tt class="py-op">:</tt> </tt>
+<a name="L223"></a><tt class="py-lineno">223</tt>  <tt class="py-line">                <tt class="py-keyword">return</tt> </tt>
+<a name="L224"></a><tt class="py-lineno">224</tt>  <tt class="py-line"> </tt>
+<a name="L225"></a><tt class="py-lineno">225</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_experiment</tt> <tt class="py-op">=</tt> <tt id="link-95" class="py-name"><a title="le2m.configuration.configvar.Experiment" class="py-name" href="#" onclick="return doclink('link-95', 'Experiment', 'link-8');">Experiment</a></tt><tt class="py-op">(</tt> </tt>
+<a name="L226"></a><tt class="py-lineno">226</tt>  <tt class="py-line">            <tt id="link-96" class="py-name"><a title="le2m.configuration.configvar.Experiment.parts
+le2m.parts" class="py-name" href="#" onclick="return doclink('link-96', 'parts', 'link-72');">parts</a></tt><tt class="py-op">,</tt> <tt id="link-97" class="py-name"><a title="le2m.configuration.configvar.Experiment.dirbase" class="py-name" href="#" onclick="return doclink('link-97', 'dirbase', 'link-66');">dirbase</a></tt><tt class="py-op">,</tt> <tt id="link-98" class="py-name"><a title="le2m.configuration.configvar.Experiment.basename" class="py-name" href="#" onclick="return doclink('link-98', 'basename', 'link-84');">basename</a></tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">ui</tt><tt class="py-op">.</tt><tt class="py-name">checkBox_test</tt><tt class="py-op">.</tt><tt class="py-name">isChecked</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L227"></a><tt class="py-lineno">227</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">accept</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L228"></a><tt class="py-lineno">228</tt>  <tt class="py-line"> </tt>
+<a name="GuiPartLoad.get_expeinfos"></a><div id="GuiPartLoad.get_expeinfos-def"><a name="L229"></a><tt class="py-lineno">229</tt> <a class="py-toggle" href="#" id="GuiPartLoad.get_expeinfos-toggle" onclick="return toggle('GuiPartLoad.get_expeinfos');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="le2m.server.servgui.servguidialogs.GuiPartLoad-class.html#get_expeinfos">get_expeinfos</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="GuiPartLoad.get_expeinfos-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="GuiPartLoad.get_expeinfos-expanded"><a name="L230"></a><tt class="py-lineno">230</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_experiment</tt> </tt>
+</div></div><a name="L231"></a><tt class="py-lineno">231</tt>  <tt class="py-line"> </tt>
+<a name="L232"></a><tt class="py-lineno">232</tt>  <tt class="py-line"> </tt>
+<a name="GuiPartsPlayed"></a><div id="GuiPartsPlayed-def"><a name="L233"></a><tt class="py-lineno">233</tt> <a class="py-toggle" href="#" id="GuiPartsPlayed-toggle" onclick="return toggle('GuiPartsPlayed');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="le2m.server.servgui.servguidialogs.GuiPartsPlayed-class.html">GuiPartsPlayed</a><tt class="py-op">(</tt><tt class="py-base-class">QtGui</tt><tt class="py-op">.</tt><tt class="py-base-class">QDialog</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="GuiPartsPlayed-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="GuiPartsPlayed-expanded"><a name="L234"></a><tt class="py-lineno">234</tt>  <tt class="py-line">    <tt class="py-docstring">"""</tt> </tt>
+<a name="L235"></a><tt class="py-lineno">235</tt>  <tt class="py-line"><tt class="py-docstring">    Dialogue qui affiche la liste des parties jou&#233;es.</tt> </tt>
+<a name="L236"></a><tt class="py-lineno">236</tt>  <tt class="py-line"><tt class="py-docstring">    Permet ensuite:</tt> </tt>
+<a name="L237"></a><tt class="py-lineno">237</tt>  <tt class="py-line"><tt class="py-docstring">    - de tirer au sort une des parties parmi un ensemble s&#233;lectionn&#233;</tt> </tt>
+<a name="L238"></a><tt class="py-lineno">238</tt>  <tt class="py-line"><tt class="py-docstring">    - de faire afficher les gains de la partie s&#233;lectionn&#233;e sur les </tt> </tt>
+<a name="L239"></a><tt class="py-lineno">239</tt>  <tt class="py-line"><tt class="py-docstring">    postes clients."""</tt> </tt>
+<a name="L240"></a><tt class="py-lineno">240</tt>  <tt class="py-line"> </tt>
+<a name="GuiPartsPlayed.__init__"></a><div id="GuiPartsPlayed.__init__-def"><a name="L241"></a><tt class="py-lineno">241</tt> <a class="py-toggle" href="#" id="GuiPartsPlayed.__init__-toggle" onclick="return toggle('GuiPartsPlayed.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="le2m.server.servgui.servguidialogs.GuiPartsPlayed-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">liste_parties</tt><tt class="py-op">,</tt> <tt class="py-param">parent</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="GuiPartsPlayed.__init__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="GuiPartsPlayed.__init__-expanded"><a name="L242"></a><tt class="py-lineno">242</tt>  <tt class="py-line">        <tt class="py-name">super</tt><tt class="py-op">(</tt><tt id="link-99" class="py-name" targets="Class le2m.server.servgui.servguidialogs.GuiPartsPlayed=le2m.server.servgui.servguidialogs.GuiPartsPlayed-class.html"><a title="le2m.server.servgui.servguidialogs.GuiPartsPlayed" class="py-name" href="#" onclick="return doclink('link-99', 'GuiPartsPlayed', 'link-99');">GuiPartsPlayed</a></tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt id="link-100" class="py-name"><a title="le2m.client.clt.Client.__init__
+le2m.client.cltgui.cltguidialogs.GuiAccueil.__init__
+le2m.client.cltgui.cltguidialogs.GuiFinal.__init__
+le2m.client.cltgui.cltguidialogs.GuiHistorique.__init__
+le2m.client.cltgui.cltguidialogs.GuiPopup.__init__
+le2m.client.cltgui.cltguidialogs.GuiQuestionnaireFinal.__init__
+le2m.client.cltgui.cltguidialogs.GuiRecapitulatif.__init__
+le2m.client.cltgui.cltguiforms.GuiAttente.__init__
+le2m.client.cltgui.cltguitablemodels.TableModelHistorique.__init__
+le2m.client.cltremote.RemoteBase.__init__
+le2m.client.cltremote.RemoteQuestionnaireFinal.__init__
+le2m.creator.creatorgui.GuiCreator.__init__
+le2m.creator.filestocopy.creator_Gui.GuiDecision.__init__
+le2m.creator.filestocopy.creator_Part.PartieEXPERIENCE_NOM_COURT.__init__
+le2m.creator.filestocopy.creator_Part.RepetitionsEXPERIENCE_NOM_COURT.__init__
+le2m.creator.filestocopy.creator_Remote.RemoteEXPERIENCE_NOM_COURT.__init__
+le2m.creator.filestocopy.creator_Serv.Serveur.__init__
+le2m.extractor.extractorgui.GuiExtractor.__init__
+le2m.parts.Dictator.DictatorGui.GuiDecision.__init__
+le2m.parts.Dictator.DictatorPart.PartieDIC.__init__
+le2m.parts.Dictator.DictatorPart.RepetitionsDIC.__init__
+le2m.parts.Dictator.DictatorRemote.RemoteDIC.__init__
+le2m.parts.Dictator.DictatorServ.Serveur.__init__
+le2m.parts.GneezyPotter.GneezyPotterGui.GuiConfigure.__init__
+le2m.parts.GneezyPotter.GneezyPotterGui.GuiDecision.__init__
+le2m.parts.GneezyPotter.GneezyPotterPart.PartieGP.__init__
+le2m.parts.GneezyPotter.GneezyPotterPart.RepetitionsGP.__init__
+le2m.parts.GneezyPotter.GneezyPotterRemote.RemoteGP.__init__
+le2m.parts.GneezyPotter.GneezyPotterServ.Serveur.__init__
+le2m.parts.PublicGoodGame.PublicGoodGameGui.GuiDecision.__init__
+le2m.parts.PublicGoodGame.PublicGoodGamePart.PartiePGG.__init__
+le2m.parts.PublicGoodGame.PublicGoodGamePart.RepetitionsPGG.__init__
+le2m.parts.PublicGoodGame.PublicGoodGameRemote.RemotePGG.__init__
+le2m.parts.PublicGoodGame.PublicGoodGameServ.Serveur.__init__
+le2m.questcomp.questcompgui.GuiQuestComp.__init__
+le2m.questcomp.questcompgui.GuiQuestCompQuest.__init__
+le2m.questcomp.questcompgui.GuiQuestEdit.__init__
+le2m.questcomp.questcompmod.Question.__init__
+le2m.questcomp.questcompmod.Questionnaire.__init__
+le2m.server.serv.Serveur.__init__
+le2m.server.servgest.servgestbase.GestionnaireBase.__init__
+le2m.server.servgest.servgestbase.Session.__init__
+le2m.server.servgest.servgestexpe.GestionnaireExperience.__init__
+le2m.server.servgest.servgestgroups.GestionnaireGroupes.__init__
+le2m.server.servgest.servgestgui.GestionnaireGraphique.__init__
+le2m.server.servgest.servgestplayers.GestionnaireJoueurs.__init__
+le2m.server.servgui.servguidialogs.GuiGenres.__init__
+le2m.server.servgui.servguidialogs.GuiInformation.__init__
+le2m.server.servgui.servguidialogs.GuiPartLoad.__init__
+le2m.server.servgui.servguidialogs.GuiPartsPlayed.__init__
+le2m.server.servgui.servguidialogs.GuiPayoffs.__init__
+le2m.server.servgui.servguitablemodels.TableModelGenres.__init__
+le2m.server.servgui.servguitablemodels.TableModelJoueurs.__init__
+le2m.server.servgui.servguitablemodels.TableModelPaiements.__init__
+le2m.server.servgui.servguitablemodels.TableModelQuestionnaireFinal.__init__
+le2m.server.servgui.servguiwindows.GuiServeur.__init__
+le2m.server.servparties.Partie.__init__
+le2m.server.servparties.PartieBase.__init__
+le2m.server.servparties.PartieQuestionnaireFinal.__init__
+le2m.server.servplayers.Joueur.__init__
+le2m.util.utilqtreactor.QTReactor.__init__
+le2m.util.utilqtreactor.TwistedSocketNotifier.__init__
+le2m.util.utilqtreactor.fakeApplication.__init__" class="py-name" href="#" onclick="return doclink('link-100', '__init__', 'link-24');">__init__</a></tt><tt class="py-op">(</tt><tt class="py-name">parent</tt><tt class="py-op">)</tt> </tt>
+<a name="L243"></a><tt class="py-lineno">243</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_liste_parties</tt> <tt class="py-op">=</tt> <tt class="py-name">liste_parties</tt> </tt>
+<a name="L244"></a><tt class="py-lineno">244</tt>  <tt class="py-line"> </tt>
+<a name="L245"></a><tt class="py-lineno">245</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">ui</tt> <tt class="py-op">=</tt> <tt id="link-101" class="py-name"><a title="le2m.server.servgui.servguisrc.servguipartsplayed" class="py-name" href="#" onclick="return doclink('link-101', 'servguipartsplayed', 'link-19');">servguipartsplayed</a></tt><tt class="py-op">.</tt><tt id="link-102" class="py-name"><a title="le2m.client.cltgui.cltguisrc.cltguifinal.Ui_Dialog
+le2m.client.cltgui.cltguisrc.cltguihist.Ui_Dialog
+le2m.client.cltgui.cltguisrc.cltguipopup.Ui_Dialog
+le2m.client.cltgui.cltguisrc.cltguiquestfinal.Ui_Dialog
+le2m.client.cltgui.cltguisrc.cltguisummary.Ui_Dialog
+le2m.client.cltgui.cltguisrc.cltguiwelc.Ui_Dialog
+le2m.creator.creatorui.creatorscreen.Ui_Dialog
+le2m.creator.filestocopy.creator_Decision.Ui_Dialog
+le2m.extractor.extractorui.extractorscreen.Ui_Dialog
+le2m.parts.Dictator.DictatorGuiSrc.DictatorDecision.Ui_Dialog
+le2m.parts.GneezyPotter.GneezyPotterGuiSrc.GneezyPotterConfigure.Ui_Dialog
+le2m.parts.GneezyPotter.GneezyPotterGuiSrc.GneezyPotterDecision.Ui_Dialog
+le2m.parts.PublicGoodGame.PublicGoodGameGuiSrc.PublicGoodGameDecision.Ui_Dialog
+le2m.questcomp.questcompui.questcompquest.Ui_Dialog
+le2m.questcomp.questcompui.questcompquestedit.Ui_Dialog
+le2m.server.servgui.servguisrc.servguigenders.Ui_Dialog
+le2m.server.servgui.servguisrc.servguiinfo.Ui_Dialog
+le2m.server.servgui.servguisrc.servguipartsload.Ui_Dialog
+le2m.server.servgui.servguisrc.servguipartsplayed.Ui_Dialog
+le2m.server.servgui.servguisrc.servguipayoffs.Ui_Dialog" class="py-name" href="#" onclick="return doclink('link-102', 'Ui_Dialog', 'link-26');">Ui_Dialog</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L246"></a><tt class="py-lineno">246</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">ui</tt><tt class="py-op">.</tt><tt id="link-103" class="py-name"><a title="le2m.client.cltgui.cltguisrc.cltguifinal.Ui_Dialog.setupUi
+le2m.client.cltgui.cltguisrc.cltguihist.Ui_Dialog.setupUi
+le2m.client.cltgui.cltguisrc.cltguipopup.Ui_Dialog.setupUi
+le2m.client.cltgui.cltguisrc.cltguiquestfinal.Ui_Dialog.setupUi
+le2m.client.cltgui.cltguisrc.cltguisummary.Ui_Dialog.setupUi
+le2m.client.cltgui.cltguisrc.cltguiwait.Ui_WaitingScreen.setupUi
+le2m.client.cltgui.cltguisrc.cltguiwelc.Ui_Dialog.setupUi
+le2m.creator.creatorui.creatorscreen.Ui_Dialog.setupUi
+le2m.creator.filestocopy.creator_Decision.Ui_Dialog.setupUi
+le2m.extractor.extractorui.extractorscreen.Ui_Dialog.setupUi
+le2m.parts.Dictator.DictatorGuiSrc.DictatorDecision.Ui_Dialog.setupUi
+le2m.parts.GneezyPotter.GneezyPotterGuiSrc.GneezyPotterConfigure.Ui_Dialog.setupUi
+le2m.parts.GneezyPotter.GneezyPotterGuiSrc.GneezyPotterDecision.Ui_Dialog.setupUi
+le2m.parts.PublicGoodGame.PublicGoodGameGuiSrc.PublicGoodGameDecision.Ui_Dialog.setupUi
+le2m.questcomp.questcompui.questcompquest.Ui_Dialog.setupUi
+le2m.questcomp.questcompui.questcompquestedit.Ui_Dialog.setupUi
+le2m.questcomp.questcompui.questcompscreen.Ui_MainWindow.setupUi
+le2m.server.servgui.servguisrc.servguigenders.Ui_Dialog.setupUi
+le2m.server.servgui.servguisrc.servguiinfo.Ui_Dialog.setupUi
+le2m.server.servgui.servguisrc.servguimain.Ui_EcranServeur.setupUi
+le2m.server.servgui.servguisrc.servguipartsload.Ui_Dialog.setupUi
+le2m.server.servgui.servguisrc.servguipartsplayed.Ui_Dialog.setupUi
+le2m.server.servgui.servguisrc.servguipayoffs.Ui_Dialog.setupUi" class="py-name" href="#" onclick="return doclink('link-103', 'setupUi', 'link-27');">setupUi</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">)</tt> </tt>
+<a name="L247"></a><tt class="py-lineno">247</tt>  <tt class="py-line"> </tt>
+<a name="L248"></a><tt class="py-lineno">248</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">ui</tt><tt class="py-op">.</tt><tt class="py-name">listView_parties</tt><tt class="py-op">.</tt><tt class="py-name">setToolTip</tt><tt class="py-op">(</tt> </tt>
+<a name="L249"></a><tt class="py-lineno">249</tt>  <tt class="py-line">            <tt class="py-name">QtCore</tt><tt class="py-op">.</tt><tt class="py-name">QString</tt><tt class="py-op">(</tt><tt class="py-string">u"S&#233;lectionner une ou plusieurs parties"</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L250"></a><tt class="py-lineno">250</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">ui</tt><tt class="py-op">.</tt><tt class="py-name">listView_parties</tt><tt class="py-op">.</tt><tt class="py-name">setFixedSize</tt><tt class="py-op">(</tt><tt class="py-number">300</tt><tt class="py-op">,</tt> <tt class="py-number">350</tt><tt class="py-op">)</tt> </tt>
+<a name="L251"></a><tt class="py-lineno">251</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">ui</tt><tt class="py-op">.</tt><tt class="py-name">buttonBox</tt><tt class="py-op">.</tt><tt class="py-name">accepted</tt><tt class="py-op">.</tt><tt class="py-name">connect</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-104" class="py-name" targets="Method le2m.server.servgui.servguidialogs.GuiPartsPlayed._set_parties_selectionnees()=le2m.server.servgui.servguidialogs.GuiPartsPlayed-class.html#_set_parties_selectionnees"><a title="le2m.server.servgui.servguidialogs.GuiPartsPlayed._set_parties_selectionnees" class="py-name" href="#" onclick="return doclink('link-104', '_set_parties_selectionnees', 'link-104');">_set_parties_selectionnees</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L252"></a><tt class="py-lineno">252</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">ui</tt><tt class="py-op">.</tt><tt class="py-name">buttonBox</tt><tt class="py-op">.</tt><tt class="py-name">rejected</tt><tt class="py-op">.</tt><tt class="py-name">connect</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-105" class="py-name"><a title="le2m.client.cltgui.cltguidialogs.GuiAccueil.reject
+le2m.client.cltgui.cltguidialogs.GuiFinal.reject
+le2m.client.cltgui.cltguidialogs.GuiHistorique.reject
+le2m.client.cltgui.cltguidialogs.GuiPopup.reject
+le2m.client.cltgui.cltguidialogs.GuiQuestionnaireFinal.reject
+le2m.client.cltgui.cltguidialogs.GuiRecapitulatif.reject
+le2m.creator.filestocopy.creator_Gui.GuiDecision.reject
+le2m.parts.Dictator.DictatorGui.GuiDecision.reject
+le2m.parts.GneezyPotter.GneezyPotterGui.GuiDecision.reject
+le2m.parts.PublicGoodGame.PublicGoodGameGui.GuiDecision.reject
+le2m.questcomp.questcompgui.GuiQuestCompQuest.reject" class="py-name" href="#" onclick="return doclink('link-105', 'reject', 'link-30');">reject</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L253"></a><tt class="py-lineno">253</tt>  <tt class="py-line"> </tt>
+<a name="L254"></a><tt class="py-lineno">254</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_model</tt> <tt class="py-op">=</tt> <tt class="py-name">QtGui</tt><tt class="py-op">.</tt><tt class="py-name">QStandardItemModel</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L255"></a><tt class="py-lineno">255</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">partie</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_liste_parties</tt><tt class="py-op">:</tt> </tt>
+<a name="L256"></a><tt class="py-lineno">256</tt>  <tt class="py-line">            <tt class="py-name">item</tt> <tt class="py-op">=</tt> <tt class="py-name">QtGui</tt><tt class="py-op">.</tt><tt class="py-name">QStandardItem</tt><tt class="py-op">(</tt><tt class="py-string">'{}'</tt><tt class="py-op">.</tt><tt class="py-name">format</tt><tt class="py-op">(</tt><tt class="py-name">partie</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L257"></a><tt class="py-lineno">257</tt>  <tt class="py-line">            <tt class="py-name">item</tt><tt class="py-op">.</tt><tt class="py-name">setCheckState</tt><tt class="py-op">(</tt><tt class="py-name">QtCore</tt><tt class="py-op">.</tt><tt class="py-name">Qt</tt><tt class="py-op">.</tt><tt class="py-name">Checked</tt><tt class="py-op">)</tt> </tt>
+<a name="L258"></a><tt class="py-lineno">258</tt>  <tt class="py-line">            <tt class="py-name">item</tt><tt class="py-op">.</tt><tt class="py-name">setCheckable</tt><tt class="py-op">(</tt><tt class="py-name">True</tt><tt class="py-op">)</tt> </tt>
+<a name="L259"></a><tt class="py-lineno">259</tt>  <tt class="py-line">            <tt class="py-name">item</tt><tt class="py-op">.</tt><tt class="py-name">setEditable</tt><tt class="py-op">(</tt><tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L260"></a><tt class="py-lineno">260</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_model</tt><tt class="py-op">.</tt><tt class="py-name">appendRow</tt><tt class="py-op">(</tt><tt class="py-name">item</tt><tt class="py-op">)</tt> </tt>
+<a name="L261"></a><tt class="py-lineno">261</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">ui</tt><tt class="py-op">.</tt><tt class="py-name">listView_parties</tt><tt class="py-op">.</tt><tt class="py-name">setModel</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_model</tt><tt class="py-op">)</tt> </tt>
+<a name="L262"></a><tt class="py-lineno">262</tt>  <tt class="py-line"> </tt>
+<a name="L263"></a><tt class="py-lineno">263</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">setFixedSize</tt><tt class="py-op">(</tt><tt class="py-number">380</tt><tt class="py-op">,</tt> <tt class="py-number">480</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L264"></a><tt class="py-lineno">264</tt>  <tt class="py-line"> </tt>
+<a name="GuiPartsPlayed._set_parties_selectionnees"></a><div id="GuiPartsPlayed._set_parties_selectionnees-def"><a name="L265"></a><tt class="py-lineno">265</tt> <a class="py-toggle" href="#" id="GuiPartsPlayed._set_parties_selectionnees-toggle" onclick="return toggle('GuiPartsPlayed._set_parties_selectionnees');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="le2m.server.servgui.servguidialogs.GuiPartsPlayed-class.html#_set_parties_selectionnees">_set_parties_selectionnees</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="GuiPartsPlayed._set_parties_selectionnees-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="GuiPartsPlayed._set_parties_selectionnees-expanded"><a name="L266"></a><tt class="py-lineno">266</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_liste_parties</tt><tt class="py-op">:</tt> </tt>
+<a name="L267"></a><tt class="py-lineno">267</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-106" class="py-name"><a title="le2m.client.cltgui.cltguidialogs.GuiAccueil.reject
+le2m.client.cltgui.cltguidialogs.GuiFinal.reject
+le2m.client.cltgui.cltguidialogs.GuiHistorique.reject
+le2m.client.cltgui.cltguidialogs.GuiPopup.reject
+le2m.client.cltgui.cltguidialogs.GuiQuestionnaireFinal.reject
+le2m.client.cltgui.cltguidialogs.GuiRecapitulatif.reject
+le2m.creator.filestocopy.creator_Gui.GuiDecision.reject
+le2m.parts.Dictator.DictatorGui.GuiDecision.reject
+le2m.parts.GneezyPotter.GneezyPotterGui.GuiDecision.reject
+le2m.parts.PublicGoodGame.PublicGoodGameGui.GuiDecision.reject
+le2m.questcomp.questcompgui.GuiQuestCompQuest.reject" class="py-name" href="#" onclick="return doclink('link-106', 'reject', 'link-30');">reject</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L268"></a><tt class="py-lineno">268</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_parties_selectionnees</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+<a name="L269"></a><tt class="py-lineno">269</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">ligne</tt> <tt class="py-keyword">in</tt> <tt class="py-name">range</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_model</tt><tt class="py-op">.</tt><tt id="link-107" class="py-name"><a title="le2m.client.cltgui.cltguitablemodels.TableModelHistorique.rowCount
+le2m.server.servgui.servguitablemodels.TableModelGenres.rowCount
+le2m.server.servgui.servguitablemodels.TableModelJoueurs.rowCount
+le2m.server.servgui.servguitablemodels.TableModelPaiements.rowCount
+le2m.server.servgui.servguitablemodels.TableModelQuestionnaireFinal.rowCount" class="py-name" href="#" onclick="return doclink('link-107', 'rowCount', 'link-32');">rowCount</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L270"></a><tt class="py-lineno">270</tt>  <tt class="py-line">            <tt class="py-name">item</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_model</tt><tt class="py-op">.</tt><tt class="py-name">item</tt><tt class="py-op">(</tt><tt class="py-name">ligne</tt><tt class="py-op">)</tt> </tt>
+<a name="L271"></a><tt class="py-lineno">271</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">item</tt><tt class="py-op">.</tt><tt class="py-name">checkState</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> <tt class="py-op">==</tt> <tt class="py-name">QtCore</tt><tt class="py-op">.</tt><tt class="py-name">Qt</tt><tt class="py-op">.</tt><tt class="py-name">Checked</tt><tt class="py-op">:</tt> </tt>
+<a name="L272"></a><tt class="py-lineno">272</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_parties_selectionnees</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">item</tt><tt class="py-op">.</tt><tt id="link-108" class="py-name"><a title="le2m.questcomp.questcompmod.Question.text" class="py-name" href="#" onclick="return doclink('link-108', 'text', 'link-62');">text</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L273"></a><tt class="py-lineno">273</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_parties_selectionnees</tt><tt class="py-op">:</tt> </tt>
+<a name="L274"></a><tt class="py-lineno">274</tt>  <tt class="py-line">            <tt class="py-name">QtGui</tt><tt class="py-op">.</tt><tt class="py-name">QMessageBox</tt><tt class="py-op">.</tt><tt class="py-name">warning</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">,</tt> <tt class="py-string">u"Attention"</tt><tt class="py-op">,</tt> </tt>
+<a name="L275"></a><tt class="py-lineno">275</tt>  <tt class="py-line">                                      <tt class="py-string">u"Aucune partie s&#233;lectionn&#233;e"</tt><tt class="py-op">)</tt> </tt>
+<a name="L276"></a><tt class="py-lineno">276</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-109" class="py-name"><a title="le2m.client.cltgui.cltguidialogs.GuiAccueil.reject
+le2m.client.cltgui.cltguidialogs.GuiFinal.reject
+le2m.client.cltgui.cltguidialogs.GuiHistorique.reject
+le2m.client.cltgui.cltguidialogs.GuiPopup.reject
+le2m.client.cltgui.cltguidialogs.GuiQuestionnaireFinal.reject
+le2m.client.cltgui.cltguidialogs.GuiRecapitulatif.reject
+le2m.creator.filestocopy.creator_Gui.GuiDecision.reject
+le2m.parts.Dictator.DictatorGui.GuiDecision.reject
+le2m.parts.GneezyPotter.GneezyPotterGui.GuiDecision.reject
+le2m.parts.PublicGoodGame.PublicGoodGameGui.GuiDecision.reject
+le2m.questcomp.questcompgui.GuiQuestCompQuest.reject" class="py-name" href="#" onclick="return doclink('link-109', 'reject', 'link-30');">reject</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L277"></a><tt class="py-lineno">277</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">accept</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L278"></a><tt class="py-lineno">278</tt>  <tt class="py-line"> </tt>
+<a name="GuiPartsPlayed.get_parties_selectionnees"></a><div id="GuiPartsPlayed.get_parties_selectionnees-def"><a name="L279"></a><tt class="py-lineno">279</tt> <a class="py-toggle" href="#" id="GuiPartsPlayed.get_parties_selectionnees-toggle" onclick="return toggle('GuiPartsPlayed.get_parties_selectionnees');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="le2m.server.servgui.servguidialogs.GuiPartsPlayed-class.html#get_parties_selectionnees">get_parties_selectionnees</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="GuiPartsPlayed.get_parties_selectionnees-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="GuiPartsPlayed.get_parties_selectionnees-expanded"><a name="L280"></a><tt class="py-lineno">280</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_parties_selectionnees</tt> </tt>
+</div></div><a name="L281"></a><tt class="py-lineno">281</tt>  <tt class="py-line"> </tt>
+<a name="L282"></a><tt class="py-lineno">282</tt>  <tt class="py-line"> </tt>
+<a name="GuiPayoffs"></a><div id="GuiPayoffs-def"><a name="L283"></a><tt class="py-lineno">283</tt> <a class="py-toggle" href="#" id="GuiPayoffs-toggle" onclick="return toggle('GuiPayoffs');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="le2m.server.servgui.servguidialogs.GuiPayoffs-class.html">GuiPayoffs</a><tt class="py-op">(</tt><tt class="py-base-class">QtGui</tt><tt class="py-op">.</tt><tt class="py-base-class">QDialog</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="GuiPayoffs-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="GuiPayoffs-expanded"><a name="L284"></a><tt class="py-lineno">284</tt>  <tt class="py-line">    <tt class="py-docstring">"""</tt> </tt>
+<a name="L285"></a><tt class="py-lineno">285</tt>  <tt class="py-line"><tt class="py-docstring">    Fenetre qui affiche les gains de la partie</tt> </tt>
+<a name="L286"></a><tt class="py-lineno">286</tt>  <tt class="py-line"><tt class="py-docstring">    Elle permet d'imprimer ces gains, de les enregistrer mais aussi de les</tt> </tt>
+<a name="L287"></a><tt class="py-lineno">287</tt>  <tt class="py-line"><tt class="py-docstring">    faire afficher sur les postes clients</tt> </tt>
+<a name="L288"></a><tt class="py-lineno">288</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="GuiPayoffs.__init__"></a><div id="GuiPayoffs.__init__-def"><a name="L289"></a><tt class="py-lineno">289</tt> <a class="py-toggle" href="#" id="GuiPayoffs.__init__-toggle" onclick="return toggle('GuiPayoffs.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="le2m.server.servgui.servguidialogs.GuiPayoffs-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">le2mserv</tt><tt class="py-op">,</tt> <tt class="py-param">partname</tt><tt class="py-op">,</tt> <tt class="py-param">payoffs</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="GuiPayoffs.__init__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="GuiPayoffs.__init__-expanded"><a name="L290"></a><tt class="py-lineno">290</tt>  <tt class="py-line">        <tt class="py-name">super</tt><tt class="py-op">(</tt><tt id="link-110" class="py-name" targets="Class le2m.server.servgui.servguidialogs.GuiPayoffs=le2m.server.servgui.servguidialogs.GuiPayoffs-class.html"><a title="le2m.server.servgui.servguidialogs.GuiPayoffs" class="py-name" href="#" onclick="return doclink('link-110', 'GuiPayoffs', 'link-110');">GuiPayoffs</a></tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt id="link-111" class="py-name"><a title="le2m.client.clt.Client.__init__
+le2m.client.cltgui.cltguidialogs.GuiAccueil.__init__
+le2m.client.cltgui.cltguidialogs.GuiFinal.__init__
+le2m.client.cltgui.cltguidialogs.GuiHistorique.__init__
+le2m.client.cltgui.cltguidialogs.GuiPopup.__init__
+le2m.client.cltgui.cltguidialogs.GuiQuestionnaireFinal.__init__
+le2m.client.cltgui.cltguidialogs.GuiRecapitulatif.__init__
+le2m.client.cltgui.cltguiforms.GuiAttente.__init__
+le2m.client.cltgui.cltguitablemodels.TableModelHistorique.__init__
+le2m.client.cltremote.RemoteBase.__init__
+le2m.client.cltremote.RemoteQuestionnaireFinal.__init__
+le2m.creator.creatorgui.GuiCreator.__init__
+le2m.creator.filestocopy.creator_Gui.GuiDecision.__init__
+le2m.creator.filestocopy.creator_Part.PartieEXPERIENCE_NOM_COURT.__init__
+le2m.creator.filestocopy.creator_Part.RepetitionsEXPERIENCE_NOM_COURT.__init__
+le2m.creator.filestocopy.creator_Remote.RemoteEXPERIENCE_NOM_COURT.__init__
+le2m.creator.filestocopy.creator_Serv.Serveur.__init__
+le2m.extractor.extractorgui.GuiExtractor.__init__
+le2m.parts.Dictator.DictatorGui.GuiDecision.__init__
+le2m.parts.Dictator.DictatorPart.PartieDIC.__init__
+le2m.parts.Dictator.DictatorPart.RepetitionsDIC.__init__
+le2m.parts.Dictator.DictatorRemote.RemoteDIC.__init__
+le2m.parts.Dictator.DictatorServ.Serveur.__init__
+le2m.parts.GneezyPotter.GneezyPotterGui.GuiConfigure.__init__
+le2m.parts.GneezyPotter.GneezyPotterGui.GuiDecision.__init__
+le2m.parts.GneezyPotter.GneezyPotterPart.PartieGP.__init__
+le2m.parts.GneezyPotter.GneezyPotterPart.RepetitionsGP.__init__
+le2m.parts.GneezyPotter.GneezyPotterRemote.RemoteGP.__init__
+le2m.parts.GneezyPotter.GneezyPotterServ.Serveur.__init__
+le2m.parts.PublicGoodGame.PublicGoodGameGui.GuiDecision.__init__
+le2m.parts.PublicGoodGame.PublicGoodGamePart.PartiePGG.__init__
+le2m.parts.PublicGoodGame.PublicGoodGamePart.RepetitionsPGG.__init__
+le2m.parts.PublicGoodGame.PublicGoodGameRemote.RemotePGG.__init__
+le2m.parts.PublicGoodGame.PublicGoodGameServ.Serveur.__init__
+le2m.questcomp.questcompgui.GuiQuestComp.__init__
+le2m.questcomp.questcompgui.GuiQuestCompQuest.__init__
+le2m.questcomp.questcompgui.GuiQuestEdit.__init__
+le2m.questcomp.questcompmod.Question.__init__
+le2m.questcomp.questcompmod.Questionnaire.__init__
+le2m.server.serv.Serveur.__init__
+le2m.server.servgest.servgestbase.GestionnaireBase.__init__
+le2m.server.servgest.servgestbase.Session.__init__
+le2m.server.servgest.servgestexpe.GestionnaireExperience.__init__
+le2m.server.servgest.servgestgroups.GestionnaireGroupes.__init__
+le2m.server.servgest.servgestgui.GestionnaireGraphique.__init__
+le2m.server.servgest.servgestplayers.GestionnaireJoueurs.__init__
+le2m.server.servgui.servguidialogs.GuiGenres.__init__
+le2m.server.servgui.servguidialogs.GuiInformation.__init__
+le2m.server.servgui.servguidialogs.GuiPartLoad.__init__
+le2m.server.servgui.servguidialogs.GuiPartsPlayed.__init__
+le2m.server.servgui.servguidialogs.GuiPayoffs.__init__
+le2m.server.servgui.servguitablemodels.TableModelGenres.__init__
+le2m.server.servgui.servguitablemodels.TableModelJoueurs.__init__
+le2m.server.servgui.servguitablemodels.TableModelPaiements.__init__
+le2m.server.servgui.servguitablemodels.TableModelQuestionnaireFinal.__init__
+le2m.server.servgui.servguiwindows.GuiServeur.__init__
+le2m.server.servparties.Partie.__init__
+le2m.server.servparties.PartieBase.__init__
+le2m.server.servparties.PartieQuestionnaireFinal.__init__
+le2m.server.servplayers.Joueur.__init__
+le2m.util.utilqtreactor.QTReactor.__init__
+le2m.util.utilqtreactor.TwistedSocketNotifier.__init__
+le2m.util.utilqtreactor.fakeApplication.__init__" class="py-name" href="#" onclick="return doclink('link-111', '__init__', 'link-24');">__init__</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L291"></a><tt class="py-lineno">291</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_le2mserv</tt> <tt class="py-op">=</tt> <tt class="py-name">le2mserv</tt> </tt>
+<a name="L292"></a><tt class="py-lineno">292</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_partname</tt> <tt class="py-op">=</tt> <tt class="py-name">partname</tt> </tt>
+<a name="L293"></a><tt class="py-lineno">293</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_payoffs</tt> <tt class="py-op">=</tt> <tt class="py-name">payoffs</tt> </tt>
+<a name="L294"></a><tt class="py-lineno">294</tt>  <tt class="py-line"> </tt>
+<a name="L295"></a><tt class="py-lineno">295</tt>  <tt class="py-line">        <tt class="py-comment"># creation gui</tt> </tt>
+<a name="L296"></a><tt class="py-lineno">296</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">ui</tt> <tt class="py-op">=</tt> <tt id="link-112" class="py-name"><a title="le2m.server.servgui.servguisrc.servguipayoffs" class="py-name" href="#" onclick="return doclink('link-112', 'servguipayoffs', 'link-17');">servguipayoffs</a></tt><tt class="py-op">.</tt><tt id="link-113" class="py-name"><a title="le2m.client.cltgui.cltguisrc.cltguifinal.Ui_Dialog
+le2m.client.cltgui.cltguisrc.cltguihist.Ui_Dialog
+le2m.client.cltgui.cltguisrc.cltguipopup.Ui_Dialog
+le2m.client.cltgui.cltguisrc.cltguiquestfinal.Ui_Dialog
+le2m.client.cltgui.cltguisrc.cltguisummary.Ui_Dialog
+le2m.client.cltgui.cltguisrc.cltguiwelc.Ui_Dialog
+le2m.creator.creatorui.creatorscreen.Ui_Dialog
+le2m.creator.filestocopy.creator_Decision.Ui_Dialog
+le2m.extractor.extractorui.extractorscreen.Ui_Dialog
+le2m.parts.Dictator.DictatorGuiSrc.DictatorDecision.Ui_Dialog
+le2m.parts.GneezyPotter.GneezyPotterGuiSrc.GneezyPotterConfigure.Ui_Dialog
+le2m.parts.GneezyPotter.GneezyPotterGuiSrc.GneezyPotterDecision.Ui_Dialog
+le2m.parts.PublicGoodGame.PublicGoodGameGuiSrc.PublicGoodGameDecision.Ui_Dialog
+le2m.questcomp.questcompui.questcompquest.Ui_Dialog
+le2m.questcomp.questcompui.questcompquestedit.Ui_Dialog
+le2m.server.servgui.servguisrc.servguigenders.Ui_Dialog
+le2m.server.servgui.servguisrc.servguiinfo.Ui_Dialog
+le2m.server.servgui.servguisrc.servguipartsload.Ui_Dialog
+le2m.server.servgui.servguisrc.servguipartsplayed.Ui_Dialog
+le2m.server.servgui.servguisrc.servguipayoffs.Ui_Dialog" class="py-name" href="#" onclick="return doclink('link-113', 'Ui_Dialog', 'link-26');">Ui_Dialog</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L297"></a><tt class="py-lineno">297</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">ui</tt><tt class="py-op">.</tt><tt id="link-114" class="py-name"><a title="le2m.client.cltgui.cltguisrc.cltguifinal.Ui_Dialog.setupUi
+le2m.client.cltgui.cltguisrc.cltguihist.Ui_Dialog.setupUi
+le2m.client.cltgui.cltguisrc.cltguipopup.Ui_Dialog.setupUi
+le2m.client.cltgui.cltguisrc.cltguiquestfinal.Ui_Dialog.setupUi
+le2m.client.cltgui.cltguisrc.cltguisummary.Ui_Dialog.setupUi
+le2m.client.cltgui.cltguisrc.cltguiwait.Ui_WaitingScreen.setupUi
+le2m.client.cltgui.cltguisrc.cltguiwelc.Ui_Dialog.setupUi
+le2m.creator.creatorui.creatorscreen.Ui_Dialog.setupUi
+le2m.creator.filestocopy.creator_Decision.Ui_Dialog.setupUi
+le2m.extractor.extractorui.extractorscreen.Ui_Dialog.setupUi
+le2m.parts.Dictator.DictatorGuiSrc.DictatorDecision.Ui_Dialog.setupUi
+le2m.parts.GneezyPotter.GneezyPotterGuiSrc.GneezyPotterConfigure.Ui_Dialog.setupUi
+le2m.parts.GneezyPotter.GneezyPotterGuiSrc.GneezyPotterDecision.Ui_Dialog.setupUi
+le2m.parts.PublicGoodGame.PublicGoodGameGuiSrc.PublicGoodGameDecision.Ui_Dialog.setupUi
+le2m.questcomp.questcompui.questcompquest.Ui_Dialog.setupUi
+le2m.questcomp.questcompui.questcompquestedit.Ui_Dialog.setupUi
+le2m.questcomp.questcompui.questcompscreen.Ui_MainWindow.setupUi
+le2m.server.servgui.servguisrc.servguigenders.Ui_Dialog.setupUi
+le2m.server.servgui.servguisrc.servguiinfo.Ui_Dialog.setupUi
+le2m.server.servgui.servguisrc.servguimain.Ui_EcranServeur.setupUi
+le2m.server.servgui.servguisrc.servguipartsload.Ui_Dialog.setupUi
+le2m.server.servgui.servguisrc.servguipartsplayed.Ui_Dialog.setupUi
+le2m.server.servgui.servguisrc.servguipayoffs.Ui_Dialog.setupUi" class="py-name" href="#" onclick="return doclink('link-114', 'setupUi', 'link-27');">setupUi</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">)</tt> </tt>
+<a name="L298"></a><tt class="py-lineno">298</tt>  <tt class="py-line"> </tt>
+<a name="L299"></a><tt class="py-lineno">299</tt>  <tt class="py-line">        <tt class="py-comment"># table model for displaying payoffs</tt> </tt>
+<a name="L300"></a><tt class="py-lineno">300</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_tableModel</tt> <tt class="py-op">=</tt> <tt id="link-115" class="py-name"><a title="le2m.server.servgui.servguitablemodels.TableModelPaiements" class="py-name" href="#" onclick="return doclink('link-115', 'TableModelPaiements', 'link-21');">TableModelPaiements</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_payoffs</tt><tt class="py-op">)</tt> </tt>
+<a name="L301"></a><tt class="py-lineno">301</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">ui</tt><tt class="py-op">.</tt><tt class="py-name">tableView</tt><tt class="py-op">.</tt><tt class="py-name">setModel</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_tableModel</tt><tt class="py-op">)</tt> </tt>
+<a name="L302"></a><tt class="py-lineno">302</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">ui</tt><tt class="py-op">.</tt><tt class="py-name">tableView</tt><tt class="py-op">.</tt><tt class="py-name">horizontalHeader</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">setResizeMode</tt><tt class="py-op">(</tt> </tt>
+<a name="L303"></a><tt class="py-lineno">303</tt>  <tt class="py-line">            <tt class="py-name">QtGui</tt><tt class="py-op">.</tt><tt class="py-name">QHeaderView</tt><tt class="py-op">.</tt><tt class="py-name">Stretch</tt><tt class="py-op">)</tt> </tt>
+<a name="L304"></a><tt class="py-lineno">304</tt>  <tt class="py-line"> </tt>
+<a name="L305"></a><tt class="py-lineno">305</tt>  <tt class="py-line">        <tt class="py-comment"># slot</tt> </tt>
+<a name="L306"></a><tt class="py-lineno">306</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">ui</tt><tt class="py-op">.</tt><tt class="py-name">pushButton_imprimer</tt><tt class="py-op">.</tt><tt class="py-name">clicked</tt><tt class="py-op">.</tt><tt class="py-name">connect</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-116" class="py-name" targets="Method le2m.questcomp.questcompgui.GuiQuestComp._print()=le2m.questcomp.questcompgui.GuiQuestComp-class.html#_print,Method le2m.server.servgui.servguidialogs.GuiPayoffs._print()=le2m.server.servgui.servguidialogs.GuiPayoffs-class.html#_print"><a title="le2m.questcomp.questcompgui.GuiQuestComp._print
+le2m.server.servgui.servguidialogs.GuiPayoffs._print" class="py-name" href="#" onclick="return doclink('link-116', '_print', 'link-116');">_print</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L307"></a><tt class="py-lineno">307</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">ui</tt><tt class="py-op">.</tt><tt class="py-name">pushButton_enregistrer</tt><tt class="py-op">.</tt><tt class="py-name">clicked</tt><tt class="py-op">.</tt><tt class="py-name">connect</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-117" class="py-name" targets="Method le2m.client.cltgui.cltguidialogs.GuiFinal._save()=le2m.client.cltgui.cltguidialogs.GuiFinal-class.html#_save,Method le2m.questcomp.questcompgui.GuiQuestComp._save()=le2m.questcomp.questcompgui.GuiQuestComp-class.html#_save,Method le2m.server.servgui.servguidialogs.GuiPayoffs._save()=le2m.server.servgui.servguidialogs.GuiPayoffs-class.html#_save"><a title="le2m.client.cltgui.cltguidialogs.GuiFinal._save
+le2m.questcomp.questcompgui.GuiQuestComp._save
+le2m.server.servgui.servguidialogs.GuiPayoffs._save" class="py-name" href="#" onclick="return doclink('link-117', '_save', 'link-117');">_save</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L308"></a><tt class="py-lineno">308</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">ui</tt><tt class="py-op">.</tt><tt class="py-name">pushButton_afficher</tt><tt class="py-op">.</tt><tt class="py-name">clicked</tt><tt class="py-op">.</tt><tt class="py-name">connect</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-118" class="py-name" targets="Method le2m.server.servgui.servguidialogs.GuiPayoffs._display_onremotes()=le2m.server.servgui.servguidialogs.GuiPayoffs-class.html#_display_onremotes"><a title="le2m.server.servgui.servguidialogs.GuiPayoffs._display_onremotes" class="py-name" href="#" onclick="return doclink('link-118', '_display_onremotes', 'link-118');">_display_onremotes</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L309"></a><tt class="py-lineno">309</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">ui</tt><tt class="py-op">.</tt><tt class="py-name">pushButton_ajouter</tt><tt class="py-op">.</tt><tt class="py-name">clicked</tt><tt class="py-op">.</tt><tt class="py-name">connect</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-119" class="py-name" targets="Method le2m.server.servgui.servguidialogs.GuiPayoffs._add_tofinalpayoffs()=le2m.server.servgui.servguidialogs.GuiPayoffs-class.html#_add_tofinalpayoffs"><a title="le2m.server.servgui.servguidialogs.GuiPayoffs._add_tofinalpayoffs" class="py-name" href="#" onclick="return doclink('link-119', '_add_tofinalpayoffs', 'link-119');">_add_tofinalpayoffs</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L310"></a><tt class="py-lineno">310</tt>  <tt class="py-line"> </tt>
+<a name="L311"></a><tt class="py-lineno">311</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_partname</tt> <tt class="py-op">==</tt> <tt class="py-string">"base"</tt><tt class="py-op">:</tt> </tt>
+<a name="L312"></a><tt class="py-lineno">312</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">setWindowTitle</tt><tt class="py-op">(</tt><tt id="link-120" class="py-name"><a title="le2m.util.utili18n.le2mtrans" class="py-name" href="#" onclick="return doclink('link-120', 'le2mtrans', 'link-11');">le2mtrans</a></tt><tt class="py-op">(</tt><tt class="py-string">u"Payoffs for the experiment"</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L313"></a><tt class="py-lineno">313</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">ui</tt><tt class="py-op">.</tt><tt class="py-name">pushButton_ajouter</tt><tt class="py-op">.</tt><tt class="py-name">setEnabled</tt><tt class="py-op">(</tt><tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L314"></a><tt class="py-lineno">314</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L315"></a><tt class="py-lineno">315</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">setWindowTitle</tt><tt class="py-op">(</tt><tt id="link-121" class="py-name"><a title="le2m.util.utili18n.le2mtrans" class="py-name" href="#" onclick="return doclink('link-121', 'le2mtrans', 'link-11');">le2mtrans</a></tt><tt class="py-op">(</tt><tt class="py-string">u"Payoffs of part {}"</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">format</tt><tt class="py-op">(</tt> </tt>
+<a name="L316"></a><tt class="py-lineno">316</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_partname</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L317"></a><tt class="py-lineno">317</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">setFixedSize</tt><tt class="py-op">(</tt><tt class="py-number">550</tt><tt class="py-op">,</tt> <tt class="py-number">608</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L318"></a><tt class="py-lineno">318</tt>  <tt class="py-line"> </tt>
+<a name="GuiPayoffs._print"></a><div id="GuiPayoffs._print-def"><a name="L319"></a><tt class="py-lineno">319</tt> <a class="py-toggle" href="#" id="GuiPayoffs._print-toggle" onclick="return toggle('GuiPayoffs._print');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="le2m.server.servgui.servguidialogs.GuiPayoffs-class.html#_print">_print</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="GuiPayoffs._print-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="GuiPayoffs._print-expanded"><a name="L320"></a><tt class="py-lineno">320</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L321"></a><tt class="py-lineno">321</tt>  <tt class="py-line"><tt class="py-docstring">        Print the table with the subjects' payoffs</tt> </tt>
+<a name="L322"></a><tt class="py-lineno">322</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L323"></a><tt class="py-lineno">323</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_payoffs</tt><tt class="py-op">:</tt> </tt>
+<a name="L324"></a><tt class="py-lineno">324</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> </tt>
+<a name="L325"></a><tt class="py-lineno">325</tt>  <tt class="py-line">        <tt class="py-name">html</tt> <tt class="py-op">=</tt> <tt class="py-string">u"&lt;table align='center' border=1&gt;\n&lt;tr&gt;"</tt> \ </tt>
+<a name="L326"></a><tt class="py-lineno">326</tt>  <tt class="py-line">               <tt class="py-string">u"&lt;td align='center'&gt;&lt;b&gt;"</tt> </tt>
+<a name="L327"></a><tt class="py-lineno">327</tt>  <tt class="py-line">        <tt class="py-name">html</tt> <tt class="py-op">+=</tt> <tt id="link-122" class="py-name"><a title="le2m.util.utili18n.le2mtrans" class="py-name" href="#" onclick="return doclink('link-122', 'le2mtrans', 'link-11');">le2mtrans</a></tt><tt class="py-op">(</tt><tt class="py-string">u"Hostname"</tt><tt class="py-op">)</tt> </tt>
+<a name="L328"></a><tt class="py-lineno">328</tt>  <tt class="py-line">        <tt class="py-name">html</tt> <tt class="py-op">+=</tt> <tt class="py-string">u"&lt;/b&gt;&lt;/td&gt;"</tt> \ </tt>
+<a name="L329"></a><tt class="py-lineno">329</tt>  <tt class="py-line">                <tt class="py-string">u"&lt;td align='center'&gt;&lt;b&gt;"</tt> </tt>
+<a name="L330"></a><tt class="py-lineno">330</tt>  <tt class="py-line">        <tt class="py-name">html</tt> <tt class="py-op">+=</tt> <tt id="link-123" class="py-name"><a title="le2m.util.utili18n.le2mtrans" class="py-name" href="#" onclick="return doclink('link-123', 'le2mtrans', 'link-11');">le2mtrans</a></tt><tt class="py-op">(</tt><tt class="py-string">u"Payoff"</tt><tt class="py-op">)</tt> </tt>
+<a name="L331"></a><tt class="py-lineno">331</tt>  <tt class="py-line">        <tt class="py-name">html</tt> <tt class="py-op">+=</tt> <tt class="py-string">u"&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;\n"</tt> </tt>
+<a name="L332"></a><tt class="py-lineno">332</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">l</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_payoffs</tt><tt class="py-op">:</tt> </tt>
+<a name="L333"></a><tt class="py-lineno">333</tt>  <tt class="py-line">            <tt class="py-name">html</tt> <tt class="py-op">+=</tt> <tt class="py-string">u"&lt;tr&gt;&lt;td align='center'&gt;{}&lt;/&gt;"</tt> \ </tt>
+<a name="L334"></a><tt class="py-lineno">334</tt>  <tt class="py-line">                    <tt class="py-string">u"&lt;td align='center'&gt;{}&amp;euro;&lt;/td&gt;"</tt> \ </tt>
+<a name="L335"></a><tt class="py-lineno">335</tt>  <tt class="py-line">                    <tt class="py-string">u"&lt;/tr&gt;\n"</tt><tt class="py-op">.</tt><tt class="py-name">format</tt><tt class="py-op">(</tt><tt class="py-name">l</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt><tt class="py-op">,</tt> <tt class="py-name">l</tt><tt class="py-op">[</tt><tt class="py-number">1</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L336"></a><tt class="py-lineno">336</tt>  <tt class="py-line">        <tt class="py-name">html</tt> <tt class="py-op">+=</tt> <tt class="py-string">u"&lt;/table&gt;\n"</tt> </tt>
+<a name="L337"></a><tt class="py-lineno">337</tt>  <tt class="py-line">        <tt class="py-name">doc</tt> <tt class="py-op">=</tt> <tt class="py-name">QtGui</tt><tt class="py-op">.</tt><tt class="py-name">QTextDocument</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L338"></a><tt class="py-lineno">338</tt>  <tt class="py-line">        <tt class="py-name">doc</tt><tt class="py-op">.</tt><tt class="py-name">setHtml</tt><tt class="py-op">(</tt><tt class="py-name">html</tt><tt class="py-op">)</tt> </tt>
+<a name="L339"></a><tt class="py-lineno">339</tt>  <tt class="py-line">        <tt class="py-name">printer</tt> <tt class="py-op">=</tt> <tt class="py-name">QtGui</tt><tt class="py-op">.</tt><tt class="py-name">QPrinter</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L340"></a><tt class="py-lineno">340</tt>  <tt class="py-line">        <tt class="py-name">dialog</tt> <tt class="py-op">=</tt> <tt class="py-name">QtGui</tt><tt class="py-op">.</tt><tt class="py-name">QPrintDialog</tt><tt class="py-op">(</tt><tt class="py-name">printer</tt><tt class="py-op">)</tt> </tt>
+<a name="L341"></a><tt class="py-lineno">341</tt>  <tt class="py-line">        <tt class="py-name">dialog</tt><tt class="py-op">.</tt><tt class="py-name">setModal</tt><tt class="py-op">(</tt><tt class="py-name">True</tt><tt class="py-op">)</tt> </tt>
+<a name="L342"></a><tt class="py-lineno">342</tt>  <tt class="py-line">        <tt class="py-name">dialog</tt><tt class="py-op">.</tt><tt class="py-name">setWindowTitle</tt><tt class="py-op">(</tt><tt id="link-124" class="py-name"><a title="le2m.util.utili18n.le2mtrans" class="py-name" href="#" onclick="return doclink('link-124', 'le2mtrans', 'link-11');">le2mtrans</a></tt><tt class="py-op">(</tt><tt class="py-string">u"Payoffs"</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L343"></a><tt class="py-lineno">343</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">dialog</tt><tt class="py-op">.</tt><tt id="link-125" class="py-name" targets="Method le2m.util.utilqtreactor.fakeApplication.exec_()=le2m.util.utilqtreactor.fakeApplication-class.html#exec_"><a title="le2m.util.utilqtreactor.fakeApplication.exec_" class="py-name" href="#" onclick="return doclink('link-125', 'exec_', 'link-125');">exec_</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L344"></a><tt class="py-lineno">344</tt>  <tt class="py-line">            <tt class="py-name">doc</tt><tt class="py-op">.</tt><tt class="py-name">print_</tt><tt class="py-op">(</tt><tt class="py-name">printer</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L345"></a><tt class="py-lineno">345</tt>  <tt class="py-line"> </tt>
+<a name="GuiPayoffs._save"></a><div id="GuiPayoffs._save-def"><a name="L346"></a><tt class="py-lineno">346</tt> <a class="py-toggle" href="#" id="GuiPayoffs._save-toggle" onclick="return toggle('GuiPayoffs._save');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="le2m.server.servgui.servguidialogs.GuiPayoffs-class.html#_save">_save</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="GuiPayoffs._save-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="GuiPayoffs._save-expanded"><a name="L347"></a><tt class="py-lineno">347</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L348"></a><tt class="py-lineno">348</tt>  <tt class="py-line"><tt class="py-docstring">        Open the dialog box for choosing/creating the location file and</tt> </tt>
+<a name="L349"></a><tt class="py-lineno">349</tt>  <tt class="py-line"><tt class="py-docstring">        save the table in the csv format</tt> </tt>
+<a name="L350"></a><tt class="py-lineno">350</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L351"></a><tt class="py-lineno">351</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_payoffs</tt><tt class="py-op">:</tt> </tt>
+<a name="L352"></a><tt class="py-lineno">352</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> </tt>
+<a name="L353"></a><tt class="py-lineno">353</tt>  <tt class="py-line">        <tt class="py-name">fichier</tt> <tt class="py-op">=</tt> <tt class="py-name">QtGui</tt><tt class="py-op">.</tt><tt class="py-name">QFileDialog</tt><tt class="py-op">.</tt><tt class="py-name">getSaveFileName</tt><tt class="py-op">(</tt> </tt>
+<a name="L354"></a><tt class="py-lineno">354</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">,</tt> <tt id="link-126" class="py-name"><a title="le2m.util.utili18n.le2mtrans" class="py-name" href="#" onclick="return doclink('link-126', 'le2mtrans', 'link-11');">le2mtrans</a></tt><tt class="py-op">(</tt><tt class="py-string">"Export payoffs in csv file"</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">"."</tt><tt class="py-op">,</tt> </tt>
+<a name="L355"></a><tt class="py-lineno">355</tt>  <tt class="py-line">            <tt id="link-127" class="py-name"><a title="le2m.util.utili18n.le2mtrans" class="py-name" href="#" onclick="return doclink('link-127', 'le2mtrans', 'link-11');">le2mtrans</a></tt><tt class="py-op">(</tt><tt class="py-string">u"csv file (*.csv)"</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L356"></a><tt class="py-lineno">356</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">fichier</tt><tt class="py-op">:</tt> </tt>
+<a name="L357"></a><tt class="py-lineno">357</tt>  <tt class="py-line">            <tt class="py-keyword">with</tt> <tt class="py-name">open</tt><tt class="py-op">(</tt><tt class="py-name">fichier</tt><tt class="py-op">,</tt> <tt class="py-string">'wb'</tt><tt class="py-op">)</tt> <tt class="py-keyword">as</tt> <tt class="py-name">csvfile</tt><tt class="py-op">:</tt> </tt>
+<a name="L358"></a><tt class="py-lineno">358</tt>  <tt class="py-line">                <tt class="py-name">csv_writer</tt> <tt class="py-op">=</tt> <tt class="py-name">csv</tt><tt class="py-op">.</tt><tt class="py-name">writer</tt><tt class="py-op">(</tt> </tt>
+<a name="L359"></a><tt class="py-lineno">359</tt>  <tt class="py-line">                    <tt class="py-name">csvfile</tt><tt class="py-op">,</tt> <tt class="py-name">delimiter</tt><tt class="py-op">=</tt><tt class="py-string">';'</tt><tt class="py-op">,</tt> <tt class="py-name">quotechar</tt><tt class="py-op">=</tt><tt class="py-string">'"'</tt><tt class="py-op">,</tt> </tt>
+<a name="L360"></a><tt class="py-lineno">360</tt>  <tt class="py-line">                    <tt class="py-name">quoting</tt><tt class="py-op">=</tt><tt class="py-name">csv</tt><tt class="py-op">.</tt><tt class="py-name">QUOTE_MINIMAL</tt><tt class="py-op">)</tt> </tt>
+<a name="L361"></a><tt class="py-lineno">361</tt>  <tt class="py-line">                <tt class="py-name">csv_writer</tt><tt class="py-op">.</tt><tt class="py-name">writerow</tt><tt class="py-op">(</tt> </tt>
+<a name="L362"></a><tt class="py-lineno">362</tt>  <tt class="py-line">                    <tt class="py-op">[</tt><tt id="link-128" class="py-name"><a title="le2m.util.utili18n.le2mtrans" class="py-name" href="#" onclick="return doclink('link-128', 'le2mtrans', 'link-11');">le2mtrans</a></tt><tt class="py-op">(</tt><tt class="py-string">u"Hostname"</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt id="link-129" class="py-name"><a title="le2m.util.utili18n.le2mtrans" class="py-name" href="#" onclick="return doclink('link-129', 'le2mtrans', 'link-11');">le2mtrans</a></tt><tt class="py-op">(</tt><tt class="py-string">u"Payoff"</tt><tt class="py-op">)</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L363"></a><tt class="py-lineno">363</tt>  <tt class="py-line">                <tt class="py-keyword">for</tt> <tt class="py-name">ligne</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_payoffs</tt><tt class="py-op">:</tt> </tt>
+<a name="L364"></a><tt class="py-lineno">364</tt>  <tt class="py-line">                    <tt class="py-name">csv_writer</tt><tt class="py-op">.</tt><tt class="py-name">writerow</tt><tt class="py-op">(</tt><tt class="py-name">ligne</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L365"></a><tt class="py-lineno">365</tt>  <tt class="py-line"> </tt>
+<a name="GuiPayoffs._display_onremotes"></a><div id="GuiPayoffs._display_onremotes-def"><a name="L366"></a><tt class="py-lineno">366</tt> <a class="py-toggle" href="#" id="GuiPayoffs._display_onremotes-toggle" onclick="return toggle('GuiPayoffs._display_onremotes');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="le2m.server.servgui.servguidialogs.GuiPayoffs-class.html#_display_onremotes">_display_onremotes</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="GuiPayoffs._display_onremotes-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="GuiPayoffs._display_onremotes-expanded"><a name="L367"></a><tt class="py-lineno">367</tt>  <tt class="py-line">        <tt class="py-name">text_temp</tt> <tt class="py-op">=</tt> <tt class="py-string">u"the experiment"</tt> <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_partname</tt> <tt class="py-op">==</tt> <tt class="py-string">"base"</tt> <tt class="py-keyword">else</tt> \ </tt>
+<a name="L368"></a><tt class="py-lineno">368</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_partname</tt> </tt>
+<a name="L369"></a><tt class="py-lineno">369</tt>  <tt class="py-line">        <tt class="py-name">confirmation</tt> <tt class="py-op">=</tt> <tt class="py-name">QtGui</tt><tt class="py-op">.</tt><tt class="py-name">QMessageBox</tt><tt class="py-op">.</tt><tt id="link-130" class="py-name"><a title="le2m.server.servgest.servgestgui.GestionnaireGraphique.question" class="py-name" href="#" onclick="return doclink('link-130', 'question', 'link-91');">question</a></tt><tt class="py-op">(</tt> </tt>
+<a name="L370"></a><tt class="py-lineno">370</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">,</tt> </tt>
+<a name="L371"></a><tt class="py-lineno">371</tt>  <tt class="py-line">            <tt id="link-131" class="py-name"><a title="le2m.util.utili18n.le2mtrans" class="py-name" href="#" onclick="return doclink('link-131', 'le2mtrans', 'link-11');">le2mtrans</a></tt><tt class="py-op">(</tt><tt class="py-string">u"Confirmation"</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L372"></a><tt class="py-lineno">372</tt>  <tt class="py-line">            <tt id="link-132" class="py-name"><a title="le2m.util.utili18n.le2mtrans" class="py-name" href="#" onclick="return doclink('link-132', 'le2mtrans', 'link-11');">le2mtrans</a></tt><tt class="py-op">(</tt><tt class="py-string">u"Display the payoffs of {}?"</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">format</tt><tt class="py-op">(</tt><tt class="py-name">text_temp</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L373"></a><tt class="py-lineno">373</tt>  <tt class="py-line">            <tt class="py-name">QtGui</tt><tt class="py-op">.</tt><tt class="py-name">QMessageBox</tt><tt class="py-op">.</tt><tt class="py-name">No</tt> <tt class="py-op">|</tt> <tt class="py-name">QtGui</tt><tt class="py-op">.</tt><tt class="py-name">QMessageBox</tt><tt class="py-op">.</tt><tt class="py-name">Yes</tt><tt class="py-op">)</tt> </tt>
+<a name="L374"></a><tt class="py-lineno">374</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">confirmation</tt> <tt class="py-op">!=</tt> <tt class="py-name">QtGui</tt><tt class="py-op">.</tt><tt class="py-name">QMessageBox</tt><tt class="py-op">.</tt><tt class="py-name">Yes</tt><tt class="py-op">:</tt> </tt>
+<a name="L375"></a><tt class="py-lineno">375</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> </tt>
+<a name="L376"></a><tt class="py-lineno">376</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_le2mserv</tt><tt class="py-op">.</tt><tt class="py-name">gestionnaire_experience</tt><tt class="py-op">.</tt><tt id="link-133" class="py-name" targets="Method le2m.server.servgest.servgestexpe.GestionnaireExperience.display_payoffsonremotes()=le2m.server.servgest.servgestexpe.GestionnaireExperience-class.html#display_payoffsonremotes"><a title="le2m.server.servgest.servgestexpe.GestionnaireExperience.display_payoffsonremotes" class="py-name" href="#" onclick="return doclink('link-133', 'display_payoffsonremotes', 'link-133');">display_payoffsonremotes</a></tt><tt class="py-op">(</tt> </tt>
+<a name="L377"></a><tt class="py-lineno">377</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_partname</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L378"></a><tt class="py-lineno">378</tt>  <tt class="py-line"> </tt>
+<a name="GuiPayoffs._add_tofinalpayoffs"></a><div id="GuiPayoffs._add_tofinalpayoffs-def"><a name="L379"></a><tt class="py-lineno">379</tt> <a class="py-toggle" href="#" id="GuiPayoffs._add_tofinalpayoffs-toggle" onclick="return toggle('GuiPayoffs._add_tofinalpayoffs');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="le2m.server.servgui.servguidialogs.GuiPayoffs-class.html#_add_tofinalpayoffs">_add_tofinalpayoffs</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="GuiPayoffs._add_tofinalpayoffs-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="GuiPayoffs._add_tofinalpayoffs-expanded"><a name="L380"></a><tt class="py-lineno">380</tt>  <tt class="py-line">        <tt class="py-name">confirmation</tt> <tt class="py-op">=</tt> <tt class="py-name">QtGui</tt><tt class="py-op">.</tt><tt class="py-name">QMessageBox</tt><tt class="py-op">.</tt><tt id="link-134" class="py-name"><a title="le2m.server.servgest.servgestgui.GestionnaireGraphique.question" class="py-name" href="#" onclick="return doclink('link-134', 'question', 'link-91');">question</a></tt><tt class="py-op">(</tt> </tt>
+<a name="L381"></a><tt class="py-lineno">381</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">,</tt> </tt>
+<a name="L382"></a><tt class="py-lineno">382</tt>  <tt class="py-line">            <tt class="py-string">u"Confirmation"</tt><tt class="py-op">,</tt> </tt>
+<a name="L383"></a><tt class="py-lineno">383</tt>  <tt class="py-line">            <tt class="py-string">u"Ajouter les gains de la partie aux gains finaux?"</tt><tt class="py-op">,</tt> </tt>
+<a name="L384"></a><tt class="py-lineno">384</tt>  <tt class="py-line">            <tt class="py-name">QtGui</tt><tt class="py-op">.</tt><tt class="py-name">QMessageBox</tt><tt class="py-op">.</tt><tt class="py-name">No</tt> <tt class="py-op">|</tt> <tt class="py-name">QtGui</tt><tt class="py-op">.</tt><tt class="py-name">QMessageBox</tt><tt class="py-op">.</tt><tt class="py-name">Yes</tt><tt class="py-op">)</tt> </tt>
+<a name="L385"></a><tt class="py-lineno">385</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">confirmation</tt> <tt class="py-op">!=</tt> <tt class="py-name">QtGui</tt><tt class="py-op">.</tt><tt class="py-name">QMessageBox</tt><tt class="py-op">.</tt><tt class="py-name">Yes</tt><tt class="py-op">:</tt> </tt>
+<a name="L386"></a><tt class="py-lineno">386</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> </tt>
+<a name="L387"></a><tt class="py-lineno">387</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_le2mserv</tt><tt class="py-op">.</tt><tt class="py-name">gestionnaire_experience</tt><tt class="py-op">.</tt><tt id="link-135" class="py-name" targets="Method le2m.server.servgest.servgestexpe.GestionnaireExperience.add_tofinalpayoffs()=le2m.server.servgest.servgestexpe.GestionnaireExperience-class.html#add_tofinalpayoffs"><a title="le2m.server.servgest.servgestexpe.GestionnaireExperience.add_tofinalpayoffs" class="py-name" href="#" onclick="return doclink('link-135', 'add_tofinalpayoffs', 'link-135');">add_tofinalpayoffs</a></tt><tt class="py-op">(</tt> </tt>
+<a name="L388"></a><tt class="py-lineno">388</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_partname</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L389"></a><tt class="py-lineno">389</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="le2m-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Wed Sep 23 22:53:01 2015
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

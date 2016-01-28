@@ -1,0 +1,107 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Public Good Game\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-10-09 15:12+0200\n"
+"PO-Revision-Date: 2015-10-09 15:15+0100\n"
+"Last-Translator: Dimitri DUBOIS <dimitri.dubois@umontpellier.fr>\n"
+"Language-Team: Dimitri DUBOIS <dimitri.dubois@umontpellier.fr>\n"
+"Language: fr_FR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+
+#: PublicGoodGamePart.py:37
+msgid ""
+"Individual\n"
+"account"
+msgstr ""
+"Compte\n"
+"individuel"
+
+#: PublicGoodGamePart.py:38
+msgid ""
+"Public\n"
+"account"
+msgstr ""
+"Compte\n"
+"collectif"
+
+#: PublicGoodGamePart.py:38
+msgid ""
+"Total\n"
+"public\n"
+"account"
+msgstr ""
+"Total\n"
+"compte\n"
+"collectif"
+
+#: PublicGoodGamePart.py:39
+msgid ""
+"Period\n"
+"payoff"
+msgstr ""
+"Gain\n"
+"période"
+
+#: PublicGoodGamePart.py:39
+msgid ""
+"Cumulative\n"
+"payoff"
+msgstr ""
+"Gain\n"
+"cumulé"
+
+#: PublicGoodGameServ.py:33
+msgid "Show graph"
+msgstr "Afficher le graphique"
+
+#: PublicGoodGameServ.py:100
+msgid "Total amount by group"
+msgstr "Quantité totale par groupe"
+
+#: PublicGoodGameTexts.py:24
+msgid "Decision"
+msgstr "Décision"
+
+#: PublicGoodGameTexts.py:25
+msgid ""
+"You have an endowment of {} tokens. Please choose how much token(s) you want "
+"to put in the public account."
+msgstr ""
+"Vous avez une dotation de {} jetons. Vous devez choisir combien de jeton(s) "
+"vous placer sur le compte collectif."
+
+#: PublicGoodGameTexts.py:28
+msgid "How much token(s) do you want to put in the public account?"
+msgstr "Combien de jeton(s) placez-vous sur le compte collectif?"
+
+#: PublicGoodGameTexts.py:32
+msgid "Warning message"
+msgstr "Message d'avertissement"
+
+#: PublicGoodGameTexts.py:35
+msgid "Do you confirm your choice?"
+msgstr "Vous confirmez votre choix?"
+
+#: PublicGoodGameTexts.py:40
+msgid ""
+"You put {} in your individual account and {} in the public account. Your "
+"group put {} in the public account.\n"
+"Your payoff for the current period is equal to {}."
+msgstr ""
+"Vous avez placé {} sur votre compte individuel et {} sur le compte "
+"collectif. Votre groupe a placé {} sur le compte collectif.\n"
+"Votre gain pour la période courante est de {}."
+
+#: PublicGoodGameTexts.py:52
+msgid "You've won {}, which corresponds to {}."
+msgstr "Vous avez gagné {}, soit {}."

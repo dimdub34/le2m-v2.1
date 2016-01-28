@@ -1,0 +1,32 @@
+#! /usr/bin/env python
+# coding: utf-8
+
+"""
+Run xgettext on all the python file in the directory
+This command only works on linux
+"""
+
+import os
+import sys
+
+scriptdir = os.path.realpath(os.path.dirname(__file__))
+appdir = os.path.realpath(os.path.dirname(scriptdir))
+le2mdir = os.path.join(appdir, "le2m")
+
+
+def main(lang="fr_FR"):
+    files = []
+    for (dirpath, dirnames, filenames) in os.walk(le2mdir):
+        for f in filenames:
+            if f.endswith(".py") and "__init__" not in f:
+                files.append(os.path.join(dirpath, f))
+
+    os.system("xgettext {} --keyword=le2mtrans -p le2m/locale/{}/LC_MESSAGES "
+              "-d le2mnew".format(" ".join(files), lang))
+
+
+if __name__ == "__main__":
+    if len(sys.argv) > 1:
+        main(sys.argv[1])
+    else:
+        main()

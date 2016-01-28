@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>CommonPoolResourceParams</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<h1 class="toc">Module CommonPoolResourceParams</h1>
+<hr />
+  <h2 class="toc">Functions</h2>
+    <a target="mainFrame" href="le2m.parts.CommonPoolResource.CommonPoolResourceParams-module.html#get_gain"
+     >get_gain</a><br />  <h2 class="toc">Variables</h2>
+    <a target="mainFrame" href="le2m.parts.CommonPoolResource.CommonPoolResourceParams-module.html#BASELINE"
+     >BASELINE</a><br />    <a target="mainFrame" href="le2m.parts.CommonPoolResource.CommonPoolResourceParams-module.html#DECISION_MAX"
+     >DECISION_MAX</a><br />    <a target="mainFrame" href="le2m.parts.CommonPoolResource.CommonPoolResourceParams-module.html#DECISION_MIN"
+     >DECISION_MIN</a><br />    <a target="mainFrame" href="le2m.parts.CommonPoolResource.CommonPoolResourceParams-module.html#DECISION_STEP"
+     >DECISION_STEP</a><br />    <a target="mainFrame" href="le2m.parts.CommonPoolResource.CommonPoolResourceParams-module.html#DOTATION"
+     >DOTATION</a><br />    <a target="mainFrame" href="le2m.parts.CommonPoolResource.CommonPoolResourceParams-module.html#GROUPES_CHAQUE_PERIODE"
+     >GROUPES_CHAQUE_PERIODE</a><br />    <a target="mainFrame" href="le2m.parts.CommonPoolResource.CommonPoolResourceParams-module.html#MONNAIE"
+     >MONNAIE</a><br />    <a target="mainFrame" href="le2m.parts.CommonPoolResource.CommonPoolResourceParams-module.html#NOMBRE_PERIODES"
+     >NOMBRE_PERIODES</a><br />    <a target="mainFrame" href="le2m.parts.CommonPoolResource.CommonPoolResourceParams-module.html#TAILLE_GROUPES"
+     >TAILLE_GROUPES</a><br />    <a target="mainFrame" href="le2m.parts.CommonPoolResource.CommonPoolResourceParams-module.html#TAUX_CONVERSION"
+     >TAUX_CONVERSION</a><br />    <a target="mainFrame" href="le2m.parts.CommonPoolResource.CommonPoolResourceParams-module.html#TREATMENT"
+     >TREATMENT</a><br />    <a target="mainFrame" href="le2m.parts.CommonPoolResource.CommonPoolResourceParams-module.html#__package__"
+     >__package__</a><br /><hr />
+<span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

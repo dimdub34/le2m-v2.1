@@ -1,0 +1,137 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: le2m.creator\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-09-04 22:09+0200\n"
+"PO-Revision-Date: 2015-09-04 22:12+0100\n"
+"Last-Translator: Dimitri DUBOIS <dimitri.dubois@umontpellier.fr>\n"
+"Language-Team: Dimitri DUBOIS <dimitri.dubois@umontpellier.fr>\n"
+"Language: fr_FR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+
+#: creator.py:62
+#, python-brace-format
+msgid "Call of {func} with args {args} ..."
+msgstr "Appel de la fonction {func} avec les arguments {args} ..."
+
+#: creator.py:67
+msgid "Error"
+msgstr "Erreur"
+
+#: creator.py:68
+msgid "Something wrong happens! Contact the developer and/or look the logs"
+msgstr ""
+"Il y a eu un problème, prendre contact avec le développeur et/ou regarder "
+"les logs"
+
+#: creator.py:72 creator.py:77
+#, python-brace-format
+msgid "Files for {expename} created successfully"
+msgstr "Les fichiers pour {expename} ont été créés avec succès"
+
+#: creator.py:76
+msgid "Success"
+msgstr "Succès"
+
+#: creator.py:94
+msgid "A directory with the same part name already exists"
+msgstr "Un dossier avec le même nom existe déjà"
+
+#: creator.py:102 creator.py:141 creator.py:170
+#, python-brace-format
+msgid "Error: {msg}"
+msgstr "Erreur: {msg}"
+
+#: creator.py:157
+msgid "Substitutions for file {}"
+msgstr "Substituions pour le fichier {}"
+
+#: creatorgui.py:33
+msgid "Part name (without spaces or caps, ex: publicGood)"
+msgstr "Nom de la partie (sans espaces, ex: bienPublic)"
+
+#: creatorgui.py:36
+msgid "Short part name (ex. PG for Public Good"
+msgstr "Nom court de la partie (ex/ BP pour Bien Public)"
+
+#: creatorgui.py:39
+msgid "Name for the menu in the main application (ex: Public Good)"
+msgstr ""
+"Nom du menu qui apparaîtra dans l'application principale (ex: Bien Public)"
+
+#: creatorgui.py:43
+msgid "Group size (0 = no group)"
+msgstr "Taille des groupes (0 = pas de groupe)"
+
+#: creatorgui.py:47
+msgid "Do groups have to be formed each period?"
+msgstr "Faut-il reformer les groupes à chaque période?"
+
+#: creatorgui.py:50
+msgid "No"
+msgstr "Non"
+
+#: creatorgui.py:50
+msgid "Yes"
+msgstr "Oui"
+
+#: creatorgui.py:53
+msgid "Number of periods (0 = one-shot game)"
+msgstr "Nombre de périodes (0 = one-shot)"
+
+#: creatorgui.py:57
+msgid "Experimental currency unit (empty if the same that the local currency)"
+msgstr "Monnaie expérimentale (monnaie locale (euro) si vide)"
+
+#: creatorgui.py:61
+msgid "ecu"
+msgstr "ecu"
+
+#: creatorgui.py:68
+msgid "Configuration of a new part"
+msgstr "Configuration d'une nouvelle partie"
+
+#: creatorgui.py:93
+msgid "All the text field are required"
+msgstr "Tous les champs texte doivent être remplis"
+
+#: creatorgui.py:98
+msgid "Warning"
+msgstr "Attention"
+
+#: creatorgui.py:109
+msgid "Confirmation"
+msgstr "Confirmation"
+
+#: creatorgui.py:110
+msgid ""
+"Apply the following configuration?\n"
+"{}"
+msgstr ""
+"Appliquer la configuration suivante?\n"
+"{}"
+
+#: creatorgui.py:119
+msgid "Select the target directory"
+msgstr "Sélectionner le dossier de sortie"
+
+#~ msgid "Configuration"
+#~ msgstr "Configuration"
+
+#~ msgid ""
+#~ "\n"
+#~ "        check if all the fields are filled in and if the data are "
+#~ "consistents\n"
+#~ "        "
+#~ msgstr ""
+#~ "\n"
+#~ " Vérifie si tous les champs sont remplis et si les données sont cohérentes"

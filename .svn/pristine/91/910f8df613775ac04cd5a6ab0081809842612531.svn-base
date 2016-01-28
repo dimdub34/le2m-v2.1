@@ -1,0 +1,357 @@
+# -*- coding: utf-8 -*-
+"""
+Ce module contient les boites de dialogue du programme.
+"""
+
+import logging
+import random
+import datetime
+from PyQt4 import QtGui, QtCore
+import TeamCommunicationParams as pms
+import TeamCommunicationTexts as texts
+from TeamCommunicationGuiSrc import TeamCommunicationDecision, \
+    TeamCommunicationConfiguration, TeamCommunicationWlist, \
+    TeamCommunicationCellule, TeamCommunicationAdditionnalquestions
+import pickle
+from util.utiltools import CompteARebours, get_pluriel
+from server.servgui.servguidialogs import GuiPayoffs
+from twisted.internet import defer
+
+logger = logging.getLogger("le2m")
+
+
+def _get_html(grille):
+    html = "<table style='width: 150px;'>"
+    for l in grille:
+        html += "<tr>"
+        for c in l:
+            html += "<td style='width: 15px;'>{}</td>".format(c)
+        html += "</tr>"
+    html += "</table>"
+    return html
+
+
+class WCell(QtGui.QWidget):
+    def __init__(self, numero, displayer, tcremote):
+        super(WCell, self).__init__()
+        self.ui = TeamCommunicationCellule.Ui_Form()
+        self.ui.setupUi(self)
+
+        self._numero = numero
+        self._displayer = displayer
+        self._tcremote = tcremote
+
+        self.ui.pushButton.setText("{}".format(numero))
+        self.ui.pushButton.setFixedSize(50, 25)
+        self.ui.pushButton.setStyleSheet(
+            'QPushButton {border: 1px ridge gray;}')
+        self.ui.spinBox.setButtonSymbols(QtGui.QAbstractSpinBox.NoButtons)
+        self.ui.spinBox.setFixedSize(50, 25)
+
+        self.ui.pushButton.clicked.connect(lambda _: self._displayer.setText(
+            _get_html(pms.GRILLES[self._numero]["grille"])))
+        self.ui.pushButton.clicked.connect(lambda _: self._send_look())
+        self.ui.spinBox.valueChanged.connect(lambda _: self._send_try())
+
+        self.setFixedSize(75, 75)
+
+    def set_value(self, val):
+        """
+        Used in automatic and simulation modes
+        :param val:
+        :return:
+        """
+        self.ui.spinBox.setValue(val)
+
+    @defer.inlineCallbacks
+    def _send_look(self):
+        try:
+            yield (self._tcremote.send_look(self._numero))
+        except Exception as e:
+            logger.error(e.message)
+        defer.returnValue(None)
+
+    @defer.inlineCallbacks
+    def _send_try(self):
+        try:
+            yield (self._tcremote.send_try(
+                self._numero, self.ui.spinBox.value()))
+        except Exception as e:
+            logger.error(e.message)
+        defer.returnValue(None)
+
+
+class GuiDecision(QtGui.QDialog):
+    def __init__(self, defered, automatique, parent, tcremote):
+        super(GuiDecision, self).__init__(parent)
+
+        # variables
+        self._defered = defered
+        self._automatique = automatique
+        self._tcremote = tcremote
+
+        # gui
+        self.ui = TeamCommunicationDecision.Ui_Dialog()
+        self.ui.setupUi(self)
+
+        # Explanation
+        self.ui.textEdit_explication.setText("")
+        self.ui.textEdit_explication.setReadOnly(True)
+        self.ui.textEdit_explication.setFixedSize(400, 50)
+
+        # compte à rebours
+        font_compterebours = QtGui.QFont()
+        font_compterebours.setPointSize(14)
+        font_compterebours.setBold(True)
+        font_compterebours.setWeight(75)
+        self.ui.label_timer_2.setFont(font_compterebours)
+        self.ui.label_timer_2.setText(u"Temps restant: ")
+        self.ui.label_timer.setFont(font_compterebours)
+        tempspartie = datetime.timedelta(
+            hours=pms.TEMPS_PARTIE.hour, minutes=pms.TEMPS_PARTIE.minute,
+            seconds=pms.TEMPS_PARTIE.second).seconds
+        self._compterebours = CompteARebours(tempspartie)
+        self._compterebours.changetime[str].connect(self.ui.label_timer.setText)
+        self._compterebours.endoftime.connect(self._accept)
+
+        # grilles: 4 lignes de 25
+        self.ui.widget_grilles.setFixedSize(1350, 400)
+        for i in range(4):
+            for j in range(25):
+                num = 25 * i + j
+                setattr(self, "grille_{}".format(num),
+                        WCell(num, self.ui.label_grille, self._tcremote))
+                self.ui.gridLayout_grilles.addWidget(
+                    getattr(self, "grille_{}".format(num)), i, j)
+
+        font_grille = QtGui.QFont()
+        font_grille.setPointSize(20)
+        font_grille.setBold(True)
+        font_grille.setWeight(85)
+        self.ui.label_grille.setFont(font_grille)
+        self.ui.label_grille.setText(
+            u"Cliquer sur un numéro pour voir la grille correspondante")
+
+        # espage communication
+        if pms.TREATMENT == pms.SANS_COMMUNICATION:
+            self.ui.widget_communication.setVisible(False)
+
+        self.ui.pushButton_send.clicked.connect(lambda _: self._send_message())
+
+        # title and size
+        self.setWindowTitle(u"Décisions")
+        self.setFixedSize(1400, 900)
+        self._compterebours.start()
+
+        # automatic
+        if self._automatique:
+            self._timer = QtCore.QTimer()
+            self._timer.timeout.connect(self._handle_automatic)
+            self._timer.start(random.randint(1000, 15000))
+
+    @defer.inlineCallbacks
+    def _handle_automatic(self):
+        if not self._compterebours.isRunning():
+            self._timer.stop()
+        grille = random.randint(0, 99)
+        try:
+            yield (self._tcremote.send_look(grille))
+        except Exception as e:
+            logger.error(e.message)
+        if random.random() >= 0.25:  # on fait un essai
+            if random.randint(0, 1):  # on donne la bonne réponse
+                nbun = pms.GRILLES[grille]["count"]
+            else:
+                nbun = random.randint(0, 100)
+            getattr(self, "grille_{}".format(grille)).set_value(nbun)
+            try:
+                yield (self._tcremote.send_try(grille, nbun))
+            except Exception as e:
+                logger.error(e.message)
+
+        if pms.TREATMENT == pms.AVEC_COMMUNICATION:
+            if random.random() >= 0.60:  # on envoit un message
+                self.ui.textEdit_ecriture.setText(u"Message automatique")
+                self.ui.pushButton_send.click()
+        defer.returnValue(None)
+
+    def reject(self):
+        pass
+
+    def _accept(self):
+        answers = {}
+        for i in range(100):
+            answers[i] = getattr(
+                self, "grille_{}".format(i)).ui.spinBox.value()
+        logger.debug(u"Renvoi {}".format(answers))
+        self._defered.callback(answers)
+        self.accept()
+
+    @defer.inlineCallbacks
+    def _send_message(self):
+        msg = unicode(self.ui.textEdit_ecriture.toPlainText().toUtf8(), "utf-8")
+        try:
+            yield (self._tcremote.send_message(msg))
+        except Exception as e:
+            logger.error(e.message)
+        self.add_message(u"Vous: {}".format(msg))
+        self.ui.textEdit_ecriture.setText(u"")
+        defer.returnValue(None)
+
+    def add_message(self, message):
+        self.ui.listWidget_communication.addItem(message)
+
+
+class DConfiguration(QtGui.QDialog):
+    def __init__(self, parent):
+        super(DConfiguration, self).__init__(parent)
+        self.ui = TeamCommunicationConfiguration.Ui_Dialog()
+        self.ui.setupUi(self)
+
+        treatmentscles = pms.treatmentcodes.keys()
+        treatmentscles.sort()
+        self.ui.comboBox_communication.addItems(
+            [pms.treatmentcodes[t] for t in treatmentscles])
+        self.ui.comboBox_communication.setCurrentIndex(pms.TREATMENT)
+        self.ui.timeEdit_tempspartie.setTime(QtCore.QTime(
+            pms.TEMPS_PARTIE.hour, pms.TEMPS_PARTIE.minute,
+            pms.TEMPS_PARTIE.second))
+
+        self.setWindowTitle(u"Configuration")
+        self.setFixedSize(280, 150)
+
+        self.ui.pushButton_grilles.clicked.connect(self._load_grilles)
+        self.ui.buttonBox.accepted.connect(self._accept)
+        self.ui.buttonBox.rejected.connect(self.reject)
+
+    def _accept(self):
+        self._communication = self.ui.comboBox_communication.currentIndex()
+        tpspart = self.ui.timeEdit_tempspartie.time()
+        self._tempspartie = datetime.time(
+            tpspart.hour(), tpspart.minute(), tpspart.second())
+        if not self._tempspartie:
+            QtGui.QMessageBox.critical(
+                self, u"Attention", u"Il faut un temps de partie positif")
+            return
+        if not hasattr(self, "_grilles"):
+            QtGui.QMessageBox.critical(
+                self, u"Attention", u"Il faut charger les grilles")
+            return
+
+    def _load_grilles(self):
+        fichier = str(QtGui.QFileDialog.getOpenFileName(
+            self, u"Choisir le fichier de grilles", "",
+            u"Fichier pickle (*.pck)"))
+        with open(fichier, "rb") as f:
+            self._grilles = pickle.load(f)
+            self.ui.label_grilles_nb.setText(
+                get_pluriel(len(self._grilles), u"grille"))
+        logger.info(u"Grilles loaded")
+
+    def get_config(self):
+        return self._tempspartie, self._communication, self._grilles
+
+
+class Wlist(QtGui.QWidget):
+    def __init__(self):
+        super(Wlist, self).__init__()
+        self.ui = TeamCommunicationWlist.Ui_Form()
+        self.ui.setupUi(self)
+
+    def clear(self):
+        self.ui.listWidget.clear()
+
+    def add(self, texte):
+        txt = texte or u""
+        self.ui.listWidget.addItem(txt)
+
+
+class DGains(GuiPayoffs):
+    def __init__(self, le2mserver, gains_txt, textes_finaux, gains):
+        GuiPayoffs.__init__(self, le2mserver, "TeamCommunication", gains_txt)
+
+        self._textes_finaux = textes_finaux
+        self._gains = gains
+        self._le2mserv = le2mserver
+        self.ui.pushButton_afficher.clicked.disconnect(self._display_onremotes)
+        self.ui.pushButton_afficher.clicked.connect(
+            lambda _: self._display_onremotes2())
+
+    @defer.inlineCallbacks
+    def _display_onremotes2(self):
+        if not self._textes_finaux:
+            return
+        confirm = self._le2mserv.gestionnaire_graphique.question(
+            u"Afficher les gains sur les postes?")
+        if not confirm:
+            return
+        for j in self._le2mserv.gestionnaire_joueurs.get_players("base"):
+            yield (j.display_information(self._textes_finaux[j.joueur]))
+
+    def _add_tofinalpayoffs(self):
+        if not self._gains:
+            return
+        for k, v in self._gains.iteritems():
+            k.get_part("base").paiementFinal += float(v)
+        self._le2mserv.gestionnaire_base.enregistrer()
+        self._le2mserv.gestionnaire_graphique.infoserv(
+            u"Gains de TeamCommunication ajoutés aux gains finaux", fg="red")
+
+
+class DAdditionnalquestions(QtGui.QDialog):
+    def __init__(self, defered, automatique, parent, nbanswers):
+        super(DAdditionnalquestions, self).__init__(parent)
+        self._defered = defered
+        self._automatique = automatique
+        self._nbanswers = nbanswers
+
+        self.ui = TeamCommunicationAdditionnalquestions.Ui_Dialog()
+        self.ui.setupUi(self)
+
+        self.ui.label_reponses.setText(texts.get_text_reponses(nbanswers))
+        self.ui.label_infosatisfaction.setText(texts.get_text_infosatisfaction())
+        self.ui.label_jobsatisfaction.setText(texts.get_text_jobsatisfaction())
+        self.ui.spinBox_reponses.setMaximum(nbanswers)
+        if pms.TREATMENT == pms.SANS_COMMUNICATION:
+            self.ui.widget_infosatisfaction.setVisible(False)
+
+        self.ui.buttonBox.accepted.connect(self._accept)
+        self.ui.buttonBox.button(QtGui.QDialogButtonBox.Cancel).setVisible(
+            False)
+
+        if self._automatique:
+            self.ui.spinBox_reponses.setValue(
+                random.randint(0, self._nbanswers))
+            self.ui.horizontalSlider_infosatisfaction.setValue(
+                random.randint(1, 7))
+            self.ui.horizontalSlider_jobsatisfaction.setValue(
+                random.randint(1, 7))
+            self._timer = QtCore.QTimer()
+            self._timer.timeout.connect(self._accept)
+            self._timer.start(7000)
+
+        self.setWindowTitle(u"Questions supplémentaires")
+        self.setFixedSize(675, 215)
+
+    def _accept(self):
+        try:
+            self._timer.stop()
+        except AttributeError:
+            pass
+        rep = {"TC_confidence": self.ui.spinBox_reponses.value(),
+               "TC_jobsatisfaction":
+                   self.ui.horizontalSlider_jobsatisfaction.value()}
+        if pms.TREATMENT == pms.AVEC_COMMUNICATION:
+            rep["TC_infosatisfaction"] = \
+                self.ui.horizontalSlider_infosatisfaction.value()
+        if not self._automatique:
+            confirm = QtGui.QMessageBox.question(
+                self, u"Confirmation", u"Vous confirmez vos réponses?")
+            if confirm != QtGui.QMessageBox.Yes:
+                return
+        logger.info(u"Renvoi {}".format(rep))
+        self._defered.callback(rep)
+        self._accept()
+
+    def reject(self):
+        pass

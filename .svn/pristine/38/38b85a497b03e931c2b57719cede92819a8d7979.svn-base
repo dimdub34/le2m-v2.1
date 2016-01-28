@@ -1,0 +1,986 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>le2m.server.servgest.servgestgroups.GestionnaireGroupes</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="le2m-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="le2m-module.html">Package&nbsp;le2m</a> ::
+        <a href="le2m.server-module.html">Package&nbsp;server</a> ::
+        <a href="le2m.server.servgest-module.html">Package&nbsp;servgest</a> ::
+        <a href="le2m.server.servgest.servgestgroups-module.html">Module&nbsp;servgestgroups</a> ::
+        Class&nbsp;GestionnaireGroupes
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="le2m.server.servgest.servgestgroups.GestionnaireGroupes-class.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS DESCRIPTION ==================== -->
+<h1 class="epydoc">Class GestionnaireGroupes</h1><p class="nomargin-top"><span class="codelink"><a href="le2m.server.servgest.servgestgroups-pysrc.html#GestionnaireGroupes">source&nbsp;code</a></span></p>
+<pre class="base-tree">
+object --+
+         |
+        <strong class="uidshort">GestionnaireGroupes</strong>
+</pre>
+
+<hr />
+<p>Classe qui g&#232;re les groupes. Les groupes sont form&#233;s de mani&#232;re 
+  al&#233;atoire. Chaque groupe a un identifiant unique du type 
+  nom_session_numero. Les groupes sont stock&#233;s dans un dictionnaire, qui 
+  est vid&#233; &#224; chaque fois que les groupes sont reform&#233;s. Cette classe ne 
+  doit etre instanci&#233;e qu'une fois.</p>
+
+<!-- ==================== INSTANCE METHODS ==================== -->
+<a name="section-InstanceMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Methods</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceMethods"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="le2m.server.servgest.servgestgroups.GestionnaireGroupes-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">le2mserv</span>)</span><br />
+      x.__init__(...) initializes x; see help(type(x)) for signature</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="le2m.server.servgest.servgestgroups-pysrc.html#GestionnaireGroupes.__init__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="le2m.server.servgest.servgestgroups.GestionnaireGroupes-class.html#groupes" class="summary-sig-name">groupes</a>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="le2m.server.servgest.servgestgroups-pysrc.html#GestionnaireGroupes.groupes">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="le2m.server.servgest.servgestgroups.GestionnaireGroupes-class.html#sousgroupes" class="summary-sig-name">sousgroupes</a>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="le2m.server.servgest.servgestgroups-pysrc.html#GestionnaireGroupes.sousgroupes">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="le2m.server.servgest.servgestgroups.GestionnaireGroupes-class.html#nom_session" class="summary-sig-name">nom_session</a>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="le2m.server.servgest.servgestgroups-pysrc.html#GestionnaireGroupes.nom_session">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="le2m.server.servgest.servgestgroups.GestionnaireGroupes-class.html#former_groupes" class="summary-sig-name">former_groupes</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">liste_joueurs</span>,
+        <span class="summary-sig-arg">taille_groupes</span>,
+        <span class="summary-sig-arg">roundrobin</span>=<span class="summary-sig-default">False</span>,
+        <span class="summary-sig-arg">**kwargs</span>)</span><br />
+      Forme des groupes et les stocke dans un dictionnaire.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="le2m.server.servgest.servgestgroups-pysrc.html#GestionnaireGroupes.former_groupes">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="set_attributes"></a><span class="summary-sig-name">set_attributes</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="le2m.server.servgest.servgestgroups-pysrc.html#GestionnaireGroupes.set_attributes">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="get_groupes"></a><span class="summary-sig-name">get_groupes</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">nom_partie</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Par d&#233;faut renvoi une copie du dictionnaire qui stocke les groupes Si
+      nom_partie est donn&#233; renvoie directement les joueurs des parties 
+      :param nom_partie :return dict</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="le2m.server.servgest.servgestgroups-pysrc.html#GestionnaireGroupes.get_groupes">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="set_groupes"></a><span class="summary-sig-name">set_groupes</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">groupes</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="le2m.server.servgest.servgestgroups-pysrc.html#GestionnaireGroupes.set_groupes">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="roundrobinnext"></a><span class="summary-sig-name">roundrobinnext</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Do a new round of round robin tournament :return:</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="le2m.server.servgest.servgestgroups-pysrc.html#GestionnaireGroupes.roundrobinnext">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="get_composition_groupe"></a><span class="summary-sig-name">get_composition_groupe</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">groupe</span>)</span><br />
+      Renvoi une liste avec les membres du groupe :param groupe: 
+      l'identifiant de groupe :return: list</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="le2m.server.servgest.servgestgroups-pysrc.html#GestionnaireGroupes.get_composition_groupe">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="get_composition_groupe_du_joueur"></a><span class="summary-sig-name">get_composition_groupe_du_joueur</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">joueur</span>)</span><br />
+      Renvoie la liste des membres du groupe du joueur :param joueur: 
+      :return:list</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="le2m.server.servgest.servgestgroups-pysrc.html#GestionnaireGroupes.get_composition_groupe_du_joueur">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="get_groupe"></a><span class="summary-sig-name">get_groupe</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">joueur</span>)</span><br />
+      Renvoi l'identifiant du groupe du joueur :param joueur: :return: 
+      string</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="le2m.server.servgest.servgestgroups-pysrc.html#GestionnaireGroupes.get_groupe">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="le2m.server.servgest.servgestgroups.GestionnaireGroupes-class.html#get_groupe2" class="summary-sig-name">get_groupe2</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">joueur</span>,
+        <span class="summary-sig-arg">partie</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Renvoi un tuple avec l'identifiant du groupe et sa composition.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="le2m.server.servgest.servgestgroups-pysrc.html#GestionnaireGroupes.get_groupe2">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="get_place_joueur_dans_groupe"></a><span class="summary-sig-name">get_place_joueur_dans_groupe</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">joueur</span>)</span><br />
+      Renvoi la place du joueur dans le groupe :param joueur: :return: int</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="le2m.server.servgest.servgestgroups-pysrc.html#GestionnaireGroupes.get_place_joueur_dans_groupe">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="get_autres_membres_groupe"></a><span class="summary-sig-name">get_autres_membres_groupe</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">joueur</span>)</span><br />
+      Renvoi la liste des autres membres du groupe du joueur :param joueur:
+      :return: list</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="le2m.server.servgest.servgestgroups-pysrc.html#GestionnaireGroupes.get_autres_membres_groupe">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="get_groupes_string"></a><span class="summary-sig-name">get_groupes_string</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Return a string representation of the groups.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="le2m.server.servgest.servgestgroups-pysrc.html#GestionnaireGroupes.get_groupes_string">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="get_nombre_groupes"></a><span class="summary-sig-name">get_nombre_groupes</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="le2m.server.servgest.servgestgroups-pysrc.html#GestionnaireGroupes.get_nombre_groupes">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="get_taille_groupes"></a><span class="summary-sig-name">get_taille_groupes</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="le2m.server.servgest.servgestgroups-pysrc.html#GestionnaireGroupes.get_taille_groupes">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="le2m.server.servgest.servgestgroups.GestionnaireGroupes-class.html#get_identifiant_dansgroupe" class="summary-sig-name">get_identifiant_dansgroupe</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">joueur</span>)</span><br />
+      Renvoi l'identifiant du joueur dans le groupe.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="le2m.server.servgest.servgestgroups-pysrc.html#GestionnaireGroupes.get_identifiant_dansgroupe">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="le2m.server.servgest.servgestgroups.GestionnaireGroupes-class.html#get_identifiantrelatif_dansgroupe" class="summary-sig-name">get_identifiantrelatif_dansgroupe</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">joueur</span>,
+        <span class="summary-sig-arg">autrejoueur</span>)</span><br />
+      Permet d'attribuer &#224; chaque membre du groupe un identifiant sans que 
+      les sujets puissent s'identifier &#224; l'issue de l'exp&#233;rience.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="le2m.server.servgest.servgestgroups-pysrc.html#GestionnaireGroupes.get_identifiantrelatif_dansgroupe">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="former_sousgroupes"></a><span class="summary-sig-name">former_sousgroupes</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">taille</span>,
+        <span class="summary-sig-arg">**kwargs</span>)</span><br />
+      Forme des sous-groupes dans chaque groupe :param taille: :param 
+      kwargs: pour am&#233;liorations de la fonction :return:</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="le2m.server.servgest.servgestgroups-pysrc.html#GestionnaireGroupes.former_sousgroupes">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="get_sousgroupes"></a><span class="summary-sig-name">get_sousgroupes</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">groupe</span>)</span><br />
+      Renvoi un dictionnaire avec comme cl&#233; l'identifiant du sous-groupe et
+      comme valeur les membres de ce sous-groupe (objet joueur) :param 
+      groupe: :return: dict</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="le2m.server.servgest.servgestgroups-pysrc.html#GestionnaireGroupes.get_sousgroupes">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="get_sousgroupes_tostring"></a><span class="summary-sig-name">get_sousgroupes_tostring</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Cr&#233;ation d'un texte avec les sous-groupes de chaque groupe 
+      :return:string</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="le2m.server.servgest.servgestgroups-pysrc.html#GestionnaireGroupes.get_sousgroupes_tostring">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="get_sousgroupe"></a><span class="summary-sig-name">get_sousgroupe</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">joueur</span>)</span><br />
+      Renvoie l'identifiant du sous-groupe du joueur et la composition du 
+      sous-groupe :param joueur: :return: string, list</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="le2m.server.servgest.servgestgroups-pysrc.html#GestionnaireGroupes.get_sousgroupe">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="le2m.server.servgest.servgestgroups.GestionnaireGroupes-class.html#get_place_joueur_dans_sousgroupe" class="summary-sig-name">get_place_joueur_dans_sousgroupe</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">joueur</span>)</span><br />
+      Renvoi la place du joueur dans le sous-groupe.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="le2m.server.servgest.servgestgroups-pysrc.html#GestionnaireGroupes.get_place_joueur_dans_sousgroupe">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="get_identifiant_danssousgroupe"></a><span class="summary-sig-name">get_identifiant_danssousgroupe</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">joueur</span>)</span><br />
+      Renvoi la lettre qui correspond &#224; la place du joueur dans son 
+      sous-groupe :param joueur: :return: string</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="le2m.server.servgest.servgestgroups-pysrc.html#GestionnaireGroupes.get_identifiant_danssousgroupe">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="le2m.server.servgest.servgestgroups.GestionnaireGroupes-class.html#get_identifiantrelatif_danssousgroupe" class="summary-sig-name">get_identifiantrelatif_danssousgroupe</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">joueur</span>,
+        <span class="summary-sig-arg">autrejoueur</span>)</span><br />
+      Permet d'attribuer &#224; chaque membre du sous-groupe un identifiant sans
+      que les sujets puissent s'identifier &#224; l'issue de l'exp&#233;rience.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="le2m.server.servgest.servgestgroups-pysrc.html#GestionnaireGroupes.get_identifiantrelatif_danssousgroupe">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="get_composition_sousgroupe"></a><span class="summary-sig-name">get_composition_sousgroupe</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">sousgroupe</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="le2m.server.servgest.servgestgroups-pysrc.html#GestionnaireGroupes.get_composition_sousgroupe">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="get_composition_sousgroupe_joueur"></a><span class="summary-sig-name">get_composition_sousgroupe_joueur</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">joueur</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="le2m.server.servgest.servgestgroups-pysrc.html#GestionnaireGroupes.get_composition_sousgroupe_joueur">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="get_autres_membres_sousgroupe"></a><span class="summary-sig-name">get_autres_membres_sousgroupe</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">joueur</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="le2m.server.servgest.servgestgroups-pysrc.html#GestionnaireGroupes.get_autres_membres_sousgroupe">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__delattr__</code>,
+      <code>__format__</code>,
+      <code>__getattribute__</code>,
+      <code>__hash__</code>,
+      <code>__new__</code>,
+      <code>__reduce__</code>,
+      <code>__reduce_ex__</code>,
+      <code>__repr__</code>,
+      <code>__setattr__</code>,
+      <code>__sizeof__</code>,
+      <code>__str__</code>,
+      <code>__subclasshook__</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== PROPERTIES ==================== -->
+<a name="section-Properties"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Properties</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-Properties"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__class__</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== METHOD DETAILS ==================== -->
+<a name="section-MethodDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Method Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-MethodDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="__init__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">le2mserv</span>)</span>
+    <br /><em class="fname">(Constructor)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="le2m.server.servgest.servgestgroups-pysrc.html#GestionnaireGroupes.__init__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>x.__init__(...) initializes x; see help(type(x)) for signature</p>
+  <dl class="fields">
+    <dt>Overrides:
+        object.__init__
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="groupes"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">groupes</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="le2m.server.servgest.servgestgroups-pysrc.html#GestionnaireGroupes.groupes">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  
+  <dl class="fields">
+    <dt>Decorators:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code>@property</code></li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="sousgroupes"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">sousgroupes</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="le2m.server.servgest.servgestgroups-pysrc.html#GestionnaireGroupes.sousgroupes">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  
+  <dl class="fields">
+    <dt>Decorators:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code>@property</code></li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="nom_session"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">nom_session</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="le2m.server.servgest.servgestgroups-pysrc.html#GestionnaireGroupes.nom_session">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  
+  <dl class="fields">
+    <dt>Decorators:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code>@property</code></li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="former_groupes"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">former_groupes</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">liste_joueurs</span>,
+        <span class="sig-arg">taille_groupes</span>,
+        <span class="sig-arg">roundrobin</span>=<span class="sig-default">False</span>,
+        <span class="sig-arg">**kwargs</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="le2m.server.servgest.servgestgroups-pysrc.html#GestionnaireGroupes.former_groupes">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Forme des groupes et les stocke dans un dictionnaire. Utilise la 
+  fonction former_groupes de le2mUtile.utiltools :param liste_joueurs: 
+  :param taille_groupes: :param roundrobin: whether or not to apply round 
+  robin tournament :param kwargs: pour pouvoir am&#233;liorer cette fonction 
+  :return: None if normal groups else self.roundrobin</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="get_groupe2"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_groupe2</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">joueur</span>,
+        <span class="sig-arg">partie</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="le2m.server.servgest.servgestgroups-pysrc.html#GestionnaireGroupes.get_groupe2">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Renvoi un tuple avec l'identifiant du groupe et sa composition. Si 
+  partie est donn&#233; alors renvoi directement les parties correspondantes 
+  dans la composition du groupe :param joueur: :param partie: :return: un 
+  tuple</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="get_identifiant_dansgroupe"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_identifiant_dansgroupe</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">joueur</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="le2m.server.servgest.servgestgroups-pysrc.html#GestionnaireGroupes.get_identifiant_dansgroupe">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Renvoi l'identifiant du joueur dans le groupe. Une lettre qui d&#233;pend 
+  de la place du joueur dans le groupe. Ex: place 0 =&gt; A, place 1 =&gt; 
+  B etc. :param joueur: :return: une lettre</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="get_identifiantrelatif_dansgroupe"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_identifiantrelatif_dansgroupe</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">joueur</span>,
+        <span class="sig-arg">autrejoueur</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="le2m.server.servgest.servgestgroups-pysrc.html#GestionnaireGroupes.get_identifiantrelatif_dansgroupe">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Permet d'attribuer &#224; chaque membre du groupe un identifiant sans que 
+  les sujets puissent s'identifier &#224; l'issue de l'exp&#233;rience. En effet le 
+  demandeur (ici joueur) est toujours le joueur A et les autres membres de 
+  son groupe sont B, C, D ... Rmq: si joueur == autrejoueur renvoie A 
+  :param joueur: le joueur qui fait la demande :param autrejoueur: le 
+  membre du groupe dont le joueur veut conna&#238;tre l'identifiant, en fonction
+  de la place du joueur et de la place de ce membre dans le groupe. 
+  :return: string</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="get_place_joueur_dans_sousgroupe"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_place_joueur_dans_sousgroupe</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">joueur</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="le2m.server.servgest.servgestgroups-pysrc.html#GestionnaireGroupes.get_place_joueur_dans_sousgroupe">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Renvoi la place du joueur dans le sous-groupe. Utilis&#233; pour affecter 
+  un identifiant dans le sous-groupe :param joueur: :return: int</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="get_identifiantrelatif_danssousgroupe"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_identifiantrelatif_danssousgroupe</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">joueur</span>,
+        <span class="sig-arg">autrejoueur</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="le2m.server.servgest.servgestgroups-pysrc.html#GestionnaireGroupes.get_identifiantrelatif_danssousgroupe">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Permet d'attribuer &#224; chaque membre du sous-groupe un identifiant sans 
+  que les sujets puissent s'identifier &#224; l'issue de l'exp&#233;rience. En effet 
+  le demandeur (ici joueur) est toujours le joueur A et les autres membres 
+  de son sous-groupe sont B, C, D ... Rmq: si joueur == autrejoueur renvoie
+  A :param joueur: le joueur qui fait la demande :param autrejoueur: le 
+  membre du sous-groupe dont le joueur veut conna&#238;tre l'identifiant, en 
+  fonction de la place du joueur et de la place de ce membre dans le 
+  groupe. :return: string</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="le2m-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Thu Jan  7 09:19:57 2016
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Common Pool Resource\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-10-06 11:15+0200\n"
+"PO-Revision-Date: 2015-10-06 11:18+0100\n"
+"Last-Translator: Dimitri DUBOIS <dimitri.dubois@umontpellier.fr>\n"
+"Language-Team: Dimitri DUBOIS <dimitri.dubois@umontpellier.fr>\n"
+"Language: fr_FR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+
+#: CommonPoolResourceTexts.py:25
+msgid "Period {}"
+msgstr "Période {}"
+
+#: CommonPoolResourceTexts.py:29
+msgid ""
+"You have two accounts: a private account and a public account. The public "
+"account has {}. Each group member can extract a maximum of {} from the "
+"public account to put on his/her private account. The payoff of each member "
+"depends on the number of tokens he/she has put on his/her private account as "
+"well as on the total number of tokens extracted by the group from the public "
+"account."
+msgstr ""
+"Vous disposez de deux comptes, votre compte individuel et un compte "
+"collectif commun à tous les membres du groupe. Le compte collectif dispose "
+"de {}. Chaque membre du groupe peut extraire au maximum {} du compte "
+"collectif pour placer sur son compte individuel. Le gain de chacun dépend du "
+"nombre de jeton qu'il a place sur son compte individuel et du nombre total "
+"de jetons extrait du compte collectif par le groupe."
+
+#: CommonPoolResourceTexts.py:35 CommonPoolResourceTexts.py:36
+#: CommonPoolResourceTexts.py:48 CommonPoolResourceTexts.py:49
+#: CommonPoolResourceTexts.py:50
+msgid "token"
+msgstr "jeton"
+
+#: CommonPoolResourceTexts.py:38
+msgid "Please choose how much you want to extract from the public account"
+msgstr ""
+"Veuillez choisir le nombre de jetons que vous extrayez du compte collectif"
+
+#: CommonPoolResourceTexts.py:41
+msgid "Decision"
+msgstr "Décision"
+
+#: CommonPoolResourceTexts.py:46
+msgid ""
+"You extracted {} and you group extracted a total of {}.\n"
+" Your payoff is equal to {}"
+msgstr ""
+"Vous avez extrait {} et votre groupe a extrait au total {}.\n"
+"Votre gain est de {}."

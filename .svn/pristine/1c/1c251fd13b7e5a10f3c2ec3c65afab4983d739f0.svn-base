@@ -1,0 +1,12 @@
+recursive-include apidoc *
+recursive-include docs *
+include scripts *
+recursive-include screenshots *
+recursive-include le2m/html *
+recursive-include le2m/img *
+recursive-include le2m/locale *
+recursive-include le2m/creator/locale *
+recursive-include le2m/extractor/locale *
+recursive-include le2m/questcomp/locale *
+recursive-include le2m/parts/*/locale *
+exclude *.log

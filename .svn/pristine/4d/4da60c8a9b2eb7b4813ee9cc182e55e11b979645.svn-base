@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>le2m.configuration.configvar</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="le2m-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="le2m-module.html">Package&nbsp;le2m</a> ::
+        <a href="le2m.configuration-module.html">Package&nbsp;configuration</a> ::
+        Module&nbsp;configvar
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="le2m.configuration.configvar-module.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== MODULE DESCRIPTION ==================== -->
+<h1 class="epydoc">Module configvar</h1><p class="nomargin-top"><span class="codelink"><a href="le2m.configuration.configvar-pysrc.html">source&nbsp;code</a></span></p>
+<p>Please don't do any changes to this file</p>
+
+<!-- ==================== CLASSES ==================== -->
+<a name="section-Classes"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Classes</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-Classes"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="le2m.configuration.configvar.Experiment-class.html" class="summary-name">Experiment</a><br />
+      Experiment(parts, dirbase, basename, istest)
+    </td>
+  </tr>
+</table>
+<!-- ==================== VARIABLES ==================== -->
+<a name="section-Variables"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Variables</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-Variables"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="le2m.configuration.configvar-module.html#NATIONALITES" class="summary-name">NATIONALITES</a> = <code title="[u'Choisir',
+ u'Afghan',
+ u'Albanais',
+ u'Alg&#233;rien',
+ u'Allemand',
+ u'Am&#233;ricain',
+ u'Angolais',
+ u'Argentin',
+..."><code class="variable-group">[</code><code class="variable-quote">u'</code><code class="variable-string">Choisir</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">u'</code><code class="variable-string">Afghan</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">u'</code><code class="variable-string">Albanais</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">u'</code><code class="variable-string">Alg&#233;rien</code><code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="le2m.configuration.configvar-module.html#ETUDES_DISCIPLINES" class="summary-name">ETUDES_DISCIPLINES</a> = <code title="[u'Choisir',
+ u'AES',
+ u'Arch&#233;ologie',
+ u'Biologie',
+ u'Chimie',
+ u'Droit',
+ u'Ecole de commerce',
+ u'Ecole d'infirmi&#232;re',
+..."><code class="variable-group">[</code><code class="variable-quote">u'</code><code class="variable-string">Choisir</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">u'</code><code class="variable-string">AES</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">u'</code><code class="variable-string">Arch&#233;ologie</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">u'</code><code class="variable-string">Bi</code><code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="le2m.configuration.configvar-module.html#ETUDES_ANNEES" class="summary-name">ETUDES_ANNEES</a> = <code title="[u'Choisir',
+ u'Licence 1',
+ u'Licence 2',
+ u'Licence 3',
+ u'Master 1',
+ u'Master 2',
+ u'Doctorat',
+ u'Autre']"><code class="variable-group">[</code><code class="variable-quote">u'</code><code class="variable-string">Choisir</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">u'</code><code class="variable-string">Licence 1</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">u'</code><code class="variable-string">Licence 2</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">u'</code><code class="variable-string">Lic</code><code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="__package__"></a><span class="summary-name">__package__</span> = <code title="'le2m.configuration'"><code class="variable-quote">'</code><code class="variable-string">le2m.configuration</code><code class="variable-quote">'</code></code>
+    </td>
+  </tr>
+</table>
+<!-- ==================== VARIABLES DETAILS ==================== -->
+<a name="section-VariablesDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Variables Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-VariablesDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="NATIONALITES"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">NATIONALITES</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+<code class="variable-group">[</code><code class="variable-quote">u'</code><code class="variable-string">Choisir</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+ <code class="variable-quote">u'</code><code class="variable-string">Afghan</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+ <code class="variable-quote">u'</code><code class="variable-string">Albanais</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+ <code class="variable-quote">u'</code><code class="variable-string">Alg&#233;rien</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+ <code class="variable-quote">u'</code><code class="variable-string">Allemand</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+ <code class="variable-quote">u'</code><code class="variable-string">Am&#233;ricain</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+ <code class="variable-quote">u'</code><code class="variable-string">Angolais</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+ <code class="variable-quote">u'</code><code class="variable-string">Argentin</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+<code class="variable-ellipsis">...</code>
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="ETUDES_DISCIPLINES"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">ETUDES_DISCIPLINES</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+<code class="variable-group">[</code><code class="variable-quote">u'</code><code class="variable-string">Choisir</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+ <code class="variable-quote">u'</code><code class="variable-string">AES</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+ <code class="variable-quote">u'</code><code class="variable-string">Arch&#233;ologie</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+ <code class="variable-quote">u'</code><code class="variable-string">Biologie</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+ <code class="variable-quote">u'</code><code class="variable-string">Chimie</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+ <code class="variable-quote">u'</code><code class="variable-string">Droit</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+ <code class="variable-quote">u'</code><code class="variable-string">Ecole de commerce</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+ <code class="variable-quote">u'</code><code class="variable-string">Ecole d'infirmi&#232;re</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+<code class="variable-ellipsis">...</code>
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="ETUDES_ANNEES"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">ETUDES_ANNEES</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+<code class="variable-group">[</code><code class="variable-quote">u'</code><code class="variable-string">Choisir</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+ <code class="variable-quote">u'</code><code class="variable-string">Licence 1</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+ <code class="variable-quote">u'</code><code class="variable-string">Licence 2</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+ <code class="variable-quote">u'</code><code class="variable-string">Licence 3</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+ <code class="variable-quote">u'</code><code class="variable-string">Master 1</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+ <code class="variable-quote">u'</code><code class="variable-string">Master 2</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+ <code class="variable-quote">u'</code><code class="variable-string">Doctorat</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+ <code class="variable-quote">u'</code><code class="variable-string">Autre</code><code class="variable-quote">'</code><code class="variable-group">]</code>
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="le2m-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Thu Nov 26 10:28:08 2015
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

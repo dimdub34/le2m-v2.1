@@ -1,0 +1,51 @@
+<html>
+<title>Aide de LE2M</title>
+<body>
+<h3>Menu Fichier</h3>
+<h4>Ouvrir un fichier run</h4>
+<p>Permet d'aller chercher le fichier run de l'exp&eacute;rience &agrave; lancer. Il est indispensable de lancer un fichier run, ne serait-ce que pour cr&eacute;er
+la base de donn&eacute;es. Une fois le fichier run charg&eacute; le sous-menu correspondant &agrave; l'exp&eacute;rience appara&icirc;t dans le menu 
+Exp&eacute;rience.</p>
+<h4>Quitter</h4>
+<p>Quitte l'application, apr&egrave;s confirmation.</p>
+<p>&nbsp;</p> 
+<h3>Menu Exp&eacute;rience</h3>
+<h4>Accueil</h4>
+<p>Affiche l'&eacute;cran d'accueil sur tous les postes. Lorsque tous les sujets ont cliqu&eacute; sur le bouton 
+&quot;Instructions lues&quot; c'est &eacute;crit &quot;Ok Instructions&quot; sur la liste serveur (gauche &agrave; l'&eacute;cran).
+<h4>Questionnaire de compr&eacute;hension</h4>
+<p>Ce sous-menu comporte deux items: ouvrir et lancer.
+<ul>
+<li>Ouvrir: permet d'aller chercher le fichier xml du questionnaire. S'il n'y a aucune erreur le nombre 
+de questions est &eacute;crit sur la liste serveur. </li>
+<li>Lancer: lance le questionnaire de compr&eacute;hension sur tous les postes. Lorsqu'un sujet a fini de r&eacute;pondre c'est &eacute;crit sur la liste 
+client (&agrave; droite sur l'&eacute;cran) le nombre de fautes et les questions auxquelles le sujet a fait des fautes. Lorsque 
+tous les sujets ont fini de r&eacute;pondre au questionnaire, c'est &eacute;crit &quot;Ok Affichage du questionnaire de 
+compr&eacute;hension&quot; sur la liste serveur.</li>
+</ul>
+</p>
+<h4>Questionnaire final</h4>
+<p>Affiche une fen&ecirc;tre qui permet de s&eacute;lectionner les &eacute;l&eacute;ments de questionnaire &agrave; afficher sur 
+les postes. Une fois valid&eacute; affiche le questionnaire final sur tous les postes. Lorsqu'un sujet a fini de remplir le 
+questionnaire c'est &eacute;crit &quot;Ok&quot; sur la liste client. Lorsque tous les sujets ont termin&eacute; c'est &eacute;crit 
+&quot;Ok Affichage du questionnaire final&quot; sur la liste serveur.</p> 
+<h4>Gains de l'exp&eacute;rience</h4> 
+<p>Affiche une fen&ecirc;tre avec les gains de l'exp&eacute;rience pour chaque poste. Il faut au pr&eacute;alable avoir ajout&eacute; 
+les gains d'une partie aux gains finaux (cf. documentation des parties). Le menu Fichier de cette fen&ecirc;tre comporte 4 
+sous-menus:
+<ul>
+<li><i>Afficher les gains sur les postes</i>: affiche l'&eacute;cran final de l'exp&eacute;rience sur tous les postes, avec les gains directement 
+en euros et une zone pour &eacute;crire des commentaires.</li>
+<li><i>Exporter</i>: enregistre les gains dans un fichier csv (ouvre un fen&ecirc;tre pour choisir l'emplacement)</li> 
+<li><i>Imprimer</i>: imprime le tableau affich&eacute;.</li> 
+<li><i>Fermer</i>: ferme la fen&ecirc;tre</li>
+</ul></p>
+<p>&nbsp;</p> 
+<h3>Menu Options</h3>
+<h4>D&eacute;finir le genre des participants</h4>
+<p>Permet, pour chaque poste connect&eacute; de d&eacute;finir si c'est une femme ou non. Cette option doit ensuite &ecirc;tre 
+utilis&eacute;e dans le programme pour servir &agrave; quelque chose, par exemple pour d&eacute;finir la composition des groupes. 
+Le genre du sujet n'est pas enregistr&eacute; par d&eacute;faut dans les donn&eacute;es.</p>
+<p>&nbsp;</p> 
+</body>
+</html>

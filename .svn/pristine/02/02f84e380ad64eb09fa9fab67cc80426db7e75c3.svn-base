@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>le2m.configuration.configvar</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="le2m-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="le2m-module.html">Package&nbsp;le2m</a> ::
+        <a href="le2m.configuration-module.html">Package&nbsp;configuration</a> ::
+        Module&nbsp;configvar
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="le2m.configuration.configvar-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="le2m.configuration.configvar-module.html">Module le2m.configuration.configvar</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno"> 1</tt>  <tt class="py-line"><tt class="py-comment"># -*- coding: utf-8 -*-</tt> </tt>
+<a name="L2"></a><tt class="py-lineno"> 2</tt>  <tt class="py-line"> </tt>
+<a name="L3"></a><tt class="py-lineno"> 3</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
+<a name="L4"></a><tt class="py-lineno"> 4</tt>  <tt class="py-line"><tt class="py-docstring">Please don't do any changes to this file</tt> </tt>
+<a name="L5"></a><tt class="py-lineno"> 5</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
+<a name="L6"></a><tt class="py-lineno"> 6</tt>  <tt class="py-line"> </tt>
+<a name="L7"></a><tt class="py-lineno"> 7</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">collections</tt> <tt class="py-keyword">import</tt> <tt class="py-name">namedtuple</tt> </tt>
+<a name="L8"></a><tt class="py-lineno"> 8</tt>  <tt class="py-line"> </tt>
+<a name="L9"></a><tt class="py-lineno"> 9</tt>  <tt class="py-line"><tt id="link-0" class="py-name" targets="Class le2m.configuration.configvar.Experiment=le2m.configuration.configvar.Experiment-class.html"><a title="le2m.configuration.configvar.Experiment" class="py-name" href="#" onclick="return doclink('link-0', 'Experiment', 'link-0');">Experiment</a></tt> <tt class="py-op">=</tt> <tt class="py-name">namedtuple</tt><tt class="py-op">(</tt> </tt>
+<a name="L10"></a><tt class="py-lineno">10</tt>  <tt class="py-line">    <tt class="py-string">"Experiment"</tt><tt class="py-op">,</tt> </tt>
+<a name="L11"></a><tt class="py-lineno">11</tt>  <tt class="py-line">    <tt class="py-string">"parts dirbase basename istest"</tt><tt class="py-op">)</tt> </tt>
+<a name="L12"></a><tt class="py-lineno">12</tt>  <tt class="py-line"> </tt>
+<a name="L13"></a><tt class="py-lineno">13</tt>  <tt class="py-line"><tt id="link-1" class="py-name" targets="Variable le2m.configuration.configvar.NATIONALITES=le2m.configuration.configvar-module.html#NATIONALITES"><a title="le2m.configuration.configvar.NATIONALITES" class="py-name" href="#" onclick="return doclink('link-1', 'NATIONALITES', 'link-1');">NATIONALITES</a></tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt> </tt>
+<a name="L14"></a><tt class="py-lineno">14</tt>  <tt class="py-line">    <tt class="py-string">u"Choisir"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Afghan"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Albanais"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Alg&#233;rien"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Allemand"</tt><tt class="py-op">,</tt> </tt>
+<a name="L15"></a><tt class="py-lineno">15</tt>  <tt class="py-line">    <tt class="py-string">u"Am&#233;ricain"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Angolais"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Argentin"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Arm&#233;nien"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Australien"</tt><tt class="py-op">,</tt> </tt>
+<a name="L16"></a><tt class="py-lineno">16</tt>  <tt class="py-line">    <tt class="py-string">u"Autrichien"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Bangladais"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Belge"</tt><tt class="py-op">,</tt> <tt class="py-string">u"B&#233;ninois"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Bosniaque"</tt><tt class="py-op">,</tt> </tt>
+<a name="L17"></a><tt class="py-lineno">17</tt>  <tt class="py-line">    <tt class="py-string">u"Botswanais"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Bhoutan"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Br&#233;silien"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Britannique"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Bulgare"</tt><tt class="py-op">,</tt> </tt>
+<a name="L18"></a><tt class="py-lineno">18</tt>  <tt class="py-line">    <tt class="py-string">u"Burkinab&#232;"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Cambodgien"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Camerounais"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Canadien"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Chilien"</tt><tt class="py-op">,</tt> </tt>
+<a name="L19"></a><tt class="py-lineno">19</tt>  <tt class="py-line">    <tt class="py-string">u"Chinois"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Colombien"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Congolais"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Cubain"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Danois"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Ecossais"</tt><tt class="py-op">,</tt> </tt>
+<a name="L20"></a><tt class="py-lineno">20</tt>  <tt class="py-line">    <tt class="py-string">u"Egyptien"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Espagnol"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Estonien"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Europ&#233;en"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Finlandais"</tt><tt class="py-op">,</tt> </tt>
+<a name="L21"></a><tt class="py-lineno">21</tt>  <tt class="py-line">    <tt class="py-string">u"Fran&#231;ais"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Gabonais"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Georgien"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Grec"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Guin&#233;en"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Ha&#239;tien"</tt><tt class="py-op">,</tt> </tt>
+<a name="L22"></a><tt class="py-lineno">22</tt>  <tt class="py-line">    <tt class="py-string">u"Hollandais"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Hong-Kong"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Hongrois"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Indien"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Indon&#233;sien"</tt><tt class="py-op">,</tt> </tt>
+<a name="L23"></a><tt class="py-lineno">23</tt>  <tt class="py-line">    <tt class="py-string">u"Irakien"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Iranien"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Irlandais"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Islandais"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Isra&#233;lien"</tt><tt class="py-op">,</tt> </tt>
+<a name="L24"></a><tt class="py-lineno">24</tt>  <tt class="py-line">    <tt class="py-string">u"Italien"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Ivoirien"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Jama&#239;cain"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Japonais"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Kazakh"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Kirghiz"</tt><tt class="py-op">,</tt> </tt>
+<a name="L25"></a><tt class="py-lineno">25</tt>  <tt class="py-line">    <tt class="py-string">u"Kurde"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Letton"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Libanais"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Liechtenstein"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Lituanien"</tt><tt class="py-op">,</tt> </tt>
+<a name="L26"></a><tt class="py-lineno">26</tt>  <tt class="py-line">    <tt class="py-string">u"Luxembourgeois"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Mac&#233;donien"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Madagascar"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Malaisien"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Malien"</tt><tt class="py-op">,</tt> </tt>
+<a name="L27"></a><tt class="py-lineno">27</tt>  <tt class="py-line">    <tt class="py-string">u"Maltais"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Marocain"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Mauritanien"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Mauricien"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Mexicain"</tt><tt class="py-op">,</tt> </tt>
+<a name="L28"></a><tt class="py-lineno">28</tt>  <tt class="py-line">    <tt class="py-string">u"Mon&#233;gasque"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Mongol"</tt><tt class="py-op">,</tt> <tt class="py-string">u"N&#233;o-Z&#233;landais"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Nig&#233;rien"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Nord Cor&#233;en"</tt><tt class="py-op">,</tt> </tt>
+<a name="L29"></a><tt class="py-lineno">29</tt>  <tt class="py-line">    <tt class="py-string">u"Norv&#233;gien"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Pakistanais"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Palestinien"</tt><tt class="py-op">,</tt> <tt class="py-string">u"P&#233;ruvien"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Philippins"</tt><tt class="py-op">,</tt> </tt>
+<a name="L30"></a><tt class="py-lineno">30</tt>  <tt class="py-line">    <tt class="py-string">u"Polonais"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Portoricain"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Portugais"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Roumain"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Russe"</tt><tt class="py-op">,</tt> </tt>
+<a name="L31"></a><tt class="py-lineno">31</tt>  <tt class="py-line">    <tt class="py-string">u"S&#233;n&#233;galais"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Serbe"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Serbo-croate"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Singapour"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Slovaque"</tt><tt class="py-op">,</tt> </tt>
+<a name="L32"></a><tt class="py-lineno">32</tt>  <tt class="py-line">    <tt class="py-string">u"Sovi&#233;tique"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Sri-lankais"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Sud-Africain"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Sud-Cor&#233;en"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Su&#233;dois"</tt><tt class="py-op">,</tt> </tt>
+<a name="L33"></a><tt class="py-lineno">33</tt>  <tt class="py-line">    <tt class="py-string">u"Suisse"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Syrien"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Tadjik"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Ta&#239;wanais"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Tchadien"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Tch&#232;que"</tt><tt class="py-op">,</tt> </tt>
+<a name="L34"></a><tt class="py-lineno">34</tt>  <tt class="py-line">    <tt class="py-string">u"Tha&#239;landais"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Tunisien"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Turc"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Ukrainien"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Uruguayen"</tt><tt class="py-op">,</tt> </tt>
+<a name="L35"></a><tt class="py-lineno">35</tt>  <tt class="py-line">    <tt class="py-string">u"V&#233;n&#233;zu&#233;lien"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Vietnamien"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Autre"</tt> </tt>
+<a name="L36"></a><tt class="py-lineno">36</tt>  <tt class="py-line"><tt class="py-op">]</tt> </tt>
+<a name="L37"></a><tt class="py-lineno">37</tt>  <tt class="py-line"> </tt>
+<a name="L38"></a><tt class="py-lineno">38</tt>  <tt class="py-line"><tt id="link-2" class="py-name" targets="Variable le2m.configuration.configvar.ETUDES_DISCIPLINES=le2m.configuration.configvar-module.html#ETUDES_DISCIPLINES"><a title="le2m.configuration.configvar.ETUDES_DISCIPLINES" class="py-name" href="#" onclick="return doclink('link-2', 'ETUDES_DISCIPLINES', 'link-2');">ETUDES_DISCIPLINES</a></tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt> </tt>
+<a name="L39"></a><tt class="py-lineno">39</tt>  <tt class="py-line">    <tt class="py-string">u"Choisir"</tt><tt class="py-op">,</tt> <tt class="py-string">u"AES"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Arch&#233;ologie"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Biologie"</tt><tt class="py-op">,</tt> </tt>
+<a name="L40"></a><tt class="py-lineno">40</tt>  <tt class="py-line">    <tt class="py-string">u"Chimie"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Droit"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Ecole de commerce"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Ecole d\'infirmi&#232;re"</tt><tt class="py-op">,</tt> </tt>
+<a name="L41"></a><tt class="py-lineno">41</tt>  <tt class="py-line">    <tt class="py-string">u"Ecole d\'ing&#233;nieur"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Economie"</tt><tt class="py-op">,</tt> <tt class="py-string">u"G&#233;ographie"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Histoire"</tt><tt class="py-op">,</tt> </tt>
+<a name="L42"></a><tt class="py-lineno">42</tt>  <tt class="py-line">    <tt class="py-string">u"Informatique"</tt><tt class="py-op">,</tt> <tt class="py-string">u"IAE"</tt><tt class="py-op">,</tt> <tt class="py-string">u"IPAG"</tt><tt class="py-op">,</tt> <tt class="py-string">u"ISEM"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Lettres"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Math&#233;matiques"</tt><tt class="py-op">,</tt> </tt>
+<a name="L43"></a><tt class="py-lineno">43</tt>  <tt class="py-line">    <tt class="py-string">u"M&#233;decine"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Musique"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Pharmacie"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Philosophie"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Physique"</tt><tt class="py-op">,</tt> </tt>
+<a name="L44"></a><tt class="py-lineno">44</tt>  <tt class="py-line">    <tt class="py-string">u"Science politique"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Science de l\'&#233;ducation"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Sociologie"</tt><tt class="py-op">,</tt> </tt>
+<a name="L45"></a><tt class="py-lineno">45</tt>  <tt class="py-line">    <tt class="py-string">u"STAPS"</tt><tt class="py-op">,</tt> <tt class="py-string">u"SupAgro"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Autre"</tt> </tt>
+<a name="L46"></a><tt class="py-lineno">46</tt>  <tt class="py-line"><tt class="py-op">]</tt> </tt>
+<a name="L47"></a><tt class="py-lineno">47</tt>  <tt class="py-line"> </tt>
+<a name="L48"></a><tt class="py-lineno">48</tt>  <tt class="py-line"><tt id="link-3" class="py-name" targets="Variable le2m.configuration.configvar.ETUDES_ANNEES=le2m.configuration.configvar-module.html#ETUDES_ANNEES"><a title="le2m.configuration.configvar.ETUDES_ANNEES" class="py-name" href="#" onclick="return doclink('link-3', 'ETUDES_ANNEES', 'link-3');">ETUDES_ANNEES</a></tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt> </tt>
+<a name="L49"></a><tt class="py-lineno">49</tt>  <tt class="py-line">    <tt class="py-string">u"Choisir"</tt><tt class="py-op">,</tt>  <tt class="py-string">u"Licence 1"</tt><tt class="py-op">,</tt>  <tt class="py-string">u"Licence 2"</tt><tt class="py-op">,</tt>  <tt class="py-string">u"Licence 3"</tt><tt class="py-op">,</tt> </tt>
+<a name="L50"></a><tt class="py-lineno">50</tt>  <tt class="py-line">    <tt class="py-string">u"Master 1"</tt><tt class="py-op">,</tt>  <tt class="py-string">u"Master 2"</tt><tt class="py-op">,</tt>  <tt class="py-string">u"Doctorat"</tt><tt class="py-op">,</tt> <tt class="py-string">u"Autre"</tt> </tt>
+<a name="L51"></a><tt class="py-lineno">51</tt>  <tt class="py-line"><tt class="py-op">]</tt> </tt>
+<a name="L52"></a><tt class="py-lineno">52</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="le2m-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Thu Nov 26 10:28:11 2015
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

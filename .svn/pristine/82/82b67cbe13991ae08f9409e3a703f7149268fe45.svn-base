@@ -1,0 +1,39 @@
+# -*- coding: utf-8 -*-
+
+"""
+This module contains some parameters used both by the remotes and the server.
+"""
+
+import os
+
+__parameters = {  # store the parameters. Some of them are dynamically set
+    "SERVPORT": 9998,
+    "SERVIP": "192.168.159.2",
+    "REMOTELOGDIR": "c:\\temp",
+    "LABNAME": u"Laboratoire d'Economie Expérimentale de Montpellier",
+    "WELCOMETEXT": u"Laboratoire d'Economie Expérimentale de Montpellier",
+    "CURRENCY": u"euro",
+    "LOGGING_FORMATTER": '%(name)s | %(asctime)s | %(levelname)s | %(message)s',
+    "LOGGING_FORMATTER_DATE": "%d/%m/%Y - %H:%M:%S"
+}
+
+
+def getp(key):
+    global __parameters
+    return __parameters.get(key, None)
+
+
+def setp(key, value):
+    global __parameters
+    __parameters[key] = value
+
+
+def setp_appdir(value):
+    setp("APPDIR", value)
+    setp("LOGDIR", getp("APPDIR"))
+    setp("IMGDIR", os.path.join(getp("APPDIR"), "img"))
+    setp("HTMLDIR", os.path.join(getp("APPDIR"), "html"))
+    setp("PARTSDIR", os.path.join(getp("APPDIR"), "parts"))
+    setp("LABLOGO", os.path.join(getp("IMGDIR"), "logo_lameta.gif"))
+    setp("LABPICTURE", os.path.join(getp("IMGDIR"), "mix.jpg"))
+    setp("WELCOMEPICTURE", os.path.join(getp("IMGDIR"), "leem.jpg"))

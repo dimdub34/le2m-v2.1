@@ -1,0 +1,25 @@
+# -*- coding: utf-8 -*-
+"""
+Ce module contient les variables et les paramètres de la partie
+Les variables ne doivent pas être changées
+Les paramètres peuvent être changés, mais, par sécurité, demander au développeur
+"""
+
+# variables
+BASELINE = 0
+PLAYER_A = 0
+PLAYER_B = 1
+
+# paramètres
+DOTATION = 10
+TRAITEMENT = BASELINE
+TAUX_CONVERSION = 1
+NOMBRE_PERIODES = 0
+TAILLE_GROUPES = 2
+GROUPES_CHAQUE_PERIODE = False
+MONNAIE = u"euro"
+
+# DECISION
+DECISION_MIN = 0
+DECISION_MAX = DOTATION
+DECISION_STEP = 1
