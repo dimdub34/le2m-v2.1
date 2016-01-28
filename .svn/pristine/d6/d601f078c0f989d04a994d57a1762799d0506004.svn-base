@@ -1,1 +1,0 @@
-import TeamCommunicationPart  # for sqlalchemy
