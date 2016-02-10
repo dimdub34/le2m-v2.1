@@ -3,10 +3,10 @@
 .svn
 .idea
 *.sqlite
+dist
 le2m/parts/PublicGoodGameGender
 le2m/parts/oathAndLies
 le2m/parts/TeamCommunication
 le2m/parts/voteMajorite
 le2m/parts/PublicGoodGameSolidarity
-le2m/parts/PublicGoodGameGender
-le2m/parts/PublicGoodGameGender
+
