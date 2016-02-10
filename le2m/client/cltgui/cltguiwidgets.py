@@ -163,7 +163,6 @@ class WListDrag(QtGui.QWidget):
         self._action_delete.triggered.connect(self._delete)
         self._menu.addAction(self._action_delete)
 
-
     def _rightclick(self, point):
         self._menu.exec_(self.ui.listWidget_right.mapToGlobal(point))
 
