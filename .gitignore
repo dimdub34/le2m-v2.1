@@ -2,9 +2,10 @@
 *.log
 .svn
 .idea
+.ipynb_checkpoints
+*.ipynb
 *.sqlite
 dist
-le2m/parts/PublicGoodGameGender
 le2m/parts/oathAndLies
 le2m/parts/TeamCommunication
 le2m/parts/voteMajorite
