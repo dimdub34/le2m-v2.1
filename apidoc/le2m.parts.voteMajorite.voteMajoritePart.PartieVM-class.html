@@ -110,23 +110,6 @@
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a href="le2m.parts.voteMajorite.voteMajoritePart.PartieVM-class.html#profil" class="summary-sig-name">profil</a>(<span class="summary-sig-arg">self</span>,
-        <span class="summary-sig-arg">val</span>)</span></td>
-          <td align="right" valign="top">
-            <span class="codelink"><a href="le2m.parts.voteMajorite.voteMajoritePart-pysrc.html#PartieVM.profil">source&nbsp;code</a></span>
-            
-          </td>
-        </tr>
-      </table>
-      
-    </td>
-  </tr>
-<tr>
-    <td width="15%" align="right" valign="top" class="summary">
-      <span class="summary-type">&nbsp;</span>
-    </td><td class="summary">
-      <table width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr>
           <td><span class="summary-sig"><a href="le2m.parts.voteMajorite.voteMajoritePart.PartieVM-class.html#currentperiod" class="summary-sig-name">currentperiod</a>(<span class="summary-sig-arg">self</span>)</span></td>
           <td align="right" valign="top">
             <span class="codelink"><a href="le2m.parts.voteMajorite.voteMajoritePart-pysrc.html#PartieVM.currentperiod">source&nbsp;code</a></span>
@@ -143,8 +126,24 @@
     </td><td class="summary">
       <table width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td><span class="summary-sig"><a href="le2m.parts.voteMajorite.voteMajoritePart.PartieVM-class.html#configure" class="summary-sig-name">configure</a>(<span class="summary-sig-arg">self</span>)</span><br />
-      Send the parameters to the remote :return:</td>
+          <td><span class="summary-sig"><a name="set_profile"></a><span class="summary-sig-name">set_profile</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">profile</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="le2m.parts.voteMajorite.voteMajoritePart-pysrc.html#PartieVM.set_profile">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="le2m.parts.voteMajorite.voteMajoritePart.PartieVM-class.html#configure" class="summary-sig-name">configure</a>(<span class="summary-sig-arg">self</span>)</span></td>
           <td align="right" valign="top">
             <span class="codelink"><a href="le2m.parts.voteMajorite.voteMajoritePart-pysrc.html#PartieVM.configure">source&nbsp;code</a></span>
             
@@ -163,7 +162,7 @@
           <td><span class="summary-sig"><a href="le2m.parts.voteMajorite.voteMajoritePart.PartieVM-class.html#newperiod" class="summary-sig-name">newperiod</a>(<span class="summary-sig-arg">self</span>,
         <span class="summary-sig-arg">period</span>)</span><br />
       Create a new period and inform the remote If this is the first period
-      then empty the historic :param period: :return:</td>
+      then empty the historic :param periode: :return:</td>
           <td align="right" valign="top">
             <span class="codelink"><a href="le2m.parts.voteMajorite.voteMajoritePart-pysrc.html#PartieVM.newperiod">source&nbsp;code</a></span>
             
@@ -351,30 +350,6 @@
   </dl>
 </td></tr></table>
 </div>
-<a name="profil"></a>
-<div>
-<table class="details" border="1" cellpadding="3"
-       cellspacing="0" width="100%" bgcolor="white">
-<tr><td>
-  <table width="100%" cellpadding="0" cellspacing="0" border="0">
-  <tr valign="top"><td>
-  <h3 class="epydoc"><span class="sig"><span class="sig-name">profil</span>(<span class="sig-arg">self</span>,
-        <span class="sig-arg">val</span>)</span>
-  </h3>
-  </td><td align="right" valign="top"
-    ><span class="codelink"><a href="le2m.parts.voteMajorite.voteMajoritePart-pysrc.html#PartieVM.profil">source&nbsp;code</a></span>&nbsp;
-    </td>
-  </tr></table>
-  
-  
-  <dl class="fields">
-    <dt>Decorators:</dt>
-    <dd><ul class="nomargin-top">
-        <li><code>@profil.setter</code></li>
-    </ul></dd>
-  </dl>
-</td></tr></table>
-</div>
 <a name="currentperiod"></a>
 <div>
 <table class="details" border="1" cellpadding="3"
@@ -412,7 +387,7 @@
     </td>
   </tr></table>
   
-  <p>Send the parameters to the remote :return:</p>
+  
   <dl class="fields">
     <dt>Decorators:</dt>
     <dd><ul class="nomargin-top">
@@ -437,7 +412,7 @@
   </tr></table>
   
   <p>Create a new period and inform the remote If this is the first period 
-  then empty the historic :param period: :return:</p>
+  then empty the historic :param periode: :return:</p>
   <dl class="fields">
     <dt>Decorators:</dt>
     <dd><ul class="nomargin-top">
@@ -559,7 +534,7 @@ Column(Integer, ForeignKey('parties.id'), primary_key= True)
 <table border="0" cellpadding="0" cellspacing="0" width="100%%">
   <tr>
     <td align="left" class="footer">
-    Generated by Epydoc 3.0.1 on Thu Jan 28 08:21:51 2016
+    Generated by Epydoc 3.0.1 on Wed Feb 10 22:38:42 2016
     </td>
     <td align="right" class="footer">
       <a target="mainFrame" href="http://epydoc.sourceforge.net"
