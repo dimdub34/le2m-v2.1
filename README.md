@@ -7,7 +7,7 @@ stored in a sqlite database, with the SQLAlchemy library.
 
 ## Prerequisites
 __Windows__  
-Install Python 2.7 and PyQt4. Then in a console, just write: pip install 
+Install Python 2.7 and PyQt4. Then in the DOS console, just write: pip install 
 twisted sqlalchemy numpy pandas matplotlib  
 
 __Ubuntu/Debian__  
