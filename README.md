@@ -7,8 +7,17 @@ stored in a sqlite database, with the SQLAlchemy library.
 
 ## Prerequisites
 __Windows__  
-Install Python 2.7 and PyQt4. Then in the DOS console, just write: pip install 
-twisted sqlalchemy numpy pandas matplotlib  
+Install [Python 2.7](https://www.python.org/downloads/) and 
+[PyQt4] (https://riverbankcomputing.com/software/pyqt/download). For PyQt4 
+be careful to select the version for Python 2.7. Then install a [Microsoft 
+C++ compiler for Python 2.7](https://www.microsoft.com/en-us/download/details.aspx?id=44266)
+(this is for twisted, the network library). After that, open a DOS console and 
+write the following lines (one by one):  
+* pip install twisted
+* pip install sqlalchemy
+* pip install numpy
+* pip install matplotlib
+* pip install pandas  
 
 __Ubuntu/Debian__  
 Python 2.7 is already installed, but if not, install it. Then in a console, 
