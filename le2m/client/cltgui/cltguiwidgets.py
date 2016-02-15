@@ -236,6 +236,7 @@ class WChat(QtGui.QWidget):
         self.ui.listWidget.setFixedSize(size_read[0], size_read[1])
         self.ui.textEdit.setFixedSize(size_write[0], size_write[1])
 
+        self.ui.pushButton.setText(le2mtrans(u"Send"))
         self.ui.pushButton.clicked.connect(
             lambda _: action_send(
                 unicode(
