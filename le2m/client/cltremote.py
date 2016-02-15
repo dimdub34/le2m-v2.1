@@ -11,6 +11,7 @@ from questcomp.questcompgui import GuiQuestCompQuest
 from client.cltgui.cltguidialogs import GuiAccueil, GuiPopup, GuiFinal, \
     GuiQuestionnaireFinal
 from questcomp.questcompmod import Question, CopyQuestion
+import clttexts
 
 
 logger = logging.getLogger("le2m")
@@ -127,7 +128,12 @@ class RemoteBase(pb.Root):
             popup.show()
             return defered
 
-    def remote_display_finalscreen(self, txt):
+
+    def remote_display_finalscreen(self, final_payoff):
+        if type(final_payoff) is str:
+            txt = final_payoff
+        else:
+            txt = clttexts.get_final_text(final_payoff)
         logger.info(u'Paiement: {}'.format(txt))
         if self._le2mclt.simulation:
             return le2mtrans(u"This a comment from the simulation mode")
@@ -148,7 +154,16 @@ class RemoteBase(pb.Root):
             popup.show()
             return 1
             
-       
+
+    def remote_display_payoffs(self, partname):
+        remote = self._le2mclt.get_remote(partname)
+        if not remote:
+            return
+        else:
+            final_text = remote.get_partpayoff_text()
+            return self.remote_display_information(final_text)
+
+
 class RemoteQuestionnaireFinal(pb.Referenceable):
     def __init__(self, le2mclt):
         self._le2mclt = le2mclt
