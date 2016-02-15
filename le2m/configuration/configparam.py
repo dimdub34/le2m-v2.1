@@ -5,6 +5,7 @@ This module contains some parameters used both by the remotes and the server.
 """
 
 import os
+import tempfile
 
 # ------------------------------------------------------------------------------
 # In the dictionary below the values can be changed
@@ -19,7 +20,7 @@ import os
 __parameters = {
     "SERVPORT": 9998,
     "SERVIP": "127.0.0.1",
-    "REMOTELOGDIR": "/tmp/",
+    "REMOTELOGDIR": tempfile.gettempdir(),
     "LABNAME": u"Laboratoire d'Economie Expérimentale de Montpellier",
     "WELCOMETEXT": u"Laboratoire d'Economie Expérimentale de Montpellier",
     "CURRENCY": u"euro",
