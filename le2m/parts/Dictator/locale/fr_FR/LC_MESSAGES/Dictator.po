@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Dictator\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-15 09:36+0100\n"
-"PO-Revision-Date: 2016-02-15 09:37+0100\n"
+"POT-Creation-Date: 2016-02-15 13:14+0100\n"
+"PO-Revision-Date: 2016-02-15 13:14+0100\n"
 "Last-Translator: Dimitri DUBOIS <dimitri.dubois@umontpellier.fr>\n"
 "Language-Team: Dimitri DUBOIS <dimitri.dubois@umontpellier.fr>\n"
 "Language: fr_FR\n"
@@ -23,7 +23,7 @@ msgid "You are player {}"
 msgstr "Vous êtes joueur {}."
 
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/Dictator/DictatorTexts.py:26
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/Dictator/DictatorPart.py:136
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/Dictator/DictatorPart.py:138
 msgid "Decision"
 msgstr "Décision"
 
@@ -39,48 +39,44 @@ msgid "Choose the amount you want to send to player B"
 msgstr "Choisissez la quantité que vous envoyez au joueur B"
 
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/Dictator/DictatorTexts.py:32
-msgid "Warning"
-msgstr "Attention"
-
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/Dictator/DictatorTexts.py:33
-msgid "Warning message"
-msgstr "Attention"
-
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/Dictator/DictatorTexts.py:35
 msgid "Confirmation"
 msgstr "Confirmation"
 
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/Dictator/DictatorTexts.py:36
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/Dictator/DictatorTexts.py:33
 msgid "Do you confirm you choice?"
 msgstr "Vous confirmez votre choix?"
 
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/Dictator/DictatorTexts.py:41
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/Dictator/DictatorTexts.py:38
 msgid "You were player {}."
 msgstr "Vous étiez joueur {}."
 
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/Dictator/DictatorTexts.py:44
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/Dictator/DictatorTexts.py:41
 msgid " You sent {} to player B."
 msgstr " Vous avez envoyé {} au joueur B."
 
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/Dictator/DictatorTexts.py:47
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/Dictator/DictatorTexts.py:44
 msgid " Player A sent {} to you."
 msgstr " Le joueur A vous a envoyé {}."
 
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/Dictator/DictatorTexts.py:49
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/Dictator/DictatorTexts.py:46
 msgid " Your payoff is equal to {}."
 msgstr " Votre gain est de {}."
 
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/Dictator/DictatorTexts.py:56
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/Dictator/DictatorTexts.py:53
 #, python-brace-format
 msgid "You've won {gain_en_euro}."
 msgstr "Vous avez gagné {gain_en_euro}."
 
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/Dictator/DictatorPart.py:136
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/Dictator/DictatorPart.py:139
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/Dictator/DictatorPart.py:54
+msgid "You are player"
+msgstr "Vous êtes joueur"
+
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/Dictator/DictatorPart.py:138
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/Dictator/DictatorPart.py:141
 msgid "Payoff"
 msgstr "Gain"
 
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/Dictator/DictatorPart.py:139
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/Dictator/DictatorPart.py:141
 msgid "Received"
 msgstr "Reçu"
 
@@ -107,3 +103,9 @@ msgid ""
 msgstr ""
 "Quantité moyenne envoyée par les joueurs A:\n"
 "{}"
+
+#~ msgid "Warning"
+#~ msgstr "Attention"
+
+#~ msgid "Warning message"
+#~ msgstr "Attention"
