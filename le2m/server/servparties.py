@@ -134,28 +134,40 @@ class PartieBase(Partie, object):
         Display the final screen, with the final payoffs and the possibility
         for subjects to let a comment
         """
+        # self.commentaires = yield(
+        #     self.remote.callRemote(
+        #         'display_finalscreen',
+        #         le2mtrans(u"Your payoff for the experiment is equal to "
+        #                   u"{}.").format(
+        #             get_pluriel(self.paiementFinal, params.getp("CURRENCY")))))
         self.commentaires = yield(
-            self.remote.callRemote(
-                'display_finalscreen',
-                le2mtrans(u"Your payoff for the experiment is equal to "
-                          u"{}.").format(
-                    get_pluriel(self.paiementFinal, params.getp("CURRENCY")))))
+            self.remote.callRemote('display_finalscreen', self.paiementFinal))
         self.joueur.info(u'Ok')
         self.joueur.remove_waitmode()
 
     @defer.inlineCallbacks
     def display_payoffs(self, partname):
         """
+        DEPRECATED, use display_partpayoffs instead
         Affiche une boite de dialogue avec le gain du joueur pour la partie
         et l'explication.
         """
         try:
             txt = self.joueur.get_part(partname).texte_final
-        except (AttributeError, KeyError) as e: 
+        except (AttributeError, KeyError) as e:
             logger.warning(u"Error: {}".format(e.message))
         else:
             yield(self.remote.callRemote('display_information', txt))
             self.joueur.info(u'Ok')
+            self.joueur.remove_waitmode()
+
+    def display_partpayoffs(self, partname):
+        if self.joueur.get_part(partname, None) is None:
+            logger.warning(u"Error: {} not in the list of parts".format(partname))
+            return
+        else:
+            yield (self.remote.callRemote("display_payoffs", partname))
+            self.joueur.info(u"Ok")
             self.joueur.remove_waitmode()
     
     @defer.inlineCallbacks
