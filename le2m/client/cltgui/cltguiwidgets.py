@@ -217,7 +217,7 @@ class WCompterebours(QtGui.QWidget):
         self.ui = widCompterebours.Ui_Form()
         self.ui.setupUi(self)
 
-        self.ui.label.setText(u"Temps restant:")
+        self.ui.label.setText(le2mtrans(u"Remaining time:"))
         tps = timedelta(hours=temps.hour, minutes=temps.minute,
                         seconds=temps.second).seconds
         self.compterebours = CompteARebours(tps)
