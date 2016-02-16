@@ -1,0 +1,1 @@
+import PublicGoodGamePart  # for sqlalchemy

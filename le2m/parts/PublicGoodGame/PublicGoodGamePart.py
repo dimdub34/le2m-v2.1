@@ -5,12 +5,10 @@ from sqlalchemy.orm import relationship
 from sqlalchemy import Column, Integer, Float, ForeignKey
 import logging
 from datetime import datetime
-from util.utili18n import le2mtrans
+from util.utiltools import get_module_attributes
 from server.servbase import Base
 from server.servparties import Partie
-import PublicGoodGameParams as parametres
-import PublicGoodGameTexts as textes
-from PublicGoodGameTexts import _PGG
+import PublicGoodGameParams as pms
 
 
 logger = logging.getLogger("le2m")
@@ -26,31 +24,13 @@ class PartiePGG(Partie):
         super(PartiePGG, self).__init__("PublicGoodGame", "PGG")
         self._le2mserv = le2mserv
         self.joueur = joueur
-        self._texte_recapitulatif = u""
-        self._texte_final = u""
         self.PGG_gain_ecus = 0
         self.PGG_gain_euros = 0
-        self._histo_vars = ["PGG_period", "PGG_indiv", "PGG_public",
-                            "PGG_publicgroup", "PGG_periodpayoff",
-                            "PGG_cumulativepayoff"]
-        self._histo = [
-            [le2mtrans(u"Period"), _PGG(u"Individual\naccount"),
-             _PGG(u"Public\naccount"), _PGG(u"Total\npublic\naccount"),
-             _PGG(u"Period\npayoff"), _PGG(u"Cumulative\npayoff")]
-        ]
-        self.periods = {}
-        self.currentperiod = None
 
     @defer.inlineCallbacks
     def configure(self, *args):
-        """
-        Allow to make changes in the part parameters
-        :param args:
-        :return:
-        """
         logger.debug(u"{} Configure".format(self.joueur))
-        # ici mettre en place la configuration
-        yield (self.remote.callRemote("configure", *args))
+        yield (self.remote.callRemote("configure", get_module_attributes(pms)))
 
     @defer.inlineCallbacks
     def newperiod(self, period):
@@ -61,8 +41,6 @@ class PartiePGG(Partie):
         :return:
         """
         logger.debug(u"{} New Period".format(self.joueur))
-        if period == 1:
-            del self._histo[1:]
         self.currentperiod = RepetitionsPGG(period)
         self.currentperiod.PGG_group = self.joueur.groupe
         self._le2mserv.gestionnaire_base.ajouter(self.currentperiod)
@@ -86,7 +64,7 @@ class PartiePGG(Partie):
         self.currentperiod.PGG_decisiontime = \
             (datetime.now() - debut).seconds
         self.currentperiod.PGG_indiv = \
-            parametres.DOTATION - self.currentperiod.PGG_public
+            pms.DOTATION - self.currentperiod.PGG_public
         self.joueur.info(u"{}".format(
             self.currentperiod.PGG_public))
         self.joueur.remove_waitmode()
@@ -99,7 +77,7 @@ class PartiePGG(Partie):
         logger.debug(u"{} Period Payoff".format(self.joueur))
         self.currentperiod.PGG_indivpayoff = self.currentperiod.PGG_indiv * 1
         self.currentperiod.PGG_publicpayoff = \
-            self.currentperiod.PGG_publicgroup * parametres.MPCR
+            self.currentperiod.PGG_publicgroup * pms.MPCR
         self.currentperiod.PGG_periodpayoff = \
             self.currentperiod.PGG_indivpayoff + \
             self.currentperiod.PGG_publicpayoff
@@ -123,41 +101,25 @@ class PartiePGG(Partie):
 
     @defer.inlineCallbacks
     def display_summary(self, *args):
-        """
-        Create the summary (txt and historic) and then display it on the
-        remote
-        :param args:
-        :return:
-        """
         logger.debug(u"{} Summary".format(self.joueur))
-        self._texte_recapitulatif = textes.get_recapitulatif(self.currentperiod)
-        self._histo.append(
-            [getattr(self.currentperiod, e) for e in self._histo_vars])
         yield(
             self.remote.callRemote(
-                "display_summary", self._texte_recapitulatif, self._histo))
+                "display_summary", self.currentperiod.todict()))
         self.joueur.info("Ok")
         self.joueur.remove_waitmode()
-    
+
+    @defer.inlineCallbacks
     def compute_partpayoff(self):
-        """
-        Compute the payoff of the part
-        :return:
-        """
         logger.debug(u"{} Part Payoff".format(self.joueur))
-        # gain partie
+
         self.PGG_gain_ecus = \
             self.currentperiod.PGG_cumulativepayoff
         self.PGG_gain_euros = \
             float(self.PGG_gain_ecus) * \
-            float(parametres.TAUX_CONVERSION)
+            float(pms.TAUX_CONVERSION)
+        yield (self.remote.callRemote(
+            "set_payoffs", self.PGG_gain_euros, self.PGG_gain_ecus))
 
-        # texte final
-        self._texte_final = textes.get_texte_final(
-            self.PGG_gain_ecus, self.PGG_gain_euros)
-
-        logger.debug(u"{} Final Text {}".format(
-            self.joueur, self._texte_final))
         logger.info(u'{} Part Payoff ecus {} Part Payoff euros {:.2f}'.format(
             self.joueur, self.PGG_gain_ecus, self.PGG_gain_euros))
 
@@ -182,13 +144,14 @@ class RepetitionsPGG(Base):
     PGG_cumulativepayoff = Column(Float)
 
     def __init__(self, periode):
-        self.PGG_treatment = parametres.TRAITEMENT
+        self.PGG_treatment = pms.TREATMENT
         self.PGG_period = periode
         self.PGG_decisiontime = 0
         self.PGG_periodpayoff = 0
         self.PGG_cumulativepayoff = 0
 
-    def todict(self, joueur):
+    def todict(self, joueur=None):
         temp = {c.name: getattr(self, c.name) for c in self.__table__.columns}
-        temp["joueur"] = joueur
+        if joueur:
+            temp["joueur"] = joueur
         return temp

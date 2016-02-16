@@ -1,17 +1,12 @@
 # -*- coding: utf-8 -*-
-"""
-Ce module contient les variables et les paramètres de la partie
-Les variables ne doivent pas être changées
-Les paramètres peuvent être changés, mais, par sécurité, demander au développeur
-"""
 
 # variables
-BASELINE = 0
+TREATMENTS = {0: "baseline"}
 
-# paramètres
+# parameters
 DOTATION = 20
 MPCR = 0.5
-TRAITEMENT = BASELINE
+TREATMENT = 0
 TAUX_CONVERSION = 0.04
 NOMBRE_PERIODES = 10
 TAILLE_GROUPES = 4
@@ -22,3 +17,13 @@ MONNAIE = u"ecu"
 DECISION_MIN = 0
 DECISION_MAX = DOTATION
 DECISION_STEP = 1
+
+
+def get_treatment(code_or_name):
+    if type(code_or_name) is int:
+        return TREATMENTS.get(code_or_name, None)
+    elif type(code_or_name) is str:
+        for k, v in TREATMENTS.viewitems():
+            if v.lower() == code_or_name.lower():
+                return k
+    return None

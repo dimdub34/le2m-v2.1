@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Public Good Game\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-10-09 15:03+0200\n"
-"PO-Revision-Date: 2015-10-09 15:04+0100\n"
+"POT-Creation-Date: 2016-02-16 22:30+0100\n"
+"PO-Revision-Date: 2016-02-16 22:30+0100\n"
 "Last-Translator: Dimitri DUBOIS <dimitri.dubois@umontpellier.fr>\n"
 "Language-Team: Dimitri DUBOIS <dimitri.dubois@umontpellier.fr>\n"
 "Language: en_US\n"
@@ -18,74 +18,96 @@ msgstr ""
 "X-Generator: Poedit 1.5.4\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
-#: PublicGoodGamePart.py:37
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGame/PublicGoodGameServ.py:23
+msgid "Configure"
+msgstr ""
+
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGame/PublicGoodGameServ.py:24
+msgid "Display parameters"
+msgstr ""
+
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGame/PublicGoodGameServ.py:28
+msgid "Start"
+msgstr ""
+
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGame/PublicGoodGameServ.py:29
+msgid "Display payoffs"
+msgstr ""
+
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGame/PublicGoodGameServ.py:32
+msgid "Show graph"
+msgstr ""
+
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGame/PublicGoodGameServ.py:40
+msgid "There is no nothing to configure"
+msgstr ""
+
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGame/PublicGoodGameServ.py:53
+msgid "The number of players is not compatible with the group size"
+msgstr ""
+
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGame/PublicGoodGameServ.py:101
+msgid "Total amount by group"
+msgstr ""
+
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGame/PublicGoodGameGui.py:37
+msgid "How much token(s) do you want to put in the public account?"
+msgstr ""
+
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGame/PublicGoodGameGui.py:48
+msgid "Decision"
+msgstr ""
+
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGame/PublicGoodGameTexts.py:24
+msgid "Period"
+msgstr ""
+
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGame/PublicGoodGameTexts.py:24
 msgid ""
 "Individual\n"
 "account"
 msgstr ""
 
-#: PublicGoodGamePart.py:38
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGame/PublicGoodGameTexts.py:25
 msgid ""
 "Public\n"
 "account"
 msgstr ""
 
-#: PublicGoodGamePart.py:38
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGame/PublicGoodGameTexts.py:25
 msgid ""
-"Total\n"
-"public\n"
-"account"
+"Public\n"
+"account\n"
+"group"
 msgstr ""
 
-#: PublicGoodGamePart.py:39
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGame/PublicGoodGameTexts.py:26
 msgid ""
 "Period\n"
 "payoff"
 msgstr ""
 
-#: PublicGoodGamePart.py:39
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGame/PublicGoodGameTexts.py:26
 msgid ""
 "Cumulative\n"
 "payoff"
 msgstr ""
 
-#: PublicGoodGameServ.py:33
-msgid "Show graph"
-msgstr ""
-
-#: PublicGoodGameServ.py:100
-msgid "Total amount by group"
-msgstr ""
-
-#: PublicGoodGameTexts.py:24
-msgid "Decision"
-msgstr ""
-
-#: PublicGoodGameTexts.py:25
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGame/PublicGoodGameTexts.py:30
 msgid ""
 "You have an endowment of {} tokens. Please choose how much token(s) you want "
 "to put in the public account."
 msgstr ""
 
-#: PublicGoodGameTexts.py:28
-msgid "How much token(s) do you want to put in the public account?"
-msgstr ""
-
-#: PublicGoodGameTexts.py:32
-msgid "Warning message"
-msgstr ""
-
-#: PublicGoodGameTexts.py:35
-msgid "Do you confirm your choice?"
-msgstr ""
-
-#: PublicGoodGameTexts.py:40
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGame/PublicGoodGameTexts.py:37
 msgid ""
 "You put {} in your individual account and {} in the public account. Your "
 "group put {} in the public account.\n"
 "Your payoff for the current period is equal to {}."
 msgstr ""
 
-#: PublicGoodGameTexts.py:52
-msgid "You've won {}, which corresponds to {}."
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGame/PublicGoodGameTexts.py:41
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGame/PublicGoodGameTexts.py:42
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGame/PublicGoodGameTexts.py:43
+msgid "token"
 msgstr ""

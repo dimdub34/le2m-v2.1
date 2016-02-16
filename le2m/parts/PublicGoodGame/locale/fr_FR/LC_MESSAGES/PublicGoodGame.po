@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Public Good Game\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-12-02 07:42+0100\n"
-"PO-Revision-Date: 2015-12-02 07:42+0100\n"
+"POT-Creation-Date: 2016-02-16 22:30+0100\n"
+"PO-Revision-Date: 2016-02-16 22:32+0100\n"
 "Last-Translator: Dimitri DUBOIS <dimitri.dubois@umontpellier.fr>\n"
 "Language-Team: Dimitri DUBOIS <dimitri.dubois@umontpellier.fr>\n"
 "Language: fr_FR\n"
@@ -18,35 +18,93 @@ msgstr ""
 "X-Generator: Poedit 1.5.4\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGame/PublicGoodGameServ.py:24
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGame/PublicGoodGameServ.py:23
 msgid "Configure"
 msgstr "Configurer"
 
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGame/PublicGoodGameServ.py:25
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGame/PublicGoodGameServ.py:24
 msgid "Display parameters"
 msgstr "Afficher les paramètres"
 
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGame/PublicGoodGameServ.py:29
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGame/PublicGoodGameServ.py:28
 msgid "Start"
 msgstr "Démarrer"
 
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGame/PublicGoodGameServ.py:30
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGame/PublicGoodGameServ.py:29
 msgid "Display payoffs"
 msgstr "Afficher les gains"
 
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGame/PublicGoodGameServ.py:33
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGame/PublicGoodGameServ.py:32
 msgid "Show graph"
 msgstr "Afficher le graphique"
 
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGame/PublicGoodGameServ.py:100
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGame/PublicGoodGameServ.py:40
+msgid "There is no nothing to configure"
+msgstr "Il n'y a aucun paramètre à configurer"
+
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGame/PublicGoodGameServ.py:53
+msgid "The number of players is not compatible with the group size"
+msgstr "Le nombre de joueurs n'est pas compatible avec la taille des groupes"
+
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGame/PublicGoodGameServ.py:101
 msgid "Total amount by group"
 msgstr "Quantité totale par groupe"
 
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGame/PublicGoodGameTexts.py:24
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGame/PublicGoodGameGui.py:37
+msgid "How much token(s) do you want to put in the public account?"
+msgstr "Combien de jeton(s) placez-vous sur le compte collectif?"
+
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGame/PublicGoodGameGui.py:48
 msgid "Decision"
 msgstr "Décision"
 
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGame/PublicGoodGameTexts.py:24
+msgid "Period"
+msgstr "Période"
+
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGame/PublicGoodGameTexts.py:24
+msgid ""
+"Individual\n"
+"account"
+msgstr ""
+"Compte\n"
+"individuel"
+
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGame/PublicGoodGameTexts.py:25
+msgid ""
+"Public\n"
+"account"
+msgstr ""
+"Compte\n"
+"collectif"
+
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGame/PublicGoodGameTexts.py:25
+msgid ""
+"Public\n"
+"account\n"
+"group"
+msgstr ""
+"Compte\n"
+"collectif\n"
+"groupe"
+
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGame/PublicGoodGameTexts.py:26
+msgid ""
+"Period\n"
+"payoff"
+msgstr ""
+"Gain\n"
+"période"
+
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGame/PublicGoodGameTexts.py:26
+msgid ""
+"Cumulative\n"
+"payoff"
+msgstr ""
+"Gain\n"
+"cumulé"
+
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGame/PublicGoodGameTexts.py:30
 msgid ""
 "You have an endowment of {} tokens. Please choose how much token(s) you want "
 "to put in the public account."
@@ -54,19 +112,7 @@ msgstr ""
 "Vous avez une dotation de {} jetons. Vous devez choisir combien de jeton(s) "
 "vous placer sur le compte collectif."
 
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGame/PublicGoodGameTexts.py:28
-msgid "How much token(s) do you want to put in the public account?"
-msgstr "Combien de jeton(s) placez-vous sur le compte collectif?"
-
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGame/PublicGoodGameTexts.py:32
-msgid "Warning message"
-msgstr "Message d'avertissement"
-
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGame/PublicGoodGameTexts.py:35
-msgid "Do you confirm your choice?"
-msgstr "Vous confirmez votre choix?"
-
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGame/PublicGoodGameTexts.py:40
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGame/PublicGoodGameTexts.py:37
 msgid ""
 "You put {} in your individual account and {} in the public account. Your "
 "group put {} in the public account.\n"
@@ -76,54 +122,26 @@ msgstr ""
 "collectif. Votre groupe a placé {} sur le compte collectif.\n"
 "Votre gain pour la période courante est de {}."
 
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGame/PublicGoodGameTexts.py:41
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGame/PublicGoodGameTexts.py:42
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGame/PublicGoodGameTexts.py:43
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGame/PublicGoodGameTexts.py:44
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGame/PublicGoodGameTexts.py:45
 msgid "token"
 msgstr "jeton"
 
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGame/PublicGoodGameTexts.py:52
-msgid "You've won {}, which corresponds to {}."
-msgstr "Vous avez gagné {}, soit {}."
+#~ msgid "Warning message"
+#~ msgstr "Message d'avertissement"
 
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGame/PublicGoodGamePart.py:37
-msgid ""
-"Individual\n"
-"account"
-msgstr ""
-"Compte\n"
-"individuel"
+#~ msgid "Do you confirm your choice?"
+#~ msgstr "Vous confirmez votre choix?"
 
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGame/PublicGoodGamePart.py:38
-msgid ""
-"Public\n"
-"account"
-msgstr ""
-"Compte\n"
-"collectif"
+#~ msgid "You've won {}, which corresponds to {}."
+#~ msgstr "Vous avez gagné {}, soit {}."
 
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGame/PublicGoodGamePart.py:38
-msgid ""
-"Total\n"
-"public\n"
-"account"
-msgstr ""
-"Total\n"
-"compte\n"
-"collectif"
-
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGame/PublicGoodGamePart.py:39
-msgid ""
-"Period\n"
-"payoff"
-msgstr ""
-"Gain\n"
-"période"
-
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGame/PublicGoodGamePart.py:39
-msgid ""
-"Cumulative\n"
-"payoff"
-msgstr ""
-"Gain\n"
-"cumulé"
+#~ msgid ""
+#~ "Total\n"
+#~ "public\n"
+#~ "account"
+#~ msgstr ""
+#~ "Total\n"
+#~ "compte\n"
+#~ "collectif"
