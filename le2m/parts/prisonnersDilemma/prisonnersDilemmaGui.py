@@ -1,20 +1,12 @@
 # -*- coding: utf-8 -*-
-"""
-Ce module contient les boites de dialogue du programme.
-"""
 
 import logging
-import random
-
 from PyQt4 import QtGui, QtCore
-
-from client.cltgui.cltguidialogs import GuiHistorique
 from util.utili18n import le2mtrans
-from client import clttexts as textes_main
-import prisonnersDilemmaParams as pms
-import prisonnersDilemmaTexts as texts
-from prisonnersDilemmaTexts import _DP
-from prisonnersDilemmaGuiSrc import prisonnersDilemmaDecision
+from client.cltgui.cltguiwidgets import WPeriod, WExplication, WRadio
+from client.cltgui.cltguidialogs import GuiHistorique
+import prisonnersDilemmaTexts as texts_DP
+from prisonnersDilemmaTexts import trans_DP
 
 
 logger = logging.getLogger("le2m")
@@ -29,45 +21,33 @@ class GuiDecision(QtGui.QDialog):
         self._automatique = automatique
         self._historique = GuiHistorique(self, historique)
 
-        # gui
-        self.ui = prisonnersDilemmaDecision.Ui_Dialog()
-        self.ui.setupUi(self)
+        layout = QtGui.QVBoxLayout(self)
 
-        # period and history
-        if periode:
-            self.ui.label_periode.setText(textes_main.PERIODE_label(periode))
-            self.ui.pushButton_historique.setText(le2mtrans(u"History"))
-            self.ui.pushButton_historique.clicked.connect(
-                self._historique.show)
-        else:
-            self.ui.label_periode.setVisible(False)
-            self.ui.pushButton_historique.setVisible(False)
+        wperiod = WPeriod(period=periode, ecran_historique=self._historique,
+                          parent=self)
+        layout.addWidget(wperiod)
 
-        # Explanation
-        self.ui.textEdit_explication.setText(texts.DECISION_explication)
-        self.ui.textEdit_explication.setReadOnly(True)
-        self.ui.textEdit_explication.setFixedSize(400, 80)
+        wexplanation = WExplication(
+            text=texts_DP.get_text_explanation(), parent=self, size=(450, 80))
+        layout.addWidget(wexplanation)
 
-        # Decision
-        self.ui.radioButton_X.setText(_DP(u"Option X"))
-        self.ui.radioButton_Y.setText(_DP(u"Option Y"))
+        self._wdecision = WRadio(
+            texts=("X", "Y"), label=trans_DP(u"Choose an option"),
+            parent=self, automatique=self._automatique)
+        layout.addWidget(self._wdecision)
 
-        # bouton box
-        self.ui.buttonBox.accepted.connect(self._accept)
-        self.ui.buttonBox.rejected.connect(self.reject)
-        self.ui.buttonBox.button(QtGui.QDialogButtonBox.Cancel).setVisible(
-            False)
+        buttons = QtGui.QDialogButtonBox(QtGui.QDialogButtonBox.Ok)
+        buttons.accepted.connect(self._accept)
+        layout.addWidget(buttons)
 
-        # title and size
-        self.setWindowTitle(texts.DECISION_titre)
-        self.setFixedSize(520, 320)
+        self.setWindowTitle(le2mtrans(u"Decision"))
+        self.adjustSize()
+        self.setFixedSize(self.size())
 
-        # automatic
         if self._automatique:
-            self.ui.radioButton_X.setChecked(True)
-            self.ui.radioButton_Y.setChecked(random.random() > 0.5)
             self._timer_automatique = QtCore.QTimer()
-            self._timer_automatique.timeout.connect(self._accept)
+            self._timer_automatique.timeout.connect(
+                buttons.button(QtGui.QDialogButtonBox.Ok).click)
             self._timer_automatique.start(7000)
                 
     def reject(self):
@@ -78,14 +58,18 @@ class GuiDecision(QtGui.QDialog):
             self._timer_automatique.stop()
         except AttributeError:
             pass
-        decision = self.ui.radioButton_X.isChecked()
+        try:
+            decision = self._wdecision.get_checkedbutton()
+        except ValueError:
+            return
+
         if not self._automatique:
             confirmation = QtGui.QMessageBox.question(
-                self, texts.DECISION_confirmation.titre,
-                texts.DECISION_confirmation.message,
+                self, le2mtrans(u"Confirmation"),
+                le2mtrans(u"Do you confirm your choice?"),
                 QtGui.QMessageBox.No | QtGui.QMessageBox.Yes)
             if confirmation != QtGui.QMessageBox.Yes: 
                 return
         logger.info(u"Send back {}".format(decision))
-        self._defered.callback(decision)
         self.accept()
+        self._defered.callback(decision)

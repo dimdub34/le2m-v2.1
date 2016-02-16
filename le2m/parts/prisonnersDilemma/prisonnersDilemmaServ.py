@@ -3,12 +3,9 @@
 import logging
 from collections import OrderedDict
 from twisted.internet import defer
-import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
 from util import utiltools
+from util.utili18n import le2mtrans
 import prisonnersDilemmaParams as pms
-import prisonnersDilemmaPart  # for sqlalchemy
 
 
 logger = logging.getLogger("le2m.{}".format(__name__))
@@ -21,24 +18,20 @@ class Serveur(object):
         # creation of the menu (will be placed in the "part" menu on the
         # server screen
         actions = OrderedDict()
-        actions[u"Configurer"] = self._configure
-        actions[u"Afficher les paramètres"] = \
+        actions[le2mtrans(u"Configure")] = self._configure
+        actions[le2mtrans(u"Display parameters")] = \
             lambda _: self._le2mserv.gestionnaire_graphique. \
             display_information2(
                 utiltools.get_module_info(pms), u"Paramètres")
-        actions[u"Démarrer"] = lambda _: self._demarrer()
-        actions[u"Afficher les gains"] = \
+        actions[le2mtrans(u"Start")] = lambda _: self._demarrer()
+        actions[le2mtrans(u"Display payoffs")] = \
             lambda _: self._le2mserv.gestionnaire_experience.\
             display_payoffs("prisonnersDilemma")
         self._le2mserv.gestionnaire_graphique.add_topartmenu(
             u"Prisonner's dillemma", actions)
 
     def _configure(self):
-        """
-        To make changes in the parameters
-        :return:
-        """
-        self._le2mserv.gestionnaire_graphique.display_information2(
+        self._le2mserv.gestionnaire_graphique.display_information(
             u"Aucun paramètre à configurer")
 
     @defer.inlineCallbacks
@@ -47,40 +40,42 @@ class Serveur(object):
         Start the part
         :return:
         """
+        # check conditions =====================================================
+        if self._le2mserv.gestionnaire_joueurs.nombre_joueurs % \
+            pms.TAILLE_GROUPES:
+            self._le2mserv.gestionnaire_graphique.display_error(
+                le2mtrans(u"The number of players is not compatible with "
+                          u"the group size"))
+            return
+
         confirmation = self._le2mserv.gestionnaire_graphique.\
             question(u"Démarrer prisonnersDilemma?")
         if not confirmation:
             return
-        
+
+        # init part ============================================================
         yield (self._le2mserv.gestionnaire_experience.init_part(
             "prisonnersDilemma", "PartieDP",
             "RemoteDP", pms))
         self._tous = self._le2mserv.gestionnaire_joueurs.get_players(
             'prisonnersDilemma')
         
-        # formation des groupes ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-        if pms.TAILLE_GROUPES > 0:
-            try:
-                self._le2mserv.gestionnaire_groupes.former_groupes(
-                    self._le2mserv.gestionnaire_joueurs.get_players(),
-                    pms.TAILLE_GROUPES, forcer_nouveaux=True)
-            except ValueError as e:
-                self._le2mserv.gestionnaire_graphique.display_error(
-                    e.message)
-                return
-    
-        # pour configure les clients et les remotes ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        self._le2mserv.gestionnaire_groupes.former_groupes(
+            self._le2mserv.gestionnaire_joueurs.get_players(),
+            pms.TAILLE_GROUPES, forcer_nouveaux=True)
+
+        # set parameters on remotes
         yield (self._le2mserv.gestionnaire_experience.run_func(
             self._tous, "configure"))
     
-        # DEBUT DES RÉPÉTITIONS ================================================
+        # Start part ===========================================================
         for period in xrange(1 if pms.NOMBRE_PERIODES else 0,
                         pms.NOMBRE_PERIODES + 1):
 
             if self._le2mserv.gestionnaire_experience.stop_repetitions:
                 break
 
-            # initialisation période ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+            # init period
             self._le2mserv.gestionnaire_graphique.infoserv(
                 [None, u"Période {}".format(period)])
             self._le2mserv.gestionnaire_graphique.infoclt(
@@ -88,35 +83,30 @@ class Serveur(object):
             yield (self._le2mserv.gestionnaire_experience.run_func(
                 self._tous, "newperiod", period))
             
-            # décision ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+            # decision
             yield(self._le2mserv.gestionnaire_experience.run_step(
                 u"Décision", self._tous, "display_decision"))
 
-            # save decision in the other group member data ---------------------
             for g, m in self._le2mserv.gestionnaire_groupes.\
                     get_groupes("prisonnersDilemma").iteritems():
                 txtchoix = u""
                 m[0].currentperiod.DP_decisionother = \
                     m[1].currentperiod.DP_decision
-                txtchoix += \
-                    u"X" if m[0].currentperiod.DP_decision == pms.OPTION_X else \
-                        u"Y"
+                txtchoix += pms.get_option(m[0].currentperiod.DP_decision)
                 m[1].currentperiod.DP_decisionother = \
                     m[0].currentperiod.DP_decision
-                txtchoix += \
-                    u"X" if m[1].currentperiod.DP_decision == pms.OPTION_X else \
-                        u"Y"
+                txtchoix += pms.get_option(m[1].currentperiod.DP_decision)
                 self._le2mserv.gestionnaire_graphique.infoserv(
                     u"G{}: {}".format(g.split("_")[2], txtchoix))
             
-            # calcul des gains de la période ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+            # period payoff
             self._le2mserv.gestionnaire_experience.compute_periodpayoffs(
                 "prisonnersDilemma")
         
-            # affichage du récapitulatif ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+            # summary
             yield(self._le2mserv.gestionnaire_experience.run_step(
                 u"Récapitulatif", self._tous, "display_summary"))
         
-        # FIN DE LA PARTIE =====================================================
+        # End of part ==========================================================
         self._le2mserv.gestionnaire_experience.finalize_part(
             "prisonnersDilemma")
