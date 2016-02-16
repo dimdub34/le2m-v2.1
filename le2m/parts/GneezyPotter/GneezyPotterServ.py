@@ -11,9 +11,8 @@ from configuration.configconst import PILE, FACE
 from util import utiltools
 from util.utili18n import le2mtrans
 import GneezyPotterParams as pms
-from GneezyPotterTexts import _GP
+from GneezyPotterTexts import trans_GP
 from GneezyPotterGui import GuiConfigure
-import GneezyPotterPart  # for sqlalchemy
 
 
 logger = logging.getLogger("le2m")
@@ -51,17 +50,17 @@ class Serveur(object):
     @defer.inlineCallbacks
     def _demarrer(self):
         confirmation = self._le2mserv.gestionnaire_graphique.\
-            question(_GP(u"Start Gneezy Potter?"))
+            question(trans_GP(u"Start Gneezy Potter?"))
         if not confirmation:
             return
 
-        # init part ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        # init part ============================================================
         yield (self._le2mserv.gestionnaire_experience.init_part(
             "GneezyPotter", "PartieGP", "RemoteGP", pms))
         self._tous = self._le2mserv.gestionnaire_joueurs.get_players(
             "GneezyPotter")
 
-        # to makes parameter changes remotes ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        # set parameters to remotes
         yield (self._le2mserv.gestionnaire_experience.run_func(
             self._tous, "configure"))
 
@@ -72,7 +71,7 @@ class Serveur(object):
             if self._le2mserv.gestionnaire_experience.stop_repetitions:
                 break
 
-            # initiate the period ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+            # init period
             self._le2mserv.gestionnaire_graphique.infoserv(
                 [None, le2mtrans(u"Period {}").format(period)])
             self._le2mserv.gestionnaire_graphique.infoclt(
@@ -81,11 +80,11 @@ class Serveur(object):
             yield (self._le2mserv.gestionnaire_experience.run_func(
                 self._tous, "newperiod", period))
 
-            # decision ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+            # decision
             yield(self._le2mserv.gestionnaire_experience.run_step(
                 u"Decision", self._tous, "display_decision"))
 
-            self._le2mserv.gestionnaire_graphique.infoserv(_GP(u"Random draws"))
+            self._le2mserv.gestionnaire_graphique.infoserv(trans_GP(u"Random draws"))
             for p in self._tous:
                 tirage = random.random()
                 if tirage <= pms.PROBA:
@@ -98,21 +97,22 @@ class Serveur(object):
                         u"pile" if p.currentperiod.GP_randomdraw == PILE else
                         u"face"))
 
-            # calcul des gains de la période ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+            # period payoff
             self._le2mserv.gestionnaire_experience.compute_periodpayoffs(
                 "GneezyPotter")
 
-            # affichage du récapitulatif ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+            # summary
             if pms.DISPLAY_SUMMARY:
                 yield(self._le2mserv.gestionnaire_experience.run_step(
                     u"Summary", self._tous, "display_summary"))
 
-        # Stats ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        # end of part ==========================================================
+        # stats
         data = pd.DataFrame(
             [p.currentperiod.todict(p.joueur) for p in self._tous])
         data = data.groupby(data.joueur).mean()["GP_decision"]
         self._le2mserv.gestionnaire_graphique.infoserv(
-            _GP(u"Av. amount invested"))
+            trans_GP(u"Av. amount invested"))
         self._le2mserv.gestionnaire_graphique.infoserv(data.to_string())
         self._fig, graph = plt.subplots(figsize=(6, 6))
         data.plot(kind="bar", ax=graph)
@@ -122,7 +122,6 @@ class Serveur(object):
         graph.set_ylabel("Amount invested")
         graph.set_title("Amount invested in the risky option")
 
-        # end of part ==========================================================
         self._le2mserv.gestionnaire_experience.finalize_part("GneezyPotter")
 
     def _show_fig(self):

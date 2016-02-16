@@ -1,7 +1,4 @@
 # -*- coding: utf-8 -*-
-"""
-Ce module contient les textes des écrans
-"""
 
 import os
 import configuration.configparam as params
@@ -13,38 +10,25 @@ import gettext
 
 
 localedir = os.path.join(params.getp("PARTSDIR"), "GneezyPotter", "locale")
-_GP = gettext.translation(
+trans_GP = gettext.translation(
     "GneezyPotter", localedir, languages=[params.getp("LANG")]).ugettext
 
 TITLE_MSG = namedtuple("TITLE_MSG", "titre message")
 
 
-# ECRAN DECISION ===============================================================
-DECISION_titre = _GP(u"Decision")
-DECISION_explication = \
-    _GP(u"You have an endowment of {}. You can invest amount you want in the "
+def get_text_explanation():
+    txt = trans_GP(u"You have an endowment of {}. You can invest amount you want in the "
         u"risky option").format(get_pluriel(pms.DOTATION, pms.MONNAIE))
-DECISION_label = _GP(u"Choose the amount you want to invest in the risky "
-                     u"option")
-DECISION_erreur = TITLE_MSG(
-    _GP(u"Warning"),
-    _GP(u"Warning message"))
-DECISION_confirmation = TITLE_MSG(
-    _GP(u"Confirmation"),
-    _GP(u"Do you confirm you choice?"))
-
-
-# ECRAN RECAPITULATIF ==========================================================
-def get_recapitulatif(currentperiod):
-    txt = _GP(u"You invested {} in the risky option.").format(
-        get_pluriel(currentperiod.GP_decision, pms.MONNAIE))
-    txt += u" " + _GP(u"The random draw was {}.").format(
-        _GP(u"Head") if currentperiod.GP_randomdraw == PILE else _GP(u"Tail"))
-    txt += u" " + _GP(u"Your payoff is equal to {}.").format(
-        get_pluriel(currentperiod.GP_periodpayoff, pms.MONNAIE))
     return txt
 
 
-# TEXTE FINAL PARTIE ===========================================================
-def get_texte_final(currentperiod):
-    return get_recapitulatif(currentperiod)
+def get_text_summary(period_content):
+    txt = trans_GP(u"You invested {} in the risky option.").format(
+        get_pluriel(period_content.get("GP_decision"), pms.MONNAIE))
+    txt += u" " + trans_GP(u"The random draw was {}.").format(
+        trans_GP(u"Head") if period_content.get("GP_randomdraw") == PILE else \
+            trans_GP(u"Tail"))
+    txt += u" " + trans_GP(u"Your payoff is equal to {}.").format(
+        get_pluriel(period_content.get("GP_periodpayoff"), pms.MONNAIE))
+    return txt
+

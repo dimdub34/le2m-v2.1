@@ -1,14 +1,12 @@
 # -*- coding: utf-8 -*-
-"""
-Ce module contient les boites de dialogue du programme.
-"""
 
 from PyQt4 import QtGui, QtCore
 import logging
+from util.utili18n import le2mtrans
 from client.cltgui.cltguiwidgets import WExplication, WSpinbox, WCombo
 import GneezyPotterParams as pms
-import GneezyPotterTexts as texts
-from GneezyPotterTexts import _GP
+import GneezyPotterTexts as texts_GP
+from GneezyPotterTexts import trans_GP
 
 
 logger = logging.getLogger("le2m")
@@ -24,13 +22,15 @@ class GuiDecision(QtGui.QDialog):
         layout = QtGui.QVBoxLayout(self)
 
         self._widexplication = WExplication(
-            text=texts.DECISION_explication, size=(500, 70), parent=self)
+            text=texts_GP.get_text_explanation(), size=(500, 70), parent=self)
         layout.addWidget(self._widexplication)
 
         self._widdecision = WSpinbox(
-            label=texts.DECISION_label, minimum=pms.DECISION_MIN,
-            maximum=pms.DECISION_MAX, interval=pms.DECISION_STEP,
-            parent=self, automatique=self._automatique)
+            label=trans_GP(u"Choose the amount you want to invest in the "
+                           u"risky option"),
+            minimum=pms.DECISION_MIN, maximum=pms.DECISION_MAX,
+            interval=pms.DECISION_STEP, parent=self,
+            automatique=self._automatique)
         layout.addWidget(self._widdecision)
 
         # bouton box
@@ -46,7 +46,7 @@ class GuiDecision(QtGui.QDialog):
             self._timer_automatique.start(7000)
 
         # title and size
-        self.setWindowTitle(texts.DECISION_titre)
+        self.setWindowTitle(le2mtrans(u"Decision"))
         self.adjustSize()
         self.setFixedSize(self.size())
 
@@ -61,15 +61,14 @@ class GuiDecision(QtGui.QDialog):
         decision = self._widdecision.get_value()
         if not self._automatique:
             confirmation = QtGui.QMessageBox.question(
-                self, texts.DECISION_confirmation.titre,
-                texts.DECISION_confirmation.message,
-                QtGui.QMessageBox.No | QtGui.QMessageBox.Yes
-            )
+                self, le2mtrans(u"Confirmation"),
+                le2mtrans(u"Do you confirm your choice?"),
+                QtGui.QMessageBox.No | QtGui.QMessageBox.Yes)
             if confirmation != QtGui.QMessageBox.Yes: 
                 return
         logger.info(u"Send back {}".format(decision))
-        self._defered.callback(decision)
         self.accept()
+        self._defered.callback(decision)
 
 
 class GuiConfigure(QtGui.QDialog):
@@ -79,15 +78,15 @@ class GuiConfigure(QtGui.QDialog):
         layout = QtGui.QVBoxLayout(self)
 
         self._widpayoffs = WCombo(
-            label=_GP(u"Display summary (with payoffs)?"),
-            items=(_GP(u"No"), _GP(u"Yes")), parent=self)
+            label=trans_GP(u"Display summary (with payoffs)?"),
+            items=(trans_GP(u"No"), trans_GP(u"Yes")), parent=self)
         layout.addWidget(self._widpayoffs)
 
         button = QtGui.QDialogButtonBox(QtGui.QDialogButtonBox.Ok)
         button.accepted.connect(self.accept)
         layout.addWidget(button)
 
-        self.setWindowTitle(_GP(u"Configure"))
+        self.setWindowTitle(trans_GP(u"Configure"))
         self.adjustSize()
         self.setFixedSize(self.size())
 

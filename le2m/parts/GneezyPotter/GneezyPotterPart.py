@@ -8,10 +8,7 @@ from datetime import datetime
 from server.servbase import Base
 from server.servparties import Partie
 import GneezyPotterParams as pms
-import GneezyPotterTexts as texts
-from GneezyPotterTexts import _GP
 from util.utiltools import get_module_attributes
-from collections import OrderedDict
 from configuration.configconst import PILE
 
 
@@ -28,17 +25,8 @@ class PartieGP(Partie):
         Partie.__init__(self, "GneezyPotter", "GP")
         self._le2mserv = le2mserv
         self.joueur = joueur
-        self._texte_recapitulatif = u""
-        self._texte_final = u""
         self.GP_gain_ecus = 0
         self.GP_gain_euros = 0
-        self.periods = {}
-        self.currentperiod = None
-        self._histo_build = OrderedDict()
-        self._histo_build[_GP(u"Decision")] = "GP_decision"
-        self._histo_build[_GP(u"Random draw")] = "GP_randomdraw"
-        self._histo_build[_GP(u"Payoff")] = "GP_periodpayoff"
-        self._histo_content = [list(self._histo_build.viewkeys())]
 
     @defer.inlineCallbacks
     def configure(self):
@@ -48,8 +36,6 @@ class PartieGP(Partie):
     @defer.inlineCallbacks
     def newperiod(self, period):
         logger.debug(u"{} New Period".format(self.joueur))
-        if period == 1:
-            del self._histo_content[1:]
         self.currentperiod = RepetitionsGP(period)
         self._le2mserv.gestionnaire_base.ajouter(self.currentperiod)
         self.repetitions.append(self.currentperiod)
@@ -94,26 +80,18 @@ class PartieGP(Partie):
     @defer.inlineCallbacks
     def display_summary(self):
         logger.debug(u"{} Summary".format(self.joueur))
-        line = []
-        for v in self._histo_build.viewvalues():
-            attrib = getattr(self.currentperiod, v)
-            if v == "GP_randomdraw":
-                line.append(_GP(u"Head") if attrib == PILE else _GP(u"Tail"))
-            else:
-                line.append(attrib)
-        self._histo_content.append(line)
-        self._texte_recapitulatif = texts.get_recapitulatif(self.currentperiod)
         yield(self.remote.callRemote(
-            "display_summary", self._texte_recapitulatif, self._histo_content))
+            "display_summary", self.currentperiod.todict()))
         self.joueur.info("Ok")
         self.joueur.remove_waitmode()
 
+    @defer.inlineCallbacks
     def compute_partpayoff(self):
         logger.debug(u"{} Part payoff".format(self.joueur))
         self.GP_gain_ecus = self.currentperiod.GP_cumulativepayoff
-        self.GP_gain_euros = \
-            float(self.GP_gain_ecus) * float(pms.TAUX_CONVERSION)
-        self._texte_final = texts.get_texte_final(self.currentperiod)
+        self.GP_gain_euros = float(self.GP_gain_ecus) * float(pms.TAUX_CONVERSION)
+        yield (self.remote.callRemote(
+            "set_payoffs", self.GP_gain_euros, self.GP_gain_ecus))
         logger.info(u'{} gain ecus: {}, gain euros: {:.2f}'.format(
             self.joueur, self.GP_gain_ecus, self.GP_gain_euros))
 
@@ -142,7 +120,8 @@ class RepetitionsGP(Base):
         self.GP_periodpayoff = 0
         self.GP_cumulativepayoff = 0
         
-    def todict(self, joueur):
+    def todict(self, joueur=None):
         temp = {c.name: getattr(self, c.name) for c in self.__table__.columns}
-        temp["joueur"] = joueur  # often useful
+        if joueur:
+            temp["joueur"] = joueur  # often useful
         return temp
