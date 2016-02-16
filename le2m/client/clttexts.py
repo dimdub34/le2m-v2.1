@@ -18,7 +18,17 @@ ACCUEIL_bouton = le2mtrans(u"Instructions read")
 # QUESTIONNAIRE_FINAL
 QUESTFINAL_explication = \
     le2mtrans(u"Please fill in the questionnaire below.\nThis questionnaire "
-              u"is anonymous, so please answer sincerily.")
+              u"is anonymous, so please answer with sincerity.")
+
+
+def get_payoff_text(pay_euros, pay_ecus=None):
+    if pay_ecus is not None:
+        txt = le2mtrans(u"You've earned {} which corresponds to {}.".format(
+            get_pluriel(pay_ecus, u"ecu"), get_pluriel(pay_euros, u"euro")))
+    else:
+        txt = le2mtrans(u"You've earned {}.".format(
+            get_pluriel(pay_euros, u"euro")))
+    return txt
 
 
 def get_final_text(final_payoff):
