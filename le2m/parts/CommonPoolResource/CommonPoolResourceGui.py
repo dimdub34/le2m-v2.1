@@ -4,11 +4,10 @@ Ce module contient les boites de dialogue du programme.
 """
 
 import logging
-import random
 from PyQt4 import QtGui, QtCore
 from client.cltgui.cltguidialogs import GuiHistorique
 import CommonPoolResourceParams as pms
-import CommonPoolResourceTexts as texts
+import CommonPoolResourceTexts as texts_CPR
 from client.cltgui.cltguiwidgets import WPeriod, WExplication, WSpinbox
 
 
@@ -30,11 +29,11 @@ class GuiDecision(QtGui.QDialog):
         layout.addWidget(self._widperiod)
 
         self._widexplication = WExplication(
-            text=texts.DECISION_explication, parent=self)
+            text=texts_CPR.DECISION_explication, parent=self)
         layout.addWidget(self._widexplication)
 
         self._widdecision = WSpinbox(
-            label=texts.DECISION_label, minimum=pms.DECISION_MIN,
+            label=texts_CPR.DECISION_label, minimum=pms.DECISION_MIN,
             maximum=pms.DECISION_MAX, interval=pms.DECISION_STEP,
             automatique=self._automatique, parent=self)
         layout.addWidget(self._widdecision)
@@ -50,7 +49,7 @@ class GuiDecision(QtGui.QDialog):
             self._timer_automatique.start(7000)
 
         # title and size
-        self.setWindowTitle(texts.DECISION_titre)
+        self.setWindowTitle(texts_CPR.DECISION_titre)
         self.adjustSize()
         self.setFixedSize(self.size())
 
@@ -65,8 +64,8 @@ class GuiDecision(QtGui.QDialog):
         decision = self._widdecision.get_value()
         if not self._automatique:
             confirmation = QtGui.QMessageBox.question(
-                self, texts.DECISION_confirmation.titre,
-                texts.DECISION_confirmation.message,
+                self, texts_CPR.DECISION_confirmation.titre,
+                texts_CPR.DECISION_confirmation.message,
                 QtGui.QMessageBox.No | QtGui.QMessageBox.Yes)
             if confirmation != QtGui.QMessageBox.Yes: 
                 return

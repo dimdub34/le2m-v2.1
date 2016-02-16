@@ -2,16 +2,13 @@
 
 import logging
 from datetime import datetime
-
 from twisted.internet import defer
 from sqlalchemy.orm import relationship
 from sqlalchemy import Column, Integer, Float, ForeignKey
-
+from util.utiltools import get_module_attributes
 from server.servbase import Base
 from server.servparties import Partie
-from util.utili18n import le2mtrans
 import CommonPoolResourceParams as pms
-import CommonPoolResourceTexts as texts
 
 
 logger = logging.getLogger("le2m")
@@ -27,42 +24,24 @@ class PartieCPR(Partie):
         super(PartieCPR, self).__init__("CommonPoolResource", "CPR")
         self._le2mserv = le2mserv
         self.joueur = joueur
-        self._texte_recapitulatif = u""
-        self._texte_final = u""
         self.CPR_gain_ecus = 0
         self.CPR_gain_euros = 0
-        self._histo_vars = [
-            "CPR_period", "CPR_decision",
-            "CPR_periodpayoff",
-            "CPR_cumulativepayoff"]
-        self._histo = [
-            [le2mtrans(u"Period"), le2mtrans(u"Decision"),
-             le2mtrans(u"Period\npayoff"), le2mtrans(u"Cumulative\npayoff")]]
-        self.periods = {}
-        self.currentperiod = None
 
     @defer.inlineCallbacks
     def configure(self, *args):
-        """
-        Allow to make changes in the part parameters
-        :param args:
-        :return:
-        """
         logger.debug(u"{} Configure".format(self.joueur))
-        # ici mettre en place la configuration
-        yield (self.remote.callRemote("configure", *args))
+        yield (self.remote.callRemote("configure", get_module_attributes(pms)))
+        self.joueur.info(u"Ok")
 
     @defer.inlineCallbacks
     def newperiod(self, period):
         """
         Create a new period and inform the remote
         If this is the first period then empty the historic
-        :param periode:
+        :param period:
         :return:
         """
         logger.debug(u"{} New Period".format(self.joueur))
-        if period == 1:
-            del self._histo[1:]
         self.currentperiod = RepetitionsCPR(period)
         self.currentperiod.CPR_group = self.joueur.groupe
         self._le2mserv.gestionnaire_base.ajouter(self.currentperiod)
@@ -116,40 +95,21 @@ class PartieCPR(Partie):
 
     @defer.inlineCallbacks
     def display_summary(self):
-        """
-        Create the summary (txt and historic) and then display it on the
-        remote
-        :param args:
-        :return:
-        """
         logger.debug(u"{} Summary".format(self.joueur))
-        self._texte_recapitulatif = texts.get_recapitulatif(self.currentperiod)
-        self._histo.append(
-            [getattr(self.currentperiod, e) for e in self._histo_vars])
         yield(self.remote.callRemote(
-            "display_summary", self._texte_recapitulatif, self._histo))
+            "display_summary", self.currentperiod.todict()))
         self.joueur.info("Ok")
         self.joueur.remove_waitmode()
-    
+
+    @defer.inlineCallbacks
     def compute_partpayoff(self):
-        """
-        Compute the payoff of the part
-        :return:
-        """
         logger.debug(u"{} Part Payoff".format(self.joueur))
-        # gain partie
-        self.CPR_gain_ecus = \
-            self.currentperiod.CPR_cumulativepayoff
-        self.CPR_gain_euros = \
-            float(self.CPR_gain_ecus) * \
-            float(pms.TAUX_CONVERSION)
 
-        # texte final
-        self._texte_final = texts.get_texte_final(
-            self.CPR_gain_ecus,
-            self.CPR_gain_euros)
+        self.CPR_gain_ecus = self.currentperiod.CPR_cumulativepayoff
+        self.CPR_gain_euros = float(self.CPR_gain_ecus) * float(pms.TAUX_CONVERSION)
+        yield (self.remote.callRemote(
+            "set_payoffs", self.CPR_gain_euros, self.CPR_gain_ecus))
 
-        logger.debug(u"{} Final text {}".format(self.joueur, self._texte_final))
         logger.info(u'{} Payoff ecus {} Payoff euros {:.2f}'.format(
             self.joueur, self.CPR_gain_ecus, self.CPR_gain_euros))
 
@@ -177,8 +137,9 @@ class RepetitionsCPR(Base):
         self.CPR_periodpayoff = 0
         self.CPR_cumulativepayoff = 0
 
-    def todict(self, joueur):
+    def todict(self, joueur=None):
         temp = {c.name: getattr(self, c.name) for c in self.__table__.columns}
-        temp["joueur"] = joueur
+        if joueur:
+            temp["joueur"] = joueur
         return temp
 

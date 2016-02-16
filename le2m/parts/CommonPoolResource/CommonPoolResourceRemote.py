@@ -2,26 +2,27 @@
 
 import logging
 import random
-
+from client.cltremote import IRemote
 from twisted.internet import defer
-from twisted.spread import pb
-
 from client.cltgui.cltguidialogs import GuiRecapitulatif
 import CommonPoolResourceParams as pms
 from CommonPoolResourceGui import GuiDecision
+import CommonPoolResourceTexts as texts_CPR
 
 
 logger = logging.getLogger("le2m")
 
 
-class RemoteCPR(pb.Referenceable):
+class RemoteCPR(IRemote):
     """
     Class remote, remote_ methods can be called by the server
     """
     def __init__(self, le2mclt):
-        self._le2mclt = le2mclt
-        self._currentperiod = 0
-        self._histo = []
+        IRemote.__init__(self, le2mclt)
+        self._histo_vars = [
+            "CPR_period", "CPR_decision", "CPR_periodpayoff",
+            "CPR_cumulativepayoff"]
+        self.histo.append(texts_CPR.get_histo_head())
 
     def remote_configure(self, *args):
         """
@@ -42,9 +43,9 @@ class RemoteCPR(pb.Referenceable):
         :return:
         """
         logger.info(u"{} Period {}".format(self._le2mclt.uid, periode))
-        self._currentperiod = periode
-        if self._currentperiod == 1:
-            del self._histo[:]
+        self.currentperiod = periode
+        if self.currentperiod == 1:
+            del self.histo[1:]
 
     def remote_display_decision(self):
         """
@@ -64,11 +65,11 @@ class RemoteCPR(pb.Referenceable):
             defered = defer.Deferred()
             ecran_decision = GuiDecision(
                 defered, self._le2mclt.automatique,
-                self._le2mclt.screen, self._currentperiod, self._histo)
+                self._le2mclt.screen, self.currentperiod, self.histo)
             ecran_decision.show()
             return defered
 
-    def remote_display_summary(self, texte_recap, historique):
+    def remote_display_summary(self, period_content):
         """
         Display the summary screen
         :param texte_recap:
@@ -76,13 +77,14 @@ class RemoteCPR(pb.Referenceable):
         :return: deferred
         """
         logger.info(u"{} Summary".format(self._le2mclt.uid))
-        self._histo = historique
+        self.histo.append([period_content.get(k) for k in self._histo_vars])
         if self._le2mclt.simulation:
             return 1
         else:
             defered = defer.Deferred()
             ecran_recap = GuiRecapitulatif(
                 defered, self._le2mclt.automatique, self._le2mclt.screen,
-                self._currentperiod, self._histo, texte_recap)
+                self._currentperiod, self.histo,
+                texts_CPR.get_recapitulatif(period_content))
             ecran_recap.show()
             return defered
