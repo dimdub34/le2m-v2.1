@@ -9,8 +9,6 @@ from util.utiltools import get_module_attributes
 from server.servbase import Base
 from server.servparties import Partie
 import DictatorParams as pms
-from DictatorTexts import _DIC
-import DictatorTexts as textes
 
 
 logger = logging.getLogger("le2m")
@@ -26,7 +24,7 @@ class PartieDIC(Partie):
         super(PartieDIC, self).__init__("Dictator", "DIC")
         self._le2mserv = le2mserv
         self.joueur = joueur
-        self._texte_recapitulatif = u""
+        # self._texte_recapitulatif = u""
         self._texte_final = u""
         self.DIC_gain_ecus = 0
         self.DIC_gain_euros = 0
@@ -51,8 +49,7 @@ class PartieDIC(Partie):
 
     @defer.inlineCallbacks
     def display_role(self):
-        yield (self.joueur.get_part("base").remote.callRemote(
-            "display_information", textes.get_role(self.role)))
+        yield (self.remote.callRemote("display_role", self.role))
         self.joueur.info("Ok")
         self.joueur.remove_waitmode()
 
@@ -114,7 +111,7 @@ class PartieDIC(Partie):
                 previousperiod.DIC_cumulativepayoff + \
                 self.currentperiod.DIC_periodpayoff
 
-        # periode courange dans dictionnaire des périodes passées
+        # periode courante dans dictionnaire des périodes passées
         self.periodes[self.currentperiod.DIC_period] = \
             self.currentperiod
 
@@ -123,47 +120,25 @@ class PartieDIC(Partie):
 
     @defer.inlineCallbacks
     def display_summary(self):
-        """
-        Création du texte du récapitulatif et de l'historique puis affichage
-        sur le remote
-        :param args:
-        :return:
-        """
         logger.debug(u"{} Summary".format(self.joueur))
-        if not self._histo_vars:
-            if self.currentperiod.DIC_role == pms.PLAYER_A:
-                self._histo_vars = ["DIC_decision", "DIC_periodpayoff"]
-                self._histo.append([_DIC(u"Decision"), _DIC(u"Payoff")])
-            else:
-                self._histo_vars = ["DIC_recu", "DIC_periodpayoff"]
-                self._histo.append([_DIC(u"Received"), _DIC(u"Payoff")])
-
-        self._texte_recapitulatif = textes.get_recapitulatif(self.currentperiod)
-        self._histo.append(
-            [getattr(self.currentperiod, e) for e in self._histo_vars])
-        yield(self.remote.callRemote("display_summary",
-                                     self._texte_recapitulatif, self._histo))
+        yield(self.remote.callRemote(
+            "display_summary", self.currentperiod.todict()))
         self.joueur.info("Ok")
         self.joueur.remove_waitmode()
-    
+
+    @defer.inlineCallbacks
     def compute_partpayoff(self):
         """
-        Cacul du gain de la partie.
+        compute the part payoff
         :return:
         """
         logger.debug(u"{} Part Payoff".format(self.joueur))
         # gain partie
-        self.DIC_gain_ecus = \
-            self.currentperiod.DIC_cumulativepayoff
-        self.DIC_gain_euros = \
-            float(self.DIC_gain_ecus) * \
-            float(pms.TAUX_CONVERSION)
+        self.DIC_gain_ecus = self.currentperiod.DIC_cumulativepayoff
+        self.DIC_gain_euros = float(self.DIC_gain_ecus) * float(pms.TAUX_CONVERSION)
 
-        # texte final
-        self._texte_final = textes.get_texte_final(self.DIC_gain_euros)
-
-        logger.debug(u"Texte final {}: {}".format(
-            self.joueur, self._texte_final))
+        yield(self.remote.callRemote(
+            "set_payoffs", self.DIC_gain_euros, self.DIC_gain_ecus))
         logger.info(u'{} Payoff ecus {} Payoff euros {:.2f}'.format(
             self.joueur, self.DIC_gain_ecus, self.DIC_gain_euros))
 
@@ -191,7 +166,8 @@ class RepetitionsDIC(Base):
         self.DIC_periodpayoff = 0
         self.DIC_cumulativepayoff = 0
         
-    def todict(self, joueur):
+    def todict(self, joueur=None):
         temp = {c.name: getattr(self, c.name) for c in self.__table__.columns}
-        temp["joueur"] = joueur
+        if joueur is not None:
+            temp["joueur"] = joueur
         return temp

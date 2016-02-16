@@ -5,54 +5,68 @@ Ce module contient les textes des écrans
 __author__ = "Dimitri DUBOIS"
 
 import os
+from collections import OrderedDict
 import configuration.configparam as params
 import gettext
 localedir = os.path.join(params.getp("PARTSDIR"), "Dictator", "locale")
-_DIC = gettext.translation(
-    "Dictator", localedir, languages=[params.getp("LANG")]).ugettext
+trans_DIC = gettext.translation(
+    "Dictator", localedir, languages=[params.getp("LANG")], fallback=True).ugettext
 from collections import namedtuple
 from util.utiltools import get_pluriel
 from parts.Dictator import DictatorParams as pms
+import logging
 
+logger = logging.getLogger("le2m")
 TITLE_MSG = namedtuple("TITLE_MSG", "titre message")
+
+
+# HISTO ========================================================================
+histo_build = {}
+def get_histo_build(role):
+    global histo_build
+    if not histo_build.get(role):
+        hb = OrderedDict()
+        if role == pms.PLAYER_A:
+            hb["DIC_decision"] = trans_DIC(u"Decision")
+        elif role == pms.PLAYER_B:
+            hb["DIC_recu"] = trans_DIC(u"Received")
+        hb["DIC_periodpayoff"] = trans_DIC(u"Payoff")
+        histo_build[role] = hb
+    return histo_build[role]
 
 
 # ROLE =========================================================================
 def get_role(role):
-    return _DIC(u"You are player {}").format(
+    return trans_DIC(u"You are player {}").format(
         u"A" if role == pms.PLAYER_A else u"B")
 
-# ECRAN DECISION ===============================================================
-DECISION_titre = _DIC(u"Decision")
-DECISION_explication = _DIC(u"You have an endowment of {}. You can send any "
+
+# DECISION =====================================================================
+DECISION_titre = trans_DIC(u"Decision")
+DECISION_explication = trans_DIC(u"You have an endowment of {}. You can send any "
                             u"amount you want to player B").format(
     get_pluriel(pms.DOTATION, pms.MONNAIE))
-DECISION_label = _DIC(u"Choose the amount you want to send to player B")
-DECISION_erreur = TITLE_MSG(
-    _DIC(u"Warning"),
-    _DIC(u"Warning message"))
+DECISION_label = trans_DIC(u"Choose the amount you want to send to player B")
 DECISION_confirmation = TITLE_MSG(
-    _DIC(u"Confirmation"),
-    _DIC(u"Do you confirm you choice?"))
+    trans_DIC(u"Confirmation"),
+    trans_DIC(u"Do you confirm you choice?"))
 
 
-# ECRAN RECAPITULATIF ==========================================================
+# SUMMARY ======================================================================
 def get_recapitulatif(currentperiod):
-    txt = _DIC(u"You were player {}.").format(
-        u"A" if currentperiod.DIC_role == pms.PLAYER_A else u"B")
-    if currentperiod.DIC_role == pms.PLAYER_A:
-        txt += _DIC(u" You sent {} to player B.").format(
-            get_pluriel(currentperiod.DIC_decision, pms.MONNAIE))
+    """
+    return the text of the summary
+    :param currentperiod: a dict
+    :return: str
+    """
+    txt = trans_DIC(u"You were player {}.").format(
+        u"A" if currentperiod.get("DIC_role") == pms.PLAYER_A else u"B")
+    if currentperiod.get("DIC_role") == pms.PLAYER_A:
+        txt += trans_DIC(u" You sent {} to player B.").format(
+            get_pluriel(currentperiod.get("DIC_decision"), pms.MONNAIE))
     else:
-        txt += _DIC(u" Player A sent {} to you.").format(
-            get_pluriel(currentperiod.DIC_recu, pms.MONNAIE))
-    txt += _DIC(u" Your payoff is equal to {}.").format(
-        get_pluriel(currentperiod.DIC_periodpayoff, pms.MONNAIE))
-    return txt
-
-
-# TEXTE FINAL PARTIE ===========================================================
-def get_texte_final(gain_euros):
-    txt = _DIC(u"You've won {gain_en_euro}.").format(
-        gain_en_euro=get_pluriel(gain_euros, u"euro"))
+        txt += trans_DIC(u" Player A sent {} to you.").format(
+            get_pluriel(currentperiod.get("DIC_recu"), pms.MONNAIE))
+    txt += trans_DIC(u" Your payoff is equal to {}.").format(
+        get_pluriel(currentperiod.get("DIC_periodpayoff"), pms.MONNAIE))
     return txt

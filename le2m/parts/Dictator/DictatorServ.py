@@ -8,8 +8,7 @@ from collections import OrderedDict
 from util import utiltools
 from util.utili18n import le2mtrans
 import DictatorParams as pms
-from DictatorTexts import _DIC
-import DictatorPart  # for sqlalchemy
+from DictatorTexts import trans_DIC
 from DictatorGui import DConfigure
 
 logger = logging.getLogger("le2m.{}".format(__name__))
@@ -53,11 +52,12 @@ class Serveur(object):
             question(u"Démarrer Dictator?")
         if not confirmation:
             return
-        
+
+        # INIT PART ============================================================
         yield (self._le2mserv.gestionnaire_experience.init_part(
             "Dictator", "PartieDIC", "RemoteDIC", pms))
-        
-        # formation des groupes ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+        # groups
         if pms.TAILLE_GROUPES > 0:
             try:
                 self._le2mserv.gestionnaire_groupes.former_groupes(
@@ -68,7 +68,7 @@ class Serveur(object):
                     e.message)
                 return
 
-        # in each group first player is A, the second is B
+        # roles
         for g, m in self._le2mserv.gestionnaire_groupes. \
                 get_groupes("Dictator").iteritems():
             m[0].role = pms.PLAYER_A
@@ -76,14 +76,12 @@ class Serveur(object):
 
         self._tous = self._le2mserv.gestionnaire_joueurs.get_players(
             'Dictator')
-        self._playersA = [p for p in self._tous if
-                          p.role == pms.PLAYER_A]
-        self._le2mserv.gestionnaire_graphique.infoserv(
-            _DIC("Players A"))
+        self._playersA = [p for p in self._tous if p.role == pms.PLAYER_A]
+        self._le2mserv.gestionnaire_graphique.infoserv(trans_DIC("Players A"))
         self._le2mserv.gestionnaire_graphique.infoserv(
             map(str, [p.joueur for p in self._playersA]))
 
-        # pour configure les clients et les remotes ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        # configure remotes
         yield (self._le2mserv.gestionnaire_experience.run_func(
             self._tous, "configure"))
 
@@ -121,20 +119,30 @@ class Serveur(object):
                 yield (self._le2mserv.gestionnaire_experience.run_step(
                     u"Role", self._tous, "display_role"))
 
-            # store A decisions in B data
+            # store A's decisions in B's data set
             for m in self._le2mserv.gestionnaire_groupes. \
-            get_groupes("Dictator").itervalues():
+            get_groupes("Dictator").viewvalues():
                 m[1].currentperiod.DIC_recu = m[0].currentperiod.DIC_decision
 
-            # calcul des gains de la période ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+            # compute period payoffs ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
             self._le2mserv.gestionnaire_experience.compute_periodpayoffs(
                 "Dictator")
 
-            # affichage du récapitulatif ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+            # summary ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
             yield(self._le2mserv.gestionnaire_experience.run_step(
                 u"Summary", self._tous, "display_summary"))
 
-        # Stats ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        # END OF PART ==========================================================
+        self._do_stats()
+        self._le2mserv.gestionnaire_experience.finalize_part("Dictator")
+
+    def _show_fig(self):
+        if not hasattr(self, "_fig"):
+            return
+        self._fig.show()
+
+    def _do_stats(self):
+        df_data = None
         if pms.GAME == pms.STANDARD:
             df_data = pd.DataFrame(
                 [p.currentperiod.todict(p.joueur) for p in self._playersA])
@@ -147,18 +155,10 @@ class Serveur(object):
         df_data.plot(kind="bar", ax=graph)
         graph.set_xticklabels([str(i)[-3:-1] for i in df_data.index])
         graph.set_ylim(0, pms.DOTATION)
-        graph.set_xlabel(_DIC(u"Players"))
-        graph.set_ylabel(_DIC(u"Amount sent"))
-        graph.set_title(_DIC(u"Average amount sent by A players"))
+        graph.set_xlabel(trans_DIC(u"Players"))
+        graph.set_ylabel(trans_DIC(u"Amount sent"))
+        graph.set_title(trans_DIC(u"Average amount sent by A players"))
 
         self._le2mserv.gestionnaire_graphique.infoserv(
-            _DIC(u"Av. amount sent by players A\n{}").format(
+            trans_DIC(u"Av. amount sent by players A\n{}").format(
                 df_data.to_string()))
-
-        # END OF PART ==========================================================
-        self._le2mserv.gestionnaire_experience.finalize_part("Dictator")
-
-    def _show_fig(self):
-        if not hasattr(self, "_fig"):
-            return
-        self._fig.show()
