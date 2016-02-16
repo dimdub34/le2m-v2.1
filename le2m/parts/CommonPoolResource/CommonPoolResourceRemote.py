@@ -24,15 +24,10 @@ class RemoteCPR(IRemote):
             "CPR_cumulativepayoff"]
         self.histo.append(texts_CPR.get_histo_head())
 
-    def remote_configure(self, *args):
-        """
-        Appelé au démarrage de la partie, permet de configure le remote
-        par exemple: traitement, séquence ...
-        :param args:
-        :return:
-        """
-        logger.info(u"{} configure".format(self._le2mclt.uid))
-        pass
+    def remote_configure(self, params):
+        logger.info(u"{} Configure".format(self._le2mclt.uid))
+        for k, v in params.viewitems():
+            setattr(pms, k, v)
 
     def remote_newperiod(self, periode):
         """
