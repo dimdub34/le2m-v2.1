@@ -219,6 +219,18 @@ class GuiFinal(QtGui.QDialog):
         self._automatique = auto
 
         self.ui.textEdit_explication.setText(txt)
+
+        self.ui.label_merci.setText(
+            le2mtrans(u"The experiment is over, thank you for your participation"))
+
+        self.ui.label_commentaires.setText(
+            u"<html><body><p>" +
+            le2mtrans(u"You can write comments about the experiment in the "
+                      u"area just below") + u"<br />" +
+            le2mtrans(u"Click on the \"save\" button once finished.") +
+            u"</p></body></html>")
+
+        self.ui.pushButton_valider.setText(le2mtrans(u"Save"))
         self.ui.pushButton_valider.clicked.connect(self._save)
 
         if self._automatique:
@@ -228,7 +240,7 @@ class GuiFinal(QtGui.QDialog):
             self._timer.timeout.connect(self._save)
             self._timer.start(7000)
 
-        self.setWindowTitle(le2mtrans(u"End of experiment"))
+        self.setWindowTitle(le2mtrans(u"End of the experiment"))
 
     def _save(self):
         try:
