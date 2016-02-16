@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: LE2M\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-02-16 11:46+0100\n"
-"PO-Revision-Date: 2016-02-16 13:15+0100\n"
+"PO-Revision-Date: 2016-02-16 19:06+0100\n"
 "Last-Translator: Dimitri DUBOIS <dimitri.dubois@umontpellier.fr>\n"
 "Language-Team: Dimitri DUBOIS <dimitri.dubois@umontpellier.fr>\n"
 "Language: fr_FR\n"
@@ -892,7 +892,7 @@ msgstr "Vous avez gagné {}."
 
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/client/clttexts.py:35
 msgid "Your payoff for the experiment is equal to "
-msgstr "Votre gain pour l'expérience est de {}."
+msgstr "Votre gain pour l'expérience est de "
 
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguiforms.py:19
 msgid "Please wait ..."
