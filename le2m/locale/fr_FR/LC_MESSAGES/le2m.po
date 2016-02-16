@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LE2M\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-15 11:40+0100\n"
-"PO-Revision-Date: 2016-02-15 11:41+0100\n"
+"POT-Creation-Date: 2016-02-16 11:46+0100\n"
+"PO-Revision-Date: 2016-02-16 13:15+0100\n"
 "Last-Translator: Dimitri DUBOIS <dimitri.dubois@umontpellier.fr>\n"
 "Language-Team: Dimitri DUBOIS <dimitri.dubois@umontpellier.fr>\n"
 "Language: fr_FR\n"
@@ -89,8 +89,8 @@ msgstr "Période "
 
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/creator/filestocopy/creator_Part.py:37
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/CommonPoolResource/CommonPoolResourcePart.py:39
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/Dictator/DictatorServ.py:114
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/Dictator/DictatorServ.py:117
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/Dictator/DictatorServ.py:112
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/Dictator/DictatorServ.py:115
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/prisonnersDilemma/prisonnersDilemmaPart.py:35
 msgid "Decision"
 msgstr "Décision"
@@ -124,17 +124,17 @@ msgid "Start time: {st}"
 msgstr "Heure de début: {st}"
 
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/GneezyPotter/GneezyPotterServ.py:27
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/Dictator/DictatorServ.py:22
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/Dictator/DictatorServ.py:21
 msgid "Settings"
 msgstr "Configuration"
 
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/GneezyPotter/GneezyPotterServ.py:28
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/Dictator/DictatorServ.py:23
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/Dictator/DictatorServ.py:22
 msgid "Display settings"
 msgstr "Afficher les paramètres"
 
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/GneezyPotter/GneezyPotterServ.py:32
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/Dictator/DictatorServ.py:27
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/Dictator/DictatorServ.py:26
 msgid "Start"
 msgstr "Démarrer"
 
@@ -150,16 +150,16 @@ msgstr "Voir le graphique"
 
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/GneezyPotter/GneezyPotterServ.py:77
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/GneezyPotter/GneezyPotterServ.py:79
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/Dictator/DictatorServ.py:102
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/Dictator/DictatorServ.py:104
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/Dictator/DictatorServ.py:106
 msgid "Period {}"
 msgstr "Période {}"
 
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/Dictator/DictatorServ.py:28
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/Dictator/DictatorServ.py:27
 msgid "Display payoffs"
 msgstr "Afficher les gains"
 
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/Dictator/DictatorServ.py:31
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/Dictator/DictatorServ.py:30
 msgid "Show graph"
 msgstr "Montrer le graphique"
 
@@ -173,11 +173,11 @@ msgstr "faute"
 msgid "You've done {faults}"
 msgstr "Vous avez fait {faults}"
 
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/server/servparties.py:140
-msgid "Your payoff for the experiment is equal to {}."
-msgstr "Votre gain pour l'expérience est de {}."
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/server/servparties.py:167
+msgid "is not in the player list of parts"
+msgstr "n'est pas dans la liste des parties du joueur"
 
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/server/servparties.py:172
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/server/servparties.py:189
 #, python-brace-format
 msgid "Part {part}: {finaltext}"
 msgstr "Partie {part}: {finaltext}"
@@ -234,7 +234,7 @@ msgstr "Sélectionner le dossier dans lequel enregistrer la base de données"
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguidialogs.py:207
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguidialogs.py:216
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguidialogs.py:226
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/server/servgest/servgestexpe.py:258
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/server/servgest/servgestexpe.py:259
 msgid "Error"
 msgstr "Erreur"
 
@@ -728,20 +728,24 @@ msgstr "Déconnexion du poste {host}"
 msgid "{host} was not in the list of connected hosts"
 msgstr "Le poste {host} n'était pas dans la liste des postes connectés"
 
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/server/servgest/servgestplayers.py:104
-msgid "Deconnection of the players still connected"
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/server/servgest/servgestplayers.py:95
+msgid "is not in the list of connected players"
+msgstr "n'est pas dans la liste des postes connectés"
+
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/server/servgest/servgestplayers.py:105
+msgid "Disconnection of the players still connected"
 msgstr "Déconnexion des postes encore connectés"
 
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/server/servgest/servgestplayers.py:114
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/server/servgest/servgestplayers.py:115
 msgid "Subjects' gender"
 msgstr "Genre des joueurs"
 
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/server/servgest/servgestplayers.py:115
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/server/servgest/servgestplayers.py:116
 #, python-brace-format
 msgid "Men: {m}"
 msgstr "Hommes: {m}"
 
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/server/servgest/servgestplayers.py:116
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/server/servgest/servgestplayers.py:117
 #, python-brace-format
 msgid "Women: {w}"
 msgstr "Femmes: {w}"
@@ -757,51 +761,55 @@ msgstr "Partie {p} chargée"
 msgid "Part {p} not in the list"
 msgstr "La partie {p} n'est pas dans la liste"
 
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/server/servgest/servgestexpe.py:142
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/server/servgest/servgestexpe.py:141
 #, python-brace-format
 msgid "Computation of period payoffs for part {p}"
 msgstr "Calcul des gains de la période pour la partie {p}"
 
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/server/servgest/servgestexpe.py:145
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/server/servgest/servgestexpe.py:144
 msgid "PAYOFFS"
 msgstr "GAINS"
 
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/server/servgest/servgestexpe.py:166
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/server/servgest/servgestexpe.py:165
 #, python-brace-format
 msgid "Computation of payoffs for part {p}"
 msgstr "Calcul des gains de la partie {p}"
 
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/server/servgest/servgestexpe.py:169
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/server/servgest/servgestexpe.py:168
 #, python-brace-format
 msgid "Payoffs of part {p}"
 msgstr "Gains de la partie {p}"
 
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/server/servgest/servgestexpe.py:181
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/server/servgest/servgestexpe.py:182
 #, python-brace-format
 msgid "End time: {et}"
 msgstr "heure de fin: {et}"
 
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/server/servgest/servgestexpe.py:208
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/server/servgest/servgestexpe.py:209
 msgid "Part randomly drawn: {} (part {})"
 msgstr "Partie tirée au sort: {} (partie {})"
 
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/server/servgest/servgestexpe.py:230
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/server/servgest/servgestexpe.py:231
 msgid "Display details of payoffs for parts {}"
 msgstr "Afficher les détails des gains pour les parties {}"
 
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/server/servgest/servgestexpe.py:259
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/server/servgest/servgestexpe.py:260
 msgid "Error while getting payoffs for part {}: {}"
 msgstr "Erreur lors de la récupération des gains de la partie {}: {}"
 
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/server/servgest/servgestexpe.py:276
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/server/servgest/servgestexpe.py:277
 msgid "Payoffs of part {} added to final payoffs"
 msgstr "Gains de la partie {} ajoutés aux gains finaux"
 
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/server/servgest/servgestexpe.py:325
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/server/servgest/servgestexpe.py:309
+msgid "The arg must be of type list"
+msgstr "L'argument doit être de type list"
+
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/server/servgest/servgestexpe.py:326
 msgid "The game will stop next period"
 msgstr "La partie va s'arrêter à la période suivante"
 
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/server/servgest/servgestexpe.py:327
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/server/servgest/servgestexpe.py:328
 msgid "The game won't stop next period"
 msgstr "La partie ne va pas s'arrêter à la période suivante"
 
@@ -825,50 +833,66 @@ msgstr "Joueur {p} ajouté à la session"
 msgid "Player {p} added to the database"
 msgstr "Joueur {p} ajouté à la base de données"
 
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/client/cltremote.py:41
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/client/cltremote.py:106
 #, python-brace-format
 msgid "Error while loading part {p}"
 msgstr "Erreur lors du chargement de la partie {p}"
 
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/client/cltremote.py:133
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/client/cltremote.py:202
 msgid "This a comment from the simulation mode"
 msgstr "Ceci est une commentaire du mode simulation"
+
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/client/cltremote.py:224
+msgid "is not in the remote list of parts"
+msgstr "n'est pas dans la liste des parties du remote"
 
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/client/clt.py:83
 #, python-brace-format
 msgid "{j} Module parts.{p}.{p}Remote loaded"
 msgstr "{j} Module parts.{p}.{p}Remote loaded"
 
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/client/clttexts.py:7
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/client/clttexts.py:8
 #, python-brace-format
 msgid "Period {p}"
 msgstr "Période {p}"
 
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/client/clttexts.py:10
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/client/clttexts.py:11
 #, python-brace-format
 msgid "Welcome to {welctext}"
 msgstr "Bienvenue au {welctext}"
 
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/client/clttexts.py:12
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/client/clttexts.py:13
 msgid "Here the welcome picture"
 msgstr "Ici l'image d'accueil"
 
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/client/clttexts.py:13
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/client/clttexts.py:14
 msgid "Welcome to the LEEM"
 msgstr "Bienvenue au LEEM"
 
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/client/clttexts.py:14
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/client/clttexts.py:15
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguidialogs.py:56
 msgid "Instructions read"
 msgstr "Instructions lues"
 
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/client/clttexts.py:19
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/client/clttexts.py:20
 msgid ""
 "Please fill in the questionnaire below.\n"
-"This questionnaire is anonymous, so please answer sincerily."
+"This questionnaire is anonymous, so please answer with sincerity."
 msgstr ""
 "Merci de remplir le questionnaire ci-dessous\n"
 "Ce questionnaire est totalement anonyme, merci d'y répondre avec sincérité."
+
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/client/clttexts.py:26
+msgid "You've earned {} which corresponds to {}."
+msgstr "Vous avez gagné {}, soit {}."
+
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/client/clttexts.py:29
+msgid "You've earned {}."
+msgstr "Vous avez gagné {}."
+
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/client/clttexts.py:35
+msgid "Your payoff for the experiment is equal to "
+msgstr "Votre gain pour l'expérience est de {}."
 
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguiforms.py:19
 msgid "Please wait ..."
@@ -890,15 +914,33 @@ msgstr "Récapitulatif"
 msgid "Information"
 msgstr "Information"
 
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguidialogs.py:226
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguidialogs.py:224
+msgid "The experiment is over, thank you for your participation"
+msgstr "L'expérience est terminée, merci pour votre participation"
+
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguidialogs.py:228
+msgid "You can write comments about the experiment in the area just below"
+msgstr ""
+"Vous pouvez écrire des commentaires sur l'expérience dans la zone prévue à "
+"cet effet ci-dessous"
+
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguidialogs.py:230
+msgid "Click on the \"save\" button once finished."
+msgstr "Cliquer sur le bouton \"enregistrer\" lorsque vous avez fini."
+
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguidialogs.py:233
+msgid "Save"
+msgstr "Enregistrer"
+
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguidialogs.py:238
 msgid "This is an automatic sentence"
 msgstr "Ceci est une phrase du mode automatique"
 
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguidialogs.py:231
-msgid "End of experiment"
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguidialogs.py:243
+msgid "End of the experiment"
 msgstr "Fin de l'expérience"
 
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguidialogs.py:351
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguidialogs.py:363
 msgid "Final questionnaire"
 msgstr "Questionnaire final"
 
