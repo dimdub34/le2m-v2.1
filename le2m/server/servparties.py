@@ -26,8 +26,8 @@ class Partie(Base):
         self.nom = nom
         self._nom_court = nom_court or self.nom[:2].upper()
         self._remote = None
-        self._currentperiod = 0
-        self._periods = {}
+        self._currentperiod = None  # a repetition not a number
+        self._periods = {}  # store the currentperiods
 
     @property
     def remote(self):
