@@ -25,8 +25,9 @@ class Partie(Base):
     def __init__(self, nom, nom_court=None):
         self.nom = nom
         self._nom_court = nom_court or self.nom[:2].upper()
-        # self._texte_final = u""
         self._remote = None
+        self._currentperiod = 0
+        self._periods = {}
 
     @property
     def remote(self):
@@ -36,14 +37,6 @@ class Partie(Base):
     def remote(self, value):
         self._remote = value
 
-    # @property
-    # def texte_final(self):
-    #     return self._texte_final
-    #
-    # @texte_final.setter
-    # def texte_final(self, value):
-    #     self._texte_final = value
-
     @property
     def nom_court(self):
         return self._nom_court
@@ -51,6 +44,18 @@ class Partie(Base):
     @nom_court.setter
     def nom_court(self, value):
         self._nom_court = value
+
+    @property
+    def currentperiod(self):
+        return self._currentperiod
+
+    @currentperiod.setter
+    def currentperiod(self, val):
+        self._currentperiod = val
+
+    @property
+    def periods(self):
+        return self._periods
 
 
 class PartieBase(Partie, object):
