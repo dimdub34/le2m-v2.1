@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 
-from PyQt4 import QtGui
 from twisted.spread import pb
 from twisted.internet import defer
 import logging
@@ -15,6 +14,71 @@ import clttexts
 
 
 logger = logging.getLogger("le2m")
+
+
+class IRemote(pb.Referenceable):
+    """
+    This is an interface, used by every remote part
+    """
+    def __init__(self, le2mclt):
+        self._le2mclt = le2mclt
+        self._histo = []
+        self._currentperiod = 0
+        self._payoff_ecus = 0
+        self._payoff_euros = 0
+        self._payoff_text = u""
+
+    @property
+    def le2mclt(self):
+        return self._le2mclt
+
+    @property
+    def histo(self):
+        return self._histo
+
+    @property
+    def currentperiod(self):
+        return self._currentperiod
+
+    @currentperiod.setter
+    def currentperiod(self, val):
+        self._currentperiod = val
+
+    @property
+    def payoff_ecus(self):
+        return self._payoff_ecus
+
+    @payoff_ecus.setter
+    def payoff_ecus(self, val):
+        self._payoff_ecus = val
+
+    @property
+    def payoff_euros(self):
+        return self._payoff_euros
+
+    @payoff_euros.setter
+    def payoff_euros(self, val):
+        self._payoff_euros = val
+
+    @property
+    def payoff_text(self):
+        return self._payoff_text
+
+    @payoff_text.setter
+    def payoff_text(self, val):
+        self._payoff_text = val
+
+    def remote_set_payoffs(self, in_euros, in_ecus=None):
+        logger.debug(u"{} set_payoffs".format(self.le2mclt.uid))
+        self.payoff_euros = in_euros
+        self.payoff_ecus = in_ecus
+        self.payoff_text = clttexts.get_payoff_text(
+            self.payoff_euros, self.payoff_ecus)
+
+    def remote_display_payoffs(self):
+        logger.debug(u"{} display_payoffs".format(self.le2mclt.uid))
+        return self.le2mclt.get_remote("base").remote_display_information(
+            self.payoff_text)
 
 
 class RemoteBase(pb.Root):
@@ -128,13 +192,12 @@ class RemoteBase(pb.Root):
             popup.show()
             return defered
 
-
     def remote_display_finalscreen(self, final_payoff):
         if type(final_payoff) is str:
             txt = final_payoff
         else:
             txt = clttexts.get_final_text(final_payoff)
-        logger.info(u'Paiement: {}'.format(txt))
+        logger.info(u'Payoff: {}'.format(txt))
         if self._le2mclt.simulation:
             return le2mtrans(u"This a comment from the simulation mode")
         else:
@@ -154,10 +217,11 @@ class RemoteBase(pb.Root):
             popup.show()
             return 1
             
-
-    def remote_display_payoffs(self, partname):
+    def remote_display_partpayoffs(self, partname):
         remote = self._le2mclt.get_remote(partname)
         if not remote:
+            logger.error(u"{} ".format(partname) +
+                         le2mtrans(u"is not in the remote list of parts"))
             return
         else:
             final_text = remote.get_partpayoff_text()
