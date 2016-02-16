@@ -1,15 +1,18 @@
 # -*- coding: utf-8 -*-
-"""
-Ce module contient les variables et les paramètres de la partie
-Les variables ne doivent pas être changées
-Les paramètres peuvent être changés, mais, par sécurité, demander au développeur
-"""
+"""=============================================================================
+This modules contains the variables and the parameters.
+Do not change the variables.
+Parameters that can be changed without any risk of damages should be changed
+by clicking on the configure sub-menu at the server screen.
+If you need to change some parameters below please be sure of what you do,
+which means that you should ask to the developer ;-)
+============================================================================="""
 
-# variables
-BASELINE = 0
+# variables --------------------------------------------------------------------
+TREATMENTS = {0: "baseline"}
 
-# paramètres
-TREATMENT = BASELINE
+# parameters -------------------------------------------------------------------
+TREATMENT = 0
 TAUX_CONVERSION = 1
 NOMBRE_PERIODES = EXPERIENCE_REPETITIONS_NOMBRE
 TAILLE_GROUPES = EXPERIENCE_GROUPES_TAILLE
@@ -20,3 +23,13 @@ MONNAIE = u"EXPERIENCE_MONNAIE"
 DECISION_MIN = 0
 DECISION_MAX = 100
 DECISION_STEP = 1
+
+
+def get_treatment(code_or_name):
+    if type(code_or_name) is int:
+        return TREATMENTS.get(code_or_name, None)
+    elif type(code_or_name) is str:
+        for k, v in TREATMENTS.viewitems():
+            if v.lower() == code_or_name.lower():
+                return k
+    return None

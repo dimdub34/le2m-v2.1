@@ -4,23 +4,19 @@ Ce module contient les boites de dialogue du programme.
 """
 
 import logging
-import random
-
 from PyQt4 import QtGui, QtCore
-
-from client.cltgui.cltguidialogs import GuiHistorique
 from util.utili18n import le2mtrans
-from client import clttexts as textes_main
 import EXPERIENCE_NOMParams as pms
-import EXPERIENCE_NOMTexts as texts
-from EXPERIENCE_NOMGuiSrc import EXPERIENCE_NOMDecision
+from EXPERIENCE_NOMTexts import trans_EXPERIENCE_NOM_COURT
+from client.cltgui.cltguidialogs import GuiHistorique
+from client.cltgui.cltguiwidgets import WPeriod, WExplication, WSpinbox
 
 
 logger = logging.getLogger("le2m")
 
 
 class GuiDecision(QtGui.QDialog):
-    def __init__(self, defered, automatique, parent, periode, historique):
+    def __init__(self, defered, automatique, parent, period, historique):
         super(GuiDecision, self).__init__(parent)
 
         # variables
@@ -28,55 +24,37 @@ class GuiDecision(QtGui.QDialog):
         self._automatique = automatique
         self._historique = GuiHistorique(self, historique)
 
-        # gui
-        self.ui = EXPERIENCE_NOMDecision.Ui_Dialog()
-        self.ui.setupUi(self)
+        layout = QtGui.QVBoxLayout(self)
 
-        # period and history
-        if periode:
-            self.ui.label_periode.setText(textes_main.PERIODE_label(periode))
-            self.ui.pushButton_historique.setText(
-                le2mtrans(u"History"))
-            self.ui.pushButton_historique.clicked.connect(
-                self._historique.show)
-        else:
-            self.ui.label_periode.setVisible(False)
-            self.ui.pushButton_historique.setVisible(False)
+        # should be removed if one-shot game
+        wperiod = WPeriod(
+            period=period, ecran_historique=self._historique)
+        layout.addWidget(wperiod)
 
-        # Explanation
-        self.ui.textEdit_explication.setText(texts.DECISION_explication)
-        self.ui.textEdit_explication.setReadOnly(True)
-        self.ui.textEdit_explication.setFixedSize(400, 80)
+        wexplanation = WExplication(
+            text=trans_EXPERIENCE_NOM_COURT(u"explanation"),
+            size=(450, 80), parent=self)
+        layout.addWidget(wexplanation)
 
-        # Decision
-        self.ui.label_decision.setText(texts.DECISION_label)
-        self.ui.spinBox_decision.setButtonSymbols(
-            QtGui.QAbstractSpinBox.NoButtons)
-        self.ui.spinBox_decision.setMinimum(pms.DECISION_MIN)
-        self.ui.spinBox_decision.setMaximum(pms.DECISION_MAX)
-        self.ui.spinBox_decision.setSingleStep(pms.DECISION_STEP)
-        self.ui.spinBox_decision.setValue(self.ui.spinBox_decision.minimum())
+        self._wdecision = WSpinbox(
+            label=trans_EXPERIENCE_NOM_COURT(u"label decision"),
+            minimum=pms.DECISION_MIN, maximum=pms.DECISION_MAX,
+            interval=pms.DECISION_STEP, automatique=self._automatique,
+            parent=self)
+        layout.addWidget(self._wdecision)
 
-        # bouton box
-        self.ui.buttonBox.accepted.connect(self._accept)
-        self.ui.buttonBox.rejected.connect(self.reject)
-        self.ui.buttonBox.button(QtGui.QDialogButtonBox.Cancel).setVisible(
-            False)
+        buttons = QtGui.QDialogButtonBox(QtGui.QDialogButtonBox.Ok)
+        buttons.accepted.connect(self._accept)
+        layout.addWidget(buttons)
 
-        # title and size
-        self.setWindowTitle(texts.DECISION_titre)
-        self.setFixedSize(520, 320)
+        self.setWindowTitle(trans_EXPERIENCE_NOM_COURT(u"Title"))
+        self.adjustSize()
+        self.setFixedSize(self.size())
 
-        # automatic
         if self._automatique:
-            self.ui.spinBox_decision.setValue(
-                random.randrange(
-                    self.ui.spinBox_decision.minimum(),
-                    self.ui.spinBox_decision.maximum() +
-                    self.ui.spinBox_decision.singleStep(),
-                    self.ui.spinBox_decision.singleStep()))
             self._timer_automatique = QtCore.QTimer()
-            self._timer_automatique.timeout.connect(self._accept)
+            self._timer_automatique.timeout.connect(
+                buttons.button(QtGui.QDialogButtonBox.Ok).click)
             self._timer_automatique.start(7000)
                 
     def reject(self):
@@ -87,14 +65,12 @@ class GuiDecision(QtGui.QDialog):
             self._timer_automatique.stop()
         except AttributeError:
             pass
-        decision = self.ui.spinBox_decision.value()
         if not self._automatique:
             confirmation = QtGui.QMessageBox.question(
-                self, texts.DECISION_confirmation.titre,
-                texts.DECISION_confirmation.message,
-                QtGui.QMessageBox.No | QtGui.QMessageBox.Yes
-            )
+                self, le2mtrans(u"Confirmation"),
+                le2mtrans(u"Do you confirm your choice?"),
+                QtGui.QMessageBox.No | QtGui.QMessageBox.Yes)
             if confirmation != QtGui.QMessageBox.Yes: 
                 return
-        self._defered.callback(decision)
         self.accept()
+        self._defered.callback(self._wdecision.get_value())
