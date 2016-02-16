@@ -43,8 +43,6 @@ class PartieEXPERIENCE_NOM_COURT(Partie):
         :return:
         """
         logger.debug(u"{} New Period".format(self.joueur))
-        if period == 1:
-            del self._histo_content[1:]
         self.currentperiod = RepetitionsEXPERIENCE_NOM_COURT(period)
         self._le2mserv.gestionnaire_base.ajouter(self.currentperiod)
         self.repetitions.append(self.currentperiod)

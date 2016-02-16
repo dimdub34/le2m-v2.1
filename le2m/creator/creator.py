@@ -127,16 +127,6 @@ def copy_files(expedir, expename):
     target = os.path.join(expedir, expename)
 
     try:
-        # # init files
-        # inits = [target]
-        # inits.extend(
-        #     [d for d in os.listdir(target) if
-        #      os.path.isdir(os.path.join(target, d)) and
-        #      d not in ["locale", "{}Doc".format(expename)]])
-        # for i in inits:
-        #     open(os.path.join(target, i, "__init__.py"), "wb").close()
-
-        # files to copy
         for f in [i for i in os.listdir(src) if not ("__init__" in i or
             os.path.splitext(i)[1] == ".pyc")]:
             fin = os.path.join(src, f)
