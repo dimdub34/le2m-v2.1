@@ -77,7 +77,7 @@ class GestionnaireExperience(QObject):
         self._le2msrv.gestionnaire_graphique.infoclt(
             partname.upper(), fg="white", bg="blue")
 
-        # the players instanciates the part and get the corresponding remote
+        # the players instantiate the part and get the corresponding remote
         yield (self.run_func(
             self._le2msrv.gestionnaire_joueurs.get_players(),
             "add_part", self._le2msrv, partname, partclassname,
@@ -136,7 +136,6 @@ class GestionnaireExperience(QObject):
         if not self.has_part(partname):
             raise ValueError(le2mtrans(u"Part {p} not in the list").format(
                 p=partname))
-            return
 
         logger.info(
             le2mtrans(u"Computation of period payoffs for part {p}").format(
@@ -151,6 +150,7 @@ class GestionnaireExperience(QObject):
                 u"{}: {}".format(p.joueur, payoff))
         self._le2msrv.gestionnaire_base.enregistrer()
 
+    @defer.inlineCallbacks
     def finalize_part(self, partname, *args, **kwargs):
         """
         Calcule le gain de la partie puis ajoute l'heure de fin et les
@@ -159,7 +159,6 @@ class GestionnaireExperience(QObject):
         if not self.has_part(partname):
             raise ValueError(le2mtrans(u"Part {p} not in the list").format(
                 p=partname))
-            return
 
         # computation of part's payoffs
         logger.info(
@@ -168,10 +167,12 @@ class GestionnaireExperience(QObject):
         self._le2msrv.gestionnaire_graphique.infoclt(
             [None, le2mtrans(u'Payoffs of part {p}').format(
                 p=partname.upper())], fg="red")
-        for p in self._le2msrv.gestionnaire_joueurs.get_players(partname):
-            p.compute_partpayoff(*args, **kwargs)
-            payoff = getattr(p,
-                             "{}_gain_euros".format(p.nom_court))
+
+        players = self._le2msrv.gestionnaire_joueurs.get_players(partname)
+        yield (self.run_func(players, "compute_partpayoff", *args, **kwargs))
+
+        for p in players:
+            payoff = getattr(p, "{}_gain_euros".format(p.nom_court))
             self._le2msrv.gestionnaire_graphique.infoclt(
                 u"{}: {}".format(p.joueur, payoff))
         self._le2msrv.gestionnaire_base.enregistrer()
@@ -209,19 +210,19 @@ class GestionnaireExperience(QObject):
                 drawnpart, partnum))
 
     @defer.inlineCallbacks
-    def display_payoffsonremotes(self, parts):
+    def display_payoffs_onremotes(self, parts):
         """
         Display the final text of each parts on the remote
         """
-        participants = self._le2msrv.gestionnaire_joueurs.get_players('base')
+        players = self._le2msrv.gestionnaire_joueurs.get_players("base")
         if type(parts) is str:
             if parts == "base":
                 yield (self.run_step(
-                    u"Display final screen", participants,
-                    "display_finalscreen"))
+                    u"Display final screen", players, "display_finalscreen"))
             else:
-                yield (self.run_step(u"Display part payoff", participants,
-                              "display_payoffs", parts))
+                yield (self.run_step(
+                    u"Display part payoff", players, "display_payoffs", parts))
+
         else:  # list of parts
             orderedparts = {}
             for p in parts:
@@ -232,7 +233,7 @@ class GestionnaireExperience(QObject):
                 u", ".join(orderedparts.values()))
             self._le2msrv.gestionnaire_graphique.infoclt(None)
             yield (self.run_step(
-                etape, participants, "display_partspayoffs", orderedparts))
+                etape, players, "display_partspayoffs", orderedparts))
 
     def display_payoffs(self, partname):
         """
@@ -305,7 +306,7 @@ class GestionnaireExperience(QObject):
         """
         logger.info(u"run_func: {}".format(func))
         if not type(qui) is list:
-            raise ValueError(u"Le paramètre qui doit être de type liste")
+            raise ValueError(le2mtrans(u"The arg must be of type list"))
         yield (utiltwisted.forAll(qui, func, *args, **kwargs))
 
     @property

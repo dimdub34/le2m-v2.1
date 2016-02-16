@@ -390,7 +390,7 @@ class GuiPayoffs(QtGui.QDialog):
             QtGui.QMessageBox.No | QtGui.QMessageBox.Yes)
         if confirmation != QtGui.QMessageBox.Yes:
             return
-        self._le2mserv.gestionnaire_experience.display_payoffsonremotes(
+        self._le2mserv.gestionnaire_experience.display_payoffs_onremotes(
             self._partname)
 
     def _add_tofinalpayoffs(self):

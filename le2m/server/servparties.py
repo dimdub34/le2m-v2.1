@@ -25,7 +25,7 @@ class Partie(Base):
     def __init__(self, nom, nom_court=None):
         self.nom = nom
         self._nom_court = nom_court or self.nom[:2].upper()
-        self._texte_final = u""
+        # self._texte_final = u""
         self._remote = None
 
     @property
@@ -36,13 +36,13 @@ class Partie(Base):
     def remote(self, value):
         self._remote = value
 
-    @property
-    def texte_final(self):
-        return self._texte_final
-
-    @texte_final.setter
-    def texte_final(self, value):
-        self._texte_final = value
+    # @property
+    # def texte_final(self):
+    #     return self._texte_final
+    #
+    # @texte_final.setter
+    # def texte_final(self, value):
+    #     self._texte_final = value
 
     @property
     def nom_court(self):
@@ -148,18 +148,23 @@ class PartieBase(Partie, object):
     @defer.inlineCallbacks
     def display_payoffs(self, partname):
         """
-        DEPRECATED, use display_partpayoffs instead
-        Affiche une boite de dialogue avec le gain du joueur pour la partie
-        et l'explication.
+        Display a dialog box on remotes with their payoff for the part and
+        also an explanation (optional)
         """
-        try:
-            txt = self.joueur.get_part(partname).texte_final
-        except (AttributeError, KeyError) as e:
-            logger.warning(u"Error: {}".format(e.message))
-        else:
-            yield(self.remote.callRemote('display_information', txt))
+        player_part = self.joueur.get_part(partname)
+        if player_part is not None:
+            # old fashion: get texte_final
+            if hasattr(player_part, "texte_final"):
+                yield(self.remote.callRemote(
+                    'display_information', player_part.texte_final))
+            else:
+                # new fashion: call the method on the corresponding remote
+                yield (player_part.remote.callRemote("display_payoffs"))
             self.joueur.info(u'Ok')
             self.joueur.remove_waitmode()
+        else:
+            logger.warning(u"{} ".format(partname) +
+                           le2mtrans(u"is not in the player list of parts"))
 
     def display_partpayoffs(self, partname):
         if self.joueur.get_part(partname, None) is None:

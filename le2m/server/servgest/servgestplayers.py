@@ -81,17 +81,18 @@ class GestionnaireJoueurs(pb.Root, QObject):
         :param partname:
         :return: list
         """
+        logger.debug(u"get_players with arg {}".format(partname))
         if partname:
-            return [p.get_part(partname) for p in self._joueurs.values()]
+            return [p.get_part(partname) for p in self._joueurs.viewvalues()]
         else:
-            return self._joueurs.values()
+            return list(self._joueurs.viewvalues())
 
     def get_joueur(self, joueur_uid):
         try:
             return self._joueurs[joueur_uid]
         except KeyError:
-            logger.warning("Le joueur {} n'est pas dans l'annuaire".format(
-                joueur_uid))
+            logger.warning(u"{} ".format(joueur_uid) +
+                           le2mtrans(u"is not in the list of connected players"))
             return None
 
     def get_nombre_joueurs(self):
@@ -101,7 +102,7 @@ class GestionnaireJoueurs(pb.Root, QObject):
     def deconnecter_joueurs(self):
         if self.get_nombre_joueurs > 0:
             logger.info(
-                le2mtrans(u"Deconnection of the players still connected"))
+                le2mtrans(u"Disconnection of the players still connected"))
             yield (
                 utiltwisted.forEach(self.get_players(), "disconnect"))
 
