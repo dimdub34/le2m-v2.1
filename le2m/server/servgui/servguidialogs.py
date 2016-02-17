@@ -323,7 +323,7 @@ class GuiPayoffs(QtGui.QDialog):
         self.ui.pushButton_imprimer.clicked.connect(self._print)
         self.ui.pushButton_enregistrer.clicked.connect(self._save)
         self.ui.pushButton_afficher.clicked.connect(self._display_onremotes)
-        self.ui.pushButton_ajouter.clicked.connect(self._add_tofinalpayoffs)
+        self.ui.pushButton_ajouter.clicked.connect(self._addto_finalpayoffs)
 
         if self._partname == "base":
             self.setWindowTitle(le2mtrans(u"Payoffs for the experiment"))
@@ -381,19 +381,20 @@ class GuiPayoffs(QtGui.QDialog):
                     csv_writer.writerow(ligne)
 
     def _display_onremotes(self):
-        text_temp = u"the experiment" if self._partname == "base" else \
-            self._partname
-        confirmation = QtGui.QMessageBox.question(
-            self,
-            le2mtrans(u"Confirmation"),
-            le2mtrans(u"Display the payoffs of {}?").format(text_temp),
-            QtGui.QMessageBox.No | QtGui.QMessageBox.Yes)
-        if confirmation != QtGui.QMessageBox.Yes:
+        text_temp = le2mtrans(u"the experiment") if \
+            self._partname == "base" else self._partname
+        confirmation = self._le2mserv.gestionnaire_graphique.question(
+            le2mtrans(u"Display the payoffs of {}?").format(text_temp))
+        if not confirmation:
             return
-        self._le2mserv.gestionnaire_experience.display_payoffs_onremotes(
-            self._partname)
 
-    def _add_tofinalpayoffs(self):
+        if self._partname == "base":
+            self._le2mserv.gestionnaire_experience.display_finalscreen()
+        else:
+            self._le2mserv.gestionnaire_experience.display_payoffs_onremotes(
+                self._partname)
+
+    def _addto_finalpayoffs(self):
         confirmation = QtGui.QMessageBox.question(
             self,
             u"Confirmation",

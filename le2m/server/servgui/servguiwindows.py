@@ -172,7 +172,7 @@ class GuiServeur(QtGui.QMainWindow):
         self.action_payoffs.setToolTip(
             le2mtrans(u"Display a dialog box with the payoffs of each player"))
         self.action_payoffs.triggered.connect(
-            lambda _: self._le2mserv.gestionnaire_experience.display_payoffs(
+            lambda _: self._le2mserv.gestionnaire_experience.display_payoffs_onserver(
                 "base"))
         self.menu_experiment.addAction(self.action_payoffs)
 
@@ -228,7 +228,7 @@ class GuiServeur(QtGui.QMainWindow):
                       u"part you want to inform the participants about their "
                       u"payoff"))
         self.action_displaypartspayoffs.triggered.connect(
-            self._display_partspayoffs)
+            self._display_payoffs_partsSelection)
         self.menu_options.addAction(self.action_displaypartspayoffs)
 
         # tools ----------------------------------------------------------------
@@ -437,7 +437,7 @@ class GuiServeur(QtGui.QMainWindow):
             QtGui.QMessageBox.Cancel | QtGui.QMessageBox.Ok)
         if confirmation != QtGui.QMessageBox.Ok:
             return
-        self._le2mserv.gestionnaire_experience.start_finalquestionnaire()
+        self._le2mserv.gestionnaire_experience.display_finalquestionnaire()
             
     def _display_help(self):
         """
@@ -478,7 +478,7 @@ class GuiServeur(QtGui.QMainWindow):
         else:
             return
                 
-    def _display_partspayoffs(self):
+    def _display_payoffs_partsSelection(self):
         """
         Open a dialog box with the list of parts that have been played.
         The experimenter chooses which part he/she wants to be displayed
@@ -490,13 +490,12 @@ class GuiServeur(QtGui.QMainWindow):
         if screen.exec_():
             choices = screen.get_parties_selectionnees()
             if choices:
-                confirmation = QtGui.QMessageBox.question(
-                    self, le2mtrans(u'Confirmation'),
+                confirmation = self._le2mserv.gestionnaire_graphique.question(
                     le2mtrans(u"Display the details of the selected parts "
-                              u"on remotes?\n{}").format(choices),
-                    QtGui.QMessageBox.No | QtGui.QMessageBox.Yes)
-                if confirmation != QtGui.QMessageBox.Yes: 
+                              u"on remotes?\n{}").format(choices))
+                if not confirmation:
                     return
+
                 self._le2mserv.gestionnaire_experience.display_payoffs_onremotes(
                     choices)
         

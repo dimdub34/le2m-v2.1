@@ -186,7 +186,7 @@ class GestionnaireExperience(QObject):
             u'Ok {}'.format(partname).upper(), fg="white", bg="blue")
 
     @defer.inlineCallbacks
-    def start_finalquestionnaire(self):
+    def display_finalquestionnaire(self):
         """
         Start the final questionnaire
         """
@@ -210,32 +210,36 @@ class GestionnaireExperience(QObject):
                 drawnpart, partnum))
 
     @defer.inlineCallbacks
-    def display_payoffs_onremotes(self, parts):
+    def display_finalscreen(self):
+        self._le2msrv.gestionnaire_graphique.infoclt(None)
+        yield (self.run_step(
+            le2mtrans(u"Final screen"),
+            self._le2msrv.gestionnaire_joueurs.get_players("base"),
+            "display_finalscreen"))
+
+    @defer.inlineCallbacks
+    def display_payoffs_onremotes(self, part_or_listOfParts):
         """
         Display the final text of each parts on the remote
         """
         players = self._le2msrv.gestionnaire_joueurs.get_players("base")
-        if type(parts) is str:
-            if parts == "base":
-                yield (self.run_step(
-                    u"Display final screen", players, "display_finalscreen"))
-            else:
-                yield (self.run_step(
-                    u"Display part payoff", players, "display_payoffs", parts))
+        if type(part_or_listOfParts) is str:
+            yield (self.run_step(
+                le2mtrans(u"Display part payoffs"), players, "display_payoffs",
+                part_or_listOfParts))
 
-        else:  # list of parts
+        elif type(part_or_listOfParts) is list:
             orderedparts = {}
-            for p in parts:
-                numero = self._parts.index(p) + 1
-                orderedparts[numero] = p
-            etape = le2mtrans(u"Display details of payoffs for "
-                              u"parts {}").format(
-                u", ".join(orderedparts.values()))
+            for p in part_or_listOfParts:
+                orderedparts[self._parts.index(p)+1] = p
+            step = le2mtrans(u"Display details of payoffs for parts") + \
+                    u" {}".format(u", ".join(
+                        [v for k, v in sorted(orderedparts.viewitems())]))
             self._le2msrv.gestionnaire_graphique.infoclt(None)
             yield (self.run_step(
-                etape, players, "display_partspayoffs", orderedparts))
+                step, players, "display_payoffs", orderedparts))
 
-    def display_payoffs(self, partname):
+    def display_payoffs_onserver(self, partname):
         """
         Open a dialog box with the payoffs
         """

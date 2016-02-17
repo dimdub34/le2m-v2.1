@@ -139,69 +139,51 @@ class PartieBase(Partie, object):
         Display the final screen, with the final payoffs and the possibility
         for subjects to let a comment
         """
-        # self.commentaires = yield(
-        #     self.remote.callRemote(
-        #         'display_finalscreen',
-        #         le2mtrans(u"Your payoff for the experiment is equal to "
-        #                   u"{}.").format(
-        #             get_pluriel(self.paiementFinal, params.getp("CURRENCY")))))
         self.commentaires = yield(
             self.remote.callRemote('display_finalscreen', self.paiementFinal))
         self.joueur.info(u'Ok')
         self.joueur.remove_waitmode()
 
     @defer.inlineCallbacks
-    def display_payoffs(self, partname):
+    def display_payoffs(self, partname_or_dictOfParts):
         """
-        Display a dialog box on remotes with their payoff for the part and
+        Display a dialog box on remotes with their payoff for the part(s) and
         also an explanation (optional)
         """
-        player_part = self.joueur.get_part(partname)
-        if player_part is not None:
-            # old fashion: get texte_final
-            if hasattr(player_part, "texte_final"):
-                yield(self.remote.callRemote(
-                    'display_information', player_part.texte_final))
-            else:
-                # new fashion: call the method on the corresponding remote
+        if type(partname_or_dictOfParts) is str:
+            player_part = self.joueur.get_part(partname_or_dictOfParts)
+            if player_part is not None:
                 yield (player_part.remote.callRemote("display_payoffs"))
-            self.joueur.info(u'Ok')
-            self.joueur.remove_waitmode()
+            else:
+                logger.warning(u"{} ".format(partname_or_dictOfParts) +
+                               le2mtrans(u"is not in the player list of parts"))
+        elif type(partname_or_dictOfParts) is dict:
+            yield (self.remote.callRemote(
+                "display_payoffs", partname_or_dictOfParts))
         else:
-            logger.warning(u"{} ".format(partname) +
-                           le2mtrans(u"is not in the player list of parts"))
+            raise TypeError(le2mtrans(u"Either a str or a dict"))
+        self.joueur.info(u'Ok')
+        self.joueur.remove_waitmode()
 
-    def display_partpayoffs(self, partname):
-        if self.joueur.get_part(partname, None) is None:
-            logger.warning(u"Error: {} not in the list of parts".format(partname))
-            return
-        else:
-            yield (self.remote.callRemote("display_payoffs", partname))
-            self.joueur.info(u"Ok")
-            self.joueur.remove_waitmode()
+    # def display_partpayoffs(self, partname):
+    #     if self.joueur.get_part(partname, None) is None:
+    #         logger.warning(u"Error: {} not in the list of parts".format(partname))
+    #         return
+    #     else:
+    #         yield (self.remote.callRemote("display_payoffs", partname))
+    #         self.joueur.info(u"Ok")
+    #         self.joueur.remove_waitmode()
     
-    @defer.inlineCallbacks
-    def display_partspayoffs(self, parts):
-        """
-        On récupère le texte final de chacune des parties demandées et
-        on le fait afficher à l'écran du joueur
-        """
-        cles_jeux = parts.keys()
-        cles_jeux.sort()
-        textes = []
-        try:
-            for i in cles_jeux:
-                textes.append(le2mtrans(u"Part {part}: {finaltext}").format(
-                    part=i,
-                    finaltext=self.joueur.get_part(parts[i]).texte_final))
-        except (AttributeError, KeyError) as e: 
-            logger.warning(u"Error: {}".format(e.message))
-            pass
-        else:
-            yield(self.remote.callRemote('display_information',
-                                         "\n\n".join(textes)))
-            self.joueur.info(u'Ok')
-            self.joueur.remove_waitmode()
+    # @defer.inlineCallbacks
+    # def display_payoffs_several(self, dict_of_parts):
+    #     """
+    #     On récupère le texte final de chacune des parties demandées et
+    #     on le fait afficher à l'écran du joueur
+    #     """
+    #     list_of_parts = list([v for k, v in sorted(dict_of_parts.viewitems())])
+    #     yield (self.remote.callRemote("display_payoffs", list_of_parts))
+    #     self.joueur.info(u'Ok')
+    #     self.joueur.remove_waitmode()
     
     @defer.inlineCallbacks
     def display_information(self, texte):
