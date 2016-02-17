@@ -4,6 +4,7 @@ import os
 import logging
 import csv
 from PyQt4 import QtGui, QtCore
+from PyQt4.QtWebKit import QWebView
 from configuration import configparam as params
 from configuration.configconst import HOMME, FEMME
 from configuration.configvar import Experiment
@@ -494,3 +495,21 @@ class DHeadtail(QtGui.QDialog):
 
     def get_value(self):
         return self._widheadtail.get_value()
+
+
+class DWebview(QtGui.QDialog):
+    def __init__(self, html_file, title=u"Information", parent=None):
+        QtGui.QDialog.__init__(self, parent)
+
+        layout = QtGui.QVBoxLayout(self)
+
+        webview = QWebView(self)
+        webview.load(QtCore.QUrl(html_file))
+        layout.addWidget(webview)
+
+        buttons = QtGui.QDialogButtonBox(QtGui.QDialogButtonBox.Ok)
+        buttons.accepted.connect(self.accept)
+        layout.addWidget(buttons)
+
+        self.setWindowTitle(title)
+        self.adjustSize()
