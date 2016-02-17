@@ -503,9 +503,9 @@ class DWebview(QtGui.QDialog):
 
         layout = QtGui.QVBoxLayout(self)
 
-        webview = QWebView(self)
-        webview.load(QtCore.QUrl(html_file))
-        layout.addWidget(webview)
+        self._webview = QWebView(self)
+        self._webview.load(QtCore.QUrl(html_file))
+        layout.addWidget(self._webview)
 
         buttons = QtGui.QDialogButtonBox(QtGui.QDialogButtonBox.Ok)
         buttons.accepted.connect(self.accept)
