@@ -36,7 +36,7 @@ class Serveur(object):
         self._fig = None
 
     def _configure(self):
-        self._le2mserv.gestionnaire_graphique.display_warning(
+        self._le2mserv.gestionnaire_graphique.display_information(
             trans_PGG(u"There is no nothing to configure"))
         return
 
