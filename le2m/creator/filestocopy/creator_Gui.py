@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Ce module contient les boites de dialogue du programme.
+This module contains the GUI
 """
 
 import logging
@@ -8,6 +8,7 @@ from PyQt4 import QtGui, QtCore
 from util.utili18n import le2mtrans
 import EXPERIENCE_NOMParams as pms
 from EXPERIENCE_NOMTexts import trans_EXPERIENCE_NOM_COURT
+import EXPERIENCE_NOMTexts as texts_EXPERIENCE_NOM_COURT
 from client.cltgui.cltguidialogs import GuiHistorique
 from client.cltgui.cltguiwidgets import WPeriod, WExplication, WSpinbox
 
@@ -32,7 +33,7 @@ class GuiDecision(QtGui.QDialog):
         layout.addWidget(wperiod)
 
         wexplanation = WExplication(
-            text=trans_EXPERIENCE_NOM_COURT(u"explanation"),
+            text=texts_EXPERIENCE_NOM_COURT.get_text_explanation(),
             size=(450, 80), parent=self)
         layout.addWidget(wexplanation)
 
@@ -65,6 +66,7 @@ class GuiDecision(QtGui.QDialog):
             self._timer_automatique.stop()
         except AttributeError:
             pass
+        decision = self._wdecision.get_value()
         if not self._automatique:
             confirmation = QtGui.QMessageBox.question(
                 self, le2mtrans(u"Confirmation"),
@@ -72,5 +74,6 @@ class GuiDecision(QtGui.QDialog):
                 QtGui.QMessageBox.No | QtGui.QMessageBox.Yes)
             if confirmation != QtGui.QMessageBox.Yes: 
                 return
+        logger.info(u"Send back {}".format(decision))
         self.accept()
-        self._defered.callback(self._wdecision.get_value())
+        self._defered.callback(decision)

@@ -9,7 +9,6 @@ from server.servbase import Base
 from server.servparties import Partie
 from util.utiltools import get_module_attributes
 import EXPERIENCE_NOMParams as pms
-import EXPERIENCE_NOMTexts as texts
 
 
 logger = logging.getLogger("le2m")
