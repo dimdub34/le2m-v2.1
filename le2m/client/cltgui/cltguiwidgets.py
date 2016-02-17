@@ -17,6 +17,7 @@ class WPeriod(QtGui.QWidget):
         self.ui.setupUi(self)
 
         self.set_period(period)
+        self.ui.pushButton_historique.setText(le2mtrans(u"History"))
         if ecran_historique:
             self.ui.pushButton_historique.clicked.connect(ecran_historique.show)
 
@@ -103,8 +104,8 @@ class WSpinbox(QtGui.QWidget):
 
 
 class WRadio(QtGui.QWidget):
-    def __init__(self, label, texts=("Oui", "Non"), automatique=False,
-                 parent=None, autotime=500):
+    def __init__(self, label, texts=(le2mtrans(u"Yes"), le2mtrans(u"Non")),
+                 automatique=False, parent=None, autotime=500):
         super(WRadio, self).__init__(parent)
         self.ui = widRadio.Ui_Form()
         self.ui.setupUi(self)
@@ -149,7 +150,7 @@ class WListDrag(QtGui.QWidget):
         self.ui.listWidget_right.setToolTip(
             le2mtrans(u"Right click to move up, down or delete an item"))
 
-        self._menu = QtGui.QMenu(u"Menu", self)
+        self._menu = QtGui.QMenu(le2mtrans(u"Menu"), self)
 
         self._action_moveup = QtGui.QAction(le2mtrans(u"Move up"), self._menu)
         self._action_moveup.triggered.connect(self._moveup)

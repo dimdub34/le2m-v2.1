@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LE2M\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-16 19:34+0100\n"
-"PO-Revision-Date: 2016-02-16 19:34+0100\n"
+"POT-Creation-Date: 2016-02-17 08:26+0100\n"
+"PO-Revision-Date: 2016-02-17 08:27+0100\n"
 "Last-Translator: Dimitri DUBOIS <dimitri.dubois@umontpellier.fr>\n"
 "Language-Team: Dimitri DUBOIS <dimitri.dubois@umontpellier.fr>\n"
 "Language: en_US\n"
@@ -67,7 +67,9 @@ msgid "Server port"
 msgstr ""
 
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/creator/filestocopy/creator_Gui.py:70
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGame/PublicGoodGameGui.py:68
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/GneezyPotter/GneezyPotterGui.py:64
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/prisonnersDilemma/prisonnersDilemmaGui.py:68
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguidialogs.py:388
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:329
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:384
@@ -78,16 +80,17 @@ msgid "Confirmation"
 msgstr ""
 
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/creator/filestocopy/creator_Gui.py:71
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGame/PublicGoodGameGui.py:69
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/GneezyPotter/GneezyPotterGui.py:65
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/prisonnersDilemma/prisonnersDilemmaGui.py:69
 msgid "Do you confirm your choice?"
 msgstr ""
 
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/creator/filestocopy/creator_Texts.py:36
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGameSolidarity/PublicGoodGameSolidarityPart.py:36
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGame/PublicGoodGamePart.py:37
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/CommonPoolResource/CommonPoolResourceTexts.py:47
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/prisonnersDilemma/prisonnersDilemmaPart.py:34
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguiwidgets.py:25
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/prisonnersDilemma/prisonnersDilemmaTexts.py:21
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguiwidgets.py:26
 msgid "Period"
 msgstr ""
 
@@ -96,14 +99,15 @@ msgstr ""
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/CommonPoolResource/CommonPoolResourceTexts.py:47
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/Dictator/DictatorServ.py:112
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/Dictator/DictatorServ.py:115
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/prisonnersDilemma/prisonnersDilemmaPart.py:35
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/prisonnersDilemma/prisonnersDilemmaGui.py:43
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/prisonnersDilemma/prisonnersDilemmaTexts.py:21
 msgid "Decision"
 msgstr ""
 
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/creator/filestocopy/creator_Texts.py:37
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGameSolidarity/PublicGoodGameSolidarityPart.py:43
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/CommonPoolResource/CommonPoolResourceTexts.py:48
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/prisonnersDilemma/prisonnersDilemmaPart.py:37
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/prisonnersDilemma/prisonnersDilemmaTexts.py:22
 msgid ""
 "Period\n"
 "payoff"
@@ -112,16 +116,10 @@ msgstr ""
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/creator/filestocopy/creator_Texts.py:37
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGameSolidarity/PublicGoodGameSolidarityPart.py:44
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/CommonPoolResource/CommonPoolResourceTexts.py:48
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/prisonnersDilemma/prisonnersDilemmaPart.py:38
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/prisonnersDilemma/prisonnersDilemmaTexts.py:23
 msgid ""
 "Cumulative\n"
 "payoff"
-msgstr ""
-
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGame/PublicGoodGameGui.py:37
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/prisonnersDilemma/prisonnersDilemmaGui.py:39
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguidialogs.py:97
-msgid "History"
 msgstr ""
 
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/TeamCommunication/TeamCommunicationServ.py:114
@@ -142,6 +140,7 @@ msgstr ""
 
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/GneezyPotter/GneezyPotterServ.py:31
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/Dictator/DictatorServ.py:26
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/prisonnersDilemma/prisonnersDilemmaServ.py:26
 msgid "Start"
 msgstr ""
 
@@ -163,11 +162,24 @@ msgid "Period {}"
 msgstr ""
 
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/Dictator/DictatorServ.py:27
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/prisonnersDilemma/prisonnersDilemmaServ.py:27
 msgid "Display payoffs"
 msgstr ""
 
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/Dictator/DictatorServ.py:30
 msgid "Show graph"
+msgstr ""
+
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/prisonnersDilemma/prisonnersDilemmaServ.py:21
+msgid "Configure"
+msgstr ""
+
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/prisonnersDilemma/prisonnersDilemmaServ.py:22
+msgid "Display parameters"
+msgstr ""
+
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/prisonnersDilemma/prisonnersDilemmaServ.py:47
+msgid "The number of players is not compatible with the group size"
 msgstr ""
 
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/server/servparties.py:129
@@ -873,6 +885,11 @@ msgid ""
 "to click on the button below when you have finished."
 msgstr ""
 
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguidialogs.py:97
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguiwidgets.py:20
+msgid "History"
+msgstr ""
+
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguidialogs.py:154
 msgid "Summary"
 msgstr ""
@@ -909,39 +926,51 @@ msgstr ""
 msgid "Final questionnaire"
 msgstr ""
 
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguiwidgets.py:62
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguiwidgets.py:63
 msgid "Choose"
 msgstr ""
 
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguiwidgets.py:129
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguiwidgets.py:107
+msgid "Yes"
+msgstr ""
+
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguiwidgets.py:107
+msgid "Non"
+msgstr ""
+
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguiwidgets.py:130
 msgid "No item selected"
 msgstr ""
 
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguiwidgets.py:142
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguiwidgets.py:143
 msgid ""
 "Drag one or several item(s) from this list to the list on the right side"
 msgstr ""
 
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguiwidgets.py:150
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguiwidgets.py:151
 msgid "Right click to move up, down or delete an item"
 msgstr ""
 
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguiwidgets.py:154
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguiwidgets.py:153
+msgid "Menu"
+msgstr ""
+
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguiwidgets.py:155
 msgid "Move up"
 msgstr ""
 
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguiwidgets.py:158
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguiwidgets.py:159
 msgid "Move down"
 msgstr ""
 
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguiwidgets.py:162
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguiwidgets.py:163
 msgid "Delete"
 msgstr ""
 
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguiwidgets.py:220
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguiwidgets.py:221
 msgid "Remaining time:"
 msgstr ""
 
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguiwidgets.py:239
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguiwidgets.py:240
 msgid "Send"
 msgstr ""
