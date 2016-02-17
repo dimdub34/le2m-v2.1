@@ -30,7 +30,7 @@ class Serveur(object):
                 inspect.getsourcefile(pms)))
         actions[le2mtrans(u"Start")] = lambda _: self._demarrer()
         actions[le2mtrans(u"Payoffs")] = \
-            lambda _: self._le2mserv.gestionnaire_experience.display_payoffs(
+            lambda _: self._le2mserv.gestionnaire_experience.display_payoffs_onserver(
                 "GneezyPotter")
         actions[le2mtrans(u"View graph")] = self._show_fig
         self._le2mserv.gestionnaire_graphique.add_topartmenu(

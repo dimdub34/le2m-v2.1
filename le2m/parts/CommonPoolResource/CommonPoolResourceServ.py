@@ -28,7 +28,7 @@ class Serveur(object):
         actions[trans_CPR(u"Start")] = lambda _: self._demarrer()
         actions[trans_CPR(u"Display payoffs")] = \
             lambda _: self._le2mserv.gestionnaire_experience.\
-            display_payoffs("CommonPoolResource")
+            display_payoffs_onserver("CommonPoolResource")
         actions[trans_CPR(u"Show graph")] = self._show_fig
         self._le2mserv.gestionnaire_graphique.add_topartmenu(
             u"Common Pool Resource", actions)

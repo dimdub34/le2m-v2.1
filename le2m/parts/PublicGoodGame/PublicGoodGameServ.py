@@ -28,7 +28,7 @@ class Serveur(object):
         actions[trans_PGG(u"Start")] = lambda _: self._demarrer()
         actions[trans_PGG(u"Display payoffs")] = \
             lambda _: self._le2mserv.gestionnaire_experience.\
-            display_payoffs("PublicGoodGame")
+            display_payoffs_onserver("PublicGoodGame")
         actions[trans_PGG(u"Show graph")] = self._show_fig
         self._le2mserv.gestionnaire_graphique.add_topartmenu(
             u"Public Good Game", actions)
