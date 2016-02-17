@@ -456,7 +456,7 @@ class GuiServeur(QtGui.QMainWindow):
         fichier_auteurs = os.path.join(
             params.getp("HTMLDIR"), "le2m_auteurs.html")
         screen = GuiInformation(
-            parent=self, titre=le2mtrans(u"Developers"), size=(400, 200),
+            parent=self, titre=le2mtrans(u"Developers"), size=(450, 180),
             html=True, text=utiltools.get_contenu_fichier(fichier_auteurs))
         screen.show()
 
