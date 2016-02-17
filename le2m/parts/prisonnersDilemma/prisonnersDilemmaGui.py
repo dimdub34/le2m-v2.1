@@ -7,6 +7,7 @@ from client.cltgui.cltguiwidgets import WPeriod, WExplication, WRadio
 from client.cltgui.cltguidialogs import GuiHistorique
 import prisonnersDilemmaTexts as texts_DP
 from prisonnersDilemmaTexts import trans_DP
+import prisonnersDilemmaParams as pms
 
 
 logger = logging.getLogger("le2m")
@@ -31,8 +32,9 @@ class GuiDecision(QtGui.QDialog):
             text=texts_DP.get_text_explanation(), parent=self, size=(450, 80))
         layout.addWidget(wexplanation)
 
+        options = tuple([v for k, v in sorted(pms.OPTIONS.viewitems())])
         self._wdecision = WRadio(
-            texts=("X", "Y"), label=trans_DP(u"Choose an option"),
+            texts=options, label=trans_DP(u"Choose an option"),
             parent=self, automatique=self._automatique)
         layout.addWidget(self._wdecision)
 
@@ -61,6 +63,9 @@ class GuiDecision(QtGui.QDialog):
         try:
             decision = self._wdecision.get_checkedbutton()
         except ValueError:
+            QtGui.QMessageBox.warning(
+                self, le2mtrans(u"Warning"),
+                trans_DP(u"You have to choose an option"))
             return
 
         if not self._automatique:

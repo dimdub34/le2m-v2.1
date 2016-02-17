@@ -50,7 +50,13 @@ class RemoteDP(IRemote):
 
     def remote_display_summary(self, period_content):
         logger.info(u"{} Summary".format(self._le2mclt.uid))
-        self.histo.append([period_content.get(k) for k in self._histo_vars])
+        line = []
+        for k in self._histo_vars:
+            if k == "DP_decision" or k == "DP_decisionother":
+                line.append(pms.get_option(period_content.get(k)))
+            else:
+                line.append(period_content.get(k))
+        self.histo.append(line)
         if self._le2mclt.simulation:
             return 1
         else:
