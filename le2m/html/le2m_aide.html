@@ -1,6 +1,170 @@
+<!DOCTYPE html>
 <html>
+<meta charset="utf-8" />
 <title>Aide de LE2M (Version 2.0)</title>
+<style>
+    body {
+        font-size: 100%;
+    }
+    h1 {
+        font-size: 1.4em;
+    }
+    h2 {
+        font-size: 1.1em;
+        font-style: italic;
+    }
+    .menu {
+        font-weight: bold;
+        font-style: italic;
+        color: gray;
+    }
+    .onglet {
+        font-weight: bold;
+        font-style: italic;
+        color: gray;
+    }
+</style>
 <body>
-<p>En cours d'&eacute;criture</p>
+<h1>Menu Fichier</h1>
+<h2>Charger une partie ou plusieurs parties</h2>
+<p>Cliquer sur le menu <span class="menu">Fichier/Charger une partie</span>. Sélectionner les parties
+à charger. Pensez à regarder les options en bas de la fenêtre affichée, à savoir
+le chemin pour l'enregistrement de la base de données, le nom de fichier de
+la base de données et si c'est une session de test ou non.</p>
+
+<p>&nbsp;</p>
+
+<h1>Menu Expérience</h1>
+<H2>Afficher l'écran d'accueil</H2>
+<p>Affiche l'écran d'accueil sur les postes clients (aussi appelés remotes).
+L'image affichée, ainsi que les textes peuvent être changés dans le fichier
+configparam du package configuration.</p>
+
+<h2>Charger un questionnaire de compréhension</h2>
+<p>Ouvre un boîte de dialogue permettant de sélectionner le fichier à charger.
+Un fichier de questionnaire de compréhension est un fichier xml avec une
+architecture bien définie. Pour créer un questionnaire de compréhension, il
+faut utiliser l'outil dédié, que l'on lance à partir du menu
+    <span class="menu">Outils/Créer ou éditer un questionnaire de compréhension</span>. Lorsque le
+questionnaire est chargé une boîte de dialogue affiche le contenu du fichier.
+Pour lancer le questionnaire sur les postes clients il suffit de cliquer sur
+le menu <span class="menu">Démarrer le questionnaire de compréhension</span>.</p>
+
+<h2>Afficher le questionnaire final sur les postes</h2>
+<p>Lance le questionnaire final. Une capture d'écran de ce questionnaire se
+trouve dans le dossier screenshots.</p>
+
+<h2>Gains</h2>
+<p>Affiche une boîte de dialogue avec les gains des sujets, par poste. Il faut
+au préalable avoir ajouté les gains d'une ou plusieurs partie(s) à ces gains.
+Ces gains peuvent ensuite être imprimés, enregistrés ou affichés sur les postes
+clients. Dans ce dernier cas cela affiche sur les postes l'écran final, lequel
+non seulement informe le sujet de son gain pour l'expérience mais aussi lui
+offre un espace pour écrire des commentaires sur l'expérience.</p>
+
+<p>&nbsp;</p>
+
+<h1>Menu Parties</h1>
+<p>Lorsqu'une partie est chargé un sous-menu dédié à la partie est crée à cet
+endroit. Ce sous-menu, qui porte le nom de la partie ou un nom très proche,
+permet de piloter la partie, à savoir, en général: configurer, afficher les
+paramères, démarrer la partie et afficher les gains de la partie.</p>
+
+<p>&nbsp;</p>
+
+<h1>Menu Edition</h1>
+<p>Permet de vider la liste serveur et la liste client de l'onglet
+    <span class="onglet">Expérience</span>.</p>
+
+<p>&nbsp;</p>
+
+<h1>Menu Options</h1>
+<h2>Arrêter après cette période</h2>
+<p>Arrête la partie après la période en cours. Passera donc directement au
+calcul des gains pour la partie.</p>
+
+<h2>Enregistrer le genre des clients/sujets dans l'application</h2>
+<p>Permet de définir pour chaque poste s'il s'agit d'un homme ou d'une femme.
+Le genre de chacun est fixé dans l'attribut genre de l'objet joueur. Cet
+    attribut n'est pas enregistré dans la base de données, c'est simplement
+pour pouvoir l'utiliser dans le programme, par exemple pour former des groupes
+mixtes. Pour avoir le genre d'un client/sujet dans la base de données il faut
+passer par le questionnaire final.</p>
+
+<h2>Tirer au sort une partie parmi celles qui ont été lancées</h2>
+<p>Ouvre un boîte de dialogue avec la liste des parties qui ont été jouées
+effectivement par les clients. Sélectionner alors les parties parmi lesquelles
+faire un tirage au sort. Affiche alors dans la liste serveur (onglet
+    <span class="onglet">expérience</span>) le nom de la partie tirée au sort.
+Ne fait rien d'autre.</p>
+
+<h2>Afficher les gains de chaque partie</h2>
+<p>Ouvre un boîte de dialogue avec la liste des parties qui ont été jouées
+effectivement par les clients. Sélectionner alors les parties pour lesquelles
+on souhaite afficher les gains sur les postes clients. Une fois cet écran
+validé cela affiche sur les postes clients une boîte de dialogue d'information
+avec pour chaque partie sélectionnée le gain associé.</p>
+
+<p>&nbsp;</p>
+
+<h1>Menu Outils</h1>
+<h2>Créer une nouvelle partie</h2>
+<p>Ouvre une boîte de dialogue qui permet de donner quelques informations sur
+la partie à créer (nom, répétitions, groupes ...). A la validation une
+boîte de dialogue s'ouvre pour demander où enregistrer les fichiers qui vont
+être créés. Normalement, mettre les fichiers dans le dossier le2m/parts afin
+que la partie en question apparaisse dans la liste des parties qu'il est
+    possible de charger (menu <span class="menu">Fichier/Charger une partie</span>).
+Le logiciel va alors crée tous les fichiers nécessaire pour la partie et dans
+ces fichiers va écrire le code squelette d'une partie. Ce seront ces fichiers
+qu'il faudra éditer et compléter pour préciser le fonctionnement de la partie
+(étapes à lancer, calculs ...). Normalement la partie peut être lancée en
+l'état, elle fonctionne.</p>
+
+<h2>Créer ou éditer un questionnaire de compréhension</h2>
+<p>Comme son nom l'indique, permet de créer et/ou d'éditer un questionnaire de
+compréhension qui sera alors utilisable pour l'expérience, via le menu
+<span class="menu">Expérience/Charger un questionnaire de compréhension</span>.
+Un questionnaire de compréhension est un fichier xml avec une structure
+particulière. Cet éditeur permet, de manière simple et graphique, de créer ce
+fichier. Il est aussi possible de charger un fichier existant pour soit le
+modifier soit le tester. Dans ce dernier cas le questionnaire est lancé
+localement et ce que l'on voit correspond exactement à ce que verront les
+    sujets.</p>
+
+<h2>Extraire des données</h2>
+<p>Ouvre un boîte de dialogue qui permet de sélectionner un fichier sqlite
+créer avec LE2M. Une fois le fichier sélectionné, ouvre une boîte de dialogue
+qui affiche les parties contenus de la base de données. Il suffit alors de
+sélectionner les parties à exporter. A la validation ouvre une boîte de
+dialogue pour choisir le dossier dans lequel enregistrer les fichiers qui
+vont être créés. Le programme créé alors trois fichiers
+<ol>
+    <li>le fichier sessions.csv: contient la liste des sessions qui ont été
+    exportées, cad toutes celles qui ne sont pas des tests.</li>
+    <li>le fichier joueurs.csv: contient la liste de tous les joueurs qui ont
+    participé et pour lesquels les données ont été extraites</li>
+    <li>le fichier data.csv: contient les données pour toutes les sessions et
+    tous les joueurs listés dans les deux fichiers précédents, pour toutes les
+    parties sélectionnées précédemment. Dans ce fichier il y a une ligne par
+    joueur et par répétition. Sur cette ligne il y a toutes les variables de
+    toutes les parties.</li>
+</ol></p>
+
+<h2>Lancé de dé</h2>
+<p>Ouvre une boîte de dialogue qui simule, en 2D, un lancé de dé. Démarrage et
+    arrêt du défilement se fait manuellement. L'order d'affichage des faces du
+    dé est aléatoire. Le résultat du lancé est affiché sur la liste serveur.</p>
+
+<h2>Nombre aléatoire</h2>
+<p>Ouvre une boîte de dialogue qui permet de fixer la valeur minimum et la
+valeur maximum. Démarrage et arrêt du défilement se fait manuellement.
+    L'ordre d'affichage des nombres est aléatoire. Le résultat est affiché sur
+    la liste serveur.</p>
+
+<h2>Pile ou face</h2>
+<p>Ouvre une boîte de dialogue qui simule, en 2D, un lancé de pièce de 1 euro.
+Le démarrage et l'arrêt du défilement se fait manuellement. Le résultat du lancé
+est affiché sur la liste serveur.</p>
 </body>
 </html>
