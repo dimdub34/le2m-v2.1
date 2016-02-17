@@ -175,7 +175,7 @@ class RemoteBase(pb.Root):
             ecran.show()
             return defered
             
-    def remote_display_information(self, txt):
+    def remote_display_information(self, txt, html=True):
         """
         Display the information in a qmessagebox
         :param txt: the text to be displayed
@@ -217,22 +217,14 @@ class RemoteBase(pb.Root):
             popup.show()
             return 1
             
-    # def remote_display_partpayoffs(self, partname):
-    #     remote = self._le2mclt.get_remote(partname)
-    #     if not remote:
-    #         logger.error(u"{} ".format(partname) +
-    #                      le2mtrans(u"is not in the remote list of parts"))
-    #         return
-    #     else:
-    #         return self.remote_display_information(remote.payoff_text)
-
-    def remote_display_payoffs(self, list_of_parts):
+    def remote_display_payoffs(self, dict_of_parts):
+        logger.debug("Base: display_payoffs with arg {}".format(dict_of_parts))
         txt = u""
-        for i, p in enumerate(list_of_parts):
-            remote = self._le2mclt.get_remote(p)
+        for k, v in sorted(dict_of_parts.viewitems()):
+            remote = self._le2mclt.get_remote(v)
             if remote:
-                txt += le2mtrans(u"Part") + u" {}: ".format(i+1) + \
-                    remote.payoff_text + u"\n"
+                txt += le2mtrans(u"Part") + u" {}: ".format(k) + \
+                    remote.payoff_text + u"<br />"
         return self.remote_display_information(txt)
 
 

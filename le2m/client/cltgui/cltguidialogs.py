@@ -172,24 +172,30 @@ class GuiRecapitulatif(QtGui.QDialog):
 
 
 class GuiPopup(QtGui.QDialog):
-    def __init__(self, defered, txt, temps=7000, parent=None):
+    def __init__(self, defered, txt, temps=7000, parent=None, html=True,
+                 size=(300, 100)):
         QtGui.QDialog.__init__(self, parent)
-        self.ui = cltguipopup.Ui_Dialog()
-        self.ui.setupUi(self)
 
         self._defered = defered
-        self.ui.textEdit.setHtml(txt)
 
-        self.ui.buttonBox.button(QtGui.QDialogButtonBox.Cancel).setVisible(False)
-        self.ui.buttonBox.accepted.connect(self._accept)
-        self.ui.buttonBox.rejected.connect(self.reject)
+        layout = QtGui.QVBoxLayout(self)
+
+        wexplanation = WExplication(
+            text=txt, parent=self, html=html, size=(size[0], size[1]))
+        layout.addWidget(wexplanation)
+
+        buttons = QtGui.QDialogButtonBox(QtGui.QDialogButtonBox.Ok)
+        buttons.accepted.connect(self._accept)
+        layout.addWidget(buttons)
 
         self.setWindowTitle(le2mtrans(u"Information"))
-        self.setFixedSize(350, 200)
+        self.adjustSize()
+        self.setFixedSize(self.size())
 
         if temps > 0:
             self._timer = QtCore.QTimer()
-            self._timer.timeout.connect(self._accept)
+            self._timer.timeout.connect(
+                buttons.button(QtGui.QDialogButtonBox.Ok).click)
             self._timer.start(temps)
 
     def _accept(self):
@@ -197,9 +203,9 @@ class GuiPopup(QtGui.QDialog):
             self._timer.stop()
         except AttributeError:
             pass
-        self._defered.callback(1)
         self.accept()
-            
+        self._defered.callback(1)
+
     def reject(self):
         pass
     

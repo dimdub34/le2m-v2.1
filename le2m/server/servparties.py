@@ -165,26 +165,6 @@ class PartieBase(Partie, object):
         self.joueur.info(u'Ok')
         self.joueur.remove_waitmode()
 
-    # def display_partpayoffs(self, partname):
-    #     if self.joueur.get_part(partname, None) is None:
-    #         logger.warning(u"Error: {} not in the list of parts".format(partname))
-    #         return
-    #     else:
-    #         yield (self.remote.callRemote("display_payoffs", partname))
-    #         self.joueur.info(u"Ok")
-    #         self.joueur.remove_waitmode()
-    
-    # @defer.inlineCallbacks
-    # def display_payoffs_several(self, dict_of_parts):
-    #     """
-    #     On récupère le texte final de chacune des parties demandées et
-    #     on le fait afficher à l'écran du joueur
-    #     """
-    #     list_of_parts = list([v for k, v in sorted(dict_of_parts.viewitems())])
-    #     yield (self.remote.callRemote("display_payoffs", list_of_parts))
-    #     self.joueur.info(u'Ok')
-    #     self.joueur.remove_waitmode()
-    
     @defer.inlineCallbacks
     def display_information(self, texte):
         """
