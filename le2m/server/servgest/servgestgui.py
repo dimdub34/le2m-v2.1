@@ -103,7 +103,7 @@ class GestionnaireGraphique():
         :return:
         """
         ecran = GuiInformation(
-            titre=titre, text=text, parent=self._screen, size=size, html=False)
+            titre=titre, text=text, parent=self._screen, size=size, html=html)
         ecran.exec_()
 
     def question(self, message):

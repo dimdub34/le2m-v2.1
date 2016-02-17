@@ -21,7 +21,7 @@ from server.servplayers import Joueur
 from servguisrc import servguimain
 from servguitablemodels import TableModelJoueurs
 from servguidialogs import GuiPartLoad, GuiPartsPlayed, \
-    GuiGenres, DDice, DRandint, DHeadtail, DWebview
+    GuiGenres, DDice, DRandint, DHeadtail, DWebview, GuiInformation
 from creator import creator
 from extractor import extractor
 from questcomp import questcomp
@@ -448,9 +448,6 @@ class GuiServeur(QtGui.QMainWindow):
         webscreen = DWebview(
             help_file, title=le2mtrans(u"Help"), parent=self)
         webscreen.show()
-        # self._le2mserv.gestionnaire_graphique.display_information2(
-        #     titre=le2mtrans(u"Help"), size=(800, 600),
-        #     text=utiltools.get_contenu_fichier(fichier_aide), html=True)
 
     def _display_about(self):
         """
@@ -458,9 +455,10 @@ class GuiServeur(QtGui.QMainWindow):
         """
         fichier_auteurs = os.path.join(
             params.getp("HTMLDIR"), "le2m_auteurs.html")
-        self._le2mserv.gestionnaire_graphique.display_information2(
-            titre=u"A propos", size=(350, 230), html=True,
-            text=utiltools.get_contenu_fichier(fichier_auteurs))
+        screen = GuiInformation(
+            parent=self, titre=le2mtrans(u"Developers"), size=(400, 200),
+            html=True, text=utiltools.get_contenu_fichier(fichier_auteurs))
+        screen.show()
 
     def _draw_part(self):
         """

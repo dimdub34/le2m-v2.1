@@ -69,26 +69,24 @@ class GuiInformation(QtGui.QDialog):
     """
     Dialog qui affiche du texte (format plain ou html).
     """
-    def __init__(self, titre, text, parent=None, size=(450, 450), html=False):
+    def __init__(self, text, titre=le2mtrans(u"Information"), parent=None,
+                 size=(450, 450), html=False):
         super(GuiInformation, self).__init__(parent)
 
         layout = QtGui.QVBoxLayout(self)
 
-        hlayout = QtGui.QHBoxLayout()
-        hlayout.addSpacerItem(QtGui.QSpacerItem(
-            20, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding))
-        self._textEdit = QtGui.QTextEdit()
-        self._textEdit.setReadOnly(True)
-        self._textEdit.setFixedSize(size[0], size[1])
         if html:
-            self._textEdit.setHtml(text)
+            browser = QtGui.QTextBrowser(self)
+            browser.setText(text)
+            browser.setOpenExternalLinks(True)
+            browser.setFixedSize(size[0], size[1])
+            layout.addWidget(browser)
         else:
-            self._textEdit.setText(text)
-
-        hlayout.addWidget(self._textEdit)
-        hlayout.addSpacerItem(QtGui.QSpacerItem(
-            20, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding))
-        layout.addLayout(hlayout)
+            textedit = QtGui.QTextEdit()
+            textedit.setReadOnly(True)
+            textedit.setFixedSize(size[0], size[1])
+            textedit.setText(text)
+            layout.addWidget(textedit)
 
         buttons = QtGui.QDialogButtonBox(QtGui.QDialogButtonBox.Ok)
         buttons.accepted.connect(self.accept)
