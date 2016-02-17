@@ -21,7 +21,7 @@ from server.servplayers import Joueur
 from servguisrc import servguimain
 from servguitablemodels import TableModelJoueurs
 from servguidialogs import GuiPartLoad, GuiPartsPlayed, \
-    GuiGenres, DDice, DRandint, DHeadtail
+    GuiGenres, DDice, DRandint, DHeadtail, DWebview
 from creator import creator
 from extractor import extractor
 from questcomp import questcomp
@@ -443,11 +443,14 @@ class GuiServeur(QtGui.QMainWindow):
         """
         Display a dialog with some help on le2m
         """
-        fichier_aide = os.path.join(params.getp("HTMLDIR"),
+        help_file = os.path.join(params.getp("HTMLDIR"),
                                     "le2m_aide.html")
-        self._le2mserv.gestionnaire_graphique.display_information2(
-            titre=le2mtrans(u"Help"), size=(800, 600),
-            text=utiltools.get_contenu_fichier(fichier_aide), html=True)
+        webscreen = DWebview(
+            help_file, title=le2mtrans(u"Help"), parent=self)
+        webscreen.show()
+        # self._le2mserv.gestionnaire_graphique.display_information2(
+        #     titre=le2mtrans(u"Help"), size=(800, 600),
+        #     text=utiltools.get_contenu_fichier(fichier_aide), html=True)
 
     def _display_about(self):
         """
