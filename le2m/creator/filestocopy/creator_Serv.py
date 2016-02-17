@@ -26,7 +26,7 @@ class Serveur(object):
         actions[le2mtrans(u"Start")] = lambda _: self._demarrer()
         actions[le2mtrans(u"Display payoffs")] = \
             lambda _: self._le2mserv.gestionnaire_experience.\
-            display_payoffs("EXPERIENCE_NOM")
+            display_payoffs_onserver("EXPERIENCE_NOM")
         self._le2mserv.gestionnaire_graphique.add_topartmenu(
             u"EXPERIENCE_MENU", actions)
 

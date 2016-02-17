@@ -217,15 +217,23 @@ class RemoteBase(pb.Root):
             popup.show()
             return 1
             
-    def remote_display_partpayoffs(self, partname):
-        remote = self._le2mclt.get_remote(partname)
-        if not remote:
-            logger.error(u"{} ".format(partname) +
-                         le2mtrans(u"is not in the remote list of parts"))
-            return
-        else:
-            final_text = remote.get_partpayoff_text()
-            return self.remote_display_information(final_text)
+    # def remote_display_partpayoffs(self, partname):
+    #     remote = self._le2mclt.get_remote(partname)
+    #     if not remote:
+    #         logger.error(u"{} ".format(partname) +
+    #                      le2mtrans(u"is not in the remote list of parts"))
+    #         return
+    #     else:
+    #         return self.remote_display_information(remote.payoff_text)
+
+    def remote_display_payoffs(self, list_of_parts):
+        txt = u""
+        for i, p in enumerate(list_of_parts):
+            remote = self._le2mclt.get_remote(p)
+            if remote:
+                txt += le2mtrans(u"Part") + u" {}: ".format(i+1) + \
+                    remote.payoff_text + u"\n"
+        return self.remote_display_information(txt)
 
 
 class RemoteQuestionnaireFinal(pb.Referenceable):
