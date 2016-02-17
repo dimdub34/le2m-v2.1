@@ -23,16 +23,16 @@ class Serveur(object):
         self._le2mserv = le2mserv
 
         actions = OrderedDict()
-        actions[le2mtrans(u"Settings")] = self._configure
-        actions[le2mtrans(u"Display settings")] = \
+        actions[le2mtrans(u"Configure")] = self._configure
+        actions[le2mtrans(u"Display parameters")] = \
             lambda _: self._le2mserv.gestionnaire_graphique. \
                 display_information2(utiltools.get_contenu_fichier(
                 inspect.getsourcefile(pms)))
         actions[le2mtrans(u"Start")] = lambda _: self._demarrer()
-        actions[le2mtrans(u"Payoffs")] = \
+        actions[le2mtrans(u"Display payoffs")] = \
             lambda _: self._le2mserv.gestionnaire_experience.display_payoffs_onserver(
                 "GneezyPotter")
-        actions[le2mtrans(u"View graph")] = self._show_fig
+        actions[le2mtrans(u"Display graph")] = self._show_fig
         self._le2mserv.gestionnaire_graphique.add_topartmenu(
             u"Gneezy Potter", actions)
 

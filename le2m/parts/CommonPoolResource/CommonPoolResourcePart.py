@@ -106,7 +106,8 @@ class PartieCPR(Partie):
         logger.debug(u"{} Part Payoff".format(self.joueur))
 
         self.CPR_gain_ecus = self.currentperiod.CPR_cumulativepayoff
-        self.CPR_gain_euros = float(self.CPR_gain_ecus) * float(pms.TAUX_CONVERSION)
+        self.CPR_gain_euros = float("{:.2f}".format(
+            float(self.CPR_gain_ecus) * float(pms.TAUX_CONVERSION)))
         yield (self.remote.callRemote(
             "set_payoffs", self.CPR_gain_euros, self.CPR_gain_ecus))
 

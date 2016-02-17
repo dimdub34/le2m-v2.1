@@ -1,14 +1,9 @@
 # -*- coding: utf-8 -*-
-"""
-Ce module contient les variables et les paramètres de la partie
-Les variables ne doivent pas être changées
-Les paramètres peuvent être changés, mais, par sécurité, demander au développeur
-"""
 
 # variables
 TREATMENTS = {0: "baseline"}
 
-# paramètres
+# parameters
 TREATMENT = 0
 DOTATION = 10
 TAUX_CONVERSION = 0.05
@@ -35,9 +30,8 @@ def get_treatment(code_or_name):
 
 def get_gain(extraction_indiv, extraction_grpe):
     """
-    Renvoi le gain du joueur
-    :param extraction_indiv: extraction du joueur
-    :param extraction_grpe: extraction du groupe
+    :param extraction_indiv: player's extraction
+    :param extraction_grpe: group's extraction
     :return: float
     """
     const = 120 / TAILLE_GROUPES
