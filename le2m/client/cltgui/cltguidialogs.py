@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+import sys
 from PyQt4 import QtGui, QtCore
 from twisted.internet.defer import AlreadyCalledError
 import random
@@ -8,12 +9,12 @@ from datetime import datetime
 from configuration import configparam as params
 from client import clttexts as textes
 from configuration.configvar import NATIONALITES, ETUDES_DISCIPLINES, \
-    ETUDES_ANNEES
-from client.cltgui.cltguisrc import cltguiwelc, cltguipopup, cltguifinal, \
-    cltguisummary, cltguihist, cltguiquestfinal
+    ETUDES_ANNEES, COUNTRIES, SPORT_LEVELS, RELIGION_NAMES, IMPORTANT_LEVELS
+from client.cltgui.cltguisrc import cltguiwelc, cltguifinal, cltguiquestfinal
 from util.utili18n import le2mtrans
 from cltguitablemodels import TableModelHistorique
-from cltguiwidgets import WExplication, WTableview, WPeriod
+from cltguiwidgets import WExplication, WTableview, WPeriod, WSpinbox, WCombo, \
+    WRadio
 
 logger = logging.getLogger("le2m")
 
@@ -511,3 +512,152 @@ class GuiQuestionnaireFinal(QtGui.QDialog):
                 return
         self._defered.callback(inputs)
         self.accept()
+
+
+class DQuestFinal(QtGui.QDialog):
+    def __init__(self, defered, automatique, parent):
+        super(DQuestFinal, self).__init__(parent)
+
+        self._defered = defered
+        self._automatique = automatique
+
+        layout = QtGui.QVBoxLayout(self)
+
+        wexplanation = WExplication(
+            text=le2mtrans(u"Please fill in the questionnaire below. This "
+                           u"questionnaire is anonymous so please be sincere "
+                           u"in your responses."),
+            parent=self, size=(500, 50))
+        layout.addWidget(wexplanation)
+
+        self._gridlayout = QtGui.QGridLayout()
+        layout.addLayout(self._gridlayout)
+
+        # first line: year of birth and nationality-----------------------------
+        currentyear = datetime.now().year
+        self._wbirth = WSpinbox(label=le2mtrans(u"Year of birth"), parent=self,
+                                minimum=currentyear-100, maximum=currentyear,
+                                interval=1, automatique=self._automatique)
+        self._wbirth.ui.spinBox.setValue(currentyear)
+        self._gridlayout.addWidget(self._wbirth, 0, 0)
+
+        countries = [v for k, v in sorted(COUNTRIES.viewitems())]
+        countries.insert(0, le2mtrans(u"Choose"))
+        countries.append(le2mtrans(u"Not in list above"))
+        self._nationality = WCombo(
+            parent=self, automatique=self._automatique,
+            label=le2mtrans(u"Nationality"), items=countries)
+        self._gridlayout.addWidget(self._nationality, 0, 1)
+
+        # second line: gender and couple ---------------------------------------
+        self._wgender = WRadio(
+            parent=self, automatique=self._automatique,
+            label=le2mtrans(u"Gender"),
+            texts=(le2mtrans(u"Male"), le2mtrans(u"Female")))
+        self._gridlayout.addWidget(self._wgender, 1, 0)
+
+        self._wcouple = WRadio(
+            parent=self, automatique=self._automatique,
+            label=le2mtrans(u"Do you live in couple?"))
+        self._gridlayout.addWidget(self._wcouple, 1, 1)
+
+        # third line: student, discipline and level ---------------------------
+        self._study = WRadio(parent=self, automatique=self._automatique,
+                               label=le2mtrans(u"Are you a student?"))
+        self._gridlayout.addWidget(self._study, 2, 0)
+
+        study_topic = [v for k, v in sorted(ETUDES_DISCIPLINES.viewitems())]
+        study_topic.insert(0, le2mtrans(u"Choose"))
+        study_topic.append(le2mtrans(u"Not in the list above"))
+        self._study_topic = WCombo(parent=self, automatique=self._automatique,
+                                  label=le2mtrans(u"What topic do you study?"),
+                                  items=study_topic)
+        self._gridlayout.addWidget(self._study_topic, 2, 1)
+
+        study_levels = [v for k, v in sorted(ETUDES_ANNEES.viewitems())]
+        study_levels.insert(0, le2mtrans(u"Choose"))
+        study_levels.append(le2mtrans(u"Not in the list above"))
+        self._study_level = WCombo(parent=self, automatique=self._automatique,
+                                   label=le2mtrans(u"Select the level"),
+                                   items=study_levels)
+        self._gridlayout.addWidget(self._study_level, 2, 2)
+
+        # fourth line; brothers and sisters ------------------------------------
+        self._brothers = WSpinbox(
+            parent=self, automatique=self._automatique,
+            label=le2mtrans(u"How much brother or sister do you have "
+                            u"(half counts)?"), minimum=0, maximum=30)
+        self._gridlayout.addWidget(self._brothers, 3, 0)
+
+        self._brothers_rank = WSpinbox(
+            parent=self, automatique=self._automatique,
+            label=le2mtrans(u"What is your rank in your brotherhood?"),
+            minimum=0, maximum=30)
+        self._gridlayout.addWidget(self._brothers_rank, 3, 1)
+
+        # sport ----------------------------------------------------------------
+        self._sport = WRadio(parent=self, automatique=self._automatique,
+                             label=le2mtrans(u"Do you practice sport?"))
+        self._gridlayout.addWidget(self._sport, 4, 0)
+
+        self._sport_individuel = WRadio(
+            parent=self, automatique=self._automatique,
+            label=le2mtrans(u"Kind of sport"),
+            texts=(le2mtrans(u"Individual"), le2mtrans(u"Collective")))
+        self._gridlayout.addWidget(self._sport_individuel, 4, 1)
+
+        self._sport_competition = WRadio(
+            parent=self, automatique=self._automatique,
+            label=le2mtrans(u"Do you participate to competitions?"))
+        self._gridlayout.addWidget(self._sport_competition, 4, 2)
+        sport_levels = [v for k, v in sorted(SPORT_LEVELS.viewitems())]
+        sport_levels.insert(0, le2mtrans(u"Choose"))
+
+        self._sport_level = WCombo(
+            parent=self, automatique=self._automatique,
+            label=le2mtrans(u"To what level?"),
+            items=sport_levels)
+        self._gridlayout.addWidget(self._sport_level, 4, 3)
+
+        # religion -------------------------------------------------------------
+        religion_important = [v for k, v in sorted(IMPORTANT_LEVELS.viewitems())]
+        religion_important.insert(0, le2mtrans(u"Choose"))
+        self._religion_place = WCombo(
+            parent=self, automatique=self._automatique,
+            label=le2mtrans(u"Is religion important in your life?"),
+            items=religion_important)
+        self._gridlayout.addWidget(self._religion_place, 5, 0)
+
+        religions_names = [v for k, v in sorted(RELIGION_NAMES.iteritems())]
+        religions_names.insert(0, le2mtrans(u"Choose"))
+        religions_names.append(le2mtrans(u"Not in the list above"))
+        self._religion_name = WCombo(
+            parent=self, automatique=self._automatique,
+            label=le2mtrans(u"What is your religion?"), items=religions_names)
+        self._gridlayout.addWidget(self._religion_name, 5, 1)
+
+        self._religion_belief = WCombo(
+            parent=self, automatique=self._automatique,
+            label=le2mtrans(u"In general you would say that"),
+            items=[])
+        self._gridlayout.addWidget(self._religion_belief, 5, 2)
+
+        buttons = QtGui.QDialogButtonBox(QtGui.QDialogButtonBox.Ok)
+        buttons.accepted.connect(self._accept)
+        layout.addWidget(buttons)
+
+        self.setWindowTitle(le2mtrans(u"Final questionnaire"))
+        self.adjustSize()
+        self.setFixedSize(self.size())
+
+    def reject(self):
+        pass
+
+    def _accept(self):
+        self.accept()
+
+if __name__ == "__main__":
+    app = QtGui.QApplication(sys.argv)
+    fen = DQuestFinal(None, False, None)
+    fen.show()
+    sys.exit(app.exec_())

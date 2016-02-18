@@ -107,7 +107,7 @@ class WSpinbox(QtGui.QWidget):
 
 
 class WRadio(QtGui.QWidget):
-    def __init__(self, label, texts=(le2mtrans(u"Yes"), le2mtrans(u"Non")),
+    def __init__(self, label, texts=(le2mtrans(u"Yes"), le2mtrans(u"No")),
                  automatique=False, parent=None, autotime=500):
         super(WRadio, self).__init__(parent)
         self.ui = widRadio.Ui_Form()

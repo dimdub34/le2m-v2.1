@@ -5,7 +5,6 @@ Contains usefull functions
 
 import time
 import datetime
-# import random
 import string
 import os
 import logging
@@ -13,8 +12,6 @@ import inspect
 from PyQt4.QtCore import QThread, pyqtSignal  # pour CompteARebours
 
 logger = logging.getLogger("le2m")
-# # compteur_groupe is used for creating a unique id for groups
-# compteur_groupe = 0
 
 
 def get_formatedtimefromseconds(nombre_secondes):
@@ -169,38 +166,6 @@ def get_module_info(module):
     temp = get_module_attributes(module)
     templist = [u"- {}: {}".format(k, v) for k, v in temp.iteritems()]
     return u"\n".join(templist)
-
-
-# def former_groupes(population, taille, prefixeid=None):
-#     """
-#     Forme des groupes
-#     :param population: une liste d'identifiants
-#     :param taille: la taille des groupes à former
-#     :param prefixeid: le préfixe d'identifiant de groupe. Par défaut la
-#     date du jour avec l'heure, selon format %Y%m%d%H%m
-#     :return: dict
-#     """
-#     if type(population) is not list:
-#         raise ValueError(u"population doit être une liste")
-#     elif len(population) % taille > 0:
-#         raise ValueError(u"il faut pouvoir former un nombre entier de groupes")
-#
-#     nb = len(population) / taille
-#     dispos = population[:]
-#     pre_id = prefixeid or datetime.datetime.now().strftime("%Y%m%d%H%M")
-#     groupes = dict()
-#     global compteur_groupe
-#
-#     for i in xrange(nb):
-#         g_id = pre_id + str(compteur_groupe)
-#         groupes[g_id] = []
-#         for j in xrange(taille):
-#             selec = random.choice(dispos)
-#             groupes[g_id].append(selec)
-#             dispos.remove(selec)
-#         compteur_groupe += 1
-#
-#     return groupes
 
 
 class CompteARebours(QThread):
