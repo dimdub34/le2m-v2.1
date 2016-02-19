@@ -59,13 +59,17 @@ def main():
 
     # whether it is a test session or not
     test_parser = parser.add_mutually_exclusive_group(required=False)
-    test_parser.add_argument('--test', dest='test', action='store_true')
-    test_parser.add_argument('--no-test', dest='test', action='store_false')
+    test_parser.add_argument('--test', dest='test', action='store_true',
+                             help=i18n.le2mtrans(u"The session is launched in "
+                                                 u"test mode"))
+    test_parser.add_argument('--no-test', dest='test', action='store_false',
+                             help=i18n.le2mtrans(u"The session is launched for "
+                                                 u"real (not test mode)"))
     parser.set_defaults(test=True)
-    parser.add_argument("-nt", "--notest", action="store_false", default=True,
-                        help=i18n.le2mtrans(
-                            u"With this option the experiment is launched for "
-                            u"real"))
+    # parser.add_argument("-nt", "--notest", action="store_false", default=True,
+    #                     help=i18n.le2mtrans(
+    #                         u"With this option the experiment is launched for "
+    #                         u"real"))
 
     # check the options ========================================================
     args = parser.parse_args()
