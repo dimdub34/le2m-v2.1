@@ -11,6 +11,7 @@ from client.cltgui.cltguidialogs import GuiAccueil, GuiPopup, GuiFinal, \
     GuiQuestionnaireFinal
 from questcomp.questcompmod import Question, CopyQuestion
 import clttexts
+from client.cltgui.cltguidialogs import DQuestFinal
 
 
 logger = logging.getLogger("le2m")
@@ -265,8 +266,10 @@ class RemoteQuestionnaireFinal(pb.Referenceable):
             return inputs
         else:
             defered = defer.Deferred()
-            screen = GuiQuestionnaireFinal(
-                defered, self._le2mclt.automatique, self._le2mclt.screen)
+            # screen = GuiQuestionnaireFinal(
+            #     defered, self._le2mclt.automatique, self._le2mclt.screen)
+            screen = DQuestFinal(defered, self._le2mclt.automatique,
+                                 self._le2mclt.screen)
             screen.show()
             return defered
 

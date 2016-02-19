@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+import sys
 from PyQt4 import QtGui, QtCore
 from twisted.internet.defer import AlreadyCalledError
 import random
@@ -7,13 +8,12 @@ import logging
 from datetime import datetime
 from configuration import configparam as params
 from client import clttexts as textes
-from configuration.configvar import NATIONALITES, ETUDES_DISCIPLINES, \
-    ETUDES_ANNEES
-from client.cltgui.cltguisrc import cltguiwelc, cltguipopup, cltguifinal, \
-    cltguisummary, cltguihist, cltguiquestfinal
+from configuration import configvar
+from client.cltgui.cltguisrc import cltguiwelc, cltguifinal, cltguiquestfinal
 from util.utili18n import le2mtrans
 from cltguitablemodels import TableModelHistorique
-from cltguiwidgets import WExplication, WTableview, WPeriod
+from cltguiwidgets import WExplication, WTableview, WPeriod, WSpinbox, WCombo, \
+    WRadio
 
 logger = logging.getLogger("le2m")
 
@@ -293,9 +293,9 @@ class GuiQuestionnaireFinal(QtGui.QDialog):
 
         self._annee = datetime.now().year
         self.ui.spinBox_naissance.setValue(self._annee)
-        self.ui.cb_nationalite.addItems(NATIONALITES)
-        self.ui.cb_etudiant_discipline.addItems(ETUDES_DISCIPLINES)
-        self.ui.cb_etudiant_niveau.addItems(ETUDES_ANNEES)
+        self.ui.cb_nationalite.addItems(configvar.NATIONALITES)
+        self.ui.cb_etudiant_discipline.addItems(configvar.ETUDES_DISCIPLINES)
+        self.ui.cb_etudiant_niveau.addItems(configvar.ETUDES_ANNEES)
         self.ui.pushButton_valider.clicked.connect(self._stop)
         
         if self._automatique:
@@ -511,3 +511,237 @@ class GuiQuestionnaireFinal(QtGui.QDialog):
                 return
         self._defered.callback(inputs)
         self.accept()
+
+
+class DQuestFinal(QtGui.QDialog):
+    def __init__(self, defered, automatique, parent):
+        super(DQuestFinal, self).__init__(parent)
+
+        self._defered = defered
+        self._automatique = automatique
+
+        layout = QtGui.QVBoxLayout(self)
+
+        wexplanation = WExplication(
+            text=le2mtrans(u"Please fill in the questionnaire below. This "
+                           u"questionnaire is anonymous so please be sincere "
+                           u"in your responses."),
+            parent=self, size=(500, 50))
+        layout.addWidget(wexplanation)
+
+        self._gridlayout = QtGui.QGridLayout()
+        layout.addLayout(self._gridlayout)
+
+        # first line: year of birth and nationality-----------------------------
+        currentyear = datetime.now().year
+        self._birth = WSpinbox(label=le2mtrans(u"Year of birth"), parent=self,
+                                minimum=currentyear-100, maximum=currentyear,
+                                interval=1, automatique=self._automatique)
+        self._birth.ui.spinBox.setValue(currentyear)
+        self._gridlayout.addWidget(self._birth, 0, 0)
+
+        countries = [v for k, v in sorted(configvar.COUNTRIES.viewitems())]
+        countries.insert(0, le2mtrans(u"Choose"))
+        countries.append(le2mtrans(u"Not in list above"))
+        self._nationality = WCombo(
+            parent=self, automatique=self._automatique,
+            label=le2mtrans(u"Nationality"), items=countries)
+        self._gridlayout.addWidget(self._nationality, 0, 1)
+
+        # second line: gender and couple ---------------------------------------
+        self._gender = WRadio(
+            parent=self, automatique=self._automatique,
+            label=le2mtrans(u"Gender"),
+            texts=(le2mtrans(u"Male"), le2mtrans(u"Female")))
+        self._gridlayout.addWidget(self._gender, 1, 0)
+
+        self._couple = WRadio(
+            parent=self, automatique=self._automatique,
+            label=le2mtrans(u"Do you live in couple?"))
+        self._gridlayout.addWidget(self._couple, 1, 1)
+
+        # third line: student, discipline and level ---------------------------
+        self._study = WRadio(parent=self, automatique=self._automatique,
+                               label=le2mtrans(u"Are you a student?"))
+        self._gridlayout.addWidget(self._study, 2, 0)
+
+        study_topic = [v for k, v in sorted(configvar.ETUDES_DISCIPLINES.viewitems())]
+        study_topic.insert(0, le2mtrans(u"Choose"))
+        study_topic.append(le2mtrans(u"Not in the list above"))
+        self._study_topic = WCombo(parent=self, automatique=self._automatique,
+                                  label=le2mtrans(u"What topic do you study?"),
+                                  items=study_topic)
+        self._gridlayout.addWidget(self._study_topic, 2, 1)
+
+        study_levels = [v for k, v in sorted(configvar.ETUDES_ANNEES.viewitems())]
+        study_levels.insert(0, le2mtrans(u"Choose"))
+        study_levels.append(le2mtrans(u"Not in the list above"))
+        self._study_level = WCombo(parent=self, automatique=self._automatique,
+                                   label=le2mtrans(u"Select the level"),
+                                   items=study_levels)
+        self._gridlayout.addWidget(self._study_level, 2, 2)
+
+        # fourth line; brothers and sisters ------------------------------------
+        self._brothers = WSpinbox(
+            parent=self, automatique=self._automatique,
+            label=le2mtrans(u"How much brother or sister do you have "
+                            u"(half counts)?"), minimum=0, maximum=30)
+        self._gridlayout.addWidget(self._brothers, 3, 0)
+
+        self._brothers_rank = WSpinbox(
+            parent=self, automatique=self._automatique,
+            label=le2mtrans(u"What is your rank in your brotherhood?"),
+            minimum=0, maximum=30)
+        self._gridlayout.addWidget(self._brothers_rank, 3, 1)
+
+        # sport ----------------------------------------------------------------
+        self._sport = WRadio(parent=self, automatique=self._automatique,
+                             label=le2mtrans(u"Do you practice sport?"))
+        self._gridlayout.addWidget(self._sport, 4, 0)
+
+        self._sport_individuel = WRadio(
+            parent=self, automatique=self._automatique,
+            label=le2mtrans(u"Kind of sport"),
+            texts=(le2mtrans(u"Individual"), le2mtrans(u"Collective")))
+        self._gridlayout.addWidget(self._sport_individuel, 4, 1)
+
+        self._sport_competition = WRadio(
+            parent=self, automatique=self._automatique,
+            label=le2mtrans(u"Do you participate to competitions?"))
+        self._gridlayout.addWidget(self._sport_competition, 4, 2)
+
+        # religion -------------------------------------------------------------
+        religion_important = [v for k, v in sorted(configvar.IMPORTANT_LEVELS.viewitems())]
+        religion_important.insert(0, le2mtrans(u"Choose"))
+        self._religion_place = WCombo(
+            parent=self, automatique=self._automatique,
+            label=le2mtrans(u"Is religion important in your life?"),
+            items=religion_important)
+        self._gridlayout.addWidget(self._religion_place, 5, 0)
+
+        religions_names = [v for k, v in sorted(configvar.RELIGION_NAMES.iteritems())]
+        religions_names.insert(0, le2mtrans(u"Choose"))
+        religions_names.append(le2mtrans(u"Not in the list above"))
+        self._religion_name = WCombo(
+            parent=self, automatique=self._automatique,
+            label=le2mtrans(u"What is your religion?"), items=religions_names)
+        self._gridlayout.addWidget(self._religion_name, 5, 1)
+
+        beliefs = [v for k, v in sorted(configvar.RELIGION_BELIEFS.viewitems())]
+        beliefs.insert(0, le2mtrans(u"Choose"))
+        self._religion_belief = WCombo(
+            parent=self, automatique=self._automatique,
+            label=le2mtrans(u"In general you would say that you are"),
+            items=beliefs)
+        self._gridlayout.addWidget(self._religion_belief, 5, 2)
+
+        # expe -----------------------------------------------------------------
+        self._expe = WRadio(
+            parent=self, automatique=self._automatique,
+            label=le2mtrans(u"Did you already partipate to an economic experiment?"))
+        self._gridlayout.addWidget(self._expe, 6, 0)
+
+        buttons = QtGui.QDialogButtonBox(QtGui.QDialogButtonBox.Ok)
+        buttons.accepted.connect(self._accept)
+        layout.addWidget(buttons)
+
+        # enable and connections
+        self._finalize()
+
+        self.setWindowTitle(le2mtrans(u"Questionnaire"))
+        self.adjustSize()
+        self.setFixedSize(self.size())
+
+        if self._automatique:
+            self._timer_automatique = QtCore.QTimer()
+            self._timer_automatique.timeout.connect(
+                buttons.button(QtGui.QDialogButtonBox.Ok).click)
+            self._timer_automatique.start(7000)
+
+    def _finalize(self):
+        # study
+        self._study_topic.setEnabled(False)
+        self._study_level.setEnabled(False)
+        self._study.ui.radioButton_0.toggled.connect(
+            lambda _: self._enable_widgets(
+                self._study.get_checkedbutton() == 0, self._study_level,
+                self._study_topic))
+
+        # sport
+        self._sport_individuel.setEnabled(False)
+        self._sport_competition.setEnabled(False)
+        self._sport.ui.radioButton_0.toggled.connect(
+            lambda _: self._enable_widgets(
+                self._sport.get_checkedbutton() == 0,
+                self._sport_individuel, self._sport_competition))
+
+    def _enable_widgets(self, yes_or_no, *which):
+        for w in which:
+            w.setEnabled(yes_or_no)
+
+    def reject(self):
+        pass
+
+    def _get_inputs(self):
+        inputs = {}
+        try:
+
+            inputs['naissance'] = self._birth.get_value()
+            inputs["nationalite"] = self._nationality.get_currentindex()
+            inputs["genre"] = self._gender.get_checkedbutton()
+            inputs['couple'] = self._couple.get_checkedbutton()
+            inputs['experiences'] = self._expe.get_checkedbutton()
+
+            # student
+            inputs['etudiant'] = self._study.get_checkedbutton()
+            if inputs['etudiant'] == 0:
+                inputs['etudiant_discipline'] = self._study_topic.get_currentindex()
+                inputs['etudiant_niveau'] = self._study_level.get_currentindex()
+
+            # brotherhood
+            inputs["fratrie_nombre"] = self._brothers.get_value()
+            if inputs["fratrie_nombre"] > 0:
+                inputs["fratrie_rang"] = self._brothers_rank.get_value()
+            else:
+                inputs["fratrie_rang"] = 0
+
+            # sport
+            inputs["sportif"] = self._sport.get_checkedbutton()
+            if inputs["sportif"] == 0:
+                inputs["sportif_type"] = self._sport_individuel.get_checkedbutton()
+                inputs["sportif_competition"] = self._sport_competition.get_checkedbutton()
+
+            # religion
+            inputs['religion_place'] = self._religion_place.get_currentindex()
+            inputs['religion_croyance'] = self._religion_belief.get_currentindex()
+            inputs['religion_nom'] = self._religion_name.get_currentindex()
+
+        except ValueError:
+            return  QtGui.QMessageBox.warning(
+                self, le2mtrans(u"Warning"),
+                le2mtrans(u"You must answer to all the questions"))
+
+        return inputs
+
+    def _accept(self):
+        try:
+            self._timer_automatique.stop()
+        except AttributeError:
+            pass
+
+        inputs = self._get_inputs()
+
+        if inputs:
+            if not self._automatique:
+                confirm = QtGui.QMessageBox.question(
+                    self, le2mtrans(u"Confirmation"),
+                    le2mtrans(u"Do you confirm your answers?"),
+                    QtGui.QMessageBox.No | QtGui.QMessageBox.Yes)
+                if confirm != QtGui.QMessageBox.Yes:
+                    return
+
+            logger.info(u"Send back: {}".format(inputs))
+            self.accept()
+            self._defered.callback(inputs)
+        else:
+            return
