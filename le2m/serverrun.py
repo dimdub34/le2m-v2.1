@@ -58,6 +58,10 @@ def main():
                         help=i18n.le2mtrans(u"The name(s) of the part(s) to load)."))
 
     # whether it is a test session or not
+    test_parser = parser.add_mutually_exclusive_group(required=False)
+    test_parser.add_argument('--test', dest='test', action='store_true')
+    test_parser.add_argument('--no-test', dest='test', action='store_false')
+    parser.set_defaults(test=True)
     parser.add_argument("-nt", "--notest", action="store_false", default=True,
                         help=i18n.le2mtrans(
                             u"With this option the experiment is launched for "

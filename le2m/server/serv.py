@@ -62,7 +62,7 @@ class Serveur(object):
                 kwargs["parts"],
                 kwargs["dirbase"] or os.path.join(
                     params.getp("PARTSDIR"), kwargs["parts"][0]),
-                kwargs["namebase"], kwargs["notest"])
+                kwargs["namebase"], kwargs["test"])
             self.gestionnaire_experience.load_experiment(expeinfos)
 
     def start(self):
