@@ -526,7 +526,7 @@ class DQuestFinal(QtGui.QDialog):
             text=le2mtrans(u"Please fill in the questionnaire below. This "
                            u"questionnaire is anonymous so please be sincere "
                            u"in your responses."),
-            parent=self, size=(600, 30))
+            parent=self, size=(600, 40))
         layout.addWidget(wexplanation)
 
         self._gridlayout = QtGui.QGridLayout()
