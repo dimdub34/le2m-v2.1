@@ -7,8 +7,19 @@ from util.utiltools import CompteARebours
 from client.clttexts import le2mtrans
 from cltguisrc.cltguisrcwid import widExplication, widPeriod, widCombo, \
     widSpinbox, widRadio, widListDrag, widTableview, widCompterebours, \
-    widChat, widSlider
+    widChat, widSlider, widLabel
 from configuration.configvar import YES_NO
+
+
+class WLabel(QtGui.QWidget):
+    def __init__(self, text=None, parent=None):
+        super(WLabel, self).__init__(parent)
+        self.ui = widLabel.Ui_Form()
+        self.ui.setupUi(self)
+        self.set_text(text or u"")
+
+    def set_text(self, text):
+        self.ui.label.setText(text)
 
 
 class WPeriod(QtGui.QWidget):
