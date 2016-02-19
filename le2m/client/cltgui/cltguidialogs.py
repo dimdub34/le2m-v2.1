@@ -682,11 +682,7 @@ class DQuestFinal(QtGui.QDialog):
     def reject(self):
         pass
 
-    def _accept(self):
-        try:
-            self._timer_automatique.stop()
-        except AttributeError:
-            pass
+    def _get_inputs(self):
         inputs = {}
         try:
 
@@ -725,14 +721,27 @@ class DQuestFinal(QtGui.QDialog):
                 self, le2mtrans(u"Warning"),
                 le2mtrans(u"You must answer to all the questions"))
 
-        if not self._automatique:
-            confirm = QtGui.QMessageBox.question(
-                self, le2mtrans(u"Confirmation"),
-                le2mtrans(u"Do you confirm your answers?"),
-                QtGui.QMessageBox.No | QtGui.QMessageBox.Yes)
-            if confirm != QtGui.QMessageBox.Yes:
-                return
+        return inputs
 
-        logger.info(u"Send back: {}".format(inputs))
-        self.accept()
-        self._defered.callback(inputs)
+    def _accept(self):
+        try:
+            self._timer_automatique.stop()
+        except AttributeError:
+            pass
+
+        inputs = self._get_inputs()
+
+        if inputs:
+            if not self._automatique:
+                confirm = QtGui.QMessageBox.question(
+                    self, le2mtrans(u"Confirmation"),
+                    le2mtrans(u"Do you confirm your answers?"),
+                    QtGui.QMessageBox.No | QtGui.QMessageBox.Yes)
+                if confirm != QtGui.QMessageBox.Yes:
+                    return
+
+            logger.info(u"Send back: {}".format(inputs))
+            self.accept()
+            self._defered.callback(inputs)
+        else:
+            return
