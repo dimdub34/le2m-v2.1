@@ -34,9 +34,13 @@ def main(part="le2m", keyword="le2mtrans", lang="fr_FR"):
     files = _scan(dirtoscan)
 
     os.chdir(dirtoscan)
+    if "{}.po".format(part) in os.listdir(os.path.join(
+            os.curdir, "locale/{}/LC_MESSAGES".format(lang))):
+        fileout = "{}new".format(part)
+    else:
+        fileout = "{}".format(part)
     os.system("xgettext {} --keyword={} -p {}/locale/{}/LC_MESSAGES "
-              "-d {}new".format(" ".join(files), keyword, dirtoscan, lang,
-                                "le2m" if not part else part))
+              "-d {}".format(" ".join(files), keyword, dirtoscan, lang, fileout))
 
 
 if __name__ == "__main__":
