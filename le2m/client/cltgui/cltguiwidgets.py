@@ -8,6 +8,7 @@ from client.clttexts import le2mtrans
 from cltguisrc.cltguisrcwid import widExplication, widPeriod, widCombo, \
     widSpinbox, widRadio, widListDrag, widTableview, widCompterebours, \
     widChat, widSlider
+from configuration.configvar import YES_NO
 
 
 class WPeriod(QtGui.QWidget):
@@ -72,6 +73,9 @@ class WCombo(QtGui.QWidget):
                 random.randint(0, len(self._items)-1))
 
     def get_currentindex(self):
+        if self._items[0] == le2mtrans(u"Choose") and \
+                        self.ui.comboBox.currentIndex() == 0:
+            raise ValueError(u"No index selected")
         return self.ui.comboBox.currentIndex()
 
 
@@ -107,7 +111,8 @@ class WSpinbox(QtGui.QWidget):
 
 
 class WRadio(QtGui.QWidget):
-    def __init__(self, label, texts=(le2mtrans(u"Yes"), le2mtrans(u"No")),
+    def __init__(self, label,
+                 texts=tuple([v for k, v in sorted(YES_NO.viewitems())]),
                  automatique=False, parent=None, autotime=500):
         super(WRadio, self).__init__(parent)
         self.ui = widRadio.Ui_Form()

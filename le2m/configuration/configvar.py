@@ -11,6 +11,16 @@ Experiment = namedtuple(
     "Experiment",
     "parts dirbase basename istest")
 
+YES_NO = {
+    0: le2mtrans(u"Yes"),
+    1: le2mtrans(u"No")
+}
+
+MALE_FEMALE = {
+    0: le2mtrans(u"Male"),
+    1: le2mtrans(u"Female")
+}
+
 NATIONALITES = [
     u"Choisir", u"Afghan", u"Albanais", u"Algérien", u"Allemand",
     u"Américain", u"Angolais", u"Argentin", u"Arménien", u"Australien",
@@ -338,19 +348,27 @@ SPORT_LEVELS = {
 
 
 RELIGION_NAMES = {
-    0: u"Aucune",
-    1: u"Bouddhiste",
-    2: u"Catholique",
-    3: u"Juif",
-    4: u"Musulman",
-    5: u"Protestant"
+    1: le2mtrans(u"Buddhist"),
+    2: le2mtrans(u"Catholic"),
+    3: le2mtrans(u"Hindu"),
+    4: le2mtrans(u"Jewish"),
+    5: le2mtrans(u"Muslim"),
+    6: le2mtrans(u"Protestant"),
+    7: le2mtrans(u"Unaffiliated"),
 }
 
 
+RELIGION_BELIEFS = {
+    1: le2mtrans(u"Very religious"),
+    2: le2mtrans(u"Somewhat religious"),
+    3: le2mtrans(u"Not too religious"),
+    4: le2mtrans(u"Not at all religious")
+}
+
 IMPORTANT_LEVELS = {
     1: le2mtrans(u"Very important"),
-    2: le2mtrans(u"Fairly important"),
-    3: le2mtrans(u"Slightly important"),
+    2: le2mtrans(u"Somewhat important"),
+    3: le2mtrans(u"Not too important"),
     4: le2mtrans(u"Not at all important")
 }
 
