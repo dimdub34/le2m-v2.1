@@ -122,7 +122,8 @@ class Serveur(object):
         graph.set_ylabel("Amount invested")
         graph.set_title("Amount invested in the risky option")
 
-        self._le2mserv.gestionnaire_experience.finalize_part("GneezyPotter")
+        yield (self._le2mserv.gestionnaire_experience.finalize_part(
+            "GneezyPotter"))
 
     def _show_fig(self):
         if not self._fig:

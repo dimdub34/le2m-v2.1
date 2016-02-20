@@ -108,5 +108,5 @@ class Serveur(object):
                 u"Récapitulatif", self._tous, "display_summary"))
         
         # End of part ==========================================================
-        self._le2mserv.gestionnaire_experience.finalize_part(
-            "prisonnersDilemma")
+        yield (self._le2mserv.gestionnaire_experience.finalize_part(
+            "prisonnersDilemma"))

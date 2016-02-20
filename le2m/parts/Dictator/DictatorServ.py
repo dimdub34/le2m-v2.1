@@ -134,7 +134,7 @@ class Serveur(object):
 
         # END OF PART ==========================================================
         self._do_stats()
-        self._le2mserv.gestionnaire_experience.finalize_part("Dictator")
+        yield (self._le2mserv.gestionnaire_experience.finalize_part("Dictator"))
 
     def _show_fig(self):
         if not hasattr(self, "_fig"):

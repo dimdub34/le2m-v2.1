@@ -131,8 +131,8 @@ class Serveur(object):
         self._le2mserv.gestionnaire_graphique.infoserv(
             datapandall.mean()["CPR_decision"].to_string())
         # finalization
-        self._le2mserv.gestionnaire_experience.finalize_part(
-            "CommonPoolResource")
+        yield (self._le2mserv.gestionnaire_experience.finalize_part(
+            "CommonPoolResource"))
 
     def _do_stats(self, period):
         # stats

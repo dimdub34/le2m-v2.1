@@ -126,7 +126,8 @@ class Serveur(object):
         datapandall = datapandall.groupby(datapandall.PGG_group)
         self._le2mserv.gestionnaire_graphique.infoserv(
             datapandall.mean()["PGG_public"].to_string())
-        self._le2mserv.gestionnaire_experience.finalize_part("PublicGoodGame")
+        yield (self._le2mserv.gestionnaire_experience.finalize_part(
+            "PublicGoodGame"))
 
     def _show_fig(self):
         if not self._fig:

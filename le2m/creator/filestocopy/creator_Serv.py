@@ -98,5 +98,5 @@ class Serveur(object):
                 le2mtrans(u"Summary"), self._tous, "display_summary"))
         
         # End of part ==========================================================
-        self._le2mserv.gestionnaire_experience.finalize_part(
-            "EXPERIENCE_NOM")
+        yield (self._le2mserv.gestionnaire_experience.finalize_part(
+            "EXPERIENCE_NOM"))
