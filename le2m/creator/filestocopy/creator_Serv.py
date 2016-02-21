@@ -42,9 +42,8 @@ class Serveur(object):
         :return:
         """
         # check conditions =====================================================
-        confirmation = self._le2mserv.gestionnaire_graphique.\
-            question(le2mtrans(u"Start") + u" EXPERIENCE_NOM?")
-        if not confirmation:
+        if not self._le2mserv.gestionnaire_graphique.question(
+                        le2mtrans(u"Start") + u" EXPERIENCE_NOM?"):
             return
 
         # init part ============================================================
