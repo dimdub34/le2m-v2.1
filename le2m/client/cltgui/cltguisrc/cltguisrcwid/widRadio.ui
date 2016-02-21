@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>344</width>
+    <width>340</width>
     <height>41</height>
    </rect>
   </property>
@@ -35,24 +35,28 @@
     </widget>
    </item>
    <item>
-    <widget class="QRadioButton" name="radioButton_0">
-     <property name="text">
-      <string>RadioButton</string>
-     </property>
-     <attribute name="buttonGroup">
-      <string notr="true">buttonGroup</string>
-     </attribute>
-    </widget>
-   </item>
-   <item>
-    <widget class="QRadioButton" name="radioButton_1">
-     <property name="text">
-      <string>RadioButton</string>
-     </property>
-     <attribute name="buttonGroup">
-      <string notr="true">buttonGroup</string>
-     </attribute>
-    </widget>
+    <layout class="QHBoxLayout" name="horizontalLayout_radios">
+     <item>
+      <widget class="QRadioButton" name="radioButton_0">
+       <property name="text">
+        <string>RadioButton</string>
+       </property>
+       <attribute name="buttonGroup">
+        <string notr="true">buttonGroup</string>
+       </attribute>
+      </widget>
+     </item>
+     <item>
+      <widget class="QRadioButton" name="radioButton_1">
+       <property name="text">
+        <string>RadioButton</string>
+       </property>
+       <attribute name="buttonGroup">
+        <string notr="true">buttonGroup</string>
+       </attribute>
+      </widget>
+     </item>
+    </layout>
    </item>
    <item>
     <spacer name="horizontalSpacer_2">

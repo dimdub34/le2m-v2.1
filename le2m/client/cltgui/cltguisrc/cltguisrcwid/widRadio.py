@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'widRadio.ui'
 #
-# Created: Wed Dec 30 20:04:43 2015
+# Created: Sun Feb 21 14:47:14 2016
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -26,7 +26,7 @@ except AttributeError:
 class Ui_Form(object):
     def setupUi(self, Form):
         Form.setObjectName(_fromUtf8("Form"))
-        Form.resize(344, 41)
+        Form.resize(340, 41)
         self.horizontalLayout = QtGui.QHBoxLayout(Form)
         self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
         spacerItem = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
@@ -34,16 +34,19 @@ class Ui_Form(object):
         self.label = QtGui.QLabel(Form)
         self.label.setObjectName(_fromUtf8("label"))
         self.horizontalLayout.addWidget(self.label)
+        self.horizontalLayout_radios = QtGui.QHBoxLayout()
+        self.horizontalLayout_radios.setObjectName(_fromUtf8("horizontalLayout_radios"))
         self.radioButton_0 = QtGui.QRadioButton(Form)
         self.radioButton_0.setObjectName(_fromUtf8("radioButton_0"))
         self.buttonGroup = QtGui.QButtonGroup(Form)
         self.buttonGroup.setObjectName(_fromUtf8("buttonGroup"))
         self.buttonGroup.addButton(self.radioButton_0)
-        self.horizontalLayout.addWidget(self.radioButton_0)
+        self.horizontalLayout_radios.addWidget(self.radioButton_0)
         self.radioButton_1 = QtGui.QRadioButton(Form)
         self.radioButton_1.setObjectName(_fromUtf8("radioButton_1"))
         self.buttonGroup.addButton(self.radioButton_1)
-        self.horizontalLayout.addWidget(self.radioButton_1)
+        self.horizontalLayout_radios.addWidget(self.radioButton_1)
+        self.horizontalLayout.addLayout(self.horizontalLayout_radios)
         spacerItem1 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
         self.horizontalLayout.addItem(spacerItem1)
 

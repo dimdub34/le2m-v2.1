@@ -140,7 +140,7 @@ class WRadio(QtGui.QWidget):
                 setattr(self.ui, "radioButton_{}".format(i),
                         QtGui.QRadioButton())
                 getattr(self.ui, "radioButton_{}".format(i)).setText(texts[i])
-                self.ui.horizontalLayout.addWidget(
+                self.ui.horizontalLayout_radios.addWidget(
                     getattr(self.ui, "radioButton_{}".format(i)))
 
         if automatique:
