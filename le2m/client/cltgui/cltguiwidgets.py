@@ -9,6 +9,10 @@ from cltguisrc.cltguisrcwid import widExplication, widPeriod, widCombo, \
     widSpinbox, widRadio, widListDrag, widTableview, widCompterebours, \
     widChat, widSlider, widLabel
 from configuration.configvar import YES_NO
+import logging
+
+
+logger = logging.getLogger("le2m")
 
 
 class WLabel(QtGui.QWidget):
@@ -131,6 +135,14 @@ class WRadio(QtGui.QWidget):
         self.ui.label.setText(label)
         self.ui.radioButton_0.setText(texts[0])
         self.ui.radioButton_1.setText(texts[1])
+        if len(texts) > 2:
+            for i in range(2, len(texts)):
+                setattr(self.ui, "radioButton_{}".format(i),
+                        QtGui.QRadioButton())
+                getattr(self.ui, "radioButton_{}".format(i)).setText(texts[i])
+                self.ui.horizontalLayout.addWidget(
+                    getattr(self.ui, "radioButton_{}".format(i)))
+
         if automatique:
             self._timer = QtCore.QTimer()
             self._timer.setSingleShot(True)
@@ -138,17 +150,21 @@ class WRadio(QtGui.QWidget):
             self._timer.start(autotime)
 
     def _checkbutton(self):
-        if random.random() >= 0.5:
-            self.ui.radioButton_0.setChecked(True)
-        else:
-            self.ui.radioButton_1.setChecked(True)
+        radios = [v for k, v in self.ui.__dict__.viewitems() if "radioButton" in k]
+        selected = random.choice(radios)
+        selected.setChecked(True)
 
     def get_checkedbutton(self):
-        if not (self.ui.radioButton_0.isChecked() or
-                self.ui.radioButton_1.isChecked()):
+        radios = [v for k, v in sorted(self.ui.__dict__.viewitems()) if
+                  "radioButton" in k]
+        checked = None
+        for i, r in enumerate(radios):
+            if r.isChecked():
+                checked = i
+                break
+        if checked is None:
             raise ValueError(le2mtrans(u"No item selected"))
-        else:
-            return 0 if self.ui.radioButton_0.isChecked() else 1
+        return checked
 
 
 class WListDrag(QtGui.QWidget):
