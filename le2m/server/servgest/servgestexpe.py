@@ -222,6 +222,7 @@ class GestionnaireExperience(QObject):
         """
         Display the final text of each parts on the remote
         """
+        self._le2msrv.gestionnaire_graphique.infoclt(None)
         players = self._le2msrv.gestionnaire_joueurs.get_players("base")
         if type(part_or_listOfParts) is str:
             yield (self.run_step(
