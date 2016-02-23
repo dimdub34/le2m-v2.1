@@ -330,7 +330,7 @@ class WSlider(QtGui.QWidget):
 
 class WLineEdit(QtGui.QWidget):
     def __init__(self, parent, label, automatique=False,
-                 possible_values=[u"val {}".format(i) for i in range(5)],
+                 list_of_possible_values=[u"val {}".format(i) for i in range(5)],
                  autotime=1000):
         super(WLineEdit, self).__init__(parent)
 
@@ -347,7 +347,7 @@ class WLineEdit(QtGui.QWidget):
             self._timer.setSingleShot(True)
             self._timer.timeout.connect(
                 lambda _: self.ui.lineEdit.setText(
-                    random.choice(possible_values)))
+                    random.choice(list_of_possible_values)))
             self._timer.start(self._autotime)
 
     def get_text(self):
