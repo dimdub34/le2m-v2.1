@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'widChat.ui'
 #
-# Created: Sat Jan  2 18:08:46 2016
+# Created: Tue Feb 23 09:31:19 2016
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -26,19 +26,25 @@ except AttributeError:
 class Ui_Form(object):
     def setupUi(self, Form):
         Form.setObjectName(_fromUtf8("Form"))
-        Form.resize(368, 445)
+        Form.resize(368, 479)
         self.horizontalLayout_2 = QtGui.QHBoxLayout(Form)
         self.horizontalLayout_2.setObjectName(_fromUtf8("horizontalLayout_2"))
         spacerItem = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
         self.horizontalLayout_2.addItem(spacerItem)
         self.verticalLayout = QtGui.QVBoxLayout()
         self.verticalLayout.setObjectName(_fromUtf8("verticalLayout"))
-        self.listWidget = QtGui.QListWidget(Form)
-        self.listWidget.setObjectName(_fromUtf8("listWidget"))
-        self.verticalLayout.addWidget(self.listWidget)
-        self.textEdit = QtGui.QTextEdit(Form)
-        self.textEdit.setObjectName(_fromUtf8("textEdit"))
-        self.verticalLayout.addWidget(self.textEdit)
+        self.label_read = QtGui.QLabel(Form)
+        self.label_read.setObjectName(_fromUtf8("label_read"))
+        self.verticalLayout.addWidget(self.label_read)
+        self.textEdit_read = QtGui.QTextEdit(Form)
+        self.textEdit_read.setObjectName(_fromUtf8("textEdit_read"))
+        self.verticalLayout.addWidget(self.textEdit_read)
+        self.label_write = QtGui.QLabel(Form)
+        self.label_write.setObjectName(_fromUtf8("label_write"))
+        self.verticalLayout.addWidget(self.label_write)
+        self.textEdit_write = QtGui.QTextEdit(Form)
+        self.textEdit_write.setObjectName(_fromUtf8("textEdit_write"))
+        self.verticalLayout.addWidget(self.textEdit_write)
         self.horizontalLayout = QtGui.QHBoxLayout()
         self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
         spacerItem1 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
@@ -56,5 +62,7 @@ class Ui_Form(object):
 
     def retranslateUi(self, Form):
         Form.setWindowTitle(_translate("Form", "Form", None))
+        self.label_read.setText(_translate("Form", "TextLabel", None))
+        self.label_write.setText(_translate("Form", "TextLabel", None))
         self.pushButton.setText(_translate("Form", "Envoyer", None))
 

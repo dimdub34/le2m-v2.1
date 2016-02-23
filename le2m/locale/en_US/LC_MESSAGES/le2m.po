@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LE2M\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-19 15:50+0100\n"
-"PO-Revision-Date: 2016-02-19 15:51+0100\n"
+"POT-Creation-Date: 2016-02-23 09:40+0100\n"
+"PO-Revision-Date: 2016-02-23 09:44+0100\n"
 "Last-Translator: Dimitri DUBOIS <dimitri.dubois@umontpellier.fr>\n"
 "Language-Team: Dimitri DUBOIS <dimitri.dubois@umontpellier.fr>\n"
 "Language: en_US\n"
@@ -71,10 +71,14 @@ msgid "Server port"
 msgstr ""
 
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/creator/filestocopy/creator_Gui.py:72
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/voteMajorite/voteMajoriteGui.py:115
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/voteMajorite/voteMajoriteGui.py:256
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGame/PublicGoodGameGui.py:68
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/TeamCommunication/TeamCommunicationServ.py:275
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/TeamCommunication/TeamCommunicationGui.py:563
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/GneezyPotter/GneezyPotterGui.py:64
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/oathAndLies/oathAndLiesGui.py:223
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/oathAndLies/oathAndLiesGui.py:346
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/prisonnersDilemma/prisonnersDilemmaGui.py:73
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:329
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:384
@@ -85,29 +89,40 @@ msgid "Confirmation"
 msgstr ""
 
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/creator/filestocopy/creator_Gui.py:73
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/voteMajorite/voteMajoriteGui.py:116
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/voteMajorite/voteMajoriteGui.py:257
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGame/PublicGoodGameGui.py:69
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/GneezyPotter/GneezyPotterGui.py:65
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/oathAndLies/oathAndLiesGui.py:224
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/oathAndLies/oathAndLiesGui.py:347
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/prisonnersDilemma/prisonnersDilemmaGui.py:74
 msgid "Do you confirm your choice?"
 msgstr ""
 
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/creator/filestocopy/creator_Texts.py:20
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/creator/filestocopy/creator_Serv.py:81
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/creator/filestocopy/creator_Serv.py:83
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/creator/filestocopy/creator_Serv.py:80
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/creator/filestocopy/creator_Serv.py:82
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGameSolidarity/PublicGoodGameSolidarityPart.py:36
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/voteMajorite/voteMajoriteServ.py:112
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/voteMajorite/voteMajoriteServ.py:114
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/voteMajorite/voteMajoriteServ.py:116
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/CommonPoolResource/CommonPoolResourceTexts.py:47
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/oathAndLies/oathAndLiesServ.py:102
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/oathAndLies/oathAndLiesServ.py:104
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/prisonnersDilemma/prisonnersDilemmaTexts.py:21
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguiwidgets.py:38
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguiwidgets.py:42
 msgid "Period"
 msgstr ""
 
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/creator/filestocopy/creator_Texts.py:20
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/creator/filestocopy/creator_Serv.py:90
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/voteMajorite/voteMajoriteServ.py:121
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/creator/filestocopy/creator_Serv.py:89
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/voteMajorite/voteMajoriteServ.py:123
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/voteMajorite/voteMajoriteGui.py:86
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/GneezyPotter/GneezyPotterGui.py:49
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/CommonPoolResource/CommonPoolResourceTexts.py:47
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/oathAndLies/oathAndLiesServ.py:115
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/oathAndLies/oathAndLiesServ.py:126
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/oathAndLies/oathAndLiesGui.py:193
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/oathAndLies/oathAndLiesGui.py:325
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/Dictator/DictatorServ.py:112
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/Dictator/DictatorServ.py:115
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/prisonnersDilemma/prisonnersDilemmaGui.py:45
@@ -134,39 +149,47 @@ msgid ""
 msgstr ""
 
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/creator/filestocopy/creator_Serv.py:21
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/creator/filestocopy/creator_Serv.py:59
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/voteMajorite/voteMajoriteServ.py:23
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/voteMajorite/voteMajoriteServ.py:84
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/creator/filestocopy/creator_Serv.py:58
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/voteMajorite/voteMajoriteServ.py:24
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/voteMajorite/voteMajoriteServ.py:86
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/voteMajorite/voteMajoriteGui.py:201
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/GneezyPotter/GneezyPotterServ.py:26
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/oathAndLies/oathAndLiesServ.py:22
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/oathAndLies/oathAndLiesGui.py:41
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/prisonnersDilemma/prisonnersDilemmaServ.py:21
 msgid "Configure"
 msgstr ""
 
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/creator/filestocopy/creator_Serv.py:22
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/voteMajorite/voteMajoriteServ.py:24
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/voteMajorite/voteMajoriteServ.py:25
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/GneezyPotter/GneezyPotterServ.py:27
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/oathAndLies/oathAndLiesServ.py:23
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/prisonnersDilemma/prisonnersDilemmaServ.py:22
 msgid "Display parameters"
 msgstr ""
 
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/creator/filestocopy/creator_Serv.py:25
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/voteMajorite/voteMajoriteServ.py:27
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/voteMajorite/voteMajoriteServ.py:28
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/oathAndLies/oathAndLiesServ.py:26
 msgid "Parameters"
 msgstr ""
 
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/creator/filestocopy/creator_Serv.py:26
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/creator/filestocopy/creator_Serv.py:46
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/voteMajorite/voteMajoriteServ.py:28
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/voteMajorite/voteMajoriteServ.py:72
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/voteMajorite/voteMajoriteServ.py:29
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/voteMajorite/voteMajoriteServ.py:75
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/GneezyPotter/GneezyPotterServ.py:31
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/oathAndLies/oathAndLiesServ.py:27
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/oathAndLies/oathAndLiesServ.py:61
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/Dictator/DictatorServ.py:26
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/prisonnersDilemma/prisonnersDilemmaServ.py:26
 msgid "Start"
 msgstr ""
 
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/creator/filestocopy/creator_Serv.py:27
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/voteMajorite/voteMajoriteServ.py:29
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/voteMajorite/voteMajoriteServ.py:30
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/GneezyPotter/GneezyPotterServ.py:32
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/oathAndLies/oathAndLiesServ.py:28
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/Dictator/DictatorServ.py:27
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/prisonnersDilemma/prisonnersDilemmaServ.py:27
 msgid "Display payoffs"
@@ -176,8 +199,10 @@ msgstr ""
 msgid "There is no parameter to configure"
 msgstr ""
 
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/creator/filestocopy/creator_Serv.py:98
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/voteMajorite/voteMajoriteServ.py:152
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/creator/filestocopy/creator_Serv.py:97
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/voteMajorite/voteMajoriteServ.py:155
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/voteMajorite/voteMajoriteGui.py:155
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/oathAndLies/oathAndLiesServ.py:140
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguidialogs.py:154
 msgid "Summary"
 msgstr ""
@@ -280,20 +305,19 @@ msgstr ""
 msgid "A dict is expected"
 msgstr ""
 
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/voteMajorite/voteMajoriteServ.py:67
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/voteMajorite/voteMajoriteServ.py:70
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/oathAndLies/oathAndLiesServ.py:57
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/prisonnersDilemma/prisonnersDilemmaServ.py:47
 msgid "The number of players is not compatible with the group size"
 msgstr ""
 
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/TeamCommunication/TeamCommunicationServ.py:121
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/server/servgest/servgestexpe.py:100
-#, python-brace-format
-msgid "Start time: {st}"
-msgstr ""
-
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/voteMajorite/voteMajoriteGui.py:110
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/voteMajorite/voteMajoriteGui.py:251
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/TeamCommunication/TeamCommunicationServ.py:261
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/TeamCommunication/TeamCommunicationServ.py:268
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/TeamCommunication/TeamCommunicationGui.py:558
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/oathAndLies/oathAndLiesGui.py:219
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/oathAndLies/oathAndLiesGui.py:342
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/prisonnersDilemma/prisonnersDilemmaGui.py:67
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguidialogs.py:232
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguidialogs.py:429
@@ -305,6 +329,16 @@ msgstr ""
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:429
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguidialogs.py:721
 msgid "Warning"
+msgstr ""
+
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/voteMajorite/voteMajoriteGui.py:228
+msgid "Question"
+msgstr ""
+
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/TeamCommunication/TeamCommunicationServ.py:121
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/server/servgest/servgestexpe.py:100
+#, python-brace-format
+msgid "Start time: {st}"
 msgstr ""
 
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/TeamCommunication/TeamCommunicationServ.py:262
@@ -319,14 +353,15 @@ msgstr ""
 
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/TeamCommunication/TeamCommunicationGui.py:442
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/TeamCommunication/TeamCommunicationGui.py:451
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/oathAndLies/oathAndLiesGui.py:131
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguidialogs.py:544
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguidialogs.py:569
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguidialogs.py:577
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguidialogs.py:615
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguidialogs.py:623
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguidialogs.py:631
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguiwidgets.py:78
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguiwidgets.py:87
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguiwidgets.py:82
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguiwidgets.py:91
 msgid "Choose"
 msgstr ""
 
@@ -356,6 +391,10 @@ msgstr ""
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/Dictator/DictatorServ.py:102
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/Dictator/DictatorServ.py:104
 msgid "Period {}"
+msgstr ""
+
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/oathAndLies/oathAndLiesServ.py:78
+msgid "Roles"
 msgstr ""
 
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/Dictator/DictatorServ.py:21
@@ -444,7 +483,7 @@ msgstr ""
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguidialogs.py:206
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguidialogs.py:215
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguidialogs.py:225
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/server/servgest/servgestexpe.py:263
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/server/servgest/servgestexpe.py:264
 msgid "Error"
 msgstr ""
 
@@ -897,24 +936,24 @@ msgstr ""
 msgid "{host} was not in the list of connected hosts"
 msgstr ""
 
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/server/servgest/servgestplayers.py:95
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/server/servgest/servgestplayers.py:99
 msgid "is not in the list of connected players"
 msgstr ""
 
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/server/servgest/servgestplayers.py:105
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/server/servgest/servgestplayers.py:109
 msgid "Disconnection of the players still connected"
 msgstr ""
 
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/server/servgest/servgestplayers.py:115
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/server/servgest/servgestplayers.py:119
 msgid "Subjects' gender"
 msgstr ""
 
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/server/servgest/servgestplayers.py:116
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/server/servgest/servgestplayers.py:120
 #, python-brace-format
 msgid "Men: {m}"
 msgstr ""
 
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/server/servgest/servgestplayers.py:117
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/server/servgest/servgestplayers.py:121
 #, python-brace-format
 msgid "Women: {w}"
 msgstr ""
@@ -962,31 +1001,31 @@ msgstr ""
 msgid "Final screen"
 msgstr ""
 
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/server/servgest/servgestexpe.py:228
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/server/servgest/servgestexpe.py:229
 msgid "Display part payoffs"
 msgstr ""
 
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/server/servgest/servgestexpe.py:235
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/server/servgest/servgestexpe.py:236
 msgid "Display details of payoffs for parts"
 msgstr ""
 
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/server/servgest/servgestexpe.py:264
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/server/servgest/servgestexpe.py:265
 msgid "Error while getting payoffs for part {}: {}"
 msgstr ""
 
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/server/servgest/servgestexpe.py:281
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/server/servgest/servgestexpe.py:282
 msgid "Payoffs of part {} added to final payoffs"
 msgstr ""
 
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/server/servgest/servgestexpe.py:313
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/server/servgest/servgestexpe.py:314
 msgid "The arg must be of type list"
 msgstr ""
 
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/server/servgest/servgestexpe.py:330
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/server/servgest/servgestexpe.py:331
 msgid "The game will stop next period"
 msgstr ""
 
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/server/servgest/servgestexpe.py:332
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/server/servgest/servgestexpe.py:333
 msgid "The game won't stop next period"
 msgstr ""
 
@@ -1080,7 +1119,7 @@ msgid ""
 msgstr ""
 
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguidialogs.py:97
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguiwidgets.py:32
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguiwidgets.py:36
 msgid "History"
 msgstr ""
 
@@ -1198,39 +1237,47 @@ msgstr ""
 msgid "Questionnaire"
 msgstr ""
 
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguiwidgets.py:149
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguiwidgets.py:166
 msgid "No item selected"
 msgstr ""
 
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguiwidgets.py:162
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguiwidgets.py:178
 msgid ""
 "Drag one or several item(s) from this list to the list on the right side"
 msgstr ""
 
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguiwidgets.py:170
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguiwidgets.py:186
 msgid "Right click to move up, down or delete an item"
 msgstr ""
 
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguiwidgets.py:172
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguiwidgets.py:188
 msgid "Menu"
 msgstr ""
 
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguiwidgets.py:174
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguiwidgets.py:190
 msgid "Move up"
 msgstr ""
 
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguiwidgets.py:178
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguiwidgets.py:194
 msgid "Move down"
 msgstr ""
 
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguiwidgets.py:182
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguiwidgets.py:198
 msgid "Delete"
 msgstr ""
 
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguiwidgets.py:240
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguiwidgets.py:256
 msgid "Remaining time:"
 msgstr ""
 
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguiwidgets.py:259
-msgid "Send"
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguiwidgets.py:272
+msgid "Instant messaging"
+msgstr ""
+
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguiwidgets.py:274
+msgid "Write your message below"
+msgstr ""
+
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguiwidgets.py:278
+msgid "Send the message"
 msgstr ""

@@ -269,23 +269,30 @@ class WChat(QtGui.QWidget):
         self.ui = widChat.Ui_Form()
         self.ui.setupUi(self)
 
-        self.ui.listWidget.setFixedSize(size_read[0], size_read[1])
-        self.ui.textEdit.setFixedSize(size_write[0], size_write[1])
+        self.ui.label_read.setText(le2mtrans(u"Instant messaging"))
+        self.ui.textEdit_read.setFixedSize(size_read[0], size_read[1])
+        self.ui.label_write.setText(le2mtrans(u"Write your message below"))
+        self.ui.textEdit_read.setReadOnly(True)
+        self.ui.textEdit_write.setFixedSize(size_write[0], size_write[1])
 
-        self.ui.pushButton.setText(le2mtrans(u"Send"))
+        self.ui.pushButton.setText(le2mtrans(u"Send the message"))
         self.ui.pushButton.clicked.connect(
             lambda _: action_send(
                 unicode(
-                    self.ui.textEdit.toPlainText().toUtf8(), "utf-8")))
+                    self.ui.textEdit_write.toPlainText().toUtf8(), "utf-8")))
 
     def add_text(self, text):
-        self.ui.listWidget.addItem(text)
+        self.ui.textEdit_read.insertPlainText(text)
+        if text[:-1] != '\n':
+            self.ui.textEdit_read.insertPlainText('\n')
+        bar = self.textedit_read.verticalScrollBar()
+        bar.setValue(bar.maximum())
 
     def clear_writespace(self):
-        self.ui.textEdit.clear()
+        self.ui.textEdit_write.clear()
 
     def write(self, msg):
-        self.ui.textEdit.setText(msg)
+        self.ui.textEdit_write.setText(msg)
 
 
 class WSlider(QtGui.QWidget):

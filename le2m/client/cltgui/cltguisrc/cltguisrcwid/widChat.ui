@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>368</width>
-    <height>445</height>
+    <height>479</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -30,10 +30,24 @@
    <item>
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
-      <widget class="QListWidget" name="listWidget"/>
+      <widget class="QLabel" name="label_read">
+       <property name="text">
+        <string>TextLabel</string>
+       </property>
+      </widget>
      </item>
      <item>
-      <widget class="QTextEdit" name="textEdit"/>
+      <widget class="QTextEdit" name="textEdit_read"/>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_write">
+       <property name="text">
+        <string>TextLabel</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QTextEdit" name="textEdit_write"/>
      </item>
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout">
