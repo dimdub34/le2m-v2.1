@@ -346,12 +346,13 @@ class WLineEdit(QtGui.QWidget):
             self._timer = QtCore.QTimer()
             self._timer.setSingleShot(True)
             self._timer.timeout.connect(
-                lambda _: self.ui.lineEdit.setText(
+                lambda: self.ui.lineEdit.setText(
                     random.choice(list_of_possible_values)))
             self._timer.start(self._autotime)
 
     def get_text(self):
-        text = unicode(self.ui.lineEdit.text(), encoding='utf-8')
+        text = unicode(self.ui.lineEdit.text().toUtf8(), encoding='utf-8')
+        logger.debug(text)
         if not text:
             raise ValueError(le2mtrans(u"You must complete the text area") +
                              u" ({})".format(self.ui.label.text()))
