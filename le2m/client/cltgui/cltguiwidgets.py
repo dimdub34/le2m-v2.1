@@ -285,7 +285,7 @@ class WChat(QtGui.QWidget):
         self.ui.textEdit_read.insertPlainText(text)
         if text[:-1] != '\n':
             self.ui.textEdit_read.insertPlainText('\n')
-        bar = self.textEdit_read.verticalScrollBar()
+        bar = self.ui.textEdit_read.verticalScrollBar()
         bar.setValue(bar.maximum())
 
     def clear_writespace(self):
