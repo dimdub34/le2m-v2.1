@@ -7,7 +7,7 @@ from util.utiltools import CompteARebours
 from client.clttexts import le2mtrans
 from cltguisrc.cltguisrcwid import widExplication, widPeriod, widCombo, \
     widSpinbox, widRadio, widListDrag, widTableview, widCompterebours, \
-    widChat, widSlider, widLabel
+    widChat, widSlider, widLabel, widLineEdit
 from configuration.configvar import YES_NO
 import logging
 
@@ -326,3 +326,33 @@ class WSlider(QtGui.QWidget):
 
     def get_value(self):
         return self.ui.horizontalSlider.value()
+
+
+class WLineEdit(QtGui.QWidget):
+    def __init__(self, parent, label, automatique=False,
+                 possible_values=[u"val {}".format(i) for i in range(5)],
+                 autotime=1000):
+        super(WLineEdit, self).__init__(parent)
+
+        self._automatique = automatique
+        self._autotime = autotime
+
+        self.ui = widLineEdit.Ui_Form()
+        self.ui.setupUi(self)
+
+        self.ui.label.setText(label)
+
+        if self._automatique:
+            self._timer = QtCore.QTimer()
+            self._timer.setSingleShot(True)
+            self._timer.timeout.connect(
+                lambda _: self.ui.lineEdit.setText(
+                    random.choice(possible_values)))
+            self._timer.start(self._autotime)
+
+    def get_text(self):
+        text = unicode(self.ui.lineEdit.text(), encoding='utf-8')
+        if not text:
+            raise ValueError(le2mtrans(u"You must complete the text area") +
+                             u" ({})".format(self.ui.label.text()))
+        return text
