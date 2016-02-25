@@ -22,12 +22,14 @@ class Partie(Base):
     nom = Column(String(50))
     __mapper_args__ = {'polymorphic_on': nom} 
     
-    def __init__(self, nom, nom_court=None):
+    def __init__(self, nom, nom_court=None, joueur=None, le2mserv=None):
         self.nom = nom
         self._nom_court = nom_court or self.nom[:2].upper()
         self._remote = None
         self._currentperiod = None  # a repetition not a number
         self._periods = {}  # store the currentperiods
+        self._joueur = joueur
+        self._le2mserv = le2mserv
 
     @property
     def remote(self):
@@ -44,6 +46,23 @@ class Partie(Base):
     @nom_court.setter
     def nom_court(self, value):
         self._nom_court = value
+
+    @property
+    def joueur(self):
+        return self._joueur
+
+    @joueur.setter
+    def joueur(self, val):
+        """
+        For compatibility reasons, but do not use it, set joueur in the init
+        :param val: joueur
+        :return:
+        """
+        self._joueur = val
+
+    @property
+    def le2mserv(self):
+        return self._le2mserv
 
     @property
     def currentperiod(self):
