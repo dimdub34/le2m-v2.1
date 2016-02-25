@@ -21,9 +21,9 @@ class PartieEXPERIENCE_NOM_COURT(Partie):
     repetitions = relationship('RepetitionsEXPERIENCE_NOM_COURT')
 
     def __init__(self, le2mserv, joueur):
-        super(PartieEXPERIENCE_NOM_COURT, self).__init__("EXPERIENCE_NOM", "EXPERIENCE_NOM_COURT")
-        self._le2mserv = le2mserv
-        self.joueur = joueur
+        super(PartieEXPERIENCE_NOM_COURT, self).__init__(
+            nom="EXPERIENCE_NOM", nom_court="EXPERIENCE_NOM_COURT",
+            joueur=joueur, le2mserv=le2mserv)
         self.EXPERIENCE_NOM_COURT_gain_ecus = 0
         self.EXPERIENCE_NOM_COURT_gain_euros = 0
 
@@ -43,7 +43,7 @@ class PartieEXPERIENCE_NOM_COURT(Partie):
         """
         logger.debug(u"{} New Period".format(self.joueur))
         self.currentperiod = RepetitionsEXPERIENCE_NOM_COURT(period)
-        self._le2mserv.gestionnaire_base.ajouter(self.currentperiod)
+        self.le2mserv.gestionnaire_base.ajouter(self.currentperiod)
         self.repetitions.append(self.currentperiod)
         yield (self.remote.callRemote("newperiod", period))
         logger.info(u"{} Ready for period {}".format(self.joueur, period))
