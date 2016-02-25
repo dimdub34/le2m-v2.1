@@ -118,7 +118,7 @@ class WSpinbox(QtGui.QWidget):
 
     def _changevalue(self):
         self.ui.spinBox.setValue(
-                    random.randrange(self._minimum, self._maximum,
+                    random.randrange(self._minimum, self._maximum + 1,
                                      self._interval))
 
     def get_value(self):
