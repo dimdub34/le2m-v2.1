@@ -55,6 +55,7 @@ class WExplication(QtGui.QWidget):
 
     def set_size(self, size):
         self.ui.textEdit.setFixedSize(size[0], size[1])
+        self.adjustSize()
 
     def set_text(self, text):
         self.ui.textEdit.setText(text)
@@ -239,6 +240,7 @@ class WTableview(QtGui.QWidget):
 
     def set_size(self, size):
         self.ui.tableView.setFixedSize(size[0], size[1])
+        self.adjustSize()
 
 
 class WCompterebours(QtGui.QWidget):
