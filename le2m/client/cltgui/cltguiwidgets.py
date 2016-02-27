@@ -47,7 +47,7 @@ class WExplication(QtGui.QWidget):
         super(WExplication, self).__init__(parent)
         self.ui = widExplication.Ui_Form()
         self.ui.setupUi(self)
-        self.set_size(size[0], size[1])
+        self.set_size(size)
         if html:
             self.set_html(text or u"")
         else:
