@@ -140,6 +140,7 @@ class GuiPartLoad(QtGui.QDialog):
         partslist = [f for f in os.listdir(params.getp("PARTSDIR")) if
                      os.path.isdir(os.path.join(params.getp("PARTSDIR"), f)) and
                      not f.startswith(".")]
+        partslist.sort()
 
         self._model = QtGui.QStandardItemModel()
         for p in partslist:
