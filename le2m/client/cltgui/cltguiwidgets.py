@@ -47,11 +47,14 @@ class WExplication(QtGui.QWidget):
         super(WExplication, self).__init__(parent)
         self.ui = widExplication.Ui_Form()
         self.ui.setupUi(self)
-        self.ui.textEdit.setFixedSize(size[0], size[1])
+        self.set_size(size[0], size[1])
         if html:
             self.set_html(text or u"")
         else:
             self.set_text(text or u"")
+
+    def set_size(self, size):
+        self.ui.textEdit.setFixedSize(size[0], size[1])
 
     def set_text(self, text):
         self.ui.textEdit.setText(text)
