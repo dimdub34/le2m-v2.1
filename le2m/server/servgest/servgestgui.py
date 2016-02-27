@@ -6,6 +6,7 @@ Cet objet, instancié une seule fois, gère toute la partie graphique du serveur
 
 from PyQt4 import QtGui
 import logging
+from util.utili18n import le2mtrans
 from server.servgui.servguiwindows import GuiServeur
 from server.servgui.servguidialogs import GuiInformation
 
@@ -106,14 +107,14 @@ class GestionnaireGraphique():
             titre=titre, text=text, parent=self._screen, size=size, html=html)
         ecran.exec_()
 
-    def question(self, message):
+    def question(self, message, parent=None):
         """
         Affiche une boite de dialogue question sur l'écran serveur,
         avec uniquement les boutons oui|non. 
         Renvoie le choix effectué (oui ou non).
         """
         reponse = QtGui.QMessageBox.question(
-            self._screen, "Question", message,
+            parent or self._screen, le2mtrans(u"Question"), message,
             QtGui.QMessageBox.No | QtGui.QMessageBox.Yes)
         return reponse == QtGui.QMessageBox.Yes
 
