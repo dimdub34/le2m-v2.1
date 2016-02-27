@@ -16,6 +16,14 @@ trans_GP = gettext.translation(
 TITLE_MSG = namedtuple("TITLE_MSG", "titre message")
 
 
+def get_histo_header():
+    return [trans_GP(u"Investment\nin the risky\noption"),
+            trans_GP(u"Result of\nthe random\ndraw"),
+            trans_GP(u"Payoff")]
+
+
+
+
 def get_text_explanation():
     txt = trans_GP(u"You have an endowment of {}. You can invest amount you want in the "
         u"risky option").format(get_pluriel(pms.DOTATION, pms.MONNAIE))

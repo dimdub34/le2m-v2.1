@@ -22,9 +22,8 @@ class PartieGP(Partie):
     repetitions = relationship('RepetitionsGP')
 
     def __init__(self, le2mserv, joueur):
-        Partie.__init__(self, "GneezyPotter", "GP")
-        self._le2mserv = le2mserv
-        self.joueur = joueur
+        Partie.__init__(self, "GneezyPotter", "GP", le2mserv=le2mserv,
+                        joueur=joueur)
         self.GP_gain_ecus = 0
         self.GP_gain_euros = 0
 
@@ -37,7 +36,7 @@ class PartieGP(Partie):
     def newperiod(self, period):
         logger.debug(u"{} New Period".format(self.joueur))
         self.currentperiod = RepetitionsGP(period)
-        self._le2mserv.gestionnaire_base.ajouter(self.currentperiod)
+        self.le2mserv.gestionnaire_base.ajouter(self.currentperiod)
         self.repetitions.append(self.currentperiod)
         yield (self.remote.callRemote("newperiod", period))
         logger.info(u"{} Ready for periode {}".format(self.joueur, period))

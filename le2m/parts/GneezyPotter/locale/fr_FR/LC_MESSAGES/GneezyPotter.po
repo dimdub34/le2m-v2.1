@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Gneezy Potter\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-01-03 11:08+0100\n"
-"PO-Revision-Date: 2016-02-16 19:30+0100\n"
+"POT-Creation-Date: 2016-02-27 13:20+0100\n"
+"PO-Revision-Date: 2016-02-27 13:22+0100\n"
 "Last-Translator: Dimitri DUBOIS <dimitri.dubois@umontpellier.fr>\n"
 "Language-Team: Dimitri DUBOIS <dimitri.dubois@umontpellier.fr>\n"
 "Language: fr_FR\n"
@@ -18,12 +18,30 @@ msgstr ""
 "X-Generator: Poedit 1.5.4\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/GneezyPotter/GneezyPotterTexts.py:23
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/GneezyPotter/GneezyPotterPart.py:38
-msgid "Decision"
-msgstr "Décision"
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/GneezyPotter/GneezyPotterTexts.py:20
+msgid ""
+"Investment\n"
+"in the risky\n"
+"option"
+msgstr ""
+"Investissement\n"
+"dans l'option\n"
+"risquée"
 
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/GneezyPotter/GneezyPotterTexts.py:25
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/GneezyPotter/GneezyPotterTexts.py:21
+msgid ""
+"Result of\n"
+"the random\n"
+"draw"
+msgstr ""
+"Résultat\n"
+"du tirage"
+
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/GneezyPotter/GneezyPotterTexts.py:22
+msgid "Payoff"
+msgstr "Gain"
+
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/GneezyPotter/GneezyPotterTexts.py:28
 msgid ""
 "You have an endowment of {}. You can invest amount you want in the risky "
 "option"
@@ -31,69 +49,51 @@ msgstr ""
 "Vous avez une dotation de {}. Vous pouvez investir la quantité que vous "
 "voulez dans l'option risquée"
 
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/GneezyPotter/GneezyPotterTexts.py:27
-msgid "Choose the amount you want to invest in the risky option"
-msgstr "Saisissez la quantité que vous investissez dans l'option risquée"
-
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/GneezyPotter/GneezyPotterTexts.py:30
-msgid "Warning"
-msgstr "Attention"
-
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/GneezyPotter/GneezyPotterTexts.py:31
-msgid "Warning message"
-msgstr "Message Attention"
-
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/GneezyPotter/GneezyPotterTexts.py:33
-msgid "Confirmation"
-msgstr "Confirmation"
-
 #: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/GneezyPotter/GneezyPotterTexts.py:34
-msgid "Do you confirm you choice?"
-msgstr "Vous confirmez votre choix?"
-
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/GneezyPotter/GneezyPotterTexts.py:39
 msgid "You invested {} in the risky option."
 msgstr "Vous avez investi {} dans l'option risquée."
 
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/GneezyPotter/GneezyPotterTexts.py:41
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/GneezyPotter/GneezyPotterTexts.py:36
 msgid "The random draw was {}."
 msgstr "Le résultat du tirage est {}."
 
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/GneezyPotter/GneezyPotterTexts.py:42
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/GneezyPotter/GneezyPotterPart.py:101
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/GneezyPotter/GneezyPotterTexts.py:37
 msgid "Head"
 msgstr "Pile"
 
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/GneezyPotter/GneezyPotterTexts.py:42
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/GneezyPotter/GneezyPotterPart.py:101
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/GneezyPotter/GneezyPotterTexts.py:38
 msgid "Tail"
 msgstr "Face"
 
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/GneezyPotter/GneezyPotterTexts.py:43
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/GneezyPotter/GneezyPotterTexts.py:39
 msgid "Your payoff is equal to {}."
 msgstr "Votre gain est de {}."
 
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/GneezyPotter/GneezyPotterGui.py:82
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/GneezyPotter/GneezyPotterGui.py:29
+msgid "Choose the amount you want to invest in the risky option"
+msgstr "Saisissez la quantité que vous investissez dans l'option risquée"
+
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/GneezyPotter/GneezyPotterGui.py:81
 msgid "Display summary (with payoffs)?"
 msgstr "Afficher le récapitulatif (avec les gains)?"
 
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/GneezyPotter/GneezyPotterGui.py:83
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/GneezyPotter/GneezyPotterGui.py:82
 msgid "No"
 msgstr "Non"
 
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/GneezyPotter/GneezyPotterGui.py:83
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/GneezyPotter/GneezyPotterGui.py:82
 msgid "Yes"
 msgstr "Oui"
 
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/GneezyPotter/GneezyPotterGui.py:90
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/GneezyPotter/GneezyPotterGui.py:89
 msgid "Configure"
 msgstr "Configurer"
 
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/GneezyPotter/GneezyPotterServ.py:54
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/GneezyPotter/GneezyPotterServ.py:53
 msgid "Start Gneezy Potter?"
 msgstr "Démarrer Gneezy Potter?"
 
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/GneezyPotter/GneezyPotterServ.py:88
+#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/GneezyPotter/GneezyPotterServ.py:87
 msgid "Random draws"
 msgstr "Tirages"
 
@@ -101,15 +101,20 @@ msgstr "Tirages"
 msgid "Av. amount invested"
 msgstr "Montant moyen investi"
 
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/GneezyPotter/GneezyPotterPart.py:39
-msgid "Random draw"
-msgstr "Tirage"
+#~ msgid "Decision"
+#~ msgstr "Décision"
 
-#: /home/irtimid/Documents/travail/programmes/le2m-v2.1/le2m/parts/GneezyPotter/GneezyPotterPart.py:40
-msgid "Payoff"
-msgstr "Gain"
+#~ msgid "Warning"
+#~ msgstr "Attention"
 
-#~ msgid ""
-#~ "Random\n"
-#~ "draw"
+#~ msgid "Warning message"
+#~ msgstr "Message Attention"
+
+#~ msgid "Confirmation"
+#~ msgstr "Confirmation"
+
+#~ msgid "Do you confirm you choice?"
+#~ msgstr "Vous confirmez votre choix?"
+
+#~ msgid "Random draw"
 #~ msgstr "Tirage"
