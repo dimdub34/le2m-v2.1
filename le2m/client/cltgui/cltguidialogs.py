@@ -86,7 +86,7 @@ class GuiHistorique(QtGui.QDialog):
 
         # table model: either historique or a new (empty) one
         self.tablemodel = TableModelHistorique(historique or [[], []])
-        self.widtableview = WTableview(self, self.tablemodel)
+        self.widtableview = WTableview(self, self.tablemodel, size=(600, 500))
         layout.addWidget(self.widtableview)
 
         buttons = QtGui.QDialogButtonBox(
@@ -126,20 +126,20 @@ class GuiRecapitulatif(QtGui.QDialog):
                 parent=self)
             layout.addWidget(self.widperiod)
 
-        self.widexplication = WExplication(text=texte_recap, parent=self)
+        self.widexplication = WExplication(text=texte_recap, parent=self,
+                                           size=(500, 80))
         layout.addWidget(self.widexplication)
 
         # ligne historique (entêtes et dernière ligne de l'historique)
         histo_recap = [historique[0], historique[-1]]
         self.tablemodel = TableModelHistorique(histo_recap)
         self.widtableview = WTableview(parent=self, tablemodel=self.tablemodel,
-                                       size=(450, 80))
+                                       size=(500, 90))
         self.widtableview.ui.tableView.verticalHeader().setResizeMode(
             QtGui.QHeaderView.Stretch)
         layout.addWidget(self.widtableview)
 
-        buttons = QtGui.QDialogButtonBox(
-            QtGui.QDialogButtonBox.Ok, QtCore.Qt.Horizontal, self)
+        buttons = QtGui.QDialogButtonBox(QtGui.QDialogButtonBox.Ok)
         buttons.accepted.connect(self._accept)
         layout.addWidget(buttons)
 

@@ -47,11 +47,12 @@ class WExplication(QtGui.QWidget):
         super(WExplication, self).__init__(parent)
         self.ui = widExplication.Ui_Form()
         self.ui.setupUi(self)
-        self.set_size(size)
         if html:
             self.set_html(text or u"")
         else:
             self.set_text(text or u"")
+        self.set_size(size)
+        self.adjustSize()
 
     def set_size(self, size):
         self.ui.textEdit.setFixedSize(size[0], size[1])
@@ -230,16 +231,13 @@ class WListDrag(QtGui.QWidget):
 class WTableview(QtGui.QWidget):
     def __init__(self, parent, tablemodel, size=(600, 600)):
         super(WTableview, self).__init__(parent)
+
         self.ui = widTableview.Ui_Form()
         self.ui.setupUi(self)
-
         self.ui.tableView.setModel(tablemodel)
-        self.set_size(size)
+        self.ui.tableView.setFixedSize(size[0], size[1])
         self.ui.tableView.horizontalHeader().setResizeMode(
             QtGui.QHeaderView.Stretch)
-
-    def set_size(self, size):
-        self.ui.tableView.setFixedSize(size[0], size[1])
         self.adjustSize()
 
 
