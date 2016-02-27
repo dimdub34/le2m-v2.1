@@ -152,6 +152,7 @@ class GuiPartLoad(QtGui.QDialog):
         self.ui.listView.setModel(self._model)
 
         self.setWindowTitle(le2mtrans(u"List of parts that can be loaded"))
+        self.adjustSize()
 
     def _onitemchanged(self, item):
         """
@@ -276,7 +277,7 @@ class GuiPartsPlayed(QtGui.QDialog):
             self._model.appendRow(item)
         self.ui.listView_parties.setModel(self._model)
 
-        self.setFixedSize(380, 480)
+        self.adjustSize()
 
     def _set_parties_selectionnees(self):
         if not self._liste_parties:
