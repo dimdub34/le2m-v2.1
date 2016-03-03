@@ -245,7 +245,8 @@ class GestionnaireExperience(QObject):
         Open a dialog box with the payoffs
         """
         payoffs = []
-        joueurs = self._le2msrv.gestionnaire_joueurs.get_players(partname)
+        joueurs = sorted(self._le2msrv.gestionnaire_joueurs.get_players(
+            partname))
         try:
             if partname == "base":
                 for j in joueurs:
