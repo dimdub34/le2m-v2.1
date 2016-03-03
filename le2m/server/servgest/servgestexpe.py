@@ -78,10 +78,10 @@ class GestionnaireExperience(QObject):
             partname.upper(), fg="white", bg="blue")
 
         # the players instantiate the part and get the corresponding remote
-        yield (self.run_func(
-            self._le2msrv.gestionnaire_joueurs.get_players(),
-            "add_part", self._le2msrv, partname, partclassname,
-            remoteclassname))
+        players = self._le2msrv.gestionnaire_joueurs.get_players()
+        self._le2msrv.gestionnaire_graphique.set_waitmode(players)
+        yield (self.run_func(players, "add_part", self._le2msrv,
+                             partname, partclassname, remoteclassname))
 
         self._parts.append(partname)
         self.stop_repetitions = False
