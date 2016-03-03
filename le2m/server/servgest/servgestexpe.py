@@ -246,7 +246,7 @@ class GestionnaireExperience(QObject):
         """
         payoffs = []
         joueurs = sorted(self._le2msrv.gestionnaire_joueurs.get_players(
-            partname))
+            partname), key=lambda x: x.joueur.hostname)
         try:
             if partname == "base":
                 for j in joueurs:
