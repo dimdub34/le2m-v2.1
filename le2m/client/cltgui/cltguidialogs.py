@@ -79,14 +79,14 @@ class GuiAccueil(QtGui.QDialog):
 
 
 class GuiHistorique(QtGui.QDialog):
-    def __init__(self, parent, historique):
+    def __init__(self, parent, historique, size=(600, 500)):
         super(GuiHistorique, self).__init__(parent)
 
         layout = QtGui.QVBoxLayout(self)
 
         # table model: either historique or a new (empty) one
         self.tablemodel = TableModelHistorique(historique or [[], []])
-        self.widtableview = WTableview(self, self.tablemodel, size=(600, 500))
+        self.widtableview = WTableview(self, self.tablemodel, size=size)
         layout.addWidget(self.widtableview)
 
         buttons = QtGui.QDialogButtonBox(
@@ -104,13 +104,24 @@ class GuiHistorique(QtGui.QDialog):
 
 class GuiRecapitulatif(QtGui.QDialog):
     """
-    Boite de dialogue pour le récapitulatif de la période ou du jeu one-shot
-    Si one-shot permet vaut 0
-    ecran_historique permet, si précisé de passer un écran historique qui vient
-    en remplacement de celui par défaut.
+    Dialog for the summary, for repeated game or one-shot.
+    If ecran_historique is set if replace the default GuiHistorique
     """
     def __init__(self, defered, automatique, parent, periode, historique,
-                 texte_recap, ecran_historique=None):
+                 texte_recap, ecran_historique=None, size_histo=(500, 90)):
+        """
+
+        :param defered:
+        :param automatique:
+        :param parent:
+        :param periode:
+        :param historique:
+        :param texte_recap:
+        :param ecran_historique:
+        :param size_histo: the size of the history table. The width of the
+        explanation area will be the same than the width of the history table
+        :return:
+        """
         super(GuiRecapitulatif, self).__init__(parent)
 
         self._defered = defered
@@ -127,14 +138,14 @@ class GuiRecapitulatif(QtGui.QDialog):
             layout.addWidget(self.widperiod)
 
         self.widexplication = WExplication(text=texte_recap, parent=self,
-                                           size=(500, 80))
+                                           size=(size_histo[0], 80))
         layout.addWidget(self.widexplication)
 
         # ligne historique (entêtes et dernière ligne de l'historique)
         histo_recap = [historique[0], historique[-1]]
         self.tablemodel = TableModelHistorique(histo_recap)
         self.widtableview = WTableview(parent=self, tablemodel=self.tablemodel,
-                                       size=(500, 90))
+                                       size=size_histo)
         self.widtableview.ui.tableView.verticalHeader().setResizeMode(
             QtGui.QHeaderView.Stretch)
         layout.addWidget(self.widtableview)
