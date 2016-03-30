@@ -127,7 +127,8 @@ class GuiRecapitulatif(QtGui.QDialog):
         self._defered = defered
         self._automatique = automatique
         self.ecran_historique = \
-            ecran_historique or GuiHistorique(self, historique)
+            ecran_historique or GuiHistorique(self, historique,
+                                              size=(size_histo[0], 500))
 
         layout = QtGui.QVBoxLayout(self)
 
