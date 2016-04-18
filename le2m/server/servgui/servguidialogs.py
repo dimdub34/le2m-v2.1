@@ -384,9 +384,9 @@ class GuiPayoffs(QtGui.QDialog):
     def _display_onremotes(self):
         text_temp = le2mtrans(u"the experiment") if \
             self._partname == "base" else self._partname
-        confirmation = self._le2mserv.gestionnaire_graphique.question(
+        confirmation = QtGui.QMessageBox.question(self, u"Confirmation",
             le2mtrans(u"Display the payoffs of {}?").format(text_temp))
-        if not confirmation:
+        if confirmation != QtGui.QMessageBox.Yes:
             return
 
         if self._partname == "base":
