@@ -156,6 +156,9 @@ class RemoteBase(pb.Root):
         if not remote:
             self._le2mclt.load_part(partname, remoteclassname)
             remote = self._le2mclt.get_remote(partname)
+            if not remote:
+                raise ValueError("Problem while loading the remote of part "
+                                 "{}".format(partname))
         return remote
 
     def remote_display_questcomp(self, question):
