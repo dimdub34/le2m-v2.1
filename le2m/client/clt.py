@@ -78,8 +78,6 @@ class Client(object):
         logger.info(u"{} Loading of part: {}".format(self.uid, partname))
         try:
 
-            logger.info("Try to load module parts.{p}.{p}Remote".format(
-                p=partname))
             module = importlib.import_module("parts.{p}.{p}Remote".format(
                 p=partname))
             logger.info(
