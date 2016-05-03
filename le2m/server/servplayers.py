@@ -89,8 +89,9 @@ class Joueur(Base):
                     raise ValueError("The player {} didn't get the remote of "
                                      "part {}".format(self.uid, partname))
                 partinstance.remote = partremoteinstance
-            except ValueError as e:
+            except (ValueError, pb.RemoteError) as e:
                 logger.critical(e.message)
+                raise
 
             # add the part to the dict with the part instances and to the list
             # of played parts
