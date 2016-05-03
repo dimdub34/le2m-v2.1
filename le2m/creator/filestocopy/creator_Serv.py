@@ -69,7 +69,7 @@ class Serveur(object):
                 return
     
         # Start part ===========================================================
-        for period in xrange(1 if pms.NOMBRE_PERIODES else 0,
+        for period in range(1 if pms.NOMBRE_PERIODES else 0,
                         pms.NOMBRE_PERIODES + 1):
 
             if self._le2mserv.gestionnaire_experience.stop_repetitions:

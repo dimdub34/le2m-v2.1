@@ -84,7 +84,6 @@ class Joueur(Base):
             self.parties.append(self._parts[partname])
             self.info(u"Part {} loaded".format(partname))
             self.remove_waitmode()
-            logger.debug(u"{}: Part {} loaded".format(self, partname))
 
     def info(self, texte, couleur="black"):
         self._gestionnaire_graphique.infoclt(
