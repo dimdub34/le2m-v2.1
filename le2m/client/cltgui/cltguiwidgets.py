@@ -160,6 +160,10 @@ class WRadio(QtGui.QWidget):
         selected.setChecked(True)
 
     def get_checkedbutton(self):
+        """
+        Return the index of the checked radioButton in the list
+        :return: Integer
+        """
         radios = [v for k, v in sorted(self.ui.__dict__.viewitems()) if
                   "radioButton" in k]
         checked = None
