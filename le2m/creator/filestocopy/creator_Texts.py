@@ -18,6 +18,7 @@ try:
       "EXPERIENCE_NOM", localedir, languages=[params.getp("LANG")]).ugettext
 except IOError:
     logger.critical(u"Translation file not found")
+    trans_EXPERIENCE_NOM_COURT = lambda x: x  # if there is an error, no translation
 
 
 def get_histo_head():
