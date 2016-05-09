@@ -71,20 +71,35 @@ class Joueur(Base):
         client.
         """
         if partname not in self._parts:
-            # instanciate the part
+            # load the module which contains the part
             partmodule = importlib.import_module("parts.{p}.{p}Part".format(
                 p=partname))
+
+            # get the class and instantiate it
             partclass = getattr(partmodule, partclassname)
-            partremoteinstance = yield (
-                self.get_part("base").remote.callRemote(
-                    "get_remote", partname, remoteclassname))
             partinstance = partclass(le2mserv, self)
-            partinstance.remote = partremoteinstance
+
+            # get the remote of the part and set the attribute remote in the
+            # corresponding part
+            try:
+                partremoteinstance = yield (
+                    self.get_part("base").remote.callRemote(
+                        "get_remote", partname, remoteclassname))
+                if not partremoteinstance:
+                    raise ValueError("The player {} didn't get the remote of "
+                                     "part {}".format(self.uid, partname))
+                partinstance.remote = partremoteinstance
+            except (ValueError, pb.RemoteError) as e:
+                logger.critical(e.message)
+                raise
+
+            # add the part to the dict with the part instances and to the list
+            # of played parts
             self._parts[partname] = partinstance
             self.parties.append(self._parts[partname])
+
             self.info(u"Part {} loaded".format(partname))
             self.remove_waitmode()
-            logger.debug(u"{}: Part {} loaded".format(self, partname))
 
     def info(self, texte, couleur="black"):
         self._gestionnaire_graphique.infoclt(

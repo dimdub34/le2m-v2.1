@@ -33,7 +33,7 @@ class RemoteEXPERIENCE_NOM_COURT(IRemote):
         :return:
         """
         logger.info(u"{} configure".format(self._le2mclt.uid))
-        for k, v in params.iteritems():
+        for k, v in params.viewitems():
             setattr(pms, k, v)
 
     def remote_newperiod(self, period):

@@ -77,6 +77,7 @@ class Client(object):
         success = False
         logger.info(u"{} Loading of part: {}".format(self.uid, partname))
         try:
+
             module = importlib.import_module("parts.{p}.{p}Remote".format(
                 p=partname))
             logger.info(

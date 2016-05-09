@@ -7,8 +7,7 @@ from datetime import datetime
 import random
 from util.utili18n import le2mtrans
 from questcomp.questcompgui import GuiQuestCompQuest
-from client.cltgui.cltguidialogs import GuiAccueil, GuiPopup, GuiFinal, \
-    GuiQuestionnaireFinal
+from client.cltgui.cltguidialogs import GuiAccueil, GuiPopup, GuiFinal
 from questcomp.questcompmod import Question, CopyQuestion
 import clttexts
 from client.cltgui.cltguidialogs import DQuestFinal
@@ -95,16 +94,16 @@ class RemoteBase(pb.Root):
         :param parts: a list where each item is a dict with 3 keys:
         remote_partie_name, remote_classname
         """
-        logger.info(u"{} Parts to load: {p}".format(self._le2mclt.uid, parts))
+        logger.info(u"{} Parts to load: {}".format(self._le2mclt.uid, parts))
         for p in parts:
             if self._le2mclt.get_remote(p):
                 continue  # the part is already loaded
             if self._le2mclt.load_remotepart(p):
-                logger.info(u"{} Part {} loaded".format(
+                logger.info(u"{} Part {} loaded".format(self._le2mclt.uid,
                     p["remote_partie_name"]))
             else:
                 logger.critical(
-                    le2mtrans(u"Error while loading part {p}").format(p=p))
+                    le2mtrans(u"Error while loading part {}").format(p))
     
     def remote_set_simulation(self, value):
         self._le2mclt.simulation = value
@@ -156,6 +155,9 @@ class RemoteBase(pb.Root):
         if not remote:
             self._le2mclt.load_part(partname, remoteclassname)
             remote = self._le2mclt.get_remote(partname)
+            if not remote:
+                raise ValueError("Problem while loading the remote of part "
+                                 "{}".format(partname))
         return remote
 
     def remote_display_questcomp(self, question):
@@ -180,6 +182,7 @@ class RemoteBase(pb.Root):
         """
         Display the information in a qmessagebox
         :param txt: the text to be displayed
+        :param html: Whether or not text is in the html format
         """
         logger.info(u"Information: {}".format(txt))
         if self._le2mclt.simulation:
@@ -252,7 +255,8 @@ class RemoteQuestionnaireFinal(pb.Referenceable):
             if inputs["fratrie_nombre"] > 0:
                 inputs["fratrie_rang"] = random.randint(
                     1, inputs["fratrie_nombre"] + 1)
-            else: inputs["fratrie_rang"] = 0
+            else:
+                inputs["fratrie_rang"] = 0
             # sportivité
             inputs["sportif"] = random.randint(0, 1)
             if inputs["sportif"] == 0:

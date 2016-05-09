@@ -9,11 +9,16 @@ from util.utili18n import le2mtrans
 import os
 import configuration.configparam as params
 import gettext
+import logging
 
-
+logger = logging.getLogger("le2m")
 localedir = os.path.join(params.getp("PARTSDIR"), "EXPERIENCE_NOM", "locale")
-trans_EXPERIENCE_NOM_COURT = gettext.translation(
-  "EXPERIENCE_NOM", localedir, languages=[params.getp("LANG")]).ugettext
+try:
+    trans_EXPERIENCE_NOM_COURT = gettext.translation(
+      "EXPERIENCE_NOM", localedir, languages=[params.getp("LANG")]).ugettext
+except IOError:
+    logger.critical(u"Translation file not found")
+    trans_EXPERIENCE_NOM_COURT = lambda x: x  # if there is an error, no translation
 
 
 def get_histo_head():

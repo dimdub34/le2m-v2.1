@@ -631,7 +631,7 @@ class DQuestFinal(QtGui.QDialog):
             items=religion_important)
         self._gridlayout.addWidget(self._religion_place, 5, 0)
 
-        religions_names = [v for k, v in sorted(configvar.RELIGION_NAMES.iteritems())]
+        religions_names = [v for k, v in sorted(configvar.RELIGION_NAMES.viewitems())]
         religions_names.insert(0, le2mtrans(u"Choose"))
         religions_names.append(le2mtrans(u"Not in the list above"))
         self._religion_name = WCombo(
