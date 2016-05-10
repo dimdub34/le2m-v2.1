@@ -27,7 +27,7 @@ from extractor import extractor
 from questcomp import questcomp
 
 
-logger = logging.getLogger("le2m")
+logger = logging.getLogger("le2m.{}".format(__name__))
 
 
 def _add_list(texte, liste, **kwargs):

@@ -7,7 +7,7 @@ import datetime
 from util.utili18n import le2mtrans
 
 
-logger = logging.getLogger("le2m")
+logger = logging.getLogger("le2m.{}".format(__name__))
 compteur_groupe = 0
 
 

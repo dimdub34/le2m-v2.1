@@ -12,7 +12,7 @@ from util import utiltools, utiltwisted
 from server.servgui.servguidialogs import GuiPayoffs
 
 
-logger = logging.getLogger("le2m")
+logger = logging.getLogger("le2m.{}".format(__name__))
 
 
 class GestionnaireExperience(QObject):
@@ -45,7 +45,7 @@ class GestionnaireExperience(QObject):
                 serv = getattr(module, "Serveur")
                 self._servs[p] = serv(self._le2msrv)
                 self._le2msrv.gestionnaire_graphique.infoserv(
-                    le2mtrans(u"Part {p} loaded").format(p=p))
+                    le2mtrans(u"Part") + " {} ".format(p) + le2mtrans(u"loaded"))
             except ImportError as e:
                 logger.critical(
                     u"Error while loading part {p}: {msg}".format(
@@ -122,9 +122,9 @@ class GestionnaireExperience(QObject):
             return
 
         yield (
-            self.run_step(u"Questionnaire compréhension", participants,
-                          "display_questcomp",
-                          questionnaire))
+            self.run_step(
+                le2mtrans(u"Understanding questionnaire"), participants,
+                "display_questcomp", questionnaire))
 
     def compute_periodpayoffs(self, partname):
         """

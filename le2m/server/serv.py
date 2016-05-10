@@ -24,7 +24,7 @@ from servgest.servgestgroups import GestionnaireGroupes
 from twisted.internet import reactor
 
 
-logger = logging.getLogger("le2m")
+logger = logging.getLogger("le2m.{}".format(__name__))
 
 
 class Serveur(object):

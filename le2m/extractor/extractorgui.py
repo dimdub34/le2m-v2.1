@@ -7,7 +7,7 @@ from extractorui import extractorscreen
 from extractorutil import extrans
 
 
-logger = logging.getLogger("extractor")
+logger = logging.getLogger("extractor.{}".format(__name__))
 
 
 class GuiExtractor(QtGui.QDialog):

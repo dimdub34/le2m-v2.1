@@ -15,7 +15,7 @@ from servguitablemodels import TableModelPaiements
 from util.utilwidgets import WDice, WRandint, WHeadtail
 
 
-logger = logging.getLogger("le2m")
+logger = logging.getLogger("le2m.{}".format(__name__))
 
 
 class GuiGenres(QtGui.QDialog):

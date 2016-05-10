@@ -10,7 +10,7 @@ from servbase import Base
 import servparties
 
 
-logger = logging.getLogger("le2m")
+logger = logging.getLogger("le2m.{}".format(__name__))
 
 parties_joueurs_table = Table(
     'parties_joueurs__joueurs_parties', Base.metadata,
