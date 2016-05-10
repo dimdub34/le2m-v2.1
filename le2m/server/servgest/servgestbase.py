@@ -34,7 +34,7 @@ class GestionnaireBase():
         """
         fichier = "{}".format(os.path.join(dossier, nom_fichier))
         logger.info("database path: {}".format(fichier))
-        engine = create_engine("sqlite:///{}".format(fichier), echo=True)
+        engine = create_engine("sqlite:///{}".format(fichier), echo=False)
         DB.configure(bind=engine)
         self._db = DB()
         Base.metadata.create_all(engine)
