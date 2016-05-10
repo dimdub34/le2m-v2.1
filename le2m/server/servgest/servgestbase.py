@@ -64,8 +64,8 @@ class GestionnaireBase():
             self.ajouter(player)
             self._session.joueurs.append(player)
             self.enregistrer()
-            logger.info(le2mtrans(u"Player {p} added to the database").format(
-                p=player))
+            logger.info(le2mtrans(u"Player {} added to the database").format(
+                player))
         except AttributeError:
             self._playerstoadd.append(player)
 
