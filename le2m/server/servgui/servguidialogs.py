@@ -242,6 +242,7 @@ class GuiPartLoad(QtGui.QDialog):
 
         self._experiment = Experiment(
             parts, dirbase, basename, self.ui.checkBox_test.isChecked())
+        logger.info("Experiment parameters: {}".format(self._experiment))
         self.accept()
 
     def get_expeinfos(self):
