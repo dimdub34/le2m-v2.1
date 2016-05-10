@@ -100,7 +100,7 @@ def main():
     console_log.setLevel(logging.DEBUG)
     console_log.setFormatter(formatter)
     logger.addHandler(console_log)
-    logger.info(100 * "=")
+    logger.info(60 * "=")
     logger.info("Logger LE2M created")
     logger.info("APPDIR: {}".format(params.getp("APPDIR")))
     logger.info("PARTSDIR: {}".format(params.getp("PARTSDIR")))
