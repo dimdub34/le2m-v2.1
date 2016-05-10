@@ -81,7 +81,7 @@ class GestionnaireJoueurs(pb.Root, QObject):
         :param partname:
         :return: list
         """
-        logger.debug(u"get_players with arg {}".format(partname))
+        # logger.debug(u"get_players with arg {}".format(partname))
         if partname:
             players = [p.get_part(partname) for p in self._joueurs.viewvalues()]
             if players.count(None) == len(players):
