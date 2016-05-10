@@ -27,7 +27,7 @@ from extractor import extractor
 from questcomp import questcomp
 
 
-logger = logging.getLogger("le2m")
+logger = logging.getLogger("le2m.{}".format(__name__))
 
 
 def _add_list(texte, liste, **kwargs):
@@ -308,9 +308,8 @@ class GuiServeur(QtGui.QMainWindow):
             return
         screenparts = GuiPartLoad(self)
         if screenparts.exec_():
-            expeinfos = screenparts.get_expeinfos()
-            logger.info(le2mtrans(u"Experiment: {e}").format(e=expeinfos))
-            self._le2mserv.gestionnaire_experience.load_experiment(expeinfos)
+            self._le2mserv.gestionnaire_experience.load_experiment(
+                screenparts.get_expeinfos())
         else:
             return
     

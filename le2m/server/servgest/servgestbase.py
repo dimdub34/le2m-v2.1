@@ -9,7 +9,7 @@ from util.utili18n import le2mtrans
 from server.servbase import Base, DB
 
 
-logger = logging.getLogger("le2m")
+logger = logging.getLogger("le2m.{}".format(__name__))
 
 
 class GestionnaireBase():
@@ -33,11 +33,12 @@ class GestionnaireBase():
         starts the software.
         """
         fichier = "{}".format(os.path.join(dossier, nom_fichier))
-        engine = create_engine("sqlite:///{}".format(fichier, echo=True))
+        logger.info("database path: {}".format(fichier))
+        engine = create_engine("sqlite:///{}".format(fichier), echo=False)
         DB.configure(bind=engine)
         self._db = DB()
         Base.metadata.create_all(engine)
-        logger.info(le2mtrans(u"database created: {db}").format(db=fichier))
+        logger.info(le2mtrans("database created"))
 
         # add the session to the database
         self._session = Session(self._nom_session, self._heure_debut, istest)
@@ -63,8 +64,8 @@ class GestionnaireBase():
             self.ajouter(player)
             self._session.joueurs.append(player)
             self.enregistrer()
-            logger.info(le2mtrans(u"Player {p} added to the database").format(
-                p=player))
+            logger.info(le2mtrans(u"Player {} added to the database").format(
+                player))
         except AttributeError:
             self._playerstoadd.append(player)
 
