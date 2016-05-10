@@ -66,10 +66,6 @@ def main():
                              help=i18n.le2mtrans(u"The session is launched for "
                                                  u"real (not test mode)"))
     parser.set_defaults(test=True)
-    # parser.add_argument("-nt", "--notest", action="store_false", default=True,
-    #                     help=i18n.le2mtrans(
-    #                         u"With this option the experiment is launched for "
-    #                         u"real"))
 
     # check the options ========================================================
     args = parser.parse_args()
@@ -79,7 +75,7 @@ def main():
     if args.parts:
         for e in args.parts:
             if e not in os.listdir(params.getp("PARTSDIR")):
-                parser.error(i18n.le2mtrans(u"Part {p} does not exist").format(p=e))
+                parser.error(i18n.le2mtrans(u"Part {} does not exist").format(e))
     # check database if several parts
     if len(args.parts) > 1 and not args.dirbase:
         parser.error(i18n.le2mtrans(
@@ -104,11 +100,11 @@ def main():
     console_log.setLevel(logging.DEBUG)
     console_log.setFormatter(formatter)
     logger.addHandler(console_log)
-    logger.info(30 * "=")
+    logger.info(100 * "=")
     logger.info("Logger LE2M created")
     logger.info("APPDIR: {}".format(params.getp("APPDIR")))
     logger.info("PARTSDIR: {}".format(params.getp("PARTSDIR")))
-    logger.info("Command ligne options: {}".format(options))
+    logger.info("Command line options: {}".format(options))
 
     # start server -------------------------------------------------------------
     from server.serv import Serveur
