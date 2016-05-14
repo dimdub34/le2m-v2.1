@@ -111,6 +111,18 @@ def get_partdata(database, partname):
             "where sessions.isTest = 0 " \
             "order by sessions.nom"
 
+    elif partname is "partie_base":
+        req = \
+            "SELECT s.nom as session, j.uid as joueur, j.hostname as hostname, m.* " \
+            "from sessions s, joueurs j, parties p, " \
+            "parties_joueurs__joueurs_parties q, {} m " \
+            "where s.isTest = 0 " \
+            "and j.session_id = s.id " \
+            "and q.joueurs_uid = j.uid " \
+            "and p.id = q.parties_id " \
+            "and m.partie_id = p.id " \
+            "order by s.nom".format(partname)
+
     elif "repetitions" in partname:
         part_withoutrep = "_".join(partname.split("_")[:-1])
         req = \
