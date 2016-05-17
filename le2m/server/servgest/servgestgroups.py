@@ -31,10 +31,10 @@ def former_groupes(population, taille, prefixeid=None):
     groupes = dict()
     global compteur_groupe
 
-    for i in xrange(nb):
+    for i in range(nb):
         g_id = pre_id + str(compteur_groupe)
         groupes[g_id] = []
-        for j in xrange(taille):
+        for j in range(taille):
             selec = random.choice(dispos)
             groupes[g_id].append(selec)
             dispos.remove(selec)

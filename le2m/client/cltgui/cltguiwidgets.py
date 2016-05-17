@@ -177,6 +177,10 @@ class WRadio(QtGui.QWidget):
 
 
 class WListDrag(QtGui.QWidget):
+    """
+    This widget allows to move some elements from the list on the left side to
+    the list on the right side.
+    """
     def __init__(self, parent, size=(80, 100)):
         super(WListDrag, self).__init__(parent)
         self.ui = widListDrag.Ui_Form()
