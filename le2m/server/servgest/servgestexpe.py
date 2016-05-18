@@ -245,8 +245,14 @@ class GestionnaireExperience(QObject):
         Open a dialog box with the payoffs
         """
         payoffs = []
-        joueurs = sorted(self._le2msrv.gestionnaire_joueurs.get_players(
-            partname), key=lambda x: x.joueur.hostname)
+        try:
+            joueurs = sorted(self._le2msrv.gestionnaire_joueurs.get_players(
+                partname), key=lambda x: x.joueur.hostname)
+        except TypeError:  # no client connected
+            QtGui.QMessageBox.warning(
+                self._le2msrv.gestionnaire_graphique.screen,
+                le2mtrans(u"warning"), le2mtrans(u"No client connected"))
+            return
         try:
             if partname == "base":
                 for j in joueurs:
