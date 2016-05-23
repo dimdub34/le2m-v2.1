@@ -1,6 +1,14 @@
 #! /usr/bin/env python2
 # -*- coding: utf-8 -*-
 
+"""
+This module is dedicated to the extraction of the data created with LE2M.
+The extractor() function opens the GUI application.
+get_parts return the list of the parts in the database, while get_parts_data
+returns a dataframe with the data of the part provided as argument to the
+function.
+"""
+
 from PyQt4 import QtGui
 import pandas as pd
 import os
@@ -21,7 +29,8 @@ if sys.platform.startswith("win"):
 
 def extractor():
     """
-    Script to extract data from an le2m sqlite file to a csv file
+    Script to extract data from an le2m sqlite file to a csv file.
+    Open a QtDialog.
     :return:
     """
     extractorutil.create_logger()
@@ -84,6 +93,11 @@ def extractor():
 
 
 def get_parts(database):
+    """
+    Return the list of the parts in the database
+    :param database:
+    :return: list
+    """
     parts = pd.read_sql(
         "SELECT name FROM sqlite_master WHERE type='table';", database)
     return [p for p in parts.name]
@@ -100,6 +114,12 @@ def get_splittedparts(parts):
 
 
 def get_partdata(database, partname):
+    """
+    Extracts the data of the part and put it in a pandas DataFrame
+    :param database:
+    :param partname:
+    :return: DataFrame
+    """
     parts = get_parts(database)
     if partname not in parts:
         return None
