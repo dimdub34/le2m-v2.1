@@ -4,7 +4,10 @@ from PyQt4 import QtGui, QtCore
 import random
 from datetime import timedelta
 from util.utiltools import CompteARebours
-from client.clttexts import le2mtrans
+try:
+    from util.utili18n import le2mtrans
+except AttributeError:
+    le2mtrans = lambda x: x
 from cltguisrc.cltguisrcwid import widExplication, widPeriod, widCombo, \
     widSpinbox, widRadio, widListDrag, widTableview, widCompterebours, \
     widChat, widSlider, widLabel, widLineEdit

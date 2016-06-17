@@ -5,7 +5,10 @@ Please don't do any changes to this file
 """
 
 from collections import namedtuple
-from util.utili18n import le2mtrans
+try:
+    from util.utili18n import le2mtrans
+except AttributeError:
+    le2mtrans = lambda x: x
 
 Experiment = namedtuple(
     "Experiment",
