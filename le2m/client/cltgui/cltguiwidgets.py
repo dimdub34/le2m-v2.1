@@ -4,7 +4,7 @@ from PyQt4 import QtGui, QtCore
 import random
 from datetime import timedelta
 from util.utiltools import CompteARebours
-try:
+try:  # this way it is possible to load this module independently
     from util.utili18n import le2mtrans
 except AttributeError:
     le2mtrans = lambda x: x
