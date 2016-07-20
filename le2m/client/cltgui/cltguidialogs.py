@@ -729,9 +729,10 @@ class DQuestFinal(QtGui.QDialog):
             inputs['religion_nom'] = self._religion_name.get_currentindex()
 
         except ValueError:
-            return  QtGui.QMessageBox.warning(
+            QtGui.QMessageBox.warning(
                 self, le2mtrans(u"Warning"),
                 le2mtrans(u"You must answer to all the questions"))
+            return None
 
         return inputs
 
