@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'le2m_gui_questionnaireComprehension.ui'
+# Form implementation generated from reading ui file 'questcompquest.ui'
 #
-# Created: Tue Oct 15 16:23:04 2013
-#      by: PyQt4 UI code generator 4.9.1
+# Created: Wed Jul 20 07:44:18 2016
+#      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -12,15 +12,24 @@ from PyQt4 import QtCore, QtGui
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
 except AttributeError:
-    _fromUtf8 = lambda s: s
+    def _fromUtf8(s):
+        return s
+
+try:
+    _encoding = QtGui.QApplication.UnicodeUTF8
+    def _translate(context, text, disambig):
+        return QtGui.QApplication.translate(context, text, disambig, _encoding)
+except AttributeError:
+    def _translate(context, text, disambig):
+        return QtGui.QApplication.translate(context, text, disambig)
 
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName(_fromUtf8("Dialog"))
         Dialog.setWindowModality(QtCore.Qt.WindowModal)
         Dialog.resize(600, 450)
-        Dialog.setMinimumSize(QtCore.QSize(600, 450))
-        Dialog.setMaximumSize(QtCore.QSize(600, 450))
+        Dialog.setMinimumSize(QtCore.QSize(0, 0))
+        Dialog.setMaximumSize(QtCore.QSize(16777215, 16777215))
         self.verticalLayout = QtGui.QVBoxLayout(Dialog)
         self.verticalLayout.setObjectName(_fromUtf8("verticalLayout"))
         self.horizontalLayout = QtGui.QHBoxLayout()
@@ -65,7 +74,7 @@ class Ui_Dialog(object):
         QtCore.QMetaObject.connectSlotsByName(Dialog)
 
     def retranslateUi(self, Dialog):
-        Dialog.setWindowTitle(QtGui.QApplication.translate("Dialog", "Question de compréhension", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_numeroQuestion.setText(QtGui.QApplication.translate("Dialog", "Question ", None, QtGui.QApplication.UnicodeUTF8))
-        self.pushButton_valider.setText(QtGui.QApplication.translate("Dialog", "Valider", None, QtGui.QApplication.UnicodeUTF8))
+        Dialog.setWindowTitle(_translate("Dialog", "Question de compréhension", None))
+        self.label_numeroQuestion.setText(_translate("Dialog", "Question ", None))
+        self.pushButton_valider.setText(_translate("Dialog", "Valider", None))
 

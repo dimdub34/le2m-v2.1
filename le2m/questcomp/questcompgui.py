@@ -461,6 +461,10 @@ class GuiQuestCompQuest(QtGui.QDialog):
         self.ui.hl_propositions.addItem(espace_droite)
 
         self.ui.pushButton_valider.clicked.connect(self._accept)
+
+        self.adjustSize()
+        self.setFixedSize(self.size())
+
         if self._automatique:
             self._timer = QtCore.QTimer()
             self._timer.timeout.connect(self._accept)
@@ -475,7 +479,8 @@ class GuiQuestCompQuest(QtGui.QDialog):
         textes_items_selectionnes = []
         for b in self._cases_decisions:
             if b.isChecked():
-                textes_items_selectionnes.append(b.text())
+                textes_items_selectionnes.append(
+                    unicode(b.text().toUtf8(), "utf-8"))
         if not textes_items_selectionnes:
             QtGui.QMessageBox.warning(
                 self, qctrans(u'Warning'),
@@ -492,11 +497,12 @@ class GuiQuestCompQuest(QtGui.QDialog):
             if len(self._question.goodanswers) > 1:
                 texte = qctrans(u"The right answers were")
                 texte += u": \n {}".format(
-                    u"\n".join(map(str, self._question.goodanswers)))
+                    u"\n".join(self._question.goodanswers))
             else:
                 texte = qctrans(u"The right answer was ")
                 texte += u": {}".format(self._question.goodanswers[0])
-            texte += u"\n{}".format(self._question.explanation)
+
+            texte += u"\n\n{}".format(self._question.explanation)
 
             QtGui.QMessageBox.information(self, qctrans("Information"), texte)
 
