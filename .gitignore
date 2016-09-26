@@ -7,6 +7,7 @@
 *.sqlite
 dist
 *new.po
+le2m/questcomp/questcomp.log
 le2m/parts/oathAndLies
 le2m/parts/TeamCommunication
 le2m/parts/voteMajorite
