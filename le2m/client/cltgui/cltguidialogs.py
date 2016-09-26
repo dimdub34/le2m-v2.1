@@ -547,7 +547,7 @@ class DQuestFinal(QtGui.QDialog):
         # first line: year of birth and nationality-----------------------------
         currentyear = datetime.now().year
         self._birth = WSpinbox(label=le2mtrans(u"Year of birth"), parent=self,
-                                minimum=currentyear-100, maximum=currentyear,
+                                minimum=currentyear-100, maximum=currentyear-16,
                                 interval=1, automatique=self._automatique)
         self._birth.ui.spinBox.setValue(currentyear)
         self._gridlayout.addWidget(self._birth, 0, 0)
