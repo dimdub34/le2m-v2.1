@@ -164,7 +164,7 @@ def get_module_info(module):
     :return: str
     """
     temp = get_module_attributes(module)
-    templist = [u"- {}: {}".format(k, v) for k, v in temp.iteritems()]
+    templist = [u"- {}: {}".format(k, v) for k, v in sorted(temp.viewitems())]
     return u"\n".join(templist)
 
 
