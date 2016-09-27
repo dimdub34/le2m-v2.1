@@ -75,6 +75,9 @@ class IRemote(pb.Referenceable):
         self.payoff_text = clttexts.get_payoff_text(
             self.payoff_euros, self.payoff_ecus)
 
+    def remote_set_payoff_text(self, payoff_text):
+        self.payoff_text = payoff_text
+
     def remote_display_payoffs(self):
         logger.debug(u"{} display_payoffs".format(self.le2mclt.uid))
         return self.le2mclt.get_remote("base").remote_display_information(
