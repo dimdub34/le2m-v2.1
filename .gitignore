@@ -7,7 +7,7 @@
 *.sqlite
 dist
 *new.po
-Thumbs.db
+le2m/questcomp/questcomp.log
 le2m/parts/oathAndLies
 le2m/parts/TeamCommunication
 le2m/parts/voteMajorite
@@ -18,5 +18,7 @@ le2m/parts/bienPublicKate/
 le2m/parts/identiteConflits/
 le2m/parts/HoltLaury/
 le2m/parts/pestuse/
+le2m/parts/PublicGoodStrategyMethod
+
 
 
