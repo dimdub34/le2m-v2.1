@@ -27,10 +27,12 @@ def get_histo_head():
 
 
 def get_text_explanation():
-    txt = trans_PGG(u"You have an endowment of {} tokens. Please choose how "
-                    u"much token(s) you want to put in the public "
-                    u"account.").format(pms.DOTATION)
-    return txt
+    return trans_PGG(u"You have an endowment of {} tokens.").format(pms.DOTATION)
+
+
+def get_text_label_decision():
+    return trans_PGG(u"Please enter the number of token(s) you put on the "
+                     u"public account")
 
 
 def get_text_summary(period_content):

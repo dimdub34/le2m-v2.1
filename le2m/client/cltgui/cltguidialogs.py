@@ -547,7 +547,7 @@ class DQuestFinal(QtGui.QDialog):
         # first line: year of birth and nationality-----------------------------
         currentyear = datetime.now().year
         self._birth = WSpinbox(label=le2mtrans(u"Year of birth"), parent=self,
-                                minimum=currentyear-100, maximum=currentyear-16,
+                                minimum=currentyear-100, maximum=currentyear,
                                 interval=1, automatique=self._automatique)
         self._birth.ui.spinBox.setValue(currentyear)
         self._gridlayout.addWidget(self._birth, 0, 0)
@@ -697,8 +697,11 @@ class DQuestFinal(QtGui.QDialog):
     def _get_inputs(self):
         inputs = {}
         try:
-
-            inputs['naissance'] = self._birth.get_value()
+            birth = self._birth.get_value()
+            if birth == datetime.now().year:
+                raise ValueError(le2mtrans(u"Please enter your year of birth"))
+            else:
+                inputs['naissance'] = birth
             inputs["nationalite"] = self._nationality.get_currentindex()
             inputs["genre"] = self._gender.get_checkedbutton()
             inputs['couple'] = self._couple.get_checkedbutton()
