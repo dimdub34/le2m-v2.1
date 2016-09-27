@@ -34,8 +34,7 @@ class GuiDecision(QtGui.QDialog):
         layout.addWidget(wexplanation)
 
         self._wdecision = WSpinbox(
-            label=trans_PGG(u"How much token(s) do you want to put in the "
-                            u"public account?"),
+            label=textes_PGG.get_text_label_decision(),
             minimum=pms.DECISION_MIN, maximum=pms.DECISION_MAX,
             interval=pms.DECISION_STEP, automatique=self._automatique,
             parent=self)
