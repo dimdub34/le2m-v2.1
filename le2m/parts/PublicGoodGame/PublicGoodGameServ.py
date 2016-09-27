@@ -78,7 +78,7 @@ class Serveur(object):
         self._data = []
 
         # start ================================================================
-        for period in xrange(1 if pms.NOMBRE_PERIODES else 0,
+        for period in range(1 if pms.NOMBRE_PERIODES else 0,
                         pms.NOMBRE_PERIODES + 1):
 
             if self._le2mserv.gestionnaire_experience.stop_repetitions:
@@ -100,7 +100,7 @@ class Serveur(object):
             self._le2mserv.gestionnaire_graphique.infoserv(
                 trans_PGG(u"Total amount by group"))
             for g, m in self._le2mserv.gestionnaire_groupes.get_groupes(
-                    "PublicGoodGame").iteritems():
+                    "PublicGoodGame").viewitems():
                 total = sum([p.currentperiod.PGG_public for p in m])
                 for p in m:
                     p.currentperiod.PGG_publicgroup = total
