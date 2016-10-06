@@ -184,6 +184,9 @@ class CompteARebours(QThread):
             time.sleep(1)
         self.endoftime.emit()
 
+    def stop(self):
+        self.quit()
+
 
 def get_dictkeyfromvalue(dictio, value):
     """

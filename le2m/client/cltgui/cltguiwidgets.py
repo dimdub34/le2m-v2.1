@@ -277,6 +277,9 @@ class WCompterebours(QtGui.QWidget):
         self.compterebours.endoftime.connect(actionfin)
         self.compterebours.start()
 
+    def stop(self):
+        self.compterebours.stop()
+
 
 class WChat(QtGui.QWidget):
     def __init__(self, parent, action_send, size_read=(450, 150),
