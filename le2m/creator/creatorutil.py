@@ -24,7 +24,7 @@ def create_logger():
         datefmt="%d/%m/%Y - %H:%M:%S")
     # file_handler = RotatingFileHandler('creator.log', 'a', 1000000, 1)
     file_handler = logging.FileHandler(
-        os.path.join(tempfile.gettempdir(), "creator.log"))
+        os.path.join(tempfile.gettempdir(), "LE2M_creator.log"))
     file_handler.setLevel(logging.INFO)
     file_handler.setFormatter(formatter)
     logger.addHandler(file_handler)
