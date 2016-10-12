@@ -4,7 +4,8 @@ __author__ = "Dimitri DUBOIS"
 import os
 import gettext
 import logging
-from logging.handlers import RotatingFileHandler
+import tempfile
+
 
 _current_directory = os.path.dirname(os.path.realpath(__file__))
 _localedir = os.path.join(_current_directory, "locale")
@@ -24,7 +25,8 @@ def create_logger():
     formatter = logging.Formatter(
         '%(name)s | %(asctime)s | %(levelname)s | %(message)s',
         datefmt="%d/%m/%Y - %H:%M:%S")
-    file_handler = RotatingFileHandler('questcomp.log', 'a', 1000000, 1)
+    file_handler = logging.FileHandler(
+        os.path.join(tempfile.gettempdir(), "LE2M_comprehension.log"))
     file_handler.setLevel(logging.INFO)
     file_handler.setFormatter(formatter)
     logger.addHandler(file_handler)
