@@ -66,7 +66,7 @@ def extractor():
     nbparts = len(datatemp)
     if nbparts > 1:
         for i in range(1, nbparts):
-            data = pd.merge(data, datatemp[i], on="joueur")
+            data = pd.merge(data, datatemp[i], on=["session", "joueur"])
 
     sessions = get_partdata(database, "sessions")
     base = get_partdata(database, "partie_base")
