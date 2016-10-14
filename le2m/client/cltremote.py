@@ -78,7 +78,7 @@ class IRemote(pb.Referenceable):
     def remote_display_payoffs(self):
         logger.debug(u"{} display_payoffs".format(self.le2mclt.uid))
         return self.le2mclt.get_remote("base").remote_display_information(
-            self.payoff_text, screensize=(400, 200))
+            self.payoff_text)
 
 
 class RemoteBase(pb.Root):
