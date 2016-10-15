@@ -99,6 +99,17 @@ class GestionnaireJoueurs(pb.Root, QObject):
                            le2mtrans(u"is not in the list of connected players"))
             return None
 
+    def get_player_from_string(self, player_str):
+        """
+        Return the player based on its representation
+        :param player_str:
+        :return:
+        """
+        for v in self._joueurs.viewvalues():
+            if player_str == str(v):
+                return v
+        return None
+
     def get_nombre_joueurs(self):
         return len(self.get_players())
 
