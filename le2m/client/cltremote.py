@@ -178,11 +178,12 @@ class RemoteBase(pb.Root):
             ecran.show()
             return defered
             
-    def remote_display_information(self, txt, html=True):
+    def remote_display_information(self, txt, html=True, screensize=(300, 100)):
         """
         Display the information in a qmessagebox
         :param txt: the text to be displayed
         :param html: Whether or not text is in the html format
+        :param screensize: the size of the popup screen
         """
         logger.info(u"Information: {}".format(txt))
         if self._le2mclt.simulation:
@@ -190,9 +191,11 @@ class RemoteBase(pb.Root):
         else:
             defered = defer.Deferred()
             if self._le2mclt.automatique:
-                popup = GuiPopup(defered, txt, 7000, self._le2mclt.screen)
+                popup = GuiPopup(defered, txt, 7000, self._le2mclt.screen,
+                                 size=screensize)
             else:
-                popup = GuiPopup(defered, txt, 0, self._le2mclt.screen)
+                popup = GuiPopup(defered, txt, 0, self._le2mclt.screen,
+                                 size=screensize)
             popup.show()
             return defered
 
