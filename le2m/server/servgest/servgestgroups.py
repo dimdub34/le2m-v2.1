@@ -328,7 +328,7 @@ class GestionnaireGroupes(object):
                 for j in m:
                     setattr(j, "sousgroupe", sg)
                     setattr(j, "other_subgroup_members",
-                            self.get_autres_membres_sousgroupe(j))
+                            tuple(self.get_autres_membres_sousgroupe(j)))
 
         # affichage des sousgroupes sur la liste serveur ~~~~~~~~~~~~~~~~~~~~~~~
         self._le2mserv.gestionnaire_graphique.infoserv(
