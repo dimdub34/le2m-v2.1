@@ -59,7 +59,11 @@ class Joueur(Base):
         self.parties.append(self._parts["base"])
         self.parties.append(self._parts["questionnaireFinal"])
         self._gender = None
-        self._groupe = None
+        self._groupe = None  # obsolete, use group rather
+        self._group = None
+        self._other_group_members = None
+        self._subgroup = None
+        self._other_subgroup_members = None
 
     @defer.inlineCallbacks
     def add_part(self, le2mserv, partname, partclassname, remoteclassname):
@@ -150,3 +154,42 @@ class Joueur(Base):
     @groupe.setter
     def groupe(self, val):
         self._groupe = val
+
+    @property
+    def group(self):
+        return self._group
+
+    @group.setter
+    def group(self, val):
+        self._group = val
+
+    @property
+    def other_group_members(self):
+        """
+        :return: a tuple with the other members of the group
+        """
+        return self._other_group_members
+
+    @other_group_members.setter
+    def other_group_members(self, tuple_members):
+        """
+        :param tuple_members: a tuple with the other members of the group
+        :return:
+        """
+        self._other_group_members = tuple_members
+
+    @property
+    def subgroup(self):
+        return self._subgroup
+
+    @subgroup.setter
+    def subgroup(self, val):
+        self._subgroup = val
+
+    @property
+    def other_subgroup_members(self):
+        return self._other_subgroup_members
+
+    @other_subgroup_members.setter
+    def other_subgroup_members(self, tuple_members):
+        self._other_subgroup_members = tuple_members

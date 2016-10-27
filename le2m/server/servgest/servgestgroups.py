@@ -139,9 +139,16 @@ class GestionnaireGroupes(object):
             self.get_groupes_string())
 
     def set_attributes(self):
+        """
+        Set the "groupe" attibute in the corresponding player instance
+        Set also the "other_group_members" attribute with a tuple
+        :return:
+        """
         for g, m in self._groupes.viewitems():
             for j in m:
-                setattr(j, "groupe", g)
+                j.groupe = g
+                j.group = g
+                j.other_group_members = tuple(self.get_autres_membres_groupe(j))
 
     def get_groupes(self, nom_partie=None):
         """
@@ -320,6 +327,8 @@ class GestionnaireGroupes(object):
             for sg, m in v.viewitems():
                 for j in m:
                     setattr(j, "sousgroupe", sg)
+                    setattr(j, "other_subgroup_members",
+                            self.get_autres_membres_sousgroupe(j))
 
         # affichage des sousgroupes sur la liste serveur ~~~~~~~~~~~~~~~~~~~~~~~
         self._le2mserv.gestionnaire_graphique.infoserv(
