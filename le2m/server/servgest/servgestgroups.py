@@ -195,7 +195,7 @@ class GestionnaireGroupes(object):
         :param joueur:
         :return: string
         """
-        for k, v in self._groupes.iteritems():
+        for k, v in self._groupes.viewitems():
             if joueur in v:
                 return k
         return None
@@ -209,7 +209,7 @@ class GestionnaireGroupes(object):
         :param partie:
         :return: un tuple
         """
-        for g, m in self._groupes.iteritems():
+        for g, m in self._groupes.viewitems():
             if joueur in m:
                 if partie:
                     return g, [j.get_part(partie) for j in m]
@@ -311,13 +311,13 @@ class GestionnaireGroupes(object):
 
         # formation des sous-groupes ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         self._sousgroupes = dict()
-        for g, m in self._groupes.iteritems():
+        for g, m in self._groupes.viewitems():
             self._sousgroupes[g] = former_groupes(
                 m, taille, "{}_sg_".format(self._nom_session))
 
         # ajout de l'attribut sous-groupe chez les joueurs ~~~~~~~~~~~~~~~~~~~~~
-        for g, v in self._sousgroupes.iteritems():
-            for sg, m in v.iteritems():
+        for g, v in self._sousgroupes.viewitems():
+            for sg, m in v.viewitems():
                 for j in m:
                     setattr(j, "sousgroupe", sg)
 
@@ -340,7 +340,7 @@ class GestionnaireGroupes(object):
         :return:string
         """
         txt = le2mtrans(u"Sub-groups\n")
-        for g in self._groupes.iterkeys():
+        for g in self._groupes.viewkeys():
             txt += u"--G{}--\n".format(g.split("_")[2])
             cles = self.get_sousgroupes(g).keys()
             cles.sort()
@@ -359,7 +359,7 @@ class GestionnaireGroupes(object):
         """
         groupe = self.get_groupe(joueur)
         sousgroupes = self.get_sousgroupes(groupe)
-        for k, v in sousgroupes.iteritems():
+        for k, v in sousgroupes.viewitems():
             if joueur in v:
                 return k, v[:]
         return None, None
@@ -408,8 +408,8 @@ class GestionnaireGroupes(object):
                 taille_groupe - place_joueur + place_autrejoueur)
 
     def get_composition_sousgroupe(self, sousgroupe):
-        for k, v in self._sousgroupes.iteritems():
-            for sg, membres in v.iteritems():
+        for k, v in self._sousgroupes.viewitems():
+            for sg, membres in v.viewitems():
                 if sg == sousgroupe:
                     return membres[:]
         return []
