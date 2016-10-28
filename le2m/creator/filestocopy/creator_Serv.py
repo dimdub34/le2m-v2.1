@@ -69,8 +69,8 @@ class Serveur(object):
                 return
     
         # Start part ===========================================================
-        for period in range(1 if pms.NOMBRE_PERIODES else 0,
-                        pms.NOMBRE_PERIODES + 1):
+        period_start = 0 if pms.NOMBRE_PERIODES == 0 or pms.PERIODE_ESSAI else 1
+        for period in range(period_start, pms.NOMBRE_PERIODES + 1):
 
             if self._le2mserv.gestionnaire_experience.stop_repetitions:
                 break
