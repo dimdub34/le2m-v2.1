@@ -344,4 +344,4 @@ class GestionnaireExperience(QObject):
         return partname in self._parts
 
     def get_parts(self):
-        return self._parts
+        return self._parts[:]
