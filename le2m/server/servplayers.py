@@ -59,7 +59,7 @@ class Joueur(Base):
         self.parties.append(self._parts["base"])
         self.parties.append(self._parts["questionnaireFinal"])
         self._gender = None
-        self._groupe = None  # obsolete, use group rather
+        self._groupe = None  # deprecated, use group rather
         self._group = None
         self._other_group_members = None
         self._subgroup = None
