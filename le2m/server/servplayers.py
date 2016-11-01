@@ -61,9 +61,9 @@ class Joueur(Base):
         self._gender = None
         self._groupe = None  # deprecated, use group rather
         self._group = None
-        self._other_group_members = None
+        self._group_composition = None
         self._subgroup = None
-        self._other_subgroup_members = None
+        self._subgroup_composition = None
 
     @defer.inlineCallbacks
     def add_part(self, le2mserv, partname, partclassname, remoteclassname):
@@ -164,19 +164,19 @@ class Joueur(Base):
         self._group = val
 
     @property
-    def other_group_members(self):
+    def group_composition(self):
         """
         :return: a tuple with the other members of the group
         """
-        return self._other_group_members
+        return self._group_composition
 
-    @other_group_members.setter
-    def other_group_members(self, tuple_members):
+    @group_composition.setter
+    def group_composition(self, tuple_composition):
         """
-        :param tuple_members: a tuple with the other members of the group
+        :param tuple_composition: a tuple with the members of the group
         :return:
         """
-        self._other_group_members = tuple_members
+        self._group_composition = tuple_composition
 
     @property
     def subgroup(self):
@@ -187,9 +187,9 @@ class Joueur(Base):
         self._subgroup = val
 
     @property
-    def other_subgroup_members(self):
-        return self._other_subgroup_members
+    def subgroup_composition(self):
+        return self._subgroup_composition
 
-    @other_subgroup_members.setter
-    def other_subgroup_members(self, tuple_members):
-        self._other_subgroup_members = tuple_members
+    @subgroup_composition.setter
+    def subgroup_composition(self, tuple_composition):
+        self._subgroup_composition = tuple_composition
