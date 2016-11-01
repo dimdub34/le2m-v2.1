@@ -148,7 +148,7 @@ class GestionnaireGroupes(object):
             for j in m:
                 j.groupe = g
                 j.group = g
-                j.other_group_members = tuple(self.get_autres_membres_groupe(j))
+                j.group_composition = tuple(m)
 
     def get_groupes(self, nom_partie=None):
         """
@@ -326,9 +326,8 @@ class GestionnaireGroupes(object):
         for g, v in self._sousgroupes.viewitems():
             for sg, m in v.viewitems():
                 for j in m:
-                    setattr(j, "sousgroupe", sg)
-                    setattr(j, "other_subgroup_members",
-                            tuple(self.get_autres_membres_sousgroupe(j)))
+                    j.subgroup = sg
+                    j.subgroup_composition = tuple(m)
 
         # affichage des sousgroupes sur la liste serveur ~~~~~~~~~~~~~~~~~~~~~~~
         self._le2mserv.gestionnaire_graphique.infoserv(
