@@ -59,7 +59,11 @@ class Joueur(Base):
         self.parties.append(self._parts["base"])
         self.parties.append(self._parts["questionnaireFinal"])
         self._gender = None
-        self._groupe = None
+        self._groupe = None  # deprecated, use group rather
+        self._group = None
+        self._group_composition = None
+        self._subgroup = None
+        self._subgroup_composition = None
 
     @defer.inlineCallbacks
     def add_part(self, le2mserv, partname, partclassname, remoteclassname):
@@ -150,3 +154,42 @@ class Joueur(Base):
     @groupe.setter
     def groupe(self, val):
         self._groupe = val
+
+    @property
+    def group(self):
+        return self._group
+
+    @group.setter
+    def group(self, val):
+        self._group = val
+
+    @property
+    def group_composition(self):
+        """
+        :return: a tuple with the other members of the group
+        """
+        return self._group_composition
+
+    @group_composition.setter
+    def group_composition(self, tuple_composition):
+        """
+        :param tuple_composition: a tuple with the members of the group
+        :return:
+        """
+        self._group_composition = tuple_composition
+
+    @property
+    def subgroup(self):
+        return self._subgroup
+
+    @subgroup.setter
+    def subgroup(self, val):
+        self._subgroup = val
+
+    @property
+    def subgroup_composition(self):
+        return self._subgroup_composition
+
+    @subgroup_composition.setter
+    def subgroup_composition(self, tuple_composition):
+        self._subgroup_composition = tuple_composition

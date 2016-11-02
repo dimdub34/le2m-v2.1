@@ -139,9 +139,16 @@ class GestionnaireGroupes(object):
             self.get_groupes_string())
 
     def set_attributes(self):
+        """
+        Set the "groupe" attibute in the corresponding player instance
+        Set also the "other_group_members" attribute with a tuple
+        :return:
+        """
         for g, m in self._groupes.viewitems():
             for j in m:
-                setattr(j, "groupe", g)
+                j.groupe = g
+                j.group = g
+                j.group_composition = tuple(m)
 
     def get_groupes(self, nom_partie=None):
         """
@@ -195,7 +202,7 @@ class GestionnaireGroupes(object):
         :param joueur:
         :return: string
         """
-        for k, v in self._groupes.iteritems():
+        for k, v in self._groupes.viewitems():
             if joueur in v:
                 return k
         return None
@@ -209,7 +216,7 @@ class GestionnaireGroupes(object):
         :param partie:
         :return: un tuple
         """
-        for g, m in self._groupes.iteritems():
+        for g, m in self._groupes.viewitems():
             if joueur in m:
                 if partie:
                     return g, [j.get_part(partie) for j in m]
@@ -311,15 +318,16 @@ class GestionnaireGroupes(object):
 
         # formation des sous-groupes ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         self._sousgroupes = dict()
-        for g, m in self._groupes.iteritems():
+        for g, m in self._groupes.viewitems():
             self._sousgroupes[g] = former_groupes(
                 m, taille, "{}_sg_".format(self._nom_session))
 
         # ajout de l'attribut sous-groupe chez les joueurs ~~~~~~~~~~~~~~~~~~~~~
-        for g, v in self._sousgroupes.iteritems():
-            for sg, m in v.iteritems():
+        for g, v in self._sousgroupes.viewitems():
+            for sg, m in v.viewitems():
                 for j in m:
-                    setattr(j, "sousgroupe", sg)
+                    j.subgroup = sg
+                    j.subgroup_composition = tuple(m)
 
         # affichage des sousgroupes sur la liste serveur ~~~~~~~~~~~~~~~~~~~~~~~
         self._le2mserv.gestionnaire_graphique.infoserv(
@@ -340,7 +348,7 @@ class GestionnaireGroupes(object):
         :return:string
         """
         txt = le2mtrans(u"Sub-groups\n")
-        for g in self._groupes.iterkeys():
+        for g in self._groupes.viewkeys():
             txt += u"--G{}--\n".format(g.split("_")[2])
             cles = self.get_sousgroupes(g).keys()
             cles.sort()
@@ -359,7 +367,7 @@ class GestionnaireGroupes(object):
         """
         groupe = self.get_groupe(joueur)
         sousgroupes = self.get_sousgroupes(groupe)
-        for k, v in sousgroupes.iteritems():
+        for k, v in sousgroupes.viewitems():
             if joueur in v:
                 return k, v[:]
         return None, None
@@ -408,8 +416,8 @@ class GestionnaireGroupes(object):
                 taille_groupe - place_joueur + place_autrejoueur)
 
     def get_composition_sousgroupe(self, sousgroupe):
-        for k, v in self._sousgroupes.iteritems():
-            for sg, membres in v.iteritems():
+        for k, v in self._sousgroupes.viewitems():
+            for sg, membres in v.viewitems():
                 if sg == sousgroupe:
                     return membres[:]
         return []

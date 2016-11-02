@@ -7,7 +7,6 @@
 *.sqlite
 dist
 *new.po
-le2m/questcomp/questcomp.log
 le2m/parts/oathAndLies
 le2m/parts/TeamCommunication
 le2m/parts/voteMajorite
@@ -22,8 +21,9 @@ le2m/parts/PublicGoodStrategyMethod
 le2m/parts/PublicGoodOneShot
 le2m/parts/EffortComptage
 le2m/parts/CoopVoixQuest
-le2m/parts/MarcheTaxationConcurrence
+le2m/parts/MarcheConcurrence
 le2m/parts/PublicGoodLocalGlobal
+le2m/parts/MarketRiskInsurance
 
 
 
