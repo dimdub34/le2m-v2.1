@@ -21,6 +21,12 @@ except IOError:
     trans_EXPERIENCE_NOM_COURT = lambda x: x  # if there is an error, no translation
 
 
+def get_histo_vars():
+    return ["EXPERIENCE_NOM_COURT_period", "EXPERIENCE_NOM_COURT_decision",
+            "EXPERIENCE_NOM_COURT_periodpayoff",
+            "EXPERIENCE_NOM_COURT_cumulativepayoff"]
+
+
 def get_histo_head():
     return [le2mtrans(u"Period"), le2mtrans(u"Decision"),
              le2mtrans(u"Period\npayoff"), le2mtrans(u"Cumulative\npayoff")]
