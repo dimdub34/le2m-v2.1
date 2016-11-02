@@ -6,6 +6,7 @@ from twisted.internet import defer
 from util import utiltools
 from util.utili18n import le2mtrans
 import EXPERIENCE_NOMParams as pms
+from EXPERIENCE_NOMGui import DConfigure
 
 
 logger = logging.getLogger("le2m.{}".format(__name__))
@@ -31,9 +32,15 @@ class Serveur(object):
             u"EXPERIENCE_MENU", actions)
 
     def _configure(self):
-        self._le2mserv.gestionnaire_graphique.display_information(
-            le2mtrans(u"There is no parameter to configure"))
-        return
+        # self._le2mserv.gestionnaire_graphique.display_information(
+        #     le2mtrans(u"There is no parameter to configure"))
+        # return
+        screen_conf = DConfigure(self._le2mserv.gestionnaire_graphique.screen)
+        if screen_conf.exec_():
+            self._le2mserv.gestionnaire_graphique.infoserv(u"Traitement: {}".format(
+                pms.TREATMENTS_NAMES.get(pms.TREATMENT)))
+            self._le2mserv.gestionnaire_graphique.infoserv(u"Période d'essai: {}".format(
+                u"oui" if pms.PERIODE_ESSAI else u"non"))
 
     @defer.inlineCallbacks
     def _demarrer(self):
