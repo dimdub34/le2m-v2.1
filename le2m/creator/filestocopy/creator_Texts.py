@@ -33,7 +33,11 @@ def get_histo_head():
 
 
 def get_text_explanation():
-    return trans_EXPERIENCE_NOM_COURT(u"")
+    return trans_EXPERIENCE_NOM_COURT(u"Explanation text")
+
+
+def get_text_label_decision():
+    return trans_EXPERIENCE_NOM_COURT(u"Decision label")
 
 
 def get_text_summary(period_content):

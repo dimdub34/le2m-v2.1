@@ -38,7 +38,7 @@ class GuiDecision(QtGui.QDialog):
         layout.addWidget(wexplanation)
 
         self._wdecision = WSpinbox(
-            label=trans_EXPERIENCE_NOM_COURT(u"label decision"),
+            label=texts_EXPERIENCE_NOM_COURT.get_text_label_decision(),
             minimum=pms.DECISION_MIN, maximum=pms.DECISION_MAX,
             interval=pms.DECISION_STEP, automatique=self._automatique,
             parent=self)
@@ -48,7 +48,7 @@ class GuiDecision(QtGui.QDialog):
         buttons.accepted.connect(self._accept)
         layout.addWidget(buttons)
 
-        self.setWindowTitle(trans_EXPERIENCE_NOM_COURT(u"Title"))
+        self.setWindowTitle(trans_EXPERIENCE_NOM_COURT(u"Décision"))
         self.adjustSize()
         self.setFixedSize(self.size())
 
