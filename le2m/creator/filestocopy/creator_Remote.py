@@ -21,8 +21,6 @@ class RemoteEXPERIENCE_NOM_COURT(IRemote):
     """
     def __init__(self, le2mclt):
         IRemote.__init__(self, le2mclt)
-        self._histo_vars = texts_EXPERIENCE_NOM_COURT.get_histo_vars()
-        self._histo.append(texts_EXPERIENCE_NOM_COURT.get_histo_head())
 
     def remote_configure(self, params):
         """
@@ -43,8 +41,9 @@ class RemoteEXPERIENCE_NOM_COURT(IRemote):
         logger.info(u"{} Period {}".format(self._le2mclt.uid, period))
         self.currentperiod = period
         if self.currentperiod == 1:
-            del self.histo[1:]
-
+            del self.histo[:]
+            self.histo_vars = texts_EXPERIENCE_NOM_COURT.get_histo_vars()
+            self.histo.append(texts_EXPERIENCE_NOM_COURT.get_histo_head())
 
     def remote_display_decision(self):
         """
