@@ -23,6 +23,7 @@ class IRemote(pb.Referenceable):
     def __init__(self, le2mclt):
         self._le2mclt = le2mclt
         self._histo = []
+        self._histo_vars = None
         self._currentperiod = 0
         self._payoff_ecus = 0
         self._payoff_euros = 0
@@ -35,6 +36,14 @@ class IRemote(pb.Referenceable):
     @property
     def histo(self):
         return self._histo
+
+    @property
+    def histo_vars(self):
+        return self._histo_vars
+
+    @histo_vars.setter
+    def histo_vars(self, the_list):
+        self._histo_vars = the_list
 
     @property
     def currentperiod(self):
