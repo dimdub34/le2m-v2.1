@@ -74,7 +74,7 @@ class RemoteEXPERIENCE_NOM_COURT(IRemote):
         :return: deferred
         """
         logger.info(u"{} Summary".format(self._le2mclt.uid))
-        self.histo.append([period_content.get(k) for k in self._histo_vars])
+        self.histo.append([period_content.get(k) for k in self.histo_vars])
         if self._le2mclt.simulation:
             return 1
         else:
