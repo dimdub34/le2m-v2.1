@@ -21,10 +21,6 @@ class RemoteEXPERIENCE_NOM_COURT(IRemote):
     """
     def __init__(self, le2mclt):
         IRemote.__init__(self, le2mclt)
-        self._histo_vars = [
-            "EXPERIENCE_NOM_COURT_period", "EXPERIENCE_NOM_COURT_decision",
-            "EXPERIENCE_NOM_COURT_periodpayoff", "EXPERIENCE_NOM_COURT_cumulativepayoff"]
-        self._histo.append(texts_EXPERIENCE_NOM_COURT.get_histo_head())
 
     def remote_configure(self, params):
         """
@@ -45,8 +41,9 @@ class RemoteEXPERIENCE_NOM_COURT(IRemote):
         logger.info(u"{} Period {}".format(self._le2mclt.uid, period))
         self.currentperiod = period
         if self.currentperiod == 1:
-            del self.histo[1:]
-
+            del self.histo[:]
+            self.histo_vars = texts_EXPERIENCE_NOM_COURT.get_histo_vars()
+            self.histo.append(texts_EXPERIENCE_NOM_COURT.get_histo_head())
 
     def remote_display_decision(self):
         """
@@ -77,7 +74,7 @@ class RemoteEXPERIENCE_NOM_COURT(IRemote):
         :return: deferred
         """
         logger.info(u"{} Summary".format(self._le2mclt.uid))
-        self.histo.append([period_content.get(k) for k in self._histo_vars])
+        self.histo.append([period_content.get(k) for k in self.histo_vars])
         if self._le2mclt.simulation:
             return 1
         else:
