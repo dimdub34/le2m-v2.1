@@ -40,7 +40,7 @@ class RemoteEXPERIENCE_NOM_COURT(IRemote):
         """
         logger.info(u"{} Period {}".format(self._le2mclt.uid, period))
         self.currentperiod = period
-        if self.currentperiod == 1:
+        if self.currentperiod <= 1:
             del self.histo[:]
             self.histo_vars = texts_EXPERIENCE_NOM_COURT.get_histo_vars()
             self.histo.append(texts_EXPERIENCE_NOM_COURT.get_histo_head())

@@ -7,7 +7,7 @@ stored in a sqlite database, with the SQLAlchemy library.
 
 ## Prerequisites
 __Windows__  
-Install [Python 2.7](https://www.python.org/downloads/) and 
+Install [Python 2.7](https://www.python.org/downloads/windows/) and 
 [PyQt4] (https://riverbankcomputing.com/software/pyqt/download). For PyQt4 
 be careful to select the version for Python 2.7. Then install a [Microsoft 
 C++ compiler for Python 2.7](https://www.microsoft.com/en-us/download/details.aspx?id=44266)
