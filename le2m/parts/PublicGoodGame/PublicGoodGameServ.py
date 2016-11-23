@@ -8,6 +8,7 @@ from collections import OrderedDict
 from util import utiltools
 import PublicGoodGameParams as pms
 from PublicGoodGameTexts import trans_PGG
+from PublicGoodGameGui import DConfigure
 
 
 logger = logging.getLogger("le2m".format(__name__))
@@ -36,8 +37,16 @@ class Serveur(object):
         self._fig = None
 
     def _configure(self):
-        self._le2mserv.gestionnaire_graphique.display_information(
-            trans_PGG(u"There is no nothing to configure"))
+        screen_conf = DConfigure(self._le2mserv.gestionnaire_graphique.screen)
+        if screen_conf.exec_():
+            self._le2mserv.gestionnaire_graphique.infoserv(
+                [u"Treatment: {}".format(pms.TREATMENTS_NAMES.get(pms.TREATMENT)),
+                 u"Group size: {}".format(pms.TAILLE_GROUPES),
+                 u"Periods: {}".format(pms.NOMBRE_PERIODES),
+                 u"Indiv. account: {} {}".format(pms.RENDEMENT_INDIV, pms.MONNAIE),
+                 u"Coll. account: {} {}".format(pms.RENDEMENT_COLL, pms.MONNAIE),
+                 u"Conversion rate: 1 ecu = {} euro".format(pms.TAUX_CONVERSION)]
+            )
         return
 
     @defer.inlineCallbacks

@@ -1,16 +1,20 @@
 # -*- coding: utf-8 -*-
 
 # variables
-TREATMENTS = {0: "baseline"}
+BASELINE = 0
+TREATMENTS_NAMES = {BASELINE: "baseline"}
 
 # parameters
+TREATMENT = BASELINE
 DOTATION = 20
-MPCR = 0.5
-TREATMENT = 0
+RENDEMENT_INDIV = 1
+RENDEMENT_COLL = 0.5
+# MPCR = 0.5
 TAUX_CONVERSION = 0.5
 NOMBRE_PERIODES = 10
 TAILLE_GROUPES = 4
 GROUPES_CHAQUE_PERIODE = False
+PERIODE_ESSAI = False
 MONNAIE = u"ecu"
 
 # DECISION
@@ -18,12 +22,3 @@ DECISION_MIN = 0
 DECISION_MAX = DOTATION
 DECISION_STEP = 1
 
-
-def get_treatment(code_or_name):
-    if type(code_or_name) is int:
-        return TREATMENTS.get(code_or_name, None)
-    elif type(code_or_name) is str:
-        for k, v in TREATMENTS.viewitems():
-            if v.lower() == code_or_name.lower():
-                return k
-    return None
