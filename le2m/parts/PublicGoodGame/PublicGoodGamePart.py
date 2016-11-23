@@ -75,9 +75,16 @@ class PartiePGG(Partie):
         :return:
         """
         logger.debug(u"{} Period Payoff".format(self.joueur))
-        self.currentperiod.PGG_indivpayoff = self.currentperiod.PGG_indiv * 1
+
+        # indiv
+        self.currentperiod.PGG_indivpayoff = \
+            self.currentperiod.PGG_indiv * pms.RENDEMENT_INDIV
+
+        # coll
         self.currentperiod.PGG_publicpayoff = \
-            self.currentperiod.PGG_publicgroup * pms.MPCR
+            self.currentperiod.PGG_publicgroup * pms.RENDEMENT_COLL
+
+        # total
         self.currentperiod.PGG_periodpayoff = \
             self.currentperiod.PGG_indivpayoff + \
             self.currentperiod.PGG_publicpayoff
