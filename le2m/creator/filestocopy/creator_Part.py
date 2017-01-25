@@ -144,7 +144,8 @@ class RepetitionsEXPERIENCE_NOM_COURT(Base):
         self.EXPERIENCE_NOM_COURT_cumulativepayoff = 0
 
     def todict(self, joueur=None):
-        temp = {c.name: getattr(self, c.name) for c in self.__table__.columns}
+        temp = {c.name: getattr(self, c.name) for c in self.__table__.columns
+                if "EXPERIENCE_NOM_COURT" in c.name}
         if joueur:
             temp["joueur"] = joueur
         return temp

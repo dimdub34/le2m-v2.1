@@ -22,7 +22,7 @@ class GuiExtractor(QtGui.QDialog):
         self.ui.label.setText(extrans(u"Select the parts you want to extract"))
         self._model = QtGui.QStandardItemModel()
         self.ui.listView.setModel(self._model)
-        self.ui.listView.setFixedSize(300, 400)
+        self.ui.listView.setFixedSize(500, 400)
 
         for p in parts:
             item = QtGui.QStandardItem('{}'.format(p))
