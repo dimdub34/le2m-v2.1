@@ -144,15 +144,22 @@ def get_pluriel(quantite, mot):
 
 
 def get_module_attributes(module):
+    """
+    Extract attributes from the module
+    :param module:
+    :return: a dictionary with the keys and values of the module's attributes
+    """
     if not inspect.ismodule(module):
         return None
     temp = module.__dict__.copy()
-    for todel in ["__builtins__", "__name__", "__file__", "__doc__",
-                  "__package__"]:
-        del temp[todel]
-    keystodel = [k for k, v in temp.viewitems() if inspect.isfunction(v)
-                 or inspect.ismodule(v) or inspect.isclass(v)]
-    for k in keystodel:
+
+    # we delete some elements from this dictionary
+    keys_to_del = ["__builtins__", "__name__", "__file__", "__doc__",
+                 "__package__"]
+    keys_to_del.extend([k for k, v in temp.viewitems() if inspect.isfunction(v)
+                 or inspect.ismodule(v) or inspect.isclass(v) or
+                 inspect.ismethod(v)])
+    for k in keys_to_del:
         del temp[k]
     return temp
 
