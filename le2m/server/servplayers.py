@@ -166,7 +166,7 @@ class Joueur(Base):
     @property
     def group_composition(self):
         """
-        :return: a tuple with the other members of the group
+        :return: a tuple with the members of the group
         """
         return self._group_composition
 
