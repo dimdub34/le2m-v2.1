@@ -110,6 +110,7 @@ class GuiPartLoad(QtGui.QDialog):
                       u"to load"))
         self.ui.listView.setToolTip(QtCore.QString(
             le2mtrans(u"Select the part(s) you want to load")))
+        self.ui.listView.setMinimumHeight(480)
 
         # database directory
         self.ui.label_basepath.setText(
