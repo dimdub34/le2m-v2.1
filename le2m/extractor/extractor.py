@@ -60,17 +60,21 @@ def extractor():
             return
     dirout, partsextract = screen.get_extractinfos()
 
+    # we put questionnaire_final at the end of the list
+    try:
+        partsextract.append(
+            partsextract.pop(partsextract.index("partie_questionnaireFinal")))
+    except ValueError:  # partie_questionnaire_final not in the list
+        pass
+
     # get the data
     base = get_partdata(database, "partie_base")
-    partsdata = dict()
-    for p in partsextract:
-        partsdata[p] = get_partdata(database, p)
-    datatemp = partsdata.values()
     data = pd.DataFrame(base)
-    nbparts = len(datatemp)
-    if nbparts > 1:
-        for i in range(nbparts):
-            data = pd.merge(data, datatemp[i], on=["session", "joueur"])
+    partsdata = list()
+    for p in partsextract:
+        partsdata.append(get_partdata(database, p))
+    for p in partsdata:
+        data = pd.merge(data, p, on=["session", "joueur"])
     data.to_csv(os.path.join(dirout, "data.csv"), sep=";", encoding="utf-8",
                 na_rep=None, index=False)
 
