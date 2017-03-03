@@ -36,6 +36,7 @@ def extractor():
     extractorutil.create_logger()
     logger = logging.getLogger("extractor")
 
+    # select the database
     filebase = str(QtGui.QFileDialog.getOpenFileName(
         None, extrans(u"Please select the sqlite database you want to extract"),
         "", u"sqlite (*.sqlite)"))
@@ -45,38 +46,47 @@ def extractor():
         else:
             return
 
+    # connection and create the list of parts
     database = sqlite3.connect(filebase)
     parts = get_parts(database)
     partslist = get_splittedparts(parts)
 
+    # parts to extract and directory in which to store the csv files
     screen = GuiExtractor(partslist)
     if not screen.exec_():
         if __name__ == "__main__":
             sys.exit(0)
         else:
             return
-
     dirout, partsextract = screen.get_extractinfos()
 
-    partsdata = dict()
-    for p in partsextract:
-        partsdata[p] = get_partdata(database, p)
-    datatemp = partsdata.values()
-    data = pd.DataFrame(datatemp[0])
-    nbparts = len(datatemp)
-    if nbparts > 1:
-        for i in range(1, nbparts):
-            data = pd.merge(data, datatemp[i], on=["session", "joueur"])
+    # we put questionnaire_final at the end of the list
+    try:
+        partsextract.append(
+            partsextract.pop(partsextract.index("partie_questionnaireFinal")))
+    except ValueError:  # partie_questionnaire_final not in the list
+        pass
 
-    sessions = get_partdata(database, "sessions")
+    # get the data
     base = get_partdata(database, "partie_base")
-
+    data = pd.DataFrame(base)
+    partsdata = list()
+    for p in partsextract:
+        partsdata.append(get_partdata(database, p))
+    for p in partsdata:
+        data = pd.merge(data, p, on=["session", "joueur"])
     data.to_csv(os.path.join(dirout, "data.csv"), sep=";", encoding="utf-8",
                 na_rep=None, index=False)
+
+    # comments of subjects
+    comments = get_partdata(database, "comments")
+    comments.to_csv(os.path.join(dirout, "comments.csv"), sep=";",
+                    encoding="utf-8", na_rep=False, index=False)
+
+    # sessions
+    sessions = get_partdata(database, "sessions")
     sessions.to_csv(os.path.join(dirout, "sessions.csv"), sep=";",
                     encoding="utf-8", na_rep=False, index=False)
-    base.to_csv(os.path.join(dirout, "joueurs.csv"), sep=";", encoding="utf-8",
-                na_rep=False, index=False)
 
     QtGui.QMessageBox.information(
         None, extrans(u"Sucess"),
@@ -120,10 +130,6 @@ def get_partdata(database, partname):
     :param partname:
     :return: DataFrame
     """
-    parts = get_parts(database)
-    if partname not in parts:
-        return None
-
     if partname is "sessions":
         req = \
             "select sessions.* " \
@@ -131,17 +137,36 @@ def get_partdata(database, partname):
             "where sessions.isTest = 0 " \
             "order by sessions.nom"
 
-    elif partname is "partie_base":
+    elif partname is "comments":
         req = \
-            "SELECT s.nom as session, j.uid as joueur, j.hostname as hostname, m.* " \
+            "SELECT s.nom as session, j.uid as joueur, j.hostname as hostname, " \
+            "m.commentaires as comments " \
             "from sessions s, joueurs j, parties p, " \
-            "parties_joueurs__joueurs_parties q, {} m " \
+            "parties_joueurs__joueurs_parties q, partie_base m " \
             "where s.isTest = 0 " \
             "and j.session_id = s.id " \
             "and q.joueurs_uid = j.uid " \
             "and p.id = q.parties_id " \
             "and m.partie_id = p.id " \
-            "order by s.nom".format(partname)
+            "and m.automatique = 0 " \
+            "and m.simulation = 0 " \
+            "order by s.nom"
+
+    elif partname is "partie_base":
+        req = \
+            "SELECT s.nom as session, j.uid as joueur, j.hostname as hostname, " \
+            "m.fautesComprehension as understanding_faults, " \
+            "m.paiementFinal as final_payoff " \
+            "from sessions s, joueurs j, parties p, " \
+            "parties_joueurs__joueurs_parties q, partie_base m " \
+            "where s.isTest = 0 " \
+            "and j.session_id = s.id " \
+            "and q.joueurs_uid = j.uid " \
+            "and p.id = q.parties_id " \
+            "and m.partie_id = p.id " \
+            "and m.automatique = 0 " \
+            "and m.simulation = 0 " \
+            "order by s.nom"
 
     elif "repetitions" in partname:
         part_withoutrep = "_".join(partname.split("_")[:-1])
