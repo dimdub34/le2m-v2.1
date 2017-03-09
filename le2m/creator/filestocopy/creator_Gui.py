@@ -113,7 +113,7 @@ class DConfigure(QtGui.QDialog):
 
         # taille groupes
         self._spin_groups = QtGui.QSpinBox()
-        self._spin_groups.setMinimum(2)
+        self._spin_groups.setMinimum(0)
         self._spin_groups.setMaximum(100)
         self._spin_groups.setSingleStep(1)
         self._spin_groups.setValue(pms.TAILLE_GROUPES)
