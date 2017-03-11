@@ -12,11 +12,12 @@ import gettext
 import logging
 
 logger = logging.getLogger("le2m")
-localedir = os.path.join(params.getp("PARTSDIR"), "EXPERIENCE_NOM", "locale")
 try:
+    localedir = os.path.join(params.getp("PARTSDIR"), "EXPERIENCE_NOM",
+                             "locale")
     trans_EXPERIENCE_NOM_COURT = gettext.translation(
       "EXPERIENCE_NOM", localedir, languages=[params.getp("LANG")]).ugettext
-except IOError:
+except (AttributeError, IOError):
     logger.critical(u"Translation file not found")
     trans_EXPERIENCE_NOM_COURT = lambda x: x  # if there is an error, no translation
 
