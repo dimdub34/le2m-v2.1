@@ -21,7 +21,8 @@ from server.servplayers import Joueur
 from servguisrc import servguimain
 from servguitablemodels import TableModelJoueurs
 from servguidialogs import GuiPartLoad, GuiPartsPlayed, \
-    GuiGenres, DDice, DRandint, DHeadtail, DWebview, GuiInformation
+    GuiGenres, DDice, DRandint, DHeadtail, DWebview, GuiInformation, \
+    DUnderstandingVisual
 from creator import creator
 from extractor import extractor
 from questcomp import questcomp
@@ -354,9 +355,11 @@ class GuiServeur(QtGui.QMainWindow):
             txt = u""
             for q in self._questcomp:
                 txt += u"{}\n\n".format(q)
-            QtGui.QMessageBox.information(
-                self,
-                le2mtrans(u"Understanding questionnaire"), txt)
+            screen = DUnderstandingVisual(txt)
+            screen.exec_()
+            # QtGui.QMessageBox.information(
+            #     self,
+            #     le2mtrans(u"Understanding questionnaire"), txt)
             self.add_serverlist(
                 le2mtrans(u"Understanding questionnaire loaded "
                           u"({} questions)").format(len(self._questcomp)))
@@ -612,3 +615,5 @@ class GuiServeur(QtGui.QMainWindow):
                 le2mtrans(u"Head and tail: {}".format(
                     le2mtrans(u"Head") if screen.get_value() == FACE else
                     le2mtrans(u"Tail"))))
+
+
