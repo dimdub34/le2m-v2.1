@@ -427,6 +427,7 @@ class GuiQuestCompQuest(QtGui.QDialog):
 
         self.ui.label_numeroQuestion.setText(qctrans(u"Question {num}").format(
             num=self._question.number))
+        self.ui.textEdit_ennonce.setFixedSize(600, 180)
         self.ui.textEdit_ennonce.setText(self._question.text)
 
         # proposals ------------------------------------------------------------
