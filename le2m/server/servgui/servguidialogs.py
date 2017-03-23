@@ -517,3 +517,24 @@ class DWebview(QtGui.QDialog):
 
         self.setWindowTitle(title)
         self.adjustSize()
+
+
+class DUnderstandingVisual(QtGui.QDialog):
+    def __init__(self, txt_questions):
+        QtGui.QDialog.__init__(self)
+
+        layout = QtGui.QVBoxLayout()
+        self.setLayout(layout)
+
+        textEdit = QtGui.QTextEdit()
+        textEdit.setReadOnly(True)
+        textEdit.setFixedSize(600, 600)
+        textEdit.setText(txt_questions)
+        layout.addWidget(textEdit)
+
+        button = QtGui.QDialogButtonBox(QtGui.QDialogButtonBox.Ok)
+        button.accepted.connect(self.accept)
+        layout.addWidget(button)
+
+        self.adjustSize()
+        self.setWindowTitle(le2mtrans(u"Understanding questionnaire"))

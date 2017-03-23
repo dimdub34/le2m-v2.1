@@ -280,6 +280,9 @@ class WCompterebours(QtGui.QWidget):
     def stop(self):
         self.compterebours.stop()
 
+    def is_running(self):
+        return self.compterebours.isRunning()
+
 
 class WChat(QtGui.QWidget):
     def __init__(self, parent, action_send, size_read=(450, 150),
