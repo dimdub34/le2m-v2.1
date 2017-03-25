@@ -8,7 +8,7 @@ try:  # this way it is possible to load this module independently
     from util.utili18n import le2mtrans
 except AttributeError:
     le2mtrans = lambda x: x
-from cltguisrc.cltguisrcwid import widExplication, widPeriod, widCombo, \
+from cltguisrc.cltguisrcwid import widPeriod, widCombo, \
     widSpinbox, widRadio, widListDrag, widTableview, widCompterebours, \
     widChat, widSlider, widLabel, widLineEdit
 from configuration.configvar import YES_NO
@@ -32,44 +32,58 @@ class WLabel(QtGui.QWidget):
 
 class WPeriod(QtGui.QWidget):
     def __init__(self, period=1, ecran_historique=None, parent=None):
-        super(WPeriod, self).__init__(parent)
-        self.ui = widPeriod.Ui_Form()
-        self.ui.setupUi(self)
+        QtGui.QWidget.__init__(self, parent)
 
+        layout = QtGui.QHBoxLayout()
+        self.setLayout(layout)
+
+        self._label_period = QtGui.QLabel()
         self.set_period(period)
-        self.ui.pushButton_historique.setText(le2mtrans(u"History"))
+        layout.addWidget(self._label_period)
+
+        layout.addSpacerItem(QtGui.QSpacerItem(
+            20, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding))
+
+        self._pushButton_history = QtGui.QPushButton(le2mtrans(u"History"))
+        layout.addWidget(self._pushButton_history)
         if ecran_historique:
-            self.ui.pushButton_historique.clicked.connect(ecran_historique.show)
+            self._pushButton_history.clicked.connect(ecran_historique.show)
 
     def set_period(self, period):
-        self.ui.label_period.setText(
+        self._label_period.setText(
             le2mtrans(u"Period") + u" {}".format(period))
 
 
 class WExplication(QtGui.QWidget):
     def __init__(self, text=None, parent=None, size=(450, 80), html=True):
-        super(WExplication, self).__init__(parent)
-        self.ui = widExplication.Ui_Form()
-        self.ui.setupUi(self)
+        QtGui.QWidget.__init__(self, parent)
+
+        layout = QtGui.QHBoxLayout()
+        self.setLayout(layout)
+
+        self._textEdit = QtGui.QTextEdit()
+        self._textEdit.setReadOnly(True)
+        self._textEdit.setFixedSize(*size)
+        layout.addWidget(self._textEdit)
+
         if html:
             self.set_html(text or u"")
         else:
             self.set_text(text or u"")
-        self.set_size(size)
         self.adjustSize()
 
     def set_size(self, size):
-        self.ui.textEdit.setFixedSize(size[0], size[1])
+        self._textEdit.setFixedSize(*size)
         self.adjustSize()
 
     def set_text(self, text):
-        self.ui.textEdit.setText(text)
+        self._textEdit.setText(text)
 
     def set_html(self, html):
-        self.ui.textEdit.setHtml(html)
+        self._textEdit.setHtml(html)
 
     def get_text(self):
-        return self.ui.textEdit.toPlainText()
+        return self._textEdit.toPlainText()
 
 
 class WCombo(QtGui.QWidget):
@@ -105,19 +119,26 @@ class WCombo(QtGui.QWidget):
 
 class WSpinbox(QtGui.QWidget):
     def __init__(self, label, minimum=0, maximum=100, interval=1,
-                 automatique=False, parent=None, autotime=500):
-        super(WSpinbox, self).__init__(parent)
-        self.ui = widSpinbox.Ui_Form()
-        self.ui.setupUi(self)
+                 automatique=False, parent=None, autotime=500, width=50):
+        QtGui.QWidget.__init__(self, parent)
+
         self._minimum = minimum
         self._maximum = maximum
         self._interval = interval
 
-        self.ui.label.setText(label)
-        self.ui.spinBox.setMinimum(self._minimum)
-        self.ui.spinBox.setMaximum(self._maximum)
-        self.ui.spinBox.setSingleStep(self._interval)
-        self.ui.spinBox.setValue(self._minimum)
+        layout = QtGui.QFormLayout()
+        self.setLayout(layout)
+
+        self._label = QtGui.QLabel(label)
+        self._spinBox = QtGui.QSpinBox()
+        self._spinBox.setButtonSymbols(QtGui.QSpinBox.NoButtons)
+        self._spinBox.setMinimum(self._minimum)
+        self._spinBox.setMaximum(self._maximum)
+        self._spinBox.setSingleStep(self._interval)
+        self._spinBox.setValue(self._minimum)
+        self._spinBox.setFixedWidth(50)
+
+        layout.addRow(self._label, self._spinBox)
 
         if automatique:
             self._timer = QtCore.QTimer()
@@ -126,12 +147,12 @@ class WSpinbox(QtGui.QWidget):
             self._timer.start(autotime)
 
     def _changevalue(self):
-        self.ui.spinBox.setValue(
+        self._spinBox.setValue(
                     random.randrange(self._minimum, self._maximum + 1,
                                      self._interval))
 
     def get_value(self):
-        return self.ui.spinBox.value()
+        return self._spinBox.value()
 
 
 class WRadio(QtGui.QWidget):
@@ -402,23 +423,26 @@ class WGrid(QtGui.QWidget):
                 gridlayout.addWidget(QtGui.QLabel(str(c)), row, col)
         widget_grid.setLayout(gridlayout)
 
-        form = QtGui.QFormLayout()
-        layout.addLayout(form)
+        layout2 = QtGui.QHBoxLayout()
+        layout.addLayout(layout2)
+
+        layout2.addWidget(QtGui.QLabel(le2mtrans(u"Number of 1: ")))
 
         self._spin_grille =QtGui.QSpinBox()
         self._spin_grille.setMinimum(0)
         self._spin_grille.setMaximum(100)
         self._spin_grille.setSingleStep(1)
         self._spin_grille.setButtonSymbols(QtGui.QSpinBox.NoButtons)
-        self._spin_grille.setFixedWidth(50)
-        form.addRow(QtGui.QLabel(le2mtrans(u"Number of 1: ")),
-                       self._spin_grille)
+        self._spin_grille.setFixedWidth(40)
+        layout2.addWidget(self._spin_grille)
 
         self._pushButton_ok = QtGui.QPushButton(u"Ok")
-        self._pushButton_ok.setFixedWidth(50)
+        self._pushButton_ok.setFixedWidth(40)
         self._pushButton_ok.clicked.connect(self._check)
+        layout2.addWidget(self._pushButton_ok)
+
         self._label_result = QtGui.QLabel((u"?"))
-        form.addRow(self._pushButton_ok, self._label_result)
+        layout2.addWidget(self._label_result)
 
         if automatique:
             if random.randint(0, 1):
