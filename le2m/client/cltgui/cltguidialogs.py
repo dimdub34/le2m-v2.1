@@ -309,7 +309,8 @@ class DQuestFinal(QtGui.QDialog):
         self._birth = WSpinbox(label=le2mtrans(u"Year of birth"), parent=self,
                                 minimum=currentyear-100, maximum=currentyear,
                                 interval=1, automatique=self._automatique)
-        self._birth.spinBox.setValue(currentyear)
+        if not self._automatique:
+            self._birth.spinBox.setValue(currentyear)
         self._gridlayout.addWidget(self._birth, 0, 0)
 
         countries = [v for k, v in sorted(configvar.COUNTRIES.viewitems())]
