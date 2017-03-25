@@ -13,6 +13,7 @@ from cltguisrc.cltguisrcwid import widExplication, widPeriod, widCombo, \
     widChat, widSlider, widLabel, widLineEdit
 from configuration.configvar import YES_NO
 import logging
+import numpy as np
 
 
 logger = logging.getLogger("le2m")
@@ -379,3 +380,66 @@ class WLineEdit(QtGui.QWidget):
             raise ValueError(le2mtrans(u"You must complete the text area") +
                              u" ({})".format(self.ui.label.text()))
         return text
+
+
+class WGrid(QtGui.QWidget):
+    def __init__(self, grille, automatique):
+        QtGui.QWidget.__init__(self)
+        self._grille = grille
+        self._grille = grille
+        self._is_ok = False
+
+        layout = QtGui.QVBoxLayout()
+        self.setLayout(layout)
+
+        widget_grid = QtGui.QWidget()
+        widget_grid.setStyleSheet("background-color: white; "
+                                  "border: 1px solid #D8D8D8;")
+        layout.addWidget(widget_grid)
+        gridlayout = QtGui.QGridLayout()
+        for row, l in enumerate(self._grille):
+            for col, c in enumerate(l):
+                gridlayout.addWidget(QtGui.QLabel(str(c)), row, col)
+        widget_grid.setLayout(gridlayout)
+
+        form = QtGui.QFormLayout()
+        layout.addLayout(form)
+
+        self._spin_grille =QtGui.QSpinBox()
+        self._spin_grille.setMinimum(0)
+        self._spin_grille.setMaximum(100)
+        self._spin_grille.setSingleStep(1)
+        self._spin_grille.setButtonSymbols(QtGui.QSpinBox.NoButtons)
+        self._spin_grille.setFixedWidth(50)
+        form.addRow(QtGui.QLabel(le2mtrans(u"Number of 1: ")),
+                       self._spin_grille)
+
+        self._pushButton_ok = QtGui.QPushButton(u"Ok")
+        self._pushButton_ok.setFixedWidth(50)
+        self._pushButton_ok.clicked.connect(self._check)
+        self._label_result = QtGui.QLabel((u"?"))
+        form.addRow(self._pushButton_ok, self._label_result)
+
+        if automatique:
+            if random.randint(0, 1):
+                self._spin_grille.setValue(np.sum(self._grille))
+            else:
+                grid_max_of_ones = np.product(np.shape(self._grille))
+                self._spin_grille.setValue(random.randint(0, grid_max_of_ones))
+            self._pushButton_ok.click()
+
+    def _check(self):
+        answer = self._spin_grille.value()
+        if answer == np.sum(self._grille):
+            self._is_ok = True
+            self._label_result.setText("V")
+            self._label_result.setStyleSheet("color: green; font-weight: bold;")
+            self._spin_grille.setEnabled(False)
+            self._pushButton_ok.setEnabled(False)
+        else:
+            self._is_ok = False
+            self._label_result.setText("X")
+            self._label_result.setStyleSheet("color: red; font-weight: bold;")
+
+    def is_ok(self):
+        return self._is_ok
