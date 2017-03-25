@@ -3,13 +3,14 @@
 Contains usefull functions
 """
 
-import time
 import datetime
 import string
 import os
 import logging
 import inspect
 from PyQt4.QtCore import QObject, QTimer, pyqtSignal  # pour CompteARebours
+from random import randint
+import numpy as np
 
 logger = logging.getLogger("le2m")
 
@@ -256,3 +257,15 @@ def cyclelist(mylist, numberoftime=1):
             first = mylist.pop(0)
             mylist.append(first)
         yield mylist
+
+
+def get_grilles(how_much, size):
+    grilles = list()
+    for g in range(how_much):
+        somme, grille = 0, []
+        while somme < (0.2 * size**2) or somme > (0.8 * size**2):
+            grille = [[randint(0, 1) for _ in range(size)]
+                      for _ in range(size)]
+            somme = np.sum(grille)
+        grilles.append(grille)
+    return grilles
