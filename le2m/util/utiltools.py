@@ -9,7 +9,7 @@ import string
 import os
 import logging
 import inspect
-from PyQt4.QtCore import QThread, pyqtSignal  # pour CompteARebours
+from PyQt4.QtCore import QObject, QTimer, pyqtSignal  # pour CompteARebours
 
 logger = logging.getLogger("le2m")
 
@@ -175,24 +175,34 @@ def get_module_info(module):
     return u"\n".join(templist)
 
 
-class CompteARebours(QThread):
+class CompteARebours(QObject):
 
     changetime = pyqtSignal(str)
     endoftime = pyqtSignal()
 
     def __init__(self, tempsensecondes):
-        super(CompteARebours, self).__init__()
+        QObject.__init__(self)
         self._temps = tempsensecondes + 1
+        self._timer = QTimer()
+        self._timer.setSingleShot(False)
+        self._timer.timeout.connect(self._change_time)
 
-    def run(self):
-        while self._temps > 0:
+    def start(self):
+        self._timer.start(1000)
+
+    def _change_time(self):
+        if self._temps > 0:
             self._temps -= 1
             self.changetime.emit(get_formatedtimefromseconds(self._temps))
-            time.sleep(1)
-        self.endoftime.emit()
+        else:
+            self._timer.stop()
+            self.endoftime.emit()
 
     def stop(self):
-        self.quit()
+        self._timer.stop()
+
+    def is_running(self):
+        return self._timer.isActive()
 
 
 def get_dictkeyfromvalue(dictio, value):
