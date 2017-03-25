@@ -126,8 +126,11 @@ class WSpinbox(QtGui.QWidget):
         self._maximum = maximum
         self._interval = interval
 
-        layout = QtGui.QFormLayout()
+        layout = QtGui.QHBoxLayout()
         self.setLayout(layout)
+
+        formlayout = QtGui.QFormLayout()
+        layout.addLayout(formlayout)
 
         self._label = QtGui.QLabel(label)
         self._spinBox = QtGui.QSpinBox()
@@ -138,7 +141,7 @@ class WSpinbox(QtGui.QWidget):
         self._spinBox.setValue(self._minimum)
         self._spinBox.setFixedWidth(50)
 
-        layout.addRow(self._label, self._spinBox)
+        formlayout.addRow(self._label, self._spinBox)
 
         if automatique:
             self._timer = QtCore.QTimer()
