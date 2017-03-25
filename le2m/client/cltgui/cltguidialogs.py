@@ -285,246 +285,6 @@ class GuiFinal(QtGui.QDialog):
         super(GuiFinal, self).close()
 
 
-# class GuiQuestionnaireFinal(QtGui.QDialog):
-#     """
-#     Le questionnaire final
-#     """
-#     # todo: setText of all the widget of this dialog and translate the errors
-#     # messages
-#     def __init__(self, defered, automatique, parent=None):
-#         super(GuiQuestionnaireFinal, self).__init__(parent)
-#
-#         self._defered = defered
-#         self._automatique = automatique
-#
-#         self.ui = cltguiquestfinal.Ui_Dialog()
-#         self.ui.setupUi(self)
-#
-#         self.ui.textEdit.setText(textes.QUESTFINAL_explication)
-#         self.ui.textEdit.setFixedSize(600, 70)
-#
-#         self._annee = datetime.now().year
-#         self.ui.spinBox_naissance.setValue(self._annee)
-#         self.ui.cb_nationalite.addItems(configvar.NATIONALITES)
-#         self.ui.cb_etudiant_discipline.addItems(configvar.ETUDES_DISCIPLINES)
-#         self.ui.cb_etudiant_niveau.addItems(configvar.ETUDES_ANNEES)
-#         self.ui.pushButton_valider.clicked.connect(self._stop)
-#
-#         if self._automatique:
-#
-#             # naissance --------------------------------------------------------
-#             alea_naissance = random.randint(16, 60)
-#             self.ui.spinBox_naissance.setValue(self._annee - alea_naissance)
-#
-#             # genre ------------------------------------------------------------
-#             self.ui.rb_homme.setChecked(True)
-#             if random.randint(0, 1):
-#                 self.ui.rb_femme.setChecked(True)
-#
-#             # nationalité ------------------------------------------------------
-#             self.ui.cb_nationalite.setCurrentIndex(
-#                 random.randint(1, self.ui.cb_nationalite.count() - 1))
-#
-#             # couple -----------------------------------------------------------
-#             self.ui.rb_couple_oui.setChecked(True)
-#             if random.randint(0, 1):
-#                 self.ui.rb_couple_non.setChecked(True)
-#
-#             # etudiant ---------------------------------------------------------
-#             self.ui.rb_etudiant_oui.setChecked(True)
-#             if random.randint(0, 1):
-#                 self.ui.rb_etudiant_non.setChecked(True)
-#             if self.ui.rb_etudiant_oui.isChecked():
-#                 self.ui.cb_etudiant_discipline.setCurrentIndex(
-#                     random.randint(1,
-#                                    self.ui.cb_etudiant_discipline.count() - 1))
-#                 self.ui.cb_etudiant_niveau.setCurrentIndex(
-#                     random.randint(1, self.ui.cb_etudiant_niveau.count() - 1))
-#
-#             # expériences antérieures ------------------------------------------
-#             self.ui.rb_experiences_oui.setChecked(True)
-#             if random.randint(0, 1):
-#                 self.ui.rb_experiences_non.setChecked(True)
-#
-#             # nombre frères et soeurs ------------------------------------------
-#             self.ui.spinBox_fratrie_nombre.setValue(random.randint(0, 10))
-#
-#             # rang parmi frères et soeurs --------------------------------------
-#             self.ui.spinBox_fratrie_rang.setValue(
-#                 0 if self.ui.spinBox_fratrie_nombre.value() == 0 else
-#                 random.randint(0, self.ui.spinBox_fratrie_nombre.value() + 1))
-#
-#             # sportivité -------------------------------------------------------
-#             self.ui.rb_sportif_oui.setChecked(True)
-#             if random.randint(0, 1):
-#                 self.ui.rb_sportif_non.setChecked(True)
-#             if self.ui.rb_sportif_oui.isChecked():
-#                 self.ui.rb_sportif_collectif.setChecked(True)
-#                 if random.randint(0, 1):
-#                     self.ui.rb_sportif_individuel.setChecked(True)
-#                 self.ui.rb_sportif_competition_oui.setChecked(True)
-#                 if random.randint(0, 1):
-#                     self.ui.rb_sportif_competition_non.setChecked(True)
-#
-#             # religiosité ------------------------------------------------------
-#             self.ui.cb_religion_place.setCurrentIndex(
-#                 random.randint(1, self.ui.cb_religion_place.count() - 1))
-#             self.ui.cb_religion_croyance.setCurrentIndex(
-#                 random.randint(1, self.ui.cb_religion_croyance.count() - 1))
-#             self.ui.cb_religion_nom.setCurrentIndex(
-#                 random.randint(1, self.ui.cb_religion_nom.count() - 1))
-#
-#             self._timer = QtCore.QTimer()
-#             self._timer.timeout.connect(self._stop)
-#             self._timer.start(7000)
-#
-#         self.setWindowTitle(le2mtrans(u"Final questionnaire"))
-#         self.setFixedSize(715, 590)
-#
-#     def reject(self):
-#         pass
-#
-#     def _stop(self):
-#         try:
-#             self._timer.stop()
-#         except AttributeError:
-#             pass
-#
-#         self.ui.pushButton_valider.setEnabled(False)
-#         inputs = dict()
-#         try:
-#             # année de naissance -----------------------------------------------
-#             naissance = self.ui.spinBox_naissance.value()
-#             if naissance >= self._annee or naissance < (self._annee - 100):
-#                 raise ValueError(u"Année de naissance non valide.")
-#             else:
-#                 inputs['naissance'] = naissance
-#
-#             # genre ------------------------------------------------------------
-#             if not (self.ui.rb_homme.isChecked() or
-#                     self.ui.rb_femme.isChecked()):
-#                 raise ValueError(u"Vous devez préciser votre genre.")
-#             else:
-#                 inputs['genre'] = self.ui.rb_homme.isChecked()
-#
-#             # nationalite ------------------------------------------------------
-#             if self.ui.cb_nationalite.currentIndex() == 0:
-#                 raise ValueError(u"Vous devez préciser votre nationalité.")
-#             else:
-#                 inputs['nationalite'] = self.ui.cb_nationalite.currentIndex()
-#
-#             # couple -----------------------------------------------------------
-#             if not (self.ui.rb_couple_oui.isChecked() or
-#                     self.ui.rb_couple_non.isChecked()):
-#                 raise ValueError(u"Vous devez préciser si vous êtes "
-#                                  u"ou non en couple.")
-#             else:
-#                 inputs['couple'] = self.ui.rb_couple_oui.isChecked()
-#
-#             # étudiant ---------------------------------------------------------
-#             if not (self.ui.rb_etudiant_oui.isChecked() or
-#                     self.ui.rb_etudiant_non.isChecked()):
-#                 raise ValueError(u"Vous devez préciser si vous êtes "
-#                                  u"ou non étudiant(e).")
-#             else:
-#                 inputs['etudiant'] = self.ui.rb_etudiant_oui.isChecked()
-#             if inputs['etudiant'] is True:
-#                 if self.ui.cb_etudiant_discipline.currentIndex() == 0:
-#                     raise ValueError(u"Vous devez préciser la discipline "
-#                                      u"que vous étudiez.")
-#                 else:
-#                     inputs['etudiant_discipline'] = \
-#                         self.ui.cb_etudiant_discipline.currentIndex()
-#                 if self.ui.cb_etudiant_niveau.currentIndex() == 0:
-#                     raise ValueError(u"Vous devez préciser votre niveau "
-#                                      u"d'études.")
-#                 else:
-#                     inputs['etudiant_niveau'] = \
-#                         self.ui.cb_etudiant_niveau.currentIndex()
-#
-#             # participation expériences ----------------------------------------
-#             if not (self.ui.rb_experiences_oui.isChecked() or
-#                     self.ui.rb_experiences_non.isChecked()):
-#                 raise ValueError(u"Vous devez préciser si vous avez déjà ou "
-#                                  u"non participer à une expérience d'économie.")
-#             else:
-#                 inputs['experiences'] = self.ui.rb_experiences_oui.isChecked()
-#
-#             # fratrie ----------------------------------------------------------
-#             inputs["fratrie_nombre"] = self.ui.spinBox_fratrie_nombre.value()
-#             inputs["fratrie_rang"] = self.ui.spinBox_fratrie_rang.value()
-#             if inputs["fratrie_nombre"] == 0 and inputs["fratrie_rang"] > 0:
-#                 raise ValueError(u"Si vous n'avez pas de frères et soeurs "
-#                                  u"mettez 0 comme rang.")
-#             if inputs["fratrie_rang"] > inputs["fratrie_nombre"] + 1:
-#                 raise ValueError(u"Si vous avez {fratrie_nombre} frères et "
-#                                  u"soeurs vous ne pouvez avoir comme rang "
-#                                  u"{fratrie_rang}".format(**inputs))
-#
-#             # sportivité -------------------------------------------------------
-#             if not (self.ui.rb_sportif_oui.isChecked() or
-#                     self.ui.rb_sportif_non.isChecked()):
-#                 raise ValueError(u"Vous devez préciser si vous pratiquez ou "
-#                                  u"non un sport")
-#             else:
-#                 inputs['sportif'] = self.ui.rb_sportif_oui.isChecked()
-#
-#             if inputs['sportif']:
-#                 # Type de sport
-#                 if not (self.ui.rb_sportif_collectif.isChecked() or
-#                         self.ui.rb_sportif_individuel.isChecked()):
-#                     raise ValueError(u"Vous devez préciser s'il s'agit d'un "
-#                                      u"sport individuel ou collectif")
-#                 else:
-#                     inputs['sportif_type'] = \
-#                         self.ui.rb_sportif_individuel.isChecked()
-#                 # Competition
-#                 if not (self.ui.rb_sportif_competition_oui.isChecked() or
-#                         self.ui.rb_sportif_competition_non.isChecked()):
-#                     raise ValueError(u"Vous devez préciser si vous pratiquez "
-#                                      u"votre sport en compétition ou non")
-#                 else:
-#                     inputs['sportif_competition'] = \
-#                         self.ui.rb_sportif_competition_oui.isChecked()
-#
-#             # religion ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-#             # religion_place
-#             if self.ui.cb_religion_place.currentIndex() == 0:
-#                 raise ValueError(u"Vous devez préciser la place que tient "
-#                                  u"la religion dans votre vie")
-#             else:
-#                 inputs['religion_place'] = \
-#                     self.ui.cb_religion_place.currentIndex()
-#             # religion_croyance
-#             if self.ui.cb_religion_croyance.currentIndex() == 0:
-#                 raise ValueError(u"Vous devez préciser votre degré de croyance")
-#             else:
-#                 inputs['religion_croyance'] = \
-#                     self.ui.cb_religion_croyance.currentIndex()
-#             # religion_nom
-#             if self.ui.cb_religion_nom.currentIndex() == 0:
-#                 raise ValueError(u"Vous devez préciser le nom de votre "
-#                                  u"religion")
-#             else:
-#                 inputs["religion_nom"] = self.ui.cb_religion_nom.currentIndex()
-#
-#         except ValueError as e:
-#             QtGui.QMessageBox.critical(self, u"Erreur", e.message)
-#             self.ui.pushButton_valider.setEnabled(True)
-#             return
-#
-#         if not self._automatique:
-#             confirm = QtGui.QMessageBox.question(
-#                 self, u"Confirmation",
-#                 u"Vous confirmez les informations saisies?",
-#                 QtGui.QMessageBox.Yes | QtGui.QMessageBox.No)
-#             if confirm == QtGui.QMessageBox.No:
-#                 self.ui.pushButton_valider.setEnabled(True)
-#                 return
-#         self._defered.callback(inputs)
-#         self.accept()
-
-
 class DQuestFinal(QtGui.QDialog):
     def __init__(self, defered, automatique, parent):
         super(DQuestFinal, self).__init__(parent)
@@ -538,7 +298,7 @@ class DQuestFinal(QtGui.QDialog):
             text=le2mtrans(u"Please fill in the questionnaire below. This "
                            u"questionnaire is anonymous so please be sincere "
                            u"in your responses."),
-            parent=self, size=(600, 40))
+            parent=self, size=(600, 60))
         layout.addWidget(wexplanation)
 
         self._gridlayout = QtGui.QGridLayout()
@@ -549,7 +309,7 @@ class DQuestFinal(QtGui.QDialog):
         self._birth = WSpinbox(label=le2mtrans(u"Year of birth"), parent=self,
                                 minimum=currentyear-100, maximum=currentyear,
                                 interval=1, automatique=self._automatique)
-        self._birth.ui.spinBox.setValue(currentyear)
+        self._birth.spinBox.setValue(currentyear)
         self._gridlayout.addWidget(self._birth, 0, 0)
 
         countries = [v for k, v in sorted(configvar.COUNTRIES.viewitems())]
@@ -674,7 +434,7 @@ class DQuestFinal(QtGui.QDialog):
         # study
         self._study_topic.setEnabled(False)
         self._study_level.setEnabled(False)
-        self._study.ui.radioButton_0.toggled.connect(
+        self._study.radios[0].toggled.connect(
             lambda _: self._enable_widgets(
                 self._study.get_checkedbutton() == 0, self._study_level,
                 self._study_topic))
@@ -682,7 +442,7 @@ class DQuestFinal(QtGui.QDialog):
         # sport
         self._sport_individuel.setEnabled(False)
         self._sport_competition.setEnabled(False)
-        self._sport.ui.radioButton_0.toggled.connect(
+        self._sport.radios[0].toggled.connect(
             lambda _: self._enable_widgets(
                 self._sport.get_checkedbutton() == 0,
                 self._sport_individuel, self._sport_competition))
@@ -697,6 +457,7 @@ class DQuestFinal(QtGui.QDialog):
     def _get_inputs(self):
         inputs = {}
         try:
+
             birth = self._birth.get_value()
             if birth == datetime.now().year:
                 raise ValueError(le2mtrans(u"Please enter your year of birth"))
@@ -731,7 +492,7 @@ class DQuestFinal(QtGui.QDialog):
             inputs['religion_croyance'] = self._religion_belief.get_currentindex()
             inputs['religion_nom'] = self._religion_name.get_currentindex()
 
-        except ValueError:
+        except ValueError as e:
             QtGui.QMessageBox.warning(
                 self, le2mtrans(u"Warning"),
                 le2mtrans(u"You must answer to all the questions"))

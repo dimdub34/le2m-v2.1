@@ -8,8 +8,8 @@ try:  # this way it is possible to load this module independently
     from util.utili18n import le2mtrans
 except AttributeError:
     le2mtrans = lambda x: x
-from cltguisrc.cltguisrcwid import widPeriod, widCombo, \
-    widSpinbox, widRadio, widListDrag, widTableview, widCompterebours, \
+from cltguisrc.cltguisrcwid import widCombo, \
+    widRadio, widListDrag, widTableview, \
     widChat, widSlider, widLabel, widLineEdit
 from configuration.configvar import YES_NO
 import logging
@@ -22,12 +22,21 @@ logger = logging.getLogger("le2m")
 class WLabel(QtGui.QWidget):
     def __init__(self, text=None, parent=None):
         super(WLabel, self).__init__(parent)
-        self.ui = widLabel.Ui_Form()
-        self.ui.setupUi(self)
-        self.set_text(text or u"")
+
+        layout = QtGui.QHBoxLayout()
+        self.setLayout(layout)
+
+        layout.addSpacerItem(QtGui.QSpacerItem(
+            20, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding))
+
+        self.label = QtGui.QLabel(text or u"")
+        layout.addWidget(self.label)
+
+        layout.addSpacerItem(QtGui.QSpacerItem(
+            20, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding))
 
     def set_text(self, text):
-        self.ui.label.setText(text)
+        self.label.setText(text)
 
 
 class WPeriod(QtGui.QWidget):
@@ -37,20 +46,21 @@ class WPeriod(QtGui.QWidget):
         layout = QtGui.QHBoxLayout()
         self.setLayout(layout)
 
-        self._label_period = QtGui.QLabel()
+        self.label_period = QtGui.QLabel()
         self.set_period(period)
-        layout.addWidget(self._label_period)
+        layout.addWidget(self.label_period)
 
         layout.addSpacerItem(QtGui.QSpacerItem(
             20, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding))
 
-        self._pushButton_history = QtGui.QPushButton(le2mtrans(u"History"))
-        layout.addWidget(self._pushButton_history)
+        self.pushButton_history = QtGui.QPushButton(le2mtrans(u"History"))
+        layout.addWidget(self.pushButton_history)
+
         if ecran_historique:
-            self._pushButton_history.clicked.connect(ecran_historique.show)
+            self.pushButton_history.clicked.connect(ecran_historique.show)
 
     def set_period(self, period):
-        self._label_period.setText(
+        self.label_period.setText(
             le2mtrans(u"Period") + u" {}".format(period))
 
 
@@ -61,10 +71,10 @@ class WExplication(QtGui.QWidget):
         layout = QtGui.QHBoxLayout()
         self.setLayout(layout)
 
-        self._textEdit = QtGui.QTextEdit()
-        self._textEdit.setReadOnly(True)
-        self._textEdit.setFixedSize(*size)
-        layout.addWidget(self._textEdit)
+        self.textEdit = QtGui.QTextEdit()
+        self.textEdit.setReadOnly(True)
+        self.textEdit.setFixedSize(*size)
+        layout.addWidget(self.textEdit)
 
         if html:
             self.set_html(text or u"")
@@ -73,58 +83,59 @@ class WExplication(QtGui.QWidget):
         self.adjustSize()
 
     def set_size(self, size):
-        self._textEdit.setFixedSize(*size)
+        self.textEdit.setFixedSize(*size)
         self.adjustSize()
 
     def set_text(self, text):
-        self._textEdit.setText(text)
+        self.textEdit.setText(text)
 
     def set_html(self, html):
-        self._textEdit.setHtml(html)
+        self.textEdit.setHtml(html)
 
     def get_text(self):
-        return self._textEdit.toPlainText()
+        return self.textEdit.toPlainText()
 
 
 class WCombo(QtGui.QWidget):
-    def __init__(self, label, items, automatique=False, parent=None,
-                 autotime=500):
+    def __init__(self, label, items, automatique=False, parent=None):
         super(WCombo, self).__init__(parent)
-        self.ui = widCombo.Ui_Form()
-        self.ui.setupUi(self)
         self._items = items
-        self.ui.label.setText(label)
-        self.ui.comboBox.addItems(self._items)
-        if automatique:
-            self._timer = QtCore.QTimer()
-            self._timer.setSingleShot(True)
-            self._timer.timeout.connect(self._changeindex)
-            self._timer.start(autotime)
 
-    def _changeindex(self):
-        if self._items[0] == le2mtrans(u"Choose") or \
-                        self._items[0] == u"Choisir":
-            self.ui.comboBox.setCurrentIndex(
-                random.randint(1, len(self._items)-1))
-        else:
-            self.ui.comboBox.setCurrentIndex(
-                random.randint(0, len(self._items)-1))
+        layout = QtGui.QHBoxLayout()
+        self.setLayout(layout)
+        layout.addSpacerItem(QtGui.QSpacerItem(
+            20, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding))
+
+        self.label = QtGui.QLabel(label)
+        layout.addWidget(self.label)
+
+        self.combo = QtGui.QComboBox()
+        self.combo.addItems(self._items)
+        layout.addWidget(self.combo)
+
+        layout.addSpacerItem(QtGui.QSpacerItem(
+            20, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding))
+
+        if automatique:
+            if self._items[0] == le2mtrans(u"Choose") or \
+                            self._items[0] == u"Choisir":
+                self.combo.setCurrentIndex(
+                    random.randint(1, len(self._items) - 1))
+            else:
+                self.combo.setCurrentIndex(
+                    random.randint(0, len(self._items) - 1))
 
     def get_currentindex(self):
         if self._items[0] == le2mtrans(u"Choose") and \
-                        self.ui.comboBox.currentIndex() == 0:
+                        self.combo.currentIndex() == 0:
             raise ValueError(u"No index selected")
-        return self.ui.comboBox.currentIndex()
+        return self.combo.currentIndex()
 
 
 class WSpinbox(QtGui.QWidget):
     def __init__(self, label, minimum=0, maximum=100, interval=1,
-                 automatique=False, parent=None, autotime=500, width=50):
+                 automatique=False, parent=None, width=50):
         QtGui.QWidget.__init__(self, parent)
-
-        self._minimum = minimum
-        self._maximum = maximum
-        self._interval = interval
 
         layout = QtGui.QHBoxLayout()
         self.setLayout(layout)
@@ -135,81 +146,61 @@ class WSpinbox(QtGui.QWidget):
         formlayout = QtGui.QFormLayout()
         layout.addLayout(formlayout)
 
-        self._label = QtGui.QLabel(label)
-        self._spinBox = QtGui.QSpinBox()
-        self._spinBox.setButtonSymbols(QtGui.QSpinBox.NoButtons)
-        self._spinBox.setMinimum(self._minimum)
-        self._spinBox.setMaximum(self._maximum)
-        self._spinBox.setSingleStep(self._interval)
-        self._spinBox.setValue(self._minimum)
-        self._spinBox.setFixedWidth(50)
+        self.label = QtGui.QLabel(label)
+        self.spinBox = QtGui.QSpinBox()
+        self.spinBox.setButtonSymbols(QtGui.QSpinBox.NoButtons)
+        self.spinBox.setMinimum(minimum)
+        self.spinBox.setMaximum(maximum)
+        self.spinBox.setSingleStep(interval)
+        self.spinBox.setValue(minimum)
+        self.spinBox.setFixedWidth(width)
 
-        formlayout.addRow(self._label, self._spinBox)
+        formlayout.addRow(self.label, self.spinBox)
 
         layout.addSpacerItem(QtGui.QSpacerItem(
             20, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding))
 
+        if automatique:
+            self.spinBox.setValue(
+                random.randrange(minimum, maximum + 1, interval))
+
         self.adjustSize()
 
-        if automatique:
-            self._timer = QtCore.QTimer()
-            self._timer.setSingleShot(True)
-            self._timer.timeout.connect(self._changevalue)
-            self._timer.start(autotime)
-
-    def _changevalue(self):
-        self._spinBox.setValue(
-                    random.randrange(self._minimum, self._maximum + 1,
-                                     self._interval))
-
     def get_value(self):
-        return self._spinBox.value()
+        return self.spinBox.value()
 
 
 class WRadio(QtGui.QWidget):
     def __init__(self, label,
                  texts=tuple([v for k, v in sorted(YES_NO.viewitems())]),
-                 automatique=False, parent=None, autotime=500):
+                 automatique=False, parent=None):
         super(WRadio, self).__init__(parent)
-        self.ui = widRadio.Ui_Form()
-        self.ui.setupUi(self)
-        self.ui.label.setText(label)
-        self.ui.radioButton_0.setText(texts[0])
-        self.ui.radioButton_1.setText(texts[1])
-        if len(texts) > 2:
-            for i in range(2, len(texts)):
-                setattr(self.ui, "radioButton_{}".format(i),
-                        QtGui.QRadioButton())
-                getattr(self.ui, "radioButton_{}".format(i)).setText(texts[i])
-                self.ui.buttonGroup.addButton(
-                    getattr(self.ui, "radioButton_{}".format(i)))
-                self.ui.horizontalLayout_radios.addWidget(
-                    getattr(self.ui, "radioButton_{}".format(i)))
+
+        layout = QtGui.QHBoxLayout()
+        self.setLayout(layout)
+        layout.addSpacerItem(QtGui.QSpacerItem(
+            20, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding))
+
+        self.label = QtGui.QLabel(label)
+        layout.addWidget(self.label)
+
+        self.radios = list()
+        self.button_group = QtGui.QButtonGroup()
+        for num, txt in enumerate(texts):
+            self.radios.append(QtGui.QRadioButton(txt))
+            self.button_group.addButton(self.radios[-1], num)
+            layout.addWidget(self.radios[-1])
+
+        layout.addSpacerItem(QtGui.QSpacerItem(
+            20, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding))
 
         if automatique:
-            self._timer = QtCore.QTimer()
-            self._timer.setSingleShot(True)
-            self._timer.timeout.connect(self._checkbutton)
-            self._timer.start(autotime)
-
-    def _checkbutton(self):
-        radios = [v for k, v in self.ui.__dict__.viewitems() if "radioButton" in k]
-        selected = random.choice(radios)
-        selected.setChecked(True)
+            selected = random.choice(self.radios)
+            selected.setChecked(True)
 
     def get_checkedbutton(self):
-        """
-        Return the index of the checked radioButton in the list
-        :return: Integer
-        """
-        radios = [v for k, v in sorted(self.ui.__dict__.viewitems()) if
-                  "radioButton" in k]
-        checked = None
-        for i, r in enumerate(radios):
-            if r.isChecked():
-                checked = i
-                break
-        if checked is None:
+        checked = self.button_group.checkedId()
+        if checked == -1:
             raise ValueError(le2mtrans(u"No item selected"))
         return checked
 
@@ -304,7 +295,7 @@ class WCompterebours(QtGui.QWidget):
         self.setLayout(layout)
 
         layout.addSpacerItem(QtGui.QSpacerItem(
-            20, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.expanding))
+            20, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding))
 
         self._label = QtGui.QLabel(le2mtrans(u"Remaining time:"))
         layout.addWidget(self._label)
@@ -315,7 +306,7 @@ class WCompterebours(QtGui.QWidget):
         layout.addWidget(self._label_timer)
 
         layout.addSpacerItem(QtGui.QSpacerItem(
-            20, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.expanding))
+            20, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding))
 
         self.compterebours = CompteARebours(tps)
         self.compterebours.changetime[str].connect(self._label_timer.setText)
