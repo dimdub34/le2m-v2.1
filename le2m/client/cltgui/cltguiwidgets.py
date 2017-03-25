@@ -129,6 +129,9 @@ class WSpinbox(QtGui.QWidget):
         layout = QtGui.QHBoxLayout()
         self.setLayout(layout)
 
+        layout.addSpacerItem(QtGui.QSpacerItem(
+            20, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding))
+
         formlayout = QtGui.QFormLayout()
         layout.addLayout(formlayout)
 
@@ -142,6 +145,11 @@ class WSpinbox(QtGui.QWidget):
         self._spinBox.setFixedWidth(50)
 
         formlayout.addRow(self._label, self._spinBox)
+
+        layout.addSpacerItem(QtGui.QSpacerItem(
+            20, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding))
+
+        self.adjustSize()
 
         if automatique:
             self._timer = QtCore.QTimer()
@@ -282,7 +290,7 @@ class WTableview(QtGui.QWidget):
 class WCompterebours(QtGui.QWidget):
     """
 
-    """
+    # """
     def __init__(self, parent, temps, actionfin):
         """
         :param parent:
@@ -291,22 +299,36 @@ class WCompterebours(QtGui.QWidget):
         :return:
         """
         super(WCompterebours, self).__init__(parent)
-        self.ui = widCompterebours.Ui_Form()
-        self.ui.setupUi(self)
 
-        self.ui.label.setText(le2mtrans(u"Remaining time:"))
+        layout = QtGui.QHBoxLayout()
+        self.setLayout(layout)
+
+        layout.addSpacerItem(QtGui.QSpacerItem(
+            20, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.expanding))
+
+        self._label = QtGui.QLabel(le2mtrans(u"Remaining time:"))
+        layout.addWidget(self._label)
+
+        self._label_timer = QtGui.QLabel()
         tps = timedelta(hours=temps.hour, minutes=temps.minute,
                         seconds=temps.second).seconds
+        layout.addWidget(self._label_timer)
+
+        layout.addSpacerItem(QtGui.QSpacerItem(
+            20, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.expanding))
+
         self.compterebours = CompteARebours(tps)
-        self.compterebours.changetime[str].connect(self.ui.label_timer.setText)
+        self.compterebours.changetime[str].connect(self._label_timer.setText)
         self.compterebours.endoftime.connect(actionfin)
         self.compterebours.start()
+
+        self.adjustSize()
 
     def stop(self):
         self.compterebours.stop()
 
     def is_running(self):
-        return self.compterebours.isRunning()
+        return self.compterebours.is_running()
 
 
 class WChat(QtGui.QWidget):
