@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LE2M\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-02-06 15:21+0100\n"
-"PO-Revision-Date: 2017-02-06 15:22+0100\n"
+"POT-Creation-Date: 2017-03-25 11:02+0100\n"
+"PO-Revision-Date: 2017-03-25 11:03+0100\n"
 "Last-Translator: Dimitri DUBOIS <dimitri.dubois@umontpellier.fr>\n"
 "Language-Team: Dimitri DUBOIS <dimitri.dubois@umontpellier.fr>\n"
 "Language: fr_FR\n"
@@ -108,7 +108,7 @@ msgid "Start time: {st}"
 msgstr "Heure de début: {st}"
 
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgest/servgestexpe.py:126
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:359
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguidialogs.py:540
 msgid "Understanding questionnaire"
 msgstr "Questionnaire de compréhension"
 
@@ -168,9 +168,9 @@ msgid "No client connected"
 msgstr "Aucun client connecté"
 
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgest/servgestexpe.py:271
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguidialogs.py:208
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguidialogs.py:217
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguidialogs.py:227
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguidialogs.py:209
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguidialogs.py:218
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguidialogs.py:228
 msgid "Error"
 msgstr "Erreur"
 
@@ -285,68 +285,68 @@ msgstr ""
 msgid "Select the part(s) you want to load"
 msgstr "Sélectionner la/les partie(s) à charger"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguidialogs.py:116
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguidialogs.py:117
 msgid "Directory in which to store the database"
 msgstr "Dossier dans lequel enregistrer la base de données"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguidialogs.py:117
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguidialogs.py:118
 msgid "Directory path (check)"
 msgstr "Dossier"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguidialogs.py:122
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguidialogs.py:123
 msgid "Database name (without the sqlite extension"
 msgstr "Nom de la base (sans l'extension sqlite)"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguidialogs.py:127
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguidialogs.py:128
 msgid "Test session"
 msgstr "Session test"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguidialogs.py:129
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguidialogs.py:130
 msgid "Uncheck if this is not a test session"
 msgstr "Décocher si ce n'est pas une session de test"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguidialogs.py:132
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguidialogs.py:133
 msgid "Browse"
 msgstr "Parcourir"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguidialogs.py:155
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguidialogs.py:156
 msgid "List of parts that can be loaded"
 msgstr "Liste des parties qui peuvent être chargées"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguidialogs.py:188
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguidialogs.py:189
 msgid "Select the directory in which to store the database."
 msgstr "Sélectionner le dossier dans lequel enregistrer la base de données"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguidialogs.py:209
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguidialogs.py:210
 msgid "You must choose at least one part"
 msgstr "Il faut choisir au moins une partie"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguidialogs.py:218
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguidialogs.py:219
 msgid "You must choose a directory in which to store the database"
 msgstr ""
 "Il faut choisir une dossier pour l'enregistrement de la base de données"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguidialogs.py:228
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguidialogs.py:229
 msgid "You must provide a database name"
 msgstr "Il faut préciser le nom de la base"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguidialogs.py:234
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguidialogs.py:434
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguidialogs.py:464
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguidialogs.py:494
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:304
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:371
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:376
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:428
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguidialogs.py:235
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguidialogs.py:435
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguidialogs.py:465
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguidialogs.py:495
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:305
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:374
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:379
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:431
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/oathAndLies/oathAndLiesGui.py:283
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/oathAndLies/oathAndLiesGui.py:405
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/oathAndLies/oathAndLiesGui.py:448
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/oathAndLies/oathAndLiesGui.py:508
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGameSolidarity/PublicGoodGameSolidarityGui.py:73
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGameSolidarity/PublicGoodGameSolidarityGui.py:162
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGameSolidarity/PublicGoodGameSolidarityGui.py:270
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGameSolidarity/PublicGoodGameSolidarityServ.py:283
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGameSolidarity/PublicGoodGameSolidarityServ.py:290
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGameSolidarity/PublicGoodGameSolidarityGui.py:83
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGameSolidarity/PublicGoodGameSolidarityGui.py:258
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGameSolidarity/PublicGoodGameSolidarityGui.py:366
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGameSolidarity/PublicGoodGameSolidarityServ.py:286
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGameSolidarity/PublicGoodGameSolidarityServ.py:293
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/TeamCommunication/TeamCommunicationGui.py:602
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/TeamCommunication/TeamCommunicationServ.py:261
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/TeamCommunication/TeamCommunicationServ.py:268
@@ -360,7 +360,7 @@ msgstr "Il faut préciser le nom de la base"
 msgid "Warning"
 msgstr "Attention"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguidialogs.py:235
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguidialogs.py:236
 #, python-brace-format
 msgid ""
 "You have selected several parts.\n"
@@ -372,74 +372,74 @@ msgstr ""
 "Merci de confirmer que c'est bien dans ce dossier que vous souhaitez "
 "enregistrer la base."
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguidialogs.py:331
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguidialogs.py:332
 msgid "Payoffs for the experiment"
 msgstr "Gains de l'expérience"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguidialogs.py:334
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguidialogs.py:335
 msgid "Payoffs of part {}"
 msgstr "Gains de la partie {}"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguidialogs.py:346
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguidialogs.py:381
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguidialogs.py:347
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguidialogs.py:382
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguitablemodels.py:12
 msgid "Hostname"
 msgstr "Nom de poste"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguidialogs.py:349
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguidialogs.py:381
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguidialogs.py:350
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguidialogs.py:382
 msgid "Payoff"
 msgstr "Gain"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguidialogs.py:361
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:171
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguidialogs.py:362
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:172
 msgid "Payoffs"
 msgstr "Gains"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguidialogs.py:373
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguidialogs.py:374
 msgid "Export payoffs in csv file"
 msgstr "Exporter les gains dans un fichier csv"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguidialogs.py:374
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguidialogs.py:375
 msgid "csv file (*.csv)"
 msgstr "Fichier csv (*.csv)"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguidialogs.py:386
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguidialogs.py:387
 msgid "the experiment"
 msgstr "l'expérience"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguidialogs.py:390
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguidialogs.py:391
 msgid "Display the payoffs of {}?"
 msgstr "Afficher les gains de {}?"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguidialogs.py:427
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:264
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguidialogs.py:428
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:265
 msgid "Dice roller"
 msgstr "Lancé de dé"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguidialogs.py:435
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguidialogs.py:436
 msgid "You must roll the dice"
 msgstr "Il faut lancer le dé"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguidialogs.py:457
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:270
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguidialogs.py:458
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:271
 msgid "Random number"
 msgstr "Nombre aléatoire"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguidialogs.py:465
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguidialogs.py:466
 msgid "You must drawn a random number"
 msgstr "Il faut tirer un nombre au sort"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguidialogs.py:487
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:276
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguidialogs.py:488
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:277
 msgid "Head and Tail"
 msgstr "Pile ou face"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguidialogs.py:495
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguidialogs.py:496
 msgid "You must play"
 msgstr "Vous devez jouer"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:56
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:57
 msgid ""
 "LE2M\n"
 "Experimental Economics Software of Montpellier"
@@ -447,156 +447,156 @@ msgstr ""
 "LE2M\n"
 "Logiciel d’Économie Expérimentale de Montpellier"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:60
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:61
 msgid "Informations"
 msgstr "Informations"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:62
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:63
 msgid "Remotes"
 msgstr "Postes"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:64
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:134
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:65
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:135
 msgid "Experiment"
 msgstr "Expérience"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:73
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:74
 msgid "Here the logo of the lab"
 msgstr "Ici le logo du laboratoire"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:80
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:81
 msgid "Here the main picture"
 msgstr "Ici l'image principale"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:87
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:88
 msgid "Decisions"
 msgstr "Décisions"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:100
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:101
 msgid "Connected remotes: 0"
 msgstr "Clients connectés: 0"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:110
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:111
 msgid "LE2M"
 msgstr "LE2M"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:114
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:115
 msgid "File"
 msgstr "Fichier"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:117
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:118
 msgid "Load a part"
 msgstr "Charger une partie"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:120
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:121
 msgid "Open a dialog box with a list of parts you can load"
 msgstr ""
 "Ouvre une boîte de dialogue avec la liste des parties qui peuvent être "
 "chargées"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:126
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:127
 msgid "Quit"
 msgstr "Quitter"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:128
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:129
 msgid "Quit the application"
 msgstr "Quitter l'application"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:137
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:138
 msgid "Display welcome screen"
 msgstr "Afficher l'écran d'accueil"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:139
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:140
 msgid "Display the welcome screen on participants' screen"
 msgstr "Afficher l'écran d'accueil sur les postes clients"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:146
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:147
 msgid "Load an understanding questionnaire"
 msgstr "Charger un questionnaire de compréhension"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:149
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:150
 msgid ""
 "Open a dialog box for selecting an understanding questionnaire (xml file)"
 msgstr ""
 "Ouvre une boîte de dialogue pour choisir un fichier de questionnaire de "
 "compréhension (fichier xml)"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:154
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:155
 msgid "Start the understanding questionnaire"
 msgstr "Démarrer le questionnaire de compréhension"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:157
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:158
 msgid "Start the loaded understanding questionnaire"
 msgstr "Démarrer le questionnaire de compréhension chargé"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:164
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:165
 msgid "Display final questionnaire"
 msgstr "Afficher le questionnaire final sur les postes"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:166
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:167
 msgid "Display the final questionnaire on participants' screen"
 msgstr "Afficher le questionnaire final sur l'écran des clients"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:173
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:174
 msgid "Display a dialog box with the payoffs of each player"
 msgstr "Afficher une boîte de dialogue avec les gains de chaque joueur"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:180
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:181
 msgid "Parts"
 msgstr "Parties"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:184
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:185
 msgid "Edit"
 msgstr "Edition"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:187
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:188
 msgid "Clear server list"
 msgstr "Vider la liste serveur"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:188
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:189
 msgid "Clear the server list"
 msgstr "Vider la liste serveur"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:192
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:193
 msgid "Clear client list"
 msgstr "Vider la liste client"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:193
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:194
 msgid "Clear the client list"
 msgstr "Vider la liste client"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:198
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:199
 msgid "Options"
 msgstr "Options"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:201
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:202
 msgid "Stop the part after this period"
 msgstr "Arrêter après cette période"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:203
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:204
 msgid "Clic on this menu to stop the part after this period"
 msgstr "Cliquer sur ce menu pour arrêter la partie après cette période"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:209
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:210
 msgid "Set participants gender in the application"
 msgstr "Enregistrer le genre des clients dans l'application"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:212
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:213
 msgid ""
 "Display a dialog box that allows to set the gender of each remote "
 "(participant)"
 msgstr ""
 "Ouvre une boîte de dialogue qui permet d'enregistrer le genre des clients"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:220
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:221
 msgid "Draw a part among those played"
 msgstr "Tirer au sort une partie parmi celles qui ont été lancées"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:224
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:225
 msgid "Display the payoffs of each part"
 msgstr "Afficher les gains de chaque partie"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:227
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:228
 msgid ""
 "Display a dialog box where you can choose for which part you want to inform "
 "the participants about their payoff"
@@ -605,25 +605,25 @@ msgstr ""
 "peut ensuite sélectionner les parties dont on veut faire afficher les gains "
 "sur les postes."
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:235
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:236
 msgid "Tools"
 msgstr "Outils"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:238
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:239
 msgid "Create a new part"
 msgstr "Créer une nouvelle partie"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:240
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:241
 msgid "Display a dialog box in which you can configure the part to create"
 msgstr ""
 "Ouvre une boîte de dialogue qui permet de déterminer quelques paramètres "
 "pour créer une nouvelle partie"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:245
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:246
 msgid "Create/Edit an understanding questionnaire"
 msgstr "Créer ou éditer un questionnaire de compréhension"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:248
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:249
 msgid ""
 "Open a dialog box that allows to create or edit an understanding "
 "questionnaire"
@@ -631,41 +631,41 @@ msgstr ""
 "Ouvre une boîte de dialogue qui permet de créer ou d'éditer un questionnaire "
 "de compréhension"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:253
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:254
 msgid "Extract some experimental data"
 msgstr "Extraire des données"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:255
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:256
 msgid "Open a dialog box for selection an sqlite file to extract"
 msgstr "Ouvre une boite de dialogue qui permet de choisir la base de données"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:265
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:266
 msgid "Roll a dice"
 msgstr "Lancer un dé"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:271
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:272
 msgid "Drawn a random number"
 msgstr "Tirer un nombre au hasard"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:277
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:278
 msgid "Play head and tail"
 msgstr "Jouer à pile ou face"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:282
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:284
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:448
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:283
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:285
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:451
 msgid "Help"
 msgstr "Aide"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:286
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:287
 msgid "Display a window with a text of help"
 msgstr "Afficher une boite de dialogue d'aide"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:289
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:290
 msgid "About"
 msgstr "A propos"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:305
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:306
 msgid ""
 "The database is already created, you therefore cannot load another part. If "
 "you want to, you need to restart the application"
@@ -673,19 +673,19 @@ msgstr ""
 "La base de données est déjà créée, il est impossible de charger une nouvelle "
 "partie, sauf à relancer l'application"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:328
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:383
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:397
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:434
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:329
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:386
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:400
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:437
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/creator/filestocopy/creator_Gui.py:72
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/oathAndLies/oathAndLiesGui.py:287
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/oathAndLies/oathAndLiesGui.py:409
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/oathAndLies/oathAndLiesGui.py:453
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/oathAndLies/oathAndLiesGui.py:513
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGameSolidarity/PublicGoodGameSolidarityGui.py:78
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGameSolidarity/PublicGoodGameSolidarityGui.py:167
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGameSolidarity/PublicGoodGameSolidarityGui.py:275
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGameSolidarity/PublicGoodGameSolidarityServ.py:297
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGameSolidarity/PublicGoodGameSolidarityGui.py:88
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGameSolidarity/PublicGoodGameSolidarityGui.py:263
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGameSolidarity/PublicGoodGameSolidarityGui.py:371
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGameSolidarity/PublicGoodGameSolidarityServ.py:300
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodIdentite/PublicGoodIdentiteGui.py:130
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodLocalGlobal/PublicGoodLocalGlobalGui.py:119
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodStrategyMethod/PublicGoodStrategyMethodGui.py:66
@@ -712,27 +712,27 @@ msgstr ""
 msgid "Confirmation"
 msgstr "Confirmation"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:329
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:330
 msgid "Display the welcome screen on remotes?"
 msgstr "Afficher l'écran d'accueil sur les postes?"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:345
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:346
 msgid "Select the understanding questionnaire to load"
 msgstr "Sélectionner le questionnaire de compréhension à charger"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:346
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:347
 msgid "xml file (*.xml)"
 msgstr "fichier xml (*.xml)"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:361
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:364
 msgid "Understanding questionnaire loaded ({} questions)"
 msgstr "Questionnaire de compréhension chargé ({} questions)"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:372
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:375
 msgid "Please load an understanding questionnaire"
 msgstr "Merci de charger un questionnaire de compréhension"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:377
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:380
 msgid ""
 "The understanding questionnaire cannot be started before the database is "
 "created. You first has to load at least one part."
@@ -740,30 +740,30 @@ msgstr ""
 "Le questionnaire de compréhension ne peut être chargé avant la création de "
 "la base de données. Il faut donc charger une partie avant."
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:384
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:387
 msgid "Please confirm you want to start the understanding questionnaire?"
 msgstr ""
 "Vous confirmez que vous souhaitez démarrer le questionnaire de compréhension?"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:398
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:401
 msgid "Are you sure you want to exit LE2M?"
 msgstr "Etes-vous certain de vouloir quitter l'application LE2M?"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:414
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:417
 msgid "Genders"
 msgstr "Genres"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:414
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:417
 msgid "Men"
 msgstr "Hommes"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:417
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:420
 msgid "Women"
 msgstr "Femmes"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:429
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:432
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/oathAndLies/oathAndLiesServ.py:176
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGameSolidarity/PublicGoodGameSolidarityServ.py:284
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGameSolidarity/PublicGoodGameSolidarityServ.py:287
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/TeamCommunication/TeamCommunicationServ.py:262
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/voteMajorite/voteMajoriteServ.py:192
 msgid "There is no database yet. You first need to load at least one part."
@@ -771,63 +771,63 @@ msgstr ""
 "Il n'a pas encore de base de données. Il faut d'abord en charger au moins "
 "une."
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:435
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:438
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/oathAndLies/oathAndLiesServ.py:186
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGameSolidarity/PublicGoodGameSolidarityServ.py:298
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGameSolidarity/PublicGoodGameSolidarityServ.py:301
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/TeamCommunication/TeamCommunicationServ.py:276
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/voteMajorite/voteMajoriteServ.py:202
 msgid "Start the final questionnaire?"
 msgstr "Démarrer le questionnaire final?"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:458
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:461
 msgid "Developers"
 msgstr "Développeurs"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:494
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:497
 msgid ""
 "Display the details of the selected parts on remotes?\n"
 "{}"
 msgstr "Afficher le détails des parties sélectionnées sur les postes?"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:558
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:569
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:561
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:572
 #, python-brace-format
 msgid "Problem with remove_waitmode: {msg}"
 msgstr "Problème avec remove_waitmode: {msg}"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:579
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:585
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:582
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:588
 #, python-brace-format
 msgid "Connected remotes: {num}"
 msgstr "Postes connectés: {num}"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:591
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:594
 msgid "The part will stop after this period"
 msgstr "La partie va s'arrêter après cette période"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:594
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:597
 msgid "Stop the part after this period "
 msgstr "Arrêter la partie après cette période"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:600
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:603
 msgid "Dice value: {}"
 msgstr "Valeur du dé: {}"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:606
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:609
 msgid "Random number: {}"
 msgstr "Nombre aléatoire: {}"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:613
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:616
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/GneezyPotter/GneezyPotterRemote.py:66
 msgid "Head"
 msgstr "Face"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:614
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:617
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/GneezyPotter/GneezyPotterRemote.py:64
 msgid "Tail"
 msgstr "Pile"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:612
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/server/servgui/servguiwindows.py:615
 msgid "Head and tail: {}"
 msgstr "Pile ou face: {}"
 
@@ -851,18 +851,18 @@ msgstr "Cliquer pour inversion la sélection"
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/creator/filestocopy/creator_Serv.py:65
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/oathAndLies/oathAndLiesServ.py:24
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/oathAndLies/oathAndLiesGui.py:43
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGameSolidarity/PublicGoodGameSolidarityGui.py:107
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGameSolidarity/PublicGoodGameSolidarityServ.py:26
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGameSolidarity/PublicGoodGameSolidarityGui.py:195
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGameSolidarity/PublicGoodGameSolidarityServ.py:30
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodIdentite/PublicGoodIdentiteServ.py:23
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodIdentite/PublicGoodIdentiteServ.py:106
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodStrategyMethod/PublicGoodStrategyMethodServ.py:23
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodStrategyMethod/PublicGoodStrategyMethodServ.py:60
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodStrategyMethod/PublicGoodStrategyMethodServ.py:25
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodStrategyMethod/PublicGoodStrategyMethodServ.py:72
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/EffortComptage/EffortComptageServ.py:23
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/EffortComptage/EffortComptageServ.py:66
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/MarcheMonopole/MarcheMonopoleServ.py:23
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/MarcheMonopole/MarcheMonopoleServ.py:66
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/MarketRiskInsurance/MarketRiskInsuranceServ.py:25
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/MarketRiskInsurance/MarketRiskInsuranceServ.py:72
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/MarketRiskInsurance/MarketRiskInsuranceServ.py:78
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/MarcheConcurrence/MarcheConcurrenceServ.py:23
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/MarcheConcurrence/MarcheConcurrenceServ.py:104
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/identiteConflits/identiteConflitsServ.py:23
@@ -882,9 +882,9 @@ msgstr "Configurer"
 
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/creator/filestocopy/creator_Serv.py:23
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/oathAndLies/oathAndLiesServ.py:25
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGameSolidarity/PublicGoodGameSolidarityServ.py:27
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGameSolidarity/PublicGoodGameSolidarityServ.py:31
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodIdentite/PublicGoodIdentiteServ.py:24
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodStrategyMethod/PublicGoodStrategyMethodServ.py:24
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodStrategyMethod/PublicGoodStrategyMethodServ.py:26
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/EffortComptage/EffortComptageServ.py:24
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/MarcheMonopole/MarcheMonopoleServ.py:24
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/MarketRiskInsurance/MarketRiskInsuranceServ.py:26
@@ -901,9 +901,9 @@ msgstr "Afficher les paramètres"
 
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/creator/filestocopy/creator_Serv.py:26
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/oathAndLies/oathAndLiesServ.py:28
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGameSolidarity/PublicGoodGameSolidarityServ.py:30
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGameSolidarity/PublicGoodGameSolidarityServ.py:34
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodIdentite/PublicGoodIdentiteServ.py:27
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodStrategyMethod/PublicGoodStrategyMethodServ.py:27
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodStrategyMethod/PublicGoodStrategyMethodServ.py:29
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/EffortComptage/EffortComptageServ.py:27
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/EffortComptage/EffortComptageGui.py:191
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/MarcheMonopole/MarcheMonopoleServ.py:27
@@ -921,19 +921,19 @@ msgstr "Paramètres"
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/creator/filestocopy/creator_Serv.py:53
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/oathAndLies/oathAndLiesServ.py:30
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/oathAndLies/oathAndLiesServ.py:84
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGameSolidarity/PublicGoodGameSolidarityServ.py:31
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGameSolidarity/PublicGoodGameSolidarityServ.py:85
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGameSolidarity/PublicGoodGameSolidarityServ.py:35
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGameSolidarity/PublicGoodGameSolidarityServ.py:103
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodIdentite/PublicGoodIdentiteServ.py:28
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodIdentite/PublicGoodIdentiteServ.py:54
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodStrategyMethod/PublicGoodStrategyMethodServ.py:28
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodStrategyMethod/PublicGoodStrategyMethodServ.py:48
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodStrategyMethod/PublicGoodStrategyMethodServ.py:30
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodStrategyMethod/PublicGoodStrategyMethodServ.py:60
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/Dictator/DictatorServ.py:26
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/EffortComptage/EffortComptageServ.py:28
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/EffortComptage/EffortComptageServ.py:54
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/MarcheMonopole/MarcheMonopoleServ.py:28
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/MarcheMonopole/MarcheMonopoleServ.py:49
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/MarketRiskInsurance/MarketRiskInsuranceServ.py:30
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/MarketRiskInsurance/MarketRiskInsuranceServ.py:60
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/MarketRiskInsurance/MarketRiskInsuranceServ.py:66
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/MarcheConcurrence/MarcheConcurrenceServ.py:28
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/MarcheConcurrence/MarcheConcurrenceServ.py:55
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/identiteConflits/identiteConflitsServ.py:28
@@ -954,9 +954,9 @@ msgstr "Démarrer"
 
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/creator/filestocopy/creator_Serv.py:28
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/oathAndLies/oathAndLiesServ.py:33
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGameSolidarity/PublicGoodGameSolidarityServ.py:32
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGameSolidarity/PublicGoodGameSolidarityServ.py:38
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodIdentite/PublicGoodIdentiteServ.py:29
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodStrategyMethod/PublicGoodStrategyMethodServ.py:29
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodStrategyMethod/PublicGoodStrategyMethodServ.py:31
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/Dictator/DictatorServ.py:27
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/EffortComptage/EffortComptageServ.py:29
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/MarketRiskInsurance/MarketRiskInsuranceServ.py:31
@@ -971,25 +971,25 @@ msgstr "Afficher les gains"
 
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/creator/filestocopy/creator_Serv.py:87
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/creator/filestocopy/creator_Serv.py:89
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/creator/filestocopy/creator_Texts.py:31
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/creator/filestocopy/creator_Texts.py:32
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/oathAndLies/oathAndLiesServ.py:111
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/oathAndLies/oathAndLiesServ.py:113
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/CommonPoolResource/CommonPoolResourceTexts.py:47
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGameSolidarity/PublicGoodGameSolidarityTexts.py:48
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGameSolidarity/PublicGoodGameSolidarityServ.py:196
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGameSolidarity/PublicGoodGameSolidarityServ.py:198
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGameSolidarity/PublicGoodGameSolidarityTexts.py:56
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGameSolidarity/PublicGoodGameSolidarityServ.py:136
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGameSolidarity/PublicGoodGameSolidarityServ.py:138
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodIdentite/PublicGoodIdentiteServ.py:118
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodIdentite/PublicGoodIdentiteServ.py:120
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodStrategyMethod/PublicGoodStrategyMethodServ.py:82
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodStrategyMethod/PublicGoodStrategyMethodServ.py:84
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodStrategyMethod/PublicGoodStrategyMethodServ.py:94
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodStrategyMethod/PublicGoodStrategyMethodServ.py:96
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/EffortComptage/EffortComptageTexts.py:25
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/EffortComptage/EffortComptageServ.py:88
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/EffortComptage/EffortComptageServ.py:90
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/MarcheMonopole/MarcheMonopoleServ.py:78
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/MarcheMonopole/MarcheMonopoleServ.py:80
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/MarcheMonopole/MarcheMonopoleTexts.py:34
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/MarketRiskInsurance/MarketRiskInsuranceServ.py:94
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/MarketRiskInsurance/MarketRiskInsuranceServ.py:96
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/MarketRiskInsurance/MarketRiskInsuranceServ.py:100
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/MarketRiskInsurance/MarketRiskInsuranceServ.py:102
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/MarcheConcurrence/MarcheConcurrenceServ.py:116
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/MarcheConcurrence/MarcheConcurrenceServ.py:118
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/MarcheConcurrence/MarcheConcurrenceTexts.py:38
@@ -1003,27 +1003,27 @@ msgstr "Afficher les gains"
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/goughScale/goughScaleServ.py:79
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/goughScale/goughScaleServ.py:81
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/prisonnersDilemma/prisonnersDilemmaTexts.py:21
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguiwidgets.py:45
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguiwidgets.py:46
 msgid "Period"
 msgstr "Période "
 
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/creator/filestocopy/creator_Serv.py:96
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/creator/filestocopy/creator_Texts.py:31
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/creator/filestocopy/creator_Texts.py:32
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/oathAndLies/oathAndLiesServ.py:124
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/oathAndLies/oathAndLiesServ.py:135
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/oathAndLies/oathAndLiesGui.py:257
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/oathAndLies/oathAndLiesGui.py:378
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/CommonPoolResource/CommonPoolResourceTexts.py:47
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGameSolidarity/PublicGoodGameSolidarityGui.py:50
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGameSolidarity/PublicGoodGameSolidarityServ.py:207
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGameSolidarity/PublicGoodGameSolidarityGui.py:60
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGameSolidarity/PublicGoodGameSolidarityServ.py:235
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodIdentite/PublicGoodIdentiteServ.py:127
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodStrategyMethod/PublicGoodStrategyMethodServ.py:91
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodStrategyMethod/PublicGoodStrategyMethodServ.py:103
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/Dictator/DictatorServ.py:112
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/Dictator/DictatorServ.py:115
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/EffortComptage/EffortComptageTexts.py:25
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/EffortComptage/EffortComptageServ.py:97
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/MarcheMonopole/MarcheMonopoleServ.py:87
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/MarketRiskInsurance/MarketRiskInsuranceServ.py:115
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/MarketRiskInsurance/MarketRiskInsuranceServ.py:121
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/MarcheConcurrence/MarcheConcurrenceServ.py:153
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/identiteConflits/identiteConflitsServ.py:167
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/identiteConflits/identiteConflitsTexts.py:43
@@ -1041,12 +1041,12 @@ msgstr "Décision"
 
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/creator/filestocopy/creator_Serv.py:104
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/oathAndLies/oathAndLiesServ.py:149
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGameSolidarity/PublicGoodGameSolidarityServ.py:256
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGameSolidarity/PublicGoodGameSolidarityServ.py:263
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodIdentite/PublicGoodIdentiteServ.py:165
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/EffortComptage/EffortComptageServ.py:105
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/MarcheMonopole/MarcheMonopoleServ.py:95
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/MarketRiskInsurance/MarketRiskInsuranceServ.py:156
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/MarketRiskInsurance/MarketRiskInsuranceGui.py:871
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/MarketRiskInsurance/MarketRiskInsuranceServ.py:162
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/MarketRiskInsurance/MarketRiskInsuranceGui.py:887
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/MarcheConcurrence/MarcheConcurrenceServ.py:161
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/identiteConflits/identiteConflitsServ.py:175
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/voteMajorite/voteMajoriteServ.py:161
@@ -1055,7 +1055,7 @@ msgstr "Décision"
 msgid "Summary"
 msgstr "Récapitulatif"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/creator/filestocopy/creator_Texts.py:32
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/creator/filestocopy/creator_Texts.py:33
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/CommonPoolResource/CommonPoolResourceTexts.py:48
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGameSolidarity/PublicGoodGameSolidarityTexts.py:65
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/EffortComptage/EffortComptageTexts.py:26
@@ -1070,9 +1070,9 @@ msgstr ""
 "Gain\n"
 "période"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/creator/filestocopy/creator_Texts.py:32
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/creator/filestocopy/creator_Texts.py:33
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/CommonPoolResource/CommonPoolResourceTexts.py:48
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGameSolidarity/PublicGoodGameSolidarityTexts.py:65
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGameSolidarity/PublicGoodGameSolidarityTexts.py:66
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/EffortComptage/EffortComptageTexts.py:26
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/identiteConflits/identiteConflitsTexts.py:44
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/prisonnersDilemma/prisonnersDilemmaTexts.py:23
@@ -1087,7 +1087,9 @@ msgstr ""
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/oathAndLies/oathAndLiesGui.py:288
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/oathAndLies/oathAndLiesGui.py:410
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/oathAndLies/oathAndLiesGui.py:514
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGameSolidarity/PublicGoodGameSolidarityGui.py:79
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGameSolidarity/PublicGoodGameSolidarityGui.py:89
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGameSolidarity/PublicGoodGameSolidarityGui.py:455
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGameSolidarity/PublicGoodGameSolidarityGui.py:519
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodIdentite/PublicGoodIdentiteGui.py:131
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodLocalGlobal/PublicGoodLocalGlobalGui.py:120
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodStrategyMethod/PublicGoodStrategyMethodGui.py:67
@@ -1156,7 +1158,7 @@ msgstr "Géographie"
 
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/configuration/configvar.py:63
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/TeamCommunication/TeamCommunicationTexts.py:40
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguiwidgets.py:39
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguiwidgets.py:40
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguidialogs.py:97
 msgid "History"
 msgstr "Historique"
@@ -1325,14 +1327,14 @@ msgid "Final questionnaire"
 msgstr "Questionnaire final"
 
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/oathAndLies/oathAndLiesGui.py:192
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGameSolidarity/PublicGoodGameSolidarityGui.py:229
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGameSolidarity/PublicGoodGameSolidarityGui.py:325
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/TeamCommunication/TeamCommunicationGui.py:446
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/TeamCommunication/TeamCommunicationGui.py:452
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/TeamCommunication/TeamCommunicationGui.py:465
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/TeamCommunication/TeamCommunicationGui.py:474
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/TeamCommunication/TeamCommunicationGui.py:487
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguiwidgets.py:90
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguiwidgets.py:99
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguiwidgets.py:91
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguiwidgets.py:100
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguidialogs.py:556
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguidialogs.py:581
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguidialogs.py:589
@@ -1343,7 +1345,7 @@ msgid "Choose"
 msgstr "Choisir"
 
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/oathAndLies/oathAndLiesGui.py:449
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGameSolidarity/PublicGoodGameSolidarityGui.py:271
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGameSolidarity/PublicGoodGameSolidarityGui.py:367
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/TeamCommunication/TeamCommunicationGui.py:603
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/voteMajorite/voteMajoriteGui.py:295
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguidialogs.py:737
@@ -1351,18 +1353,23 @@ msgid "You must answer to all the questions"
 msgstr "Vous devez répondre à toutes les questions"
 
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/oathAndLies/oathAndLiesGui.py:454
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGameSolidarity/PublicGoodGameSolidarityGui.py:276
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGameSolidarity/PublicGoodGameSolidarityGui.py:372
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/TeamCommunication/TeamCommunicationGui.py:608
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/voteMajorite/voteMajoriteGui.py:300
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguidialogs.py:754
 msgid "Do you confirm your answers?"
 msgstr "Vous confirmez vos réponses?"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGameSolidarity/PublicGoodGameSolidarityGui.py:168
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGameSolidarity/PublicGoodGameSolidarityGui.py:113
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGameSolidarity/PublicGoodGameSolidarityServ.py:59
+msgid "Treatment"
+msgstr "Traitement"
+
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGameSolidarity/PublicGoodGameSolidarityGui.py:264
 msgid "Do you confirm your choice"
 msgstr "Vous confirmez votre choix"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGameSolidarity/PublicGoodGameSolidarityGui.py:230
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGameSolidarity/PublicGoodGameSolidarityGui.py:326
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/TeamCommunication/TeamCommunicationGui.py:447
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/TeamCommunication/TeamCommunicationGui.py:453
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/TeamCommunication/TeamCommunicationGui.py:466
@@ -1373,32 +1380,25 @@ msgstr "Vous confirmez votre choix"
 msgid "Not in the list above"
 msgstr "Pas dans la liste ci-dessus"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGameSolidarity/PublicGoodGameSolidarityGui.py:306
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGameSolidarity/PublicGoodGameSolidarityGui.py:402
 msgid "Sequence choice"
 msgstr "Choix de séquence"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGameSolidarity/PublicGoodGameSolidarityServ.py:55
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGameSolidarity/PublicGoodGameSolidarityServ.py:100
-msgid "Treatment"
-msgstr "Traitement"
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGameSolidarity/PublicGoodGameSolidarityGui.py:459
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGameSolidarity/PublicGoodGameSolidarityGui.py:523
+msgid "Send back {}"
+msgstr "Renvoi {}"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGameSolidarity/PublicGoodGameSolidarityServ.py:67
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGameSolidarity/PublicGoodGameSolidarityServ.py:85
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/bienPublicKate/bienPublicKateServ.py:49
 msgid "No clients connected!"
 msgstr "Aucun client connecté!"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGameSolidarity/PublicGoodGameSolidarityServ.py:73
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGameSolidarity/PublicGoodGameSolidarityServ.py:80
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGameSolidarity/PublicGoodGameSolidarityServ.py:91
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodGameSolidarity/PublicGoodGameSolidarityServ.py:98
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/bienPublicKate/bienPublicKateServ.py:55
 msgid "The number of players is not compatible with the groups size"
 msgstr "Le nombre de joueurs n'est pas compatible avec la taille de groupe"
-
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodStrategyMethod/PublicGoodStrategyMethodServ.py:37
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/identiteConflits/identiteConflitsServ.py:40
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/relativesRelationships/relativesRelationshipsServ.py:35
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/goughScale/goughScaleServ.py:35
-msgid "There is no parameter to configure"
-msgstr "Il y'a pas de paramètre à configurer"
 
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/PublicGoodStrategyMethod/PublicGoodStrategyMethodGui.py:134
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/relativesRelationships/relativesRelationshipsGui.py:135
@@ -1424,6 +1424,12 @@ msgstr "Montrer le graphique"
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/GneezyPotter/GneezyPotterServ.py:78
 msgid "Period {}"
 msgstr "Période {}"
+
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/identiteConflits/identiteConflitsServ.py:40
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/relativesRelationships/relativesRelationshipsServ.py:35
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/goughScale/goughScaleServ.py:35
+msgid "There is no parameter to configure"
+msgstr "Il y'a pas de paramètre à configurer"
 
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/GneezyPotter/GneezyPotterServ.py:35
 msgid "Display graph"
@@ -1498,56 +1504,60 @@ msgstr "Vous avez gagné {}."
 msgid "Your payoff for the experiment is equal to "
 msgstr "Votre gain pour l'expérience est de "
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguiwidgets.py:180
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguiwidgets.py:181
 msgid "No item selected"
 msgstr "Aucun élement sélectionné"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguiwidgets.py:196
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguiwidgets.py:197
 msgid ""
 "Drag one or several item(s) from this list to the list on the right side"
 msgstr ""
 "Faire passer un ou plusieurs éléments de la liste de gauche vers la liste de "
 "droite"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguiwidgets.py:204
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguiwidgets.py:205
 msgid "Right click to move up, down or delete an item"
 msgstr "Click droit pour monter, descendre ou supprimer un élément"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguiwidgets.py:206
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguiwidgets.py:207
 msgid "Menu"
 msgstr "Menu"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguiwidgets.py:208
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguiwidgets.py:209
 msgid "Move up"
 msgstr "Monter"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguiwidgets.py:212
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguiwidgets.py:213
 msgid "Move down"
 msgstr "Descendre"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguiwidgets.py:216
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguiwidgets.py:217
 msgid "Delete"
 msgstr "Supprimer"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguiwidgets.py:272
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguiwidgets.py:273
 msgid "Remaining time:"
 msgstr "Temps restant:"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguiwidgets.py:291
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguiwidgets.py:295
 msgid "Instant messaging"
 msgstr "Messagerie instantanée"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguiwidgets.py:293
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguiwidgets.py:297
 msgid "Write your message below"
 msgstr "Écrivez votre message ci-dessous"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguiwidgets.py:297
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguiwidgets.py:301
 msgid "Send the message"
 msgstr "Envoyer le message"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguiwidgets.py:376
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguiwidgets.py:380
 msgid "You must complete the text area"
 msgstr "Il faut compléter la zone de texte"
+
+#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguiwidgets.py:414
+msgid "Number of 1: "
+msgstr "Nombre de 1:"
 
 #: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/client/cltgui/cltguiforms.py:19
 msgid "Please wait ..."
