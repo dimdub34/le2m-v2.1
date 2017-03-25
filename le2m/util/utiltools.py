@@ -259,13 +259,13 @@ def cyclelist(mylist, numberoftime=1):
         yield mylist
 
 
-def get_grilles(how_much, size):
-    grilles = list()
+def get_grids(how_much, size):
+    grids = list()
     for g in range(how_much):
         somme, grille = 0, []
         while somme < (0.2 * size**2) or somme > (0.8 * size**2):
             grille = [[randint(0, 1) for _ in range(size)]
                       for _ in range(size)]
             somme = np.sum(grille)
-        grilles.append(grille)
-    return grilles
+        grids.append(grille)
+    return grids
