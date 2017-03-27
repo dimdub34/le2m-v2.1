@@ -3,13 +3,14 @@
 Contains usefull functions
 """
 
-import time
 import datetime
 import string
 import os
 import logging
 import inspect
-from PyQt4.QtCore import QThread, pyqtSignal  # pour CompteARebours
+from PyQt4.QtCore import QObject, QTimer, pyqtSignal  # pour CompteARebours
+from random import randint
+import numpy as np
 
 logger = logging.getLogger("le2m")
 
@@ -175,24 +176,34 @@ def get_module_info(module):
     return u"\n".join(templist)
 
 
-class CompteARebours(QThread):
+class CompteARebours(QObject):
 
     changetime = pyqtSignal(str)
     endoftime = pyqtSignal()
 
     def __init__(self, tempsensecondes):
-        super(CompteARebours, self).__init__()
+        QObject.__init__(self)
         self._temps = tempsensecondes + 1
+        self._timer = QTimer()
+        self._timer.setSingleShot(False)
+        self._timer.timeout.connect(self._change_time)
 
-    def run(self):
-        while self._temps > 0:
+    def start(self):
+        self._timer.start(1000)
+
+    def _change_time(self):
+        if self._temps > 0:
             self._temps -= 1
             self.changetime.emit(get_formatedtimefromseconds(self._temps))
-            time.sleep(1)
-        self.endoftime.emit()
+        else:
+            self._timer.stop()
+            self.endoftime.emit()
 
     def stop(self):
-        self.quit()
+        self._timer.stop()
+
+    def is_running(self):
+        return self._timer.isActive()
 
 
 def get_dictkeyfromvalue(dictio, value):
@@ -246,3 +257,15 @@ def cyclelist(mylist, numberoftime=1):
             first = mylist.pop(0)
             mylist.append(first)
         yield mylist
+
+
+def get_grids(how_much, size):
+    grids = list()
+    for g in range(how_much):
+        somme, grille = 0, []
+        while somme < (0.2 * size**2) or somme > (0.8 * size**2):
+            grille = [[randint(0, 1) for _ in range(size)]
+                      for _ in range(size)]
+            somme = np.sum(grille)
+        grids.append(grille)
+    return grids
