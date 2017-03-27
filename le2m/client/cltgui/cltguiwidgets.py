@@ -162,7 +162,7 @@ class WSpinbox(QtGui.QWidget):
 
         if automatique:
             self.spinBox.setValue(
-                random.randrange(minimum, maximum + 1, interval))
+                random.randrange(minimum, maximum -15, interval))
 
         self.adjustSize()
 
