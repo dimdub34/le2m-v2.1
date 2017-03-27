@@ -311,6 +311,9 @@ class DQuestFinal(QtGui.QDialog):
                                 interval=1, automatique=self._automatique)
         if not self._automatique:
             self._birth.spinBox.setValue(currentyear)
+        else:
+            self._birth.spinBox.setValue(
+                random.randint(currentyear-100, currentyear-15))
         self._gridlayout.addWidget(self._birth, 0, 0)
 
         countries = [v for k, v in sorted(configvar.COUNTRIES.viewitems())]
