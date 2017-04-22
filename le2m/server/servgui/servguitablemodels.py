@@ -43,20 +43,21 @@ class TableModelJoueurs(QtCore.QAbstractTableModel):
 
         ligne = index.row()
         colonne = index.column()
+        joueur = self._joueurs[ligne]
 
         # display
         if role == QtCore.Qt.DisplayRole:
             if colonne == 0:
-                return QtCore.QVariant(self._joueurs[ligne].uid)
+                return QtCore.QVariant(joueur.uid)
             elif colonne == 1: 
-                return QtCore.QVariant(self._joueurs[ligne].hostname)
+                return QtCore.QVariant(joueur.hostname)
             elif colonne == 2:
-                return QtCore.QVariant(self._joueurs[ligne].ip)
+                return QtCore.QVariant(joueur.ip)
             return QtCore.QVariant()
 
         # checkbox for automatic, simulation and disconnect
         elif role == QtCore.Qt.CheckStateRole:
-            part_base = self._joueurs[ligne].get_part('base')
+            part_base = joueur.get_part('base')
             if colonne == 3:
                 if part_base.automatique:
                     return QtCore.QVariant(QtCore.Qt.Checked)
@@ -107,21 +108,22 @@ class TableModelJoueurs(QtCore.QAbstractTableModel):
         """
         Only for the editables columns
         """
+        ligne = index.row()
+        colonne = index.column()
+        joueur = self._joueurs[ligne]
+
         if index.isValid() and role == QtCore.Qt.CheckStateRole:
-            if value == QtCore.Qt.Unchecked:
-                etat = 0
-            else:
-                etat = 1
-            part_base = self._joueurs[index.row()].get_part('base')
-            if index.column() == 3:
+            etat = 0 if value == QtCore.Qt.Unchecked else 1
+            part_base = joueur.get_part('base')
+            if colonne == 3:
                 part_base.set_automatique(etat)
                 return True
-            elif index.column() == 4:
+            elif colonne == 4:
                 part_base.set_simulation(etat)
                 return True
-            elif index.column() == 5:
+            elif colonne == 5:
                 if etat == 1:
-                    self._joueurs[index.row()].disconnect()
+                    joueur.disconnect()
             return True
         return False
 
@@ -170,9 +172,6 @@ class TableModelJoueurs(QtCore.QAbstractTableModel):
                 self.setData(index, QtCore.Qt.Checked, QtCore.Qt.CheckStateRole)
                 self.dataChanged[QtCore.QModelIndex, QtCore.QModelIndex].emit(
                     index, index)
-
-
-
 
 
 class TableModelGenres(QtCore.QAbstractTableModel):
