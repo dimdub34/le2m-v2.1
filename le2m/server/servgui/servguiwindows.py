@@ -55,6 +55,7 @@ class GuiServeur(QtGui.QMainWindow):
 
         self.ui.label_le2m.setText(
             le2mtrans(u"LE2M\nExperimental Economics Software of Montpellier"))
+        self.ui.label_le2m.setStyleSheet("color: brown;")
 
         # tabs
         self.ui.onglets.setTabText(self.ui.onglets.indexOf(self.ui.tabInfos),
