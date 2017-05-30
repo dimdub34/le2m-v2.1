@@ -546,6 +546,7 @@ class DEditGroups(QtGui.QDialog):
 
         self.le2mserv = le2mserv
         self.joueurs = joueurs
+        self.group_size = 0
 
         layout = QtGui.QVBoxLayout()
         self.setLayout(layout)
