@@ -610,7 +610,7 @@ class DEditGroups(QtGui.QDialog):
     def form_groups(self):
         self.group_size = self.spinbox_size.value()
         if self.group_size == 0:
-            QtGui.QMessageBox.Warning(
+            QtGui.QMessageBox.critical(
                 self, le2mtrans(u"Warning"),
                 le2mtrans(u"Impossible to form groups of size 0!"))
             return
