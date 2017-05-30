@@ -617,7 +617,7 @@ class DEditGroups(QtGui.QDialog):
             return
         try:
             self.le2mserv.gestionnaire_groupes.former_groupes(
-                self.joueurs, self.group_size)
+                self.joueurs, self.group_size, display=False)
         except ValueError as e:
             QtGui.QMessageBox.warning(
                 self, le2mtrans(u"Warning"), str(e))
