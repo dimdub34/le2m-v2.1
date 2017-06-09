@@ -20,9 +20,9 @@ from server.servparties import Partie
 from server.servplayers import Joueur
 from servguisrc import servguimain
 from servguitablemodels import TableModelJoueurs
-from servguidialogs import GuiPartLoad, GuiPartsPlayed, \
-    GuiGenres, DDice, DRandint, DHeadtail, DWebview, GuiInformation, \
-    DUnderstandingVisual
+from servguidialogs import (GuiPartLoad, GuiPartsPlayed,
+    GuiGenres, DDice, DRandint, DHeadtail, DWebview, GuiInformation,
+    DUnderstandingVisual, DEditGroups)
 from creator import creator
 from extractor import extractor
 from questcomp import questcomp
@@ -55,6 +55,7 @@ class GuiServeur(QtGui.QMainWindow):
 
         self.ui.label_le2m.setText(
             le2mtrans(u"LE2M\nExperimental Economics Software of Montpellier"))
+        self.ui.label_le2m.setStyleSheet("color: brown;")
 
         # tabs
         self.ui.onglets.setTabText(self.ui.onglets.indexOf(self.ui.tabInfos),
@@ -198,13 +199,19 @@ class GuiServeur(QtGui.QMainWindow):
         # options --------------------------------------------------------------
         self.menu_options = QtGui.QMenu(le2mtrans(u"Options"), self.ui.menubar)
         self.ui.menubar.addMenu(self.menu_options)
+
         self.action_stoprepetitions = QtGui.QAction(
             le2mtrans(u"Stop the part after this period"), self.menu_options)
         self.action_stoprepetitions.setToolTip(
             le2mtrans(u"Clic on this menu to stop the part after this period"))
         self.action_stoprepetitions.triggered.connect(self._stoprep)
         self.action_stoprepetitions.setCheckable(True)
-        self.menu_options.addAction(self.action_stoprepetitions,)
+        self.menu_options.addAction(self.action_stoprepetitions)
+
+        self.action_edit_groups = QtGui.QAction(
+            le2mtrans(u"Edit groups"), self.menu_options)
+        self.action_edit_groups.triggered.connect(self.edit_groups)
+        self.menu_options.addAction(self.action_edit_groups)
 
         self.action_gender = QtGui.QAction(
             le2mtrans(u"Set participants gender in the application"),
@@ -420,6 +427,17 @@ class GuiServeur(QtGui.QMainWindow):
             self._le2mserv.gestionnaire_graphique.infoserv(le2mtrans(u"Women"))
             self._le2mserv.gestionnaire_graphique.infoserv(
                 map(str, [p for p in players if p.gender == FEMME]))
+
+    def edit_groups(self):
+        joueurs = self._le2mserv.gestionnaire_joueurs.get_players()
+        if not joueurs:
+            QtGui.QMessageBox.warning(
+                self, le2mtrans(u"Warning"),
+                le2mtrans(u"There is no player connected"))
+            return
+        dialog_edit_groups = DEditGroups(
+            self._le2mserv,joueurs)
+        dialog_edit_groups.exec_()
 
     def _display_finalquest(self):
         """

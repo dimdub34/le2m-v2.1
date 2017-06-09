@@ -538,3 +538,127 @@ class DUnderstandingVisual(QtGui.QDialog):
 
         self.adjustSize()
         self.setWindowTitle(le2mtrans(u"Understanding questionnaire"))
+
+
+class DEditGroups(QtGui.QDialog):
+    def __init__(self, le2mserv, joueurs):
+        QtGui.QDialog.__init__(self)
+
+        self.le2mserv = le2mserv
+        self.joueurs = joueurs
+        self.group_size = 0
+
+        layout = QtGui.QVBoxLayout()
+        self.setLayout(layout)
+
+        label_header = QtGui.QLabel(le2mtrans(u"Groups' formation"))
+        label_header.setStyleSheet("font-weight: bold;")
+        layout.addWidget(label_header)
+
+        layout_size = QtGui.QHBoxLayout()
+        layout.addLayout(layout_size)
+        layout_size.addWidget(QtGui.QLabel(le2mtrans(u"Groups' size")))
+        self.spinbox_size = QtGui.QSpinBox()
+        self.spinbox_size.setMinimum(0)
+        self.spinbox_size.setMaximum(99)
+        self.spinbox_size.setSingleStep(1)
+        self.spinbox_size.setFixedWidth(50)
+        self.spinbox_size.setButtonSymbols(QtGui.QSpinBox.NoButtons)
+        layout_size.addWidget(self.spinbox_size)
+        button_form_groups = QtGui.QPushButton(le2mtrans(u"Form groups"))
+        button_form_groups.clicked.connect(self.form_groups)
+        layout_size.addWidget(button_form_groups)
+        layout_size.addSpacerItem(
+            QtGui.QSpacerItem(20, 20, QtGui.QSizePolicy.Expanding,
+                              QtGui.QSizePolicy.Expanding))
+
+        grid_joueurs = QtGui.QGridLayout()
+        layout.addLayout(grid_joueurs)
+        self.groups = self.le2mserv.gestionnaire_groupes.get_groupes().keys()
+        self.combos_joueurs = {}
+        row, col = 0, 0
+        for index, joueur in enumerate(self.joueurs):
+            combo = QtGui.QComboBox()
+            combo.addItems(self.groups)
+            combo.setFixedWidth(200)
+            try:
+                combo.setCurrentIndex(self.groups.index(joueur.group))
+            except ValueError:
+                pass
+            self.combos_joueurs[joueur] = combo
+            grid_joueurs.addWidget(QtGui.QLabel(str(joueur)), row, col)
+            grid_joueurs.addWidget(self.combos_joueurs[joueur], row, col+1)
+            row += 1
+            if row > 0 and row % 5 == 0:
+                row = 0
+                col += 2
+
+        layout_buttons = QtGui.QHBoxLayout()
+        layout.addLayout(layout_buttons)
+        layout_buttons.addSpacerItem(
+            QtGui.QSpacerItem(20 ,20, QtGui.QSizePolicy.Expanding,
+                              QtGui.QSizePolicy.Expanding))
+        button_save = QtGui.QPushButton(le2mtrans(u"Save"))
+        button_save.clicked.connect(self.save)
+        layout_buttons.addWidget(button_save)
+        button_close = QtGui.QPushButton(le2mtrans(u"Close"))
+        button_close.clicked.connect(self.reject)
+        layout_buttons.addWidget(button_close)
+
+        self.adjustSize()
+        self.setWindowTitle(le2mtrans(u"Edit groups"))
+
+    def form_groups(self):
+        self.group_size = self.spinbox_size.value()
+        if self.group_size == 0:
+            QtGui.QMessageBox.critical(
+                self, le2mtrans(u"Warning"),
+                le2mtrans(u"Impossible to form groups of size 0!"))
+            return
+        try:
+            self.le2mserv.gestionnaire_groupes.former_groupes(
+                self.joueurs, self.group_size, display=False)
+        except ValueError as e:
+            QtGui.QMessageBox.warning(
+                self, le2mtrans(u"Warning"), str(e))
+            return
+        else:
+            self.groups = self.le2mserv.gestionnaire_groupes.get_groupes().keys()
+            for joueur, combo in self.combos_joueurs.items():
+                combo.clear()
+                combo.addItems(self.groups)
+                combo.setCurrentIndex(self.groups.index(joueur.group))
+
+    def save(self):
+        # confirmation
+        confirmation = QtGui.QMessageBox.question(
+            self, le2mtrans(u"Confirmation"),
+            le2mtrans(u"Do you want to save the groups?"),
+            QtGui.QMessageBox.No | QtGui.QMessageBox.Yes)
+        if confirmation != QtGui.QMessageBox.Yes:
+            return
+        # check that groups are ok
+        new_groups = dict()
+        for joueur, combo in self.combos_joueurs.items():
+            group_joueur = combo.currentText()
+            if combo.currentText() not in new_groups:
+                new_groups[group_joueur] = [joueur]
+            else:
+                new_groups[group_joueur].append(joueur)
+        # test group size
+        for group in new_groups.values():
+            if len(group) != self.group_size:
+                QtGui.QMessageBox.critical(
+                    self, le2mtrans(u"Error"),
+                    le2mtrans(u"At least one group has a size different "
+                              u"from {}".format(self.group_size)))
+                return
+        # set group in player data
+        for group, joueurs in new_groups.items():
+            for j in joueurs:
+                j.group = group
+        # set group in gestionnaire_groupes
+        self.le2mserv.gestionnaire_groupes.set_groupes(new_groups)
+        self.le2mserv.gestionnaire_graphique.infoserv(
+            self.le2mserv.gestionnaire_groupes.get_groupes_string())
+        self.accept()

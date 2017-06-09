@@ -105,7 +105,7 @@ class GestionnaireGroupes(object):
         return self._nom_session
 
     def former_groupes(self, liste_joueurs, taille_groupes, roundrobin=False,
-                       forcer_nouveaux=True, **kwargs):
+                       forcer_nouveaux=True, display=True, **kwargs):
         """
         Forme des groupes et les stocke dans un dictionnaire.
         Utilise la fonction former_groupes de le2mUtile.utiltools
@@ -135,8 +135,9 @@ class GestionnaireGroupes(object):
         self.set_attributes()
 
         # display groups on the server list
-        self._le2mserv.gestionnaire_graphique.infoserv(
-            self.get_groupes_string())
+        if display:
+            self._le2mserv.gestionnaire_graphique.infoserv(
+                self.get_groupes_string())
 
     def set_attributes(self):
         """
