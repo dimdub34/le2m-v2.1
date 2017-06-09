@@ -15,6 +15,8 @@ le2m/parts/goughScale
 le2m/parts/relativesRelationships
 le2m/parts/bienPublicKate/
 le2m/parts/identiteConflits/
+le2m/parts/HoltLaury/
+le2m/parts/pestuse/
 le2m/parts/PublicGoodStrategyMethod
 le2m/parts/PublicGoodOneShot
 le2m/parts/EffortComptage
@@ -24,5 +26,6 @@ le2m/parts/MarcheMonopole
 le2m/parts/PublicGoodLocalGlobal
 le2m/parts/MarketRiskInsurance
 le2m/parts/PublicGoodIdentite
+le2m/parts/questFinPestuse
 le2m/parts/handimix
 le2m/parts/effortcomptagegrilles
