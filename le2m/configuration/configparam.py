@@ -19,7 +19,7 @@ import tempfile
 # ------------------------------------------------------------------------------
 __parameters = {
     "SERVPORT": 9998,
-    "SERVIP": "192.168.159.2",
+    "SERVIP": "127.0.0.1",
     "REMOTELOGDIR": tempfile.gettempdir(),
     "LABNAME": u"Laboratoire d'Economie Expérimentale de Montpellier",
     "WELCOMETEXT": u"Laboratoire d'Economie Expérimentale de Montpellier",
