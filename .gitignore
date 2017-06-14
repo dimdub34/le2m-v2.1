@@ -7,7 +7,7 @@
 *.sqlite
 dist
 *new.po
-configparam.py
+configuration/configparam.py
 le2m/parts/oathAndLies
 le2m/parts/TeamCommunication
 le2m/parts/voteMajorite
