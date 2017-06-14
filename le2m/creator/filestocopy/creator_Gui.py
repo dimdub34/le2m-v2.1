@@ -92,7 +92,7 @@ class DConfigure(QtGui.QDialog):
         # treatment
         self._combo_treatment = QtGui.QComboBox()
         self._combo_treatment.addItems(
-            list(sorted(pms.TREATMENTS_NAMES.viewvalues())))
+            [v for k, v in sorted(pms.TREATMENTS_NAMES.items())])
         self._combo_treatment.setCurrentIndex(pms.TREATMENT)
         form.addRow(QtGui.QLabel(u"Traitement"), self._combo_treatment)
 
