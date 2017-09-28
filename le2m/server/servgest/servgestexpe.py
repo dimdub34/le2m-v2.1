@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+import os
 from PyQt4.QtCore import QObject, pyqtSignal
 from PyQt4 import QtGui
 from time import strftime
@@ -216,6 +217,18 @@ class GestionnaireExperience(QObject):
             le2mtrans(u"Final screen"),
             self._le2msrv.gestionnaire_joueurs.get_players("base"),
             "display_finalscreen"))
+
+    # @defer.inlineCallbacks
+    # def display_images(self, directory):
+    #     images = [i for i in os.listdir(directory) if i.endswith(".jpg") or
+    #               i.endswith(".png")]
+    #     logger.debug("Images: {}".format(images))
+    #     self._le2msrv.gestionnaire_graphique.display_images(directory, images)
+    #     with open(os.path.join(directory, images[0])) as im:
+    #         image = im.read()
+    #     yield (utiltwisted.forAll(
+    #         self._le2msrv.gestionnaire_joueurs.get_players("base"),
+    #         "display_image", image))
 
     @defer.inlineCallbacks
     def display_payoffs_onremotes(self, part_or_listOfParts):

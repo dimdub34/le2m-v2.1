@@ -195,6 +195,11 @@ class PartieBase(Partie, object):
         self.joueur.info("ok")
         self.joueur.remove_waitmode()
 
+    @defer.inlineCallbacks
+    def display_image(self, image):
+        logger.debug("display_image: {}".format(image))
+        yield (self.remote.callRemote("display_image", image))
+
 
 class PartieQuestionnaireFinal(Partie, object):
     __tablename__ = 'partie_questionnaireFinal'

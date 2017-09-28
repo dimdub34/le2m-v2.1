@@ -3,12 +3,12 @@
 Ce module contient uniquement la classe GestionnaireGraphique du serveur
 Cet objet, instancié une seule fois, gère toute la partie graphique du serveur.
 """
-
+import os
 from PyQt4 import QtGui
 import logging
 from util.utili18n import le2mtrans
 from server.servgui.servguiwindows import GuiServeur
-from server.servgui.servguidialogs import GuiInformation
+from server.servgui.servguidialogs import GuiInformation, DDisplayImages
 
 
 logger = logging.getLogger("le2m.{}".format(__name__))
@@ -129,3 +129,6 @@ class GestionnaireGraphique():
             menu.addAction(action)
         self._screen.menu_parts.addMenu(menu)
 
+    def display_images(self, directory):
+        self.dialog_display_images = DDisplayImages(self._le2mserv, directory)
+        self.dialog_display_images.show()

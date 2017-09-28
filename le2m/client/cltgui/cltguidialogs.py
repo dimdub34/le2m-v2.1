@@ -526,3 +526,23 @@ class DQuestFinal(QtGui.QDialog):
             self._defered.callback(inputs)
         else:
             return
+
+
+class DDisplayImages(QtGui.QDialog):
+    def __init__(self, image):
+        QtGui.QDialog.__init__(self)
+
+        layout = QtGui.QVBoxLayout()
+        self.setLayout(layout)
+
+        self.label_image = QtGui.QLabel()
+        layout.addWidget(self.label_image)
+        self._display_image(image)
+
+    def _display_image(self, image):
+        self.current_image = image
+        self.label_image.setPixmap(QtGui.QPixmap(self.current_image))
+
+    def reject(self):
+        pass
+

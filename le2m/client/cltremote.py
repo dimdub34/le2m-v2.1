@@ -10,7 +10,7 @@ from questcomp.questcompgui import GuiQuestCompQuest
 from client.cltgui.cltguidialogs import GuiAccueil, GuiPopup, GuiFinal
 from questcomp.questcompmod import Question, CopyQuestion
 import clttexts
-from client.cltgui.cltguidialogs import DQuestFinal
+from client.cltgui.cltguidialogs import DQuestFinal, DDisplayImages
 
 
 logger = logging.getLogger("le2m.{}".format(__name__))
@@ -242,6 +242,20 @@ class RemoteBase(pb.Root):
                 txt += le2mtrans(u"Part") + u" {}: ".format(k) + \
                     remote.payoff_text + u"<br />"
         return self.remote_display_information(txt)
+
+    def remote_display_image(self, image):
+        if image is None:
+            try:
+                self.dialog_display_images.close()
+                return
+            except AttributeError:
+                return
+        try:
+            self.dialog_display_images.display_image(image)
+        except AttributeError:
+            self.dialog_display_images = DDisplayImages(image)
+            self.dialog_display_images.show()
+
 
 
 class RemoteQuestionnaireFinal(pb.Referenceable):

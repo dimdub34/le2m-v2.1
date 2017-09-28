@@ -264,6 +264,13 @@ class GuiServeur(QtGui.QMainWindow):
                       u"extract"))
         self.action_extractor.triggered.connect(extractor.extractor)
         self.menu_tools.addAction(self.action_extractor)
+        self.action_display_image = QtGui.QAction(
+            le2mtrans(u"Display images on clients' screen"), self.menu_tools)
+        self.action_display_image.setToolTip(
+            le2mtrans(u"You have to select a directory with images and it will "
+                      u"display it on client's screen"))
+        self.action_display_image.triggered.connect(self._display_images)
+        self.menu_tools.addAction(self.action_display_image)
 
         self.menu_tools.addSeparator()
 
@@ -340,6 +347,17 @@ class GuiServeur(QtGui.QMainWindow):
         if reply != QtGui.QMessageBox.Yes:
             return
         self._le2mserv.gestionnaire_experience.display_welcome()
+
+    def _display_images(self):
+        directory = QtGui.QFileDialog.getExistingDirectory(
+            self, le2mtrans(u"Select the directory that contains the images "
+                            u"to display"), "", QtGui.QFileDialog.ShowDirsOnly)
+        if directory is None or str(directory) == '':
+            return
+        directory = str(directory)
+        logger.debug("_display_images: directory: {}".format(directory))
+        self._le2mserv.gestionnaire_graphique.display_images(directory)
+
 
     def _load_questcomp(self):
         """

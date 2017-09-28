@@ -662,3 +662,76 @@ class DEditGroups(QtGui.QDialog):
         self.le2mserv.gestionnaire_graphique.infoserv(
             self.le2mserv.gestionnaire_groupes.get_groupes_string())
         self.accept()
+
+
+class DDisplayImages(QtGui.QDialog):
+    def __init__(self, le2msrv, directory):
+        QtGui.QDialog.__init__(self)
+
+        self.le2msrv = le2msrv
+        self.directory = directory
+        self.images = [i for i in os.listdir(self.directory) if
+                       i.endswith(".jpg") or i.endswith(".png")]
+        self.images.sort()
+        logger.debug("Images: {}".format(self.images))
+
+        layout = QtGui.QVBoxLayout()
+        self.setLayout(layout)
+
+        self.label_image_path = QtGui.QLabel()
+        layout.addWidget(self.label_image_path)
+
+        self.label_image = QtGui.QLabel()
+        layout.addWidget(self.label_image)
+        if self.images:
+            self._display_image(self.images[0])
+
+        layout_buttons = QtGui.QHBoxLayout()
+        self.button_previous = QtGui.QPushButton(le2mtrans(u"Previous"))
+        self.button_next = QtGui.QPushButton(le2mtrans(u"Next"))
+        self.button_send = QtGui.QPushButton(le2mtrans(u"Display on clients' screen"))
+        self.button_close = QtGui.QPushButton(le2mtrans(u"Close clients' screen"))
+        layout_buttons.addWidget(self.button_previous)
+        layout_buttons.addWidget(self.button_next)
+        layout_buttons.addWidget(self.button_send)
+        layout_buttons.addWidget(self.button_close)
+        layout_buttons.addSpacerItem(
+            QtGui.QSpacerItem(2, 20, QtGui.QSizePolicy.Fixed,
+                              QtGui.QSizePolicy.Expanding))
+        layout.addLayout(layout_buttons)
+        self.button_previous.clicked.connect(self._display_previous)
+        self.button_next.clicked.connect(self._display_next)
+        self.button_send.clicked.connect(self._display_on_clients)
+        self.button_close.clicked.connect(self._close_clients_screen)
+
+    def _display_image(self, image):
+        self.current_image = image
+        self.current_image_path = os.path.join(self.directory, self.current_image)
+        self.label_image_path.setText(os.path.join(self.directory, self.images[0]))
+        self.label_image.setPixmap(QtGui.QPixmap(self.current_image_path))
+
+    def _display_previous(self):
+        index_current = self.images.index(self.current_image)
+        if index_current == 0:
+            return
+        else:
+            self._display_image(self.images[index_current - 1])
+
+    def _display_next(self):
+        index_current = self.images.index(self.current_image)
+        if index_current == len(self.images) - 1:
+            return
+        else:
+            self._display_image(self.images[index_current + 1])
+
+    def _display_on_clients(self):
+        self.le2msrv.gestionnaire_experience.run_step(
+            le2mtrans(u"Display image {}".format(self.current_image)),
+            self.le2msrv.gestionnaire_joueurs.get_players("base"),
+            "display_image", self.current_image_path)
+
+    def _close_clients_screen(self):
+        self.le2msrv.gestionnaire_experience.run_step(
+            le2mtrans(u"Close clients' screen"),
+            self.le2msrv.gestionnaire_joueurs.get_players("base"),
+            "display_image", None)
