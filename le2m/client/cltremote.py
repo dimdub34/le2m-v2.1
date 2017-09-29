@@ -246,7 +246,7 @@ class RemoteBase(pb.Root):
     def remote_display_image(self, image):
         if image is None:
             try:
-                self.dialog_display_images.close()
+                self.dialog_display_images.accept()
                 return
             except AttributeError:
                 return
