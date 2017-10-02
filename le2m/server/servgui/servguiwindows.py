@@ -268,11 +268,18 @@ class GuiServeur(QtGui.QMainWindow):
             le2mtrans(u"Display images on clients' screen"), self.menu_tools)
         self.action_display_image.setToolTip(
             le2mtrans(u"You have to select a directory with images and it will "
-                      u"display it on client's screen"))
+                      u"display it on client's screen. Be careful the "
+                      u"directory has to been accessible by client through the "
+                      u"network"))
         self.action_display_image.triggered.connect(self._display_images)
         self.menu_tools.addAction(self.action_display_image)
         self.action_display_video = QtGui.QAction(
             le2mtrans(u"Display a video on clients' screen"), self.menu_tools)
+        self.action_display_video.setToolTip(le2mtrans(
+            u"Select a video and a dialog will open. You will be able to "
+            u"display the video either on your screen or on the clients' "
+            u"screen. Be careful the video file has to be accessible by the "
+            u"clients through the network."))
         self.action_display_video.triggered.connect(self._display_video)
         self.menu_tools.addAction(self.action_display_video)
 
