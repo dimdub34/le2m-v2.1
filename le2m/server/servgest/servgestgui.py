@@ -8,7 +8,7 @@ from PyQt4 import QtGui
 import logging
 from util.utili18n import le2mtrans
 from server.servgui.servguiwindows import GuiServeur
-from server.servgui.servguidialogs import GuiInformation, DDisplayImages
+from server.servgui.servguidialogs import GuiInformation, DDisplayImages, DDisplayVideo
 
 
 logger = logging.getLogger("le2m.{}".format(__name__))
@@ -132,3 +132,7 @@ class GestionnaireGraphique():
     def display_images(self, directory):
         self.dialog_display_images = DDisplayImages(self._le2mserv, directory)
         self.dialog_display_images.show()
+
+    def display_video(self, video_file):
+        self.dialog_display_video = DDisplayVideo(self._le2mserv, video_file)
+        self.dialog_display_video.show()

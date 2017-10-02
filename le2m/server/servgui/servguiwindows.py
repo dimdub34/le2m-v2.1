@@ -271,6 +271,10 @@ class GuiServeur(QtGui.QMainWindow):
                       u"display it on client's screen"))
         self.action_display_image.triggered.connect(self._display_images)
         self.menu_tools.addAction(self.action_display_image)
+        self.action_display_video = QtGui.QAction(
+            le2mtrans(u"Display a video on clients' screen"), self.menu_tools)
+        self.action_display_video.triggered.connect(self._display_video)
+        self.menu_tools.addAction(self.action_display_video)
 
         self.menu_tools.addSeparator()
 
@@ -358,6 +362,10 @@ class GuiServeur(QtGui.QMainWindow):
         logger.debug("_display_images: directory: {}".format(directory))
         self._le2mserv.gestionnaire_graphique.display_images(directory)
 
+    def _display_video(self):
+        video_file = str(QtGui.QFileDialog.getOpenFileName(self, le2mtrans(u"Select a video file")))
+        if video_file:
+            self._le2mserv.gestionnaire_graphique.display_video(video_file)
 
     def _load_questcomp(self):
         """

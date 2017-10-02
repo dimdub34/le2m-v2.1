@@ -10,6 +10,7 @@ list of these options with some comments to explain them
 
 from PyQt4 import QtGui, QtCore
 application = QtGui.QApplication([''])
+QtGui.QApplication.setApplicationName("LE2M")
 from util import utilqtreactor
 utilqtreactor.install()
 translator = QtCore.QTranslator()

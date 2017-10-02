@@ -200,6 +200,11 @@ class PartieBase(Partie, object):
         logger.debug("display_image: {}".format(image))
         yield (self.remote.callRemote("display_image", image))
 
+    @defer.inlineCallbacks
+    def display_video(self, video_file):
+        logger.debug("display_video: {}".format(video_file))
+        yield(self.remote.callRemote("display_video", video_file))
+        self.joueur.remove_waitmode()
 
 class PartieQuestionnaireFinal(Partie, object):
     __tablename__ = 'partie_questionnaireFinal'

@@ -10,7 +10,7 @@ from questcomp.questcompgui import GuiQuestCompQuest
 from client.cltgui.cltguidialogs import GuiAccueil, GuiPopup, GuiFinal
 from questcomp.questcompmod import Question, CopyQuestion
 import clttexts
-from client.cltgui.cltguidialogs import DQuestFinal, DDisplayImages
+from client.cltgui.cltguidialogs import DQuestFinal, DDisplayImages, DDisplayVideo
 
 
 logger = logging.getLogger("le2m.{}".format(__name__))
@@ -256,6 +256,11 @@ class RemoteBase(pb.Root):
             self.dialog_display_images = DDisplayImages(image)
             self.dialog_display_images.show()
 
+    def remote_display_video(self, video_file):
+        defered = defer.Deferred()
+        self.dialog_display_video = DDisplayVideo(defered, video_file)
+        self.dialog_display_video.show()
+        return defered
 
 
 class RemoteQuestionnaireFinal(pb.Referenceable):

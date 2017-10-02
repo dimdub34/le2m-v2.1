@@ -2,6 +2,7 @@
 
 import sys
 from PyQt4 import QtGui, QtCore
+from PyQt4.phonon import Phonon
 from twisted.internet.defer import AlreadyCalledError
 import random
 import logging
@@ -546,3 +547,32 @@ class DDisplayImages(QtGui.QDialog):
     def reject(self):
         pass
 
+
+class DDisplayVideo(QtGui.QDialog):
+    def __init__(self, defered, video_file):
+        QtGui.QDialog.__init__(self)
+
+        self.defered = defered
+        self.video_file = video_file
+
+        layout = QtGui.QVBoxLayout()
+        self.setLayout(layout)
+
+        self.video_widget = Phonon.VideoWidget()
+        layout.addWidget(self.video_widget)
+        self.media_src = Phonon.MediaSource(self.video_file)
+        self.media_obj = Phonon.MediaObject()
+        self.media_obj.setCurrentSource(self.media_src)
+        Phonon.createPath(self.media_obj, self.video_widget)
+        self.video_widget.setScaleMode(Phonon.VideoWidget.FitInView)
+        self.media_obj.finished.connect(self.accept)
+        self.media_obj.play()
+
+        self.adjustSize()
+
+    def reject(self):
+        pass
+
+    def accept(self):
+        super(DDisplayVideo, self).accept()
+        self.defered.callback(True)

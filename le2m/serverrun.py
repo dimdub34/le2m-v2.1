@@ -7,6 +7,7 @@ import os
 import logging
 import argparse
 application = QtGui.QApplication([''])  # application before utilqtreactor
+QtGui.QApplication.setApplicationName("LE2M")
 from util import utilqtreactor
 utilqtreactor.install()
 # in order that system dialog box to be in the appropriate language

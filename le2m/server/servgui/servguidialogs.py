@@ -5,6 +5,7 @@ import logging
 import csv
 from PyQt4 import QtGui, QtCore
 from PyQt4.QtWebKit import QWebView
+from PyQt4.phonon import Phonon
 from configuration import configparam as params
 from configuration.configconst import HOMME, FEMME
 from configuration.configvar import Experiment
@@ -735,3 +736,48 @@ class DDisplayImages(QtGui.QDialog):
             le2mtrans(u"Close clients' screen"),
             self.le2msrv.gestionnaire_joueurs.get_players("base"),
             "display_image", None)
+
+
+class DDisplayVideo(QtGui.QDialog):
+    def __init__(self, le2msrv, video_file):
+        QtGui.QDialog.__init__(self)
+
+        self.le2msrv = le2msrv
+        self.video_file = video_file
+
+        layout = QtGui.QVBoxLayout()
+        self.setLayout(layout)
+
+        label_video_path = QtGui.QLabel(str(self.video_file) + " " +
+                                        le2mtrans(u"is ready to be played"))
+        layout.addWidget(label_video_path)
+
+        self.video_widget = Phonon.VideoWidget()
+        layout.addWidget(self.video_widget)
+
+        layout_buttons = QtGui.QHBoxLayout()
+        self.pushbutton_play = QtGui.QPushButton(le2mtrans(u"Play"))
+        self.pushbutton_play_on_clients = QtGui.QPushButton(
+            le2mtrans(u"Play on the server and on clients' screen"))
+        layout_buttons.addWidget(self.pushbutton_play)
+        layout_buttons.addWidget(self.pushbutton_play_on_clients)
+        layout_buttons.addSpacerItem(
+            QtGui.QSpacerItem(20, 5, QtGui.QSizePolicy.Expanding,
+                              QtGui.QSizePolicy.Fixed))
+        layout.addLayout(layout_buttons)
+        self.pushbutton_play.clicked.connect(self.play)
+        self.pushbutton_play_on_clients.clicked.connect(self.play_on_clients)
+
+    def play(self):
+        media_src = Phonon.MediaSource(self.video_file)
+        self.media_obj = Phonon.MediaObject()
+        self.media_obj.setCurrentSource(media_src)
+        Phonon.createPath(self.media_obj, self.video_widget)
+        self.media_obj.play()
+
+    def play_on_clients(self):
+        self.le2msrv.gestionnaire_experience.run_step(
+            le2mtrans(u"Display video") + u" {}".format(self.video_file),
+            self.le2msrv.gestionnaire_joueurs.get_players("base"),
+            "display_video", self.video_file)
+        self.play()
