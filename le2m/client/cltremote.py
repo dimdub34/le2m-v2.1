@@ -254,12 +254,12 @@ class RemoteBase(pb.Root):
             self.dialog_display_images.display_image(image)
         except AttributeError:
             self.dialog_display_images = DDisplayImages(image)
-            self.dialog_display_images.show()
+            self.dialog_display_images.showFullScreen()
 
     def remote_display_video(self, video_file):
         defered = defer.Deferred()
         self.dialog_display_video = DDisplayVideo(defered, video_file)
-        self.dialog_display_video.show()
+        self.dialog_display_video.showFullScreen()
         return defered
 
 
