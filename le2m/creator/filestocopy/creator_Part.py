@@ -4,7 +4,7 @@ import logging
 from datetime import datetime
 from twisted.internet import defer
 from sqlalchemy.orm import relationship
-from sqlalchemy import Column, Integer, Float, ForeignKey
+from sqlalchemy import Column, Integer, Float, String, ForeignKey
 from server.servbase import Base
 from server.servparties import Partie
 from util.utiltools import get_module_attributes
@@ -129,6 +129,7 @@ class RepetitionsEXPERIENCE_NOM_COURT(Base):
         ForeignKey("partie_EXPERIENCE_NOM.partie_id"))
 
     EXPERIENCE_NOM_COURT_period = Column(Integer)
+    EXPERIENCE_NOM_COURT_period_start_time = Column(String)
     EXPERIENCE_NOM_COURT_treatment = Column(Integer)
     EXPERIENCE_NOM_COURT_group = Column(Integer)
     EXPERIENCE_NOM_COURT_decision = Column(Integer)
@@ -137,6 +138,7 @@ class RepetitionsEXPERIENCE_NOM_COURT(Base):
     EXPERIENCE_NOM_COURT_cumulativepayoff = Column(Float)
 
     def __init__(self, period):
+        self.EXPERIENCE_NOM_COURT_period_start_time = datetime.now().strftime("%H:%M:%S")
         self.EXPERIENCE_NOM_COURT_treatment = pms.TREATMENT
         self.EXPERIENCE_NOM_COURT_period = period
         self.EXPERIENCE_NOM_COURT_decisiontime = 0
