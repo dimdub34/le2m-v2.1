@@ -641,8 +641,8 @@ class DEditGroups(QtGui.QDialog):
         # check that groups are ok
         new_groups = dict()
         for joueur, combo in self.combos_joueurs.items():
-            group_joueur = combo.currentText()
-            if combo.currentText() not in new_groups:
+            group_joueur = str(combo.currentText())
+            if group_joueur not in new_groups:
                 new_groups[group_joueur] = [joueur]
             else:
                 new_groups[group_joueur].append(joueur)
