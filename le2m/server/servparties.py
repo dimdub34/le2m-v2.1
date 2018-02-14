@@ -206,6 +206,7 @@ class PartieBase(Partie, object):
         yield(self.remote.callRemote("display_video", video_file))
         self.joueur.remove_waitmode()
 
+
 class PartieQuestionnaireFinal(Partie, object):
     __tablename__ = 'partie_questionnaireFinal'
     __mapper_args__ = {'polymorphic_identity': 'questionnaireFinal'}
@@ -235,7 +236,7 @@ class PartieQuestionnaireFinal(Partie, object):
     @defer.inlineCallbacks
     def start(self):
         inputs = yield (self.remote.callRemote('demarrer'))
-        for k, v in inputs.iteritems(): 
+        for k, v in inputs.items():
             setattr(self, k, v)
         self.joueur.info('ok')
         self.joueur.remove_waitmode()
