@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
 import logging
-from util import utiltools
 import random
 import datetime
+from util import utiltools
 from util.utili18n import le2mtrans
 
 
