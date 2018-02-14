@@ -127,6 +127,7 @@ class GestionnaireGroupes(object):
                 population=liste_joueurs, taille=taille_groupes,
                 prefixe="{}_g_".format(self._nom_session))
             self._groupes = self._roundrobin.next()
+
         else:  # normal (random) groups
             self._groupes = former_groupes(
                 liste_joueurs, taille_groupes, "{}_g_".format(self._nom_session))
@@ -436,3 +437,33 @@ class GestionnaireGroupes(object):
         logger.debug("get_autres_membres_sousgroupe renvoi {}".format(
             sg_comp))
         return sg_comp
+
+
+class Group():
+    def __init__(self, uid, players_list):
+        self._uid = uid
+        self._players = players_list
+
+    @property
+    def uid(self):
+        return self._uid
+
+    @uid.setter
+    def uid(self, val):
+        self._uid = val
+
+    @property
+    def players(self):
+        return self._players[:]
+
+    @players.setter
+    def players(self, the_list):
+        self._players = the_list
+
+    def get_position_in_group(self, player):
+        """
+        Return the index of the player in the list of group members
+        :param player:
+        :return:
+        """
+        return self.players.index(player)
