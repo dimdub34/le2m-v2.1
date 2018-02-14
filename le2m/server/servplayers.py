@@ -66,7 +66,8 @@ class Joueur(Base):
         self._subgroup_composition = None
 
     @defer.inlineCallbacks
-    def add_part(self, le2mserv, partname, partclassname, remoteclassname):
+    def add_part(self, le2mserv, partname, partclassname, remoteclassname,
+                 **kwargs):
         """
         On ajoute la partie au joueur (ou le joueur à la partie) dans la
         base de données.
@@ -81,7 +82,7 @@ class Joueur(Base):
 
             # get the class and instantiate it
             partclass = getattr(partmodule, partclassname)
-            partinstance = partclass(le2mserv, self)
+            partinstance = partclass(le2mserv, self, **kwargs)
 
             # get the remote of the part and set the attribute remote in the
             # corresponding part
