@@ -59,7 +59,7 @@ class GestionnaireExperience(QObject):
 
     @defer.inlineCallbacks
     def init_part(self, partname, partclassname, remoteclassname,
-                  partparameters):
+                  partparameters, **kwargs):
         """
         init the part:
         - each player loads the part and instanciate the object
@@ -82,7 +82,7 @@ class GestionnaireExperience(QObject):
         players = self._le2msrv.gestionnaire_joueurs.get_players()
         self._le2msrv.gestionnaire_graphique.set_waitmode(players)
         yield (self.run_func(players, "add_part", self._le2msrv,
-                             partname, partclassname, remoteclassname))
+                             partname, partclassname, remoteclassname, **kwargs))
 
         self._parts.append(partname)
         self.stop_repetitions = False
