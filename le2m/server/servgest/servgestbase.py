@@ -88,7 +88,10 @@ class GestionnaireBase():
             
     def get_session(self):
         return self._session
-                
+
+    @property
+    def session(self):
+        return self._session
 
 class Session (Base):
     __tablename__ = "sessions"
