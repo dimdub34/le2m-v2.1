@@ -2,7 +2,7 @@
 
 from PyQt4 import QtGui, QtCore
 import random
-from datetime import timedelta
+from datetime import time, timedelta
 from util.utiltools import CompteARebours
 try:  # this way it is possible to load this module independently
     from util.utili18n import le2mtrans
@@ -301,8 +301,14 @@ class WCompterebours(QtGui.QWidget):
         layout.addWidget(self._label)
 
         self._label_timer = QtGui.QLabel()
-        tps = timedelta(hours=temps.hour, minutes=temps.minute,
-                        seconds=temps.second).seconds
+        if type(temps) is time:
+            tps = timedelta(hours=temps.hour, minutes=temps.minute,
+                            seconds=temps.second).seconds
+        elif type(temps) is timedelta:
+            tps = temps
+        else:
+            raise TypeError (
+                u"temps has to be either a datetime.time or datetime.timedelta")
         layout.addWidget(self._label_timer)
 
         layout.addSpacerItem(QtGui.QSpacerItem(
