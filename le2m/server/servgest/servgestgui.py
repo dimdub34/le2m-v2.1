@@ -11,7 +11,7 @@ from server.servgui.servguiwindows import GuiServeur
 from server.servgui.servguidialogs import GuiInformation, DDisplayImages, DDisplayVideo
 
 
-logger = logging.getLogger("le2m.{}".format(__name__))
+logger = logging.getLogger("le2m")
 
 
 class GestionnaireGraphique():

@@ -7,7 +7,7 @@ from util import utiltools
 from util.utili18n import le2mtrans
 
 
-logger = logging.getLogger("le2m.{}".format(__name__))
+logger = logging.getLogger("le2m")
 compteur_groupe = 0
 
 

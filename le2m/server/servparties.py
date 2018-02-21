@@ -10,7 +10,7 @@ from servbase import Base
 import configuration.configparam as params
 
 
-logger = logging.getLogger("le2m.{}".format(__name__))
+logger = logging.getLogger("le2m")
 
 
 class Partie(Base):

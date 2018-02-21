@@ -9,7 +9,7 @@ from util.utili18n import le2mtrans
 from configuration.configconst import HOMME, FEMME
 from server.servplayers import Joueur
 
-logger = logging.getLogger("le2m.{}".format(__name__))
+logger = logging.getLogger("le2m")
 
 
 class GestionnaireJoueurs(pb.Root, QObject):

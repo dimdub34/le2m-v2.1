@@ -13,7 +13,7 @@ from util import utiltools, utiltwisted
 from server.servgui.servguidialogs import GuiPayoffs
 
 
-logger = logging.getLogger("le2m.{}".format(__name__))
+logger = logging.getLogger("le2m")
 
 
 class GestionnaireExperience(QObject):

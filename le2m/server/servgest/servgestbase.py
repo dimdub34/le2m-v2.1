@@ -9,7 +9,7 @@ from util.utili18n import le2mtrans
 from server.servbase import Base, DB
 
 
-logger = logging.getLogger("le2m.{}".format(__name__))
+logger = logging.getLogger("le2m")
 
 
 class GestionnaireBase():
