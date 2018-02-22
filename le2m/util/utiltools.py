@@ -8,11 +8,12 @@ import string
 import os
 import logging
 import inspect
-from PyQt4.QtCore import QObject, QTimer, pyqtSignal  # pour CompteARebours
+from PyQt4.QtCore import QObject, QTimer, pyqtSignal, QThread
 from random import randint
 import numpy as np
 import threading
 import time
+import random
 
 logger = logging.getLogger("le2m")
 
@@ -43,6 +44,34 @@ class RepeatedTimer(object):
     def stop(self):
         self._timer.cancel()
         self.is_running = False
+
+
+class QThreadWaiting(QThread):
+    """
+    A thread that calls a function repeatedly at a definite interval
+    """
+
+    def __init__(self, interval, func, *args, **kwargs):
+        """
+
+        :param interval: the interval the func is called
+        :param func: the func to call
+        :param args: args of the func
+        :param kwargs: kwargs of the func
+        """
+        QThread.__init__(self)
+        self.interval = interval
+        self.func = func
+        self.args = args
+        self.kwargs = kwargs
+
+    def run(self):
+        time.sleep(self.interval)
+        self.func(*self.args, **self.kwargs)
+
+    def stop(self):
+        if self.timer.isAlive():
+            self.timer.cancel()  # to kill the timer
 
 
 def get_formatedtimefromseconds(nombre_secondes):
@@ -299,3 +328,46 @@ def get_grids(how_much, size):
             somme = np.sum(grille)
         grids.append(grille)
     return grids
+
+
+# ==============================================================================
+# GROUPS
+# ==============================================================================
+
+__group_counter = 0
+
+
+def form_groups(players, group_size, prefix_id=None):
+    """
+    Form groups
+    :param players: the players
+    :param group_size: the size of the groups to form
+    :param prefix_id: optional - serve as id for groups
+    :return: a dict with the group id as key and a list with the players as
+    value
+    """
+    # --------------------------------------------------------------------------
+    # CHECK CONDITIONS
+    # --------------------------------------------------------------------------
+    if type(players) is not list:
+        raise ValueError("parameter players must be a list")
+    elif len(players) % group_size > 0:
+        raise ValueError("len(players) must be a multiple of {}".format(
+            group_size))
+
+    nb = len(players) / group_size
+    dispos = players[:]
+    pre_id = prefix_id or datetime.datetime.now().strftime("%Y%m%d%H%M")
+    groups = dict()
+    global __group_counter
+
+    for i in range(nb):
+        g_id = pre_id + "_g_" + str(__group_counter)
+        groups[g_id] = []
+        for j in range(group_size):
+            selec = random.choice(dispos)
+            groups[g_id].append(selec)
+            dispos.remove(selec)
+        __group_counter += 1
+
+    return groups
