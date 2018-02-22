@@ -17,7 +17,7 @@ def run(args):
     os.chdir(os.path.dirname(os.path.abspath(__file__)))
     cmd = ["python", "clientrun.py"]
     cmd.extend(sys.argv[2:])
-    for i in xrange(nombre_clients): 
+    for i in range(nombre_clients):
         subprocess.Popen(cmd)
 
 

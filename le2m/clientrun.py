@@ -11,14 +11,17 @@ list of these options with some comments to explain them
 from PyQt4 import QtGui, QtCore
 application = QtGui.QApplication([''])
 QtGui.QApplication.setApplicationName("LE2M")
+
 from util import utilqtreactor
 utilqtreactor.install()
+
 translator = QtCore.QTranslator()
 localelang = QtCore.QLocale.system().name()
 translator.load(QtCore.QString("qt_") + localelang,
                 QtCore.QLibraryInfo.location(
                     QtCore.QLibraryInfo.TranslationsPath))
 application.installTranslator(translator)
+
 import sys
 import os
 if sys.platform.startswith("win"):
@@ -90,8 +93,7 @@ def main():
     logger.addHandler(console_log)
 
     # first log
-    logger.info(30 * "~")
-    logger.info(u"Logger LE2M created")
+    logger.info("Logger created")
     logger.info("Command ligne options: {}".format(options))
 
     # start remote -------------------------------------------------------------

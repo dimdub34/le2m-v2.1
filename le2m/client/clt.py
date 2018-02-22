@@ -29,9 +29,7 @@ class Client(object):
         self._remotes = {'base': RemoteBase(self),
                          "questionnaireFinal": RemoteQuestionnaireFinal(self)}
         self._screen = GuiAttente()
-        logger.info(
-            '{} Hostname {} IP {}'.format(
-                self, self._hostname, self._ip))
+        logger.info("{} created".format(self))
 
     def start(self):
         """
@@ -40,7 +38,7 @@ class Client(object):
         commencent par remote)/
         Ensuite se connecte au serveur.
         """
-        logger.info(u"{} Connection to le2m server".format(self))
+        logger.info(u"{} connecting".format(self))
         factory = pb.PBClientFactory()
         reactor.connectTCP(params.getp("SERVIP"), params.getp("SERVPORT"),
                            factory)
@@ -50,7 +48,6 @@ class Client(object):
     
     @defer.inlineCallbacks
     def _connect(self, le2mservpb):
-        logger.info(u"{} OK le2mservpb".format(self))
         self._le2mservpb = le2mservpb
 
         # connection to the server. Get back an uid
@@ -59,7 +56,7 @@ class Client(object):
                 "connect", self._hostname, self._ip, self._simulation,
                 self._automatique, self.get_remote("base"),
                 self.get_remote("questionnaireFinal")))
-        logger.info(u"{} UID {}".format(self, self._uid))
+        logger.info(u"{} ({}) connected => {}".format(self.hostname,self.ip, self))
 
         if not self.simulation:
             self.screen.showFullScreen()
@@ -139,3 +136,9 @@ class Client(object):
     @property
     def screen(self):
         return self._screen
+
+    def __repr__(self):
+        if self.uid is None:
+            return "{} ({})".format(self.hostname, self.ip)
+        else:
+            return self.uid
