@@ -31,6 +31,54 @@ class Client(object):
         self._screen = GuiAttente()
         logger.info("{} created".format(self))
 
+    # --------------------------------------------------------------------------
+    # PROPERTIES
+    # --------------------------------------------------------------------------
+
+    @property
+    def uid(self):
+        return self._uid
+
+    @property
+    def ip(self):
+        return self._ip
+
+    @property
+    def hostname(self):
+        return self._hostname
+
+    @property
+    def simulation(self):
+        return self._simulation
+
+    @simulation.setter
+    def simulation(self, value):
+        self._simulation = bool(value)
+        logger.info(u"{} Simulation {}".format(self.uid, bool(self.simulation)))
+
+    @property
+    def automatique(self):
+        return self._automatique
+
+    @automatique.setter
+    def automatique(self, value):
+        self._automatique = bool(value)
+        logger.info(u"{} Automatic {}".format(self.uid, bool(self.automatique)))
+
+    @property
+    def screen(self):
+        return self._screen
+
+    def __repr__(self):
+        if self.uid is None:
+            return "{} ({})".format(self.hostname, self.ip)
+        else:
+            return self.uid
+
+    # --------------------------------------------------------------------------
+    # METHODS
+    # --------------------------------------------------------------------------
+
     def start(self):
         """
         Démarrage du client, il se connecte au serveur, et récupère une
@@ -103,42 +151,3 @@ class Client(object):
     def get_remote(self, nom_remote):
         return self._remotes.get(nom_remote)
         
-    @property
-    def uid(self):
-        return self._uid
-
-    @property
-    def ip(self):
-        return self._ip
-
-    @property
-    def hostname(self):
-        return self._hostname
-
-    @property
-    def simulation(self):
-        return self._simulation
-
-    @simulation.setter
-    def simulation(self, value):
-        self._simulation = bool(value)
-        logger.info(u"{} Simulation {}".format(self.uid, bool(self.simulation)))
-
-    @property
-    def automatique(self):
-        return self._automatique
-
-    @automatique.setter
-    def automatique(self, value):
-        self._automatique = bool(value)
-        logger.info(u"{} Automatic {}".format(self.uid, bool(self.automatique)))
-
-    @property
-    def screen(self):
-        return self._screen
-
-    def __repr__(self):
-        if self.uid is None:
-            return "{} ({})".format(self.hostname, self.ip)
-        else:
-            return self.uid
