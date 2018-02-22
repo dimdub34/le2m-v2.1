@@ -65,6 +65,34 @@ class Serveur(object):
                 kwargs["namebase"], kwargs["test"])
             self.gestionnaire_experience.load_experiment(expeinfos)
 
+    # --------------------------------------------------------------------------
+    # PROPERTIES
+    # --------------------------------------------------------------------------
+
+    @property
+    def heure_debut(self):
+        return self._heure_debut
+
+    @property
+    def nom_session(self):
+        return self._nom_session
+
+    @property
+    def hostname(self):
+        return self._hostname
+
+    @property
+    def ip(self):
+        return self._ip
+
+    @property
+    def port_ecoute(self):
+        return self._port_ecoute
+
+    # --------------------------------------------------------------------------
+    # METHODS
+    # --------------------------------------------------------------------------
+
     def start(self):
         """
         Start the server.
@@ -86,23 +114,4 @@ class Serveur(object):
         logging.shutdown()
         reactor.callLater(2, reactor.stop)
 
-    @property
-    def heure_debut(self):
-        return self._heure_debut
-
-    @property
-    def nom_session(self):
-        return self._nom_session
-
-    @property
-    def hostname(self):
-        return self._hostname
-
-    @property
-    def ip(self):
-        return self._ip
-
-    @property
-    def port_ecoute(self):
-        return self._port_ecoute
 
