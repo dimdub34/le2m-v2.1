@@ -13,7 +13,7 @@ from configuration import configparam as params
 from client.cltgui.cltguiforms import GuiAttente
 
 
-logger = logging.getLogger("le2m.{}".format(__name__))
+logger = logging.getLogger("le2m")
 
 
 class Client(object):

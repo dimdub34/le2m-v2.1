@@ -13,7 +13,7 @@ import clttexts
 from client.cltgui.cltguidialogs import DQuestFinal, DDisplayImages, DDisplayVideo
 
 
-logger = logging.getLogger("le2m.{}".format(__name__))
+logger = logging.getLogger("le2m")
 
 
 class IRemote(pb.Referenceable):
