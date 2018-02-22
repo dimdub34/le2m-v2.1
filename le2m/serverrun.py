@@ -6,10 +6,12 @@ import sys
 import os
 import logging
 import argparse
+
 application = QtGui.QApplication([''])  # application before utilqtreactor
 QtGui.QApplication.setApplicationName("LE2M")
 from util import utilqtreactor
 utilqtreactor.install()
+
 # in order that system dialog box to be in the appropriate language
 translator = QtCore.QTranslator()
 localelang = QtCore.QLocale.system().name()
@@ -17,15 +19,20 @@ translator.load(QtCore.QString("qt_") + localelang,
                 QtCore.QLibraryInfo.location(
                     QtCore.QLibraryInfo.TranslationsPath))
 application.installTranslator(translator)
+
 # for windows, set lang
 if sys.platform.startswith("win"):
     import locale
     if os.getenv('LANG') is None:
         lang, enc = locale.getdefaultlocale()
         os.environ['LANG'] = lang
+
+# set APPDIR
 from configuration import configparam as params
 params.setp_appdir(os.path.realpath(os.path.dirname(__file__)))
-import util.utili18n as i18n  # after the set of APPDIR
+
+# i18n - after set APPDIR
+import util.utili18n as i18n
 
 
 def main():
