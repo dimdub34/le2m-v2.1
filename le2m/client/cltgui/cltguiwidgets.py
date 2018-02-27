@@ -303,9 +303,9 @@ class WCompterebours(QtGui.QWidget):
         self._label_timer = QtGui.QLabel()
         if type(temps) is time:
             tps = timedelta(hours=temps.hour, minutes=temps.minute,
-                            seconds=temps.second).seconds
+                            seconds=temps.second).total_seconds()
         elif type(temps) is timedelta:
-            tps = temps
+            tps = temps.total_seconds()
         else:
             raise TypeError (
                 u"temps has to be either a datetime.time or datetime.timedelta")
