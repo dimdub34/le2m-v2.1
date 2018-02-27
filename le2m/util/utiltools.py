@@ -74,6 +74,14 @@ class QThreadWaiting(QThread):
             self.timer.cancel()  # to kill the timer
 
 
+def timedelta_to_time(the_timedelta):
+    if type(the_timedelta) is not datetime.timedelta:
+        raise TypeError("The arg must be a datetime.timedelta object")
+    hours, remainder = map(int, divmod(the_timedelta.total_seconds(), 3600))
+    minutes, seconds = map(int, divmod(remainder, 60))
+    return datetime.time(hours, minutes, seconds)
+
+
 def get_formatedtimefromseconds(nombre_secondes):
     """
     Return a formated string; HH:mm:ss
