@@ -285,7 +285,8 @@ class WCompterebours(QtGui.QWidget):
     def __init__(self, parent, temps, actionfin):
         """
         :param parent:
-        :param temps: datetime.time(0, 2, 0)  # heures, minutes, secondes
+        :param temps: datetime.time(0, 2, 0)  # hours, minutes, seconds
+        :type temps: datetime.time or timedelta
         :param actionfin:
         :return:
         """
