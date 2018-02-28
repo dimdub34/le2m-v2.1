@@ -32,6 +32,567 @@ from questcomp import questcomp
 logger = logging.getLogger("le2m")
 
 
+# ==============================================================================
+# MENUS
+# ==============================================================================
+
+
+class MenuFile(QtGui.QMenu):
+    def __init__(self):
+        super(MenuFile, self).__init__()
+
+        self.setTitle(le2mtrans(u"File"))
+
+        # ----------------------------------------------------------------------
+        # load
+        # ----------------------------------------------------------------------
+        self.action_load = QtGui.QAction(le2mtrans(u"Load a part"), self)
+        self.action_load.setShortcut(QtGui.QKeySequence("Ctrl+o"))
+        self.action_load.setToolTip(
+            le2mtrans(u"Open a dialog box with a list of parts you can load"))
+        self.addAction(self.action_load)
+
+        # ----------------------------------------------------------------------
+        # quit
+        # ----------------------------------------------------------------------
+        self.action_quit = QtGui.QAction(le2mtrans(u"Quit"), self)
+        self.action_quit.setShortcut(QtGui.QKeySequence("Ctrl+q"))
+        self.action_quit.setToolTip(le2mtrans(u"Exit the application"))
+        self.addAction(self.action_quit)
+
+
+class MenuExperiment(QtGui.QMenu):
+    def __init__(self):
+        super(MenuExperiment, self).__init__()
+
+        self.setTitle(le2mtrans(u"Experiment"))
+
+        # ----------------------------------------------------------------------
+        # welcome
+        # ----------------------------------------------------------------------
+        self.action_welcome = QtGui.QAction(
+            le2mtrans(u"Display welcome screen"), self)
+        self.action_welcome.setToolTip(
+            le2mtrans(u"Display the welcome screen on participants' screen"))
+        self.addAction(self.action_welcome)
+
+        # ----------------------------------------------------------------------
+        # understanding questionnaire
+        # ----------------------------------------------------------------------
+        self.action_understand_load = QtGui.QAction(
+            le2mtrans(u"Load an understanding questionnaire"), self)
+        self.action_understand_load.setToolTip(
+            le2mtrans(u"Open a dialog box to select an understanding "
+                      u"questionnaire (xml file)"))
+        self.addAction(self.action_understand_load)
+
+        self.action_understand_run = QtGui.QAction(
+            le2mtrans(u"Start the loaded understanding questionnaire"), self)
+        self.action_understand_run.setToolTip(
+            le2mtrans(u"Start the loaded understanding questionnaire"))
+        self.addAction(self.action_understand_run)
+
+        # ----------------------------------------------------------------------
+        # final questionnaire
+        # ----------------------------------------------------------------------
+        self.action_finalquest = QtGui.QAction(
+            le2mtrans(u"Display the final questionnaire"), self)
+        self.action_finalquest.setToolTip(
+            le2mtrans(u"Display the final questionnaire on participants' "
+                      u"screen"))
+        self.addAction(self.action_finalquest)
+
+        # ----------------------------------------------------------------------
+        # final questionnaire
+        # ----------------------------------------------------------------------
+        self.action_payoffs = QtGui.QAction(le2mtrans(u"Payoffs"), self)
+        self.action_payoffs.setToolTip(
+            le2mtrans(u"Display a dialog box with the payoffs of each player"))
+        self.addAction(self.action_payoffs)
+
+
+class MenuPart(QtGui.QMenu):
+    def __init__(self):
+        super(MenuPart, self).__init__()
+
+        self.setTitle(le2mtrans(u"Part"))
+
+
+class MenuEdit(QtGui.QMenu):
+    def __init__(self):
+        super(MenuEdit, self).__init__()
+        
+        self.setTitle(le2mtrans(u"Edit"))
+        
+        self.action_clear_server_list = QtGui.QAction(
+            le2mtrans(u"Clear the server list"), self)
+        self.action_clear_server_list.setToolTip(
+            le2mtrans(u"Clear the server list"))
+        self.addAction(self.action_clear_server_list)
+        
+        self.action_clear_client_list = QtGui.QAction(
+            le2mtrans(u"Clear the client list"), self)
+        self.action_clear_client_list.setToolTip(
+            le2mtrans(u"Clear the client list"))
+        self.addAction(self.action_clear_client_list)
+
+
+class MenuOptions(QtGui.QMenu):
+    def __init__(self):
+        super(MenuOptions, self).__init__()
+
+        self.setTitle(u"Options")
+
+        self.action_stop_repetitions = QtGui.QAction(
+            le2mtrans(u"Stop after this period"), self)
+        self.action_stop_repetitions.setToolTip(
+            le2mtrans(u"Clic on this menu to stop the part after this period"))
+        self.action_stop_repetitions.setCheckable(True)
+        self.addAction(self.action_stop_repetitions)
+
+        self.action_edit_groups = QtGui.QAction(
+            le2mtrans(u"Edit groups"), self)
+        self.addAction(self.action_edit_groups)
+
+        self.action_gender = QtGui.QAction(
+            le2mtrans(u"Set participants gender in the application"), self)
+        self.action_gender.setToolTip(
+            le2mtrans(u"Display a dialog box that allows to set the gender of "
+                      u"each remote (participant)"))
+        self.addAction(self.action_gender)
+
+        self.action_draw_a_part = QtGui.QAction(
+            le2mtrans(u"Draw randomly a part among those played"), self)
+        self.addAction(self.action_draw_a_part)
+
+
+class MenuTools(QtGui.QMenu):
+    def __init__(self):
+        super(MenuTools, self).__init__()
+
+        self.setTitle(le2mtrans(u"Tools"))
+
+        # ----------------------------------------------------------------------
+        # creator
+        # ----------------------------------------------------------------------
+        self.action_creator = QtGui.QAction(
+            le2mtrans(u"Create a new part"), self)
+        self.action_creator.setToolTip(
+            le2mtrans(u"Display a dialog box in which you can configure the "
+                      u"part to create"))
+        self.action_creator.triggered.connect(creator.creator)
+        self.addAction(self.action_creator)
+
+        # ----------------------------------------------------------------------
+        # extractor
+        # ----------------------------------------------------------------------
+        self.action_extractor = QtGui.QAction(
+            le2mtrans(u"Extract some experimental data"), self)
+        self.action_extractor.setToolTip(
+            le2mtrans(u"Open a dialog box for selection an sqlite file to "
+                      u"extract"))
+        self.action_extractor.triggered.connect(extractor.extractor)
+        self.addAction(self.action_extractor)
+
+        # ----------------------------------------------------------------------
+        # understanding questionnaire creation
+        # ----------------------------------------------------------------------
+        self.action_questcomp = QtGui.QAction(
+            le2mtrans(u"Create/Edit an understanding questionnaire"),
+            self)
+        self.action_questcomp.setToolTip(
+            le2mtrans(u"Open a dialog box that allows to create or edit an "
+                      u"understanding questionnaire"))
+        self.action_questcomp.triggered.connect(questcomp.questcomp)
+        self.addAction(self.action_questcomp)
+
+        self.action_display_image = QtGui.QAction(
+            le2mtrans(u"Display images on clients' screen"), self)
+        self.action_display_image.setToolTip(
+            le2mtrans(u"You have to select a directory with images and it will "
+                      u"display it on client's screen. Be careful the "
+                      u"directory has to been accessible by client through the "
+                      u"network"))
+        self.addAction(self.action_display_image)
+
+        self.action_display_video = QtGui.QAction(
+            le2mtrans(u"Display a video on clients' screen"), self)
+        self.action_display_video.setToolTip(le2mtrans(
+            u"Select a video and a dialog will open. You will be able to "
+            u"display the video either on your screen or on the clients' "
+            u"screen. Be careful the video file has to be accessible by the "
+            u"clients through the network."))
+        self.addAction(self.action_display_video)
+
+        # ----------------------------------------------------------------------
+        # random draws: dice, head and tail, number
+        # ----------------------------------------------------------------------
+        self.action_dice = QtGui.QAction(le2mtrans(u"Dice roller"), self)
+        self.action_dice.setToolTip(le2mtrans(u"Roll a dice"))
+        self.addAction(self.action_dice)
+
+        self.action_randint = QtGui.QAction(le2mtrans(u"Random number"), self)
+        self.action_randint.setToolTip(le2mtrans(u"Drawn a random number"))
+        self.addAction(self.action_randint)
+
+        self.action_head_and_tail = QtGui.QAction(
+            le2mtrans(u"Head and Tail"), self)
+        self.action_head_and_tail.setToolTip(le2mtrans(u"Play head and tail"))
+        self.addAction(self.action_head_and_tail)
+
+
+class MenuHelp(QtGui.QMenu):
+    def __init__(self):
+        super(MenuHelp, self).__init__()
+
+        self.setTitle(le2mtrans(u"About"))
+
+        self.action_help = QtGui.QAction(le2mtrans(u"Help"), self)
+        self.action_help.setToolTip(
+            le2mtrans(u"Display a window with a text of help"))
+        self.addAction(self.action_help)
+
+        self.action_about = QtGui.QAction(le2mtrans(u"About"), self)
+        self.addAction(self.action_about)
+
+
+# ==============================================================================
+# TABS
+# ==============================================================================
+
+
+class TabInformations(QtGui.QWidget):
+    def __init__(self):
+        super(TabInformations, self).__init__()
+
+        self.layout = QtGui.QVBoxLayout()
+        self.setLayout(self.layout)
+
+        self.label_soft = QtGui.QLabel("LE2M")
+        self.label_soft.setStyleSheet("color: brown; font-weight: bold;font-size:40px;")
+        self.layout.addWidget(self.label_soft)
+
+        self.layout.addSpacerItem(
+            QtGui.QSpacerItem(5, 20, QtGui.QSizePolicy.Fixed,
+                              QtGui.QSizePolicy.Expanding))
+
+        self.img_layout = QtGui.QHBoxLayout()
+        self.img_layout.addSpacerItem(
+            QtGui.QSpacerItem(20, 5, QtGui.QSizePolicy.Expanding,
+                              QtGui.QSizePolicy.Fixed))
+        self.img = QtGui.QPixmap()
+        self.img.load(params.getp("LABPICTURE"))
+        self.img_label = QtGui.QLabel()
+        self.img_label.setPixmap(self.img)
+        self.img_layout.addWidget(self.img_label)
+        self.img_layout.addSpacerItem(
+            QtGui.QSpacerItem(20, 5, QtGui.QSizePolicy.Expanding,
+                              QtGui.QSizePolicy.Fixed))
+        self.layout.addLayout(self.img_layout)
+
+        self.layout.addSpacerItem(
+            QtGui.QSpacerItem(5, 20, QtGui.QSizePolicy.Fixed,
+                              QtGui.QSizePolicy.Expanding))
+
+        self.label_infos = QtGui.QLabel()
+        self.label_infos.setText(
+            "OS: {} {} | Python version: {}".format(
+                platform.uname()[0], platform.uname()[2],
+                sys.version.split()[0]))
+        self.layout.addWidget(self.label_infos)
+
+
+class TabClients(QtGui.QWidget):
+    def __init__(self):
+        super(TabClients, self).__init__()
+
+        self.layout = QtGui.QVBoxLayout()
+        self.setLayout(self.layout)
+
+        self.label_connected = QtGui.QLabel(
+            le2mtrans(u"Nb. connected") + u": 0")
+        self.layout.addWidget(self.label_connected)
+
+        self.clients_table = QtGui.QTableView()
+        self.layout.addWidget(self.clients_table)
+        self.clients_table_model = TableModelJoueurs()
+        self.clients_table.setModel(self.clients_table_model)
+        self.clients_table.horizontalHeader().\
+            setResizeMode(QtGui.QHeaderView.Stretch)
+        self.clients_table.horizontalHeader().setClickable(True)
+        self.clients_table.horizontalHeader().sectionClicked[int]. \
+            connect(self.clients_table_model.inverse)
+
+
+class TabLists(QtGui.QWidget):
+    def __init__(self):
+        super(TabLists, self).__init__()
+        
+        self.layout = QtGui.QHBoxLayout()
+        self.setLayout(self.layout)
+        
+        # ----------------------------------------------------------------------
+        # server
+        # ----------------------------------------------------------------------
+        self.list_server_layout = QtGui.QVBoxLayout()
+        self.layout.addLayout(self.list_server_layout)
+        self.label_list_server = QtGui.QLabel(le2mtrans(u"Server"))
+        self.list_server_layout.addWidget(self.label_list_server)
+        self.list_server = QtGui.QListWidget()
+        self.list_server_layout.addWidget(self.list_server)
+        
+        # ----------------------------------------------------------------------
+        # client
+        # ----------------------------------------------------------------------
+        self.list_client_layout = QtGui.QVBoxLayout()
+        self.layout.addLayout(self.list_client_layout)
+        self.label_list_client = QtGui.QLabel(le2mtrans(u"Client"))
+        self.list_client_layout.addWidget(self.label_list_client)
+        self.list_client = QtGui.QListWidget()
+        self.list_client_layout.addWidget(self.list_client)
+
+        # ----------------------------------------------------------------------
+        # wait
+        # ----------------------------------------------------------------------
+        self.list_wait_layout = QtGui.QVBoxLayout()
+        self.layout.addLayout(self.list_wait_layout)
+        self.label_list_wait = QtGui.QLabel(le2mtrans(u"Wait"))
+        self.list_wait_layout.addWidget(self.label_list_wait)
+        self.list_wait = QtGui.QListWidget()
+        self.list_wait.setMaximumWidth(350)
+        self.list_wait_layout.addWidget(self.list_wait)
+
+
+# ==============================================================================
+# MAIN WINDOW
+# ==============================================================================
+
+
+class MainWindow(QtGui.QMainWindow):
+    def __init__(self, le2msrv):
+        super(MainWindow, self).__init__()
+        self.le2msrv = le2msrv
+
+        # ----------------------------------------------------------------------
+        # menus
+        # ----------------------------------------------------------------------
+        self.menu_bar = self.menuBar()
+        self.menu_file = MenuFile()
+        self.menu_bar.addMenu(self.menu_file)
+        self.menu_experiment = MenuExperiment()
+        self.menu_bar.addMenu(self.menu_experiment)
+        self.menu_part = MenuPart()
+        self.menu_bar.addMenu(self.menu_part)
+        self.menu_edit = MenuEdit()
+        self.menu_bar.addMenu(self.menu_edit)
+        self.menu_options = MenuOptions()
+        self.menu_bar.addMenu(self.menu_options)
+        self.menu_tools = MenuTools()
+        self.menu_bar.addMenu(self.menu_tools)
+        self.menu_help = MenuHelp()
+        self.menu_bar.addMenu(self.menu_help)
+
+        # ----------------------------------------------------------------------
+        # main widget
+        # ----------------------------------------------------------------------
+        self.main_widget = QtGui.QWidget()
+        self.setCentralWidget(self.main_widget)
+        self.layout = QtGui.QVBoxLayout()
+        self.main_widget.setLayout(self.layout)
+
+        # ----------------------------------------------------------------------
+        # tabs
+        # ----------------------------------------------------------------------
+        self.tab_widget = QtGui.QTabWidget()
+        self.layout.addWidget(self.tab_widget)
+        self.tab_infos = TabInformations()
+        self.tab_widget.addTab(self.tab_infos, le2mtrans(u"Informations"))
+        self.tab_clients = TabClients()
+        self.tab_widget.addTab(self.tab_clients, le2mtrans(u"Clients"))
+        self.tab_lists = TabLists()
+        self.tab_widget.addTab(self.tab_lists, le2mtrans(u"Lists"))
+
+        # ----------------------------------------------------------------------
+        # connections
+        # ----------------------------------------------------------------------
+        # menu_file
+        self.menu_file.action_load.triggered.connect(self.load_parts)
+        self.menu_file.action_quit.triggered.connect(self.close)
+
+        # menu_experiment
+        self.menu_experiment.action_welcome.triggered.connect(
+            self.display_welcome)
+        self.menu_experiment.action_understand_load.triggered.connect(
+            self.load_questcomp)
+        self.menu_experiment.action_understand_run.triggered.connect(
+            self.start_questcomp)
+
+        # menu_edit
+        self.menu_edit.action_clear_server_list.triggered.connect(
+            self.tab_lists.list_server.clear)
+        self.menu_edit.action_clear_client_list.triggered.connect(
+            self.tab_lists.list_client.clear)
+
+        # menu_help
+        self.menu_help.action_help.triggered.connect(self.display_help)
+        self.menu_help.action_about.triggered.connect(self.display_about)
+
+    # --------------------------------------------------------------------------
+    # slots
+    # --------------------------------------------------------------------------
+    # menu_file
+    @QtCore.pyqtSlot()
+    def load_parts(self):
+        if self.le2mserv.gestionnaire_base.is_created():
+            QtGui.QMessageBox.warning(
+                self, le2mtrans(u"Warning"),
+                le2mtrans(u"The database is already created, you therefore "
+                          u"cannot load another part. If you want to, you need "
+                          u"to restart the application"))
+            return
+        screenparts = GuiPartLoad(self)
+        if screenparts.exec_():
+            self.le2mserv.gestionnaire_experience.load_experiment(
+                screenparts.get_expeinfos())
+        else:
+            return
+
+    # menu_experiment
+    @QtCore.pyqtSlot()
+    def display_welcome(self):
+        """
+        Display the welcome screen on remotes
+        """
+        reply = QtGui.QMessageBox.question(
+            self,
+            le2mtrans(u'Confirmation'),
+            le2mtrans(u"Display the welcome screen on remotes?"),
+            QtGui.QMessageBox.Yes | QtGui.QMessageBox.No
+        )
+        if reply != QtGui.QMessageBox.Yes:
+            return
+        self.le2msrv.gestionnaire_experience.display_welcome()
+
+    @QtCore.pyqtSlot()
+    def load_questcomp(self):
+        """
+        Récupère le fichier xml de questionnaire de compréhension et le
+        traite
+        :return:
+        """
+        xmlfile = str(
+            QtGui.QFileDialog.getOpenFileName(
+                self,
+                le2mtrans(u"Select the understanding questionnaire to load"),
+                "", le2mtrans(u"xml file (*.xml)")))
+        if not xmlfile:
+            return
+        else:
+            self.questcomp = questcomp.get_questions(xmlfile)
+            if not self.questcomp:
+                return
+
+            txt = u""
+            for q in self.questcomp:
+                txt += u"{}\n\n".format(q)
+            screen = DUnderstandingVisual(txt)
+            screen.exec_()
+            self.add_list_server(
+                le2mtrans(u"Understanding questionnaire loaded "
+                          u"({} questions)").format(len(self.questcomp)))
+
+    @QtCore.pyqtSlot()
+    def start_questcomp(self):
+        """
+        Start the understanding questionnaire
+        """
+        if not self.questcomp:
+            QtGui.QMessageBox.warning(
+                self,
+                le2mtrans(u"Warning"),
+                le2mtrans(u"Please load an understanding questionnaire"))
+            return
+        if not self.le2msrv.gestionnaire_base.is_created():
+            QtGui.QMessageBox.warning(
+                self, le2mtrans(u"Warning"),
+                le2mtrans(u"The understanding questionnaire cannot be started "
+                          u"before the database is created. You first has to "
+                          u"load at least one part."))
+            return
+        reply = QtGui.QMessageBox.question(
+            self,
+            le2mtrans(u'Confirmation'),
+            le2mtrans(u"Please confirm you want to start the understanding "
+                      u"questionnaire?"),
+            QtGui.QMessageBox.No | QtGui.QMessageBox.Yes)
+        if reply != QtGui.QMessageBox.Yes:
+            return
+        self.le2msrv.gestionnaire_experience.start_questcomp(self._questcomp)
+
+    # menu_help
+    @QtCore.pyqtSlot()
+    def display_help(self):
+        """
+        Display a dialog with some help on le2m
+        """
+        help_file = os.path.join(params.getp("HTMLDIR"),
+                                    "le2m_aide.html")
+        webscreen = DWebview(
+            help_file, title=le2mtrans(u"Help"), parent=self)
+        webscreen.show()
+
+    @QtCore.pyqtSlot()
+    def display_about(self):
+        """
+        Display a dialog with some infos about the authors of le2m
+        """
+        the_file = os.path.join(
+            params.getp("HTMLDIR"), "le2m_auteurs.html")
+        screen = GuiInformation(
+            parent=self, titre=le2mtrans(u"Developers"), size=(450, 180),
+            html=True, text=utiltools.get_contenu_fichier(the_file))
+        screen.show()
+
+    # --------------------------------------------------------------------------
+    # methods
+    # --------------------------------------------------------------------------
+
+    def closeEvent(self, event):
+        """
+        Ask a confirmation before closing
+        """
+        reply = QtGui.QMessageBox.question(
+            self,
+            le2mtrans(u'Confirmation'),
+            le2mtrans(u"Are you sure you want to exit?"),
+            QtGui.QMessageBox.Yes | QtGui.QMessageBox.No)
+        if reply == QtGui.QMessageBox.Yes:
+            event.accept()
+        else:
+            event.ignore()
+
+    def add_list_server(self, txt, **kwargs):
+        if txt:
+            logger.info(txt)
+        item = QtGui.QListWidgetItem(QtCore.QString(txt))
+        if txt and kwargs:
+            item.setForeground(QtGui.QColor(kwargs.get("fg", "black")))
+            item.setBackground(QtGui.QColor(kwargs.get("bg", "white")))
+        self.tab_lists.list_server.addItem(item)
+
+    def add_list_client(self, txt, **kwargs):
+        if txt:
+            logger.info(txt)
+        item = QtGui.QListWidgetItem(QtCore.QString(txt))
+        if txt and kwargs:
+            item.setForeground(QtGui.QColor(kwargs.get("fg", "black")))
+            item.setBackground(QtGui.QColor(kwargs.get("bg", "white")))
+        self.tab_lists.list_client.addItem(item)
+
+
+# ==============================================================================
+# OLD
+# ==============================================================================
 def _add_list(txt, the_list, **kwargs):
         if txt:
             logger.info(txt)
@@ -376,63 +937,6 @@ class GuiServeur(QtGui.QMainWindow):
         if video_file:
             self._le2mserv.gestionnaire_graphique.display_video(video_file)
 
-    def _load_questcomp(self):
-        """
-        Récupère le fichier xml de questionnaire de compréhension et le
-        traite
-        :return:
-        """
-        xmlfile = str(
-            QtGui.QFileDialog.getOpenFileName(
-                self,
-                le2mtrans(u"Select the understanding questionnaire to load"),
-                "", le2mtrans(u"xml file (*.xml)")))
-        if not xmlfile:
-            return
-        else:
-            self._questcomp = questcomp.get_questions(xmlfile)
-            if not self._questcomp:
-                return
-
-            txt = u""
-            for q in self._questcomp:
-                txt += u"{}\n\n".format(q)
-            screen = DUnderstandingVisual(txt)
-            screen.exec_()
-            # QtGui.QMessageBox.information(
-            #     self,
-            #     le2mtrans(u"Understanding questionnaire"), txt)
-            self.add_serverlist(
-                le2mtrans(u"Understanding questionnaire loaded "
-                          u"({} questions)").format(len(self._questcomp)))
-
-    def _start_questcomp(self):
-        """
-        Start the understanding questionnaire
-        """
-        if not self._questcomp:
-            QtGui.QMessageBox.warning(
-                self,
-                le2mtrans(u"Warning"),
-                le2mtrans(u"Please load an understanding questionnaire"))
-            return
-        if not self._le2mserv.gestionnaire_base.is_created():
-            QtGui.QMessageBox.warning(
-                self, le2mtrans(u"Warning"),
-                le2mtrans(u"The understanding questionnaire cannot be started "
-                          u"before the database is created. You first has to "
-                          u"load at least one part."))
-            return
-        reply = QtGui.QMessageBox.question(
-            self,
-            le2mtrans(u'Confirmation'),
-            le2mtrans(u"Please confirm you want to start the understanding "
-                      u"questionnaire?"),
-            QtGui.QMessageBox.No | QtGui.QMessageBox.Yes)
-        if reply != QtGui.QMessageBox.Yes:
-            return
-        self._le2mserv.gestionnaire_experience.start_questcomp(self._questcomp)
-
     def closeEvent(self, event):
         """
         Parce qu'on demande confirmation avant de quitter
@@ -670,3 +1174,11 @@ class GuiServeur(QtGui.QMainWindow):
                     le2mtrans(u"Tail"))))
 
 
+if __name__ == "__main__":
+    app = QtGui.QApplication(sys.argv)
+    params.setp_appdir("/home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m")
+    win = MainWindow(None)
+    win.add_list_server("text on server list")
+    win.add_list_client("text on client list")
+    win.show()
+    sys.exit(app.exec_())
