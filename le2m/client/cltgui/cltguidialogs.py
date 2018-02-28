@@ -1,22 +1,37 @@
 # -*- coding: utf-8 -*-
 
-import sys
+""" ============================================================================
+
+This modules contains only QDialog objects
+
+============================================================================ """
+
+# ==============================================================================
+# IMPORTS
+# ==============================================================================
+# built-in
 from PyQt4 import QtGui, QtCore
 from PyQt4.phonon import Phonon
 from twisted.internet.defer import AlreadyCalledError
 import random
 import logging
 from datetime import datetime
+
+# le2m
 from configuration import configparam as params
 from client import clttexts as textes
 from configuration import configvar
-from client.cltgui.cltguisrc import cltguiwelc, cltguifinal, cltguiquestfinal
+from client.cltgui.cltguisrc import cltguiwelc, cltguifinal
 from util.utili18n import le2mtrans
 from cltguitablemodels import TableModelHistorique
-from cltguiwidgets import WExplication, WTableview, WPeriod, WSpinbox, WCombo, \
-    WRadio
+from cltguiwidgets import (WExplication, WTableview, WPeriod, WSpinbox, WCombo,
+                           WRadio)
 
 logger = logging.getLogger("le2m")
+
+# ==============================================================================
+# MAIN DIALOGS
+# ==============================================================================
 
 
 class GuiAccueil(QtGui.QDialog):
@@ -184,45 +199,6 @@ class GuiRecapitulatif(QtGui.QDialog):
         pass
 
 
-class GuiPopup(QtGui.QDialog):
-    def __init__(self, defered, txt, temps=7000, parent=None, html=True,
-                 size=(300, 100)):
-        QtGui.QDialog.__init__(self, parent)
-
-        self._defered = defered
-
-        layout = QtGui.QVBoxLayout(self)
-
-        wexplanation = WExplication(
-            text=txt, parent=self, html=html, size=(size[0], size[1]))
-        layout.addWidget(wexplanation)
-
-        buttons = QtGui.QDialogButtonBox(QtGui.QDialogButtonBox.Ok)
-        buttons.accepted.connect(self._accept)
-        layout.addWidget(buttons)
-
-        self.setWindowTitle(le2mtrans(u"Information"))
-        self.adjustSize()
-        self.setFixedSize(self.size())
-
-        if temps > 0:
-            self._timer = QtCore.QTimer()
-            self._timer.timeout.connect(
-                buttons.button(QtGui.QDialogButtonBox.Ok).click)
-            self._timer.start(temps)
-
-    def _accept(self):
-        try:
-            self._timer.stop()
-        except AttributeError:
-            pass
-        self.accept()
-        self._defered.callback(1)
-
-    def reject(self):
-        pass
-    
-
 class GuiFinal(QtGui.QDialog):
     """
     The final screen. Displays the final payoff and allows the subject to
@@ -284,6 +260,11 @@ class GuiFinal(QtGui.QDialog):
     def close(self):
         self._save()
         super(GuiFinal, self).close()
+
+
+# ==============================================================================
+# QUESTIONNAIRES
+# ==============================================================================
 
 
 class DQuestFinal(QtGui.QDialog):
@@ -529,6 +510,11 @@ class DQuestFinal(QtGui.QDialog):
             return
 
 
+# ==============================================================================
+# DISPLAY IMAGES AND VIDEOS
+# ==============================================================================
+
+
 class DDisplayImages(QtGui.QDialog):
     def __init__(self, image):
         QtGui.QDialog.__init__(self)
@@ -576,3 +562,47 @@ class DDisplayVideo(QtGui.QDialog):
     def accept(self):
         super(DDisplayVideo, self).accept()
         self.defered.callback(True)
+
+
+# ==============================================================================
+# USEFUL / TOOLS
+# ==============================================================================
+
+
+class GuiPopup(QtGui.QDialog):
+    def __init__(self, defered, txt, temps=7000, parent=None, html=True,
+                 size=(300, 100)):
+        QtGui.QDialog.__init__(self, parent)
+
+        self._defered = defered
+
+        layout = QtGui.QVBoxLayout(self)
+
+        wexplanation = WExplication(
+            text=txt, parent=self, html=html, size=(size[0], size[1]))
+        layout.addWidget(wexplanation)
+
+        buttons = QtGui.QDialogButtonBox(QtGui.QDialogButtonBox.Ok)
+        buttons.accepted.connect(self._accept)
+        layout.addWidget(buttons)
+
+        self.setWindowTitle(le2mtrans(u"Information"))
+        self.adjustSize()
+        self.setFixedSize(self.size())
+
+        if temps > 0:
+            self._timer = QtCore.QTimer()
+            self._timer.timeout.connect(
+                buttons.button(QtGui.QDialogButtonBox.Ok).click)
+            self._timer.start(temps)
+
+    def _accept(self):
+        try:
+            self._timer.stop()
+        except AttributeError:
+            pass
+        self.accept()
+        self._defered.callback(1)
+
+    def reject(self):
+        pass
