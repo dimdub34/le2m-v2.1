@@ -12,6 +12,7 @@ import os
 from PyQt4 import QtGui, QtCore
 import logging
 import platform
+
 from util import utiltools
 from util.utili18n import le2mtrans
 from configuration import configparam as params
@@ -31,14 +32,14 @@ from questcomp import questcomp
 logger = logging.getLogger("le2m")
 
 
-def _add_list(texte, liste, **kwargs):
-        if texte:
-            logger.info(texte)
-        item = QtGui.QListWidgetItem(QtCore.QString(texte))
-        if texte and kwargs:
+def _add_list(txt, the_list, **kwargs):
+        if txt:
+            logger.info(txt)
+        item = QtGui.QListWidgetItem(QtCore.QString(txt))
+        if txt and kwargs:
             item.setForeground(QtGui.QColor(kwargs.get("fg", "black")))
             item.setBackground(QtGui.QColor(kwargs.get("bg", "white")))
-        liste.addItem(item)
+        the_list.addItem(item)
 
 
 class GuiServeur(QtGui.QMainWindow):
@@ -66,15 +67,16 @@ class GuiServeur(QtGui.QMainWindow):
             self.ui.tabExperience), le2mtrans(u"Experiment"))
 
         # picture on the first tab ---------------------------------------------
-        try:
-            img_labo_pix = QtGui.QPixmap(params.getp("LABLOGO"))
-            self.ui.label_logo_laboratoire.setPixmap(img_labo_pix)
-        except IOError:
-            logger.warning(u"Error while loading LABLOGO picture")
-            self.ui.label_logo_laboratoire.setText(
-                le2mtrans(u"Here the logo of the lab"))
+        # try:
+        #     img_labo_pix = QtGui.QPixmap(params.getp("LABLOGO"))
+        #     self.ui.label_logo_laboratoire.setPixmap(img_labo_pix)
+        # except IOError:
+        #     logger.warning(u"Error while loading LABLOGO picture")
+        #     self.ui.label_logo_laboratoire.setText(
+        #         le2mtrans(u"Here the logo of the lab"))
         try:
             img_leem_pix = QtGui.QPixmap(params.getp("LABPICTURE"))
+            img_leem_pix.scaledToWidth(500)
             self.ui.label_image_centre.setPixmap(img_leem_pix)
         except IOError:
             logger.warning(u"Error while loading LABPICTURE picture")
