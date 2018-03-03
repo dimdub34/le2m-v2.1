@@ -368,7 +368,11 @@ class TabLists(QtGui.QWidget):
 class MainWindow(QtGui.QMainWindow):
     def __init__(self, le2msrv):
         super(MainWindow, self).__init__()
+
         self.le2msrv = le2msrv
+        self.red_icon = QtGui.QIcon(os.path.join(params.getp("IMGDIR"), "red.png"))
+        self.green_icon = QtGui.QIcon(os.path.join(params.getp("IMGDIR"), "green.png"))
+        self.players_wait = list()
 
         # ----------------------------------------------------------------------
         # menus
@@ -614,7 +618,6 @@ class MainWindow(QtGui.QMainWindow):
             return
         directory = str(directory)
         logger.debug("_display_images: directory: {}".format(directory))
-        # self.le2msrv.gestionnaire_graphique.display_images(directory)
         self.dialog_display_images = DDisplayImages(self.le2msrv, directory)
         self.dialog_display_images.show()
 
@@ -623,7 +626,6 @@ class MainWindow(QtGui.QMainWindow):
         video_file = str(QtGui.QFileDialog.getOpenFileName(
             self, le2mtrans(u"Select a video file")))
         if video_file:
-            # self.le2msrv.gestionnaire_graphique.display_video(video_file)
             self.dialog_display_video = DDisplayVideo(self.le2msrv, video_file)
             self.dialog_display_video.show()
 
@@ -720,7 +722,10 @@ class MainWindow(QtGui.QMainWindow):
     def add_list_server(self, txt, **kwargs):
         if txt:
             logger.info(txt)
-        item = QtGui.QListWidgetItem(QtCore.QString(txt))
+        try:
+            item = QtGui.QListWidgetItem(QtCore.QString(txt))
+        except TypeError:
+            item = QtGui.QListWidgetItem(QtCore.QString(u""))
         if txt and kwargs:
             item.setForeground(QtGui.QColor(kwargs.get("fg", "black")))
             item.setBackground(QtGui.QColor(kwargs.get("bg", "white")))
@@ -729,12 +734,73 @@ class MainWindow(QtGui.QMainWindow):
     def add_list_client(self, txt, **kwargs):
         if txt:
             logger.info(txt)
-        item = QtGui.QListWidgetItem(QtCore.QString(txt))
+        try:
+            item = QtGui.QListWidgetItem(QtCore.QString(txt))
+        except TypeError:
+            item = QtGui.QListWidgetItem(QtCore.QString(u""))
         if txt and kwargs:
             item.setForeground(QtGui.QColor(kwargs.get("fg", "black")))
             item.setBackground(QtGui.QColor(kwargs.get("bg", "white")))
         self.tab_lists.list_client.addItem(item)
 
+    def set_wait_mode(self, list_players):
+        """
+        Display a colored icon beside the hostname to see whether the remote
+        has a decided or not yet
+        :param list_players: either a list of players (or parts) or only one
+         element (player or part)
+        """
+        self.tab_lists.list_wait.clear()
+        del self.players_wait[:]
+        # if the argument is a list
+        if isinstance(list_players, list):
+            for p in list_players:
+                e = QtGui.QListWidgetItem(self.red_icon, u"")
+                if isinstance(p, Partie):
+                    self.players_wait.append(p.joueur)
+                    e.setText(repr(p.joueur))
+                elif isinstance(p, Joueur):
+                    self.players_wait.append(p)
+                    e.setText(repr(p))
+                self.tab_lists.list_wait.addItem(e)
+        # if the argument is only one object
+        else:
+            e = QtGui.QListWidgetItem(self.red_icon, u"")
+            if isinstance(list_players, Partie):
+                self.players_wait.append(list_players.joueur)
+                e.setText(repr(list_players.joueur))
+            elif isinstance(list_players, Joueur):
+                self.players_wait.append(list_players)
+                e.setText(repr(list_players))
+            self.tab_lists.list_wait.addItem(e)
+
+    def remove_wait_mode(self, list_players):
+        """
+        Change the icon color to green, meaning that the remote has taken
+        his decision
+        :param list_players: either a list of players (or parts) or only one
+         element (player or part)
+        """
+        if isinstance(list_players, list):
+            for p in list_players:
+                try:
+                    index = self.players_wait.index(p)
+                except ValueError as e:
+                    logger.warning(
+                        le2mtrans(u"Problem with remove_waitmode: "
+                                  u"{msg}").format(e.message))
+                else:
+                    self.tab_lists.list_wait.item(index).setIcon(
+                        self.green_icon)
+        else:
+            try:
+                index = self.players_wait.index(list_players)
+            except ValueError as e:
+                logger.warning(
+                    le2mtrans(u"Problem with remove_waitmode: "
+                              u"{msg}").format(e.message))
+            else:
+                self.tab_lists.list_wait.item(index).setIcon(self.green_icon)
 
 # ==============================================================================
 # OLD

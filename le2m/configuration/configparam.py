@@ -1,8 +1,12 @@
 # -*- coding: utf-8 -*-
 
-"""
+""" ============================================================================
+
 This module contains some parameters used both by the remotes and the server.
-"""
+
+============================================================================ """
+
+# built-in
 
 import os
 import tempfile

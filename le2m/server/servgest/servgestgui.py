@@ -130,7 +130,7 @@ class GestionnaireGraphique():
             action = QtGui.QAction(nom, self.screen)
             action.triggered.connect(methode)
             menu.addAction(action)
-        self.screen.menu_parts.addMenu(menu)
+        self.screen.menu_part.addMenu(menu)
 
     # def display_images(self, directory):
     #     self.dialog_display_images = DDisplayImages(self.le2mserv, directory)
