@@ -775,6 +775,7 @@ class DDisplayVideo(QtGui.QDialog):
         Phonon.createPath(self.media_obj, self.video_widget)
         self.media_obj.play()
 
+
     def play_on_clients(self):
         self.le2msrv.gestionnaire_experience.run_step(
             le2mtrans(u"Display video") + u" {}".format(self.video_file),
