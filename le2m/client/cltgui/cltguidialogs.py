@@ -22,7 +22,7 @@ from datetime import datetime
 from configuration import configparam as params
 from client import clttexts as textes
 from configuration import configvar
-from client.cltgui.cltguisrc import cltguiwelc, cltguifinal
+from client.cltgui.cltguisrc import cltguifinal
 from util.utili18n import le2mtrans
 from cltguitablemodels import TableModelHistorique
 from cltguiwidgets import (WExplication, WTableview, WPeriod, WSpinbox, WCombo,
@@ -40,12 +40,12 @@ class GuiAccueil(QtGui.QDialog):
     The welcome screen. Subject click on the button "instructions read" when
     he/she has finished to read the instructions
     """
-    def __init__(self, defered, automatique, parent):
-        super(GuiAccueil, self).__init__(parent)
+    def __init__(self, remote, defered):
+        super(GuiAccueil, self).__init__(remote.le2mclt.screen)
 
         # variables
+        self.remote = remote
         self.defered = defered
-        self.automatique = automatique
 
         self.layout = QtGui.QVBoxLayout()
         self.setLayout(self.layout)
@@ -117,20 +117,19 @@ class GuiAccueil(QtGui.QDialog):
         self.setWindowTitle(textes.ACCUEIL_titre)
         self.adjustSize()
         self.setFixedSize(self.size())
-        # self.setFixedSize(900, 575)
-    
-        if self.automatique:
-            self._timer = QtCore.QTimer()
-            self._timer.timeout.connect(self._accept)
-            self._timer.start(7000)
+
+        if self.remote.le2mclt.automatique:
+            self.timer_auto = QtCore.QTimer()
+            self.timer_auto.timeout.connect(self._accept)
+            self.timer_auto.start(7000)
 
     def _accept(self):
         try:
-            self._timer.stop()
+            self.timer_auto.stop()
         except AttributeError:
             pass
         self.validate_button.setEnabled(False)
-        logger.info(u"Welcome callback: 1")
+        logger.info(u"{} send Ok".format(self.remote.le2mclt))
         self.defered.callback(1)
         self.accept()
         
