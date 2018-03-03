@@ -1,16 +1,20 @@
 # -*- coding: utf-8 -*-
 
+# built-in
 import importlib
 import logging
 from sqlalchemy.orm import relationship
 from sqlalchemy import Table, Column, Integer, String, ForeignKey
 from twisted.internet import defer
 from twisted.spread import pb  # pour gestion erreur à la déconnexion
+
+# le2m
 from servbase import Base
 import servparties
 
 
 logger = logging.getLogger("le2m")
+
 
 parties_joueurs_table = Table(
     'parties_joueurs__joueurs_parties', Base.metadata,
@@ -38,7 +42,6 @@ class Joueur(Base):
     session_id = Column(Integer, ForeignKey("sessions.id"))
     parties = relationship("Partie", backref="joueurs",
                            secondary=parties_joueurs_table)
-
     uid = Column(String(30), primary_key=True)
     hostname = Column(String(100))
     ip = Column(String(20))

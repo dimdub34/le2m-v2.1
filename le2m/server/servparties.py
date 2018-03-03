@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
 
+# built-in
 import logging
-
 from twisted.internet import defer
 from sqlalchemy import Column, Integer, String, Float, ForeignKey
+
+# le2m
 from util.utili18n import le2mtrans
 from util.utiltools import get_pluriel
 from servbase import Base
