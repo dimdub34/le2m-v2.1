@@ -10,6 +10,7 @@ This modules contains only QDialog objects
 # IMPORTS
 # ==============================================================================
 # built-in
+import sys
 from PyQt4 import QtGui, QtCore
 from PyQt4.phonon import Phonon
 from twisted.internet.defer import AlreadyCalledError
@@ -36,46 +37,89 @@ logger = logging.getLogger("le2m")
 
 class GuiAccueil(QtGui.QDialog):
     """
-    L'écran d'accueil. Un bouton permet d'informer l'expérimentateur que
-    le sujet a fini de lire les instructions
+    The welcome screen. Subject click on the button "instructions read" when
+    he/she has finished to read the instructions
     """
     def __init__(self, defered, automatique, parent):
         super(GuiAccueil, self).__init__(parent)
 
         # variables
-        self._defered = defered
-        self._automatique = automatique
+        self.defered = defered
+        self.automatique = automatique
 
-        # creation gui
-        self.ui = cltguiwelc.Ui_Dialog()
-        self.ui.setupUi(self)
+        self.layout = QtGui.QVBoxLayout()
+        self.setLayout(self.layout)
 
-        # centre écran avec image labo
-        welcfont = self.ui.label_welcome.font()
-        welcfont.setPointSize(20)
-        welcfont.setBold(True)
-        self.ui.label_welcome.setText(u"<font color='blue'>{}</font>".format(
-            textes.ACCUEIL_label_welcome))
-        try:
-            img_labo_pix = QtGui.QPixmap(params.getp("WELCOMEPICTURE"))
-            self.ui.label_image_accueil.setPixmap(img_labo_pix)
-        except IOError:
-            self.ui.label_image_accueil.setText(
-                textes.ACCUEIL_label_image_accueil)
+        # ----------------------------------------------------------------------
+        # Welcome text
+        # ----------------------------------------------------------------------
+        self.welcome_layout = QtGui.QHBoxLayout()
+        self.layout.addLayout(self.welcome_layout)
+        self.welcome_layout.addSpacerItem(
+            QtGui.QSpacerItem(20, 50, QtGui.QSizePolicy.Expanding,
+                              QtGui.QSizePolicy.Fixed))
+        self.welcome_label = QtGui.QLabel()
+        self.welcome_label.setText(textes.ACCUEIL_label_welcome)
+        self.welcome_label.setStyleSheet(
+            "font-size: 20px; color: brown; font-weight: bold;")
+        self.welcome_layout.addWidget(self.welcome_label)
+        self.welcome_layout.addSpacerItem(
+            QtGui.QSpacerItem(20, 50, QtGui.QSizePolicy.Expanding,
+                              QtGui.QSizePolicy.Fixed))
 
-        self.ui.label_instructions.setText(
+        # ----------------------------------------------------------------------
+        # central image
+        # ----------------------------------------------------------------------
+        self.img_layout = QtGui.QHBoxLayout()
+        self.layout.addLayout(self.img_layout)
+        self.img_layout.addSpacerItem(
+            QtGui.QSpacerItem(20, 5, QtGui.QSizePolicy.Expanding,
+                              QtGui.QSizePolicy.Fixed))
+        self.img = QtGui.QPixmap(params.getp("WELCOMEPICTURE"))
+        self.img_label = QtGui.QLabel()
+        self.img_label.setPixmap(self.img)
+        self.img_layout.addWidget(self.img_label)
+        self.img_layout.addSpacerItem(
+            QtGui.QSpacerItem(20, 5, QtGui.QSizePolicy.Expanding,
+                              QtGui.QSizePolicy.Fixed))
+
+        # ----------------------------------------------------------------------
+        # instructions
+        # ----------------------------------------------------------------------
+        self.instructions_layout = QtGui.QHBoxLayout()
+        self.layout.addLayout(self.instructions_layout)
+        self.instructions_layout.addSpacerItem(
+            QtGui.QSpacerItem(20, 50, QtGui.QSizePolicy.Expanding,
+                              QtGui.QSizePolicy.Fixed))
+        self.instructions_label = QtGui.QLabel()
+        self.instructions_label.setText(
             le2mtrans(u"Please read the instructions that stand beside the "
                       u"computer. You are asked to click on the button below "
                       u"when you have finished."))
+        self.instructions_layout.addWidget(self.instructions_label)
+        self.instructions_layout.addSpacerItem(
+            QtGui.QSpacerItem(20, 50, QtGui.QSizePolicy.Expanding,
+                              QtGui.QSizePolicy.Fixed))
 
-        # bouton
-        self.ui.pushButton_valider.setText(le2mtrans(u"Instructions read"))
-        self.ui.pushButton_valider.clicked.connect(self._accept)
+        # ----------------------------------------------------------------------
+        # button
+        # ----------------------------------------------------------------------
+        self.validate_layout = QtGui.QHBoxLayout()
+        self.layout.addLayout(self.validate_layout)
+        self.validate_layout.addSpacerItem(
+            QtGui.QSpacerItem(20, 5, QtGui.QSizePolicy.Expanding,
+                              QtGui.QSizePolicy.Fixed))
+        self.validate_button = QtGui.QPushButton()
+        self.validate_layout.addWidget(self.validate_button)
+        self.validate_button.setText(le2mtrans(u"Instructions read"))
+        self.validate_button.clicked.connect(self._accept)
         
         self.setWindowTitle(textes.ACCUEIL_titre)
-        self.setFixedSize(900, 575)
+        self.adjustSize()
+        self.setFixedSize(self.size())
+        # self.setFixedSize(900, 575)
     
-        if self._automatique: 
+        if self.automatique:
             self._timer = QtCore.QTimer()
             self._timer.timeout.connect(self._accept)
             self._timer.start(7000)
@@ -85,9 +129,9 @@ class GuiAccueil(QtGui.QDialog):
             self._timer.stop()
         except AttributeError:
             pass
-        self.ui.pushButton_valider.setEnabled(False)
+        self.validate_button.setEnabled(False)
         logger.info(u"Welcome callback: 1")
-        self._defered.callback(1)
+        self.defered.callback(1)
         self.accept()
         
     def reject(self):
@@ -606,3 +650,11 @@ class GuiPopup(QtGui.QDialog):
 
     def reject(self):
         pass
+
+
+if __name__ == "__main__":
+    app = QtGui.QApplication(sys.argv)
+    params.setp_appdir("/home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m")
+    dial = GuiAccueil(None, False, None)
+    dial.show()
+    sys.exit(app.exec_())
