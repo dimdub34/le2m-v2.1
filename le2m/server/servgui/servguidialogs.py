@@ -1,11 +1,15 @@
 # -*- coding: utf-8 -*-
 
+# built-in
 import os
 import logging
 import csv
-from PyQt4 import QtGui, QtCore
+from PyQt4.QtGui import *
+from PyQt4 import QtCore
 from PyQt4.QtWebKit import QWebView
 from PyQt4.phonon import Phonon
+
+# le2m
 from configuration import configparam as params
 from configuration.configconst import HOMME, FEMME
 from configuration.configvar import Experiment
@@ -16,10 +20,10 @@ from servguitablemodels import TableModelPaiements
 from util.utilwidgets import WDice, WRandint, WHeadtail
 
 
-logger = logging.getLogger("le2m.{}".format(__name__))
+logger = logging.getLogger("le2m")
 
 
-class GuiGenres(QtGui.QDialog):
+class GuiGenres(QDialog):
     """
     Boite de dialogue qui permet de cocher les femmes dans la listes des postes
     connectés au serveur
@@ -41,9 +45,9 @@ class GuiGenres(QtGui.QDialog):
 
         # listView
         self.ui.listView.setFixedSize(350, 350)
-        self._model = QtGui.QStandardItemModel()
+        self._model = QStandardItemModel()
         for j in self._liste_joueurs:
-            item = QtGui.QStandardItem(str(j))
+            item = QStandardItem(str(j))
             item.setCheckState(QtCore.Qt.Unchecked)
             item.setCheckable(True)
             item.setEditable(False)
@@ -66,7 +70,7 @@ class GuiGenres(QtGui.QDialog):
         self.accept()
 
 
-class GuiInformation(QtGui.QDialog):
+class GuiInformation(QDialog):
     """
     Dialog qui affiche du texte (format plain ou html).
     """
@@ -74,22 +78,22 @@ class GuiInformation(QtGui.QDialog):
                  size=(450, 450), html=False):
         super(GuiInformation, self).__init__(parent)
 
-        layout = QtGui.QVBoxLayout(self)
+        layout = QVBoxLayout(self)
 
         if html:
-            browser = QtGui.QTextBrowser(self)
+            browser = QTextBrowser(self)
             browser.setText(text)
             browser.setOpenExternalLinks(True)
             browser.setFixedSize(size[0], size[1])
             layout.addWidget(browser)
         else:
-            textedit = QtGui.QTextEdit()
+            textedit = QTextEdit()
             textedit.setReadOnly(True)
             textedit.setFixedSize(size[0], size[1])
             textedit.setText(text)
             layout.addWidget(textedit)
 
-        buttons = QtGui.QDialogButtonBox(QtGui.QDialogButtonBox.Ok)
+        buttons = QDialogButtonBox(QDialogButtonBox.Ok)
         buttons.accepted.connect(self.accept)
         layout.addWidget(buttons)
 
@@ -98,7 +102,7 @@ class GuiInformation(QtGui.QDialog):
         self.setFixedSize(self.size())
 
 
-class GuiPartLoad(QtGui.QDialog):
+class GuiPartLoad(QDialog):
     def __init__(self, parent=None):
         super(GuiPartLoad, self).__init__(parent)
 
@@ -144,9 +148,9 @@ class GuiPartLoad(QtGui.QDialog):
                      not f.startswith(".")]
         partslist.sort()
 
-        self._model = QtGui.QStandardItemModel()
+        self._model = QStandardItemModel()
         for p in partslist:
-            item = QtGui.QStandardItem(p)
+            item = QStandardItem(p)
             item.setCheckState(QtCore.Qt.Unchecked)
             item.setCheckable(True)
             item.setEditable(False)
@@ -185,7 +189,7 @@ class GuiPartLoad(QtGui.QDialog):
         de données sqlite
         :return:
         """
-        dirbase = str(QtGui.QFileDialog.getExistingDirectory(
+        dirbase = str(QFileDialog.getExistingDirectory(
             self,
             le2mtrans(u"Select the directory in which to store the database."),
             params.getp("PARTSDIR"))
@@ -205,7 +209,7 @@ class GuiPartLoad(QtGui.QDialog):
                 parts.append(str(self._model.item(i).text()))
             i += 1
         if not parts:
-            QtGui.QMessageBox.critical(
+            QMessageBox.critical(
                 self,
                 le2mtrans(u"Error"),
                 le2mtrans(u"You must choose at least one part"))
@@ -214,7 +218,7 @@ class GuiPartLoad(QtGui.QDialog):
         # dirbase
         dirbase = unicode(self.ui.label_basepath2.text().toUtf8(), "utf-8")
         if not (dirbase and os.path.isdir(dirbase)):
-            QtGui.QMessageBox.critical(
+            QMessageBox.critical(
                 self,
                 le2mtrans(u"Error"),
                 le2mtrans(u"You must choose a directory in which to store the "
@@ -224,7 +228,7 @@ class GuiPartLoad(QtGui.QDialog):
         # basename
         basename = unicode(self.ui.lineEdit_nom_base.text().toUtf8(), "utf-8")
         if not basename:
-            QtGui.QMessageBox.critical(
+            QMessageBox.critical(
                 self,
                 le2mtrans(u"Error"),
                 le2mtrans(u"You must provide a database name"))
@@ -232,14 +236,14 @@ class GuiPartLoad(QtGui.QDialog):
         basename += u".sqlite"
 
         if len(parts) > 1:
-            confirmation = QtGui.QMessageBox.question(
+            confirmation = QMessageBox.question(
                 self, le2mtrans(u"Warning"),
                 le2mtrans(u"You have selected several parts.\nNote that the "
                           u"database will be store in {d}.\n"
                           u"Please confirm that it is in this directory that "
                           u"you will store the database.".format(d=dirbase)),
-                QtGui.QMessageBox.No | QtGui.QMessageBox.Yes)
-            if confirmation != QtGui.QMessageBox.Yes:
+                QMessageBox.No | QMessageBox.Yes)
+            if confirmation != QMessageBox.Yes:
                 return
 
         self._experiment = Experiment(
@@ -251,7 +255,7 @@ class GuiPartLoad(QtGui.QDialog):
         return self._experiment
 
 
-class GuiPartsPlayed(QtGui.QDialog):
+class GuiPartsPlayed(QDialog):
     """
     Dialogue qui affiche la liste des parties jouées.
     Permet ensuite:
@@ -272,9 +276,9 @@ class GuiPartsPlayed(QtGui.QDialog):
         self.ui.buttonBox.accepted.connect(self._set_parties_selectionnees)
         self.ui.buttonBox.rejected.connect(self.reject)
 
-        self._model = QtGui.QStandardItemModel()
+        self._model = QStandardItemModel()
         for partie in self._liste_parties:
-            item = QtGui.QStandardItem('{}'.format(partie))
+            item = QStandardItem('{}'.format(partie))
             item.setCheckState(QtCore.Qt.Checked)
             item.setCheckable(True)
             item.setEditable(False)
@@ -292,7 +296,7 @@ class GuiPartsPlayed(QtGui.QDialog):
             if item.checkState() == QtCore.Qt.Checked:
                 self._parties_selectionnees.append(str(item.text()))
         if not self._parties_selectionnees:
-            QtGui.QMessageBox.warning(self, u"Attention",
+            QMessageBox.warning(self, u"Attention",
                                       u"Aucune partie sélectionnée")
             self.reject()
         self.accept()
@@ -301,7 +305,7 @@ class GuiPartsPlayed(QtGui.QDialog):
         return self._parties_selectionnees
 
 
-class GuiPayoffs(QtGui.QDialog):
+class GuiPayoffs(QDialog):
     """
     Fenetre qui affiche les gains de la partie
     Elle permet d'imprimer ces gains, de les enregistrer mais aussi de les
@@ -321,7 +325,7 @@ class GuiPayoffs(QtGui.QDialog):
         self._tableModel = TableModelPaiements(self._payoffs)
         self.ui.tableView.setModel(self._tableModel)
         self.ui.tableView.horizontalHeader().setResizeMode(
-            QtGui.QHeaderView.Stretch)
+            QHeaderView.Stretch)
 
         # slot
         self.ui.pushButton_imprimer.clicked.connect(self._print)
@@ -355,10 +359,10 @@ class GuiPayoffs(QtGui.QDialog):
                     u"<td align='center'>{}&euro;</td>" \
                     u"</tr>\n".format(l[0], l[1])
         html += u"</table>\n"
-        doc = QtGui.QTextDocument()
+        doc = QTextDocument()
         doc.setHtml(html)
-        printer = QtGui.QPrinter()
-        dialog = QtGui.QPrintDialog(printer)
+        printer = QPrinter()
+        dialog = QPrintDialog(printer)
         dialog.setModal(True)
         dialog.setWindowTitle(le2mtrans(u"Payoffs"))
         if dialog.exec_():
@@ -371,7 +375,7 @@ class GuiPayoffs(QtGui.QDialog):
         """
         if not self._payoffs:
             return
-        fichier = QtGui.QFileDialog.getSaveFileName(
+        fichier = QFileDialog.getSaveFileName(
             self, le2mtrans("Export payoffs in csv file"), ".",
             le2mtrans(u"csv file (*.csv)"))
         if fichier:
@@ -387,11 +391,11 @@ class GuiPayoffs(QtGui.QDialog):
     def _display_onremotes(self):
         text_temp = le2mtrans(u"the experiment") if \
             self._partname == "base" else self._partname
-        confirmation = QtGui.QMessageBox.question(
+        confirmation = QMessageBox.question(
             self, u"Confirmation",
             le2mtrans(u"Display the payoffs of {}?").format(text_temp),
-            QtGui.QMessageBox.No | QtGui.QMessageBox.Yes)
-        if confirmation != QtGui.QMessageBox.Yes:
+            QMessageBox.No | QMessageBox.Yes)
+        if confirmation != QMessageBox.Yes:
             return
 
         if self._partname == "base":
@@ -401,118 +405,28 @@ class GuiPayoffs(QtGui.QDialog):
                 self._partname)
 
     def _addto_finalpayoffs(self):
-        confirmation = QtGui.QMessageBox.question(
+        confirmation = QMessageBox.question(
             self,
             u"Confirmation",
             u"Ajouter les gains de la partie aux gains finaux?",
-            QtGui.QMessageBox.No | QtGui.QMessageBox.Yes)
-        if confirmation != QtGui.QMessageBox.Yes:
+            QMessageBox.No | QMessageBox.Yes)
+        if confirmation != QMessageBox.Yes:
             return
         self._le2mserv.gestionnaire_experience.add_tofinalpayoffs(
             self._partname)
 
 
-class DDice(QtGui.QDialog):
-    def __init__(self, parent):
-        super(DDice, self).__init__(parent)
-
-        layout = QtGui.QVBoxLayout(self)
-        self._widdice = WDice(parent=self)
-        layout.addWidget(self._widdice)
-
-        buttons = QtGui.QDialogButtonBox(
-            QtGui.QDialogButtonBox.Cancel | QtGui.QDialogButtonBox.Ok)
-        buttons.rejected.connect(self.reject)
-        buttons.accepted.connect(self._accept)
-        layout.addWidget(buttons)
-
-        self.setWindowTitle(le2mtrans(u"Dice roller"))
-        self.adjustSize()
-        self.setFixedSize(self.size())
-
-    def _accept(self):
-        if self._widdice.ui.pushButton_start.isEnabled():
-            QtGui.QMessageBox.warning(
-                self, le2mtrans(u"Warning"),
-                le2mtrans(u"You must roll the dice"))
-            return
-        self.accept()
-
-    def get_dicevalue(self):
-        return self._widdice.get_dicevalue()
-
-
-class DRandint(QtGui.QDialog):
-    def __init__(self, parent):
-        super(DRandint, self).__init__(parent)
-
-        layout = QtGui.QVBoxLayout(self)
-        self._widrandint = WRandint(parent=self)
-        layout.addWidget(self._widrandint)
-
-        buttons = QtGui.QDialogButtonBox(
-            QtGui.QDialogButtonBox.Cancel | QtGui.QDialogButtonBox.Ok)
-        buttons.rejected.connect(self.reject)
-        buttons.accepted.connect(self._accept)
-        layout.addWidget(buttons)
-
-        self.setWindowTitle(le2mtrans(u"Random number"))
-        self.adjustSize()
-        self.setFixedSize(self.size())
-
-    def _accept(self):
-        if self._widrandint.ui.pushButton_start.isEnabled():
-            QtGui.QMessageBox.warning(
-                self, le2mtrans(u"Warning"),
-                le2mtrans(u"You must drawn a random number"))
-            return
-        self.accept()
-
-    def get_value(self):
-        return self._widrandint.get_value()
-
-
-class DHeadtail(QtGui.QDialog):
-    def __init__(self, parent):
-        super(DHeadtail, self).__init__(parent)
-
-        layout = QtGui.QVBoxLayout(self)
-        self._widheadtail = WHeadtail(parent=self)
-        layout.addWidget(self._widheadtail)
-
-        buttons = QtGui.QDialogButtonBox(
-            QtGui.QDialogButtonBox.Cancel | QtGui.QDialogButtonBox.Ok)
-        buttons.rejected.connect(self.reject)
-        buttons.accepted.connect(self._accept)
-        layout.addWidget(buttons)
-
-        self.setWindowTitle(le2mtrans(u"Head and Tail"))
-        self.adjustSize()
-        self.setFixedSize(self.size())
-
-    def _accept(self):
-        if self._widheadtail.ui.pushButton_start.isEnabled():
-            QtGui.QMessageBox.warning(
-                self, le2mtrans(u"Warning"),
-                le2mtrans(u"You must play"))
-            return
-        self.accept()
-
-    def get_value(self):
-        return self._widheadtail.get_value()
-
-
-class DWebview(QtGui.QDialog):
+class DWebview(QDialog):
     def __init__(self, html_file, title=u"Information", parent=None):
-        QtGui.QDialog.__init__(self, parent)
+        QDialog.__init__(self, parent)
 
-        layout = QtGui.QVBoxLayout(self)
+        layout = QVBoxLayout(self)
 
         self._webview = QWebView(self)
         self._webview.load(QtCore.QUrl(html_file))
         layout.addWidget(self._webview)
 
-        buttons = QtGui.QDialogButtonBox(QtGui.QDialogButtonBox.Ok)
+        buttons = QDialogButtonBox(QDialogButtonBox.Ok)
         buttons.accepted.connect(self.accept)
         layout.addWidget(buttons)
 
@@ -520,20 +434,20 @@ class DWebview(QtGui.QDialog):
         self.adjustSize()
 
 
-class DUnderstandingVisual(QtGui.QDialog):
+class DUnderstandingVisual(QDialog):
     def __init__(self, txt_questions):
-        QtGui.QDialog.__init__(self)
+        QDialog.__init__(self)
 
-        layout = QtGui.QVBoxLayout()
+        layout = QVBoxLayout()
         self.setLayout(layout)
 
-        textEdit = QtGui.QTextEdit()
+        textEdit = QTextEdit()
         textEdit.setReadOnly(True)
         textEdit.setFixedSize(600, 600)
         textEdit.setText(txt_questions)
         layout.addWidget(textEdit)
 
-        button = QtGui.QDialogButtonBox(QtGui.QDialogButtonBox.Ok)
+        button = QDialogButtonBox(QDialogButtonBox.Ok)
         button.accepted.connect(self.accept)
         layout.addWidget(button)
 
@@ -541,45 +455,45 @@ class DUnderstandingVisual(QtGui.QDialog):
         self.setWindowTitle(le2mtrans(u"Understanding questionnaire"))
 
 
-class DEditGroups(QtGui.QDialog):
+class DEditGroups(QDialog):
     def __init__(self, le2mserv, joueurs):
-        QtGui.QDialog.__init__(self)
+        QDialog.__init__(self)
 
         self.le2mserv = le2mserv
         self.joueurs = joueurs
         self.group_size = 0
 
-        layout = QtGui.QVBoxLayout()
+        layout = QVBoxLayout()
         self.setLayout(layout)
 
-        label_header = QtGui.QLabel(le2mtrans(u"Groups' formation"))
+        label_header = QLabel(le2mtrans(u"Groups' formation"))
         label_header.setStyleSheet("font-weight: bold;")
         layout.addWidget(label_header)
 
-        layout_size = QtGui.QHBoxLayout()
+        layout_size = QHBoxLayout()
         layout.addLayout(layout_size)
-        layout_size.addWidget(QtGui.QLabel(le2mtrans(u"Groups' size")))
-        self.spinbox_size = QtGui.QSpinBox()
+        layout_size.addWidget(QLabel(le2mtrans(u"Groups' size")))
+        self.spinbox_size = QSpinBox()
         self.spinbox_size.setMinimum(0)
         self.spinbox_size.setMaximum(99)
         self.spinbox_size.setSingleStep(1)
         self.spinbox_size.setFixedWidth(50)
-        self.spinbox_size.setButtonSymbols(QtGui.QSpinBox.NoButtons)
+        self.spinbox_size.setButtonSymbols(QSpinBox.NoButtons)
         layout_size.addWidget(self.spinbox_size)
-        button_form_groups = QtGui.QPushButton(le2mtrans(u"Form groups"))
+        button_form_groups = QPushButton(le2mtrans(u"Form groups"))
         button_form_groups.clicked.connect(self.form_groups)
         layout_size.addWidget(button_form_groups)
         layout_size.addSpacerItem(
-            QtGui.QSpacerItem(20, 20, QtGui.QSizePolicy.Expanding,
-                              QtGui.QSizePolicy.Expanding))
+            QSpacerItem(20, 20, QSizePolicy.Expanding,
+                              QSizePolicy.Expanding))
 
-        grid_joueurs = QtGui.QGridLayout()
+        grid_joueurs = QGridLayout()
         layout.addLayout(grid_joueurs)
         self.groups = self.le2mserv.gestionnaire_groupes.get_groupes().keys()
         self.combos_joueurs = {}
         row, col = 0, 0
         for index, joueur in enumerate(self.joueurs):
-            combo = QtGui.QComboBox()
+            combo = QComboBox()
             combo.addItems(self.groups)
             combo.setFixedWidth(200)
             try:
@@ -587,22 +501,22 @@ class DEditGroups(QtGui.QDialog):
             except ValueError:
                 pass
             self.combos_joueurs[joueur] = combo
-            grid_joueurs.addWidget(QtGui.QLabel(str(joueur)), row, col)
+            grid_joueurs.addWidget(QLabel(str(joueur)), row, col)
             grid_joueurs.addWidget(self.combos_joueurs[joueur], row, col+1)
             row += 1
             if row > 0 and row % 5 == 0:
                 row = 0
                 col += 2
 
-        layout_buttons = QtGui.QHBoxLayout()
+        layout_buttons = QHBoxLayout()
         layout.addLayout(layout_buttons)
         layout_buttons.addSpacerItem(
-            QtGui.QSpacerItem(20 ,20, QtGui.QSizePolicy.Expanding,
-                              QtGui.QSizePolicy.Expanding))
-        button_save = QtGui.QPushButton(le2mtrans(u"Save"))
+            QSpacerItem(20 ,20, QSizePolicy.Expanding,
+                              QSizePolicy.Expanding))
+        button_save = QPushButton(le2mtrans(u"Save"))
         button_save.clicked.connect(self.save)
         layout_buttons.addWidget(button_save)
-        button_close = QtGui.QPushButton(le2mtrans(u"Close"))
+        button_close = QPushButton(le2mtrans(u"Close"))
         button_close.clicked.connect(self.reject)
         layout_buttons.addWidget(button_close)
 
@@ -612,7 +526,7 @@ class DEditGroups(QtGui.QDialog):
     def form_groups(self):
         self.group_size = self.spinbox_size.value()
         if self.group_size == 0:
-            QtGui.QMessageBox.critical(
+            QMessageBox.critical(
                 self, le2mtrans(u"Warning"),
                 le2mtrans(u"Impossible to form groups of size 0!"))
             return
@@ -620,7 +534,7 @@ class DEditGroups(QtGui.QDialog):
             self.le2mserv.gestionnaire_groupes.former_groupes(
                 self.joueurs, self.group_size, display=False)
         except ValueError as e:
-            QtGui.QMessageBox.warning(
+            QMessageBox.warning(
                 self, le2mtrans(u"Warning"), str(e))
             return
         else:
@@ -632,11 +546,11 @@ class DEditGroups(QtGui.QDialog):
 
     def save(self):
         # confirmation
-        confirmation = QtGui.QMessageBox.question(
+        confirmation = QMessageBox.question(
             self, le2mtrans(u"Confirmation"),
             le2mtrans(u"Do you want to save the groups?"),
-            QtGui.QMessageBox.No | QtGui.QMessageBox.Yes)
-        if confirmation != QtGui.QMessageBox.Yes:
+            QMessageBox.No | QMessageBox.Yes)
+        if confirmation != QMessageBox.Yes:
             return
         # check that groups are ok
         new_groups = dict()
@@ -649,7 +563,7 @@ class DEditGroups(QtGui.QDialog):
         # test group size
         for group in new_groups.values():
             if len(group) != self.group_size:
-                QtGui.QMessageBox.critical(
+                QMessageBox.critical(
                     self, le2mtrans(u"Error"),
                     le2mtrans(u"At least one group has a size different "
                               u"from {}".format(self.group_size)))
@@ -665,9 +579,109 @@ class DEditGroups(QtGui.QDialog):
         self.accept()
 
 
-class DDisplayImages(QtGui.QDialog):
+# ==============================================================================
+# OPTIONS - RANDINT, ROLL A DICE & HEAD AND TAIL
+# ==============================================================================
+
+
+class DDice(QDialog):
+    def __init__(self, parent):
+        super(DDice, self).__init__(parent)
+
+        layout = QVBoxLayout(self)
+        self._widdice = WDice(parent=self)
+        layout.addWidget(self._widdice)
+
+        buttons = QDialogButtonBox(
+            QDialogButtonBox.Cancel | QDialogButtonBox.Ok)
+        buttons.rejected.connect(self.reject)
+        buttons.accepted.connect(self._accept)
+        layout.addWidget(buttons)
+
+        self.setWindowTitle(le2mtrans(u"Dice roller"))
+        self.adjustSize()
+        self.setFixedSize(self.size())
+
+    def _accept(self):
+        if self._widdice.ui.pushButton_start.isEnabled():
+            QMessageBox.warning(
+                self, le2mtrans(u"Warning"),
+                le2mtrans(u"You must roll the dice"))
+            return
+        self.accept()
+
+    def get_dicevalue(self):
+        return self._widdice.get_dicevalue()
+
+
+class DRandint(QDialog):
+    def __init__(self, parent):
+        super(DRandint, self).__init__(parent)
+
+        layout = QVBoxLayout(self)
+        self._widrandint = WRandint(parent=self)
+        layout.addWidget(self._widrandint)
+
+        buttons = QDialogButtonBox(
+            QDialogButtonBox.Cancel | QDialogButtonBox.Ok)
+        buttons.rejected.connect(self.reject)
+        buttons.accepted.connect(self._accept)
+        layout.addWidget(buttons)
+
+        self.setWindowTitle(le2mtrans(u"Random number"))
+        self.adjustSize()
+        self.setFixedSize(self.size())
+
+    def _accept(self):
+        if self._widrandint.ui.pushButton_start.isEnabled():
+            QMessageBox.warning(
+                self, le2mtrans(u"Warning"),
+                le2mtrans(u"You must drawn a random number"))
+            return
+        self.accept()
+
+    def get_value(self):
+        return self._widrandint.get_value()
+
+
+class DHeadtail(QDialog):
+    def __init__(self, parent):
+        super(DHeadtail, self).__init__(parent)
+
+        layout = QVBoxLayout(self)
+        self._widheadtail = WHeadtail(parent=self)
+        layout.addWidget(self._widheadtail)
+
+        buttons = QDialogButtonBox(
+            QDialogButtonBox.Cancel | QDialogButtonBox.Ok)
+        buttons.rejected.connect(self.reject)
+        buttons.accepted.connect(self._accept)
+        layout.addWidget(buttons)
+
+        self.setWindowTitle(le2mtrans(u"Head and Tail"))
+        self.adjustSize()
+        self.setFixedSize(self.size())
+
+    def _accept(self):
+        if self._widheadtail.ui.pushButton_start.isEnabled():
+            QMessageBox.warning(
+                self, le2mtrans(u"Warning"),
+                le2mtrans(u"You must play"))
+            return
+        self.accept()
+
+    def get_value(self):
+        return self._widheadtail.get_value()
+
+
+# ==============================================================================
+# DISPLAY IMAGES AND VIDEOS
+# ==============================================================================
+
+
+class DDisplayImages(QDialog):
     def __init__(self, le2msrv, directory):
-        QtGui.QDialog.__init__(self)
+        QDialog.__init__(self)
 
         self.le2msrv = le2msrv
         self.directory = directory
@@ -676,29 +690,29 @@ class DDisplayImages(QtGui.QDialog):
         self.images.sort()
         logger.debug("Images: {}".format(self.images))
 
-        layout = QtGui.QVBoxLayout()
+        layout = QVBoxLayout()
         self.setLayout(layout)
 
-        self.label_image_path = QtGui.QLabel()
+        self.label_image_path = QLabel()
         layout.addWidget(self.label_image_path)
 
-        self.label_image = QtGui.QLabel()
+        self.label_image = QLabel()
         layout.addWidget(self.label_image)
         if self.images:
             self._display_image(self.images[0])
 
-        layout_buttons = QtGui.QHBoxLayout()
-        self.button_previous = QtGui.QPushButton(le2mtrans(u"Previous"))
-        self.button_next = QtGui.QPushButton(le2mtrans(u"Next"))
-        self.button_send = QtGui.QPushButton(le2mtrans(u"Display on clients' screen"))
-        self.button_close = QtGui.QPushButton(le2mtrans(u"Close clients' screen"))
+        layout_buttons = QHBoxLayout()
+        self.button_previous = QPushButton(le2mtrans(u"Previous"))
+        self.button_next = QPushButton(le2mtrans(u"Next"))
+        self.button_send = QPushButton(le2mtrans(u"Display on clients' screen"))
+        self.button_close = QPushButton(le2mtrans(u"Close clients' screen"))
         layout_buttons.addWidget(self.button_previous)
         layout_buttons.addWidget(self.button_next)
         layout_buttons.addWidget(self.button_send)
         layout_buttons.addWidget(self.button_close)
         layout_buttons.addSpacerItem(
-            QtGui.QSpacerItem(2, 20, QtGui.QSizePolicy.Fixed,
-                              QtGui.QSizePolicy.Expanding))
+            QSpacerItem(2, 20, QSizePolicy.Fixed,
+                              QSizePolicy.Expanding))
         layout.addLayout(layout_buttons)
         self.button_previous.clicked.connect(self._display_previous)
         self.button_next.clicked.connect(self._display_next)
@@ -709,7 +723,7 @@ class DDisplayImages(QtGui.QDialog):
         self.current_image = image
         self.current_image_path = os.path.join(self.directory, self.current_image)
         self.label_image_path.setText(os.path.join(self.directory, self.images[0]))
-        self.label_image.setPixmap(QtGui.QPixmap(self.current_image_path))
+        self.label_image.setPixmap(QPixmap(self.current_image_path))
 
     def _display_previous(self):
         index_current = self.images.index(self.current_image)
@@ -738,32 +752,32 @@ class DDisplayImages(QtGui.QDialog):
             "display_image", None)
 
 
-class DDisplayVideo(QtGui.QDialog):
+class DDisplayVideo(QDialog):
     def __init__(self, le2msrv, video_file):
-        QtGui.QDialog.__init__(self)
+        QDialog.__init__(self)
 
         self.le2msrv = le2msrv
         self.video_file = video_file
 
-        layout = QtGui.QVBoxLayout()
+        layout = QVBoxLayout()
         self.setLayout(layout)
 
-        label_video_path = QtGui.QLabel(str(self.video_file) + " " +
+        label_video_path = QLabel(str(self.video_file) + " " +
                                         le2mtrans(u"is ready to be played"))
         layout.addWidget(label_video_path)
 
         self.video_widget = Phonon.VideoWidget()
         layout.addWidget(self.video_widget)
 
-        layout_buttons = QtGui.QHBoxLayout()
-        self.pushbutton_play = QtGui.QPushButton(le2mtrans(u"Play"))
-        self.pushbutton_play_on_clients = QtGui.QPushButton(
+        layout_buttons = QHBoxLayout()
+        self.pushbutton_play = QPushButton(le2mtrans(u"Play"))
+        self.pushbutton_play_on_clients = QPushButton(
             le2mtrans(u"Play on the server and on clients' screen"))
         layout_buttons.addWidget(self.pushbutton_play)
         layout_buttons.addWidget(self.pushbutton_play_on_clients)
         layout_buttons.addSpacerItem(
-            QtGui.QSpacerItem(20, 5, QtGui.QSizePolicy.Expanding,
-                              QtGui.QSizePolicy.Fixed))
+            QSpacerItem(20, 5, QSizePolicy.Expanding,
+                              QSizePolicy.Fixed))
         layout.addLayout(layout_buttons)
         self.pushbutton_play.clicked.connect(self.play)
         self.pushbutton_play_on_clients.clicked.connect(self.play_on_clients)
