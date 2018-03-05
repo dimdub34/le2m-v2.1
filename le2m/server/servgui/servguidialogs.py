@@ -1,11 +1,17 @@
 # -*- coding: utf-8 -*-
 
+""" ============================================================================
+
+This module contains all the dialog box used on the server side
+
+============================================================================ """
+
 # built-in
 import os
 import logging
 import csv
 from PyQt4.QtGui import *
-from PyQt4 import QtCore
+from PyQt4.QtCore import Qt, QUrl, QString
 from PyQt4.QtWebKit import QWebView
 from PyQt4.phonon import Phonon
 
@@ -14,8 +20,8 @@ from configuration import configparam as params
 from configuration.configconst import HOMME, FEMME
 from configuration.configvar import Experiment
 from util.utili18n import le2mtrans
-from server.servgui.servguisrc import servguipartsload, servguiinfo, \
-    servguipayoffs, servguigenders, servguipartsplayed
+from server.servgui.servguisrc import (servguipartsload, servguipayoffs,
+                                       servguipartsplayed)
 from servguitablemodels import TableModelPaiements
 from util.utilwidgets import WDice, WRandint, WHeadtail
 
@@ -25,48 +31,55 @@ logger = logging.getLogger("le2m")
 
 class GuiGenres(QDialog):
     """
-    Boite de dialogue qui permet de cocher les femmes dans la listes des postes
-    connectés au serveur
+    This dialog box is used to select the men among the participants
     """
-    def __init__(self, liste_joueurs, parent=None):
+    def __init__(self, players_list, parent=None):
         super(GuiGenres, self).__init__(parent)
 
         # variables
-        self._liste_joueurs = liste_joueurs
+        self.players_list = players_list
 
-        # création gui
-        self.ui = servguigenders.Ui_Dialog()
-        self.ui.setupUi(self)
+        self.layout = QVBoxLayout()
+        self.setLayout(self.layout)
 
-        # explication
-        self.ui.textEdit_explication.setFixedSize(350, 30)
-        self.ui.textEdit_explication.setText(
+        # explanation
+        self.label_explanation = QLabel()
+        self.label_explanation.setText(
             le2mtrans(u"Please check the men and let the women unchecked."))
+        self.layout.addWidget(self.label_explanation, 0, Qt.AlignCenter)
 
-        # listView
-        self.ui.listView.setFixedSize(350, 350)
-        self._model = QStandardItemModel()
-        for j in self._liste_joueurs:
+        # list of players
+        self.players_list_view = QListView()
+        self.players_model = QStandardItemModel()
+        for j in self.players_list:
             item = QStandardItem(str(j))
-            item.setCheckState(QtCore.Qt.Unchecked)
             item.setCheckable(True)
             item.setEditable(False)
-            self._model.appendRow(item)
-        self.ui.listView.setModel(self._model)
+            if j.gender == HOMME:
+                item.setCheckState(Qt.Checked)
+            else:
+                item.setCheckState(Qt.Unchecked)
+            self.players_model.appendRow(item)
+        self.players_list_view.setModel(self.players_model)
+        self.players_list_view.setMinimumSize(350, 500)
+        self.layout.addWidget(self.players_list_view, 0, Qt.AlignCenter)
 
-        self.ui.buttonBox.accepted.connect(self._accept)
-        self.ui.buttonBox.rejected.connect(self.reject)
+        self.buttons = QDialogButtonBox(
+            QDialogButtonBox.Cancel | QDialogButtonBox.Ok)
+        self.buttons.accepted.connect(self._accept)
+        self.buttons.rejected.connect(self.reject)
+        self.layout.addWidget(self.buttons)
+
         self.setWindowTitle(le2mtrans(u"Set subjects' gender"))
-        self.setFixedSize(400, 550)
+        self.adjustSize()
 
     def _accept(self):
-        self._dict_genres = {}
-        for ligne in xrange(self._model.rowCount()):
-            item = self._model.item(ligne)
-            if item.checkState() == QtCore.Qt.Checked:
-                self._liste_joueurs[ligne].gender = HOMME
+        for row in range(self.players_model.rowCount()):
+            item = self.players_model.item(row)
+            if item.checkState() == Qt.Checked:
+                self.players_list[row].gender = HOMME
             else:
-                self._liste_joueurs[ligne].gender = FEMME
+                self.players_list[row].gender = FEMME
         self.accept()
 
 
@@ -113,7 +126,7 @@ class GuiPartLoad(QDialog):
         self.ui.label_explication.setText(
             le2mtrans(u"Please select in the list below the parts you want "
                       u"to load"))
-        self.ui.listView.setToolTip(QtCore.QString(
+        self.ui.listView.setToolTip(QString(
             le2mtrans(u"Select the part(s) you want to load")))
         self.ui.listView.setMinimumHeight(480)
 
@@ -151,7 +164,7 @@ class GuiPartLoad(QDialog):
         self._model = QStandardItemModel()
         for p in partslist:
             item = QStandardItem(p)
-            item.setCheckState(QtCore.Qt.Unchecked)
+            item.setCheckState(Qt.Unchecked)
             item.setCheckable(True)
             item.setEditable(False)
             self._model.appendRow(item)
@@ -168,15 +181,15 @@ class GuiPartLoad(QDialog):
         If the item is just unchecked then search for a checked one
         If no item we set ...
         """
-        if item.checkState() == QtCore.Qt.Checked:
+        if item.checkState() == Qt.Checked:
             part = str(item.text())
             self.ui.label_basepath2.setText(
                 os.path.join(params.getp("PARTSDIR"), part))
-        elif item.checkState() == QtCore.Qt.Unchecked:
+        elif item.checkState() == Qt.Unchecked:
             self.ui.label_basepath2.setText("...")
             i = 0
             while self._model.item(i):
-                if self._model.item(i).checkState() == QtCore.Qt.Checked:
+                if self._model.item(i).checkState() == Qt.Checked:
                     part = str(self._model.item(i).text())
                     self.ui.label_basepath2.setText(
                         os.path.join(params.getp("PARTSDIR"), part))
@@ -205,7 +218,7 @@ class GuiPartLoad(QDialog):
         parts = []
         i = 0
         while self._model.item(i):
-            if self._model.item(i).checkState() == QtCore.Qt.Checked:
+            if self._model.item(i).checkState() == Qt.Checked:
                 parts.append(str(self._model.item(i).text()))
             i += 1
         if not parts:
@@ -271,7 +284,7 @@ class GuiPartsPlayed(QDialog):
         self.ui.setupUi(self)
 
         self.ui.listView_parties.setToolTip(
-            QtCore.QString(u"Sélectionner une ou plusieurs parties"))
+            QString(u"Sélectionner une ou plusieurs parties"))
         self.ui.listView_parties.setFixedSize(300, 350)
         self.ui.buttonBox.accepted.connect(self._set_parties_selectionnees)
         self.ui.buttonBox.rejected.connect(self.reject)
@@ -279,7 +292,7 @@ class GuiPartsPlayed(QDialog):
         self._model = QStandardItemModel()
         for partie in self._liste_parties:
             item = QStandardItem('{}'.format(partie))
-            item.setCheckState(QtCore.Qt.Checked)
+            item.setCheckState(Qt.Checked)
             item.setCheckable(True)
             item.setEditable(False)
             self._model.appendRow(item)
@@ -293,7 +306,7 @@ class GuiPartsPlayed(QDialog):
         self._parties_selectionnees = []
         for ligne in range(self._model.rowCount()):
             item = self._model.item(ligne)
-            if item.checkState() == QtCore.Qt.Checked:
+            if item.checkState() == Qt.Checked:
                 self._parties_selectionnees.append(str(item.text()))
         if not self._parties_selectionnees:
             QMessageBox.warning(self, u"Attention",
@@ -423,7 +436,7 @@ class DWebview(QDialog):
         layout = QVBoxLayout(self)
 
         self._webview = QWebView(self)
-        self._webview.load(QtCore.QUrl(html_file))
+        self._webview.load(QUrl(html_file))
         layout.addWidget(self._webview)
 
         buttons = QDialogButtonBox(QDialogButtonBox.Ok)
