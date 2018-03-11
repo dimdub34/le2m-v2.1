@@ -55,12 +55,15 @@ class Joueur(Base):
         self.hostname = hostname
         self.ip = ip
         self._gestionnaire_graphique = gestionnaire_graphique
-        # store parts
-        self._parts = {
-            "base": servparties.PartieBase(self),
-            "questionnaireFinal": servparties.PartieQuestionnaireFinal(self)}
-        self.parties.append(self._parts["base"])
-        self.parties.append(self._parts["questionnaireFinal"])
+
+        # ----------------------------------------------------------------------
+        # create Base & QuestionnaireFinal parts
+        # ----------------------------------------------------------------------
+        base = servparties.PartieBase(self)
+        quest_final = servparties.PartieQuestionnaireFinal(self)
+        self._parts = {"base": base, "questionnaireFinal": quest_final}
+        self.parties.append(base)
+        self.parties.append(quest_final)
         self._gender = None
         self._groupe = None  # deprecated, use group rather
         self._group = None
@@ -78,36 +81,35 @@ class Joueur(Base):
         partie de code accessible depuis le serveur et exécutable sur le poste
         client.
         """
-        if partname not in self._parts:
-            # load the module which contains the part
-            partmodule = importlib.import_module("parts.{p}.{p}Part".format(
-                p=partname))
+        # load the module which contains the part
+        partmodule = importlib.import_module("parts.{p}.{p}Part".format(
+            p=partname))
 
-            # get the class and instantiate it
-            partclass = getattr(partmodule, partclassname)
-            partinstance = partclass(le2mserv, self, **kwargs)
+        # get the class and instantiate it
+        partclass = getattr(partmodule, partclassname)
+        partinstance = partclass(le2mserv, self, **kwargs)
 
-            # get the remote of the part and set the attribute remote in the
-            # corresponding part
-            try:
-                partremoteinstance = yield (
-                    self.get_part("base").remote.callRemote(
-                        "get_remote", partname, remoteclassname))
-                if not partremoteinstance:
-                    raise ValueError("The player {} didn't get the remote of "
-                                     "part {}".format(self.uid, partname))
-                partinstance.remote = partremoteinstance
-            except (ValueError, pb.RemoteError) as e:
-                logger.critical(e.message)
-                raise
+        # get the remote of the part and set the attribute remote in the
+        # corresponding part
+        try:
+            partremoteinstance = yield (
+                self.get_part("base").remote.callRemote(
+                    "get_remote", partname, remoteclassname))
+            if not partremoteinstance:
+                raise ValueError("The player {} didn't get the remote of "
+                                 "part {}".format(self.uid, partname))
+            partinstance.remote = partremoteinstance
+        except (ValueError, pb.RemoteError) as e:
+            logger.critical(e.message)
+            raise
 
-            # add the part to the dict with the part instances and to the list
-            # of played parts
-            self._parts[partname] = partinstance
-            self.parties.append(self._parts[partname])
+        # add the part to the dict with the part instances and to the list
+        # of played parts
+        self._parts[partname] = partinstance
+        self.parties.append(partinstance)
 
-            self.info(u"Part {} loaded".format(partname))
-            self.remove_waitmode()
+        self.info(u"Part {} loaded".format(partname))
+        self.remove_waitmode()
 
     def info(self, texte, couleur="black"):
         self._gestionnaire_graphique.infoclt(
@@ -121,9 +123,14 @@ class Joueur(Base):
 
     def get_part(self, partname):
         """
-        return part or None
+        return the last part with this name or None if the part is not in
+        the list
         """
-        return self._parts.get(partname, None)
+        the_parts = [p for p in self.parties if p.nom == partname]
+        try:
+            return the_parts[-1]
+        except IndexError:
+            return None
 
     @defer.inlineCallbacks
     def disconnect(self):
