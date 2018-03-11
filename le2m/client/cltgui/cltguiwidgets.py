@@ -306,10 +306,10 @@ class WCompterebours(QWidget):
 
         self._label_timer = QLabel()
         if type(temps) is time:
-            tps = timedelta(hours=temps.hour, minutes=temps.minute,
+            self.tps = timedelta(hours=temps.hour, minutes=temps.minute,
                             seconds=temps.second).total_seconds()
         elif type(temps) is timedelta:
-            tps = temps.total_seconds()
+            self.tps = temps.total_seconds()
         else:
             raise TypeError (
                 u"temps has to be either a datetime.time or datetime.timedelta")
@@ -317,7 +317,7 @@ class WCompterebours(QWidget):
 
         layout.addStretch()
 
-        self.compterebours = CompteARebours(tps)
+        self.compterebours = CompteARebours(self.tps)
         self.compterebours.changetime[str].connect(self._label_timer.setText)
         self.compterebours.endoftime.connect(actionfin)
         self.compterebours.start()
@@ -329,6 +329,10 @@ class WCompterebours(QWidget):
 
     def is_running(self):
         return self.compterebours.is_running()
+
+    def restart(self):
+        self.compterebours.set_time(self.tps)
+        self.compterebours.start()
 
 
 class WChat(QWidget):
