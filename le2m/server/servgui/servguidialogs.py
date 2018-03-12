@@ -326,39 +326,62 @@ class GuiPayoffs(QDialog):
     """
     def __init__(self, le2mserv, partname, payoffs):
         super(GuiPayoffs, self).__init__()
-        self._le2mserv = le2mserv
-        self._partname = partname
-        self._payoffs = payoffs
+        
+        self.le2mserv = le2mserv
+        self.partname = partname
+        self.payoffs = payoffs
 
-        # creation gui
-        self.ui = servguipayoffs.Ui_Dialog()
-        self.ui.setupUi(self)
-
-        # table model for displaying payoffs
-        self._tableModel = TableModelPaiements(self._payoffs)
-        self.ui.tableView.setModel(self._tableModel)
-        self.ui.tableView.horizontalHeader().setResizeMode(
+        self.layout = QVBoxLayout()
+        self.setLayout(self.layout)
+        
+        # ----------------------------------------------------------------------
+        # table
+        # ----------------------------------------------------------------------
+        
+        self.table_view = QTableView()
+        self.table_model = TableModelPaiements(self.payoffs)
+        self.table_view.setModel(self.table_model)
+        self.table_view.horizontalHeader().setResizeMode(
             QHeaderView.Stretch)
+        self.layout.addWidget(self.table_view)
+        
+        # ----------------------------------------------------------------------
+        # pushbuttons
+        # ----------------------------------------------------------------------
+        
+        self.pushbutton_layout = QHBoxLayout()
+        self.layout.addLayout(self.pushbutton_layout)
+        
+        self.pushbutton_print = QPushButton(le2mtrans(u"Print"))
+        self.pushbutton_print.clicked.connect(self.print_content)
+        self.pushbutton_layout.addWidget(self.pushbutton_print)
+        
+        self.pushbutton_save = QPushButton(le2mtrans(u"Save"))
+        self.pushbutton_save.clicked.connect(self.save_content)
+        self.pushbutton_layout.addWidget(self.pushbutton_save)
+        
+        self.pushbutton_display_remote = QPushButton(le2mtrans(u"Display on remotes"))
+        self.pushbutton_display_remote.clicked.connect(self.display_on_remotes)
+        self.pushbutton_layout.addWidget(self.pushbutton_display_remote)
+        
+        self.pushbutton_add_to_payoffs = QPushButton(le2mtrans(u"Add to final payoffs"))
+        self.pushbutton_add_to_payoffs.clicked.connect(self.add_to_payoffs)
+        self.pushbutton_layout.addWidget(self.pushbutton_add_to_payoffs)
 
-        # slot
-        self.ui.pushButton_imprimer.clicked.connect(self._print)
-        self.ui.pushButton_enregistrer.clicked.connect(self._save)
-        self.ui.pushButton_afficher.clicked.connect(self._display_onremotes)
-        self.ui.pushButton_ajouter.clicked.connect(self._addto_finalpayoffs)
-
-        if self._partname == "base":
+        if self.partname == "base":
             self.setWindowTitle(le2mtrans(u"Payoffs for the experiment"))
-            self.ui.pushButton_ajouter.setEnabled(False)
+            self.pushbutton_add_to_payoffs.setEnabled(False)
         else:
             self.setWindowTitle(le2mtrans(u"Payoffs of part {}").format(
-                self._partname))
-        self.setFixedSize(550, 608)
+                self.partname))
 
-    def _print(self):
+        self.setMinimumSize(500, 700)
+
+    def print_content(self):
         """
         Print the table with the subjects' payoffs
         """
-        if not self._payoffs:
+        if not self.payoffs:
             return
         html = u"<table align='center' border=1>\n<tr>" \
                u"<td align='center'><b>"
@@ -367,7 +390,7 @@ class GuiPayoffs(QDialog):
                 u"<td align='center'><b>"
         html += le2mtrans(u"Payoff")
         html += u"</b></td></tr>\n"
-        for l in self._payoffs:
+        for l in self.payoffs:
             html += u"<tr><td align='center'>{}</>" \
                     u"<td align='center'>{}&euro;</td>" \
                     u"</tr>\n".format(l[0], l[1])
@@ -381,12 +404,12 @@ class GuiPayoffs(QDialog):
         if dialog.exec_():
             doc.print_(printer)
 
-    def _save(self):
+    def save_content(self):
         """
         Open the dialog box for choosing/creating the location file and
         save the table in the csv format
         """
-        if not self._payoffs:
+        if not self.payoffs:
             return
         fichier = QFileDialog.getSaveFileName(
             self, le2mtrans("Export payoffs in csv file"), ".",
@@ -398,12 +421,12 @@ class GuiPayoffs(QDialog):
                     quoting=csv.QUOTE_MINIMAL)
                 csv_writer.writerow(
                     [le2mtrans(u"Hostname"), le2mtrans(u"Payoff")])
-                for ligne in self._payoffs:
+                for ligne in self.payoffs:
                     csv_writer.writerow(ligne)
 
-    def _display_onremotes(self):
+    def display_on_remotes(self):
         text_temp = le2mtrans(u"the experiment") if \
-            self._partname == "base" else self._partname
+            self.partname == "base" else self.partname
         confirmation = QMessageBox.question(
             self, u"Confirmation",
             le2mtrans(u"Display the payoffs of {}?").format(text_temp),
@@ -411,13 +434,13 @@ class GuiPayoffs(QDialog):
         if confirmation != QMessageBox.Yes:
             return
 
-        if self._partname == "base":
-            self._le2mserv.gestionnaire_experience.display_finalscreen()
+        if self.partname == "base":
+            self.le2mserv.gestionnaire_experience.display_finalscreen()
         else:
-            self._le2mserv.gestionnaire_experience.display_payoffs_onremotes(
-                self._partname)
+            self.le2mserv.gestionnaire_experience.display_payoffs_onremotes(
+                self.partname)
 
-    def _addto_finalpayoffs(self):
+    def add_to_payoffs(self):
         confirmation = QMessageBox.question(
             self,
             u"Confirmation",
@@ -425,8 +448,8 @@ class GuiPayoffs(QDialog):
             QMessageBox.No | QMessageBox.Yes)
         if confirmation != QMessageBox.Yes:
             return
-        self._le2mserv.gestionnaire_experience.add_tofinalpayoffs(
-            self._partname)
+        self.le2mserv.gestionnaire_experience.add_tofinalpayoffs(
+            self.partname)
 
 
 class DWebview(QDialog):
