@@ -15,9 +15,15 @@ logger = logging.getLogger("le2m.{}".format(__name__))
 class Serveur(object):
     def __init__(self, le2mserv):
         self.le2mserv = le2mserv
+        self.current_sequence = 0
+        self.current_period = 0
+        self.all = []
+        self.groups = []
 
+        # ----------------------------------------------------------------------
         # creation of the menu (will be placed in the "part" menu on the
         # server screen)
+        # ----------------------------------------------------------------------
         actions = OrderedDict()
         actions[le2mtrans(u"Configure")] = self.configure
         actions[le2mtrans(u"Display parameters")] = \
@@ -44,27 +50,35 @@ class Serveur(object):
 
     @defer.inlineCallbacks
     def demarrer(self):
-        """
-        Start the part
-        :return:
-        """
-        # check conditions =====================================================
+
+        # ----------------------------------------------------------------------
+        # check conditions
+        # ----------------------------------------------------------------------
+
         if not self.le2mserv.gestionnaire_graphique.question(
                         le2mtrans(u"Start") + u" EXPERIENCE_NOM?"):
             return
 
-        # init part ============================================================
+        # ----------------------------------------------------------------------
+        # init part
+        # ----------------------------------------------------------------------
+
+        self.current_sequence += 1
+        self.current_period = 0
+
         yield (self.le2mserv.gestionnaire_experience.init_part(
             "EXPERIENCE_NOM", "PartieEXPERIENCE_NOM_COURT",
             "RemoteEXPERIENCE_NOM_COURT", pms))
-        self._tous = self.le2mserv.gestionnaire_joueurs.get_players(
+        self.all = self.le2mserv.gestionnaire_joueurs.get_players(
             'EXPERIENCE_NOM')
 
         # set parameters on remotes
         yield (self.le2mserv.gestionnaire_experience.run_step(
-            le2mtrans(u"Configure"), self._tous, "configure"))
-        
+            le2mtrans(u"Configure"), self.all, "configure"))
+
+        # ----------------------------------------------------------------------
         # form groups
+        # ----------------------------------------------------------------------
         if pms.TAILLE_GROUPES > 0:
             try:
                 self.le2mserv.gestionnaire_groupes.former_groupes(
@@ -74,35 +88,56 @@ class Serveur(object):
                 self.le2mserv.gestionnaire_graphique.display_error(
                     e.message)
                 return
-    
-        # Start part ===========================================================
+
+        # ----------------------------------------------------------------------
+        # Start part
+        # ----------------------------------------------------------------------
+
         period_start = 0 if pms.NOMBRE_PERIODES == 0 or pms.PERIODE_ESSAI else 1
+
         for period in range(period_start, pms.NOMBRE_PERIODES + 1):
 
             if self.le2mserv.gestionnaire_experience.stop_repetitions:
                 break
 
+            self.current_period = period
+
+            # ------------------------------------------------------------------
             # init period
+            # ------------------------------------------------------------------
+
             self.le2mserv.gestionnaire_graphique.infoserv(
                 [None, le2mtrans(u"Period") + u" {}".format(period)])
             self.le2mserv.gestionnaire_graphique.infoclt(
                 [None, le2mtrans(u"Period") + u" {}".format(period)],
                 fg="white", bg="gray")
             yield (self.le2mserv.gestionnaire_experience.run_func(
-                self._tous, "newperiod", period))
-            
+                self.all, "newperiod", period))
+
+            # ------------------------------------------------------------------
             # decision
+            # ------------------------------------------------------------------
+
             yield(self.le2mserv.gestionnaire_experience.run_step(
-                le2mtrans(u"Decision"), self._tous, "display_decision"))
+                le2mtrans(u"Decision"), self.all, "display_decision"))
             
+            # ------------------------------------------------------------------
             # period payoffs
+            # ------------------------------------------------------------------
+
             self.le2mserv.gestionnaire_experience.compute_periodpayoffs(
                 "EXPERIENCE_NOM")
         
+            # ------------------------------------------------------------------
             # summary
+            # ------------------------------------------------------------------
+
             yield(self.le2mserv.gestionnaire_experience.run_step(
-                le2mtrans(u"Summary"), self._tous, "display_summary"))
-        
-        # End of part ==========================================================
+                le2mtrans(u"Summary"), self.all, "display_summary"))
+
+        # ----------------------------------------------------------------------
+        # End of part
+        # ----------------------------------------------------------------------
+
         yield (self.le2mserv.gestionnaire_experience.finalize_part(
             "EXPERIENCE_NOM"))
