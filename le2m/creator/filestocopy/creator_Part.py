@@ -19,6 +19,11 @@ class PartieEXPERIENCE_NOM_COURT(Partie):
     __mapper_args__ = {'polymorphic_identity': 'EXPERIENCE_NOM'}
     partie_id = Column(Integer, ForeignKey('parties.id'), primary_key=True)
     repetitions = relationship('RepetitionsEXPERIENCE_NOM_COURT')
+    EXPERIENCE_NOM_COURT_treatment = Column(Integer)
+    EXPERIENCE_NOM_COURT_current_sequence = Column(Integer)
+    EXPERIENCE_NOM_COURT_group = Column(String)
+    EXPERIENCE_NOM_COURT_gain_ecus = Column(Float)
+    EXPERIENCE_NOM_COURT_gain_euros = Column(Float)
 
     def __init__(self, le2mserv, joueur):
         super(PartieEXPERIENCE_NOM_COURT, self).__init__(
