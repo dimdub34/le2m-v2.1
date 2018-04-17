@@ -1,10 +1,16 @@
 # -*- coding: utf-8 -*-
 
+# built-in
 import logging
 from collections import OrderedDict
 from twisted.internet import defer
+
+# le2m
 from util import utiltools
 from util.utili18n import le2mtrans
+from util.utiltools import get_module_attributes, timedelta_to_time
+
+# EXPERIENCE_NOM
 import EXPERIENCE_NOMParams as pms
 from EXPERIENCE_NOMGui import DConfigure
 
