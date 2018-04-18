@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+# built-in
 import os
 from PyQt4.QtCore import QObject, pyqtSignal
 from PyQt4 import QtGui
@@ -8,6 +9,9 @@ import random
 import importlib
 import logging
 from twisted.internet import defer
+from datetime import datetime
+
+# le2m
 from util.utili18n import le2mtrans
 from util import utiltools, utiltwisted
 from server.servgui.servguidialogs import GuiPayoffs
@@ -27,7 +31,7 @@ class GestionnaireExperience(QObject):
     def __init__(self, le2msrv):
         super(GestionnaireExperience, self).__init__()
         self.le2msrv = le2msrv
-        self._parts = []  # when a part is initiated it is added in this list
+        self._parts = []  # list of parts
         self._servs = {}  # keep a ref to the loaded partserv
         self._stop_repetitions = False  # to stop the part at the next period
         self._screenpayoffs = None
@@ -87,6 +91,7 @@ class GestionnaireExperience(QObject):
         self.le2msrv.gestionnaire_graphique.set_waitmode(players)
         yield (self.run_func(players, "add_part", self.le2msrv,
                              partname, partclassname, remoteclassname, **kwargs))
+
 
         self._parts.append(partname)
         self.stop_repetitions = False
