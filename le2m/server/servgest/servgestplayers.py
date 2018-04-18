@@ -115,14 +115,14 @@ class GestionnaireJoueurs(pb.Root, QObject):
 
     @defer.inlineCallbacks
     def deconnecter_joueurs(self):
-        if self.get_nombre_joueurs > 0:
+        if self.get_nombre_joueurs() > 0:
             logger.info(
                 le2mtrans(u"Disconnection of the players still connected"))
             yield (
                 utiltwisted.forEach(self.get_players(), "disconnect"))
 
     def set_genres(self, dict_genres):
-        for k, v in dict_genres.iteritems():
+        for k, v in dict_genres.items():
             k.set_genre(v)
         hommes = [j for j in self.get_players() if j.genre == HOMME]
         femmes = [j for j in self.get_players() if j.genre == FEMME]
