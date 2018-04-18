@@ -83,13 +83,13 @@ class GestionnaireJoueurs(pb.Root, QObject):
         """
         # logger.debug(u"get_players with arg {}".format(partname))
         if partname:
-            players = [p.get_part(partname) for p in self._joueurs.viewvalues()]
+            players = [p.get_part(partname) for p in self._joueurs.values()]
             if players.count(None) == len(players):
                 return None
             else:
                 return players
         else:
-            return list(self._joueurs.viewvalues())
+            return list(self._joueurs.values())
 
     def get_joueur(self, joueur_uid):
         try:
