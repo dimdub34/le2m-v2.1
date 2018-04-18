@@ -680,6 +680,40 @@ class DRandint(QDialog):
         return self._widrandint.get_value()
 
 
+class DSequence(QDialog):
+    """
+    Simple dialog that ask for the choice of a sequence among the ones given
+    Has attribute sequence if accepted
+    So use screen_sequence.sequence to get the value entered
+    """
+    def __init__(self, max, min=1):
+        """
+
+        :param current_sequence: the max value
+        :param min: the min value - default to 1
+        """
+        super(DSequence, self).__init__()
+
+        self.layout = QVBoxLayout()
+        self.setLayout(self.layout)
+
+        self.formlayout = QFormLayout()
+        self.layout.addLayout(self.formlayout)
+        self.spinbox = QSpinBox()
+        self.spinbox.setRange(min, max)
+        self.label = QLabel(le2mtrans(u"Please choose a sequence"))
+        self.formlayout.addRow(self.label, self.spinbox)
+
+        self.buttons = QDialogButtonBox(QDialogButtonBox.Cancel | QDialogButtonBox.Ok)
+        self.buttons.rejected.connect(self.reject)
+        self.buttons.accepted.connect(self.accept)
+        self.layout.addWidget(self.buttons)
+
+    def accept(self):
+        self.sequence = self.spinbox.value()
+        super(DSequence, self).accept()
+
+
 class DHeadtail(QDialog):
     def __init__(self, parent):
         super(DHeadtail, self).__init__(parent)
