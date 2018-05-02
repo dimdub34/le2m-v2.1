@@ -548,7 +548,7 @@ class MainWindow(QMainWindow):
             QMessageBox.No | QMessageBox.Yes)
         if reply != QMessageBox.Yes:
             return
-        self.le2msrv.gestionnaire_experience.start_questcomp(self._questcomp)
+        self.le2msrv.gestionnaire_experience.start_questcomp(self.questcomp)
 
     @QtCore.pyqtSlot()
     def display_final_questionnaire(self):
