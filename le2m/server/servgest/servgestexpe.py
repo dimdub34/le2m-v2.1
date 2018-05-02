@@ -283,12 +283,12 @@ class GestionnaireExperience(QObject):
         for p in players:
             payoff = getattr(p, "{}_gain_euros".format(p.nom_court))
             self.le2msrv.gestionnaire_graphique.infoclt(
-                u"{}: {}".format(p.joueur, payoff))
+                u"{}: {:.2f}".format(p.joueur, payoff))
         self.le2msrv.gestionnaire_base.enregistrer()
 
         # Finalization of part
         self.le2msrv.gestionnaire_graphique.infoserv(
-            le2mtrans(u"End time: {et}").format(et=strftime("%H:%M:%S")))
+            le2mtrans(u"End time: {}").format(strftime("%H:%M:%S")))
         self.le2msrv.gestionnaire_graphique.infoclt(
             u'Ok {}'.format(partname).upper(), fg="white", bg="blue")
         self.le2msrv.gestionnaire_graphique.infoserv(
