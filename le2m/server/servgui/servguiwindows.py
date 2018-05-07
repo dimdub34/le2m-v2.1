@@ -459,6 +459,8 @@ class MainWindow(QMainWindow):
         self.le2msrv.gestionnaire_joueurs.playerremoved[object, int].connect(
             self.remove_player_from_tab_clients)
 
+        self.setWindowTitle("LE2M")
+
     # --------------------------------------------------------------------------
     # slots
     # --------------------------------------------------------------------------
