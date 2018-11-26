@@ -78,7 +78,8 @@ class IRemote(pb.Referenceable):
         self._payoff_text = val
 
     def remote_set_payoffs(self, in_euros, in_ecus=None):
-        logger.debug(u"{} set_payoffs".format(self.le2mclt.uid))
+        logger.debug(u"{} set_payoffs ({} ecus / {} euros)".format(
+            self.le2mclt.uid, in_ecus or "-", in_euros))
         self.payoff_euros = in_euros
         self.payoff_ecus = in_ecus
         self.payoff_text = clttexts.get_payoff_text(
