@@ -95,19 +95,24 @@ def main():
 
     # creation logger ==========================================================
     logger = logging.getLogger("le2m")
-    logger.setLevel(logging.DEBUG)
+    logger.setLevel(logging.DEBUG)  # le logger a le niveau debug
     formatter = logging.Formatter(
         params.getp("LOGGING_FORMATTER"),
         datefmt=params.getp("LOGGING_FORMATTER_DATE"))
+
+    # log dans fichier le2m.log - niveau info
     fichier_log = logging.FileHandler(
         os.path.join(params.getp("LOGDIR"), 'le2m.log'))
     fichier_log.setLevel(logging.INFO)
     fichier_log.setFormatter(formatter)
     logger.addHandler(fichier_log)
+
+    # log dans la console - niveau debug
     console_log = logging.StreamHandler()
     console_log.setLevel(logging.DEBUG)
     console_log.setFormatter(formatter)
     logger.addHandler(console_log)
+
     logger.info(60 * "=")
     logger.info("Logger LE2M created")
     logger.info("APPDIR: {}".format(params.getp("APPDIR")))
