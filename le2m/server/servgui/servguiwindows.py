@@ -24,7 +24,7 @@ from server.servplayers import Joueur
 from servguisrc import servguimain
 from servguitablemodels import TableModelJoueurs
 from servguidialogs import (GuiPartLoad, GuiPartsPlayed,
-    GuiGenres, DDice, DRandint, DHeadtail, DWebview, GuiInformation,
+    GuiGenres, DDice, DRandint, DHeadtail, GuiInformation, #DWebview,
     DUnderstandingVisual, DEditGroups, DDisplayImages, DDisplayVideo)
 from creator import creator
 from extractor import extractor
@@ -245,10 +245,10 @@ class MenuHelp(QMenu):
 
         self.setTitle(le2mtrans(u"About"))
 
-        self.action_help = QAction(le2mtrans(u"Help"), self)
-        self.action_help.setToolTip(
-            le2mtrans(u"Display a window with a text of help"))
-        self.addAction(self.action_help)
+        # self.action_help = QAction(le2mtrans(u"Help"), self)
+        # self.action_help.setToolTip(
+        #     le2mtrans(u"Display a window with a text of help"))
+        # self.addAction(self.action_help)
 
         self.action_about = QAction(le2mtrans(u"About"), self)
         self.addAction(self.action_about)
@@ -450,7 +450,7 @@ class MainWindow(QMainWindow):
         self.menu_tools.action_head_and_tail.triggered.connect(self.head_and_tail)
 
         # menu_help
-        self.menu_help.action_help.triggered.connect(self.display_help)
+        # self.menu_help.action_help.triggered.connect(self.display_help)
         self.menu_help.action_about.triggered.connect(self.display_about)
 
         # signals
@@ -647,16 +647,16 @@ class MainWindow(QMainWindow):
                     le2mtrans(u"Tail"))))
 
     # menu_help
-    @QtCore.pyqtSlot()
-    def display_help(self):
-        """
-        Display a dialog with some help on le2m
-        """
-        help_file = os.path.join(params.getp("HTMLDIR"),
-                                    "le2m_aide.html")
-        webscreen = DWebview(
-            help_file, title=le2mtrans(u"Help"), parent=self)
-        webscreen.show()
+    # @QtCore.pyqtSlot()
+    # def display_help(self):
+    #     """
+    #     Display a dialog with some help on le2m
+    #     """
+    #     help_file = os.path.join(params.getp("HTMLDIR"),
+    #                                 "le2m_aide.html")
+    #     webscreen = DWebview(
+    #         help_file, title=le2mtrans(u"Help"), parent=self)
+    #     webscreen.show()
 
     @QtCore.pyqtSlot()
     def display_about(self):
