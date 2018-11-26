@@ -12,7 +12,7 @@ import logging
 import csv
 from PyQt4.QtGui import *
 from PyQt4.QtCore import Qt, QUrl, QString
-from PyQt4.QtWebKit import QWebView
+# from PyQt4.QtWebKit import QWebView
 from PyQt4.phonon import Phonon
 
 # le2m
@@ -452,22 +452,22 @@ class GuiPayoffs(QDialog):
             self.partname)
 
 
-class DWebview(QDialog):
-    def __init__(self, html_file, title=u"Information", parent=None):
-        QDialog.__init__(self, parent)
-
-        layout = QVBoxLayout(self)
-
-        self._webview = QWebView(self)
-        self._webview.load(QUrl(html_file))
-        layout.addWidget(self._webview)
-
-        buttons = QDialogButtonBox(QDialogButtonBox.Ok)
-        buttons.accepted.connect(self.accept)
-        layout.addWidget(buttons)
-
-        self.setWindowTitle(title)
-        self.adjustSize()
+# class DWebview(QDialog):
+#     def __init__(self, html_file, title=u"Information", parent=None):
+#         QDialog.__init__(self, parent)
+#
+#         layout = QVBoxLayout(self)
+#
+#         self._webview = QWebView(self)
+#         self._webview.load(QUrl(html_file))
+#         layout.addWidget(self._webview)
+#
+#         buttons = QDialogButtonBox(QDialogButtonBox.Ok)
+#         buttons.accepted.connect(self.accept)
+#         layout.addWidget(buttons)
+#
+#         self.setWindowTitle(title)
+#         self.adjustSize()
 
 
 class DUnderstandingVisual(QDialog):
