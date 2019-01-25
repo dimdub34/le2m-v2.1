@@ -76,6 +76,7 @@ class GuiAccueil(QtGui.QDialog):
             QtGui.QSpacerItem(20, 5, QtGui.QSizePolicy.Expanding,
                               QtGui.QSizePolicy.Fixed))
         self.img = QtGui.QPixmap(params.getp("WELCOMEPICTURE"))
+        self.img = self.img.scaledToWidth(800)
         self.img_label = QtGui.QLabel()
         self.img_label.setPixmap(self.img)
         self.img_layout.addWidget(self.img_label)
