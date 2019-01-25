@@ -1,8 +1,19 @@
 # coding: utf-8
 
-from PyQt4 import QtGui, QtCore
+""" ============================================================================
+
+This module contains a lot of useful custom widgets
+
+============================================================================ """
+
+# built-in
+import sys
+from PyQt4.QtGui import *
+from PyQt4.QtCore import Qt, QTimer
 import random
 from datetime import time, timedelta
+
+# le2m
 from util.utiltools import CompteARebours
 try:  # this way it is possible to load this module independently
     from util.utili18n import le2mtrans
@@ -19,42 +30,35 @@ import numpy as np
 logger = logging.getLogger("le2m")
 
 
-class WLabel(QtGui.QWidget):
+class WLabel(QWidget):
     def __init__(self, text=None, parent=None):
         super(WLabel, self).__init__(parent)
 
-        layout = QtGui.QHBoxLayout()
+        layout = QHBoxLayout()
         self.setLayout(layout)
 
-        layout.addSpacerItem(QtGui.QSpacerItem(
-            20, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding))
-
-        self.label = QtGui.QLabel(text or u"")
-        layout.addWidget(self.label)
-
-        layout.addSpacerItem(QtGui.QSpacerItem(
-            20, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding))
+        self.label = QLabel(text or u"")
+        layout.addWidget(self.label, 0, Qt.AlignCenter)
 
     def set_text(self, text):
         self.label.setText(text)
 
 
-class WPeriod(QtGui.QWidget):
+class WPeriod(QWidget):
     def __init__(self, period=1, ecran_historique=None, parent=None):
-        QtGui.QWidget.__init__(self, parent)
+        QWidget.__init__(self, parent)
 
-        layout = QtGui.QHBoxLayout()
+        layout = QHBoxLayout()
         self.setLayout(layout)
 
-        self.label_period = QtGui.QLabel()
+        self.label_period = QLabel()
         self.set_period(period)
-        layout.addWidget(self.label_period)
+        layout.addWidget(self.label_period, 0, Qt.AlignLeft)
 
-        layout.addSpacerItem(QtGui.QSpacerItem(
-            20, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding))
+        layout.addStretch()
 
-        self.pushButton_history = QtGui.QPushButton(le2mtrans(u"History"))
-        layout.addWidget(self.pushButton_history)
+        self.pushButton_history = QPushButton(le2mtrans(u"History"))
+        layout.addWidget(self.pushButton_history, 0, Qt.AlignRight)
 
         if ecran_historique:
             self.pushButton_history.clicked.connect(ecran_historique.show)
@@ -64,17 +68,17 @@ class WPeriod(QtGui.QWidget):
             le2mtrans(u"Period") + u" {}".format(period))
 
 
-class WExplication(QtGui.QWidget):
+class WExplication(QWidget):
     def __init__(self, text=None, parent=None, size=(450, 80), html=True):
-        QtGui.QWidget.__init__(self, parent)
+        QWidget.__init__(self, parent)
 
-        layout = QtGui.QHBoxLayout()
+        layout = QHBoxLayout()
         self.setLayout(layout)
 
-        self.textEdit = QtGui.QTextEdit()
+        self.textEdit = QTextEdit()
         self.textEdit.setReadOnly(True)
         self.textEdit.setFixedSize(*size)
-        layout.addWidget(self.textEdit)
+        layout.addWidget(self.textEdit, 0, Qt.AlignCenter)
 
         if html:
             self.set_html(text or u"")
@@ -96,25 +100,25 @@ class WExplication(QtGui.QWidget):
         return self.textEdit.toPlainText()
 
 
-class WCombo(QtGui.QWidget):
+class WCombo(QWidget):
     def __init__(self, label, items, automatique=False, parent=None):
         super(WCombo, self).__init__(parent)
         self._items = items
 
-        layout = QtGui.QHBoxLayout()
+        layout = QHBoxLayout()
         self.setLayout(layout)
-        layout.addSpacerItem(QtGui.QSpacerItem(
-            20, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding))
+        layout.addSpacerItem(QSpacerItem(
+            20, 20, QSizePolicy.Expanding, QSizePolicy.Expanding))
 
-        self.label = QtGui.QLabel(label)
+        self.label = QLabel(label)
         layout.addWidget(self.label)
 
-        self.combo = QtGui.QComboBox()
+        self.combo = QComboBox()
         self.combo.addItems(self._items)
         layout.addWidget(self.combo)
 
-        layout.addSpacerItem(QtGui.QSpacerItem(
-            20, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding))
+        layout.addSpacerItem(QSpacerItem(
+            20, 20, QSizePolicy.Expanding, QSizePolicy.Expanding))
 
         if automatique:
             if self._items[0] == le2mtrans(u"Choose") or \
@@ -132,23 +136,23 @@ class WCombo(QtGui.QWidget):
         return self.combo.currentIndex()
 
 
-class WSpinbox(QtGui.QWidget):
+class WSpinbox(QWidget):
     def __init__(self, label, minimum=0, maximum=100, interval=1,
                  automatique=False, parent=None, width=50):
-        QtGui.QWidget.__init__(self, parent)
+        QWidget.__init__(self, parent)
 
-        layout = QtGui.QHBoxLayout()
+        layout = QHBoxLayout()
         self.setLayout(layout)
 
-        layout.addSpacerItem(QtGui.QSpacerItem(
-            20, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding))
+        layout.addSpacerItem(QSpacerItem(
+            20, 20, QSizePolicy.Expanding, QSizePolicy.Expanding))
 
-        formlayout = QtGui.QFormLayout()
+        formlayout = QFormLayout()
         layout.addLayout(formlayout)
 
-        self.label = QtGui.QLabel(label)
-        self.spinBox = QtGui.QSpinBox()
-        self.spinBox.setButtonSymbols(QtGui.QSpinBox.NoButtons)
+        self.label = QLabel(label)
+        self.spinBox = QSpinBox()
+        self.spinBox.setButtonSymbols(QSpinBox.NoButtons)
         self.spinBox.setMinimum(minimum)
         self.spinBox.setMaximum(maximum)
         self.spinBox.setSingleStep(interval)
@@ -157,8 +161,8 @@ class WSpinbox(QtGui.QWidget):
 
         formlayout.addRow(self.label, self.spinBox)
 
-        layout.addSpacerItem(QtGui.QSpacerItem(
-            20, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding))
+        layout.addSpacerItem(QSpacerItem(
+            20, 20, QSizePolicy.Expanding, QSizePolicy.Expanding))
 
         if automatique:
             self.spinBox.setValue(
@@ -170,29 +174,29 @@ class WSpinbox(QtGui.QWidget):
         return self.spinBox.value()
 
 
-class WRadio(QtGui.QWidget):
+class WRadio(QWidget):
     def __init__(self, label,
                  texts=tuple([v for k, v in sorted(YES_NO.viewitems())]),
                  automatique=False, parent=None):
         super(WRadio, self).__init__(parent)
 
-        layout = QtGui.QHBoxLayout()
+        layout = QHBoxLayout()
         self.setLayout(layout)
-        layout.addSpacerItem(QtGui.QSpacerItem(
-            20, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding))
+        layout.addSpacerItem(QSpacerItem(
+            20, 20, QSizePolicy.Expanding, QSizePolicy.Expanding))
 
-        self.label = QtGui.QLabel(label)
+        self.label = QLabel(label)
         layout.addWidget(self.label)
 
         self.radios = list()
-        self.button_group = QtGui.QButtonGroup()
+        self.button_group = QButtonGroup()
         for num, txt in enumerate(texts):
-            self.radios.append(QtGui.QRadioButton(txt))
+            self.radios.append(QRadioButton(txt))
             self.button_group.addButton(self.radios[-1], num)
             layout.addWidget(self.radios[-1])
 
-        layout.addSpacerItem(QtGui.QSpacerItem(
-            20, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding))
+        layout.addSpacerItem(QSpacerItem(
+            20, 20, QSizePolicy.Expanding, QSizePolicy.Expanding))
 
         if automatique:
             selected = random.choice(self.radios)
@@ -205,7 +209,7 @@ class WRadio(QtGui.QWidget):
         return checked
 
 
-class WListDrag(QtGui.QWidget):
+class WListDrag(QWidget):
     """
     This widget allows to move some elements from the list on the left side to
     the list on the right side.
@@ -221,23 +225,23 @@ class WListDrag(QtGui.QWidget):
                       u"list on the right side"))
         self.ui.listWidget_right.setFixedSize(size[0], size[1])
         self.ui.listWidget_right.setContextMenuPolicy(
-            QtCore.Qt.CustomContextMenu)
+            Qt.CustomContextMenu)
         self.ui.listWidget_right.customContextMenuRequested.connect(
             self._rightclick)
         self.ui.listWidget_right.setToolTip(
             le2mtrans(u"Right click to move up, down or delete an item"))
 
-        self._menu = QtGui.QMenu(le2mtrans(u"Menu"), self)
+        self._menu = QMenu(le2mtrans(u"Menu"), self)
 
-        self._action_moveup = QtGui.QAction(le2mtrans(u"Move up"), self._menu)
+        self._action_moveup = QAction(le2mtrans(u"Move up"), self._menu)
         self._action_moveup.triggered.connect(self._moveup)
         self._menu.addAction(self._action_moveup)
 
-        self._action_movedown = QtGui.QAction(le2mtrans(u"Move down"), self._menu)
+        self._action_movedown = QAction(le2mtrans(u"Move down"), self._menu)
         self._action_movedown.triggered.connect(self._movedown)
         self._menu.addAction(self._action_movedown)
 
-        self._action_delete = QtGui.QAction(le2mtrans(u"Delete"), self._menu)
+        self._action_delete = QAction(le2mtrans(u"Delete"), self._menu)
         self._action_delete.triggered.connect(self._delete)
         self._menu.addAction(self._action_delete)
 
@@ -265,7 +269,7 @@ class WListDrag(QtGui.QWidget):
         return items
 
 
-class WTableview(QtGui.QWidget):
+class WTableview(QWidget):
     def __init__(self, parent, tablemodel, size=(600, 600)):
         super(WTableview, self).__init__(parent)
 
@@ -274,11 +278,11 @@ class WTableview(QtGui.QWidget):
         self.ui.tableView.setModel(tablemodel)
         self.ui.tableView.setFixedSize(size[0], size[1])
         self.ui.tableView.horizontalHeader().setResizeMode(
-            QtGui.QHeaderView.Stretch)
+            QHeaderView.Stretch)
         self.adjustSize()
 
 
-class WCompterebours(QtGui.QWidget):
+class WCompterebours(QWidget):
     """
 
     # """
@@ -292,30 +296,28 @@ class WCompterebours(QtGui.QWidget):
         """
         super(WCompterebours, self).__init__(parent)
 
-        layout = QtGui.QHBoxLayout()
+        layout = QHBoxLayout()
         self.setLayout(layout)
 
-        layout.addSpacerItem(QtGui.QSpacerItem(
-            20, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding))
+        layout.addStretch()
 
-        self._label = QtGui.QLabel(le2mtrans(u"Remaining time:"))
-        layout.addWidget(self._label)
+        self._label = QLabel(le2mtrans(u"Remaining time:"))
+        layout.addWidget(self._label, 0, Qt.AlignCenter)
 
-        self._label_timer = QtGui.QLabel()
+        self._label_timer = QLabel()
         if type(temps) is time:
-            tps = timedelta(hours=temps.hour, minutes=temps.minute,
+            self.tps = timedelta(hours=temps.hour, minutes=temps.minute,
                             seconds=temps.second).total_seconds()
         elif type(temps) is timedelta:
-            tps = temps.total_seconds()
+            self.tps = temps.total_seconds()
         else:
             raise TypeError (
                 u"temps has to be either a datetime.time or datetime.timedelta")
-        layout.addWidget(self._label_timer)
+        layout.addWidget(self._label_timer, 0, Qt.AlignCenter)
 
-        layout.addSpacerItem(QtGui.QSpacerItem(
-            20, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding))
+        layout.addStretch()
 
-        self.compterebours = CompteARebours(tps)
+        self.compterebours = CompteARebours(self.tps)
         self.compterebours.changetime[str].connect(self._label_timer.setText)
         self.compterebours.endoftime.connect(actionfin)
         self.compterebours.start()
@@ -328,8 +330,12 @@ class WCompterebours(QtGui.QWidget):
     def is_running(self):
         return self.compterebours.is_running()
 
+    def restart(self):
+        self.compterebours.set_time(self.tps)
+        self.compterebours.start()
 
-class WChat(QtGui.QWidget):
+
+class WChat(QWidget):
     def __init__(self, parent, action_send, size_read=(450, 150),
                  size_write=(450, 60)):
         super(WChat, self).__init__(parent)
@@ -362,7 +368,7 @@ class WChat(QtGui.QWidget):
         self.ui.textEdit_write.setText(msg)
 
 
-class WSlider(QtGui.QWidget):
+class WSlider(QWidget):
     def __init__(self, label, minimum=0, maximum=10, interval=1,
                  automatique=False, autotime=500, parent=None):
         super(WSlider, self).__init__(parent)
@@ -382,7 +388,7 @@ class WSlider(QtGui.QWidget):
         self.ui.lcdNumber.display(self.ui.horizontalSlider.value())
 
         if automatique:
-            self._timer = QtCore.QTimer()
+            self._timer = QTimer()
             self._timer.setSingleShot(True)
             self._timer.timeout.connect(self._changevalue)
             self._timer.start(autotime)
@@ -395,7 +401,7 @@ class WSlider(QtGui.QWidget):
         return self.ui.horizontalSlider.value()
 
 
-class WLineEdit(QtGui.QWidget):
+class WLineEdit(QWidget):
     def __init__(self, parent, label, automatique=False,
                  list_of_possible_values=[u"val {}".format(i) for i in range(5)],
                  autotime=1000):
@@ -410,7 +416,7 @@ class WLineEdit(QtGui.QWidget):
         self.ui.label.setText(label)
 
         if self._automatique:
-            self._timer = QtCore.QTimer()
+            self._timer = QTimer()
             self._timer.setSingleShot(True)
             self._timer.timeout.connect(
                 lambda: self.ui.lineEdit.setText(
@@ -426,45 +432,45 @@ class WLineEdit(QtGui.QWidget):
         return text
 
 
-class WGrid(QtGui.QWidget):
+class WGrid(QWidget):
     def __init__(self, grille, automatique):
-        QtGui.QWidget.__init__(self)
+        QWidget.__init__(self)
         self._grille = grille
         self._grille = grille
         self._is_ok = False
 
-        layout = QtGui.QVBoxLayout()
+        layout = QVBoxLayout()
         self.setLayout(layout)
 
-        widget_grid = QtGui.QWidget()
+        widget_grid = QWidget()
         widget_grid.setStyleSheet("background-color: white; "
                                   "border: 1px solid #D8D8D8;")
         layout.addWidget(widget_grid)
-        gridlayout = QtGui.QGridLayout()
+        gridlayout = QGridLayout()
         for row, l in enumerate(self._grille):
             for col, c in enumerate(l):
-                gridlayout.addWidget(QtGui.QLabel(str(c)), row, col)
+                gridlayout.addWidget(QLabel(str(c)), row, col)
         widget_grid.setLayout(gridlayout)
 
-        layout2 = QtGui.QHBoxLayout()
+        layout2 = QHBoxLayout()
         layout.addLayout(layout2)
 
-        layout2.addWidget(QtGui.QLabel(le2mtrans(u"Number of 1: ")))
+        layout2.addWidget(QLabel(le2mtrans(u"Number of 1: ")))
 
-        self._spin_grille =QtGui.QSpinBox()
+        self._spin_grille =QSpinBox()
         self._spin_grille.setMinimum(0)
         self._spin_grille.setMaximum(100)
         self._spin_grille.setSingleStep(1)
-        self._spin_grille.setButtonSymbols(QtGui.QSpinBox.NoButtons)
+        self._spin_grille.setButtonSymbols(QSpinBox.NoButtons)
         self._spin_grille.setFixedWidth(40)
         layout2.addWidget(self._spin_grille)
 
-        self._pushButton_ok = QtGui.QPushButton(u"Ok")
+        self._pushButton_ok = QPushButton(u"Ok")
         self._pushButton_ok.setFixedWidth(40)
         self._pushButton_ok.clicked.connect(self._check)
         layout2.addWidget(self._pushButton_ok)
 
-        self._label_result = QtGui.QLabel((u"?"))
+        self._label_result = QLabel((u"?"))
         layout2.addWidget(self._label_result)
 
         if automatique:
@@ -490,3 +496,10 @@ class WGrid(QtGui.QWidget):
 
     def is_ok(self):
         return self._is_ok
+
+
+if __name__ == "__main__":
+    app = QApplication(sys.argv)
+    my_win = WCompterebours(None, timedelta(seconds=10), lambda : None)
+    my_win.show()
+    sys.exit(app.exec_())

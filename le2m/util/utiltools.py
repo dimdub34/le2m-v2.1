@@ -266,6 +266,9 @@ class CompteARebours(QObject):
             self._timer.stop()
             self.endoftime.emit()
 
+    def set_time(self, seconds):
+        self._temps = seconds + 1
+
     def stop(self):
         self._timer.stop()
 

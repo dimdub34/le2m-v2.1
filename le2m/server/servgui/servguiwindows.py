@@ -9,7 +9,8 @@ This module contains the server screen.
 # built-in
 import sys
 import os
-from PyQt4 import QtGui, QtCore
+from PyQt4.QtGui import *
+from PyQt4 import QtCore
 import logging
 import platform
 
@@ -23,7 +24,7 @@ from server.servplayers import Joueur
 from servguisrc import servguimain
 from servguitablemodels import TableModelJoueurs
 from servguidialogs import (GuiPartLoad, GuiPartsPlayed,
-    GuiGenres, DDice, DRandint, DHeadtail, DWebview, GuiInformation,
+    GuiGenres, DDice, DRandint, DHeadtail, GuiInformation, #DWebview,
     DUnderstandingVisual, DEditGroups, DDisplayImages, DDisplayVideo)
 from creator import creator
 from extractor import extractor
@@ -38,7 +39,7 @@ logger = logging.getLogger("le2m")
 # ==============================================================================
 
 
-class MenuFile(QtGui.QMenu):
+class MenuFile(QMenu):
     def __init__(self):
         super(MenuFile, self).__init__()
 
@@ -47,8 +48,8 @@ class MenuFile(QtGui.QMenu):
         # ----------------------------------------------------------------------
         # load
         # ----------------------------------------------------------------------
-        self.action_load = QtGui.QAction(le2mtrans(u"Load a part"), self)
-        self.action_load.setShortcut(QtGui.QKeySequence("Ctrl+o"))
+        self.action_load = QAction(le2mtrans(u"Load a part"), self)
+        self.action_load.setShortcut(QKeySequence("Ctrl+o"))
         self.action_load.setToolTip(
             le2mtrans(u"Open a dialog box with a list of parts you can load"))
         self.addAction(self.action_load)
@@ -56,13 +57,13 @@ class MenuFile(QtGui.QMenu):
         # ----------------------------------------------------------------------
         # quit
         # ----------------------------------------------------------------------
-        self.action_quit = QtGui.QAction(le2mtrans(u"Quit"), self)
-        self.action_quit.setShortcut(QtGui.QKeySequence("Ctrl+q"))
+        self.action_quit = QAction(le2mtrans(u"Quit"), self)
+        self.action_quit.setShortcut(QKeySequence("Ctrl+q"))
         self.action_quit.setToolTip(le2mtrans(u"Exit the application"))
         self.addAction(self.action_quit)
 
 
-class MenuExperiment(QtGui.QMenu):
+class MenuExperiment(QMenu):
     def __init__(self):
         super(MenuExperiment, self).__init__()
 
@@ -71,7 +72,7 @@ class MenuExperiment(QtGui.QMenu):
         # ----------------------------------------------------------------------
         # welcome
         # ----------------------------------------------------------------------
-        self.action_welcome = QtGui.QAction(
+        self.action_welcome = QAction(
             le2mtrans(u"Display welcome screen"), self)
         self.action_welcome.setToolTip(
             le2mtrans(u"Display the welcome screen on participants' screen"))
@@ -80,14 +81,14 @@ class MenuExperiment(QtGui.QMenu):
         # ----------------------------------------------------------------------
         # understanding questionnaire
         # ----------------------------------------------------------------------
-        self.action_understand_load = QtGui.QAction(
+        self.action_understand_load = QAction(
             le2mtrans(u"Load an understanding questionnaire"), self)
         self.action_understand_load.setToolTip(
             le2mtrans(u"Open a dialog box to select an understanding "
                       u"questionnaire (xml file)"))
         self.addAction(self.action_understand_load)
 
-        self.action_understand_run = QtGui.QAction(
+        self.action_understand_run = QAction(
             le2mtrans(u"Start the loaded understanding questionnaire"), self)
         self.action_understand_run.setToolTip(
             le2mtrans(u"Start the loaded understanding questionnaire"))
@@ -96,7 +97,7 @@ class MenuExperiment(QtGui.QMenu):
         # ----------------------------------------------------------------------
         # final questionnaire
         # ----------------------------------------------------------------------
-        self.action_finalquest = QtGui.QAction(
+        self.action_finalquest = QAction(
             le2mtrans(u"Display the final questionnaire"), self)
         self.action_finalquest.setToolTip(
             le2mtrans(u"Display the final questionnaire on participants' "
@@ -106,56 +107,56 @@ class MenuExperiment(QtGui.QMenu):
         # ----------------------------------------------------------------------
         # final questionnaire
         # ----------------------------------------------------------------------
-        self.action_payoffs = QtGui.QAction(le2mtrans(u"Payoffs"), self)
+        self.action_payoffs = QAction(le2mtrans(u"Payoffs"), self)
         self.action_payoffs.setToolTip(
             le2mtrans(u"Display a dialog box with the payoffs of each player"))
         self.addAction(self.action_payoffs)
 
 
-class MenuPart(QtGui.QMenu):
+class MenuPart(QMenu):
     def __init__(self):
         super(MenuPart, self).__init__()
 
         self.setTitle(le2mtrans(u"Part"))
 
 
-class MenuEdit(QtGui.QMenu):
+class MenuEdit(QMenu):
     def __init__(self):
         super(MenuEdit, self).__init__()
         
         self.setTitle(le2mtrans(u"Edit"))
         
-        self.action_clear_server_list = QtGui.QAction(
+        self.action_clear_server_list = QAction(
             le2mtrans(u"Clear the server list"), self)
         self.action_clear_server_list.setToolTip(
             le2mtrans(u"Clear the server list"))
         self.addAction(self.action_clear_server_list)
         
-        self.action_clear_client_list = QtGui.QAction(
+        self.action_clear_client_list = QAction(
             le2mtrans(u"Clear the client list"), self)
         self.action_clear_client_list.setToolTip(
             le2mtrans(u"Clear the client list"))
         self.addAction(self.action_clear_client_list)
 
 
-class MenuOptions(QtGui.QMenu):
+class MenuOptions(QMenu):
     def __init__(self):
         super(MenuOptions, self).__init__()
 
         self.setTitle(u"Options")
 
-        self.action_stop_repetitions = QtGui.QAction(
+        self.action_stop_repetitions = QAction(
             le2mtrans(u"Stop after this period"), self)
         self.action_stop_repetitions.setToolTip(
             le2mtrans(u"Clic on this menu to stop the part after this period"))
         self.action_stop_repetitions.setCheckable(True)
         self.addAction(self.action_stop_repetitions)
 
-        self.action_edit_groups = QtGui.QAction(
+        self.action_edit_groups = QAction(
             le2mtrans(u"Edit groups"), self)
         self.addAction(self.action_edit_groups)
 
-        self.action_gender = QtGui.QAction(
+        self.action_gender = QAction(
             le2mtrans(u"Set participants gender in the application"), self)
         self.action_gender.setToolTip(
             le2mtrans(u"Display a dialog box that allows to set the gender of "
@@ -163,7 +164,7 @@ class MenuOptions(QtGui.QMenu):
         self.addAction(self.action_gender)
 
 
-class MenuTools(QtGui.QMenu):
+class MenuTools(QMenu):
     def __init__(self):
         super(MenuTools, self).__init__()
 
@@ -172,7 +173,7 @@ class MenuTools(QtGui.QMenu):
         # ----------------------------------------------------------------------
         # creator
         # ----------------------------------------------------------------------
-        self.action_creator = QtGui.QAction(
+        self.action_creator = QAction(
             le2mtrans(u"Create a new part"), self)
         self.action_creator.setToolTip(
             le2mtrans(u"Display a dialog box in which you can configure the "
@@ -183,7 +184,7 @@ class MenuTools(QtGui.QMenu):
         # ----------------------------------------------------------------------
         # extractor
         # ----------------------------------------------------------------------
-        self.action_extractor = QtGui.QAction(
+        self.action_extractor = QAction(
             le2mtrans(u"Extract some experimental data"), self)
         self.action_extractor.setToolTip(
             le2mtrans(u"Open a dialog box for selection an sqlite file to "
@@ -194,7 +195,7 @@ class MenuTools(QtGui.QMenu):
         # ----------------------------------------------------------------------
         # understanding questionnaire creation
         # ----------------------------------------------------------------------
-        self.action_questcomp = QtGui.QAction(
+        self.action_questcomp = QAction(
             le2mtrans(u"Create/Edit an understanding questionnaire"),
             self)
         self.action_questcomp.setToolTip(
@@ -203,7 +204,7 @@ class MenuTools(QtGui.QMenu):
         self.action_questcomp.triggered.connect(questcomp.questcomp)
         self.addAction(self.action_questcomp)
 
-        self.action_display_image = QtGui.QAction(
+        self.action_display_image = QAction(
             le2mtrans(u"Display images on clients' screen"), self)
         self.action_display_image.setToolTip(
             le2mtrans(u"You have to select a directory with images and it will "
@@ -212,7 +213,7 @@ class MenuTools(QtGui.QMenu):
                       u"network"))
         self.addAction(self.action_display_image)
 
-        self.action_display_video = QtGui.QAction(
+        self.action_display_video = QAction(
             le2mtrans(u"Display a video on clients' screen"), self)
         self.action_display_video.setToolTip(le2mtrans(
             u"Select a video and a dialog will open. You will be able to "
@@ -224,32 +225,32 @@ class MenuTools(QtGui.QMenu):
         # ----------------------------------------------------------------------
         # random draws: dice, head and tail, number
         # ----------------------------------------------------------------------
-        self.action_dice = QtGui.QAction(le2mtrans(u"Dice roller"), self)
+        self.action_dice = QAction(le2mtrans(u"Dice roller"), self)
         self.action_dice.setToolTip(le2mtrans(u"Roll a dice"))
         self.addAction(self.action_dice)
 
-        self.action_randint = QtGui.QAction(le2mtrans(u"Random number"), self)
+        self.action_randint = QAction(le2mtrans(u"Random number"), self)
         self.action_randint.setToolTip(le2mtrans(u"Drawn a random number"))
         self.addAction(self.action_randint)
 
-        self.action_head_and_tail = QtGui.QAction(
+        self.action_head_and_tail = QAction(
             le2mtrans(u"Head and Tail"), self)
         self.action_head_and_tail.setToolTip(le2mtrans(u"Play head and tail"))
         self.addAction(self.action_head_and_tail)
 
 
-class MenuHelp(QtGui.QMenu):
+class MenuHelp(QMenu):
     def __init__(self):
         super(MenuHelp, self).__init__()
 
         self.setTitle(le2mtrans(u"About"))
 
-        self.action_help = QtGui.QAction(le2mtrans(u"Help"), self)
-        self.action_help.setToolTip(
-            le2mtrans(u"Display a window with a text of help"))
-        self.addAction(self.action_help)
+        # self.action_help = QAction(le2mtrans(u"Help"), self)
+        # self.action_help.setToolTip(
+        #     le2mtrans(u"Display a window with a text of help"))
+        # self.addAction(self.action_help)
 
-        self.action_about = QtGui.QAction(le2mtrans(u"About"), self)
+        self.action_about = QAction(le2mtrans(u"About"), self)
         self.addAction(self.action_about)
 
 
@@ -258,40 +259,33 @@ class MenuHelp(QtGui.QMenu):
 # ==============================================================================
 
 
-class TabInformations(QtGui.QWidget):
+class TabInformations(QWidget):
     def __init__(self):
         super(TabInformations, self).__init__()
 
-        self.layout = QtGui.QVBoxLayout()
+        self.layout = QVBoxLayout()
         self.setLayout(self.layout)
 
-        self.label_soft = QtGui.QLabel("LE2M")
+        self.label_soft = QLabel("LE2M")
         self.label_soft.setStyleSheet("color: brown; font-weight: bold;font-size:40px;")
         self.layout.addWidget(self.label_soft)
 
         self.layout.addSpacerItem(
-            QtGui.QSpacerItem(5, 20, QtGui.QSizePolicy.Fixed,
-                              QtGui.QSizePolicy.Expanding))
+            QSpacerItem(5, 20, QSizePolicy.Fixed,
+                              QSizePolicy.Expanding))
 
-        self.img_layout = QtGui.QHBoxLayout()
-        self.img_layout.addSpacerItem(
-            QtGui.QSpacerItem(20, 5, QtGui.QSizePolicy.Expanding,
-                              QtGui.QSizePolicy.Fixed))
-        self.img = QtGui.QPixmap()
+        self.img_layout = QHBoxLayout()
+        self.img = QPixmap()
         self.img.load(params.getp("LABPICTURE"))
-        self.img_label = QtGui.QLabel()
+        self.img  = self.img.scaledToWidth(800)
+        self.img_label = QLabel()
         self.img_label.setPixmap(self.img)
-        self.img_layout.addWidget(self.img_label)
-        self.img_layout.addSpacerItem(
-            QtGui.QSpacerItem(20, 5, QtGui.QSizePolicy.Expanding,
-                              QtGui.QSizePolicy.Fixed))
+        self.img_layout.addWidget(self.img_label, 0, QtCore.Qt.AlignCenter)
         self.layout.addLayout(self.img_layout)
 
-        self.layout.addSpacerItem(
-            QtGui.QSpacerItem(5, 20, QtGui.QSizePolicy.Fixed,
-                              QtGui.QSizePolicy.Expanding))
+        self.layout.addStretch()
 
-        self.label_infos = QtGui.QLabel()
+        self.label_infos = QLabel()
         self.label_infos.setText(
             "OS: {} {} | Python version: {}".format(
                 platform.uname()[0], platform.uname()[2],
@@ -299,63 +293,63 @@ class TabInformations(QtGui.QWidget):
         self.layout.addWidget(self.label_infos)
 
 
-class TabClients(QtGui.QWidget):
+class TabClients(QWidget):
     def __init__(self):
         super(TabClients, self).__init__()
 
-        self.layout = QtGui.QVBoxLayout()
+        self.layout = QVBoxLayout()
         self.setLayout(self.layout)
 
-        self.label_connected = QtGui.QLabel(
+        self.label_connected = QLabel(
             le2mtrans(u"Nb. connected") + u": 0")
         self.layout.addWidget(self.label_connected)
 
-        self.clients_table = QtGui.QTableView()
+        self.clients_table = QTableView()
         self.layout.addWidget(self.clients_table)
         self.clients_table_model = TableModelJoueurs()
         self.clients_table.setModel(self.clients_table_model)
         self.clients_table.horizontalHeader().\
-            setResizeMode(QtGui.QHeaderView.Stretch)
+            setResizeMode(QHeaderView.Stretch)
         self.clients_table.horizontalHeader().setClickable(True)
         self.clients_table.horizontalHeader().sectionClicked[int]. \
             connect(self.clients_table_model.inverse)
 
 
-class TabLists(QtGui.QWidget):
+class TabLists(QWidget):
     def __init__(self):
         super(TabLists, self).__init__()
         
-        self.layout = QtGui.QHBoxLayout()
+        self.layout = QHBoxLayout()
         self.setLayout(self.layout)
         
         # ----------------------------------------------------------------------
         # server
         # ----------------------------------------------------------------------
-        self.list_server_layout = QtGui.QVBoxLayout()
+        self.list_server_layout = QVBoxLayout()
         self.layout.addLayout(self.list_server_layout)
-        self.label_list_server = QtGui.QLabel(le2mtrans(u"Server"))
+        self.label_list_server = QLabel(le2mtrans(u"Server"))
         self.list_server_layout.addWidget(self.label_list_server)
-        self.list_server = QtGui.QListWidget()
+        self.list_server = QListWidget()
         self.list_server_layout.addWidget(self.list_server)
         
         # ----------------------------------------------------------------------
         # client
         # ----------------------------------------------------------------------
-        self.list_client_layout = QtGui.QVBoxLayout()
+        self.list_client_layout = QVBoxLayout()
         self.layout.addLayout(self.list_client_layout)
-        self.label_list_client = QtGui.QLabel(le2mtrans(u"Client"))
+        self.label_list_client = QLabel(le2mtrans(u"Client"))
         self.list_client_layout.addWidget(self.label_list_client)
-        self.list_client = QtGui.QListWidget()
+        self.list_client = QListWidget()
         self.list_client_layout.addWidget(self.list_client)
 
         # ----------------------------------------------------------------------
         # wait
         # ----------------------------------------------------------------------
-        self.list_wait_layout = QtGui.QVBoxLayout()
+        self.list_wait_layout = QVBoxLayout()
         self.layout.addLayout(self.list_wait_layout)
-        self.label_list_wait = QtGui.QLabel(le2mtrans(u"Wait"))
+        self.label_list_wait = QLabel(le2mtrans(u"Wait"))
         self.list_wait_layout.addWidget(self.label_list_wait)
-        self.list_wait = QtGui.QListWidget()
+        self.list_wait = QListWidget()
         self.list_wait.setMaximumWidth(350)
         self.list_wait_layout.addWidget(self.list_wait)
 
@@ -365,13 +359,13 @@ class TabLists(QtGui.QWidget):
 # ==============================================================================
 
 
-class MainWindow(QtGui.QMainWindow):
+class MainWindow(QMainWindow):
     def __init__(self, le2msrv):
         super(MainWindow, self).__init__()
 
         self.le2msrv = le2msrv
-        self.red_icon = QtGui.QIcon(os.path.join(params.getp("IMGDIR"), "red.png"))
-        self.green_icon = QtGui.QIcon(os.path.join(params.getp("IMGDIR"), "green.png"))
+        self.red_icon = QIcon(os.path.join(params.getp("IMGDIR"), "red.png"))
+        self.green_icon = QIcon(os.path.join(params.getp("IMGDIR"), "green.png"))
         self.players_wait = list()
 
         # ----------------------------------------------------------------------
@@ -396,15 +390,15 @@ class MainWindow(QtGui.QMainWindow):
         # ----------------------------------------------------------------------
         # main widget
         # ----------------------------------------------------------------------
-        self.main_widget = QtGui.QWidget()
+        self.main_widget = QWidget()
         self.setCentralWidget(self.main_widget)
-        self.layout = QtGui.QVBoxLayout()
+        self.layout = QVBoxLayout()
         self.main_widget.setLayout(self.layout)
 
         # ----------------------------------------------------------------------
         # tabs
         # ----------------------------------------------------------------------
-        self.tab_widget = QtGui.QTabWidget()
+        self.tab_widget = QTabWidget()
         self.layout.addWidget(self.tab_widget)
         self.tab_infos = TabInformations()
         self.tab_infos.label_infos.setText(
@@ -457,7 +451,7 @@ class MainWindow(QtGui.QMainWindow):
         self.menu_tools.action_head_and_tail.triggered.connect(self.head_and_tail)
 
         # menu_help
-        self.menu_help.action_help.triggered.connect(self.display_help)
+        # self.menu_help.action_help.triggered.connect(self.display_help)
         self.menu_help.action_about.triggered.connect(self.display_about)
 
         # signals
@@ -466,6 +460,8 @@ class MainWindow(QtGui.QMainWindow):
         self.le2msrv.gestionnaire_joueurs.playerremoved[object, int].connect(
             self.remove_player_from_tab_clients)
 
+        self.setWindowTitle("LE2M")
+
     # --------------------------------------------------------------------------
     # slots
     # --------------------------------------------------------------------------
@@ -473,7 +469,7 @@ class MainWindow(QtGui.QMainWindow):
     @QtCore.pyqtSlot()
     def load_parts(self):
         if self.le2msrv.gestionnaire_base.is_created():
-            QtGui.QMessageBox.warning(
+            QMessageBox.warning(
                 self, le2mtrans(u"Warning"),
                 le2mtrans(u"The database is already created, you therefore "
                           u"cannot load another part. If you want to, you need "
@@ -492,13 +488,12 @@ class MainWindow(QtGui.QMainWindow):
         """
         Display the welcome screen on remotes
         """
-        reply = QtGui.QMessageBox.question(
+        reply = QMessageBox.question(
             self,
             le2mtrans(u'Confirmation'),
             le2mtrans(u"Display the welcome screen on remotes?"),
-            QtGui.QMessageBox.Yes | QtGui.QMessageBox.No
-        )
-        if reply != QtGui.QMessageBox.Yes:
+            QMessageBox.Yes | QMessageBox.No)
+        if reply != QMessageBox.Yes:
             return
         self.le2msrv.gestionnaire_experience.display_welcome()
 
@@ -510,7 +505,7 @@ class MainWindow(QtGui.QMainWindow):
         :return:
         """
         xmlfile = str(
-            QtGui.QFileDialog.getOpenFileName(
+            QFileDialog.getOpenFileName(
                 self,
                 le2mtrans(u"Select the understanding questionnaire to load"),
                 "", le2mtrans(u"xml file (*.xml)")))
@@ -536,27 +531,27 @@ class MainWindow(QtGui.QMainWindow):
         Start the understanding questionnaire
         """
         if not self.questcomp:
-            QtGui.QMessageBox.warning(
+            QMessageBox.warning(
                 self,
                 le2mtrans(u"Warning"),
                 le2mtrans(u"Please load an understanding questionnaire"))
             return
         if not self.le2msrv.gestionnaire_base.is_created():
-            QtGui.QMessageBox.warning(
+            QMessageBox.warning(
                 self, le2mtrans(u"Warning"),
                 le2mtrans(u"The understanding questionnaire cannot be started "
                           u"before the database is created. You first has to "
                           u"load at least one part."))
             return
-        reply = QtGui.QMessageBox.question(
+        reply = QMessageBox.question(
             self,
             le2mtrans(u'Confirmation'),
             le2mtrans(u"Please confirm you want to start the understanding "
                       u"questionnaire?"),
-            QtGui.QMessageBox.No | QtGui.QMessageBox.Yes)
-        if reply != QtGui.QMessageBox.Yes:
+            QMessageBox.No | QMessageBox.Yes)
+        if reply != QMessageBox.Yes:
             return
-        self.le2msrv.gestionnaire_experience.start_questcomp(self._questcomp)
+        self.le2msrv.gestionnaire_experience.start_questcomp(self.questcomp)
 
     @QtCore.pyqtSlot()
     def display_final_questionnaire(self):
@@ -564,18 +559,18 @@ class MainWindow(QtGui.QMainWindow):
         Display the final questionnaire on remotes
         """
         if not self.le2msrv.gestionnaire_base.is_created():
-            QtGui.QMessageBox.warning(
+            QMessageBox.warning(
                 self,
                 le2mtrans(u"Warning"),
                 le2mtrans(u"There is no database yet. You first need to "
                           u"load at least one part."))
             return
-        confirmation = QtGui.QMessageBox.question(
+        confirmation = QMessageBox.question(
             self,
             le2mtrans(u"Confirmation"),
             le2mtrans(u"Start the final questionnaire?"),
-            QtGui.QMessageBox.Cancel | QtGui.QMessageBox.Ok)
-        if confirmation != QtGui.QMessageBox.Ok:
+            QMessageBox.Cancel | QMessageBox.Ok)
+        if confirmation != QMessageBox.Ok:
             return
         self.le2msrv.gestionnaire_experience.display_finalquestionnaire()
 
@@ -600,7 +595,7 @@ class MainWindow(QtGui.QMainWindow):
     def edit_groups(self):
         joueurs = self._le2mserv.gestionnaire_joueurs.get_players()
         if not joueurs:
-            QtGui.QMessageBox.warning(
+            QMessageBox.warning(
                 self, le2mtrans(u"Warning"),
                 le2mtrans(u"There is no player connected"))
             return
@@ -611,9 +606,9 @@ class MainWindow(QtGui.QMainWindow):
     # menu_tools
     @QtCore.pyqtSlot()
     def display_images(self):
-        directory = QtGui.QFileDialog.getExistingDirectory(
+        directory = QFileDialog.getExistingDirectory(
             self, le2mtrans(u"Select the directory that contains the images "
-                            u"to display"), "", QtGui.QFileDialog.ShowDirsOnly)
+                            u"to display"), "", QFileDialog.ShowDirsOnly)
         if directory is None or str(directory) == '':
             return
         directory = str(directory)
@@ -623,7 +618,7 @@ class MainWindow(QtGui.QMainWindow):
 
     @QtCore.pyqtSlot()
     def display_video(self):
-        video_file = str(QtGui.QFileDialog.getOpenFileName(
+        video_file = str(QFileDialog.getOpenFileName(
             self, le2mtrans(u"Select a video file")))
         if video_file:
             self.dialog_display_video = DDisplayVideo(self.le2msrv, video_file)
@@ -653,16 +648,16 @@ class MainWindow(QtGui.QMainWindow):
                     le2mtrans(u"Tail"))))
 
     # menu_help
-    @QtCore.pyqtSlot()
-    def display_help(self):
-        """
-        Display a dialog with some help on le2m
-        """
-        help_file = os.path.join(params.getp("HTMLDIR"),
-                                    "le2m_aide.html")
-        webscreen = DWebview(
-            help_file, title=le2mtrans(u"Help"), parent=self)
-        webscreen.show()
+    # @QtCore.pyqtSlot()
+    # def display_help(self):
+    #     """
+    #     Display a dialog with some help on le2m
+    #     """
+    #     help_file = os.path.join(params.getp("HTMLDIR"),
+    #                                 "le2m_aide.html")
+    #     webscreen = DWebview(
+    #         help_file, title=le2mtrans(u"Help"), parent=self)
+    #     webscreen.show()
 
     @QtCore.pyqtSlot()
     def display_about(self):
@@ -708,12 +703,12 @@ class MainWindow(QtGui.QMainWindow):
         """
         Ask a confirmation before closing
         """
-        reply = QtGui.QMessageBox.question(
+        reply = QMessageBox.question(
             self,
             le2mtrans(u'Confirmation'),
             le2mtrans(u"Are you sure you want to exit?"),
-            QtGui.QMessageBox.Yes | QtGui.QMessageBox.No)
-        if reply == QtGui.QMessageBox.Yes:
+            QMessageBox.Yes | QMessageBox.No)
+        if reply == QMessageBox.Yes:
             self.le2msrv.arreter()
             event.accept()
         else:
@@ -723,24 +718,24 @@ class MainWindow(QtGui.QMainWindow):
         if txt:
             logger.info(txt)
         try:
-            item = QtGui.QListWidgetItem(QtCore.QString(txt))
+            item = QListWidgetItem(QtCore.QString(txt))
         except TypeError:
-            item = QtGui.QListWidgetItem(QtCore.QString(u""))
+            item = QListWidgetItem(QtCore.QString(u""))
         if txt and kwargs:
-            item.setForeground(QtGui.QColor(kwargs.get("fg", "black")))
-            item.setBackground(QtGui.QColor(kwargs.get("bg", "white")))
+            item.setForeground(QColor(kwargs.get("fg", "black")))
+            item.setBackground(QColor(kwargs.get("bg", "white")))
         self.tab_lists.list_server.addItem(item)
 
     def add_list_client(self, txt, **kwargs):
         if txt:
             logger.info(txt)
         try:
-            item = QtGui.QListWidgetItem(QtCore.QString(txt))
+            item = QListWidgetItem(QtCore.QString(txt))
         except TypeError:
-            item = QtGui.QListWidgetItem(QtCore.QString(u""))
+            item = QListWidgetItem(QtCore.QString(u""))
         if txt and kwargs:
-            item.setForeground(QtGui.QColor(kwargs.get("fg", "black")))
-            item.setBackground(QtGui.QColor(kwargs.get("bg", "white")))
+            item.setForeground(QColor(kwargs.get("fg", "black")))
+            item.setBackground(QColor(kwargs.get("bg", "white")))
         self.tab_lists.list_client.addItem(item)
 
     def set_wait_mode(self, list_players):
@@ -755,7 +750,7 @@ class MainWindow(QtGui.QMainWindow):
         # if the argument is a list
         if isinstance(list_players, list):
             for p in list_players:
-                e = QtGui.QListWidgetItem(self.red_icon, u"")
+                e = QListWidgetItem(self.red_icon, u"")
                 if isinstance(p, Partie):
                     self.players_wait.append(p.joueur)
                     e.setText(repr(p.joueur))
@@ -765,7 +760,7 @@ class MainWindow(QtGui.QMainWindow):
                 self.tab_lists.list_wait.addItem(e)
         # if the argument is only one object
         else:
-            e = QtGui.QListWidgetItem(self.red_icon, u"")
+            e = QListWidgetItem(self.red_icon, u"")
             if isinstance(list_players, Partie):
                 self.players_wait.append(list_players.joueur)
                 e.setText(repr(list_players.joueur))
@@ -808,14 +803,14 @@ class MainWindow(QtGui.QMainWindow):
 # def _add_list(txt, the_list, **kwargs):
 #         if txt:
 #             logger.info(txt)
-#         item = QtGui.QListWidgetItem(QtCore.QString(txt))
+#         item = QListWidgetItem(QtCore.QString(txt))
 #         if txt and kwargs:
-#             item.setForeground(QtGui.QColor(kwargs.get("fg", "black")))
-#             item.setBackground(QtGui.QColor(kwargs.get("bg", "white")))
+#             item.setForeground(QColor(kwargs.get("fg", "black")))
+#             item.setBackground(QColor(kwargs.get("bg", "white")))
 #         the_list.addItem(item)
 
 
-# class GuiServeur(QtGui.QMainWindow):
+# class GuiServeur(QMainWindow):
 #
 #     def __init__(self, le2mserv):
 #         super(GuiServeur, self).__init__()
@@ -841,14 +836,14 @@ class MainWindow(QtGui.QMainWindow):
 #
 #         # picture on the first tab ---------------------------------------------
 #         # try:
-#         #     img_labo_pix = QtGui.QPixmap(params.getp("LABLOGO"))
+#         #     img_labo_pix = QPixmap(params.getp("LABLOGO"))
 #         #     self.ui.label_logo_laboratoire.setPixmap(img_labo_pix)
 #         # except IOError:
 #         #     logger.warning(u"Error while loading LABLOGO picture")
 #         #     self.ui.label_logo_laboratoire.setText(
 #         #         le2mtrans(u"Here the logo of the lab"))
 #         try:
-#             img_leem_pix = QtGui.QPixmap(params.getp("LABPICTURE"))
+#             img_leem_pix = QPixmap(params.getp("LABPICTURE"))
 #             img_leem_pix.scaledToWidth(500)
 #             self.ui.label_image_centre.setPixmap(img_leem_pix)
 #         except IOError:
@@ -857,9 +852,9 @@ class MainWindow(QtGui.QMainWindow):
 #                 le2mtrans(u"Here the main picture"))
 #
 #         # icons for the waiting mode -------------------------------------------
-#         self._icon_rouge = QtGui.QIcon(
+#         self._icon_rouge = QIcon(
 #             os.path.join(params.getp("IMGDIR"), "red.png"))
-#         self._icon_vert = QtGui.QIcon(
+#         self._icon_vert = QIcon(
 #             os.path.join(params.getp("IMGDIR"), "green.png"))
 #         self.ui.label_attente.setText(le2mtrans(u"Decisions"))
 #         self._players_wait_mode = list()
@@ -878,7 +873,7 @@ class MainWindow(QtGui.QMainWindow):
 #         self.tableJoueurs = TableModelJoueurs()
 #         self.ui.tv_clients_connectes.setModel(self.tableJoueurs)
 #         self.ui.tv_clients_connectes.horizontalHeader().\
-#             setResizeMode(QtGui.QHeaderView.Stretch)
+#             setResizeMode(QHeaderView.Stretch)
 #         self.ui.tv_clients_connectes.horizontalHeader().setClickable(True)
 #         self.ui.tv_clients_connectes.horizontalHeader().sectionClicked[int]. \
 #             connect(self.tableJoueurs.inverse)
@@ -888,11 +883,11 @@ class MainWindow(QtGui.QMainWindow):
 #
 #     def _create_menus(self):
 #         # file -----------------------------------------------------------------
-#         self.menu_file = QtGui.QMenu(le2mtrans(u"File"), self.ui.menubar)
+#         self.menu_file = QMenu(le2mtrans(u"File"), self.ui.menubar)
 #         self.ui.menubar.addMenu(self.menu_file)
-#         self.action_loadpart = QtGui.QAction(
+#         self.action_loadpart = QAction(
 #             le2mtrans(u"Load a part"), self.menu_file)
-#         self.action_loadpart.setShortcut(QtGui.QKeySequence("Ctrl+o"))
+#         self.action_loadpart.setShortcut(QKeySequence("Ctrl+o"))
 #         self.action_loadpart.setToolTip(
 #             le2mtrans(u"Open a dialog box with a list of parts you can load"))
 #         self.action_loadpart.triggered.connect(self._load_parts)
@@ -900,17 +895,17 @@ class MainWindow(QtGui.QMainWindow):
 #
 #         self.menu_file.addSeparator()
 #
-#         self.action_quit = QtGui.QAction(le2mtrans(u"Quit"), self.menu_file)
-#         self.action_quit.setShortcut(QtGui.QKeySequence("Ctrl+q"))
+#         self.action_quit = QAction(le2mtrans(u"Quit"), self.menu_file)
+#         self.action_quit.setShortcut(QKeySequence("Ctrl+q"))
 #         self.action_quit.setToolTip(le2mtrans(u"Quit the application"))
 #         self.action_quit.triggered.connect(self.close)
 #         self.menu_file.addAction(self.action_quit)
 #
 #         # experiment -----------------------------------------------------------
-#         self.menu_experiment = QtGui.QMenu(
+#         self.menu_experiment = QMenu(
 #             le2mtrans(u"Experiment"), self.ui.menubar)
 #         self.ui.menubar.addMenu(self.menu_experiment)
-#         self.action_welcome = QtGui.QAction(
+#         self.action_welcome = QAction(
 #             le2mtrans(u"Display welcome screen"), self.menu_experiment)
 #         self.action_welcome.setToolTip(
 #             le2mtrans(u"Display the welcome screen on participants' screen"))
@@ -919,7 +914,7 @@ class MainWindow(QtGui.QMainWindow):
 #
 #         self.menu_experiment.addSeparator()
 #
-#         self.action_loadquestcomp = QtGui.QAction(
+#         self.action_loadquestcomp = QAction(
 #             le2mtrans(u"Load an understanding questionnaire"),
 #             self.menu_experiment)
 #         self.action_loadquestcomp.setToolTip(
@@ -927,7 +922,7 @@ class MainWindow(QtGui.QMainWindow):
 #                       u"questionnaire (xml file)"))
 #         self.action_loadquestcomp.triggered.connect(self._load_questcomp)
 #         self.menu_experiment.addAction(self.action_loadquestcomp)
-#         self.action_startquestcomp = QtGui.QAction(
+#         self.action_startquestcomp = QAction(
 #             le2mtrans(u"Start the understanding questionnaire"),
 #             self.menu_experiment)
 #         self.action_startquestcomp.setToolTip(
@@ -937,14 +932,14 @@ class MainWindow(QtGui.QMainWindow):
 #
 #         self.menu_experiment.addSeparator()
 #
-#         self.action_finalquest = QtGui.QAction(
+#         self.action_finalquest = QAction(
 #             le2mtrans(u"Display final questionnaire"), self.menu_experiment)
 #         self.action_finalquest.setToolTip(
 #             le2mtrans(u"Display the final questionnaire on participants' "
 #                       u"screen"))
 #         self.action_finalquest.triggered.connect(self._display_finalquest)
 #         self.menu_experiment.addAction(self.action_finalquest)
-#         self.action_payoffs = QtGui.QAction(
+#         self.action_payoffs = QAction(
 #             le2mtrans(u"Payoffs"), self.menu_experiment)
 #         self.action_payoffs.setToolTip(
 #             le2mtrans(u"Display a dialog box with the payoffs of each player"))
@@ -954,28 +949,28 @@ class MainWindow(QtGui.QMainWindow):
 #         self.menu_experiment.addAction(self.action_payoffs)
 #
 #         # parts ----------------------------------------------------------------
-#         self.menu_parts = QtGui.QMenu(le2mtrans(u"Parts"), self.ui.menubar)
+#         self.menu_parts = QMenu(le2mtrans(u"Parts"), self.ui.menubar)
 #         self.ui.menubar.addMenu(self.menu_parts)
 #
 #         # edit -----------------------------------------------------------------
-#         self.menu_edit = QtGui.QMenu(le2mtrans(u"Edit"), self.ui.menubar)
+#         self.menu_edit = QMenu(le2mtrans(u"Edit"), self.ui.menubar)
 #         self.ui.menubar.addMenu(self.menu_edit)
-#         self.action_clearsrv = QtGui.QAction(
+#         self.action_clearsrv = QAction(
 #             le2mtrans(u"Clear server list"), self.menu_edit)
 #         self.action_clearsrv.setToolTip(le2mtrans(u"Clear the server list"))
 #         self.action_clearsrv.triggered.connect(self.ui.list_server.clear)
 #         self.menu_edit.addAction(self.action_clearsrv)
-#         self.action_clearclt = QtGui.QAction(
+#         self.action_clearclt = QAction(
 #             le2mtrans(u"Clear client list"), self.menu_edit)
 #         self.action_clearclt.setToolTip(le2mtrans(u"Clear the client list"))
 #         self.action_clearclt.triggered.connect(self.ui.list_client.clear)
 #         self.menu_edit.addAction(self.action_clearclt)
 #
 #         # options --------------------------------------------------------------
-#         self.menu_options = QtGui.QMenu(le2mtrans(u"Options"), self.ui.menubar)
+#         self.menu_options = QMenu(le2mtrans(u"Options"), self.ui.menubar)
 #         self.ui.menubar.addMenu(self.menu_options)
 #
-#         self.action_stoprepetitions = QtGui.QAction(
+#         self.action_stoprepetitions = QAction(
 #             le2mtrans(u"Stop the part after this period"), self.menu_options)
 #         self.action_stoprepetitions.setToolTip(
 #             le2mtrans(u"Clic on this menu to stop the part after this period"))
@@ -983,12 +978,12 @@ class MainWindow(QtGui.QMainWindow):
 #         self.action_stoprepetitions.setCheckable(True)
 #         self.menu_options.addAction(self.action_stoprepetitions)
 #
-#         self.action_edit_groups = QtGui.QAction(
+#         self.action_edit_groups = QAction(
 #             le2mtrans(u"Edit groups"), self.menu_options)
 #         self.action_edit_groups.triggered.connect(self.edit_groups)
 #         self.menu_options.addAction(self.action_edit_groups)
 #
-#         self.action_gender = QtGui.QAction(
+#         self.action_gender = QAction(
 #             le2mtrans(u"Set participants gender in the application"),
 #             self.menu_options)
 #         self.action_gender.setToolTip(
@@ -999,11 +994,11 @@ class MainWindow(QtGui.QMainWindow):
 #
 #         self.menu_experiment.addSeparator()
 #
-#         self.action_drawpart = QtGui.QAction(
+#         self.action_drawpart = QAction(
 #             le2mtrans(u"Draw a part among those played"), self.menu_experiment)
 #         self.action_drawpart.triggered.connect(self._draw_part)
 #         self.menu_options.addAction(self.action_drawpart)
-#         self.action_displaypartspayoffs = QtGui.QAction(
+#         self.action_displaypartspayoffs = QAction(
 #             le2mtrans(u"Display the payoffs of each part"),
 #             self.menu_experiment)
 #         self.action_displaypartspayoffs.setToolTip(
@@ -1015,16 +1010,16 @@ class MainWindow(QtGui.QMainWindow):
 #         self.menu_options.addAction(self.action_displaypartspayoffs)
 #
 #         # tools ----------------------------------------------------------------
-#         self.menu_tools = QtGui.QMenu(le2mtrans(u"Tools"), self.ui.menubar)
+#         self.menu_tools = QMenu(le2mtrans(u"Tools"), self.ui.menubar)
 #         self.ui.menubar.addMenu(self.menu_tools)
-#         self.action_creator = QtGui.QAction(
+#         self.action_creator = QAction(
 #             le2mtrans(u"Create a new part"), self.menu_tools)
 #         self.action_creator.setToolTip(
 #             le2mtrans(u"Display a dialog box in which you can configure the "
 #                       u"part to create"))
 #         self.action_creator.triggered.connect(creator.creator)
 #         self.menu_tools.addAction(self.action_creator)
-#         self.action_questcomp = QtGui.QAction(
+#         self.action_questcomp = QAction(
 #             le2mtrans(u"Create/Edit an understanding questionnaire"),
 #             self.menu_tools)
 #         self.action_questcomp.setToolTip(
@@ -1032,14 +1027,14 @@ class MainWindow(QtGui.QMainWindow):
 #                       u"understanding questionnaire"))
 #         self.action_questcomp.triggered.connect(questcomp.questcomp)
 #         self.menu_tools.addAction(self.action_questcomp)
-#         self.action_extractor = QtGui.QAction(
+#         self.action_extractor = QAction(
 #             le2mtrans(u"Extract some experimental data"), self.menu_tools)
 #         self.action_extractor.setToolTip(
 #             le2mtrans(u"Open a dialog box for selection an sqlite file to "
 #                       u"extract"))
 #         self.action_extractor.triggered.connect(extractor.extractor)
 #         self.menu_tools.addAction(self.action_extractor)
-#         self.action_display_image = QtGui.QAction(
+#         self.action_display_image = QAction(
 #             le2mtrans(u"Display images on clients' screen"), self.menu_tools)
 #         self.action_display_image.setToolTip(
 #             le2mtrans(u"You have to select a directory with images and it will "
@@ -1048,7 +1043,7 @@ class MainWindow(QtGui.QMainWindow):
 #                       u"network"))
 #         self.action_display_image.triggered.connect(self._display_images)
 #         self.menu_tools.addAction(self.action_display_image)
-#         self.action_display_video = QtGui.QAction(
+#         self.action_display_video = QAction(
 #             le2mtrans(u"Display a video on clients' screen"), self.menu_tools)
 #         self.action_display_video.setToolTip(le2mtrans(
 #             u"Select a video and a dialog will open. You will be able to "
@@ -1061,33 +1056,33 @@ class MainWindow(QtGui.QMainWindow):
 #         self.menu_tools.addSeparator()
 #
 #         # random draws: dice, head and tail, number
-#         self.action_dice = QtGui.QAction(
+#         self.action_dice = QAction(
 #             le2mtrans(u"Dice roller"), self.menu_tools)
 #         self.action_dice.setToolTip(le2mtrans(u"Roll a dice"))
 #         self.action_dice.triggered.connect(self._rolldice)
 #         self.menu_tools.addAction(self.action_dice)
 #
-#         self.action_randint = QtGui.QAction(
+#         self.action_randint = QAction(
 #             le2mtrans(u"Random number"), self.menu_tools)
 #         self.action_randint.setToolTip(le2mtrans(u"Drawn a random number"))
 #         self.action_randint.triggered.connect(self._randint)
 #         self.menu_tools.addAction(self.action_randint)
 #
-#         self.action_headtail = QtGui.QAction(
+#         self.action_headtail = QAction(
 #             le2mtrans(u"Head and Tail"), self.menu_tools)
 #         self.action_headtail.setToolTip(le2mtrans(u"Play head and tail"))
 #         self.action_headtail.triggered.connect(self._headtail)
 #         self.menu_tools.addAction(self.action_headtail)
 #
 #         # help -----------------------------------------------------------------
-#         self.menu_help = QtGui.QMenu(le2mtrans(u"Help"), self.ui.menubar)
+#         self.menu_help = QMenu(le2mtrans(u"Help"), self.ui.menubar)
 #         self.ui.menubar.addMenu(self.menu_help)
-#         self.action_help = QtGui.QAction(le2mtrans(u"Help"), self.menu_help)
+#         self.action_help = QAction(le2mtrans(u"Help"), self.menu_help)
 #         self.action_help.setToolTip(
 #             le2mtrans(u"Display a window with a text of help"))
 #         self.action_help.triggered.connect(self._display_help)
 #         self.menu_help.addAction(self.action_help)
-#         self.action_about = QtGui.QAction(le2mtrans(u"About"), self.menu_help)
+#         self.action_about = QAction(le2mtrans(u"About"), self.menu_help)
 #         self.action_about.triggered.connect(self._display_about)
 #         self.menu_help.addAction(self.action_about)
 #
@@ -1101,7 +1096,7 @@ class MainWindow(QtGui.QMainWindow):
 #
 #     def _load_parts(self):
 #         if self._le2mserv.gestionnaire_base.is_created():
-#             QtGui.QMessageBox.warning(
+#             QMessageBox.warning(
 #                 self, le2mtrans(u"Warning"),
 #                 le2mtrans(u"The database is already created, you therefore "
 #                           u"cannot load another part. If you want to, you need "
@@ -1124,20 +1119,20 @@ class MainWindow(QtGui.QMainWindow):
 #         """
 #         Display the welcome screen on remotes
 #         """
-#         reply = QtGui.QMessageBox.question(
+#         reply = QMessageBox.question(
 #             self,
 #             le2mtrans(u'Confirmation'),
 #             le2mtrans(u"Display the welcome screen on remotes?"),
-#             QtGui.QMessageBox.Yes | QtGui.QMessageBox.No
+#             QMessageBox.Yes | QMessageBox.No
 #         )
-#         if reply != QtGui.QMessageBox.Yes:
+#         if reply != QMessageBox.Yes:
 #             return
 #         self._le2mserv.gestionnaire_experience.display_welcome()
 #
 #     def _display_images(self):
-#         directory = QtGui.QFileDialog.getExistingDirectory(
+#         directory = QFileDialog.getExistingDirectory(
 #             self, le2mtrans(u"Select the directory that contains the images "
-#                             u"to display"), "", QtGui.QFileDialog.ShowDirsOnly)
+#                             u"to display"), "", QFileDialog.ShowDirsOnly)
 #         if directory is None or str(directory) == '':
 #             return
 #         directory = str(directory)
@@ -1145,7 +1140,7 @@ class MainWindow(QtGui.QMainWindow):
 #         self._le2mserv.gestionnaire_graphique.display_images(directory)
 #
 #     def _display_video(self):
-#         video_file = str(QtGui.QFileDialog.getOpenFileName(self, le2mtrans(u"Select a video file")))
+#         video_file = str(QFileDialog.getOpenFileName(self, le2mtrans(u"Select a video file")))
 #         if video_file:
 #             self._le2mserv.gestionnaire_graphique.display_video(video_file)
 #
@@ -1153,12 +1148,12 @@ class MainWindow(QtGui.QMainWindow):
 #         """
 #         Parce qu'on demande confirmation avant de quitter
 #         """
-#         reply = QtGui.QMessageBox.question(
+#         reply = QMessageBox.question(
 #             self,
 #             le2mtrans(u'Confirmation'),
 #             le2mtrans(u"Are you sure you want to exit LE2M?"),
-#             QtGui.QMessageBox.Yes | QtGui.QMessageBox.No)
-#         if reply == QtGui.QMessageBox.Yes:
+#             QMessageBox.Yes | QMessageBox.No)
+#         if reply == QMessageBox.Yes:
 #             self._le2mserv.arreter()
 #             event.accept()
 #         else:
@@ -1182,7 +1177,7 @@ class MainWindow(QtGui.QMainWindow):
 #     def edit_groups(self):
 #         joueurs = self._le2mserv.gestionnaire_joueurs.get_players()
 #         if not joueurs:
-#             QtGui.QMessageBox.warning(
+#             QMessageBox.warning(
 #                 self, le2mtrans(u"Warning"),
 #                 le2mtrans(u"There is no player connected"))
 #             return
@@ -1195,18 +1190,18 @@ class MainWindow(QtGui.QMainWindow):
 #         Display the final questionnaire on remotes
 #         """
 #         if not self._le2mserv.gestionnaire_base.is_created():
-#             QtGui.QMessageBox.warning(
+#             QMessageBox.warning(
 #                 self,
 #                 le2mtrans(u"Warning"),
 #                 le2mtrans(u"There is no database yet. You first need to "
 #                           u"load at least one part."))
 #             return
-#         confirmation = QtGui.QMessageBox.question(
+#         confirmation = QMessageBox.question(
 #             self,
 #             le2mtrans(u"Confirmation"),
 #             le2mtrans(u"Start the final questionnaire?"),
-#             QtGui.QMessageBox.Cancel | QtGui.QMessageBox.Ok)
-#         if confirmation != QtGui.QMessageBox.Ok:
+#             QMessageBox.Cancel | QMessageBox.Ok)
+#         if confirmation != QMessageBox.Ok:
 #             return
 #         self._le2mserv.gestionnaire_experience.display_finalquestionnaire()
 #
@@ -1295,7 +1290,7 @@ class MainWindow(QtGui.QMainWindow):
 #         # if the argument is a list
 #         if isinstance(list_players, list):
 #             for p in list_players:
-#                 e = QtGui.QListWidgetItem(self._icon_rouge, u"")
+#                 e = QListWidgetItem(self._icon_rouge, u"")
 #                 if isinstance(p, Partie):
 #                     self._players_wait_mode.append(p.joueur)
 #                     e.setText(repr(p.joueur))
@@ -1305,7 +1300,7 @@ class MainWindow(QtGui.QMainWindow):
 #                 self.ui.listWidget_attente.addItem(e)
 #         # if the argument is only one object
 #         else:
-#             e = QtGui.QListWidgetItem(self._icon_rouge, u"")
+#             e = QListWidgetItem(self._icon_rouge, u"")
 #             if isinstance(list_players, Partie):
 #                 self._players_wait_mode.append(list_players.joueur)
 #                 e.setText(repr(list_players.joueur))
@@ -1393,7 +1388,7 @@ class MainWindow(QtGui.QMainWindow):
 #         :return:
 #         """
 #         xmlfile = str(
-#             QtGui.QFileDialog.getOpenFileName(
+#             QFileDialog.getOpenFileName(
 #                 self,
 #                 le2mtrans(u"Select the understanding questionnaire to load"),
 #                 "", le2mtrans(u"xml file (*.xml)")))
@@ -1419,31 +1414,31 @@ class MainWindow(QtGui.QMainWindow):
 #         Start the understanding questionnaire
 #         """
 #         if not self.questcomp:
-#             QtGui.QMessageBox.warning(
+#             QMessageBox.warning(
 #                 self,
 #                 le2mtrans(u"Warning"),
 #                 le2mtrans(u"Please load an understanding questionnaire"))
 #             return
 #         if not self.le2msrv.gestionnaire_base.is_created():
-#             QtGui.QMessageBox.warning(
+#             QMessageBox.warning(
 #                 self, le2mtrans(u"Warning"),
 #                 le2mtrans(u"The understanding questionnaire cannot be started "
 #                           u"before the database is created. You first has to "
 #                           u"load at least one part."))
 #             return
-#         reply = QtGui.QMessageBox.question(
+#         reply = QMessageBox.question(
 #             self,
 #             le2mtrans(u'Confirmation'),
 #             le2mtrans(u"Please confirm you want to start the understanding "
 #                       u"questionnaire?"),
-#             QtGui.QMessageBox.No | QtGui.QMessageBox.Yes)
-#         if reply != QtGui.QMessageBox.Yes:
+#             QMessageBox.No | QMessageBox.Yes)
+#         if reply != QMessageBox.Yes:
 #             return
 #         self.le2msrv.gestionnaire_experience.start_questcomp(self._questcomp)
 
 
 if __name__ == "__main__":
-    app = QtGui.QApplication(sys.argv)
+    app = QApplication(sys.argv)
     params.setp_appdir("/home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m")
     win = MainWindow(None)
     win.add_list_server("text on server list")

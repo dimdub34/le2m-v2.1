@@ -78,7 +78,8 @@ class IRemote(pb.Referenceable):
         self._payoff_text = val
 
     def remote_set_payoffs(self, in_euros, in_ecus=None):
-        logger.debug(u"{} set_payoffs".format(self.le2mclt.uid))
+        logger.debug(u"{} set_payoffs ({} ecus / {} euros)".format(
+            self.le2mclt.uid, in_ecus or "-", in_euros))
         self.payoff_euros = in_euros
         self.payoff_ecus = in_ecus
         self.payoff_text = clttexts.get_payoff_text(
@@ -92,7 +93,7 @@ class IRemote(pb.Referenceable):
 
 class RemoteBase(pb.Root):
     def __init__(self, le2mclt):
-        self._le2mclt = le2mclt
+        self.le2mclt = le2mclt
 
     def remote_load_parts(self, parts):
         """
@@ -103,38 +104,37 @@ class RemoteBase(pb.Root):
         :param parts: a list where each item is a dict with 3 keys:
         remote_partie_name, remote_classname
         """
-        logger.info(u"{} Parts to load: {}".format(self._le2mclt.uid, parts))
+        logger.info(u"{} Parts to load: {}".format(self.le2mclt.uid, parts))
         for p in parts:
-            if self._le2mclt.get_remote(p):
+            if self.le2mclt.get_remote(p):
                 continue  # the part is already loaded
-            if self._le2mclt.load_remotepart(p):
-                logger.info(u"{} Part {} loaded".format(self._le2mclt.uid,
-                    p["remote_partie_name"]))
+            if self.le2mclt.load_remotepart(p):
+                logger.info(u"{} Part {} loaded".format(self.le2mclt.uid,
+                                                        p["remote_partie_name"]))
             else:
                 logger.critical(
                     le2mtrans(u"Error while loading part {}").format(p))
     
     def remote_set_simulation(self, value):
-        self._le2mclt.simulation = value
-        return self._le2mclt.simulation
+        self.le2mclt.simulation = value
+        return self.le2mclt.simulation
 
     def remote_set_automatique(self, value):
-        self._le2mclt.automatique = value
-        return self._le2mclt.automatique
+        self.le2mclt.automatique = value
+        return self.le2mclt.automatique
 
     def remote_display_welcome(self):
         """ Affichage de l'écran d'accueil sur le poste 
         Cet écran a un bouton "instructions lues" sur lequel les sujets 
         cliquent lorsqu'ils ont fini de lire les instructions.
         """
-        logger.info(u"{} Welcome".format(self._le2mclt.uid))
-        if self._le2mclt.simulation: 
-            logger.info(u"{} Send back 1".format(self._le2mclt.uid))
+        logger.info(u"{} Welcome".format(self.le2mclt.uid))
+        if self.le2mclt.simulation:
+            logger.info(u"{} send Ok".format(self.le2mclt.uid))
             return 1
         else:
             defered = defer.Deferred()
-            ecran_accueil = GuiAccueil(
-                defered, self._le2mclt.automatique, self._le2mclt.screen)
+            ecran_accueil = GuiAccueil(self, defered)
             ecran_accueil.show()
             return defered
 
@@ -143,13 +143,13 @@ class RemoteBase(pb.Root):
         The remote will disconnect from the server and the application (remote
         side) will exit
         """
-        logger.info(u"{} Disconnect".format(self._le2mclt.uid))
+        logger.info(u"{} Disconnect".format(self.le2mclt.uid))
         try:
             if self._finalscreen.isVisible():
                 self._finalscreen.accept()
         except AttributeError:
             pass
-        self._le2mclt.disconnect()
+        self.le2mclt.disconnect()
         return 1
 
     def remote_get_remote(self, partname, remoteclassname):
@@ -159,11 +159,11 @@ class RemoteBase(pb.Root):
         :param remoteclassname:
         :return: Remote instance
         """
-        logger.info(u"{} get_remote".format(self._le2mclt.uid))
-        remote = self._le2mclt.get_remote(partname)
+        logger.info(u"{} get_remote".format(self.le2mclt.uid))
+        remote = self.le2mclt.get_remote(partname)
         if not remote:
-            self._le2mclt.load_part(partname, remoteclassname)
-            remote = self._le2mclt.get_remote(partname)
+            self.le2mclt.load_part(partname, remoteclassname)
+            remote = self.le2mclt.get_remote(partname)
             if not remote:
                 raise ValueError("Problem while loading the remote of part "
                                  "{}".format(partname))
@@ -176,14 +176,14 @@ class RemoteBase(pb.Root):
         :param question
         :return: Deferred
         """
-        logger.info(u"{} Question {}".format(self._le2mclt.uid, question))
-        if self._le2mclt.simulation:
+        logger.info(u"{} Question {}".format(self.le2mclt.uid, question))
+        if self.le2mclt.simulation:
             return random.randint(0, 1)  # faute ou non au hasard
         else:
             defered = defer.Deferred()
             ecran = GuiQuestCompQuest(
-                defered, self._le2mclt.automatique, question,
-                self._le2mclt.screen)
+                defered, self.le2mclt.automatique, question,
+                self.le2mclt.screen)
             ecran.show()
             return defered
             
@@ -195,15 +195,15 @@ class RemoteBase(pb.Root):
         :param screensize: the size of the popup screen
         """
         logger.info(u"Information: {}".format(txt))
-        if self._le2mclt.simulation:
+        if self.le2mclt.simulation:
             return 1
         else:
             defered = defer.Deferred()
-            if self._le2mclt.automatique:
-                popup = GuiPopup(defered, txt, 7000, self._le2mclt.screen,
+            if self.le2mclt.automatique:
+                popup = GuiPopup(defered, txt, 7000, self.le2mclt.screen,
                                  size=screensize)
             else:
-                popup = GuiPopup(defered, txt, 0, self._le2mclt.screen,
+                popup = GuiPopup(defered, txt, 0, self.le2mclt.screen,
                                  size=screensize)
             popup.show()
             return defered
@@ -214,22 +214,22 @@ class RemoteBase(pb.Root):
         else:
             txt = clttexts.get_final_text(final_payoff)
         logger.info(u'Payoff: {}'.format(txt))
-        if self._le2mclt.simulation:
+        if self.le2mclt.simulation:
             return le2mtrans(u"This a comment from the simulation mode")
         else:
             defered = defer.Deferred()
             self._finalscreen = GuiFinal(
-                defered, self._le2mclt.automatique, self._le2mclt.screen, txt)
+                defered, self.le2mclt.automatique, self.le2mclt.screen, txt)
             self._finalscreen.show()
             return defered
             
     def remote_display_popup(self, txt, temps=10000):
-        logger.info(u"{} Popup {}".format(self._le2mclt.uid, txt))
-        if self._le2mclt.simulation:
+        logger.info(u"{} Popup {}".format(self.le2mclt.uid, txt))
+        if self.le2mclt.simulation:
             return 1
         else: 
             popup = GuiPopup(
-                txt, temps, self._le2mclt.screen)
+                txt, temps, self.le2mclt.screen)
             popup.show()
             return 1
             
@@ -237,7 +237,7 @@ class RemoteBase(pb.Root):
         logger.debug("Base: display_payoffs with arg {}".format(dict_of_parts))
         txt = u""
         for k, v in sorted(dict_of_parts.viewitems()):
-            remote = self._le2mclt.get_remote(v)
+            remote = self.le2mclt.get_remote(v)
             if remote:
                 txt += le2mtrans(u"Part") + u" {}: ".format(k) + \
                     remote.payoff_text + u"<br />"

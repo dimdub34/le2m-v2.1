@@ -4,7 +4,7 @@ import logging
 from datetime import datetime
 from twisted.internet import defer
 from sqlalchemy.orm import relationship
-from sqlalchemy import Column, Integer, Float, String, ForeignKey, DateTime
+from sqlalchemy import Column, Integer, Float, String, ForeignKey, DateTime, Boolean
 from server.servbase import Base
 from server.servparties import Partie
 from util.utiltools import get_module_attributes
@@ -25,6 +25,13 @@ class PartieEXPERIENCE_NOM_COURT(Partie):
     EXPERIENCE_NOM_COURT_gain_ecus = Column(Float)
     EXPERIENCE_NOM_COURT_gain_euros = Column(Float)
 
+    EXPERIENCE_NOM_COURT_trial = Column(Boolean)
+    EXPERIENCE_NOM_COURT_sequence = Column(Integer)
+    EXPERIENCE_NOM_COURT_treatment = Column(Integer)
+    EXPERIENCE_NOM_COURT_group = Column(Integer, default=None)
+    EXPERIENCE_NOM_COURT_gain_ecus = Column(Float)
+    EXPERIENCE_NOM_COURT_gain_euros = Column(Float)
+
     def __init__(self, le2mserv, joueur):
         super(PartieEXPERIENCE_NOM_COURT, self).__init__(
             nom="EXPERIENCE_NOM", nom_court="EXPERIENCE_NOM_COURT",
@@ -36,6 +43,7 @@ class PartieEXPERIENCE_NOM_COURT(Partie):
     def configure(self):
         logger.debug(u"{} Configure".format(self.joueur))
         yield (self.remote.callRemote("configure", get_module_attributes(pms)))
+        self.EXPERIENCE_NOM_COURT_treatment = pms.TREATMENT
         self.joueur.info(u"Ok")
 
     @defer.inlineCallbacks
@@ -135,7 +143,6 @@ class RepetitionsEXPERIENCE_NOM_COURT(Base):
 
     EXPERIENCE_NOM_COURT_period = Column(Integer)
     EXPERIENCE_NOM_COURT_period_start_time = Column(DateTime)
-    EXPERIENCE_NOM_COURT_treatment = Column(Integer)
     EXPERIENCE_NOM_COURT_group = Column(Integer)
     EXPERIENCE_NOM_COURT_decision = Column(Integer)
     EXPERIENCE_NOM_COURT_decisiontime = Column(Integer)
@@ -144,7 +151,6 @@ class RepetitionsEXPERIENCE_NOM_COURT(Base):
 
     def __init__(self, period):
         self.EXPERIENCE_NOM_COURT_period_start_time = datetime.now()
-        self.EXPERIENCE_NOM_COURT_treatment = pms.TREATMENT
         self.EXPERIENCE_NOM_COURT_period = period
         self.EXPERIENCE_NOM_COURT_decisiontime = 0
         self.EXPERIENCE_NOM_COURT_periodpayoff = 0

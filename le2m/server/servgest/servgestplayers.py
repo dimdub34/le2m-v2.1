@@ -83,13 +83,13 @@ class GestionnaireJoueurs(pb.Root, QObject):
         """
         # logger.debug(u"get_players with arg {}".format(partname))
         if partname:
-            players = [p.get_part(partname) for p in self._joueurs.viewvalues()]
+            players = [p.get_part(partname) for p in self._joueurs.values()]
             if players.count(None) == len(players):
                 return None
             else:
                 return players
         else:
-            return list(self._joueurs.viewvalues())
+            return list(self._joueurs.values())
 
     def get_joueur(self, joueur_uid):
         try:
@@ -115,14 +115,14 @@ class GestionnaireJoueurs(pb.Root, QObject):
 
     @defer.inlineCallbacks
     def deconnecter_joueurs(self):
-        if self.get_nombre_joueurs > 0:
+        if self.get_nombre_joueurs() > 0:
             logger.info(
                 le2mtrans(u"Disconnection of the players still connected"))
             yield (
                 utiltwisted.forEach(self.get_players(), "disconnect"))
 
     def set_genres(self, dict_genres):
-        for k, v in dict_genres.iteritems():
+        for k, v in dict_genres.items():
             k.set_genre(v)
         hommes = [j for j in self.get_players() if j.genre == HOMME]
         femmes = [j for j in self.get_players() if j.genre == FEMME]

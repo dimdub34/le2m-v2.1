@@ -69,6 +69,6 @@ def setp_appdir(value):
     setp("IMGDIR", os.path.join(getp("APPDIR"), "img"))
     setp("HTMLDIR", os.path.join(getp("APPDIR"), "html"))
     setp("PARTSDIR", os.path.join(getp("APPDIR"), "parts"))
-    setp("LABLOGO", os.path.join(getp("IMGDIR"), "logo_ceem.png"))  # ***
-    setp("LABPICTURE", os.path.join(getp("IMGDIR"), "logo_ceem.png"))  # ***
-    setp("WELCOMEPICTURE", os.path.join(getp("IMGDIR"), "leem.jpg"))  # ***
+    setp("LABLOGO", os.path.join(getp("IMGDIR"), "logo_leem.png"))  # ***
+    setp("LABPICTURE", os.path.join(getp("IMGDIR"), "logo_leem.png"))  # ***
+    setp("WELCOMEPICTURE", os.path.join(getp("IMGDIR"), "logo_leem.png"))  # ***
