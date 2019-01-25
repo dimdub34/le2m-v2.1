@@ -277,6 +277,7 @@ class TabInformations(QWidget):
         self.img_layout = QHBoxLayout()
         self.img = QPixmap()
         self.img.load(params.getp("LABPICTURE"))
+        self.img  = self.img.scaledToWidth(800)
         self.img_label = QLabel()
         self.img_label.setPixmap(self.img)
         self.img_layout.addWidget(self.img_label, 0, QtCore.Qt.AlignCenter)
