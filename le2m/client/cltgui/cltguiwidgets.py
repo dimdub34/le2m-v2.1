@@ -498,6 +498,15 @@ class WGrid(QWidget):
         return self._is_ok
 
 
+class WDoubleSpinBox(QDoubleSpinBox):
+    def __init__(self, nb_decimals=2, min_val=0, max_val=100, width=50):
+        QDoubleSpinBox.__init__(self)
+        self.setDecimals(nb_decimals)
+        self.setMinimum(min_val)
+        self.setMaximum(max_val)
+        self.setButtonSymbols(QSpinBox.NoButtons)
+        self.setMaximumWidth(width)
+
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     my_win = WCompterebours(None, timedelta(seconds=10), lambda : None)
