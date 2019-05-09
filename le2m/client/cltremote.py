@@ -54,6 +54,10 @@ class IRemote(pb.Referenceable):
         self._currentperiod = val
 
     @property
+    def current_period(self):
+        return self._currentperiod
+
+    @property
     def payoff_ecus(self):
         return self._payoff_ecus
 
