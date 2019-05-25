@@ -93,6 +93,7 @@ class GestionnaireBase():
     def session(self):
         return self._session
 
+
 class Session (Base):
     __tablename__ = "sessions"
     id = Column(Integer,  autoincrement=True,  primary_key=True)

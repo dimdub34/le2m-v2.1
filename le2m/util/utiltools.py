@@ -341,6 +341,18 @@ def get_grids(how_much, size):
     return grids
 
 
+def get_formated_time(the_time):
+    """
+
+    :param the_time: should be a time object (from datetime import time)
+    :return: the formated time
+    """
+    with_zero = lambda x: "0{}".format(x) if x < 10 else x
+    return "{}:{}:{}".format(with_zero(the_time.hour),
+                             with_zero(the_time.minute),
+                             with_zero(the_time.second))
+
+
 # ==============================================================================
 # GROUPS
 # ==============================================================================
