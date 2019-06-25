@@ -41,6 +41,7 @@ class Group:
             return self._players.index(player)
         except ValueError:
             logger.warning("ValueError, player: {}".format(player))
+            logger.debug("Group's players: {}".format(self.get_players()))
             return None
 
     def __str__(self):
