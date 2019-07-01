@@ -37,6 +37,10 @@ class IRemote(pb.Referenceable):
     def histo(self):
         return self._histo
 
+    @histo.setter
+    def histo(self, the_list):
+        self.histo = the_list
+
     @property
     def histo_vars(self):
         return self._histo_vars
