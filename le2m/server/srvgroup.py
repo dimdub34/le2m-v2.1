@@ -19,6 +19,9 @@ class Group:
     def get_players(self):
         return self._players
 
+    def get_players_part(self, partname):
+        return [j.get_part(partname) for j in self.get_players()]
+
     def get_player_by_place(self, place):
         """
         Return the player at the given place
