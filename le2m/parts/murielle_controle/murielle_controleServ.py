@@ -23,7 +23,6 @@ class Serveur(object):
     def __init__(self, le2mserv):
         self.le2mserv = le2mserv
         self.current_sequence = 0
-        self.current_period = 0
         self.all = []
         self.the_n = 0  # n=second in continus time and n=period in discrete time
         # menu ---------------------------------------------------------------------------------------------------------
