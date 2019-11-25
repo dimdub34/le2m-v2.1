@@ -86,8 +86,7 @@ class PartieCO(Partie, pb.Referenceable):
     @defer.inlineCallbacks
     def update_data(self, the_n):
         if the_n == 0:
-            self.current_instant.CO_resource = pms.get_ressource(
-                self.current_instant.CO_instant, pms.RESOURCE_INITIAL_STOCK, self.current_instant.CO_extraction)
+            self.current_instant.CO_resource = pms.RESOURCE_INITIAL_STOCK
         else:
             self.current_instant.CO_resource = pms.get_ressource(
                 self.current_instant.CO_instant, self.previous_instant.CO_resource, self.current_instant.CO_extraction)
