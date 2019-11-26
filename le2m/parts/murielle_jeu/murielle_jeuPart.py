@@ -67,7 +67,6 @@ class PartieGA(Partie, pb.Referenceable):
     @defer.inlineCallbacks
     def display_decision(self, the_n):
         if pms.DYNAMIC_TYPE == pms.DISCRETE:
-            self.new_instant(the_n)
             extraction = yield (self.remote.callRemote("display_decision", the_n))
             self.remote_new_extraction(extraction)
         else:

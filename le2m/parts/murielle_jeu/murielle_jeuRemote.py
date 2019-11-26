@@ -30,7 +30,7 @@ class RemoteGA(IRemote, QObject):
         self.resource = PlotData()
         self.text_infos = u""
         self.decision_screen = None
-        self.simulation_extraction = 1  # 0 = myope, 1 = optimum social, 2 = feedback
+        self.simulation_extraction = 2  # 0 = myope, 1 = optimum social, 2 = feedback
 
     def remote_configure(self, params, server_part):
         logger.info(u"{} configure".format(self.le2mclt))

@@ -82,7 +82,7 @@ class Serveur(object):
             group = GroupGA(self.le2mserv, g, m, self.current_sequence)
             self.le2mserv.gestionnaire_base.ajouter(group)
             self.groups.append(group)
-            self.le2mserv.gestionnaire_graphique.infoserv("__ {} __".format(group))
+            self.le2mserv.gestionnaire_graphique.infoserv("G{}".format(group.uid.split("_")[2]))
             for j in m:
                 j.group = group
                 self.le2mserv.gestionnaire_graphique.infoserv("{}".format(j))
@@ -105,8 +105,9 @@ class Serveur(object):
                                                                   "display_decision", self.the_n))
         elif pms.DYNAMIC_TYPE == pms.DISCRETE:
             for period in range(1, pms.NOMBRE_PERIODES + 1):
-                self.the_n += 1
+                self.the_n = period
                 self.le2mserv.gestionnaire_graphique.infoclt([u"Période {}".format(self.the_n)], fg="white", bg="gray")
+                yield (self.le2mserv.gestionnaire_experience.run_func(self.groups, "new_instant", self.the_n))
                 yield (self.le2mserv.gestionnaire_experience.run_step("Decision", self.all, "display_decision",
                                                                       self.the_n))
                 yield (self.le2mserv.gestionnaire_experience.run_func(self.groups, "update_data", self.the_n))
