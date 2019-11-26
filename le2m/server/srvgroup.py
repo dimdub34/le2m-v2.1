@@ -49,3 +49,6 @@ class Group:
 
     def __str__(self):
         return "G{}".format(self.uid.split("_")[2])
+
+    def __repr__(self):
+        return self.__str__()
