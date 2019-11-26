@@ -19,7 +19,7 @@ from twisted.internet.defer import AlreadyCalledError
 import murielle_jeu_params as pms
 import murielle_jeu_texts as texts_CO
 from client.cltgui.cltguiwidgets import (WExplication, WCompterebours)
-from murielle_jeu_texts import trans_CO
+from murielle_jeu_texts import trans_GA
 # le2m
 from util.utili18n import le2mtrans
 from util.utiltools import timedelta_to_time
@@ -101,7 +101,7 @@ class PlotExtraction(QWidget):
         curve_marker = ""
         if pms.DYNAMIC_TYPE == pms.DISCRETE:
             self.graph.set_xlim(-1, pms.NOMBRE_PERIODES + 1)
-            self.graph.set_xlabel(trans_CO(u"Periods"))
+            self.graph.set_xlabel(trans_GA(u"Periods"))
             self.graph.set_xticks(range(0, pms.NOMBRE_PERIODES + 1), 5)
             curve_marker = "."
 
@@ -111,7 +111,7 @@ class PlotExtraction(QWidget):
             self.graph.set_xticks(
                 range(0, int(pms.CONTINUOUS_TIME_DURATION.total_seconds()) + 1,
                       30))
-            self.graph.set_xlabel(trans_CO(u"Time (seconds)"))
+            self.graph.set_xlabel(trans_GA(u"Time (seconds)"))
             curve_marker = ""
 
         # curves
@@ -121,7 +121,7 @@ class PlotExtraction(QWidget):
         self.graph.set_ylim(-0.1, pms.DECISION_MAX + 0.1)
         self.graph.set_yticks(np.arange(0, pms.DECISION_MAX + 0.1, 0.2))
         self.graph.set_ylabel("")
-        self.graph.set_title(trans_CO(u"Extraction"))
+        self.graph.set_title(trans_GA(u"Extraction"))
         self.graph.grid()
         self.canvas.draw()
 
@@ -150,7 +150,7 @@ class PlotResource(QWidget):
         curve_marker = ""
         if pms.DYNAMIC_TYPE == pms.DISCRETE:
             self.graph.set_xlim(-1, pms.NOMBRE_PERIODES + 1)
-            self.graph.set_xlabel(trans_CO(u"Periods"))
+            self.graph.set_xlabel(trans_GA(u"Periods"))
             self.graph.set_xticks(range(0, pms.NOMBRE_PERIODES + 1), 5)
             curve_marker = "."
 
@@ -160,7 +160,7 @@ class PlotResource(QWidget):
             self.graph.set_xticks(
                 range(0, int(pms.CONTINUOUS_TIME_DURATION.total_seconds()) + 1,
                       30))
-            self.graph.set_xlabel(trans_CO(u"Time (seconds)"))
+            self.graph.set_xlabel(trans_GA(u"Time (seconds)"))
             curve_marker = ""
 
         if self.resource.curve is None:
@@ -171,7 +171,7 @@ class PlotResource(QWidget):
         self.graph.set_ylim(0, pms.RESOURCE_INITIAL_STOCK * 3)
         self.graph.set_yticks(range(0, pms.RESOURCE_INITIAL_STOCK * 3 + 1, 5))
         self.graph.set_ylabel("")
-        self.graph.set_title(trans_CO(u"Available resource"))
+        self.graph.set_title(trans_GA(u"Available resource"))
         self.graph.grid()
         self.canvas.draw()
 
@@ -194,14 +194,14 @@ class PlotPayoff(QWidget):
 
         if pms.DYNAMIC_TYPE == pms.DISCRETE:
             self.graph.set_xlim(-1, pms.NOMBRE_PERIODES + 1)
-            self.graph.set_xlabel(trans_CO(u"Periods"))
+            self.graph.set_xlabel(trans_GA(u"Periods"))
             self.graph.set_xticks(range(0, pms.NOMBRE_PERIODES + 1, 5))
             curve_marker = "."
 
         elif pms.DYNAMIC_TYPE == pms.CONTINUOUS:
             self.graph.set_xlim(-5, pms.CONTINUOUS_TIME_DURATION.total_seconds() + 5)
             self.graph.set_xticks(range(0, int(pms.CONTINUOUS_TIME_DURATION.total_seconds()) + 1, 30))
-            self.graph.set_xlabel(trans_CO(u"Time (seconds)"))
+            self.graph.set_xlabel(trans_GA(u"Time (seconds)"))
 
         if self.payoffs.curve is None:
             self.payoffs.curve, = self.graph.plot(self.payoffs.xdata, self.payoffs.ydata, "-k", marker=curve_marker)
@@ -209,7 +209,7 @@ class PlotPayoff(QWidget):
         self.graph.set_ylim(0, 250)
         self.graph.set_yticks(range(0, 251, 25))
         self.graph.set_ylabel("")
-        self.graph.set_title(trans_CO(u"Part payoff"))
+        self.graph.set_title(trans_GA(u"Part payoff"))
         self.graph.grid()
         self.canvas.draw()
 
@@ -241,8 +241,10 @@ class GuiInitialExtraction(QDialog):
         if self.remote.le2mclt.automatique:
             if self.remote.simulation_extraction == 0:
                 self.slider_area.setValue(pms.get_extraction_my(self.remote.current_instant))
-            else:
+            elif self.remote.simulation_extraction == 1:
                 self.slider_area.setValue(pms.get_extraction_os(self.remote.current_instant))
+            else:
+                self.slider_area.setValue(pms.get_extraction_feed(self.remote.current_instant))
             self.timer_automatique = QTimer()
             self.timer_automatique.timeout.connect(buttons.button(QDialogButtonBox.Ok).click)
             self.timer_automatique.start(3000)
@@ -254,7 +256,7 @@ class GuiInitialExtraction(QDialog):
             pass
         val = self.slider_area.value()
         if not self.remote.le2mclt.automatique:
-            confirmation = QMessageBox.question(self, "Confirmation", trans_CO(u"Do you confirm your choice?"),
+            confirmation = QMessageBox.question(self, "Confirmation", trans_GA(u"Do you confirm your choice?"),
                                                 QMessageBox.No | QMessageBox.Yes)
             if confirmation != QMessageBox.Yes:
                 return
@@ -264,11 +266,6 @@ class GuiInitialExtraction(QDialog):
 
     def reject(self):
         pass
-
-
-# ==============================================================================
-# GAME SCREEN
-# ==============================================================================
 
 
 class GuiDecision(QDialog):
@@ -339,7 +336,7 @@ class GuiDecision(QDialog):
         # FOOT AREA
         # ----------------------------------------------------------------------
 
-        self.setWindowTitle(trans_CO(u"Decision"))
+        self.setWindowTitle(trans_GA(u"Decision"))
 
         if pms.DYNAMIC_TYPE == pms.CONTINUOUS:
             self.extract_dec.slider.sliderReleased.connect(self.send_extrac)
@@ -352,8 +349,10 @@ class GuiDecision(QDialog):
         if pms.DYNAMIC_TYPE == pms.DISCRETE and self.remote.le2mclt.automatique:
             if self.remote.simulation_extraction == 0:
                 self.extract_dec.setValue(pms.get_extraction_my(self.remote.current_instant))
-            else:
+            elif self.remote.simulation_extraction == 1:
                 self.extract_dec.setValue(pms.get_extraction_os(self.remote.current_instant))
+            else:
+                self.extract_dec.setValue(pms.get_extraction_feed(self.remote.current_instant))
 
         self.remote.end_of_time.connect(self.end_of_time)
 
@@ -372,8 +371,10 @@ class GuiDecision(QDialog):
         if self.remote.le2mclt.automatique:
             if self.remote.simulation_extraction == 0:
                 self.extract_dec.setValue(pms.get_extraction_my(self.remote.current_instant))
-            else:
+            elif self.remote.simulation_extraction == 1:
                 self.extract_dec.setValue(pms.get_extraction_os(self.remote.current_instant))
+            else:
+                self.extract_dec.setValue(pms.get_extraction_feed(self.remote.current_instant))
         self.plot_extraction.canvas.draw()
         self.plot_resource.canvas.draw()
         self.plot_payoff.canvas.draw()

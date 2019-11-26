@@ -88,8 +88,10 @@ class Serveur(object):
                 self.le2mserv.gestionnaire_graphique.infoserv("{}".format(j))
 
         # INITIAL EXTRACTION -------------------------------------------------------------------------------------------
+        yield (self.le2mserv.gestionnaire_experience.run_func(self.groups, "new_instant", 0))
         yield (self.le2mserv.gestionnaire_experience.run_step(trans_GA(u"Initial extraction"), self.all,
                                                               "set_initial_extraction"))
+        yield (self.le2mserv.gestionnaire_experience.run_func(self.groups, "update_data", 0))
 
         # START GAME: loop every second or period ----------------------------------------------------------------------
         self.le2mserv.gestionnaire_graphique.infoserv("Start time: {}".format(datetime.now().strftime("%H:%M:%S")))

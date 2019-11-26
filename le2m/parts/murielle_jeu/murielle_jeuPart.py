@@ -60,11 +60,9 @@ class PartieGA(Partie, pb.Referenceable):
 
     @defer.inlineCallbacks
     def set_initial_extraction(self):
-        self.new_instant(0)
         self.current_instant.GA_extraction = yield (self.remote.callRemote("set_initial_extraction"))
         self.joueur.info(self.current_instant.GA_extraction)
         self.joueur.remove_waitmode()
-        yield(self.update_data(0))
 
     @defer.inlineCallbacks
     def display_decision(self, the_n):

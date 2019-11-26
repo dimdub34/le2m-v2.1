@@ -30,7 +30,7 @@ class RemoteGA(IRemote, QObject):
         self.resource = PlotData()
         self.text_infos = u""
         self.decision_screen = None
-        self.simulation_extraction = int(self.le2mclt.uid.split("_")[2]) % 2  # 0 = myope, 1 = optimum social
+        self.simulation_extraction = 1  # 0 = myope, 1 = optimum social, 2 = feedback
 
     def remote_configure(self, params, server_part):
         logger.info(u"{} configure".format(self.le2mclt))
@@ -55,10 +55,12 @@ class RemoteGA(IRemote, QObject):
 
     @defer.inlineCallbacks
     def send_simulation(self):
-        if self.simulation_extraction:
+        if self.simulation_extraction == 0:
             extraction = pms.get_extraction_os(self.current_instant)
-        else:
+        elif self.simulation_extraction == 1:
             extraction = pms.get_extraction_my(self.current_instant)
+        else:
+            extraction = pms.get_extraction_feed(self.current_instant)
         logger.info(u"{} Send {}".format(self._le2mclt.uid, extraction))
         yield(self.server_part.callRemote("new_extraction", extraction))
 
@@ -77,10 +79,12 @@ class RemoteGA(IRemote, QObject):
 
             # discrete
             elif pms.DYNAMIC_TYPE == pms.DISCRETE:
-                if self.simulation_extraction:
+                if self.simulation_extraction == 0:
                     extraction = pms.get_extraction_os(self.current_instant)
-                else:
+                elif self.simulation_extraction == 1:
                     extraction = pms.get_extraction_my(self.current_instant)
+                else:
+                    extraction = pms.get_extraction_feed(self.current_instant)
                 logger.info(u"{} Send {}".format(self.le2mclt, extraction))
                 return extraction
 
@@ -96,19 +100,19 @@ class RemoteGA(IRemote, QObject):
             return defered
 
     def remote_update_data(self, instant_infos):
-        self.current_instant = instant_infos["CO_instant"]
+        self.current_instant = instant_infos["GA_instant"]
         # extraction
         self.extractions.add_x(self.current_instant)
-        self.extractions.add_y(instant_infos["CO_extraction"])
+        self.extractions.add_y(instant_infos["GA_extraction"])
         # resource
         self.resource.add_x(self.current_instant)
-        self.resource.add_y(instant_infos["CO_resource"])
+        self.resource.add_y(instant_infos["GA_resource"])
         # instant payoff
         self.payoff_instant.add_x(self.current_instant)
-        self.payoff_instant.add_y(instant_infos["CO_instant_payoff"])
+        self.payoff_instant.add_y(instant_infos["GA_instant_payoff"])
         # part payoff
         self.payoff_part.add_x(self.current_instant)
-        self.payoff_part.add_y(instant_infos["CO_part_payoff"])
+        self.payoff_part.add_y(instant_infos["GA_part_payoff"])
 
         # update curves
         try:
@@ -120,17 +124,17 @@ class RemoteGA(IRemote, QObject):
 
         # text information
         old = self.text_infos
-        the_time_str = texts_CO.trans_CO(u"Instant") if \
+        the_time_str = texts_CO.trans_GA(u"Instant") if \
             pms.DYNAMIC_TYPE == pms.CONTINUOUS else \
-            texts_CO.trans_CO(u"Period")
+            texts_CO.trans_GA(u"Period")
         self.text_infos = the_time_str + u": {}".format(self.current_instant) + \
-                          u"<br>" + texts_CO.trans_CO(u"Extraction") + \
+                          u"<br>" + texts_CO.trans_GA(u"Extraction") + \
                           u": {:.2f}".format(self.extractions.ydata[-1]) + \
-                          u"<br>" + texts_CO.trans_CO(u"Available resource") + \
+                          u"<br>" + texts_CO.trans_GA(u"Available resource") + \
                           u": {:.2f}".format(self.resource.ydata[-1]) + \
-                          u"<br>" + texts_CO.trans_CO(u"Instant payoff") + \
+                          u"<br>" + texts_CO.trans_GA(u"Instant payoff") + \
                           u": {:.2f}".format(self.payoff_instant.ydata[-1]) + \
-                          u"<br>" + texts_CO.trans_CO(u"Part payoff") + \
+                          u"<br>" + texts_CO.trans_GA(u"Part payoff") + \
                           u": {:.2f}".format(self.payoff_part.ydata[-1])
         self.text_infos += u"<br>{}<br>{}".format(20 * "-", old)
 

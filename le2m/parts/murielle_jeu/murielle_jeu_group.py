@@ -28,11 +28,12 @@ class GroupGA(Base, Group):
 
     def __init__(self, le2mserv, group_id, player_list, sequence):
         Group.__init__(self, le2mserv, uid=group_id, players=player_list)
+        self.le2mserv = le2mserv
         self.GA_dynamic_type = pms.DYNAMIC_TYPE
         self.GA_sequence = sequence
         self.GA_treatment = pms.TREATMENT
         self.GA_trial = pms.PARTIE_ESSAI
-        for p in self.get_players_parts("murielle_jeu"):  # add group.uid to players.group field
+        for p in self.get_players_part("murielle_jeu"):  # add group.uid to players.group field
             p.GA_group = self.uid
 
     def new_instant(self, the_n):
@@ -45,23 +46,24 @@ class GroupGA(Base, Group):
             logger.debug("previous_instant: {}".format(self.previous_instant.to_dict()))
         self.le2mserv.gestionnaire_base.ajouter(self.current_instant)
         self.instants.append(self.current_instant)
+        for p in self.get_players_part("murielle_jeu"):
+            p.new_instant(the_n)
 
     @defer.inlineCallbacks
     def update_data(self, the_n):
         self.current_instant.GA_extraction = np.sum([p.current_instant.GA_extraction for p in self.get_players_part("murielle_jeu")])
         if the_n == 0:
-            self.current_instant.GA_ressource = pms.get_ressource(
-                self.current_instant.GA_instant, pms.RESOURCE_INITIAL_STOCK, self.current_instant.GA_extraction)
+            self.current_instant.GA_ressource = pms.RESOURCE_INITIAL_STOCK
         else:
-            if self.current_instant.GA_extraction > self.previous_instant.GA_resource:
+            if self.current_instant.GA_extraction > self.previous_instant.GA_ressource:
                 for p in self.get_players_part("murielle_jeu"):
                     p.current_instant.GA_extraction = 0
                 self.current_instant.GA_extraction = 0
             self.current_instant.GA_ressource = pms.get_ressource(
-                self.current_instant.GA_instant, self.previous_instant.GA_resource, self.current_instant.GA_extraction)
+                self.current_instant.GA_instant, self.previous_instant.GA_ressource, self.current_instant.GA_extraction)
         logger.debug("current_instant: {}".format(self.current_instant.to_dict()))
         yield (self.le2mserv.gestionnaire_experience.run_func(self.get_players_part("murielle_jeu"), "update_data",
-                                                              self.the_n, self.current_instant.GA_ressource))
+                                                              the_n, self.current_instant.GA_ressource))
 
 
 class GroupInstantsGA(Base):

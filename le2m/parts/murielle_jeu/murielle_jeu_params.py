@@ -51,7 +51,7 @@ DECISION_STEP = 0.01
 
 PARTIE_ESSAI = False
 
-DYNAMIC_TYPE = DISCRETE
+DYNAMIC_TYPE = CONTINUOUS
 # continuous game
 CONTINUOUS_TIME_DURATION = timedelta(seconds=600)  # can be changed in config screen
 # time for the player to take a decision
@@ -160,13 +160,20 @@ def get_infinite_payoff(n, resource, extraction):
 
 def get_extraction_os(n):
     instant = n * tau
-    if instant < 19.48:
-        return float(
-            0.5487208184 * np.exp(0.01935312368 * instant) - 1.058211486 * np.exp(-0.01435312368 * instant) + pluie)
+    if instant < 3.343457379:
+        return 0
+    elif 3.343457379 <= instant < 14.47467286:
+        return float(0.3690927261 * np.exp(0.02620243776 * instant) - 0.7330529734 * np.exp(-0.02120243776 * instant) +
+                    (pluie / 2))
     else:
-        return pluie
+        return float(pluie/2)
+
+
+def get_extraction_feed(n):
+    instant = n * tau
+    return float(0.3184637293 * np.exp(-0.07563739746 * instant) + (pluie / 2))
 
 
 def get_extraction_my(n):
     instant = n * tau
-    return float(pluie + 0.5511111112 * np.exp(-0.05555555556 * instant))
+    return float(0.8311111112 * np.exp(-0.1111111111 * instant) + (pluie / 2))
