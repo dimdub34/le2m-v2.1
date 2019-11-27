@@ -25,12 +25,13 @@ class RemoteGA(IRemote, QObject):
     def _init_vars(self):
         self.current_instant = 0
         self.extractions = PlotData()
+        self.extractions_group = PlotData()
         self.payoff_instant = PlotData()
         self.payoff_part = PlotData()
         self.resource = PlotData()
         self.text_infos = u""
         self.decision_screen = None
-        self.simulation_extraction = 3  # 0 = myope, 1 = optimum social, 2 = feedback, 3 = aléatoire
+        self.simulation_extraction = 0  # 0 = myope, 1 = optimum social, 2 = feedback, 3 = aléatoire
 
     def remote_configure(self, params, server_part):
         logger.info(u"{} configure".format(self.le2mclt))
@@ -107,24 +108,28 @@ class RemoteGA(IRemote, QObject):
                 self.decision_screen.update_data_and_graphs()
             return defered
 
-    def remote_update_data(self, instant_infos):
-        self.current_instant = instant_infos["GA_instant"]
+    def remote_update_data(self, player_instant, group_instant):
+        self.current_instant = player_instant["GA_instant"]
         # extraction
         self.extractions.add_x(self.current_instant)
-        self.extractions.add_y(instant_infos["GA_extraction"])
+        self.extractions.add_y(player_instant["GA_extraction"])
+        # group extraction
+        self.extractions_group.add_x(self.current_instant)
+        self.extractions_group.add_y(group_instant["GA_extraction"])
         # resource
         self.resource.add_x(self.current_instant)
-        self.resource.add_y(instant_infos["GA_resource"])
+        self.resource.add_y(player_instant["GA_resource"])
         # instant payoff
         self.payoff_instant.add_x(self.current_instant)
-        self.payoff_instant.add_y(instant_infos["GA_instant_payoff"])
+        self.payoff_instant.add_y(player_instant["GA_instant_payoff"])
         # part payoff
         self.payoff_part.add_x(self.current_instant)
-        self.payoff_part.add_y(instant_infos["GA_part_payoff"])
+        self.payoff_part.add_y(player_instant["GA_part_payoff"])
 
         # update curves
         try:
             self.extractions.update_curve()
+            # self.extractions_group.update_curve()
             self.resource.update_curve()
             self.payoff_part.update_curve()
         except AttributeError:  # if period==0
@@ -135,12 +140,14 @@ class RemoteGA(IRemote, QObject):
         the_time_str = texts_GA.trans_GA(u"Instant") if \
             pms.DYNAMIC_TYPE == pms.CONTINUOUS else \
             texts_GA.trans_GA(u"Period")
+        the_time_payoff_str = texts_GA.trans_GA(u"Instant payoff") if pms.DYNAMIC_TYPE == pms.CONTINUOUS else \
+            texts_GA.trans_GA(u"Period payoff")
         self.text_infos = the_time_str + u": {}".format(self.current_instant) + \
                           u"<br>" + texts_GA.trans_GA(u"Extraction") + \
                           u": {:.2f}".format(self.extractions.ydata[-1]) + \
                           u"<br>" + texts_GA.trans_GA(u"Available resource") + \
                           u": {:.2f}".format(self.resource.ydata[-1]) + \
-                          u"<br>" + texts_GA.trans_GA(u"Instant payoff") + \
+                          u"<br>" + the_time_payoff_str + \
                           u": {:.2f}".format(self.payoff_instant.ydata[-1]) + \
                           u"<br>" + texts_GA.trans_GA(u"Part payoff") + \
                           u": {:.2f}".format(self.payoff_part.ydata[-1])

@@ -91,7 +91,7 @@ class Serveur(object):
         yield (self.le2mserv.gestionnaire_experience.run_func(self.groups, "new_instant", 0))
         yield (self.le2mserv.gestionnaire_experience.run_step(trans_GA(u"Initial extraction"), self.all,
                                                               "set_initial_extraction"))
-        yield (self.le2mserv.gestionnaire_experience.run_func(self.groups, "update_data", 0))
+        yield (self.le2mserv.gestionnaire_experience.run_func(self.groups, "update_data"))
 
         # START GAME: loop every second or period ----------------------------------------------------------------------
         self.le2mserv.gestionnaire_graphique.infoserv("Start time: {}".format(datetime.now().strftime("%H:%M:%S")))
@@ -110,7 +110,7 @@ class Serveur(object):
                 yield (self.le2mserv.gestionnaire_experience.run_func(self.groups, "new_instant", self.the_n))
                 yield (self.le2mserv.gestionnaire_experience.run_step("Decision", self.all, "display_decision",
                                                                       self.the_n))
-                yield (self.le2mserv.gestionnaire_experience.run_func(self.groups, "update_data", self.the_n))
+                yield (self.le2mserv.gestionnaire_experience.run_func(self.groups, "update_data"))
             yield (self.le2mserv.gestionnaire_experience.run_func(self.all, "end_update_data"))
 
         # summary ------------------------------------------------------------------------------------------------------
@@ -125,7 +125,7 @@ class Serveur(object):
         self.the_n += 1
         if self.the_n <= pms.CONTINUOUS_TIME_DURATION.total_seconds():
             yield (self.le2mserv.gestionnaire_experience.run_func(self.groups, "new_instant", self.the_n))
-            yield (self.le2mserv.gestionnaire_experience.run_func(self.groups, "update_data", self.the_n))
+            yield (self.le2mserv.gestionnaire_experience.run_func(self.groups, "update_data"))
         else:
             self.le2mserv.gestionnaire_graphique.infoserv("End time: {}".format(datetime.now().strftime("%H:%M:%S")))
             self.timer_update.stop()

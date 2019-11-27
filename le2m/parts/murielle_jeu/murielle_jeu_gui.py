@@ -307,8 +307,7 @@ class GuiDecision(QDialog):
         self.plot_extraction = PlotExtraction(self.remote.extractions)
         self.plot_layout.addWidget(self.plot_extraction, 0, 0)
         # part payoff
-        self.plot_payoff = PlotPayoff(
-            self.remote.payoff_part)
+        self.plot_payoff = PlotPayoff(self.remote.payoff_part)
         self.plot_layout.addWidget(self.plot_payoff, 0, 1)
         # available resource
         self.plot_resource = PlotResource(self.remote.resource)
@@ -373,6 +372,8 @@ class GuiDecision(QDialog):
 
     def update_data_and_graphs(self):
         if self.remote.le2mclt.automatique:
+            if self.remote.extractions.ydata[-1] == 0:
+                self.extract_dec.setValue(0)
             if self.remote.simulation_extraction == 0:
                 self.extract_dec.setValue(pms.get_extraction_my(self.remote.current_instant))
             elif self.remote.simulation_extraction == 1:

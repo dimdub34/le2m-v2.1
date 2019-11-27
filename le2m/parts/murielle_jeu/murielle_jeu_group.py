@@ -50,9 +50,9 @@ class GroupGA(Base, Group):
             p.new_instant(the_n)
 
     @defer.inlineCallbacks
-    def update_data(self, the_n):
-        self.current_instant.GA_extraction = np.sum([p.current_instant.GA_extraction for p in self.get_players_part("murielle_jeu")])
-        if the_n == 0:
+    def update_data(self):
+        self.current_instant.GA_extraction = float(np.sum([p.current_instant.GA_extraction for p in self.get_players_part("murielle_jeu")]))
+        if self.current_instant.GA_instant == 0:
             self.current_instant.GA_ressource = pms.RESOURCE_INITIAL_STOCK
         else:
             if self.current_instant.GA_extraction > self.previous_instant.GA_ressource:
@@ -62,8 +62,8 @@ class GroupGA(Base, Group):
             self.current_instant.GA_ressource = pms.get_ressource(
                 self.current_instant.GA_instant, self.previous_instant.GA_ressource, self.current_instant.GA_extraction)
         logger.debug("current_instant: {}".format(self.current_instant.to_dict()))
-        yield (self.le2mserv.gestionnaire_experience.run_func(self.get_players_part("murielle_jeu"), "update_data",
-                                                              the_n, self.current_instant.GA_ressource))
+        yield (self.le2mserv.gestionnaire_experience.run_func(
+            self.get_players_part("murielle_jeu"), "update_data", self.current_instant.to_dict()))
 
 
 class GroupInstantsGA(Base):

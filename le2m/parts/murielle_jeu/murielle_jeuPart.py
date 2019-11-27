@@ -78,15 +78,15 @@ class PartieGA(Partie, pb.Referenceable):
         self.joueur.info(self.current_instant.GA_extraction)
 
     @defer.inlineCallbacks
-    def update_data(self, the_n, ressource):
-        self.current_instant.GA_resource = ressource
+    def update_data(self, group_instant):
+        self.current_instant.GA_resource = group_instant["GA_ressource"]
         cost = (pms.c0 - pms.c1 * self.current_instant.GA_resource) * self.current_instant.GA_extraction
         if cost < 0:
             cost = 0
         self.current_instant.GA_cost = cost
         self.current_instant.GA_instant_payoff = pms.get_gain_instantane(
             self.current_instant.GA_instant, self.current_instant.GA_extraction, self.current_instant.GA_resource)
-        if the_n == 0:
+        if self.current_instant.GA_instant == 0:
             self.current_instant.GA_cumulative_instant_payoff = self.current_instant.GA_instant_payoff * pms.tau
         else:
             self.current_instant.GA_cumulative_instant_payoff = self.previous_instant.GA_cumulative_instant_payoff + \
@@ -94,7 +94,7 @@ class PartieGA(Partie, pb.Referenceable):
         self.current_instant.GA_part_payoff = self.current_instant.GA_cumulative_instant_payoff + pms.get_infinite_payoff(
             self.current_instant.GA_instant, self.current_instant.GA_resource, self.current_instant.GA_extraction)
         logger.debug("current_instant: {}".format(self.current_instant.to_dict()))
-        yield(self.remote.callRemote("update_data", self.current_instant.to_dict()))
+        yield(self.remote.callRemote("update_data", self.current_instant.to_dict(), group_instant))
 
     @defer.inlineCallbacks
     def end_update_data(self):
