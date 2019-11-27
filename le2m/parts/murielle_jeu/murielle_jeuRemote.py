@@ -8,7 +8,7 @@ from PyQt4.QtCore import QTimer, pyqtSignal, QObject
 from twisted.internet import defer
 
 import murielle_jeu_params as pms
-import murielle_jeu_texts as texts_CO
+import murielle_jeu_texts as texts_GA
 from client.cltremote import IRemote
 from murielle_jeu_gui import GuiDecision, GuiInitialExtraction, GuiSummary
 
@@ -30,7 +30,7 @@ class RemoteGA(IRemote, QObject):
         self.resource = PlotData()
         self.text_infos = u""
         self.decision_screen = None
-        self.simulation_extraction = 2  # 0 = myope, 1 = optimum social, 2 = feedback
+        self.simulation_extraction = 1  # 0 = myope, 1 = optimum social, 2 = feedback
 
     def remote_configure(self, params, server_part):
         logger.info(u"{} configure".format(self.le2mclt))
@@ -124,17 +124,17 @@ class RemoteGA(IRemote, QObject):
 
         # text information
         old = self.text_infos
-        the_time_str = texts_CO.trans_GA(u"Instant") if \
+        the_time_str = texts_GA.trans_GA(u"Instant") if \
             pms.DYNAMIC_TYPE == pms.CONTINUOUS else \
-            texts_CO.trans_GA(u"Period")
+            texts_GA.trans_GA(u"Period")
         self.text_infos = the_time_str + u": {}".format(self.current_instant) + \
-                          u"<br>" + texts_CO.trans_GA(u"Extraction") + \
+                          u"<br>" + texts_GA.trans_GA(u"Extraction") + \
                           u": {:.2f}".format(self.extractions.ydata[-1]) + \
-                          u"<br>" + texts_CO.trans_GA(u"Available resource") + \
+                          u"<br>" + texts_GA.trans_GA(u"Available resource") + \
                           u": {:.2f}".format(self.resource.ydata[-1]) + \
-                          u"<br>" + texts_CO.trans_GA(u"Instant payoff") + \
+                          u"<br>" + texts_GA.trans_GA(u"Instant payoff") + \
                           u": {:.2f}".format(self.payoff_instant.ydata[-1]) + \
-                          u"<br>" + texts_CO.trans_GA(u"Part payoff") + \
+                          u"<br>" + texts_GA.trans_GA(u"Part payoff") + \
                           u": {:.2f}".format(self.payoff_part.ydata[-1])
         self.text_infos += u"<br>{}<br>{}".format(20 * "-", old)
 
@@ -158,7 +158,7 @@ class RemoteGA(IRemote, QObject):
             return curves
         else:
             defered = defer.Deferred()
-            summary_screen = GuiSummary(self, defered, texts_CO.get_text_summary(self.payoff_part.ydata[-1]))
+            summary_screen = GuiSummary(self, defered, texts_GA.get_text_summary(self.payoff_part.ydata[-1]))
             summary_screen.showFullScreen()
             return defered
 
