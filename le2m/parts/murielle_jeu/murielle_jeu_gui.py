@@ -243,8 +243,10 @@ class GuiInitialExtraction(QDialog):
                 self.slider_area.setValue(pms.get_extraction_my(self.remote.current_instant))
             elif self.remote.simulation_extraction == 1:
                 self.slider_area.setValue(pms.get_extraction_os(self.remote.current_instant))
-            else:
+            elif self.remote.simulation_extraction == 2:
                 self.slider_area.setValue(pms.get_extraction_feed(self.remote.current_instant))
+            else:
+                self.slider_area.setValue(pms.get_extraction_aleatoire(self.remote.current_instant))
             self.timer_automatique = QTimer()
             self.timer_automatique.timeout.connect(buttons.button(QDialogButtonBox.Ok).click)
             self.timer_automatique.start(3000)
@@ -351,8 +353,10 @@ class GuiDecision(QDialog):
                 self.extract_dec.setValue(pms.get_extraction_my(self.remote.current_instant))
             elif self.remote.simulation_extraction == 1:
                 self.extract_dec.setValue(pms.get_extraction_os(self.remote.current_instant))
-            else:
+            elif self.remote.simulation_extraction == 2:
                 self.extract_dec.setValue(pms.get_extraction_feed(self.remote.current_instant))
+            else:
+                self.extract_dec.setValue(pms.get_extraction_aleatoire(self.remote.current_instant))
 
         self.remote.end_of_time.connect(self.end_of_time)
 
@@ -373,8 +377,10 @@ class GuiDecision(QDialog):
                 self.extract_dec.setValue(pms.get_extraction_my(self.remote.current_instant))
             elif self.remote.simulation_extraction == 1:
                 self.extract_dec.setValue(pms.get_extraction_os(self.remote.current_instant))
-            else:
+            elif self.remote.simulation_extraction == 2:
                 self.extract_dec.setValue(pms.get_extraction_feed(self.remote.current_instant))
+            else:
+                self.extract_dec.setValue(pms.get_extraction_aleatoire(self.remote.current_instant))
         self.plot_extraction.canvas.draw()
         self.plot_resource.canvas.draw()
         self.plot_payoff.canvas.draw()

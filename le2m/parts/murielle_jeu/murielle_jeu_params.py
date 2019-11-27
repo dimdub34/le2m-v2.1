@@ -10,6 +10,7 @@ which means that you should ask to the developer ;-)
 ============================================================================="""
 
 import logging
+import random
 from datetime import timedelta
 
 import numpy as np
@@ -164,9 +165,9 @@ def get_extraction_os(n):
         return 0
     elif 3.343457379 <= instant < 14.47467286:
         return float(0.3690927261 * np.exp(0.02620243776 * instant) - 0.7330529734 * np.exp(-0.02120243776 * instant) +
-                    (pluie / 2))
+                     (pluie / 2))
     else:
-        return float(pluie/2)
+        return float(pluie / 2)
 
 
 def get_extraction_feed(n):
@@ -177,3 +178,13 @@ def get_extraction_feed(n):
 def get_extraction_my(n):
     instant = n * tau
     return float(0.8311111112 * np.exp(-0.1111111111 * instant) + (pluie / 2))
+
+
+def get_extraction_aleatoire(n):
+    tirage = random.randint(0, 2)
+    if tirage == 0:
+        return get_extraction_my(n)
+    elif tirage == 1:
+        return get_extraction_os(n)
+    else:
+        return get_extraction_feed(n)

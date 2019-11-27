@@ -30,7 +30,7 @@ class RemoteGA(IRemote, QObject):
         self.resource = PlotData()
         self.text_infos = u""
         self.decision_screen = None
-        self.simulation_extraction = 1  # 0 = myope, 1 = optimum social, 2 = feedback
+        self.simulation_extraction = 3  # 0 = myope, 1 = optimum social, 2 = feedback, 3 = aléatoire
 
     def remote_configure(self, params, server_part):
         logger.info(u"{} configure".format(self.le2mclt))
@@ -41,10 +41,14 @@ class RemoteGA(IRemote, QObject):
 
     def remote_set_initial_extraction(self):
         if self.le2mclt.simulation:
-            if self.simulation_extraction:
-                extraction = pms.get_extraction_os(0)
+            if self.simulation_extraction == 0:
+                extraction = pms.get_extraction_os(self.current_instant)
+            elif self.simulation_extraction == 1:
+                extraction = pms.get_extraction_my(self.current_instant)
+            elif self.simulation_extraction == 2:
+                extraction = pms.get_extraction_feed(self.current_instant)
             else:
-                extraction = pms.get_extraction_my(0)
+                extraction = pms.get_extraction_aleatoire(self.current_instant)
             logger.info(u"{} Send {}".format(self.le2mclt, extraction))
             return extraction
         else:
@@ -59,8 +63,10 @@ class RemoteGA(IRemote, QObject):
             extraction = pms.get_extraction_os(self.current_instant)
         elif self.simulation_extraction == 1:
             extraction = pms.get_extraction_my(self.current_instant)
-        else:
+        elif self.simulation_extraction == 2:
             extraction = pms.get_extraction_feed(self.current_instant)
+        else:
+            extraction = pms.get_extraction_aleatoire(self.current_instant)
         logger.info(u"{} Send {}".format(self._le2mclt.uid, extraction))
         yield(self.server_part.callRemote("new_extraction", extraction))
 
@@ -83,8 +89,10 @@ class RemoteGA(IRemote, QObject):
                     extraction = pms.get_extraction_os(self.current_instant)
                 elif self.simulation_extraction == 1:
                     extraction = pms.get_extraction_my(self.current_instant)
-                else:
+                elif self.simulation_extraction == 2:
                     extraction = pms.get_extraction_feed(self.current_instant)
+                else:
+                    extraction = pms.get_extraction_aleatoire(self.current_instant)
                 logger.info(u"{} Send {}".format(self.le2mclt, extraction))
                 return extraction
 
