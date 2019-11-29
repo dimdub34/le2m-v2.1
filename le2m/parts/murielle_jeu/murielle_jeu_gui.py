@@ -83,10 +83,11 @@ class PlotExtraction(QWidget):
     This widget plot the individual extractions
     """
 
-    def __init__(self, extractions):
+    def __init__(self, player_extractions, group_extractions):
         QWidget.__init__(self)
 
-        self.extractions = extractions
+        self.player_extractions = player_extractions
+        self.group_extractions = group_extractions
 
         layout = QVBoxLayout()
         self.setLayout(layout)
@@ -103,26 +104,27 @@ class PlotExtraction(QWidget):
             self.graph.set_xlim(-1, pms.NOMBRE_PERIODES + 1)
             self.graph.set_xlabel(trans_GA(u"Periods"))
             self.graph.set_xticks(range(0, pms.NOMBRE_PERIODES + 1), 5)
-            curve_marker = "."
+            curve_marker = [".", "x"]
 
         elif pms.DYNAMIC_TYPE == pms.CONTINUOUS:
-            self.graph.set_xlim(
-                -5, pms.CONTINUOUS_TIME_DURATION.total_seconds() + 5)
-            self.graph.set_xticks(
-                range(0, int(pms.CONTINUOUS_TIME_DURATION.total_seconds()) + 1,
-                      30))
+            self.graph.set_xlim(-5, pms.CONTINUOUS_TIME_DURATION.total_seconds() + 5)
+            self.graph.set_xticks(range(0, int(pms.CONTINUOUS_TIME_DURATION.total_seconds()) + 1, 30))
             self.graph.set_xlabel(trans_GA(u"Time (seconds)"))
-            curve_marker = ""
+            curve_marker = ["", ""]
 
         # curves
-        if self.extractions.curve is None:
-            self.extractions.curve, = self.graph.plot(self.extractions.xdata, self.extractions.ydata, "-k",
-                                                      marker=curve_marker)
+        if self.player_extractions.curve is None:
+            self.player_extractions.curve, = self.graph.plot(self.player_extractions.xdata, self.player_extractions.ydata, "-k",
+                                                             marker=curve_marker[0], label=trans_GA("Your extraction"))
+        if self.group_extractions.curve is None:
+            self.group_extractions.curve, = self.graph.plot(self.group_extractions.xdata, self.group_extractions.ydata, "--k",
+                                                           marker=curve_marker[1], label=trans_GA("Group extraction"))
         self.graph.set_ylim(-0.1, pms.DECISION_MAX + 0.1)
         self.graph.set_yticks(np.arange(0, pms.DECISION_MAX + 0.1, 0.2))
         self.graph.set_ylabel("")
+        self.graph.grid(axis="both", ls="--")
+        self.graph.legend(loc="upper left", ncol=2)
         self.graph.set_title(trans_GA(u"Extraction"))
-        self.graph.grid()
         self.canvas.draw()
 
 
@@ -304,7 +306,7 @@ class GuiDecision(QDialog):
         self.plot_layout = QGridLayout()
         layout.addLayout(self.plot_layout)
         # extraction
-        self.plot_extraction = PlotExtraction(self.remote.extractions)
+        self.plot_extraction = PlotExtraction(self.remote.extractions, self.remote.extractions_group)
         self.plot_layout.addWidget(self.plot_extraction, 0, 0)
         # part payoff
         self.plot_payoff = PlotPayoff(self.remote.payoff_part)
@@ -416,6 +418,7 @@ class GuiSummary(QDialog):
         # GRAPHICAL AREA
         # ----------------------------------------------------------------------
         self.remote.extractions.curve = None
+        self.remote.extractions_group.curve = None
         self.remote.resource.curve = None
         self.remote.payoff_part.curve = None
 
@@ -423,7 +426,7 @@ class GuiSummary(QDialog):
         layout.addLayout(self.plot_layout)
 
         # extractions (indiv + group)
-        self.plot_extraction = PlotExtraction(self.remote.extractions)
+        self.plot_extraction = PlotExtraction(self.remote.extractions, self.remote.extractions_group)
         self.plot_layout.addWidget(self.plot_extraction, 0, 0)
 
         # payoff indiv

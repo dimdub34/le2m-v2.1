@@ -31,7 +31,7 @@ class RemoteGA(IRemote, QObject):
         self.resource = PlotData()
         self.text_infos = u""
         self.decision_screen = None
-        self.simulation_extraction = 0  # 0 = myope, 1 = optimum social, 2 = feedback, 3 = aléatoire
+        self.simulation_extraction = 2  # 0 = myope, 1 = optimum social, 2 = feedback, 3 = aléatoire
 
     def remote_configure(self, params, server_part):
         logger.info(u"{} configure".format(self.le2mclt))
@@ -43,9 +43,9 @@ class RemoteGA(IRemote, QObject):
     def remote_set_initial_extraction(self):
         if self.le2mclt.simulation:
             if self.simulation_extraction == 0:
-                extraction = pms.get_extraction_os(self.current_instant)
-            elif self.simulation_extraction == 1:
                 extraction = pms.get_extraction_my(self.current_instant)
+            elif self.simulation_extraction == 1:
+                extraction = pms.get_extraction_os(self.current_instant)
             elif self.simulation_extraction == 2:
                 extraction = pms.get_extraction_feed(self.current_instant)
             else:
@@ -61,9 +61,9 @@ class RemoteGA(IRemote, QObject):
     @defer.inlineCallbacks
     def send_simulation(self):
         if self.simulation_extraction == 0:
-            extraction = pms.get_extraction_os(self.current_instant)
-        elif self.simulation_extraction == 1:
             extraction = pms.get_extraction_my(self.current_instant)
+        elif self.simulation_extraction == 1:
+            extraction = pms.get_extraction_os(self.current_instant)
         elif self.simulation_extraction == 2:
             extraction = pms.get_extraction_feed(self.current_instant)
         else:
@@ -87,9 +87,9 @@ class RemoteGA(IRemote, QObject):
             # discrete
             elif pms.DYNAMIC_TYPE == pms.DISCRETE:
                 if self.simulation_extraction == 0:
-                    extraction = pms.get_extraction_os(self.current_instant)
-                elif self.simulation_extraction == 1:
                     extraction = pms.get_extraction_my(self.current_instant)
+                elif self.simulation_extraction == 1:
+                    extraction = pms.get_extraction_os(self.current_instant)
                 elif self.simulation_extraction == 2:
                     extraction = pms.get_extraction_feed(self.current_instant)
                 else:
@@ -109,6 +109,8 @@ class RemoteGA(IRemote, QObject):
             return defered
 
     def remote_update_data(self, player_instant, group_instant):
+        logger.debug("player_instant: {}".format(player_instant))
+        logger.debug("group_instant: {}".format(group_instant))
         self.current_instant = player_instant["GA_instant"]
         # extraction
         self.extractions.add_x(self.current_instant)
@@ -129,11 +131,11 @@ class RemoteGA(IRemote, QObject):
         # update curves
         try:
             self.extractions.update_curve()
-            # self.extractions_group.update_curve()
+            self.extractions_group.update_curve()
             self.resource.update_curve()
             self.payoff_part.update_curve()
-        except AttributeError:  # if period==0
-            pass
+        except AttributeError as e:  # if period==0
+            logger.warning(e.message)
 
         # text information
         old = self.text_infos
@@ -145,6 +147,8 @@ class RemoteGA(IRemote, QObject):
         self.text_infos = the_time_str + u": {}".format(self.current_instant) + \
                           u"<br>" + texts_GA.trans_GA(u"Extraction") + \
                           u": {:.2f}".format(self.extractions.ydata[-1]) + \
+                          u"<br>" + texts_GA.trans_GA(u"Group extraction") + \
+                          u": {:.2f}".format(self.extractions_group.ydata[-1]) + \
                           u"<br>" + texts_GA.trans_GA(u"Available resource") + \
                           u": {:.2f}".format(self.resource.ydata[-1]) + \
                           u"<br>" + the_time_payoff_str + \
@@ -154,8 +158,9 @@ class RemoteGA(IRemote, QObject):
         self.text_infos += u"<br>{}<br>{}".format(20 * "-", old)
 
         # log
-        logger.debug("{} update data - instant {} - extraction {:.2f} - resource: {:.2f} - payoff: {:.2f}".format(
-            self.le2mclt, self.current_instant, self.extractions.ydata[-1], self.resource.ydata[-1], self.payoff_part.ydata[-1]))
+        logger.debug("curves : instant {} - extraction {:.2f} - extraction_group: {:.2f} - resource: {:.2f} - payoff: {:.2f}".format(
+            self.current_instant, self.extractions.ydata[-1], self.extractions_group.ydata[-1], self.resource.ydata[-1],
+            self.payoff_part.ydata[-1]))
 
     def remote_end_update_data(self):
         logger.debug("{}: call of remote_end_data".format(self.le2mclt))
