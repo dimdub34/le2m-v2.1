@@ -30,7 +30,7 @@ class RemoteCO(IRemote, QObject):
         self.resource = PlotData()
         self.text_infos = u""
         self.decision_screen = None
-        self.simulation_extraction = int(self.le2mclt.uid.split("_")[2]) % 2  # 0 = myope, 1 = optimum social
+        self.simulation_extraction = 1  # 0 = myope, 1 = optimum social, 2 = aléatoire
 
     def remote_configure(self, params, server_part):
         logger.info(u"{} configure".format(self.le2mclt))
@@ -41,10 +41,12 @@ class RemoteCO(IRemote, QObject):
 
     def remote_set_initial_extraction(self):
         if self.le2mclt.simulation:
-            if self.simulation_extraction:
+            if self.simulation_extraction == 0:
                 extraction = pms.get_extraction_os(0)
-            else:
+            elif self.simulation_extraction == 1:
                 extraction = pms.get_extraction_my(0)
+            else:
+                extraction = pms.get_extraction_aleatoire(0)
             logger.info(u"{} Send {}".format(self.le2mclt, extraction))
             return extraction
         else:
@@ -55,10 +57,12 @@ class RemoteCO(IRemote, QObject):
 
     @defer.inlineCallbacks
     def send_simulation(self):
-        if self.simulation_extraction:
+        if self.simulation_extraction == 0:
             extraction = pms.get_extraction_os(self.current_instant)
-        else:
+        elif self.simulation_extraction == 1:
             extraction = pms.get_extraction_my(self.current_instant)
+        else:
+            extraction = pms.get_extraction_aleatoire(self.current_instant)
         logger.info(u"{} Send {}".format(self._le2mclt.uid, extraction))
         yield(self.server_part.callRemote("new_extraction", extraction))
 
@@ -120,15 +124,16 @@ class RemoteCO(IRemote, QObject):
 
         # text information
         old = self.text_infos
-        the_time_str = texts_CO.trans_CO(u"Instant") if \
-            pms.DYNAMIC_TYPE == pms.CONTINUOUS else \
+        the_time_str = texts_CO.trans_CO(u"Instant") if pms.DYNAMIC_TYPE == pms.CONTINUOUS else \
             texts_CO.trans_CO(u"Period")
+        the_time_payoff_str = texts_CO.trans_CO(u"Instant payoff") if pms.DYNAMIC_TYPE == pms.CONTINUOUS else \
+            texts_CO.trans_CO(u"Period payoff")
         self.text_infos = the_time_str + u": {}".format(self.current_instant) + \
                           u"<br>" + texts_CO.trans_CO(u"Extraction") + \
                           u": {:.2f}".format(self.extractions.ydata[-1]) + \
                           u"<br>" + texts_CO.trans_CO(u"Available resource") + \
                           u": {:.2f}".format(self.resource.ydata[-1]) + \
-                          u"<br>" + texts_CO.trans_CO(u"Instant payoff") + \
+                          u"<br>" + the_time_payoff_str + \
                           u": {:.2f}".format(self.payoff_instant.ydata[-1]) + \
                           u"<br>" + texts_CO.trans_CO(u"Part payoff") + \
                           u": {:.2f}".format(self.payoff_part.ydata[-1])

@@ -241,8 +241,10 @@ class GuiInitialExtraction(QDialog):
         if self.remote.le2mclt.automatique:
             if self.remote.simulation_extraction == 0:
                 self.slider_area.setValue(pms.get_extraction_my(self.remote.current_instant))
-            else:
+            elif self.remote.simulation_extraction == 1:
                 self.slider_area.setValue(pms.get_extraction_os(self.remote.current_instant))
+            else:
+                self.slider_area.setValue(pms.get_extraction_aleatoire(self.remote.current_instant))
             self.timer_automatique = QTimer()
             self.timer_automatique.timeout.connect(buttons.button(QDialogButtonBox.Ok).click)
             self.timer_automatique.start(3000)
@@ -352,8 +354,10 @@ class GuiDecision(QDialog):
         if pms.DYNAMIC_TYPE == pms.DISCRETE and self.remote.le2mclt.automatique:
             if self.remote.simulation_extraction == 0:
                 self.extract_dec.setValue(pms.get_extraction_my(self.remote.current_instant))
-            else:
+            elif self.remote.simulation_extraction == 1:
                 self.extract_dec.setValue(pms.get_extraction_os(self.remote.current_instant))
+            else:
+                self.extract_dec.setValue(pms.get_extraction_aleatoire(self.remote.current_instant))
 
         self.remote.end_of_time.connect(self.end_of_time)
 
@@ -369,11 +373,15 @@ class GuiDecision(QDialog):
             self.defered.callback(dec)
 
     def update_data_and_graphs(self):
+        if self.remote.extractions.ydata[-1] == 0:
+            self.extract_dec.setValue(0)
         if self.remote.le2mclt.automatique:
             if self.remote.simulation_extraction == 0:
                 self.extract_dec.setValue(pms.get_extraction_my(self.remote.current_instant))
-            else:
+            elif self.remote.simulation_extraction == 1:
                 self.extract_dec.setValue(pms.get_extraction_os(self.remote.current_instant))
+            else:
+                self.extract_dec.setValue(pms.get_extraction_aleatoire(self.remote.current_instant))
         self.plot_extraction.canvas.draw()
         self.plot_resource.canvas.draw()
         self.plot_payoff.canvas.draw()
@@ -441,7 +449,6 @@ class GuiSummary(QDialog):
         # ----------------------------------------------------------------------
         # FINALIZE THE DIALOG
         # ----------------------------------------------------------------------
-
         buttons = QDialogButtonBox(QDialogButtonBox.Ok)
         buttons.accepted.connect(self._accept)
         layout.addWidget(buttons)

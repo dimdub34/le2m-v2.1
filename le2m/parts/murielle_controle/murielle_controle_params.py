@@ -10,6 +10,7 @@ which means that you should ask to the developer ;-)
 ============================================================================="""
 
 import logging
+import random
 from datetime import timedelta
 
 import numpy as np
@@ -170,3 +171,7 @@ def get_extraction_os(n):
 def get_extraction_my(n):
     instant = n * tau
     return float(pluie + 0.5511111112 * np.exp(-0.05555555556 * instant))
+
+
+def get_extraction_aleatoire(n):
+    return np.random.normal(pluie, 0.2, 1)

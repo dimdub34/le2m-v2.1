@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-25 12:35+0200\n"
-"PO-Revision-Date: 2019-11-24 14:53+0100\n"
+"POT-Creation-Date: 2019-12-03 08:28+0100\n"
+"PO-Revision-Date: 2019-12-03 08:30+0100\n"
 "Last-Translator: Dimitri DUBOIS <dimitri.dubois@umontpellier.fr>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -17,89 +17,91 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 2.0.6\n"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/controlOptimal/controlOptimalServ.py:96
-msgid "Initial extraction"
-msgstr "Extraction initiale"
-
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/controlOptimal/controlOptimalServ.py:125
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/controlOptimal/controlOptimalGui.py:368
-msgid "Decision"
-msgstr "Décision"
-
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/controlOptimal/controlOptimalRemote.py:219
+#: /home/dimitri/Dropbox/travail/programmes/le2m-v2.1/le2m/parts/murielle_controle/murielle_controleRemote.py:127
 msgid "Instant"
 msgstr "Instant"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/controlOptimal/controlOptimalRemote.py:221
+#: /home/dimitri/Dropbox/travail/programmes/le2m-v2.1/le2m/parts/murielle_controle/murielle_controleRemote.py:128
 msgid "Period"
 msgstr "Période"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/controlOptimal/controlOptimalRemote.py:223
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/controlOptimal/controlOptimalGui.py:130
-msgid "Extraction"
-msgstr "Extraction"
-
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/controlOptimal/controlOptimalRemote.py:225
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/controlOptimal/controlOptimalGui.py:179
-msgid "Available resource"
-msgstr "Ressource disponible"
-
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/controlOptimal/controlOptimalRemote.py:227
+#: /home/dimitri/Dropbox/travail/programmes/le2m-v2.1/le2m/parts/murielle_controle/murielle_controleRemote.py:129
 msgid "Instant payoff"
 msgstr "Gain de l'instant"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/controlOptimal/controlOptimalRemote.py:229
-msgid "Discounted payoff"
-msgstr "Gain de l'instant actualisé"
+#: /home/dimitri/Dropbox/travail/programmes/le2m-v2.1/le2m/parts/murielle_controle/murielle_controleRemote.py:130
+msgid "Period payoff"
+msgstr "Gain de la période"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/controlOptimal/controlOptimalRemote.py:231
-msgid "Cumulative payoff"
-msgstr "Gain cumulé"
+#: /home/dimitri/Dropbox/travail/programmes/le2m-v2.1/le2m/parts/murielle_controle/murielle_controleRemote.py:132
+#: /home/dimitri/Dropbox/travail/programmes/le2m-v2.1/le2m/parts/murielle_controle/murielle_controle_gui.py:124
+msgid "Extraction"
+msgstr "Extraction"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/controlOptimal/controlOptimalRemote.py:233
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/controlOptimal/controlOptimalGui.py:223
+#: /home/dimitri/Dropbox/travail/programmes/le2m-v2.1/le2m/parts/murielle_controle/murielle_controleRemote.py:134
+#: /home/dimitri/Dropbox/travail/programmes/le2m-v2.1/le2m/parts/murielle_controle/murielle_controle_gui.py:174
+msgid "Available resource"
+msgstr "Ressource disponible"
+
+#: /home/dimitri/Dropbox/travail/programmes/le2m-v2.1/le2m/parts/murielle_controle/murielle_controleRemote.py:138
+#: /home/dimitri/Dropbox/travail/programmes/le2m-v2.1/le2m/parts/murielle_controle/murielle_controle_gui.py:212
 msgid "Part payoff"
 msgstr "Gain de la partie"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/controlOptimal/controlOptimalGui.py:108
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/controlOptimal/controlOptimalGui.py:158
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/controlOptimal/controlOptimalGui.py:202
-msgid "Periods"
-msgstr "Périodes"
-
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/controlOptimal/controlOptimalGui.py:118
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/controlOptimal/controlOptimalGui.py:168
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/controlOptimal/controlOptimalGui.py:212
-msgid "Time (seconds)"
-msgstr "Temps (secondes)"
-
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/controlOptimal/controlOptimalGui.py:276
-msgid "Do you confirm your choice?"
-msgstr "Vous confirmez votre choix?"
-
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/controlOptimal/controlOptimalTexts.py:30
+#: /home/dimitri/Dropbox/travail/programmes/le2m-v2.1/le2m/parts/murielle_controle/murielle_controle_texts.py:30
 msgid "Please choose an initial extraction level"
 msgstr "Veuillez choisir une extraction initiale"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/controlOptimal/controlOptimalTexts.py:32
+#: /home/dimitri/Dropbox/travail/programmes/le2m-v2.1/le2m/parts/murielle_controle/murielle_controle_texts.py:32
 msgid "Please choose an extraction level"
 msgstr "Merci de choisir un niveau d'extraction"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/controlOptimal/controlOptimalTexts.py:47
+#: /home/dimitri/Dropbox/travail/programmes/le2m-v2.1/le2m/parts/murielle_controle/murielle_controle_texts.py:47
 msgid "Explanation text"
 msgstr "Texte explicatif"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/controlOptimal/controlOptimalTexts.py:51
+#: /home/dimitri/Dropbox/travail/programmes/le2m-v2.1/le2m/parts/murielle_controle/murielle_controle_texts.py:51
 msgid "Decision label"
 msgstr "Label de décision"
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/controlOptimal/controlOptimalTexts.py:55
+#: /home/dimitri/Dropbox/travail/programmes/le2m-v2.1/le2m/parts/murielle_controle/murielle_controle_texts.py:55
 msgid "Your payoff for this part is "
 msgstr "Votre gain pour cette partie est "
 
-#: /home/dimitri/Documents/travail/programmes/le2m-v2.1/le2m/parts/controlOptimal/controlOptimalTexts.py:57
+#: /home/dimitri/Dropbox/travail/programmes/le2m-v2.1/le2m/parts/murielle_controle/murielle_controle_texts.py:57
 msgid "which corresponds to "
 msgstr "soit "
+
+#: /home/dimitri/Dropbox/travail/programmes/le2m-v2.1/le2m/parts/murielle_controle/murielle_controleServ.py:66
+msgid "Initial extraction"
+msgstr "Extraction initiale"
+
+#: /home/dimitri/Dropbox/travail/programmes/le2m-v2.1/le2m/parts/murielle_controle/murielle_controleServ.py:77
+#: /home/dimitri/Dropbox/travail/programmes/le2m-v2.1/le2m/parts/murielle_controle/murielle_controle_gui.py:344
+msgid "Decision"
+msgstr "Décision"
+
+#: /home/dimitri/Dropbox/travail/programmes/le2m-v2.1/le2m/parts/murielle_controle/murielle_controle_gui.py:104
+#: /home/dimitri/Dropbox/travail/programmes/le2m-v2.1/le2m/parts/murielle_controle/murielle_controle_gui.py:153
+#: /home/dimitri/Dropbox/travail/programmes/le2m-v2.1/le2m/parts/murielle_controle/murielle_controle_gui.py:197
+msgid "Periods"
+msgstr "Périodes"
+
+#: /home/dimitri/Dropbox/travail/programmes/le2m-v2.1/le2m/parts/murielle_controle/murielle_controle_gui.py:114
+#: /home/dimitri/Dropbox/travail/programmes/le2m-v2.1/le2m/parts/murielle_controle/murielle_controle_gui.py:163
+#: /home/dimitri/Dropbox/travail/programmes/le2m-v2.1/le2m/parts/murielle_controle/murielle_controle_gui.py:204
+msgid "Time (seconds)"
+msgstr "Temps (secondes)"
+
+#: /home/dimitri/Dropbox/travail/programmes/le2m-v2.1/le2m/parts/murielle_controle/murielle_controle_gui.py:259
+msgid "Do you confirm your choice?"
+msgstr "Vous confirmez votre choix?"
+
+#~ msgid "Discounted payoff"
+#~ msgstr "Gain de l'instant actualisé"
+
+#~ msgid "Cumulative payoff"
+#~ msgstr "Gain cumulé"
 
 #~ msgid "Your payoff for the part is "
 #~ msgstr "Votre gain pour la partie est de "
