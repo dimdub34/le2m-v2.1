@@ -30,23 +30,6 @@ INITIAL_EXTRACTION = trans_GA(
 EXTRACTION = trans_GA(u"Please choose an extraction level")
 
 
-def get_histo_vars():
-    return ["CO_period", "CO_decision", "CO_periodpayoff", "CO_cumulativepayoff"]
-
-
-def get_histo_head():
-    return [le2mtrans(u"Period"), le2mtrans(u"Decision"),
-             le2mtrans(u"Period\npayoff"), le2mtrans(u"Cumulative\npayoff")]
-
-
-def get_text_explanation():
-    return trans_GA(u"Explanation text")
-
-
-def get_text_label_decision():
-    return trans_GA(u"Decision label")
-
-
 def get_text_summary(part_payoff):
     txt = trans_GA(u"Your payoff for this part is ") + \
           u" {:.2f} ecus, ".format(part_payoff) + \

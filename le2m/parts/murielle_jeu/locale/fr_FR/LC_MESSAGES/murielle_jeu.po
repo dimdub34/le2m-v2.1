@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-05-25 12:35+0200\n"
-"PO-Revision-Date: 2019-11-24 14:53+0100\n"
+"PO-Revision-Date: 2019-12-03 08:30+0100\n"
 "Last-Translator: Dimitri DUBOIS <dimitri.dubois@umontpellier.fr>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -101,29 +101,29 @@ msgstr "Votre gain pour cette partie est "
 msgid "which corresponds to "
 msgstr "soit "
 
-#~ msgid "Your payoff for the part is "
-#~ msgstr "Votre gain pour la partie est de "
+msgid "Your payoff for the part is "
+msgstr "Votre gain pour la partie est de "
 
-#~ msgid "Please choose an initial extraction value"
-#~ msgstr "Merci de choisir une extraction initiale"
+msgid "Please choose an initial extraction value"
+msgstr "Merci de choisir une extraction initiale"
 
-#~ msgid "Summary text"
-#~ msgstr "Texte récapitulatif"
+msgid "Summary text"
+msgstr "Texte récapitulatif"
+
+msgid "The available resource"
+msgstr "La ressource disponible"
+
+msgid "Your part payoff"
+msgstr "Votre gain pour la partie"
+
+msgid "Units"
+msgstr "Unités"
+
+msgid "Extractions"
+msgstr "Extractions"
+
+msgid "ecus"
+msgstr "ecus"
 
 #~ msgid "Your extraction"
 #~ msgstr "Votre extraction"
-
-#~ msgid "The available resource"
-#~ msgstr "La ressource disponible"
-
-#~ msgid "Your part payoff"
-#~ msgstr "Votre gain pour la partie"
-
-#~ msgid "Units"
-#~ msgstr "Unités"
-
-#~ msgid "Extractions"
-#~ msgstr "Extractions"
-
-#~ msgid "ecus"
-#~ msgstr "ecus"

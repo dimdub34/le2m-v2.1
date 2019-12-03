@@ -52,7 +52,7 @@ DECISION_STEP = 0.01
 
 PARTIE_ESSAI = False
 
-DYNAMIC_TYPE = DISCRETE
+DYNAMIC_TYPE = CONTINUOUS
 # continuous game
 CONTINUOUS_TIME_DURATION = timedelta(seconds=600)  # can be changed in config screen
 # time for the player to take a decision
@@ -181,10 +181,7 @@ def get_extraction_my(n):
 
 
 def get_extraction_aleatoire(n):
-    tirage = random.randint(0, 2)
-    if tirage == 0:
-        return get_extraction_my(n)
-    elif tirage == 1:
-        return get_extraction_os(n)
+    if n % 5 == 0:
+        return pluie / 2 + random.random() * 0.2
     else:
-        return get_extraction_feed(n)
+        return pluie / 2 + random.random() * 0.1
