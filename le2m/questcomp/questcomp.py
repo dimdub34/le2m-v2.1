@@ -25,6 +25,7 @@ def questcomp():
 def get_questions(xmlfile):
     return questcompmod.get_questions(xmlfile)
 
+
 if __name__ == "__main__":
     app = QtGui.QApplication(sys.argv)
     questcomp()
