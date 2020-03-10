@@ -278,7 +278,7 @@ class GestionnaireExperience(QObject):
                 p=partname.upper())], fg="red")
 
         players = self.le2msrv.gestionnaire_joueurs.get_players(partname)
-        yield (self.run_func(players, "compute_partpayoff", *args, **kwargs))
+        yield self.run_func(players, "compute_partpayoff", *args, **kwargs)
 
         for p in players:
             payoff = getattr(p, "{}_gain_euros".format(p.nom_court))
